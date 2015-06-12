@@ -1,0 +1,18 @@
+{
+  "name": "onepager",
+  "version": "0.1.0",
+  "dependencies": {
+    "fontawesome": "latest",
+    "bootstrap": "~3.3.4",
+    "fontawesome-selector": "git@github.com:themexpert/fontawesome-selector.git",
+    "lesshat": "~3.0.2",
+    "mixitup": "~2.1.8",
+    "interact": "~1.2.4",
+    "toastr": "~2.1.1",
+    "mjolnic-bootstrap-colorpicker": "~2.1.2",
+    "sweetalert": "~1.0.1",
+    "animate.css" : "~3.2.5",
+    "wow" : "~1.1.2"
+  },
+  "devDependencies": {}
+}

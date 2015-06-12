@@ -1,0 +1,19 @@
+{
+  "name": "themexpert/onepager",
+  "authors": [
+    {
+      "name": "Nadim Tuhin",
+      "email": "nadimtuhin@gmail.com"
+    }
+  ],
+  "require": {
+    "pimple/pimple": "^3.0",
+    "league/url": "^3.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "ThemeXpert\\": "src/",
+      "App\\": "app/"
+    }
+  }
+}

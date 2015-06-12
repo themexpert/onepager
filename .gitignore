@@ -1,0 +1,19 @@
+# OS Generated
+.DS_Store*
+ehthumbs.db
+Thumbs.db
+
+# PhpStorm
+.idea
+
+# Sublime
+*.sublime-workspace
+*.sublime-project
+
+# Node + Composer
+onepager/resources/dist/
+onepager/node_modules/
+onepager/vendor/
+onepager/resources/vendor/
+onepager/composer.lock
+*.composer.lock

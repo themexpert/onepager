@@ -1,0 +1,307 @@
+// Boostrap path
+@path : "../../vendor/bootstrap/less";
+
+// Core variables and mixins
+@import "@{path}/variables.less";
+@import "@{path}/mixins.less";
+
+// Less Hat - DO NOT REMOVE IT
+@import "../../vendor/lesshat/build/lesshat.less";
+
+// Bootstrap override
+@brand-primary:           #009688;
+@brand-success:           #2196F3;
+@brand-info:              #26A69A;
+
+@btn-primary-color:              #fff;
+@btn-primary-bg:                 @brand-primary;
+@btn-primary-border:             darken(@brand-primary, 5%);
+
+@btn-info-color:                 #fff;
+@btn-info-bg:                    @brand-info;
+@btn-info-border:                darken(@btn-info-bg, 5%);
+
+
+// Nav
+//---------------------------------------------
+.tx-nav{
+  margin : 0; padding: 0;
+  > li{ position: relative; display: block; }
+  > li > a{ display: block; padding: 10px 20px; text-decoration: inherit; color: #666; }
+  > li > a:not(.btn){ .box-shadow(none); }
+  > li.active > a{ color: @brand-primary; }
+
+  .btn{ color: #fff; }
+}
+.tx-nav-tabs{
+  background: #eee;
+  > li{ display: inline-block; margin: 0; }
+  > li > a{ padding: 12px 15px}
+  // Active
+  > li.active > a{ background: #f5f5f5; }
+}
+
+.lm-nav-pills {
+  margin: 0;
+  > li > a{ outline: 0; .box-shadow(none); text-transform: uppercase; font-size: 12px; padding: 5px 10px; color: #666; letter-spacing: 0.5px; }
+
+  > li.active > a,
+  > li.active > a:hover,
+  > li.active > a:focus{ background: darken(@brand-primary, 2%); }
+}
+
+.lm-tab-pane{ background: #f5f5f5; padding: 15px; }
+
+// General
+body{ background: inherit; overflow-x: hidden; }
+a{ text-decoration: inherit; color: @brand-primary; }
+
+// [WordPress]Admin menu
+#wp-admin-bar-op-add-block{ 
+  background: @brand-primary !important; color: #fff; cursor: pointer;
+  &:hover .ab-item{ background: darken(@brand-primary, 4%) !important; color: #fff !important; }
+  
+}
+#adminmenu #toplevel_page_onepager .wp-menu-image img{ width: 20px; }
+// Font awesome for top menu
+.ab-top-menu{
+  .fa{ font-family: FontAwesome !important; }
+}
+// Buildmode/livemood
+#wp-admin-bar-op-enable-livemode .fa,
+#wp-admin-bar-op-disable-livemode .fa{ font-size: 11px; .transition(color .2s linear); }
+// Live mode enable
+#wp-admin-bar-op-enable-livemode{
+    .fa{ color: #f44336; }
+    &:hover{
+      .fa{ color: #4CAF50; }
+    } 
+}
+// Live mode disabled
+#wp-admin-bar-op-disable-livemode{
+    .fa{ color: #4CAF50; }
+    &:hover{
+      .fa{ color: #f44336; }
+    } 
+} 
+
+// ****************************************************
+// Onepager UI style - Override default bootstrap
+// ****************************************************
+.op-ui{
+  // Label
+  label{ font-size: 13px; }
+  // Buttons
+  .btn{
+    .border-radius(2px);
+    .box-shadow(0 1px 4px rgba(0, 0, 0, 0.24));
+    // .transition(all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms);
+    border: 0; text-shadow: none;
+  }
+  .btn-primary{
+     .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  }
+  .btn-info{
+     .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+  }
+
+  //Divider
+  h3.form-divider {
+    margin: 4px 0px 10px;
+    padding: 0px 0px 5px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgb(153, 153, 153);
+    font-weight: normal;
+    border-bottom: 1px solid rgb(221, 221, 221);
+  }
+}
+// ****************************************************
+//  Sidebar / Configure
+// ****************************************************
+#edit-screen, // Remove that with #op-sidebar/.op-sidebar or better name
+#op-sidebar,
+.op-sidebar{
+  
+  background: #f5f5f5;
+  position: fixed; right: 0; top: 32px; bottom: 0; width: 25%; z-index: 9999; overflow-y: auto;
+
+  // Close button right top
+  .pull-right .btn { margin: 7px 6px 0 0; padding: 5px 10px; font-size: 13px; }
+
+  // Repeater
+  .repeatable-control{
+    .add-button{ margin-bottom: 10px; }
+    .panel-heading:hover .repeater-action-btns{ display: block; }
+    .panel-heading{ position: relative; }
+    .panel-title{ 
+      width: 84%; overflow: hidden; 
+      > a{ width: 500px; display: block; text-decoration: none; }
+    }
+  }
+  .repeater-action-btns{
+    font-size: 13px; line-height: 1.3em; color: #888;
+    position: absolute; top: 10px; right: 8px;
+    display: none;
+    span{ 
+      cursor: pointer;
+      &:hover{ color: #444; }
+      &+ span { margin-left: 6px; }
+    }
+  }
+  .tab-pane { opacity: 0; .animation(txFadeInDown .1s ease-in-out .15s); .animation-fill-mode(both); }
+}
+
+// ****************************************************
+//  Blocks
+// ****************************************************
+#blocks{
+  // General
+  position: fixed; top: -400px; left: 10%; width: 80%; z-index: 9999; // Block is the highest z-index
+  background: #f5f5f5; opacity: 0;
+  .transition(all .15s linear);
+
+  // Tab settings
+  .tx-nav-tabs{
+    > li > a{ padding: 15px 20px; text-transform: uppercase; font-size: 12px; }
+  }
+
+  // Single Block
+  .block{
+    background: #fff;
+    float:left;
+    width: 23.94%; height: 125px; //testing
+    margin: 5px;
+    padding: 5px;
+
+    .border-radius(2px);
+
+    &:hover,
+    &:focus,
+    &.active{ border-color: #f23c36; cursor: pointer; }
+
+    img{ width: 100%; }
+  }
+  // Mixitup
+  .mix{ display: none; }
+  // Close Button
+  .tx-nav-tabs .pull-right{ margin-right: 8px; margin-top: 6px; }
+}
+// Blocks State : Open
+body.op-blocks-in:after{
+  content: '';
+  display: block;
+  width: 100%; height: 100%; min-height: 800px;
+  position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 1090;
+  background: rgba(0, 0, 0, 0.8);
+}
+body.op-blocks-in #blocks{ 
+  top: 40px; opacity: 1;
+}
+
+// ****************************************************
+//  Sections
+// ****************************************************
+#sections{
+  width: 100%;
+  // Transition for width while edit the section
+  .transition(all .1s linear); 
+
+  .section{ position: relative; }
+  
+  // Action buttons
+  .section__actions {
+    position: absolute; bottom: 20px; right: 2px; z-index: 1099; display: none;
+    > span{
+      background: #111;
+      font-size: 1.2em; margin: 0 6px; padding: 16px; color: #fff; cursor: pointer; opacity: 0;
+      .border-radius(2px); 
+      .animation(fadeInRight .3s); .animation-fill-mode(both); 
+    }
+  }
+  // State : hover
+  .section:hover{
+    .section__actions{ 
+      display: block;
+      >span:nth-child(1){
+        .animation-delay(.06);
+      }
+      > span:nth-child(2){
+        .animation-delay(.10);
+      }
+      > span:nth-child(3){
+        .animation-delay(.14);
+      }
+      > span:nth-child(4){
+        .animation-delay(.18);
+      }
+    }
+  }
+}
+// ****************************************************
+//  Sidebar Open - Common
+// ****************************************************
+body.op-sidebar-open{
+  overflow: hidden;
+  #sections{ width: 75%;}
+  #blocks{ 
+    width: 71%; left: 2%; 
+    .block{ width: 23.88%; }
+  }
+  // make all fixed container fluid
+  .container{ width: 100%; }
+}
+
+
+#op-settings .lm-tab-pane{ padding: 10px 0; }
+
+// ****************************************************
+//  Components
+// ****************************************************
+
+// Color Picker
+// ------------
+.cp-container{
+  position: relative; background-image: url('data:image/jpeg;base64,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');
+  .fa-tint{  position: absolute; top: 9px; right: 10px; font-size: 18px;}
+}
+.colorpicker.colorpicker-visible {
+  z-index: 9999;
+}
+
+// Icon selector
+// -------------
+#tx-icon-size{ width: 20%; }
+
+// ****************************************************
+//  Animation Keyframe
+// ****************************************************
+
+// Fade in Down
+@-webkit-keyframes txFadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -10px, 0);
+    transform: translate3d(0, -10px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes txFadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -10px, 0);
+    transform: translate3d(0, -10px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
