@@ -47,7 +47,7 @@ let Sidebar = React.createClass({
 
           <TabPane id="op-menu" active={activeTab}>
             {sectionEditable ? 
-              <AddToMenu id={menuState.id} title={menuState.title} index={menuState.index} /> : "please select a section" }
+              <AddToMenu section={activeSection} index={activeSectionIndex} /> : "please select a section" }
           </TabPane> 
 
         </div>

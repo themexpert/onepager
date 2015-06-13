@@ -58,6 +58,10 @@ let AddToMenu = React.createClass({
   },
 
   render(){
+    let section = this.props.section;
+    let title   = section.fields[0].value ? section.fields[0].value : "menu name";
+    let id      = section.id;
+
     let fields = [
       {
         type  : "menu",
@@ -69,7 +73,7 @@ let AddToMenu = React.createClass({
       {
         type  : "text",
         id    : "name",
-        value : this.props.title,
+        value : title,
         label : "Menu name",
         ref   : "itemTitle",
         placeholder: "Item name"
@@ -77,7 +81,7 @@ let AddToMenu = React.createClass({
       {
         type  : "text",
         id    : "id",
-        value : this.props.id,
+        value : id,
         label : "Menu ID",
         ref   : "itemId",
         addonBefore: "#",
