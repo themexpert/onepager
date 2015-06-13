@@ -16,6 +16,10 @@ let SectionCollection = React.createClass({
     };
   },
 
+  sortableOptions: {
+    ref: "sections"
+  },
+
   handleEnd(e) {
     if(e.oldIndex  === undefined || e.newIndex === undefined) {
       return;
@@ -57,9 +61,11 @@ let SectionCollection = React.createClass({
         <div className={sectionsClass}>
           <Button bsStyle='primary' onClick={this.showBlocks}>Add Block</Button>
           
-          {sections.map((section, index)=> {
-            return <Section section={section} key={section.key} index={index}/>;
-          })}
+          <div ref="sections">
+            {sections.map((section, index)=> {
+              return <Section section={section} key={section.key} index={index}/>;
+            })}
+          </div>
         </div>
 
         <div className={blocksClass}>

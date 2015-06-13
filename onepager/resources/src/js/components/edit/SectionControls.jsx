@@ -53,8 +53,6 @@ let SectionControls = React.createClass({
         onChange: this.update,
         options: control,
         ref: control.ref,
-        controlIndex: ii,
-        repeatIndex: ii,
         sectionIndex: sectionIndex,
         key: sectionIndex+"-"+ii
       };
