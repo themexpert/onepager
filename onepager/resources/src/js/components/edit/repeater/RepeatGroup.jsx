@@ -1,11 +1,11 @@
-const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const React = require('react');
-const _     = require('underscore');
-const Input = require('./../form/Input.jsx');
-const RepeatGroupHeading = require('./RepeatGroupHeading.jsx');
+const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const React     = require('react');
+const _         = require('underscore');
+const Input     = require('./../form/Input.jsx');
+const Heading   = require('./RepeatGroupHeading.jsx');
 
 let RepeatGroup = React.createClass({
-  mixins: [ReactComponentWithPureRenderMixin],
+  mixins: [PureMixin],
 
   getId(){
     return 'repeat-group-'+this.props.parentId+"-"+this.props.index;
@@ -59,7 +59,7 @@ let RepeatGroup = React.createClass({
 
     return (
       <div data-index={this.props.index} className="panel panel-default">
-        <RepeatGroupHeading title={title} id={id} {...this.props} />
+        <Heading title={title} id={id} {...this.props} />
 
         <div id={id} className={"panel-collapse collapse "+collapse} role="tabpanel">
           <div className="panel-body">{controls}</div>

@@ -3,6 +3,8 @@ const React         = require('react');
 const RepeatGroup   = require('./RepeatGroup.jsx');
 const PureMixin     = require("react/lib/ReactComponentWithPureRenderMixin");
 const SortableMixin = require('sortablejs/react-sortable-mixin');
+const Button        = require('react-bootstrap/lib/Button');
+
 
 
 let Repeater = React.createClass({
@@ -93,7 +95,7 @@ let Repeater = React.createClass({
       return (
         <div ref="container" className="repeatable-control">
 
-          <button className="btn btn-primary add-button" onClick={this.addRepeatGroup}>
+          <button className="btn btn-primary add-button" onClick={this.addRepeatGroup.bind(this, false, 0)}>
             <span className="fa fa-plus"></span> Add New
           </button>
 
