@@ -19,9 +19,13 @@ let Tab = React.createClass({
     };
   },
 
+  handleClick(){
+    if(!this.props.disabled){
+      AppStore.setTabState({active: this.props.id});
+    }
+  },
 
   render() {
-    let id      = `#${this.props.id}`;
     let icon    = `fa fa-${this.props.icon}`;
     let title   = this.props.title;
 
@@ -32,7 +36,7 @@ let Tab = React.createClass({
 
     return (
       <li className={classes}>
-        <a href={id} data-toggle="tab" onClick={()=>{AppStore.setTabState({active: this.props.id});}}>
+        <a onClick={this.handleClick}>
           <span className={icon} data-toggle="tooltip" data-placement="bottom" title={title}></span>
         </a>
       </li>
