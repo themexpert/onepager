@@ -4,5 +4,5 @@ var config = require('../config');
 gulp.task('watch', function () {
   gulp.watch(config.less.src, ['less']);
   gulp.watch(config.html.src, ['html']);
-  gulp.watch("src/js/**/*.*", ['browserify']);
+  gulp.watch("resources/src/js/**/*.*", ['browserify']);
 });

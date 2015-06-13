@@ -33,7 +33,11 @@ let Tab = React.createClass({
     return (
       <li className={classes}>
         <a href={id} data-toggle="tab" onClick={()=>{AppStore.setTabState({active: this.props.id});}}>
-          <span className={icon} data-toggle="tooltip" data-placement="bottom" title={title}></span>
+          { this.props.icon ?
+            <span className={icon} data-toggle="tooltip" data-placement="bottom" title={title}></span>
+            :
+            <span>{title}</span>
+          }
         </a>
       </li>
     );

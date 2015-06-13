@@ -3,6 +3,8 @@ const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const React     = require("react");
 const Divider   = require('./Divider.jsx');
 const Input     = require('./form/Input.jsx');
+const Tab       = require('../sidebar/Tab.jsx');
+const TabPane   = require('../sidebar/TabPane.jsx');
 
 let SectionSettings = React.createClass({
   mixins: [PureMixin],
@@ -56,21 +58,18 @@ let SectionSettings = React.createClass({
       });
     };
 
-
     return(
       <div>
         <ul className="nav nav-pills lm-nav-pills">
           { tabs.map((tab, ii)=>{
-              //TODO: key ii defeats the purpose
-              return <li key={ii} className={ii===0?"active":""}><a href={"#op-"+tab[0]} data-toggle="tab">{tab[0]}</a></li>;
+              return <li key={tab[0]} className={ii===0?"active":""}><a href={"#op-"+tab[0]} data-toggle="tab">{tab[0]}</a></li>;
           }) }
         </ul>
 
         <div className="tab-content">
           { tabs.map((tab, ii)=>{
-            //TODO: key ii defeats the purpose
             return(
-              <div key={ii} id={"op-"+tab[0]} className={(ii===0?"active":"")+" tab-pane lm-tab-pane clearfix"}>
+              <div key={tab[0]} id={"op-"+tab[0]} className={(ii===0?"active":"")+" tab-pane lm-tab-pane clearfix"}>
                 {fn(tab[1])}
               </div>
               );

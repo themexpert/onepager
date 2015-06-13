@@ -8,7 +8,7 @@ const Repeater    = require('./repeater/Repeater.jsx');
 let SectionControls = React.createClass({
   mixins: [PureMixin],
 
-  updateSection(){
+  update(){
     let controls  = _.copy(this.props.controls);
 
     let fields = controls.map(control=>{
@@ -41,7 +41,7 @@ let SectionControls = React.createClass({
 
     let controlsHTML = controls.map((control, ii)=>{
       let props = {
-        onChange: this.updateSection,
+        onChange: this.update,
         options: control,
         ref: control.ref,
         controlIndex: ii,
