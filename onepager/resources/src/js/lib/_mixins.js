@@ -26,5 +26,11 @@ _.mixin({
         element = element.offsetParent;
     }
     return { x: xPosition, y: yPosition };
+  },
+  
+  pushAt(arr, index, item){
+    let spliced = arr.splice(index);
+    arr.push(item);
+    return arr.concat(spliced);
   }
 });

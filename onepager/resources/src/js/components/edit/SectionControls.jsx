@@ -11,7 +11,7 @@ let SectionControls = React.createClass({
   update(){
     let controls  = _.copy(this.props.controls);
 
-    let fields = controls.map(control=>{
+    controls = controls.map(control=>{
       let ref = this.refs[control.ref];
 
       switch(control.type){
@@ -20,7 +20,7 @@ let SectionControls = React.createClass({
           break;
         
         case "repeater":
-          control.sections = ref.getFields();
+          control.fields = ref.getFields();
           break;
 
         default: 
@@ -31,8 +31,17 @@ let SectionControls = React.createClass({
       return control;
     });
 
-    this.props.update(fields);
+    this.props.update(controls);
   },
+
+  updateControl(controlIndex, rGroups){
+    let controls  = _.copy(this.props.controls);
+
+    controls[controlIndex].fields = rGroups;
+
+    this.props.update(controls);
+  },
+
 
   render() {
     console.log('rendering section controls');
@@ -51,7 +60,7 @@ let SectionControls = React.createClass({
       };
 
       switch(control.type){
-        case "repeater": return <Repeater {...props}/>;
+        case "repeater": return <Repeater updateControl={this.updateControl.bind(this, ii)} {...props}/>;
         case "divider": return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
         default: return <Input {...props} />;
       }

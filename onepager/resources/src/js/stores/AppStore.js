@@ -87,13 +87,8 @@ function duplicateSection(index){
   //its a row section to need to uni(quei)fy
   let section = SectionComputer.unifySection(_sections[index], true);
   
-  function pushAt(arr, index, item){
-    let spliced = arr.splice(index);
-    arr.push(item);
-    return arr.concat(spliced);
-  }
   
-  _sections = pushAt(_.copy(_sections), index, section);
+  _sections = _.pushAt(_.copy(_sections), index, section);
 
   
   syncService.updateSection(_sections, sectionIndex);

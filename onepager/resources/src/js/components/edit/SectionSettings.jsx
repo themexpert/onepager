@@ -12,7 +12,7 @@ let SectionSettings = React.createClass({
   update(){
     let controls  = _.copy(this.props.controls);
 
-    let sections = controls.map(control=>{
+    controls = controls.map(control=>{
       let ref = this.refs[control.ref];
 
       switch(control.type){
@@ -21,7 +21,7 @@ let SectionSettings = React.createClass({
           break;
         
         case "repeater":
-          control.sections = ref.getFields();
+          control.fields = ref.getFields();
           break;
 
         default: 
@@ -32,7 +32,7 @@ let SectionSettings = React.createClass({
       return control;
     });
 
-    this.props.update(sections);
+    this.props.update(controls);
   },
 
   render(){
