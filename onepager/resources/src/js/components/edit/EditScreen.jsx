@@ -51,19 +51,37 @@ let EditScreen = React.createClass({
     return (
       <div id="edit-screen" className="op-ui clearfix fade">
         <ul className="tx-nav tx-nav-tabs">
-          <li className="active"><a href="#op-contents" data-toggle="tab"><span className="fa fa-cubes"></span> Contents</a></li>
-          <li><a href="#op-settings" data-toggle="tab"><span className="fa fa-cog"></span> Settings</a></li>
+          <li className="active">
+            <a href="#op-contents" data-toggle="tab">
+              <span className="fa fa-database" data-toggle="tooltip" data-placement="bottom" title="Content"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#op-settings" data-toggle="tab">
+              <span className="fa fa-sliders" data-toggle="tooltip" data-placement="bottom" title="Settings"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#op-menu" data-toggle="tab">
+              <span className="fa fa-link" data-toggle="tooltip" data-placement="bottom" title="Menu"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#op-ordering" data-toggle="tab">
+              <span className="fa fa-bars" data-toggle="tooltip" data-placement="bottom" title="Section Ordering"></span>
+            </a>
+          </li>
           <li className="pull-right">
             <a onClick={this.closeSection} className="btn btn-primary"><span className="fa fa-close"></span></a>
           </li>
         </ul>
 
         <div className="tab-content">
-          <div id="op-contents" className="tab-pane lm-tab-pane active">
+          <div id="op-contents" className="tab-pane active">
            <SectionControls controls={section.fields} sectionIndex={sectionIndex} />
           </div>
 
-          <div id="op-settings" className="tab-pane lm-tab-pane">
+          <div id="op-settings" className="tab-pane">
             <SectionSettings controls={section.settings ? section.settings: [] } sectionIndex={sectionIndex}/>
           </div>
         </div>
