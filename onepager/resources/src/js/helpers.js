@@ -1,5 +1,6 @@
 const _ = require('underscore');
 
+
 _.mixin({
   copy(obj) {
     return JSON.parse(JSON.stringify(obj));
@@ -14,5 +15,12 @@ _.mixin({
     let arr = _.copy(array);
     arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
     return arr;
+  },
+
+  pushAt(arr, index, item){
+    let spliced = arr.splice(index);
+    arr.push(item);
+    
+    return arr.concat(spliced);
   }
 });

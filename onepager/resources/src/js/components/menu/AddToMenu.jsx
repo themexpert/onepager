@@ -8,11 +8,11 @@ const ODataStore      = require('../../stores/ODataStore');
 const notify          = require('../../lib/notify');
 const AppStore        = require('../../stores/AppStore');
 const AppActions      = require('../../actions/AppActions');
-const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const PureComponent   = require('react/lib/ReactComponentWithPureRenderMixin');
 
 
 let AddToMenu = React.createClass({
-  mixins: [ReactComponentWithPureRenderMixin],
+  mixins: [PureComponent],
 
   handleCloseMenu(){
     AppStore.setMenuState(null, null);
@@ -41,7 +41,7 @@ let AddToMenu = React.createClass({
     }
 
 
-    let section     = _.copy(AppStore.getAll().sections[sectionIndex]);
+    let section = _.copy(AppStore.getAll().sections[sectionIndex]);
     section.id  = data.itemId;
     section.key = data.itemId;
 
@@ -86,16 +86,14 @@ let AddToMenu = React.createClass({
     ];
 
     return(
-      <div className="add-to-menu-screen op-sidebar" style={{padding: 20}}>
-        <p><a onClick={this.handleCloseMenu} className="btn btn-primary pull-right"><span className="fa fa-close"></span></a></p>
-      {
-        fields.map(field=>{
-          return <Input key={field.id+this.props.index} ref={field.ref} options={field} onChange={()=>{}}/>;
-        })
-      }
+      <div>
+        {
+          fields.map(field=>{
+            return <Input key={field.id+this.props.index} ref={field.ref} options={field} onChange={()=>{}}/>;
+          })
+        }
 
        <Button bsStyle='primary' onClick={this.handleSubmit}>Add to Menu</Button>
-
       </div>
     );
   }

@@ -1,18 +1,20 @@
-const React = require('react');
-const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const Input = require('./form/Input.jsx');
-const Divider = require('./Divider.jsx');
-const Repeater = require('./repeater/Repeater.jsx');
-const AppActions = require('../../actions/AppActions');
-const AppStore = require('../../stores/AppStore');
-const _ = require("underscore");
+const React       = require('react');
+const _           = require("underscore");
+const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
+const Divider     = require('./Divider.jsx');
+const Input       = require('./form/Input.jsx');
+const Repeater    = require('./repeater/Repeater.jsx');
+const AppStore    = require('../../stores/AppStore');
+const AppActions  = require('../../actions/AppActions');
 
 let SectionControls = React.createClass({
-  mixins: [ReactComponentWithPureRenderMixin],
+  mixins: [PureMixin],
+
   updateSection(){
     let sectionIndex = this.props.sectionIndex;
     let controls = _.copy(this.props.controls);
     let section = _.copy(AppStore.get(sectionIndex));
+
 
     section.fields = controls.map(control=>{
       let ref = this.refs[control.ref];

@@ -1,9 +1,8 @@
-const React             = require('react');
-const AppStore          = require('../stores/AppStore');
-const SectionCollection = require('./sections/SectionCollection.jsx');
-const BlockCollection   = require('./blocks/BlockCollection.jsx');
-const EditScreen        = require('./edit/EditScreen.jsx');
-const AddToMenu         = require('./menu/AddToMenu.jsx');
+const React                 = require('react');
+const AppStore              = require('../stores/AppStore');
+const Sidebar               = require('./sidebar/Sidebar.jsx');
+const SectionViewCollection = require('./section-view/SectionViewCollection.jsx');
+const _         = require('underscore');
 
 let App = React.createClass({
   getInitialState() {
@@ -21,34 +20,18 @@ let App = React.createClass({
   componentWillUnmount() {
     AppStore.removeChangeListener(this._onChange);
   },
-  showBlocksBar(){
-    AppStore.setBlockState({open:true});
 
-    //TODO: bad pattern fix it
-    document.getElementById('sections').style.transform = "none"; //jshint ignore:line
-    jQuery('body').addClass('op-blocks-in'); //jshint ignore:line
-  },
   render() {
-    let {sections, blocks, activeSectionIndex, activeSection, menuState} = this.state;
+    let {sections, activeSectionIndex} = this.state;
 
+    let viewSections = _.map(sections, function(section){
+      return _.pick(section, ['content', 'key']);
+    });
 
     return (
-      <div /**className="one-pager-app"*/>
-        <a id="react-add-block" href="javascript:void(0)" //jshint ignore:line
-          onClick={this.showBlocksBar} 
-          className="action-add-blocks hidden">Add Block </a>
-          
-        { (this.state.blockState.open === false) ? "" :
-          <BlockCollection blocks={blocks} />
-        }
-
-        <SectionCollection activeSectionIndex={activeSectionIndex} sections={sections} />
-
-        { (activeSectionIndex === null) ? "" :
-          <EditScreen sectionIndex={activeSectionIndex} section={activeSection} /> }
-
-        { (menuState.id === null) ? "" :
-          <AddToMenu id={menuState.id} title={menuState.title} index={menuState.index} /> }
+      <div className="one-pager-app">
+          <SectionViewCollection activeSectionIndex={activeSectionIndex} sections={viewSections} />
+          <Sidebar {...this.state}/>
       </div>
     );
   }
