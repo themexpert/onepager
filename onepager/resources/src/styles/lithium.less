@@ -27,7 +27,7 @@
 .tx-nav{
   margin : 0; padding: 0;
   > li{ position: relative; display: block; }
-  > li > a{ display: block; padding: 10px 20px; text-decoration: inherit; color: #666; }
+  > li > a{ display: block; padding: 10px 20px; text-decoration: inherit; color: #666; font-size: 1.5em;}
   > li > a:not(.btn){ .box-shadow(none); }
   > li.active > a{ color: @brand-primary; }
 
@@ -50,7 +50,7 @@
   > li.active > a:focus{ background: darken(@brand-primary, 2%); }
 }
 
-.lm-tab-pane{ background: #f5f5f5; padding: 15px; }
+.tab-pane{ background: #f5f5f5; padding: 10px; }
 
 // General
 body{ background: inherit; overflow-x: hidden; }
@@ -90,7 +90,7 @@ a{ text-decoration: inherit; color: @brand-primary; }
 // ****************************************************
 .op-ui{
   // Label
-  label{ font-size: 13px; }
+  label{ font-size: 12px; font-weight: normal; text-transform: uppercase; letter-spacing: 0.5px; }
   // Buttons
   .btn{
     .border-radius(2px);
@@ -122,9 +122,8 @@ a{ text-decoration: inherit; color: @brand-primary; }
 #edit-screen, // Remove that with #op-sidebar/.op-sidebar or better name
 #op-sidebar,
 .op-sidebar{
-  
   background: #f5f5f5;
-  position: fixed; right: 0; top: 32px; bottom: 0; width: 25%; z-index: 9999; overflow-y: auto;
+  position: fixed; left: 0; top: 32px; bottom: 0; width: 25%; z-index: 9999; overflow-y: auto;
 
   // Close button right top
   .pull-right .btn { margin: 7px 6px 0 0; padding: 5px 10px; font-size: 13px; }
@@ -133,23 +132,30 @@ a{ text-decoration: inherit; color: @brand-primary; }
   .repeatable-control{
     .add-button{ margin-bottom: 10px; }
     .panel-heading:hover .repeater-action-btns{ display: block; }
-    .panel-heading{ position: relative; }
+    .panel-heading{ position: relative; cursor: move; }
     .panel-title{ 
       width: 84%; overflow: hidden; 
       > a{ width: 500px; display: block; text-decoration: none; }
+      &:before{
+        content: '\f142';
+        font: normal normal normal 14px/1 FontAwesome;
+        position: absolute; top: 12px; left: 6px; 
+        color: #888;
+      }
     }
   }
   .repeater-action-btns{
     font-size: 13px; line-height: 1.3em; color: #888;
     position: absolute; top: 10px; right: 8px;
-    display: none;
     span{ 
       cursor: pointer;
       &:hover{ color: #444; }
       &+ span { margin-left: 6px; }
     }
   }
-  .tab-pane { opacity: 0; .animation(txFadeInDown .1s ease-in-out .15s); .animation-fill-mode(both); }
+  .tab-pane { 
+    opacity: 0; .animation(txFadeInDown .1s ease-in-out .15s); .animation-fill-mode(both); 
+  }
 }
 
 // ****************************************************
@@ -211,12 +217,12 @@ body.op-blocks-in #blocks{
   
   // Action buttons
   .section__actions {
-    position: absolute; bottom: 20px; right: 2px; z-index: 1099; display: none;
+    position: absolute; bottom: 20px; left: 2px; z-index: 1099; display: none;
     > span{
       background: #111;
       font-size: 1.2em; margin: 0 6px; padding: 16px; color: #fff; cursor: pointer; opacity: 0;
       .border-radius(2px); 
-      .animation(fadeInRight .3s); .animation-fill-mode(both); 
+      .animation(fadeInLeft .3s); .animation-fill-mode(both); 
     }
   }
   // State : hover
@@ -243,7 +249,7 @@ body.op-blocks-in #blocks{
 // ****************************************************
 body.op-sidebar-open{
   overflow: hidden;
-  #sections{ width: 75%;}
+  #sections{ width: 75%; margin-left: 25%; }
   #blocks{ 
     width: 71%; left: 2%; 
     .block{ width: 23.88%; }

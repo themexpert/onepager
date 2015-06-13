@@ -105,7 +105,7 @@ add_action( 'widgets_init', 'onepager_widgets_init' );
  * Enqueue scripts and styles.
  */
 function onepager_scripts() {
-	wp_enqueue_style( 'onepager-style', get_stylesheet_uri() );
+	wp_enqueue_script( 'theme', get_stylesheet_directory_uri() . '/assets/js/theme.js', array('tx-bootstrap'), '', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
