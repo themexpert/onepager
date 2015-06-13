@@ -13,10 +13,28 @@ const PureComponent   = require('react/lib/ReactComponentWithPureRenderMixin');
 
 let AddToMenu = React.createClass({
   mixins: [PureComponent],
+  getInitialState(){
+    return {
+      isUnique: true
+    };
+  },
 
   handleCloseMenu(){
     AppStore.setMenuState(null, null);
     document.querySelector('body').classList.remove('op-edit-section'); //jshint ignore:line
+  },
+
+  isItemIdUnique(){
+    let itemId    = this.refs.itemId.getValue();
+    let sections  = _.map(AppStore.getAll().sections, function(section){
+      return section.id;
+    });
+
+    sections.splice(this.props.index, 1);
+
+    let isUnique = sections.indexOf(itemId) === -1;
+
+    this.setState({isUnique});
   },
 
   handleSubmit(){
@@ -27,19 +45,6 @@ let AddToMenu = React.createClass({
       itemId     : this.refs.itemId.getValue(), //jshint ignore:line
       itemTitle  : this.refs.itemTitle.getValue() //jshint ignore:line
     };
-
-    let sections = _.map(AppStore.getAll().sections, function(section){
-      return section.id;
-    });
-
-    sections.splice(sectionIndex, 1);
-
-
-    if(sections.indexOf(data.itemId) !== -1){ //jshint ignore:line
-      swal("such a menu exists");
-      return;
-    }
-
 
     let section = _.copy(AppStore.getAll().sections[sectionIndex]);
     section.id  = data.itemId;
@@ -69,6 +74,7 @@ let AddToMenu = React.createClass({
         value : "",
         label : "Menu Position",
         ref   : "menuId",
+        onChange: ()=>{}
       },
       {
         type  : "text",
@@ -76,7 +82,8 @@ let AddToMenu = React.createClass({
         value : title,
         label : "Menu name",
         ref   : "itemTitle",
-        placeholder: "Item name"
+        placeholder: "Item name",
+        onChange: ()=>{}
       },
       {
         type  : "text",
@@ -85,7 +92,8 @@ let AddToMenu = React.createClass({
         label : "Menu ID",
         ref   : "itemId",
         addonBefore: "#",
-        placeholder: "Item Id"
+        placeholder: "Item Id",
+        onChange: this.isItemIdUnique
       }
     ];
 
@@ -93,11 +101,13 @@ let AddToMenu = React.createClass({
       <div>
         {
           fields.map(field=>{
-            return <Input key={field.id+this.props.index} ref={field.ref} options={field} onChange={()=>{}}/>;
+            return <Input key={field.id+this.props.index} ref={field.ref} options={field} onChange={field.onChange}/>;
           })
         }
 
-       <Button bsStyle='primary' onClick={this.handleSubmit}>Add to Menu</Button>
+        <h1>{this.state.isUnique ? "unique":"not unique"}</h1>
+
+        <Button bsStyle='primary' disabled={!this.state.isUnique} onClick={this.handleSubmit}>Add to Menu</Button>
       </div>
     );
   }
