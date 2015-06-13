@@ -4,34 +4,34 @@ const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
 const Divider     = require('./Divider.jsx');
 const Input       = require('./form/Input.jsx');
 const Repeater    = require('./repeater/Repeater.jsx');
-const AppStore    = require('../../stores/AppStore');
-const AppActions  = require('../../actions/AppActions');
 
 let SectionControls = React.createClass({
   mixins: [PureMixin],
 
   updateSection(){
-    let sectionIndex = this.props.sectionIndex;
-    let controls = _.copy(this.props.controls);
-    let section = _.copy(AppStore.get(sectionIndex));
+    let controls  = _.copy(this.props.controls);
 
-
-    section.fields = controls.map(control=>{
+    let fields = controls.map(control=>{
       let ref = this.refs[control.ref];
 
       switch(control.type){
         case "divider":
+          //we do not need to compute anything for a divider
           break;
+        
         case "repeater":
-          control.fields = ref.getFields();
+          control.sections = ref.getFields();
           break;
-        default: control.value = ref.getValue();
+
+        default: 
+          //normal input
+          control.value = ref.getValue();
       }
 
       return control;
     });
 
-    AppActions.updateSection(sectionIndex, section);
+    this.props.update(fields);
   },
 
   render() {

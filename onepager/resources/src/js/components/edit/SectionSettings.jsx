@@ -1,47 +1,46 @@
-const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const React = require("react");
-const _ = require("underscore");
-const Divider = require('./Divider.jsx');
-const Input = require('./form/Input.jsx');
-const AppActions = require('../../actions/AppActions');
-const AppStore = require('../../stores/AppStore');
+const _         = require("underscore");
+const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const React     = require("react");
+const Divider   = require('./Divider.jsx');
+const Input     = require('./form/Input.jsx');
 
 let SectionSettings = React.createClass({
-  mixins: [ReactComponentWithPureRenderMixin],
+  mixins: [PureMixin],
 
-  updateSection(){
-    let sectionIndex = this.props.sectionIndex;
-    let controls = _.copy(this.props.controls);
-    let section = _.copy(AppStore.get(sectionIndex));
+  update(){
+    let controls  = _.copy(this.props.controls);
 
-    section.settings = controls.map(control=>{
+    let sections = controls.map(control=>{
       let ref = this.refs[control.ref];
 
       switch(control.type){
         case "divider":
+          //we do not need to compute anything for a divider
           break;
+        
         case "repeater":
-          control.fields = ref.getFields();
+          control.sections = ref.getFields();
           break;
-        default: control.value = ref.getValue();
-      }
 
+        default: 
+          //normal input
+          control.value = ref.getValue();
+      }
 
       return control;
     });
 
-    AppActions.updateSection(sectionIndex, section);
+    this.props.update(sections);
   },
-  render(){
-    //console.log('rendering section settings');
 
+  render(){
     let {sectionIndex, controls} = this.props;
     let tabs = _.pairs(_.groupBy(controls, "tab"));
 
     let fn = tControls=>{
       return tControls.map((control, ii)=>{
         let props = {
-          onChange: this.updateSection,
+          onChange: this.update,
           options: control,
           ref: control.ref,
           controlIndex: ii,

@@ -1,3 +1,4 @@
+const _                   = require("underscore");
 const React               = require('react');
 const Tab                 = require('./Tab.jsx');
 const TabPane             = require('./TabPane.jsx');
@@ -5,6 +6,7 @@ const SectionList         = require('../section-list/SectionList.jsx');
 const SectionControls     = require('../edit/SectionControls.jsx');
 const SectionSettings     = require('../edit/SectionSettings.jsx');
 const AddToMenu           = require('../menu/AddToMenu.jsx');
+const AppActions          = require('../../actions/AppActions');
 
 let Sidebar = React.createClass({
   componentDidMount(){
@@ -13,7 +15,7 @@ let Sidebar = React.createClass({
   },
 
   render() {
-    let {sections, blocks, activeSectionIndex, activeSection, menuState} = this.props;
+    let {sections, blocks, activeSectionIndex, activeSection} = this.props;
     let sectionEditable = activeSectionIndex === null ? false : true;
     let activeTab       = this.props.sidebarTabState.active;
 
@@ -33,14 +35,24 @@ let Sidebar = React.createClass({
 
           <TabPane id="op-contents" active={activeTab}>
           {sectionEditable ?
-            <SectionControls 
+            <SectionControls
+              update={(fields)=>{
+                let section    = _.copy(sections[activeSectionIndex]);
+                section.fields = fields;
+                AppActions.updateSection(activeSectionIndex, section);
+              }}
               controls={activeSection.fields ? activeSection.fields: [] } 
               sectionIndex={activeSectionIndex} /> : "please select a section" }
           </TabPane> 
 
           <TabPane id="op-settings" active={activeTab}>
           {sectionEditable ?
-            <SectionSettings 
+            <SectionSettings
+              update={(settings)=>{
+                let section       = _.copy(sections[activeSectionIndex]);
+                section.settings  = settings;
+                AppActions.updateSection(activeSectionIndex, section);
+              }}
               controls={activeSection.settings ? activeSection.settings: [] } 
               sectionIndex={activeSectionIndex} /> : "please select a section" }
           </TabPane> 
