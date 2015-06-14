@@ -67,7 +67,10 @@ let Section = React.createClass({
     return (
       <div className="txop-cards">
         { this.state.titleEditState ?
-          <Input type="text" ref="title" onKeyUp={this.closeEditTitle} defaultValue={section.title} /> :
+          <div>
+            <Input type="text" ref="title" onKeyUp={this.closeEditTitle} defaultValue={section.title} /> 
+            <span className="label label-default">Enter</span>
+          </div> :
           <div><h3 onClick={this.handleEditSection}>{section.title}</h3> <span className="fa fa-pencil" onClick={this.handleEditTitle}></span></div>
         }
         <div className="actions-btns">

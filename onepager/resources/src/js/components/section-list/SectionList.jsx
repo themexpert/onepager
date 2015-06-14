@@ -20,9 +20,9 @@ let SectionCollection = React.createClass({
 
   setBodyClass(){
     if(this.props.sections.length === 0){
-      jQuery('body').addClass('no-op-sections');
+      jQuery('body').addClass('txop-noblock');
     } else {
-      jQuery('body').removeClass('no-op-sections');
+      jQuery('body').removeClass('txop-noblock');
     }
   },
 

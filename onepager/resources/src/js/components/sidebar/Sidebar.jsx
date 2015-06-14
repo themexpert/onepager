@@ -9,10 +9,6 @@ const AddToMenu           = require('../menu/AddToMenu.jsx');
 const AppActions          = require('../../actions/AppActions');
 
 let Sidebar = React.createClass({
-  componentDidMount(){
-    jQuery('body').addClass('op-sidebar-open');
-    jQuery('.op-sidebar').addClass('in');
-  },
 
   render() {
     let {sections, blocks, activeSectionIndex, activeSection} = this.props;
@@ -20,9 +16,9 @@ let Sidebar = React.createClass({
     let activeTab       = this.props.sidebarTabState.active;
 
     return (
-      <div className="op-sidebar op-ui clearfix fade"> {/*do we need fade ?*/}
+      <div className="op-sidebar op-ui clearfix"> {/*do we need fade ?*/}
         <ul className="tx-nav tx-nav-tabs">
-          <Tab id="op-sections" icon="bars" title="Sections" active={activeTab}/>
+          <Tab id="op-sections" icon="bars" title="Layout" active={activeTab}/>
           <Tab id="op-contents" icon="database" title="Contents" active={activeTab} disabled={!sectionEditable} />
           <Tab id="op-settings" icon="sliders" title="Settings" active={activeTab} disabled={!sectionEditable} />
           <Tab id="op-menu" icon="link" title="Menu" active={activeTab} disabled={!sectionEditable}/>
