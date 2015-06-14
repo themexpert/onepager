@@ -49,22 +49,13 @@ let BlockCollection = React.createClass({
       );
     }
 
-    let groupStyles = {background: "red", color: "white", display:"inline-block", padding: 10, margin: 5};
-
 
     return (
       <div>
         <Button bsStyle='primary' onClick={this.props.closeBlocks}>Close</Button>
         
-        <div>
-          {groups.map(group => {
-            return (
-              <span key={group} style={groupStyles} onClick={()=>this.setState({group})}>{group}</span>
-            );
-          } )}
-        </div>
 
-        <Select type="select" label="Select Group" ref="group"
+        <Select type="select" ref="group"
           defaultValue={this.state.group}
           options={groupOptions} 
           onChange={this.handleChange} />

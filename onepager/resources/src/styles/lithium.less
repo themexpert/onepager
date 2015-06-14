@@ -30,7 +30,8 @@
   > li > a{ display: block; padding: 10px 20px; text-decoration: inherit; color: #666; font-size: 1.5em;}
   > li > a:not(.btn){ .box-shadow(none); }
   > li.active > a{ color: @brand-primary; }
-
+  // Disabled
+  > li.disabled > a{ color: #b5b5b5; cursor: not-allowed; }
   .btn{ color: #fff; }
 }
 .tx-nav-tabs{
@@ -153,9 +154,8 @@ a{ text-decoration: inherit; color: @brand-primary; }
 //  Sidebar / Configure
 // ****************************************************
 .op-sidebar{
-  background: #f5f5f5;
-  position: fixed; left: 0; top: 32px; bottom: 0; width: 25%; z-index: 9999; overflow-y: auto;
-
+  background: #f5f5f5; border-right: 1px solid #ddd;
+  position: fixed; left: 0; top: 32px; bottom: 0; width: 23%; z-index: 9999; overflow-y: auto;
   // Close button right top
   .pull-right .btn { margin: 7px 6px 0 0; padding: 5px 10px; font-size: 13px; }
 
@@ -187,6 +187,10 @@ a{ text-decoration: inherit; color: @brand-primary; }
   .tab-pane { 
     opacity: 0; .animation(txFadeInRight .1s ease-in-out .15s); .animation-fill-mode(both); 
   }
+
+  // Navigation Tabs
+  .tx-nav-tabs{ position: fixed; top: 30px; left: 0; z-index: 9999; width: 22.9%; }
+  > .tab-content{ padding-top: 54px; }
 
   // Section List
 
@@ -244,7 +248,7 @@ body.op-blocks-in #blocks{
 //  Sections
 // ****************************************************
 #sections{
-  width: 75%; margin-left: 25%; 
+  width: 77%; margin-left: 23%; position: relative;
   // Transition for width while edit the section
   .transition(all .1s linear); 
 
@@ -279,7 +283,11 @@ body.op-blocks-in #blocks{
     }
   }
 }
-
+.txop-noblock #sections:after{
+  // content: '';
+  // position: absolute; top: 30px; left: 10%;
+  // width: 200px; height: 200px; border : 1px dashed #ddd;
+}
 
 #op-settings .lm-tab-pane{ padding: 10px 0; }
 
