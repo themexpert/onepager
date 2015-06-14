@@ -44,7 +44,11 @@ let Section = React.createClass({
     this.setState({titleEditState: true});
   },
 
-  closeEditTitle(){
+  closeEditTitle(e){
+    if(e.which !== 13) {
+      return;
+    }
+
     //immutable please
     let section = _.copy(this.props.section);
     let title   = this.refs.title.getValue();
@@ -62,9 +66,7 @@ let Section = React.createClass({
     return (
       <div style={{backgroundColor: "red", "padding": 10, "margin": "10px 0"}}>
         { this.state.titleEditState ?
-          <div>
-            <Input type="text" ref="title" defaultValue={section.title} /> <button onClick={this.closeEditTitle}>close</button>
-          </div> :
+          <Input type="text" ref="title" onKeyUp={this.closeEditTitle} defaultValue={section.title} /> :
           <div onClick={this.handleEditSection}>{section.title}</div>
         }
         <div>
