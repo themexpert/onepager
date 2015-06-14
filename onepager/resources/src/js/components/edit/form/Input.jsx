@@ -99,10 +99,9 @@ let InputControl = React.createClass({
         case "select":
           control =
             <Select ref="input"
-              {...this.props}  //need to fix this
               className={options.className}
               type={options.type}
-              placeholder={options.placeholder}
+              options={options.options}
               defaultValue={options.value}
               label={options.label}
               onChange={this.onChange}/>;

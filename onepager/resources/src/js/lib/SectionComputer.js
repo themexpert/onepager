@@ -1,20 +1,18 @@
 const _ = require('underscore');
 require("./_mixins");
 
-function unifySection(section){
+function unifySection(section, duplicate=false){
 
   // make a section refs and ids unique so we can duplicate
   section     = _.copy(section);
   
   //TODO: bad pattern
   // console.log("changing id");
-  if(!section.id){
+  if(duplicate || !section.id){
     section.id  = _.randomId("s_"); //do we need id?
   }
 
-  if(!section.key){
-    section.key  = _.randomId("k_"); //do we need key?
-  }
+  section.key  = _.randomId("k_"); //do we need key? //yes we need //need better organization
 
   //bug because repeater is getting itself turned into null
   section.fields.forEach(field=>{

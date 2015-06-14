@@ -22,12 +22,11 @@ let WpSelect = React.createClass({
 
     return (
       <Select 
-        {...this.props} 
         ref="input"
         type="select" 
         defaultValue={this.props.defaultValue}
         label={this.props.label}
-        options={{options: options}} //shitty pattern 
+        options={options} 
         onChange={this.props.onChange}/>
     );
   }

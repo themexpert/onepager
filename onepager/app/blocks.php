@@ -4,8 +4,8 @@ do_action( 'onepager_blocks' );
 //LOAD ALL BLOCKS BEFOREHAND
 //WE WILL NEED THEM IN OUR AJAX REQUESTS
 onepager()->blockManager()->loadAllFromPath(
-	onepager()->path( "resources/blocks" ),
-	onepager()->url( "resources/blocks" )
+	onepager()->path( "blocks" ),
+	onepager()->url( "blocks" )
 );
 
 

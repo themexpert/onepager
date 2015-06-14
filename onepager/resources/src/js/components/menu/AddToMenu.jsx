@@ -8,15 +8,33 @@ const ODataStore      = require('../../stores/ODataStore');
 const notify          = require('../../lib/notify');
 const AppStore        = require('../../stores/AppStore');
 const AppActions      = require('../../actions/AppActions');
-const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const PureComponent   = require('react/lib/ReactComponentWithPureRenderMixin');
 
 
 let AddToMenu = React.createClass({
-  mixins: [ReactComponentWithPureRenderMixin],
+  mixins: [PureComponent],
+  getInitialState(){
+    return {
+      isUnique: true
+    };
+  },
 
   handleCloseMenu(){
     AppStore.setMenuState(null, null);
     document.querySelector('body').classList.remove('op-edit-section'); //jshint ignore:line
+  },
+
+  isItemIdUnique(){
+    let itemId    = this.refs.itemId.getValue();
+    let sections  = _.map(AppStore.getAll().sections, function(section){
+      return section.id;
+    });
+
+    sections.splice(this.props.index, 1);
+
+    let isUnique = sections.indexOf(itemId) === -1;
+
+    this.setState({isUnique});
   },
 
   handleSubmit(){
@@ -28,20 +46,7 @@ let AddToMenu = React.createClass({
       itemTitle  : this.refs.itemTitle.getValue() //jshint ignore:line
     };
 
-    let sections = _.map(AppStore.getAll().sections, function(section){
-      return section.id;
-    });
-
-    sections.splice(sectionIndex, 1);
-
-
-    if(sections.indexOf(data.itemId) !== -1){ //jshint ignore:line
-      swal("such a menu exists");
-      return;
-    }
-
-
-    let section     = _.copy(AppStore.getAll().sections[sectionIndex]);
+    let section = _.copy(AppStore.getAll().sections[sectionIndex]);
     section.id  = data.itemId;
     section.key = data.itemId;
 
@@ -58,6 +63,10 @@ let AddToMenu = React.createClass({
   },
 
   render(){
+    let section = this.props.section;
+    let title   = section.fields[0].value ? section.fields[0].value : "menu name";
+    let id      = section.id;
+
     let fields = [
       {
         type  : "menu",
@@ -65,37 +74,40 @@ let AddToMenu = React.createClass({
         value : "",
         label : "Menu Position",
         ref   : "menuId",
+        onChange: ()=>{}
       },
       {
         type  : "text",
         id    : "name",
-        value : this.props.title,
+        value : title,
         label : "Menu name",
         ref   : "itemTitle",
-        placeholder: "Item name"
+        placeholder: "Item name",
+        onChange: ()=>{}
       },
       {
         type  : "text",
         id    : "id",
-        value : this.props.id,
+        value : id,
         label : "Menu ID",
         ref   : "itemId",
         addonBefore: "#",
-        placeholder: "Item Id"
+        placeholder: "Item Id",
+        onChange: this.isItemIdUnique
       }
     ];
 
     return(
-      <div className="add-to-menu-screen op-sidebar" style={{padding: 20}}>
-        <p><a onClick={this.handleCloseMenu} className="btn btn-primary pull-right"><span className="fa fa-close"></span></a></p>
-      {
-        fields.map(field=>{
-          return <Input key={field.id+this.props.index} ref={field.ref} options={field} onChange={()=>{}}/>;
-        })
-      }
+      <div>
+        {
+          fields.map(field=>{
+            return <Input key={field.id+this.props.index} ref={field.ref} options={field} onChange={field.onChange}/>;
+          })
+        }
 
-       <Button bsStyle='primary' onClick={this.handleSubmit}>Add to Menu</Button>
+        <h1>{this.state.isUnique ? "unique":"not unique"}</h1>
 
+        <Button bsStyle='primary' disabled={!this.state.isUnique} onClick={this.handleSubmit}>Add to Menu</Button>
       </div>
     );
   }

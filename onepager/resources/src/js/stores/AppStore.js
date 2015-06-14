@@ -1,3 +1,5 @@
+"use strict";
+
 const $               = jQuery; //jshint ignore: line
 const _               = require('underscore');
 const assign          = require('object-assign');
@@ -20,6 +22,7 @@ let _blocks             = ODataStore.blocks;
 let _sections           = SectionComputer.misitifySections(ODataStore.sections, ODataStore.blocks);
 let _blockState         = {open: false};
 let _menuState          = {id: null, index: null, title: null};
+let _sidebarTabState    = {active: 'op-sections'};
 let _activeSectionIndex = null;
 let AUTO_SAVE_DELAY     = 500;
 
@@ -79,7 +82,23 @@ function updateSection(sectionIndex, section){
 
 // function to duplicate a section
 function duplicateSection(index){
-  addSection(_sections[index]);
+  let sectionIndex = _sections.length; //isnt it :p
+  
+  //its a row section to need to uni(quei)fy
+  let section = SectionComputer.unifySection(_sections[index], true);
+  
+  function pushAt(arr, index, item){
+    let spliced = arr.splice(index);
+    arr.push(item);
+    return arr.concat(spliced);
+  }
+  
+  _sections = pushAt(_.copy(_sections), index, section);
+
+  
+  syncService.updateSection(_sections, sectionIndex);
+
+  setActiveSection(sectionIndex);
 }
 
 
@@ -113,6 +132,7 @@ let AppStore = assign({}, BaseStore, {
       blocks            : _blocks,
       sections          : _sections,
       menuState         : _menuState,
+      sidebarTabState   : _sidebarTabState,
       blockState        : _blockState,
       activeSection     : _sections[_activeSectionIndex],
       activeSectionIndex: _activeSectionIndex,
@@ -122,12 +142,13 @@ let AppStore = assign({}, BaseStore, {
   get(index){
     return _sections[index];
   },
+
   getBlock(slug){
     return _.find(_blocks, {slug});
   },
 
-  setBlockState(state){
-    _blockState = state;
+  setTabState(state){
+    _sidebarTabState = state;
     this.emitChange();
   },
 
@@ -163,6 +184,7 @@ let AppStore = assign({}, BaseStore, {
 
       case Constants.ActionTypes.EDIT_SECTION:
         setActiveSection(action.index);
+        AppStore.setTabState({active: 'op-contents'});
         AppStore.emitChange();
         break;
 

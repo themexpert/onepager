@@ -1,34 +1,30 @@
-const React = require('react');
-const Block = require('./Block.jsx');
-const Alert = require('react-bootstrap/lib/Alert');
-const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const _ = require('underscore');
-const AppStore = require('../../stores/AppStore');
+const React     = require('react');
+const _         = require('underscore');
+const Alert     = require('react-bootstrap/lib/Alert');
+const Button    = require('react-bootstrap/lib/Button');
+const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const Block     = require('./Block.jsx');
+const Select    = require("../edit/form/Select.jsx");
+// const AppStore  = require('../../stores/AppStore');
+
 
 let BlockCollection = React.createClass({
-  mixins: [ReactComponentWithPureRenderMixin],
+  mixins: [PureMixin],
+
   propTypes: {
     blocks: React.PropTypes.array
   },
 
-  componentDidMount(){
-    jQuery(React.findDOMNode(this.refs.blocks)).mixItUp();
+  getInitialState(){
+    return {
+      group: 'all'
+    };
   },
 
-  componentWillUnmount(){
-    jQuery(React.findDOMNode(this.refs.blocks)).unbind();
-  },
+  handleChange(){
+    let group = this.refs.group.getValue();
 
-  close(){
-    setTimeout(()=>AppStore.setBlockState({open:false}), 500);
-    jQuery('body').removeClass('op-blocks-in');
-  },
-
-  handleClick(e){
-    let children = e.target.parentNode.parentNode.childNodes;
-    _.each(children, child=>child.classList.remove("active"));
-    
-    e.target.parentNode.classList.add('active');
+    this.setState({group: group});
   },
 
   render() {
@@ -36,7 +32,14 @@ let BlockCollection = React.createClass({
 
     let groups = _.unique(blocks.reduceRight(function(groups, block){
       return groups.concat(block.groups);
-    }, []));
+    }, ['all']));
+
+
+    let groupOptions = groups.reduce(function(o, v) {
+      o[v] = v;
+      return o;
+    }, {});
+
 
     if (blocks.length === 0) {
       return (
@@ -46,37 +49,31 @@ let BlockCollection = React.createClass({
       );
     }
 
+    let groupStyles = {background: "red", color: "white", display:"inline-block", padding: 10, margin: 5};
+
 
     return (
-      <div id="blocks" className="op-ui clearfix">
+      <div>
+        <Button bsStyle='primary' onClick={this.props.closeBlocks}>Close</Button>
+        
+        <div>
+          {groups.map(group => {
+            return (
+              <span key={group} style={groupStyles} onClick={()=>this.setState({group})}>{group}</span>
+            );
+          } )}
+        </div>
 
-        <ul className="tx-nav tx-nav-tabs clearfix">
-          <li className="filter" onClick={this.handleClick} data-filter="all">
-            <a href="javascript:void(0)">All</a>
-          </li>
-          {
-            groups.map((group)=>{
-              return (
-                <li 
-                  onClick={this.handleClick}
-                  className="filter" key={group} 
-                  data-filter={"."+group} >
-                  <a href="javascript:void(0)">{group}</a>
-                </li>
-              );
-            })
-          }
-          <li className="pull-right">
-            <button onClick={this.close} className="btn btn-primary" type="button">
-              <span className="fa fa-close"></span> Close
-            </button>
-          </li>
-        </ul>
+        <Select type="select" label="Select Group" ref="group"
+          defaultValue={this.state.group}
+          options={groupOptions} 
+          onChange={this.handleChange} />
 
-        <div ref="blocks">
-          {blocks.map((block, ii) =>
-            <Block key={block.slug} index={ii} block={block} />
-          )}
+        <div>
+          {blocks.map((block) => {
+            let active = (this.state.group === "all") || block.groups.indexOf(this.state.group) !==-1;
+            return active ? <Block key={block.slug} block={block} /> : "";
+          } )}
         </div>
 		  </div>
     );

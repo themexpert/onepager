@@ -1,32 +1,27 @@
-const React = require('react');
-const AppActions = require('../../actions/AppActions');
-const AppStore = require('../../stores/AppStore');
-const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const React       = require('react');
+const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
+const AppActions  = require('../../actions/AppActions');
+const AppStore    = require('../../stores/AppStore');
 
 let Block = React.createClass({
-  mixins: [ReactComponentWithPureRenderMixin],
+  mixins: [PureMixin],
+
   propTypes: {
     block: React.PropTypes.object
   },
 
   handleCreateSection() {
     AppActions.addSection(this.props.block);
-    AppStore.setBlockState({open:true});
-    document.querySelector('body').classList.add('op-edit-section'); //jshint ignore:line
-    document.querySelector('body').classList.remove('op-blocks-in'); //jshint ignore:line
+    AppStore.setTabState({active: 'op-contents'});
   },
 
   render() {
-    //console.log('rendering block: ', this.props.block.name);
-
     let block = this.props.block;
 
     return (
-      <div 
-        className={"block mix "+block.groups.join(" ")} 
-        data-myorder={this.props.index} 
-        onClick={this.handleCreateSection}>
-        <img src={block.image} alt={block.name} />
+      <div style={{background: "blue", padding: 10, margin: "10px 0"}} onClick={this.handleCreateSection}>
+        <h4>{block.name}</h4>
+        <img src={block.image} alt={block.name} style={{width: "100%"}}/>
       </div>
     );
   }
