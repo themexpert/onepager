@@ -51,7 +51,7 @@
     "react": "^0.13.2",
     "react-bootstrap": "^0.21.2",
     "react-dnd": "^1.0.0",
-    "sortablejs": "^1.1.1",
+    "sortablejs": "git+https://github.com/nadimtuhin/Sortable.git",
     "sweetalert": "^1.0.1",
     "tinycolor2": "^1.1.2",
     "underscore": "^1.8.3"
