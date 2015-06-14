@@ -72,7 +72,7 @@ let BlockCollection = React.createClass({
         <div>
           {blocks.map((block) => {
             let active = (this.state.group === "all") || block.groups.indexOf(this.state.group) !==-1;
-            return active ? <Block key={block.slug} block={block} /> : "";
+            return active ? <Block closeBlocks={this.props.closeBlocks} key={block.slug} block={block} /> : "";
           } )}
         </div>
 		  </div>

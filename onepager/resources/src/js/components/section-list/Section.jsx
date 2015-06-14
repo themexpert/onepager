@@ -45,13 +45,14 @@ let Section = React.createClass({
   },
 
   closeEditTitle(e){
+    //proceed on enter
     if(e.which !== 13) {
       return;
     }
 
     //immutable please
-    let section = _.copy(this.props.section);
-    let title   = this.refs.title.getValue();
+    let section   = _.copy(this.props.section);
+    let title     = this.refs.title.getValue();
 
     section.title = title;
 

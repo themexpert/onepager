@@ -13,6 +13,7 @@ let Block = React.createClass({
   handleCreateSection() {
     AppActions.addSection(this.props.block);
     AppStore.setTabState({active: 'op-contents'});
+    this.props.closeBlocks();
   },
 
   render() {
