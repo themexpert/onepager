@@ -1,25 +1,25 @@
 <?php
 
 return array(
-  "slug"    => "blurb-1",
-  "groups"    => ["blurb"],
+  'slug'    => 'blurb-1',
+  'groups'    => ['blurb'],
 
-  "fields" => array(
-    array("name"=>"title", 'value'=>'Ready for the launch of our new website'),
-    array("name"=>"description", "type"=>"textarea"),
+  'fields' => array(
+    array('name'=>'title', 'value'=>'Ready for the launch of our new website'),
+    array('name'=>'description', 'type'=>'textarea'),
 
     array(
-      "name"=>"items",
-      "type"=>"repeater",
-      "fields" => array(
-        array("name"=>"title"),
-        array("name"=>"description", 'type'=> 'textarea'),
-        array("name"=>"icon","type"=>"imicon"),
+      'name'=>'items',
+      'type'=>'repeater',
+      'fields' => array(
+        array('name'=>'title', 'value' => 'Awesome Design'),
+        array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design'),
+        array('name'=>'icon','type'=>'imicon', 'value'=> 'fa fa-magic fa-3x'),
       )
     )
   ),
 
-  "settings" => array(
+  'settings' => array(
     array(
       'name'     => 'columns',
       'label'    => 'Columns',
@@ -87,8 +87,8 @@ return array(
 
   ),
 
-  "assets" => function( $path ){
-    onepager()->asset()->style( 'blurb', $path . "style.css" );
+  'assets' => function( $path ){
+    onepager()->asset()->style( 'blurb', $path . 'style.css' );
   }
 );
 
