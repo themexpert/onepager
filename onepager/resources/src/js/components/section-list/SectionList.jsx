@@ -8,6 +8,7 @@ const BlockCollection     = require('../blocks/BlockCollection.jsx');
 const AppStore            = require('../../stores/AppStore.js');
 const AppActions          = require('../../actions/AppActions.js');
 
+
 let SectionCollection = React.createClass({
   mixins: [SortableMixin],
 
@@ -15,6 +16,22 @@ let SectionCollection = React.createClass({
     return {
       showBlocks: false
     };
+  },
+
+  setBodyClass(){
+    if(this.props.sections.length === 0){
+      jQuery('body').addClass('no-op-sections');
+    } else {
+      jQuery('body').removeClass('no-op-sections');
+    }
+  },
+
+  componentDidMount(){
+    this.setBodyClass();
+  },
+
+  componentDidUpdate(){
+    this.setBodyClass();
   },
 
   sortableOptions: {
