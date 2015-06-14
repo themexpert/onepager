@@ -20,9 +20,9 @@ let Block = React.createClass({
     let block = this.props.block;
 
     return (
-      <div style={{background: "blue", padding: 10, margin: "10px 0"}} onClick={this.handleCreateSection}>
-        <h4>{block.name}</h4>
+      <div className="thumbnail" onClick={this.handleCreateSection}>
         <img src={block.image} alt={block.name} style={{width: "100%"}}/>
+        <span className="label label-default">{block.name}</span>
       </div>
     );
   }

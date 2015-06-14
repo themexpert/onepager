@@ -200,6 +200,20 @@ a{ text-decoration: inherit; color: @brand-primary; }
 // ****************************************************
 //  Blocks
 // ****************************************************
+.blocks-nav{
+  .form-group{   
+    float: left;
+    width: 70%;
+    margin-right: 5px;
+    margin-bottom: 0;
+  }
+  select{ text-transform: capitalize; }
+}
+.thumbnail{
+  position: relative; margin: 10px 0; cursor: pointer;
+
+  .label{ position: absolute; top: 10px; left: 10px; background-color: rgba(0,0,0,0.8);}
+}
 #blocks{
   // General
   position: fixed; top: -400px; left: 10%; width: 80%; z-index: 9999; // Block is the highest z-index

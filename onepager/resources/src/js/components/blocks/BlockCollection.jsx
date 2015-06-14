@@ -52,13 +52,14 @@ let BlockCollection = React.createClass({
 
     return (
       <div>
-        <Button bsStyle='primary' onClick={this.props.closeBlocks}>Close</Button>
-        
+        <div className="blocks-nav">
+          <Select type="select" ref="group"
+            defaultValue={this.state.group}
+            options={groupOptions} 
+            onChange={this.handleChange} />
 
-        <Select type="select" ref="group"
-          defaultValue={this.state.group}
-          options={groupOptions} 
-          onChange={this.handleChange} />
+          <Button bsStyle='info' onClick={this.props.closeBlocks}><span className="fa fa-arrow-left"></span> Back</Button>
+        </div>
 
         <div>
           {blocks.map((block) => {
