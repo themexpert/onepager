@@ -5,7 +5,13 @@ function unifySection(section, duplicate=false){
 
   // make a section refs and ids unique so we can duplicate
   section     = _.copy(section);
-  
+
+  if(!section.id){
+    section.title = "untitlted section";
+  } else if(duplicate) {
+    section.title = `${section.title} (copy)`;
+  }
+    
   //TODO: bad pattern
   // console.log("changing id");
   if(duplicate || !section.id){
@@ -91,6 +97,7 @@ let misitifySections = function(sections, blocks){
     block           = _.copy(block);
     block.id        = section.id;
     block.content   = section.content;
+    block.title     = section.title;
     block.style     = section.style;
 		block.fields    = mistify(section.fields, block.fields);
 		block.settings  = mistify(section.settings, block.settings);
@@ -134,12 +141,13 @@ function simplifySections(sections){
   let oSections = _.copy(sections);
 
   return _.map(oSections, function(section){
-    let data      = {};
-    // data.id       = _.uniqueId('op-section-');
-    data.id       = section.id;
-    data.slug     = section.slug;
-    data.fields   = simplify(section.fields);
-    data.settings = simplify(section.settings);
+    let data      = {
+        id       : section.id,
+        slug     : section.slug,
+        title    : section.title,
+        fields   : simplify(section.fields),
+        settings : simplify(section.settings),
+    };
 
     return data;
   });

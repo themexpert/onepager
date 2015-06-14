@@ -1,7 +1,8 @@
 const React       = require('react');
 const swal        = require('sweetalert');
+const Input       = require('react-bootstrap/lib/Input');
+const _           = require('underscore');
 const AppActions  = require('../../actions/AppActions');
-const AppStore    = require('../../stores/AppStore');
 
 function confirmDelete(proceed){
   swal({
@@ -16,6 +17,12 @@ function confirmDelete(proceed){
 }
 
 let Section = React.createClass({
+  getInitialState(){
+    return {
+      titleEditState: false
+    };
+  },
+
   handleRemoveSection(){
     confirmDelete(()=>{
       AppActions.removeSection(this.props.index);
@@ -32,26 +39,36 @@ let Section = React.createClass({
     AppActions.editSection(this.props.index);
   },
   
-  handleAddMenu(){
-    let section = this.props.section;
-    let title   = section.fields[0].value ? section.fields[0].value : "menu name";
-    let id      = section.id;
 
-    console.log('we are here');
-
-    AppStore.setMenuState(id, title, this.props.index);
-    AppStore.setTabState({active: 'op-menu'});
+  handleEditTitle(){
+    this.setState({titleEditState: true});
   },
+
+  closeEditTitle(){
+    //immutable please
+    let section = _.copy(this.props.section);
+    let title   = this.refs.title.getValue();
+
+    section.title = title;
+
+    this.props.update(section);
+    this.setState({titleEditState: false});
+  },
+
 
   render() {
     let section = this.props.section;
-    let title   = section.fields[0].value ? section.fields[0].value : "menu name";
-
 
     return (
       <div style={{backgroundColor: "red", "padding": 10, "margin": "10px 0"}}>
-        <div onClick={this.handleEditSection}>{title}</div>
+        { this.state.titleEditState ?
+          <div>
+            <Input type="text" ref="title" defaultValue={section.title} /> <button onClick={this.closeEditTitle}>close</button>
+          </div> :
+          <div onClick={this.handleEditSection}>{section.title}</div>
+        }
         <div>
+          <button className="fa fa-edit" onClick={this.handleEditTitle} ></button>
           <button className="fa fa-copy" onClick={this.handleDuplicateSection} ></button>
           <button className="fa fa-close" onClick={this.handleRemoveSection} ></button>
         </div>

@@ -1,11 +1,12 @@
-const _             = require('underscore');
-const React         = require('react');
-const cx            = require('classnames');
-const SortableMixin = require('sortablejs/react-sortable-mixin');
-const Section       = require('./Section.jsx');
-const AppStore      = require('../../stores/AppStore.js');
+const _                   = require('underscore');
+const React               = require('react');
+const cx                  = require('classnames');
+const SortableMixin       = require('sortablejs/react-sortable-mixin');
 const Button              = require('react-bootstrap/lib/Button');
+const Section             = require('./Section.jsx');
 const BlockCollection     = require('../blocks/BlockCollection.jsx');
+const AppStore            = require('../../stores/AppStore.js');
+const AppActions          = require('../../actions/AppActions.js');
 
 let SectionCollection = React.createClass({
   mixins: [SortableMixin],
@@ -27,11 +28,16 @@ let SectionCollection = React.createClass({
 
     let sections  = _.copy(this.props.sections);
     sections      = _.move(sections, e.oldIndex, e.newIndex);
+
     sections[e.oldIndex].key  = _.randomId('s_');
     sections[e.newIndex].key  = _.randomId('s_');
 
     AppStore.setSections(sections);
     AppStore.reorder();
+  },
+
+  updateSection(index, section){
+    AppActions.updateSection(index, section);
   },
 
   showBlocks(){
@@ -63,7 +69,7 @@ let SectionCollection = React.createClass({
           
           <div ref="sections">
             {sections.map((section, index)=> {
-              return <Section section={section} key={section.key} index={index}/>;
+              return <Section update={this.updateSection.bind(this, index)} section={section} key={section.key} index={index}/>;
             })}
           </div>
         </div>
