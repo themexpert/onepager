@@ -36,7 +36,7 @@ let Tab = React.createClass({
 
     return (
       <li className={classes}>
-        <a onClick={this.handleClick}>
+        <a href="javascript:void(0)" onClick={this.handleClick}>
           <span className={icon} data-toggle="tooltip" data-placement="bottom" title={title}></span>
         </a>
       </li>
