@@ -154,7 +154,7 @@ a{ text-decoration: inherit; color: @brand-primary; }
     }
   }
   .tab-pane { 
-    opacity: 0; .animation(txFadeInDown .1s ease-in-out .15s); .animation-fill-mode(both); 
+    opacity: 0; .animation(txFadeInRight .1s ease-in-out .15s); .animation-fill-mode(both); 
   }
 }
 
@@ -303,6 +303,35 @@ body.op-sidebar-open{
     opacity: 0;
     -webkit-transform: translate3d(0, -10px, 0);
     transform: translate3d(0, -10px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+// Fade in Right
+@-webkit-keyframes txFadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes txFadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
   }
 
   100% {
