@@ -64,15 +64,14 @@ let Section = React.createClass({
     let section = this.props.section;
 
     return (
-      <div style={{backgroundColor: "red", "padding": 10, "margin": "10px 0"}}>
+      <div className="txop-cards">
         { this.state.titleEditState ?
           <Input type="text" ref="title" onKeyUp={this.closeEditTitle} defaultValue={section.title} /> :
-          <div onClick={this.handleEditSection}>{section.title}</div>
+          <div><h3 onClick={this.handleEditSection}>{section.title}</h3> <span className="fa fa-pencil" onClick={this.handleEditTitle}></span></div>
         }
-        <div>
-          <button className="fa fa-edit" onClick={this.handleEditTitle} ></button>
-          <button className="fa fa-copy" onClick={this.handleDuplicateSection} ></button>
-          <button className="fa fa-close" onClick={this.handleRemoveSection} ></button>
+        <div className="actions-btns">
+          <span className="fa fa-copy" onClick={this.handleDuplicateSection} ></span>
+          <span className="fa fa-close" onClick={this.handleRemoveSection} ></span>
         </div>
       </div>
     );
