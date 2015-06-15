@@ -65,10 +65,20 @@ class Content implements ContentInterface {
 		return ( ! is_admin() && $this->isOnepage() && $livemode );
 	}
 
-	public function isOnepage() {
+	public function isOnepagerByTemplate(){
+		$template = get_post_meta( $this->getCurrentPageId(), '_wp_page_template', true );
+
+    return ( $template == "onepage.php" ) ? true : false;
+	}
+
+	public function isOnepagerByMeta() {
 		$onepager = get_post_meta( $this->getCurrentPageId(), '_onepager_updated', true );
 
 		return $onepager ? true : false;
+	}	
+
+	public function isOnepage() {
+		return $this->isOnepagerByTemplate();
 	}
 
 	public function getCurrentPageId() {
