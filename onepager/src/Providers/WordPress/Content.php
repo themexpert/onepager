@@ -42,14 +42,14 @@ class Content implements ContentInterface {
 	 * @return array
 	 */
 	public function getMenus() {
-		return $this->objAsArray( get_terms( 'nav_menu' ), 'term_id', 'name' );
+		return $this->objAsArray( get_terms( 'nav_menu', array('hide_empty'=> 0) ), 'term_id', 'name' );
 	}
 
 	/**
 	 * @return array
 	 */
 	public function getCategories() {
-		return $this->objAsArray( get_terms( 'category' ), 'term_id', 'name' );
+		return $this->objAsArray( get_terms( 'category', array('hide_empty'=> 0) ), 'term_id', 'name' );
 	}
 
 	/**
