@@ -18,6 +18,8 @@ class BlockManager {
 
 
       if ( ! FS::exists( $config_file ) ) {
+      	$this->loadAllFromPath($path . DIRECTORY_SEPARATOR . $folder, $url."/".$folder);
+
         continue;
       }
 
