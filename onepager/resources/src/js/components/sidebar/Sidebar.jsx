@@ -7,6 +7,7 @@ const SectionControls     = require('../edit/SectionControls.jsx');
 const SectionSettings     = require('../edit/SectionSettings.jsx');
 const AddToMenu           = require('../menu/AddToMenu.jsx');
 const AppActions          = require('../../actions/AppActions');
+const AppStore            = require('../../stores/AppStore');
 const $s                  = require('string');
 
 let Sidebar = React.createClass({
@@ -33,6 +34,8 @@ let Sidebar = React.createClass({
           <Tab id="op-contents" icon="database" title="Contents" active={activeTab} disabled={!sectionEditable} />
           <Tab id="op-settings" icon="sliders" title="Settings" active={activeTab} disabled={!sectionEditable} />
           <Tab id="op-menu" icon="link" title="Menu" active={activeTab} disabled={!sectionEditable}/>
+
+          <button onClick={AppStore.save} className="fa fa-save btn btn-primary"> &nbsp; Save</button>
         </ul>
 
         <div className="tab-content">

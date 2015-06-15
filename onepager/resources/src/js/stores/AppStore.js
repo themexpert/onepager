@@ -25,11 +25,13 @@ let _menuState          = {id: null, index: null, title: null};
 let _sidebarTabState    = {active: 'op-sections'};
 let _activeSectionIndex = null;
 let AUTO_SAVE_DELAY     = 500;
+let _savedSections      = _.copy(_sections);
 
 // di
 let shouldSectionsSync  = ShouldSync(_sections, 'sections'); //jshint ignore:line
 let inactive            = Activity(AUTO_SAVE_DELAY); //jshint ignore:line
 let syncService         = SyncService(ODataStore.pageId, inactive, shouldSectionsSync); //jshint ignore:line
+let liveService         = SyncService(null, inactive, shouldSectionsSync); //jshint ignore:line
 
 
 //move to a better place
@@ -66,7 +68,7 @@ function addSection(section) {
   section = SectionComputer.unifySection(section);
   _sections.push(section);
   
-  syncService.updateSection(_sections, sectionIndex);
+  liveService.updateSection(_sections, sectionIndex);
 
   setActiveSection(sectionIndex);
 }
@@ -77,7 +79,7 @@ function updateSection(sectionIndex, section){
   //immutable please?
   _sections[sectionIndex] = section; 
 
-  syncService.updateSection(_sections, sectionIndex);
+  liveService.updateSection(_sections, sectionIndex);
 }
 
 // function to duplicate a section
@@ -91,7 +93,7 @@ function duplicateSection(index){
   _sections = _.pushAt(_.copy(_sections), index, section);
 
   
-  syncService.updateSection(_sections, sectionIndex);
+  liveService.updateSection(_sections, sectionIndex);
 
   setActiveSection(sectionIndex);
 }
@@ -103,7 +105,7 @@ function removeSection(index){
   _sections.splice(index, 1);
 
   //bad pattern
-  syncService.rawUpdate(_sections);
+  liveService.rawUpdate(_sections);
 
   setActiveSection(null);
 }
@@ -134,6 +136,11 @@ let AppStore = assign({}, BaseStore, {
     };
   },
 
+  save(){
+    let updated = syncService.rawUpdate(_sections);
+    updated.then(()=>_savedSections = _.copy(_sections));
+  },
+
   get(index){
     return _sections[index];
   },
@@ -158,10 +165,10 @@ let AppStore = assign({}, BaseStore, {
   },
 
   reorder(){
-    syncService.rawUpdate(_sections);
+    liveService.rawUpdate(_sections);
   },
   rawUpdate(){
-    syncService.rawUpdate(_sections);
+    liveService.rawUpdate(_sections);
   },
 
   // register store with dispatcher, allowing actions to flow through
