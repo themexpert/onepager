@@ -19,7 +19,6 @@ let Sidebar = React.createClass({
     let getUniqueSectionId = function(sections, index, title){
       let id = $s(title).dasherize().s;
 
-
       while(!_.arrIsUniqueProperty(sections, index, id, 'id')){
         id = id+1;
       }
@@ -28,7 +27,7 @@ let Sidebar = React.createClass({
     };
 
     return (
-      <div className="op-sidebar op-ui clearfix"> {/*do we need fade ?*/}
+      <div className="op-sidebar op-ui clearfix">
         <ul className="tx-nav tx-nav-tabs">
           <Tab id="op-sections" icon="bars" title="Layout" active={activeTab}/>
           <Tab id="op-contents" icon="database" title="Contents" active={activeTab} disabled={!sectionEditable} />

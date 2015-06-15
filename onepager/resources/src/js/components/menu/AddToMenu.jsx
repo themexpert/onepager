@@ -101,7 +101,7 @@ let AddToMenu = React.createClass({
       <div>
         {
           fields.map(field=>{
-            return <Input key={field.id+this.props.index} ref={field.ref} options={field} onChange={field.onChange}/>;
+            return <Input key={field.value+this.props.index} ref={field.ref} options={field} onChange={field.onChange}/>;
           })
         }
 
