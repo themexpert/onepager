@@ -155,25 +155,23 @@ a{ text-decoration: inherit; color: @brand-primary; }
 // ****************************************************
 .op-sidebar{
   background: #f5f5f5; border-right: 1px solid #ddd;
-  position: fixed; left: 0; top: 32px; bottom: 0; width: 23%; z-index: 9999; overflow-y: auto;
-  // Close button right top
-  .pull-right .btn { margin: 7px 6px 0 0; padding: 5px 10px; font-size: 13px; }
+  position: fixed; left: 0; top: 32px; bottom: 0; width: 23%;
+  padding-top: 54px; 
+
+  // Buttons
+  .btn--save { float: right; margin: 16px 6px 0 0; padding: 5px 10px; font-size: 13px; }
+  .btn--back { padding : 6px 11px; }
+  .btn--add-repeater {margin-bottom: 10px;}
+  
 
   // Repeater
   .repeatable-control{
-    .add-button{ margin-bottom: 10px; }
-    .panel-heading:hover .repeater-action-btns{ display: block; }
-    .panel-heading{ position: relative; cursor: move; }
+    .panel-heading{ position: relative; padding : 10px 12px 10px 2px; }
     .panel-title{ 
       width: 84%; overflow: hidden; 
       > a{ width: 500px; display: block; text-decoration: none; }
-      // &:before{
-      //   content: '\f142';
-      //   font: normal normal normal 14px/1 FontAwesome;
-      //   position: absolute; top: 12px; left: 6px; 
-      //   color: #888;
-      // }
     }
+    .handle { padding : 0 5px; cursor: move; color: #888; }
   }
   .repeater-action-btns{
     font-size: 13px; line-height: 1.3em; color: #888;
@@ -190,7 +188,8 @@ a{ text-decoration: inherit; color: @brand-primary; }
 
   // Navigation Tabs
   .tx-nav-tabs{ position: fixed; top: 30px; left: 0; z-index: 9999; width: 22.9%; }
-  > .tab-content{ padding-top: 54px; }
+  // Tab content
+  > .tab-content{ overflow-y: auto; height: 100%; }
 }
 
 // ****************************************************

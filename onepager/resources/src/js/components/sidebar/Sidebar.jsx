@@ -35,7 +35,7 @@ let Sidebar = React.createClass({
           <Tab id="op-settings" icon="sliders" title="Settings" active={activeTab} disabled={!sectionEditable} />
           <Tab id="op-menu" icon="link" title="Menu" active={activeTab} disabled={!sectionEditable}/>
 
-          <button onClick={AppStore.save} className="fa fa-save btn btn-primary"> &nbsp; Save</button>
+          <button onClick={AppStore.save} className="fa fa-save btn btn-primary btn--save"> &nbsp; Save</button>
         </ul>
 
         <div className="tab-content">
