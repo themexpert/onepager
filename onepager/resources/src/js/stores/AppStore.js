@@ -32,11 +32,10 @@ let inactive            = Activity(AUTO_SAVE_DELAY); //jshint ignore:line
 let syncService         = SyncService(ODataStore.pageId, inactive, shouldSectionsSync); //jshint ignore:line
 
 
-// _activeSectionIndex = 0;
-
 //move to a better place
 let getLiveModeHTML = function(livemode, content){
   let $section = $("<div />", {html: content});
+  
   
   _.each(livemode, function(classNames, selector){
     _.each(classNames, function(className){

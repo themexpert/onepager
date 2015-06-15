@@ -54,12 +54,8 @@ let Section = React.createClass({
     let section   = _.copy(this.props.section);
     let title     = this.refs.title.getValue();
 
-    console.log(title);
-    
     if(section.title === 'untitlted section'){
-      console.log('changing title');
       section.id  = this.props.getUniqueSectionId(this.props.index, title);
-      console.log('new id %s', section.id);
     }
 
     section.title = title;
