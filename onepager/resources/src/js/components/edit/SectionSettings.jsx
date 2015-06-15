@@ -1,10 +1,10 @@
-const _         = require("underscore");
+const _         = require('underscore');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const React     = require("react");
+const React     = require('react');
 const Divider   = require('./Divider.jsx');
 const Input     = require('./form/Input.jsx');
-const Tab       = require('../sidebar/Tab.jsx');
-const TabPane   = require('../sidebar/TabPane.jsx');
+// const Tab       = require('../sidebar/Tab.jsx');
+// const TabPane   = require('../sidebar/TabPane.jsx');
 
 let SectionSettings = React.createClass({
   mixins: [PureMixin],
@@ -16,11 +16,11 @@ let SectionSettings = React.createClass({
       let ref = this.refs[control.ref];
 
       switch(control.type){
-        case "divider":
+        case 'divider':
           //we do not need to compute anything for a divider
           break;
         
-        case "repeater":
+        case 'repeater':
           control.fields = ref.getFields();
           break;
 
@@ -37,7 +37,7 @@ let SectionSettings = React.createClass({
 
   render(){
     let {sectionIndex, controls} = this.props;
-    let tabs = _.pairs(_.groupBy(controls, "tab"));
+    let tabs = _.pairs(_.groupBy(controls, 'tab'));
 
     let fn = tControls=>{
       return tControls.map((control, ii)=>{
@@ -48,11 +48,11 @@ let SectionSettings = React.createClass({
           controlIndex: ii,
           repeatIndex: ii,
           sectionIndex: sectionIndex,
-          key: sectionIndex+"-"+ii
+          key: sectionIndex+'-'+ii
         };
         
         switch(control.type){
-          case "divider": return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
+          case 'divider': return <Divider key={sectionIndex+'-'+ii} label={control.label} />;
           default: return <Input {...props} />;
         }
       });
@@ -60,18 +60,29 @@ let SectionSettings = React.createClass({
 
     return(
       <div>
-        <ul className="nav nav-pills lm-nav-pills">
+        <ul className='nav nav-pills lm-nav-pills'>
           { tabs.map((tab, ii)=>{
-              return <li key={tab[0]} className={ii===0?"active":""}><a href={"#op-"+tab[0]} data-toggle="tab">{tab[0]}</a></li>;
+              let tabName   = tab[0];
+              let className = (ii===0)? 'active' : '';
+              
+              return (
+                <li key={tabName} className={className}>
+                  <a href={'#op-'+tabName} data-toggle='tab'>{tabName}</a>
+                </li>
+              );
           }) }
         </ul>
 
         <div className="tab-content">
           { tabs.map((tab, ii)=>{
-            return(
-              <div key={tab[0]} id={"op-"+tab[0]} className={(ii===0?"active":"")+" tab-pane lm-tab-pane clearfix"}>
-                {fn(tab[1])}
-              </div>
+              let tabName   = tab[0];
+              let className = (ii===0)? 'active' : '';
+              className    += 'tab-pane lm-tab-pane clearfix';
+              
+              return(
+                <div key={tabName} id={'op-'+tabName} className={className}>
+                  {fn(tab[1])}
+                </div>
               );
           }) }
 
