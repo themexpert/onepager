@@ -14,7 +14,7 @@ $onepager = new Onepager(
 );
 
 //require assets and more
-require( __DIR__ . "/metabox.php" );
+// require( __DIR__ . "/metabox.php" );
 require( __DIR__ . "/assets.php" );
 require( __DIR__ . "/routes.php" );
 require( __DIR__ . "/blocks.php" );

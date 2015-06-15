@@ -21,7 +21,6 @@ add_action( 'wp', function () {
 		$query->modify( array( 'livemode' => false ) );
 
 		onepager()->toolbar()->addMenu( 'op-disable-livemode', $url, '<span class="fa fa-circle"></span> Disable Build Mode</span>' );
-		onepager()->toolbar()->addMenu( 'op-add-block', '', '<span class="fa fa-plus"></span> Add Block' );
 	} else {
     if(!onepager()->content()->isOnepage()){
       return;
