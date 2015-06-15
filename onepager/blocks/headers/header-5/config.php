@@ -2,8 +2,8 @@
 
 return array(
   
-  'slug'      => 'header-1', // Must be unique
-  'groups'    => ['header'], // Blocks group for filter
+  'slug'      => 'header-5', // Must be unique
+  'groups'    => ['headers'], // Blocks group for filter
 
   // Fields - $fields available on view file to access the option
   'fields' => array(
@@ -15,8 +15,8 @@ return array(
       'placeholder' => 'http://doamin.com'
     ),
     array(
-      'name'=>'cta_text',
-      'label'=> 'Call To Action Text', 
+      'name'=>'cta_text', 
+      'label'=> 'Call To Action Text',  
       'value'=> 'Call To Action',
       'placeholder'=> 'Call To Action'
     ),
@@ -28,21 +28,21 @@ return array(
       'name'    => 'bg_color',
       'label'   => 'Background Color',
       'type'    => 'colorpicker',
-      'value'   => '#ffffff',
+      'value'   => '#1f262b',
       'tab'     => 'styles'
     ),
     array(
       'name'  => 'link_color',
       'label' => 'Link Color',
       'type'  => 'colorpicker',
-      'value' => '#777',
+      'value' => '#999',
       'tab'   => 'styles'
     ),
     array(
       'name'  => 'link_hover_color',
       'label' => 'Link Hover Color',
       'type'  => 'colorpicker',
-      'value' => '#222',
+      'value' => '#fff',
       'tab'   => 'styles'
     ),
     array(
@@ -60,6 +60,11 @@ return array(
       'tab'     => 'styles'
     ),
   ),
+
+  // Pass everything when WP initialize useful for handling settings from plugin/theme
+  // 'init'  => function($fields, $settings, $id){},
+  // Style file for live reload
+  // 'style' => 'style.php',
 
   // "assets" => function( $path ){
   //   onepager()->asset()->style( 'blurb', $path . "style.css" );

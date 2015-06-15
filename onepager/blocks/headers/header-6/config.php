@@ -2,8 +2,8 @@
 
 return array(
   
-  'slug'      => 'header-2', // Must be unique
-  'groups'    => ['header'], // Blocks group for filter
+  'slug'      => 'header-6', // Must be unique
+  'groups'    => ['headers'], // Blocks group for filter
 
   // Fields - $fields available on view file to access the option
   'fields' => array(
