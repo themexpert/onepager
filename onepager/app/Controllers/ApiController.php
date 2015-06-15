@@ -4,13 +4,15 @@ class ApiController {
 	function saveSections() {
 		$sections = $_POST['sections'];
 		$updated  = $_POST['updated'];
-		$pageId   = $_POST['pageId'];
+		$pageId   = array_key_exists('pageId', $_POST) ? $_POST['pageId'] : false ;
 		$response = [ ];
 
 		$section = array_key_exists( $updated, $sections ) ? $sections[ $updated ] : false;
 
 		//TODO: Improve this
-		onepager()->section()->save( $pageId, $sections );
+		if($pageId){
+			onepager()->section()->save( $pageId, $sections );
+		}
 
 		if ( $section ) {
 			$response["content"] = onepager()->render()->section( $section );

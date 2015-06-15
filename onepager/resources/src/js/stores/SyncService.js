@@ -26,7 +26,11 @@ function SyncService(pageId, inactive, shouldSectionsSync){
 
         //else
         AppActions.sectionSynced(sectionIndex, res);
-        return notify.success('Successfully Updated Sections');
+        
+        if(pageId){
+          notify.success('Successfully Updated Sections');
+        }
+
       });
     };
 
@@ -38,28 +42,39 @@ function SyncService(pageId, inactive, shouldSectionsSync){
   };
 
   let rawUpdate = function(sections){
-    let payload = {
-      pageId  : pageId,
-      action  : 'save_sections',
-      updated : null,
-      sections: SectionComputer.simplifySections(sections),
-    };
+    
+    return new Promise((resolve, reject)=>{
 
-    let sync = function(){
-      $.post(ODataStore.ajaxUrl, payload, (res)=>{
-        if(!res || !res.success){
-          return notify.warning('Failed to update');
-        }
+      let payload = {
+        pageId  : pageId,
+        action  : 'save_sections',
+        updated : null,
+        sections: SectionComputer.simplifySections(sections),
+      };
 
-        return notify.success('Successfully Updated');
-      });
-    };
+      let sync = function(){
+        $.post(ODataStore.ajaxUrl, payload, (res)=>{
+          if(!res || !res.success){
+            notify.warning('Failed to update');
 
-    async.series([
-      (pass)=> inactive().then(pass),
-      (pass)=> shouldSectionsSync(sections).then(pass),
-      (pass)=> sync(pass)
-    ]);
+            return reject();
+          }
+
+          
+          if(pageId){
+            notify.success('Successfully Updated');
+          }
+          return resolve();
+        });
+      };
+
+      async.series([
+        (pass)=> inactive().then(pass),
+        (pass)=> shouldSectionsSync(sections).then(pass),
+        (pass)=> sync(pass)
+      ]);
+    });
+
   };
 
   return {
