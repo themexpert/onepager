@@ -297,10 +297,14 @@ body.op-blocks-in #blocks{
     }
   }
 }
-.txop-noblock #sections:after{
-  // content: '';
-  // position: absolute; top: 30px; left: 10%;
-  // width: 200px; height: 200px; border : 1px dashed #ddd;
+
+.txop-noblock{
+  #sections:before{
+    content: ''; display: block;
+    background: url(../../images/add-block.png); 
+    width: 170px; height: 76px;
+    position: absolute; top: 75px; left: 1%;
+  }
 }
 
 #op-settings .lm-tab-pane{ padding: 10px 0; }
