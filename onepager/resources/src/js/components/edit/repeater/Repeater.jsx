@@ -11,7 +11,8 @@ let Repeater = React.createClass({
   mixins: [PureMixin, SortableMixin],
 
   sortableOptions: {
-    ref: "repeat-groups"
+    ref: "repeat-groups",
+    // handle: ".handle"
   },
 
   handleEnd(e){
