@@ -77,6 +77,6 @@ return array(
   ),
 
   "assets" => function( $path ){
-    onepager()->asset()->style( 'blurb', $path . "style.css" );
+    onepager()->asset()->style( 'header-3', $path . "style.css" );
   }
 );
