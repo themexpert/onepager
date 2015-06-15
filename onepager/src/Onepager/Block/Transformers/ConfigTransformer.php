@@ -7,7 +7,7 @@ class ConfigTransformer {
   }
 
   public function transform( $config, $file, $url ) {
-    $default_image = "block.png";
+    $default_image = "block.jpg";
     $default_view  = "view.php";
     $default_style = "style.php";
 
