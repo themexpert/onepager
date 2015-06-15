@@ -20,9 +20,9 @@ let SectionCollection = React.createClass({
 
   setBodyClass(){
     if(this.props.sections.length === 0){
-      jQuery('body').addClass('no-op-sections');
+      jQuery('body').addClass('txop-noblock');
     } else {
-      jQuery('body').removeClass('no-op-sections');
+      jQuery('body').removeClass('txop-noblock');
     }
   },
 
@@ -70,19 +70,19 @@ let SectionCollection = React.createClass({
     let blocks   = this.props.blocks;
 
     let blocksClass = cx({
-      "blocks-mode": true,
+      "list-blocks": true,
       "hidden": !this.state.showBlocks
     });
 
     let sectionsClass = cx({
-      "list-mode": true,
+      "list-sections": true,
       "hidden": this.state.showBlocks
     });
 
     return (
       <div>
         <div className={sectionsClass}>
-          <Button bsStyle='primary' onClick={this.showBlocks}>Add Block</Button>
+          <Button bsStyle='primary' className="btn-block" onClick={this.showBlocks}><span className="fa fa-plus"></span> Add Block</Button>
           
           <div ref="sections">
             {sections.map((section, index)=> {

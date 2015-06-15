@@ -18,7 +18,7 @@ class ConfigTransformer {
 
     $groups   = $this->get( $config, 'groups', [ ] );
     $name     = $this->get( $config, 'name', ucfirst( $config['slug'] ) );
-    $livemode = $this->get( $config, 'livemode', array( "[data-animated], .animated" => [ 'animated', 'wow' ] ) );
+    $livemode = $this->get( $config, 'livemode', array( "[data-animated], .animated, .wow" => [ 'animated', 'wow' ] ) );
 
     $view  = $dir . $this->get( $config, 'view', $default_view );
     $style = $dir . $this->get( $config, 'style', $default_style );

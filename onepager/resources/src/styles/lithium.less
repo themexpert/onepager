@@ -30,7 +30,8 @@
   > li > a{ display: block; padding: 10px 20px; text-decoration: inherit; color: #666; font-size: 1.5em;}
   > li > a:not(.btn){ .box-shadow(none); }
   > li.active > a{ color: @brand-primary; }
-
+  // Disabled
+  > li.disabled > a{ color: #b5b5b5; cursor: not-allowed; }
   .btn{ color: #fff; }
 }
 .tx-nav-tabs{
@@ -53,8 +54,13 @@
 .tab-pane{ background: #f5f5f5; padding: 10px; }
 
 // General
-body{ background: inherit; overflow-x: hidden; }
+body{ 
+  background: inherit; overflow-x: hidden; 
+}
 a{ text-decoration: inherit; color: @brand-primary; }
+
+// make all fixed container fluid
+.container{ width: 100%; }
 
 // [WordPress]Admin menu
 #wp-admin-bar-op-add-block{ 
@@ -116,15 +122,40 @@ a{ text-decoration: inherit; color: @brand-primary; }
     border-bottom: 1px solid rgb(221, 221, 221);
   }
 }
+// Cards - Sections list
+.txop-cards{
+  background: #fff; padding: 10px 25px 10px 10px; 
+  .box-shadow(0 0 4px #ccc);
+  margin: 10px 0;
+  position: relative;
+  cursor: move;
+
+  h3{ 
+    margin: 0 5px 0 0; display: inline-block; 
+    text-transform: uppercase; 
+    font-size: 12px; color: #666;
+    cursor: pointer;
+  }
+  
+  span{ cursor: pointer; }
+  .actions-btns{
+    height: 100%; border-left: 1px solid #ddd; 
+    position: absolute; top: 0; right: 0;
+
+    span{ display: block; padding: 0 7px; font-size: 12px; line-height: 20px; color: #888; }
+    span:first-child{ border-bottom: 1px solid #ddd; }
+  }
+
+  .form-group{ margin: 0; width: 96%; }
+  
+  .label{ position: absolute; top: 20px; right: 45px; background-color: #B6B6B6; }
+}
 // ****************************************************
 //  Sidebar / Configure
 // ****************************************************
-#edit-screen, // Remove that with #op-sidebar/.op-sidebar or better name
-#op-sidebar,
 .op-sidebar{
-  background: #f5f5f5;
-  position: fixed; left: 0; top: 32px; bottom: 0; width: 25%; z-index: 9999; overflow-y: auto;
-
+  background: #f5f5f5; border-right: 1px solid #ddd;
+  position: fixed; left: 0; top: 32px; bottom: 0; width: 23%; z-index: 9999; overflow-y: auto;
   // Close button right top
   .pull-right .btn { margin: 7px 6px 0 0; padding: 5px 10px; font-size: 13px; }
 
@@ -156,11 +187,33 @@ a{ text-decoration: inherit; color: @brand-primary; }
   .tab-pane { 
     opacity: 0; .animation(txFadeInRight .1s ease-in-out .15s); .animation-fill-mode(both); 
   }
+
+  // Navigation Tabs
+  .tx-nav-tabs{ position: fixed; top: 30px; left: 0; z-index: 9999; width: 22.9%; }
+  > .tab-content{ padding-top: 54px; }
+
+  // Section List
+
+  // Block List
 }
 
 // ****************************************************
 //  Blocks
 // ****************************************************
+.blocks-nav{
+  .form-group{   
+    float: left;
+    width: 70%;
+    margin-right: 5px;
+    margin-bottom: 0;
+  }
+  select{ text-transform: capitalize; }
+}
+.thumbnail{
+  position: relative; margin: 10px 0; cursor: pointer;
+
+  .label{ position: absolute; top: 10px; left: 10px; background-color: rgba(0,0,0,0.8);}
+}
 #blocks{
   // General
   position: fixed; top: -400px; left: 10%; width: 80%; z-index: 9999; // Block is the highest z-index
@@ -209,7 +262,7 @@ body.op-blocks-in #blocks{
 //  Sections
 // ****************************************************
 #sections{
-  width: 100%;
+  width: 77%; margin-left: 23%; position: relative;
   // Transition for width while edit the section
   .transition(all .1s linear); 
 
@@ -244,20 +297,11 @@ body.op-blocks-in #blocks{
     }
   }
 }
-// ****************************************************
-//  Sidebar Open - Common
-// ****************************************************
-body.op-sidebar-open{
-  // overflow: hidden;
-  #sections{ width: 75%; margin-left: 25%; }
-  #blocks{ 
-    width: 71%; left: 2%; 
-    .block{ width: 23.88%; }
-  }
-  // make all fixed container fluid
-  .container{ width: 100%; }
+.txop-noblock #sections:after{
+  // content: '';
+  // position: absolute; top: 30px; left: 10%;
+  // width: 200px; height: 200px; border : 1px dashed #ddd;
 }
-
 
 #op-settings .lm-tab-pane{ padding: 10px 0; }
 
