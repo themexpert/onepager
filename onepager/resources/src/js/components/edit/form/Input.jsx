@@ -8,10 +8,13 @@ const WpMedia       = require('./WpMedia.jsx');
 const Select        = require('./Select.jsx');
 const WpSelect      = require('./WpSelect.jsx');
 
-const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const PreMixin      = require('react/lib/ReactComponentWithPureRenderMixin');
+const Activity      = require('../../../lib/Activity');
+
+let inactive        = Activity(100); //jshint ignore:line
 
 let InputControl = React.createClass({
-  mixins: [ReactComponentWithPureRenderMixin],
+  mixins: [PreMixin],
 
   getValue(){
     return this.refs.input.getValue();
@@ -19,26 +22,7 @@ let InputControl = React.createClass({
 
   //TODO: use activity here
   onChange(){
-    let _lastChangeTime;
-    let AUTO_SAVE_DELAY = 100; //100 good
-
-    _lastChangeTime = new Date();
-
-    let promise = new Promise((resolve, reject)=>{
-      setTimeout(()=>{
-        let elapsedTime = new Date() - _lastChangeTime;
-        if( elapsedTime < AUTO_SAVE_DELAY){
-          return reject();
-        }
-
-        resolve();
-      }, AUTO_SAVE_DELAY);
-    });
-
-    promise.then(()=>{
-      this.props.onChange();
-    });
-
+    inactive().then(()=> this.props.onChange() );
   },
 
   render() {
@@ -50,7 +34,6 @@ let InputControl = React.createClass({
 
       switch(options.type){
         case "icon":
-          control =
             <IconSelector ref="input"
               className={options.className}
               defaultValue={options.value}

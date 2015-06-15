@@ -1,12 +1,11 @@
-const React = require('react');
-const ContainedSelectorMixin = require("../../../mixins/ContainedSelectorMixin");
-const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const React     = require('react');
+const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const tinycolor = require("tinycolor2");
-const $ = jQuery; //jshint ignore:line
-window.tinycolor = tinycolor; //jshint ignore:line
+const $         = jQuery; //jshint ignore:line
 
 let ColorPicker = React.createClass({
-  mixins: [ContainedSelectorMixin, ReactComponentWithPureRenderMixin],
+  mixins: [PureMixin],
+
   getInitialState(){
     let bgColor = this.props.defaultValue;
 
@@ -48,13 +47,13 @@ let ColorPicker = React.createClass({
   },
 
   componentDidMount() {
-    $( this.getSelector(".op-colorpicker") )
+    $( React.findDOMNode(this.refs.input) )
       .colorpicker()
       .on("changeColor.colorpicker, .color-icon", this.onChange);
   },
 
   componentWillUnmount(){
-		$( this.getSelector(".op-colorpicker") ).unbind();
+		$( React.findDOMNode(this.refs.input) ).unbind();
   },
 
   render() {
