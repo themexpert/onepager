@@ -39,16 +39,16 @@ let SectionSettings = React.createClass({
     let {sectionIndex, controls} = this.props;
     let tabs = _.pairs(_.groupBy(controls, 'tab'));
 
-    let fn = tControls=>{
-      return tControls.map((control, ii)=>{
+    let renderTabControls = tabControls=>{
+      return tabControls.map((control, ii)=>{
         let props = {
-          onChange: this.update,
-          options: control,
-          ref: control.ref,
-          controlIndex: ii,
-          repeatIndex: ii,
-          sectionIndex: sectionIndex,
-          key: sectionIndex+'-'+ii
+          onChange      : this.update,
+          options       : control,
+          ref           : control.ref,
+          controlIndex  : ii,
+          repeatIndex   : ii,
+          sectionIndex  : sectionIndex,
+          key           : sectionIndex+'-'+ii
         };
         
         switch(control.type){
@@ -64,7 +64,7 @@ let SectionSettings = React.createClass({
           { tabs.map((tab, ii)=>{
               let tabName   = tab[0];
               let className = (ii===0)? 'active' : '';
-              
+
               return (
                 <li key={tabName} className={className}>
                   <a href={'#op-'+tabName} data-toggle='tab'>{tabName}</a>
@@ -81,7 +81,7 @@ let SectionSettings = React.createClass({
               
               return(
                 <div key={tabName} id={'op-'+tabName} className={className}>
-                  {fn(tab[1])}
+                  {renderTabControls(tab[1])}
                 </div>
               );
           }) }
