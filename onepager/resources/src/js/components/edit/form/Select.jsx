@@ -16,9 +16,10 @@ let SelectControl = React.createClass({
 
   render() {
     let options = this.props.options;
-    
+
     return (
       <Input type='select' ref="input"
+        defaultValue={this.props.defaultValue}
         label={this.props.label} 
         onChange={this.props.onChange} 
         className={this.props.className} >
