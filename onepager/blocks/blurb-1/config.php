@@ -20,6 +20,7 @@ return array(
   ),
 
   'settings' => array(
+    array('name' => 'test'),
     array(
       'name'     => 'columns',
       'label'    => 'Columns',

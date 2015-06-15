@@ -41,6 +41,9 @@ let SectionSettings = React.createClass({
 
     let renderTabControls = tabControls=>{
       return tabControls.map((control, ii)=>{
+        
+        console.log(control);
+
         let props = {
           onChange      : this.update,
           options       : control,
@@ -52,8 +55,10 @@ let SectionSettings = React.createClass({
         };
         
         switch(control.type){
-          case 'divider': return <Divider key={sectionIndex+'-'+ii} label={control.label} />;
-          default: return <Input {...props} />;
+          case 'divider': 
+            return <Divider key={sectionIndex+'-'+ii} label={control.label} />;
+          default: 
+            return <Input {...props} />;
         }
       });
     };
@@ -77,7 +82,7 @@ let SectionSettings = React.createClass({
           { tabs.map((tab, ii)=>{
               let tabName   = tab[0];
               let className = (ii===0)? 'active' : '';
-              className    += 'tab-pane lm-tab-pane clearfix';
+              className    += ' tab-pane lm-tab-pane clearfix';
               
               return(
                 <div key={tabName} id={'op-'+tabName} className={className}>
