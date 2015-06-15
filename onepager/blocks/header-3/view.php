@@ -8,7 +8,11 @@ $slide_num = 0;
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<a class="navbar-brand" href="<?php echo site_url(); ?>">
-						<img class="img-responsive" src="<?php echo $fields['logo']?>" alt="<?php wp_title(); ?>">
+						<?php if($fields['logo']) :?>
+							<img class="img-responsive" src="<?php echo $fields['logo']?>" alt="<?php wp_title(); ?>">
+						<?php else : ?>
+							<?php wp_title(); ?>
+						<?php endif; ?>
 					</a>
 				</div>
 
