@@ -18,7 +18,9 @@ let Sidebar = React.createClass({
     let activeTab       = this.props.sidebarTabState.active;
 
     let getUniqueSectionId = function(sections, index, title){
-      let id = $s(title).dasherize().s;
+      let id = $s(title.trim()).dasherize().s;
+
+      console.log(id);
 
       while(!_.arrIsUniqueProperty(sections, index, id, 'id')){
         id = id+1;

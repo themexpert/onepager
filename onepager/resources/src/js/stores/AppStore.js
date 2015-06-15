@@ -28,10 +28,11 @@ let AUTO_SAVE_DELAY     = 500;
 let _savedSections      = _.copy(_sections);
 
 // di
-let shouldSectionsSync  = ShouldSync(_sections, 'sections'); //jshint ignore:line
-let inactive            = Activity(AUTO_SAVE_DELAY); //jshint ignore:line
-let syncService         = SyncService(ODataStore.pageId, inactive, shouldSectionsSync); //jshint ignore:line
-let liveService         = SyncService(null, inactive, shouldSectionsSync); //jshint ignore:line
+let shouldLiveSectionsSync  = ShouldSync(_sections, 'sections'); //jshint ignore:line
+let shouldSectionsSync      = ShouldSync(_sections, 'sections'); //jshint ignore:line
+let inactive                = Activity(AUTO_SAVE_DELAY); //jshint ignore:line
+let syncService             = SyncService(ODataStore.pageId, inactive, shouldSectionsSync); //jshint ignore:line
+let liveService             = SyncService(null, inactive, shouldLiveSectionsSync); //jshint ignore:line
 
 
 //move to a better place
