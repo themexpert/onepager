@@ -32,5 +32,19 @@ _.mixin({
     let spliced = arr.splice(index);
     arr.push(item);
     return arr.concat(spliced);
+  },
+
+  arrayIsUniqueExcept(items, item, index){
+    items.splice(index, 1);
+
+    return items.indexOf(item) === -1;
+  },
+
+  arrIsUniqueProperty(list, index, propName, id){
+    let props = _.map(list, function(item){
+      return item[propName];
+    });
+
+    return this.arrayIsUniqueExcept(props, id, index);
   }
 });

@@ -42,8 +42,6 @@ let SectionSettings = React.createClass({
     let renderTabControls = tabControls=>{
       return tabControls.map((control, ii)=>{
         
-        console.log(control);
-
         let props = {
           onChange      : this.update,
           options       : control,

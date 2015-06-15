@@ -7,6 +7,7 @@ const SectionControls     = require('../edit/SectionControls.jsx');
 const SectionSettings     = require('../edit/SectionSettings.jsx');
 const AddToMenu           = require('../menu/AddToMenu.jsx');
 const AppActions          = require('../../actions/AppActions');
+const $s                  = require('string');
 
 let Sidebar = React.createClass({
 
@@ -14,6 +15,17 @@ let Sidebar = React.createClass({
     let {sections, blocks, activeSectionIndex, activeSection} = this.props;
     let sectionEditable = activeSectionIndex === null ? false : true;
     let activeTab       = this.props.sidebarTabState.active;
+
+    let getUniqueSectionId = function(sections, index, title){
+      let id = $s(title).dasherize().s;
+
+
+      while(!_.arrIsUniqueProperty(sections, index, id, 'id')){
+        id = id+1;
+      }
+
+      return id;
+    };
 
     return (
       <div className="op-sidebar op-ui clearfix"> {/*do we need fade ?*/}
@@ -26,7 +38,12 @@ let Sidebar = React.createClass({
 
         <div className="tab-content">
           <TabPane id="op-sections" active={activeTab}>
-            <SectionList blocks={blocks} sections={sections} />
+            <SectionList 
+              blocks={blocks} 
+              sections={sections} 
+              getUniqueSectionId={(index, id)=>{
+                return getUniqueSectionId(sections, index, id);
+              }} />
           </TabPane>
 
           <TabPane id="op-contents" active={activeTab}>

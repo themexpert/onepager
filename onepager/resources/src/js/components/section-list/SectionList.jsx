@@ -82,11 +82,20 @@ let SectionCollection = React.createClass({
     return (
       <div>
         <div className={sectionsClass}>
-          <Button bsStyle='primary' className="btn-block" onClick={this.showBlocks}><span className="fa fa-plus"></span> Add Block</Button>
+          <Button bsStyle='primary' className="btn-block" onClick={this.showBlocks}>
+            <span className="fa fa-plus"></span> Add Block
+          </Button>
           
           <div ref="sections">
             {sections.map((section, index)=> {
-              return <Section update={this.updateSection.bind(this, index)} section={section} key={section.key} index={index}/>;
+              return (
+                <Section 
+                  getUniqueSectionId={this.props.getUniqueSectionId} 
+                  update={this.updateSection.bind(this, index)} 
+                  section={section} 
+                  key={section.key} 
+                  index={index} />
+              );
             })}
           </div>
         </div>

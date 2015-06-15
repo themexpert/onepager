@@ -1,14 +1,14 @@
+// const swal            = require('sweetalert');
 const $               = jQuery; //jshint ignore: line
+const PureComponent   = require('react/lib/ReactComponentWithPureRenderMixin');
 const React           = require("react");
 const _               = require("underscore");
-const swal            = require('sweetalert');
 const Button          = require('react-bootstrap/lib/Button');
 const Input           = require("../edit/form/Input.jsx");
 const ODataStore      = require('../../stores/ODataStore');
 const notify          = require('../../lib/notify');
 const AppStore        = require('../../stores/AppStore');
 const AppActions      = require('../../actions/AppActions');
-const PureComponent   = require('react/lib/ReactComponentWithPureRenderMixin');
 
 
 let AddToMenu = React.createClass({
@@ -64,7 +64,7 @@ let AddToMenu = React.createClass({
 
   render(){
     let section = this.props.section;
-    let title   = section.fields[0].value ? section.fields[0].value : "menu name";
+    let title   = section.title;
     let id      = section.id;
 
     let fields = [
