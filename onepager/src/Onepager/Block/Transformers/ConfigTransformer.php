@@ -27,7 +27,7 @@ class ConfigTransformer {
 
     //closures
     $init    = $this->get( $config, 'init', false );
-    $enqueue = $this->get( $config, 'asset', false );
+    $enqueue = $this->get( $config, 'assets', false );
 
     //fields
     $settings = $this->settingsTransformer->transform( $this->get( $config, 'settings', [ ] ) );

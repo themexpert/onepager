@@ -45,11 +45,13 @@ add_action( 'wp_enqueue_scripts', function () {
 		return;
 	}
 
+	
 	$blocks = (array) onepager()->blockManager()->all();
 
+	
 	array_walk( $blocks, function ( $block ) {
 		$enqueueCb = $block['enqueue'];
-
+		
 		if ( ! $enqueueCb ) {
 			return;
 		}
@@ -57,5 +59,6 @@ add_action( 'wp_enqueue_scripts', function () {
 		$blockUrl = $block['url'];
 		$enqueueCb( $blockUrl );
 	} );
+
 } );
 
