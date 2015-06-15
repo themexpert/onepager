@@ -1,24 +1,29 @@
 const _             = require('underscore');
 const React         = require('react');
 const RepeatGroup   = require('./RepeatGroup.jsx');
-const PureMixin     = require("react/lib/ReactComponentWithPureRenderMixin");
+// const PureMixin     = require("react/lib/ReactComponentWithPureRenderMixin");
 const SortableMixin = require('sortablejs/react-sortable-mixin');
 const Button        = require('react-bootstrap/lib/Button');
 
 
 
 let Repeater = React.createClass({
-  mixins: [PureMixin, SortableMixin],
+  mixins: [SortableMixin],
 
   sortableOptions: {
     ref: "repeat-groups",
-    // handle: ".handle"
+    handle: ".handle"
   },
 
   handleEnd(e){
+    console.log("trying to reorder");
+
     let rGroups = _.copy(this.props.options.fields);
     rGroups     = _.move(rGroups, e.oldIndex, e.newIndex);
 
+    rGroups[e.oldIndex].ref  = _.randomId('rs_');
+    rGroups[e.newIndex].ref  = _.randomId('rs_');
+    
     // TODO: need unique keys for each rGroup
     this.props.updateControl(rGroups);
   },
@@ -110,7 +115,9 @@ let Repeater = React.createClass({
                   duplicate={this.addRepeatGroup.bind(this, true, ii)}
                   onChange={this.props.onChange}
                   remove={this.removeRepeatGroup.bind(this, ii)} 
-                  options={rGroup} ref={this.getGroupRef(ii)} key={ii} index={ii} />
+                  options={rGroup} ref={this.getGroupRef(ii)} 
+                  key={this.getGroupRef(ii)} 
+                  index={ii} />
               );
           }) }
           </div> { /*panel-group*/ }

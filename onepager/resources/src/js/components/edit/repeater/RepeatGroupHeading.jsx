@@ -8,7 +8,7 @@ let RepeatGroupHeading = React.createClass({
     return(
       <div className="panel-heading" role="tab">
         <h4 className="panel-title">
-          <span className="handle fa fa-ellipsis-v pull-left"/>  
+          <span style={{padding: 10, display: 'inline-block'}} className="handle fa fa-ellipsis-v pull-left"/>  
           <a href={"#"+this.props.id} 
             data-toggle="collapse"  
             ref="title" 
