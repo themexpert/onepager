@@ -13,12 +13,12 @@ const $s                  = require('string');
 let Sidebar = React.createClass({
 
   render() {
-    let {sections, blocks, activeSectionIndex, activeSection} = this.props;
+    let {sections, blocks, activeSectionIndex, activeSection, isDirty} = this.props;
     let sectionEditable = activeSectionIndex === null ? false : true;
     let activeTab       = this.props.sidebarTabState.active;
 
     let getUniqueSectionId = function(sections, index, title){
-      let id = $s(title).dasherize().s;
+      let id = $s(title.trim()).dasherize().s; //make es3 compitable
 
       while(!_.arrIsUniqueProperty(sections, index, id, 'id')){
         id = id+1;
@@ -35,7 +35,10 @@ let Sidebar = React.createClass({
           <Tab id="op-settings" icon="sliders" title="Settings" active={activeTab} disabled={!sectionEditable} />
           <Tab id="op-menu" icon="link" title="Menu" active={activeTab} disabled={!sectionEditable}/>
 
-          <button onClick={AppStore.save} className="fa fa-save btn btn-primary btn--save"> &nbsp; Save</button>
+          <button disabled={!isDirty} onClick={AppStore.save} 
+            className="fa fa-save btn btn-primary btn--save"> 
+            &nbsp; Save { isDirty ? '*' : ''} 
+          </button>
         </ul>
 
         <div className="tab-content">

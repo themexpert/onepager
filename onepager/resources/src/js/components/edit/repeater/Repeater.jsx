@@ -2,9 +2,21 @@ const _             = require('underscore');
 const React         = require('react');
 const RepeatGroup   = require('./RepeatGroup.jsx');
 // const PureMixin     = require("react/lib/ReactComponentWithPureRenderMixin");
+const swal          = require('sweetalert');
 const SortableMixin = require('sortablejs/react-sortable-mixin');
 const Button        = require('react-bootstrap/lib/Button');
 
+function confirmDelete(proceed){
+  swal({
+    title: "Are you sure?",
+    text: "Time travel is still hard and there is no way back",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete it",
+    closeOnConfirm: true,
+    confirmButtonColor : '#d32f2f'
+  }, proceed);
+}
 
 
 let Repeater = React.createClass({
@@ -80,12 +92,10 @@ let Repeater = React.createClass({
       return;
     }
 
-    let proceed = window.confirm("There is no way back, really want to delete?");
-
-    if(proceed){
-      rGroups.splice(rgIndex, 1);
-      this.props.updateControl(rGroups);
-    }
+    confirmDelete(()=>{
+        rGroups.splice(rgIndex, 1);
+        this.props.updateControl(rGroups);
+    });
   },
 
 

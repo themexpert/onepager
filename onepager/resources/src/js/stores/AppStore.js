@@ -28,10 +28,11 @@ let AUTO_SAVE_DELAY     = 500;
 let _savedSections      = _.copy(_sections);
 
 // di
-let shouldSectionsSync  = ShouldSync(_sections, 'sections'); //jshint ignore:line
-let inactive            = Activity(AUTO_SAVE_DELAY); //jshint ignore:line
-let syncService         = SyncService(ODataStore.pageId, inactive, shouldSectionsSync); //jshint ignore:line
-let liveService         = SyncService(null, inactive, shouldSectionsSync); //jshint ignore:line
+let shouldLiveSectionsSync  = ShouldSync(_sections, 'sections'); //jshint ignore:line
+let shouldSectionsSync      = ShouldSync(_sections, 'sections'); //jshint ignore:line
+let inactive                = Activity(AUTO_SAVE_DELAY); //jshint ignore:line
+let syncService             = SyncService(ODataStore.pageId, inactive, shouldSectionsSync); //jshint ignore:line
+let liveService             = SyncService(null, inactive, shouldLiveSectionsSync); //jshint ignore:line
 
 
 //move to a better place
@@ -127,6 +128,7 @@ let AppStore = assign({}, BaseStore, {
   getAll() {
     return {
       blocks            : _blocks,
+      isDirty           : this.isDirty(),
       sections          : _sections,
       menuState         : _menuState,
       sidebarTabState   : _sidebarTabState,
@@ -138,7 +140,15 @@ let AppStore = assign({}, BaseStore, {
 
   save(){
     let updated = syncService.rawUpdate(_sections);
-    updated.then(()=>_savedSections = _.copy(_sections));
+    
+    updated.then(()=>{
+      _savedSections = _.copy(_sections);
+      AppStore.emitChange();
+    });
+  },
+
+  isDirty(){
+    return JSON.stringify(_sections) !== JSON.stringify(_savedSections);
   },
 
   get(index){
