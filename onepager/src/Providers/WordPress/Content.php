@@ -68,7 +68,8 @@ class Content implements ContentInterface {
 	public function isOnepagerByTemplate(){
 		$template = get_post_meta( $this->getCurrentPageId(), '_wp_page_template', true );
 
-    return ( $template == "onepage.php" ) ? true : false;
+		//template name is onepage.php or op-*.php
+    return ( $template == "onepage.php" || substr($template, 0, 3) == "op-" ) ? true : false;
 	}
 
 	public function isOnepagerByMeta() {
