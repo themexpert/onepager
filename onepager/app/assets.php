@@ -42,16 +42,16 @@ function enqueueOnepagerAssets() {
 			wp_enqueue_media();
 		}
 
+		$q->style( 'tx-colorpicker', asset( 'vendor/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css' ) );
+		$q->style( 'tx-iconselector', asset( 'dist/vendor/css/icon-selector.min.css' ) );
+		$q->style( 'tx-sweetalert', asset( 'dist/vendor/css/sweetalert.css' ) );
+		$q->style( 'tx-toastr', asset( 'dist/vendor/css/toastr.css' ) );
+
 		$q->script( 'tx-iconselector', asset( 'dist/vendor/js/icon-selector.min.js' ), [ 'jquery' ] );
 		$q->script( 'tx-colorpicker', asset( 'dist/vendor/js/bootstrap-colorpicker.js' ), [ 'jquery' ] );
 		$q->script( 'tx-toastr', asset( 'dist/vendor/js/toastr.js' ), [ 'jquery' ] );
 		$q->script( 'onepager', asset( 'dist/js/index.js' ), [ 'jquery' ] );
 		$q->localizeScript( 'onepager', getOnepagerData( onepager()->content()->getCurrentPageId() ), 'onepager' );
-
-		$q->style( 'tx-colorpicker', asset( 'vendor/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css' ) );
-		$q->style( 'tx-iconselector', asset( 'dist/vendor/css/icon-selector.min.css' ) );
-		$q->style( 'tx-sweetalert', asset( 'dist/vendor/css/sweetalert.css' ) );
-		$q->style( 'tx-toastr', asset( 'dist/vendor/css/toastr.css' ) );
 	}
 
 	$q->style( 'tx-flexbox', asset( 'dist/styles/flex.css' ) );

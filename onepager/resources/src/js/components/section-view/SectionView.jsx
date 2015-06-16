@@ -1,18 +1,20 @@
 const $           = jQuery; //jshint ignore:line
 const React       = require('react');
-// const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
+const cx          = require('classnames');
 const AppActions  = require('../../actions/AppActions');
 
 let Section = React.createClass({
   // mixins: [PureMixin],
   shouldComponentUpdate(nextProps){
     //if content changed
-    let contentChanged  = this.props.section.content===nextProps.section.content;
+    let contentChanged  = this.props.section.content === nextProps.section.content;
 
     //if reordered
     let keyChanged      = this.props.section.key === nextProps.section.key;
+
+    let active = this.props.active === nextProps.active;
     
-    return  !contentChanged || !keyChanged;
+    return !active || !contentChanged || !keyChanged;
   },
   
   componentDidMount(){
@@ -35,7 +37,12 @@ let Section = React.createClass({
 
   render() {
     console.log("re rendering section view");
-    return <section onClick={this.handleClick} />;
+
+    let classes = cx({
+      'active': this.props.active
+    });
+
+    return <section className={classes} onClick={this.handleClick} />;
   }
 });
 

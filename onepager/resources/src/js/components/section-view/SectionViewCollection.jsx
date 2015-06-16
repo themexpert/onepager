@@ -4,12 +4,12 @@ const SectionView   = require('./SectionView.jsx');
 let SectionViewCollection = React.createClass({
   render() {
     let sections = this.props.sections;
-
     return (
       <div id="sections">
         {
           sections.map((section, index)=> {
-            return <SectionView section={section} key={section.key} index={index}/>;
+            let active = this.props.activeSectionIndex === index;
+            return <SectionView active={active} section={section} key={section.key} index={index}/>;
           })
         }
       </div>
