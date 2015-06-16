@@ -48,7 +48,13 @@ let ColorPicker = React.createClass({
 
   componentDidMount() {
     $( React.findDOMNode(this.refs.input) )
-      .colorpicker()
+      .colorpicker({
+        sliders: {
+            saturation: { maxLeft: 140, maxTop: 140},
+            hue: { maxTop: 140 },
+            alpha: { maxTop: 140 }
+        }
+      })
       .on("changeColor.colorpicker, .color-icon", this.onChange);
   },
 
