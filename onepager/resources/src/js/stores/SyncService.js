@@ -21,14 +21,14 @@ function SyncService(pageId, inactive, shouldSectionsSync){
     let sync = function(){
       $.post(ODataStore.ajaxUrl, payload, (res)=>{
         if(!res || !res.success){
-          return notify.warning('Failed to update :(');
+          return notify.error('Unable to sync. Make sure you are logged in');
         }
 
         //else
         AppActions.sectionSynced(sectionIndex, res);
         
         if(pageId){
-          notify.success('Successfully Updated Sections');
+          notify.success('Sync Successful');
         }
 
       });
@@ -55,14 +55,14 @@ function SyncService(pageId, inactive, shouldSectionsSync){
       let sync = function(){
         $.post(ODataStore.ajaxUrl, payload, (res)=>{
           if(!res || !res.success){
-            notify.warning('Failed to update');
+            notify.error('Unable to save. Make sure you are logged in');
 
             return reject();
           }
 
           
           if(pageId){
-            notify.success('Successfully Updated');
+            notify.success('Database Update Successful');
           }
           return resolve();
         });
