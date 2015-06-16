@@ -29,9 +29,24 @@ let Section = React.createClass({
     let content = this.props.section.content;
 
     $(React.findDOMNode(this)).html(content);
+    
+    if(!this.props.active){
+      return false;
+    }
+    
+
+    //TODO: find a way to scroll natively with animation
+    // React.findDOMNode(this).scrollIntoView();
+    // jQuery animation is costly cpu calculation
+    jQuery('html, body').animate({
+        scrollTop: jQuery(React.findDOMNode(this)).offset().top - 32 //32px wpadminbar height
+    }, 1000);
+    
   },
 
   handleClick(){
+    
+
     AppActions.editSection(this.props.index);
   },
 
