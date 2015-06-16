@@ -2,8 +2,8 @@
 
 return array(
   
-  'slug'      => 'contents-1', // Must be unique
-  'groups'    => ['contents'], // Blocks group for filter
+  'slug'      => 'content-1', // Must be unique and singular
+  'groups'    => ['contents'], // Blocks group for filter and plural
 
   // Fields - $fields available on view file to access the option
   'fields' => array(

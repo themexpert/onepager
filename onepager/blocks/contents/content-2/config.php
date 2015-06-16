@@ -1,8 +1,8 @@
 <?php
 
 return array(
-  'slug'    => 'blurb-1',
-  'groups'    => ['blurb'],
+  'slug'    => 'content-2',
+  'groups'    => ['contents'],
 
   'fields' => array(
     array('name'=>'title', 'value'=>'Ready for the launch of our new website'),
@@ -89,7 +89,7 @@ return array(
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'blurb', $path . 'style.css' );
+    onepager()->asset()->style( 'content-2', $path . 'style.css' );
   }
 );
 
