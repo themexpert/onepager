@@ -21,6 +21,10 @@ function confirmDelete(proceed){
 
 let Repeater = React.createClass({
   mixins: [SortableMixin],
+  
+  getInitialState(){
+
+  },
 
   sortableOptions: {
     ref: "repeat-groups",
@@ -105,7 +109,7 @@ let Repeater = React.createClass({
 
       let rGroups = this.props.options.fields;
 
-      //TODO: there has to e a better way
+      //TODO: there has to be a better way
       let id = this.getId();
 
       return (

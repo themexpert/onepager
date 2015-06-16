@@ -38,6 +38,8 @@ let Section = React.createClass({
     //TODO: find a way to scroll natively with animation
     // React.findDOMNode(this).scrollIntoView();
     // jQuery animation is costly cpu calculation
+    // also need to optimize it at a later time when speed is crucial
+    // TODO: SPEED
     jQuery('html, body').animate({
         scrollTop: jQuery(React.findDOMNode(this)).offset().top - 32 //32px wpadminbar height
     }, 1000);
@@ -45,8 +47,6 @@ let Section = React.createClass({
   },
 
   handleClick(){
-    
-
     AppActions.editSection(this.props.index);
   },
 
@@ -54,6 +54,7 @@ let Section = React.createClass({
     console.log("re rendering section view");
 
     let classes = cx({
+      'op-section-view': true,
       'active': this.props.active
     });
 
