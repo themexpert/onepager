@@ -1,9 +1,10 @@
 module.exports = {
-  shouldComponentUpdate(nextProps){
+  shouldComponentUpdate(nextProps, nextState){
     //immutable please
     //TODO: speed
-    let equal = JSON.stringify(nextProps) === JSON.stringify(this.props);
-
-    return !equal;
+    let equalProps = JSON.stringify(nextProps) === JSON.stringify(this.props);
+    let equalState = JSON.stringify(nextState) === JSON.stringify(this.state);
+    
+    return !equalProps || !equalState;
   },
 };
