@@ -1,10 +1,11 @@
 const _             = require('underscore');
 const React         = require('react');
 const RepeatGroup   = require('./RepeatGroup.jsx');
-// const PureMixin     = require("react/lib/ReactComponentWithPureRenderMixin");
 const swal          = require('sweetalert');
 const SortableMixin = require('sortablejs/react-sortable-mixin');
 const Button        = require('react-bootstrap/lib/Button');
+const PureMixin     = require('../../../mixins/PureMixin.js');
+
 
 function confirmDelete(proceed){
   swal({
@@ -20,11 +21,7 @@ function confirmDelete(proceed){
 
 
 let Repeater = React.createClass({
-  mixins: [SortableMixin],
-  
-  getInitialState(){
-
-  },
+  mixins: [SortableMixin, PureMixin],
 
   sortableOptions: {
     ref: "repeat-groups",
@@ -42,10 +39,6 @@ let Repeater = React.createClass({
     
     // TODO: need unique keys for each rGroup
     this.props.updateControl(rGroups);
-  },
-
-  getId(){
-    return "repeater-"+ this.props.repeatIndex;
   },
 
   getGroupRef(ii){
@@ -106,12 +99,9 @@ let Repeater = React.createClass({
 
   render() {
       console.log('rendering repeater');
-
-      let rGroups = this.props.options.fields;
-
-      //TODO: there has to be a better way
-      let id = this.getId();
-
+      let rGroups   = this.props.options.fields;
+      let id        = this.props.id;
+      
       return (
         <div ref="container" className="repeatable-control">
 
@@ -121,15 +111,18 @@ let Repeater = React.createClass({
 
           <div ref="repeat-groups" className="panel-group" id={id} role="tablist" aria-multiselectable="true">
           { rGroups.map((rGroup, ii)=>{
-              let collapse = (ii === (rGroups.length-1)?1:0);
+              let active = (ii === (rGroups.length-1)?1:0);
 
               return (
-                <RepeatGroup parentId={id}
-                  collapse={collapse} 
+                <RepeatGroup 
+                  options={rGroup}
                   duplicate={this.addRepeatGroup.bind(this, true, ii)}
                   onChange={this.props.onChange}
                   remove={this.removeRepeatGroup.bind(this, ii)} 
-                  options={rGroup} ref={this.getGroupRef(ii)} 
+                  
+                  active={active}
+                  parentId={id}
+                  ref={this.getGroupRef(ii)} 
                   key={this.getGroupRef(ii)} 
                   index={ii} />
               );

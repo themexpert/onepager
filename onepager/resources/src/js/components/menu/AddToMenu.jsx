@@ -13,6 +13,7 @@ const AppActions      = require('../../actions/AppActions');
 
 let AddToMenu = React.createClass({
   mixins: [PureComponent],
+  
   getInitialState(){
     return {
       isUnique: true

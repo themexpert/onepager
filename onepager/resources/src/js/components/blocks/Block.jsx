@@ -17,6 +17,7 @@ let Block = React.createClass({
   },
 
   render() {
+    console.log("rendering block");
     let block = this.props.block;
 
     return (

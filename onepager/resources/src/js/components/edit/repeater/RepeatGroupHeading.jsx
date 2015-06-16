@@ -1,16 +1,26 @@
 const React     = require("react");
-const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const PureMixin = require('../../../mixins/PureMixin.js');
 
 let RepeatGroupHeading = React.createClass({
   mixins: [PureMixin],
+
+  propTypes: {
+    id: React.PropTypes.string,
+    parentId: React.PropTypes.string,
+    title: React.PropTypes.string,
+    remove: React.PropTypes.func,
+    duplicate: React.PropTypes.func,
+  },
   
   handleClick(){
     React.findDOMNode(this).scrollIntoView();
   },
 
   render(){
+    console.log("rendering repeat group heading");
+
     return(
-      <div onClick={this.handleClick} className="panel-heading" role="tab">
+      <div className="panel-heading" role="tab">
         <h4 className="panel-title">
           <span className="handle fa fa-ellipsis-v pull-left"/>  
           <a href={"#"+this.props.id} 

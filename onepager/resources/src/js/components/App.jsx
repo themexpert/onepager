@@ -2,7 +2,7 @@ const React                 = require('react');
 const AppStore              = require('../stores/AppStore');
 const Sidebar               = require('./sidebar/Sidebar.jsx');
 const SectionViewCollection = require('./section-view/SectionViewCollection.jsx');
-const _         = require('underscore');
+const _                     = require('underscore');
 
 let App = React.createClass({
   getInitialState() {

@@ -7,10 +7,11 @@ const Section             = require('./Section.jsx');
 const BlockCollection     = require('../blocks/BlockCollection.jsx');
 const AppStore            = require('../../stores/AppStore.js');
 const AppActions          = require('../../actions/AppActions.js');
+const PureMixin           = require('../../mixins/PureMixin.js');
 
 
 let SectionCollection = React.createClass({
-  mixins: [SortableMixin],
+  mixins: [SortableMixin, PureMixin],
 
   getInitialState(){
     return {

@@ -8,9 +8,12 @@ const SectionSettings     = require('../edit/SectionSettings.jsx');
 const AddToMenu           = require('../menu/AddToMenu.jsx');
 const AppActions          = require('../../actions/AppActions');
 const AppStore            = require('../../stores/AppStore');
+const PureMixin           = require('../../mixins/PureMixin.js');
 const $s                  = require('string');
 
 let Sidebar = React.createClass({
+  mixins: [PureMixin],
+
   getInitialState(){
     return {
       saving: false

@@ -1,8 +1,9 @@
-const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const React     = require('react');
 const _         = require('underscore');
 const Input     = require('./../form/Input.jsx');
 const Heading   = require('./RepeatGroupHeading.jsx');
+const cx        = require('classnames');
+const PureMixin = require('../../../mixins/PureMixin.js');
 
 let RepeatGroup = React.createClass({
   mixins: [PureMixin],
@@ -22,12 +23,9 @@ let RepeatGroup = React.createClass({
     return rGroup;
   },
 
-  onChange(){
-    this.props.onChange();
-  },
-
 
   getGroupTitle(){
+    //TODO: get the first text type field
     let rGroups = this.props.options;
 
     let title = _.find(rGroups, {'name':'title'}); 
@@ -46,22 +44,28 @@ let RepeatGroup = React.createClass({
   render() {
     console.log('rendering repeater group');
 
-    let rGroup    = this.props.options;
-    let title     = this.getGroupTitle();
     let id        = this.getId();
-    let collapse  = parseInt(this.props.collapse)? "in" : "";
-
-    let controls  = rGroup.map((rControl)=>{
-      return <Input {...this.props} onChange={this.onChange} ref={rControl.ref} key={rControl.ref} options={rControl} />;
+    let title     = this.getGroupTitle();
+    let rGroup    = this.props.options;
+    let classes   = cx({
+      "panel-collapse collapse": true,
+      "in": this.props.active
     });
 
-
+    let controls  = rGroup.map((rControl)=>{
+      return <Input onChange={this.props.onChange} ref={rControl.ref} key={rControl.ref} options={rControl} />;
+    });
 
     return (
-      <div data-index={this.props.index} className="panel panel-default">
-        <Heading title={title} id={id} {...this.props} />
+      <div className="panel panel-default">
+        <Heading 
+          id={id} 
+          parentId={this.props.parentId} 
+          title={title} 
+          remove={this.props.remove} 
+          duplicate={this.props.duplicate} />
 
-        <div id={id} className={"panel-collapse collapse "+collapse} role="tabpanel">
+        <div id={id} className={classes} role="tabpanel">
           <div className="panel-body">{controls}</div>
         </div>
 

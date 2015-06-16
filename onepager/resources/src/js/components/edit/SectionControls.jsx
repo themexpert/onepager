@@ -1,11 +1,11 @@
 const React       = require('react');
 const _           = require("underscore");
-const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
 const Divider     = require('./Divider.jsx');
 const Input       = require('./form/Input.jsx');
 const Repeater    = require('./repeater/Repeater.jsx');
+const PureMixin   = require('../../mixins/PureMixin.js');
 
-let SectionControls = React.createClass({
+let SectionControls = React.createClass({ 
   mixins: [PureMixin],
 
   update(){
@@ -53,8 +53,9 @@ let SectionControls = React.createClass({
         onChange: this.update,
         options: control,
         ref: control.ref,
+        id: control.ref,
+        key: control.ref,
         sectionIndex: sectionIndex,
-        key: sectionIndex+"-"+ii
       };
 
       switch(control.type){

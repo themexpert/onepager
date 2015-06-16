@@ -7,25 +7,25 @@ const ImageIcon     = require('./ImageIcon.jsx');
 const WpMedia       = require('./WpMedia.jsx');
 const Select        = require('./Select.jsx');
 const WpSelect      = require('./WpSelect.jsx');
-
-const PreMixin      = require('react/lib/ReactComponentWithPureRenderMixin');
+const PureMixin     = require('../../../mixins/PureMixin.js');
 const Activity      = require('../../../lib/Activity');
 
 let inactive        = Activity(100); //jshint ignore:line
 
 let InputControl = React.createClass({
-  mixins: [PreMixin],
+  mixins: [PureMixin],
 
   getValue(){
     return this.refs.input.getValue();
   },
 
   onChange(){
-    inactive().then(()=> this.props.onChange() );
+    inactive().then( ()=> this.props.onChange() );
   },
 
   render() {
-      let control, options = this.props.options; //because I need to mutate
+      let control, options = this.props.options; 
+      // console.log("i m input %s", options.name);
 
       switch(options.type){
         case "icon":

@@ -28,6 +28,7 @@ let BlockCollection = React.createClass({
   },
 
   render() {
+    console.log("readering blocks");
     let {blocks} = this.props;
 
     let groups = _.unique(blocks.reduceRight(function(groups, block){

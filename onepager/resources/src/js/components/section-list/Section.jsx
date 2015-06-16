@@ -4,6 +4,7 @@ const Input       = require('react-bootstrap/lib/Input');
 const _           = require('underscore');
 const AppActions  = require('../../actions/AppActions');
 const cx          = require('classnames');
+const PureMixin   = require('../../mixins/PureMixin.js');
 
 function confirmDelete(proceed){
   swal({
@@ -18,6 +19,8 @@ function confirmDelete(proceed){
 }
 
 let Section = React.createClass({
+  mixins: [PureMixin],
+  
   getInitialState(){
     return {
       titleEditState: false
