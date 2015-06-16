@@ -3,6 +3,7 @@ const swal        = require('sweetalert');
 const Input       = require('react-bootstrap/lib/Input');
 const _           = require('underscore');
 const AppActions  = require('../../actions/AppActions');
+const cx          = require('classnames');
 
 function confirmDelete(proceed){
   swal({
@@ -69,9 +70,14 @@ let Section = React.createClass({
 
   render() {
     let section = this.props.section;
+    
+    let classes = cx({
+      'txop-cards' : true,
+      'active'     : this.props.active
+    });
 
     return (
-      <div className="txop-cards">
+      <div className={classes}>
         { this.state.titleEditState ?
           <div>
             <Input type="text" ref="title" onKeyUp={this.closeEditTitle} defaultValue={section.title} /> 

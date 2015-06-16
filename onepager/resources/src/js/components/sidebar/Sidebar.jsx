@@ -63,6 +63,7 @@ let Sidebar = React.createClass({
         <div className="tab-content">
           <TabPane id="op-sections" active={activeTab}>
             <SectionList 
+              activeSectionIndex={activeSectionIndex}
               blocks={blocks} 
               sections={sections} 
               getUniqueSectionId={(index, id)=>{

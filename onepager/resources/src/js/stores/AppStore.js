@@ -176,9 +176,12 @@ let AppStore = assign({}, BaseStore, {
     this.emitChange();
   },
 
-  reorder(){
+  reorder(sections, index){
+    setActiveSection(index);
+    this.setSections(sections);
     liveService.rawUpdate(_sections);
   },
+
   rawUpdate(){
     liveService.rawUpdate(_sections);
   },

@@ -49,8 +49,7 @@ let SectionCollection = React.createClass({
     sections[e.oldIndex].key  = _.randomId('s_');
     sections[e.newIndex].key  = _.randomId('s_');
 
-    AppStore.setSections(sections);
-    AppStore.reorder();
+    AppStore.reorder(sections, e.newIndex);
   },
 
   updateSection(index, section){
@@ -89,7 +88,8 @@ let SectionCollection = React.createClass({
           <div ref="sections">
             {sections.map((section, index)=> {
               return (
-                <Section 
+                <Section
+                  active={this.props.activeSectionIndex === index} 
                   getUniqueSectionId={this.props.getUniqueSectionId} 
                   update={this.updateSection.bind(this, index)} 
                   section={section} 
