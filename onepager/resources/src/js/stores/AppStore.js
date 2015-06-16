@@ -128,6 +128,7 @@ let AppStore = assign({}, BaseStore, {
   getAll() {
     return {
       blocks            : _blocks,
+      isDirty           : this.isDirty(),
       sections          : _sections,
       menuState         : _menuState,
       sidebarTabState   : _sidebarTabState,
@@ -139,7 +140,15 @@ let AppStore = assign({}, BaseStore, {
 
   save(){
     let updated = syncService.rawUpdate(_sections);
-    updated.then(()=>_savedSections = _.copy(_sections));
+    
+    updated.then(()=>{
+      _savedSections = _.copy(_sections);
+      AppStore.emitChange();
+    });
+  },
+
+  isDirty(){
+    return JSON.stringify(_sections) !== JSON.stringify(_savedSections);
   },
 
   get(index){
