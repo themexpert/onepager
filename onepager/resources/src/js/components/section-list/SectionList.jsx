@@ -3,14 +3,14 @@ const React               = require('react');
 const cx                  = require('classnames');
 const SortableMixin       = require('sortablejs/react-sortable-mixin');
 const Button              = require('react-bootstrap/lib/Button');
-const Section             = require('./Section.jsx');
+const SectionLi           = require('./Section.jsx');
 const BlockCollection     = require('../blocks/BlockCollection.jsx');
 const AppStore            = require('../../stores/AppStore.js');
 const AppActions          = require('../../actions/AppActions.js');
-const PureMixin           = require('../../mixins/PureMixin.js');
+// const PureMixin           = require('../../mixins/PureMixin.js');
+const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
 
-
-let SectionCollection = React.createClass({
+let SectionList = React.createClass({
   mixins: [SortableMixin, PureMixin],
 
   getInitialState(){
@@ -88,12 +88,19 @@ let SectionCollection = React.createClass({
           
           <div ref="sections">
             {sections.map((section, index)=> {
+              let updateTitle = (title)=>{
+                let uSection   = _.copy(section);
+
+                uSection.title = title;
+                this.updateSection(index, uSection);
+              };
+
               return (
-                <Section
+                <SectionLi
                   active={this.props.activeSectionIndex === index} 
                   getUniqueSectionId={this.props.getUniqueSectionId} 
-                  update={this.updateSection.bind(this, index)} 
-                  section={section} 
+                  updateTitle={updateTitle} 
+                  title={section.title} 
                   key={section.key} 
                   index={index} />
               );
@@ -109,4 +116,4 @@ let SectionCollection = React.createClass({
   } //end render
 });
 
-module.exports = SectionCollection;
+module.exports = SectionList;

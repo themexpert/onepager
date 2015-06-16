@@ -54,25 +54,19 @@ let Section = React.createClass({
       return;
     }
 
-    //immutable please
-    let section   = _.copy(this.props.section);
     let title     = this.refs.title.getValue();
 
-    if(section.title === 'untitlted section'){
-      section.id  = this.props.getUniqueSectionId(this.props.index, title);
+    if(this.props.title === 'untitlted section'){
+      this.props.id  = this.props.getUniqueSectionId(this.props.index, title);
     }
 
-    section.title = title;
-
-
-
-    this.props.update(section);
+    this.props.updateTitle(title);
     this.setState({titleEditState: false});
   },
 
 
   render() {
-    let section = this.props.section;
+    let title = this.props.title;
     
     let classes = cx({
       'txop-cards' : true,
@@ -83,10 +77,10 @@ let Section = React.createClass({
       <div className={classes}>
         { this.state.titleEditState ?
           <div>
-            <Input type="text" ref="title" onKeyUp={this.closeEditTitle} defaultValue={section.title} /> 
+            <Input type="text" ref="title" onKeyUp={this.closeEditTitle} defaultValue={title} /> 
             <span className="label label-default">Enter</span>
           </div> :
-          <div><h3 onClick={this.handleEditSection}>{section.title}</h3> <span className="fa fa-pencil" onClick={this.handleEditTitle}></span></div>
+          <div><h3 onClick={this.handleEditSection}>{title}</h3> <span className="fa fa-pencil" onClick={this.handleEditTitle}></span></div>
         }
         <div className="action-btns">
           <span className="fa fa-copy" onClick={this.handleDuplicateSection} ></span>
