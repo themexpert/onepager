@@ -38,7 +38,7 @@
   > li > a:not(.btn){ .box-shadow(none); }
   > li.active > a{ color: @brand-primary; }
   // Disabled
-  > li.disabled > a{ color: #5B5F64; cursor: not-allowed; }
+  > li.disabled > a{ cursor: not-allowed; }
 }
 .tx-nav-tabs{
   > li{ display: inline-block; margin: 0; }
@@ -89,15 +89,18 @@ a{ text-decoration: inherit; color: @brand-primary; }
       .fa{ color: #f44336; }
     } 
 } 
+.form-control::-moz-placeholder{color:#545454;opacity:1}
+  .form-control:-ms-input-placeholder{color:#545454}
+  .form-control::-webkit-input-placeholder{color:#545454}
 
 // ****************************************************
 // Onepager UI style - Override default bootstrap
 // ****************************************************
 .op-ui{
 
-  // Backgroudn and color
-  // ---------------------------------------------
-  
+  // Backgroudn and colors
+  // ----------------------
+
   // Sidebar
   &.txop-sidebar{
     background: @bg-primary; border-right: 1px solid darken(@bg-primary, 5%);
@@ -105,6 +108,8 @@ a{ text-decoration: inherit; color: @brand-primary; }
   // Tabs
   .tx-nav{
     > li > a{ color: @text-color ; }
+    // Disabled
+    > li.disabled > a{ color: #5E5E5E;}
   }
   .tx-nav-tabs{ 
     background: @bg-secondary; 
@@ -144,6 +149,7 @@ a{ text-decoration: inherit; color: @brand-primary; }
     }
   }
   .input-group .btn-primary{ border-color: lighten(@bg-primary, 10%); color: @text-color; }
+  .input-group-addon{ background: darken(@bg-secondary, 2%); border-color: lighten(@bg-primary, 10%);}
 
   label{ 
     color: @text-color;
