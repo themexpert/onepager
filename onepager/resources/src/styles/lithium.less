@@ -8,6 +8,13 @@
 // Less Hat - DO NOT REMOVE IT
 @import "../../vendor/lesshat/build/lesshat.less";
 
+// Background 
+@bg-primary     : #404a53;
+@bg-secondary   : #2d363f;
+
+// Text Color
+@text-color     : #A5A5A5;
+
 // Bootstrap override
 @brand-primary:           #009688;
 @brand-success:           #2196F3;
@@ -27,31 +34,23 @@
 .tx-nav{
   margin : 0; padding: 0;
   > li{ position: relative; display: block; }
-  > li > a{ display: block; padding: 10px 20px; text-decoration: inherit; color: #666; font-size: 1.5em;}
+  > li > a{ display: block; padding: 10px 20px; text-decoration: inherit; font-size: 1.5em; }
   > li > a:not(.btn){ .box-shadow(none); }
   > li.active > a{ color: @brand-primary; }
   // Disabled
-  > li.disabled > a{ color: #b5b5b5; cursor: not-allowed; }
-  .btn{ color: #fff; }
+  > li.disabled > a{ color: #5B5F64; cursor: not-allowed; }
 }
 .tx-nav-tabs{
-  background: #eee;
   > li{ display: inline-block; margin: 0; }
   > li > a{ padding: 12px 15px}
-  // Active
-  > li.active > a{ background: #f5f5f5; }
 }
 
-.lm-nav-pills {
+.nav-pills {
   margin: 0;
   > li > a{ outline: 0; .box-shadow(none); text-transform: uppercase; font-size: 12px; padding: 5px 10px; color: #666; letter-spacing: 0.5px; }
-
-  > li.active > a,
-  > li.active > a:hover,
-  > li.active > a:focus{ background: darken(@brand-primary, 2%); }
 }
 
-.tab-pane{ background: #f5f5f5; padding: 10px; }
+.tab-pane{ padding: 10px; }
 
 // General
 body{ 
@@ -95,21 +94,87 @@ a{ text-decoration: inherit; color: @brand-primary; }
 // Onepager UI style - Override default bootstrap
 // ****************************************************
 .op-ui{
-  // Label
-  label{ font-size: 12px; font-weight: normal; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  // Backgroudn and color
+  // ---------------------------------------------
+  
+  // Sidebar
+  &.txop-sidebar{
+    background: @bg-primary; border-right: 1px solid darken(@bg-primary, 5%);
+  }
+  // Tabs
+  .tx-nav{
+    > li > a{ color: @text-color ; }
+  }
+  .tx-nav-tabs{ 
+    background: @bg-secondary; 
+    > li.active > a{ background: @bg-primary; color: @brand-primary; }
+  }
+  // Pills
+  .nav-pills{
+    > li:hover a,
+    > li.active > a,
+    > li.active > a:hover,
+    > li.active > a:focus{ background: transparent; border: 1px solid @brand-primary; }  
+  }
+  
+  // Cards
+  .txop-cards{
+    background: @bg-secondary; 
+    .action-btns{
+      border-left: 1px solid darken(@bg-secondary, 5%);
+    }
+    span:first-child{ border-bottom: 1px solid darken(@bg-secondary, 5%); }
+  }
+
+  // Form
+  .form-control{ 
+    background: @bg-secondary; color: @text-color;
+    border-color: lighten(@bg-primary, 10%);
+    &:focus{
+      .box-shadow(0 0 8px lighten(@brand-primary, 10%));
+    }
+  }
+  .input-group .btn-primary{ border-color: lighten(@bg-primary, 10%); color: @text-color; }
+
+  label{ 
+    color: @text-color;
+    font-size: 12px; font-weight: normal; text-transform: uppercase; letter-spacing: 0.5px; 
+  }
+  
   // Buttons
   .btn{
     .border-radius(2px);
-    .box-shadow(0 1px 4px rgba(0, 0, 0, 0.24));
+    // .box-shadow(0 1px 4px rgba(0, 0, 0, 0.24));
     // .transition(all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms);
-    border: 0; text-shadow: none;
+    text-shadow: none;
   }
+
   .btn-primary{
-     .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+     background: transparent;
+     color: lighten(@brand-primary, 5%);
+     border-color: lighten(@brand-primary, 5%);
+     &:hover{
+      color: lighten(@brand-primary, 15%);
+      border-color: lighten(@brand-primary, 15%);
+     }
   }
   .btn-info{
-     .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+     .button-variant(@btn-info-bg; transparent; @btn-info-border);
   }
+
+  // Panel
+  .panel{ background: darken(@bg-primary, 5%); }
+  .panel-heading{ background: darken(@bg-secondary, 1%); color: @text-color;}
+  .panel,
+  .panel-heading{ border-color: darken(@bg-secondary, 2%); }
+  .panel-title a:hover,
+  .panel-title a:focus{ color: lighten(@brand-primary, 15%); }
+
+  .panel-default > .panel-heading + .panel-collapse > .panel-body{ border-color: darken(@bg-secondary, 2%); }
+  
+  .repeater-action-btns span:hover,
+  .handle:hover{ color: lighten(@brand-primary, 15%); }
 
   //Divider
   h3.form-divider {
@@ -122,10 +187,10 @@ a{ text-decoration: inherit; color: @brand-primary; }
     border-bottom: 1px solid rgb(221, 221, 221);
   }
 }
+
 // Cards - Sections list
 .txop-cards{
-  background: #fff; padding: 10px 25px 10px 10px; 
-  .box-shadow(0 0 4px #ccc);
+  padding: 10px 25px 10px 10px; 
   margin: 10px 0;
   position: relative;
   cursor: move;
@@ -138,12 +203,12 @@ a{ text-decoration: inherit; color: @brand-primary; }
   }
   
   span{ cursor: pointer; }
-  .actions-btns{
-    height: 100%; border-left: 1px solid #ddd; 
+  .action-btns{
+    height: 100%;
     position: absolute; top: 0; right: 0;
 
-    span{ display: block; padding: 0 7px; font-size: 12px; line-height: 20px; color: #888; }
-    span:first-child{ border-bottom: 1px solid #ddd; }
+    span{ display: block; padding: 0 7px; font-size: 12px; line-height: 20px;}
+    
   }
 
   .form-group{ margin: 0; width: 96%; }
@@ -153,8 +218,7 @@ a{ text-decoration: inherit; color: @brand-primary; }
 // ****************************************************
 //  Sidebar / Configure
 // ****************************************************
-.op-sidebar{
-  background: #f5f5f5; border-right: 1px solid #ddd;
+.txop-sidebar{
   position: fixed; left: 0; top: 32px; bottom: 0; width: 23%;
   padding-top: 54px; 
 
@@ -163,22 +227,22 @@ a{ text-decoration: inherit; color: @brand-primary; }
   .btn--back { padding : 6px 11px; }
   .btn--add-repeater {margin-bottom: 10px;}
   
-
   // Repeater
   .repeatable-control{
     .panel-heading{ position: relative; padding : 10px 12px 10px 2px; }
     .panel-title{ 
       width: 84%; overflow: hidden; 
+      font-size: 13px; font-weight: normal; text-transform: uppercase; 
       > a{ width: 500px; display: block; text-decoration: none; }
     }
-    .handle { padding : 0 5px; cursor: move; color: #888; }
+    .handle { padding : 0 5px; cursor: move; }
   }
   .repeater-action-btns{
-    font-size: 13px; line-height: 1.3em; color: #888;
+    font-size: 13px; line-height: 1.3em;
     position: absolute; top: 10px; right: 8px;
     span{ 
       cursor: pointer;
-      &:hover{ color: #444; }
+      &:hover{ color: lighten(@brand-primary, 15%); }
       &+ span { margin-left: 6px; }
     }
   }

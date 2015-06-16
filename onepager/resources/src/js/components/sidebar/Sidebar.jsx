@@ -28,7 +28,7 @@ let Sidebar = React.createClass({
     };
 
     return (
-      <div className="op-sidebar op-ui clearfix">
+      <div className="txop-sidebar op-ui clearfix">
         <ul className="tx-nav tx-nav-tabs">
           <Tab id="op-sections" icon="bars" title="Layout" active={activeTab}/>
           <Tab id="op-contents" icon="database" title="Contents" active={activeTab} disabled={!sectionEditable} />

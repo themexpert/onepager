@@ -58,7 +58,7 @@ let BlockCollection = React.createClass({
             options={groupOptions} 
             onChange={this.handleChange} />
 
-          <Button bsStyle='default' className="btn--back" onClick={this.props.closeBlocks}><span className="fa fa-arrow-left"></span> Back</Button>
+          <Button bsStyle='primary' className="btn--back" onClick={this.props.closeBlocks}><span className="fa fa-arrow-left"></span> Back</Button>
         </div>
 
         <div>

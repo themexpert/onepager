@@ -79,7 +79,7 @@ let Section = React.createClass({
           </div> :
           <div><h3 onClick={this.handleEditSection}>{section.title}</h3> <span className="fa fa-pencil" onClick={this.handleEditTitle}></span></div>
         }
-        <div className="actions-btns">
+        <div className="action-btns">
           <span className="fa fa-copy" onClick={this.handleDuplicateSection} ></span>
           <span className="fa fa-close" onClick={this.handleRemoveSection} ></span>
         </div>
