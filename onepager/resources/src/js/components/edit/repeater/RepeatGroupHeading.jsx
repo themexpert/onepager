@@ -4,9 +4,13 @@ const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithP
 let RepeatGroupHeading = React.createClass({
   mixins: [ReactComponentWithPureRenderMixin],
   
+  handleClick(){
+    React.findDOMNode(this).scrollIntoView();
+  },
+
   render(){
     return(
-      <div className="panel-heading" role="tab">
+      <div onClick={this.handleClick} className="panel-heading" role="tab">
         <h4 className="panel-title">
           <span className="handle fa fa-ellipsis-v pull-left"/>  
           <a href={"#"+this.props.id} 
