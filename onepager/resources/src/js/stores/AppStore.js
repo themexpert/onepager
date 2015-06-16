@@ -145,6 +145,8 @@ let AppStore = assign({}, BaseStore, {
       _savedSections = _.copy(_sections);
       AppStore.emitChange();
     });
+
+    return updated;
   },
 
   isDirty(){
