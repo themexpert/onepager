@@ -101,6 +101,10 @@ a{ text-decoration: inherit; color: @brand-primary; }
   // Backgroudn and colors
   // ----------------------
 
+  // Selection text
+  ::selection       { background: @brand-primary; color: #fff; }
+  ::-moz-selection  { background: @brand-primary; color: #fff; }
+
   // Sidebar
   &.txop-sidebar{
     background: @bg-primary; border-right: 1px solid darken(@bg-primary, 5%);
@@ -147,7 +151,8 @@ a{ text-decoration: inherit; color: @brand-primary; }
     border-color: lighten(@bg-primary, 10%);
     font-size: 12px;
     &:focus{
-      .box-shadow(0 0 8px lighten(@brand-primary, 10%));
+      .box-shadow(none);
+      border-color: lighten(@brand-primary, 15%)
     }
   }
   .input-group .btn-primary{ border-color: lighten(@bg-primary, 10%); color: @text-color; }

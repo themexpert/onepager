@@ -82,7 +82,7 @@ let ImageIconSelector = React.createClass({
               <input {...this.props} type="text" className={"form-control media-input "+this.props.className} ref="input"/>
               <span className="input-group-btn">
                 <button className="btn btn-primary image-selector-button" type="button" ref="img-btn"><span className="fa fa-picture-o"></span></button>
-                <button className="btn btn-info icon-selector-button" ref="icon-btn" type="button"><span className="fa fa-flag-o"></span></button>
+                <button className="btn btn-primary icon-selector-button" ref="icon-btn" type="button"><span className="fa fa-flag-o"></span></button>
               </span>
             </div>
             <div className="media-preview"></div>
