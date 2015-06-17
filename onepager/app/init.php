@@ -20,6 +20,8 @@ add_action( 'wp', function () {
 	if ( onepager()->content()->isLiveMode() ) {
 		$query->modify( array( 'livemode' => false ) );
 
+		show_admin_bar(false);
+
 		onepager()->toolbar()->addMenu( 'op-disable-livemode', $url, '<span class="fa fa-circle"></span> Disable Build Mode</span>' );
 	} else {
     if(!onepager()->content()->isOnepage()){
