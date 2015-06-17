@@ -8,10 +8,11 @@ const SectionSettings     = require('../edit/SectionSettings.jsx');
 const AddToMenu           = require('../menu/AddToMenu.jsx');
 const AppActions          = require('../../actions/AppActions');
 const AppStore            = require('../../stores/AppStore');
-const PureMixin           = require('../../mixins/PureMixin.js');
+// const PureMixin           = require('../../mixins/PureMixin.js');
 const $s                  = require('string');
 
 let Sidebar = React.createClass({
+  // we need to optimize this with immutability
   // mixins: [PureMixin],
 
 componentDidMount(){

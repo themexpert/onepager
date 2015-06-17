@@ -18,7 +18,7 @@ function confirmDelete(proceed){
 }
 
 let Section = React.createClass({
-  // mixins: [PureMixin],
+  mixins: [PureMixin],
   
   getInitialState(){
     return {
