@@ -20,9 +20,9 @@ let Section = React.createClass({
 
     $(React.findDOMNode(this)).html(content);
     
-    if(!this.props.active){
-      return false;
-    }
+    // if(!this.props.active){
+    //   return false;
+    // }
     
 
     //TODO: find a way to scroll natively with animation
@@ -44,8 +44,8 @@ let Section = React.createClass({
     console.log("re rendering section view");
 
     let classes = cx({
-      'op-section-view': true,
-      'active': this.props.active
+      'op-section-view': true
+      // 'active': this.props.active
     });
 
     return <section className={classes} onClick={this.handleClick} />;
