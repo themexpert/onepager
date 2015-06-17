@@ -12,7 +12,8 @@
     "mjolnic-bootstrap-colorpicker": "~2.1.2",
     "sweetalert": "~1.0.1",
     "animate.css" : "~3.2.5",
-    "wow" : "~1.1.2"
+    "wow" : "~1.1.2",
+    "jquery.nicescroll" : "~3.6.0"
   },
   "devDependencies": {}
 }

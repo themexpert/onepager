@@ -14,6 +14,13 @@ const $s                  = require('string');
 let Sidebar = React.createClass({
   mixins: [PureMixin],
 
+componentDidMount(){
+    jQuery(document).ready(function() {  
+        console.log("nicescroll added");
+        jQuery('.tab-content').niceScroll({cursorcolor:"#2d363f", cursorborder: "0"});
+    });
+  },
+
   getInitialState(){
     return {
       saving: false
@@ -63,7 +70,7 @@ let Sidebar = React.createClass({
           </button>
         </ul>
 
-        <div className="tab-content">
+        <div className="tab-content" ref="tab-contents">
           <TabPane id="op-sections" active={activeTab}>
             <SectionList 
               activeSectionIndex={activeSectionIndex}
