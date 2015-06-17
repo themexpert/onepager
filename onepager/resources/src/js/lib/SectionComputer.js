@@ -1,5 +1,19 @@
 const _ = require('underscore');
 require("./_mixins");
+const $               = jQuery; //jshint ignore: line
+
+let getLiveModeHTML = function(livemode, content){
+  let $section = $("<div />", {html: content});
+  
+  
+  _.each(livemode, function(classNames, selector){
+    _.each(classNames, function(className){
+      $section.find(selector).removeClass(className);
+    });
+  });
+
+  return $section.html();
+};
 
 function unifySection(section, duplicate=false){
 
@@ -96,7 +110,7 @@ let misitifySections = function(sections, blocks){
 		
     block           = _.copy(block);
     block.id        = section.id;
-    block.content   = section.content;
+    block.content   = getLiveModeHTML(block.livemode, section.content);
     block.title     = section.title;
     block.style     = section.style;
 		block.fields    = mistify(section.fields, block.fields);
@@ -152,6 +166,7 @@ function simplifySections(sections){
     return data;
   });
 }
+
 
 
 module.exports = {

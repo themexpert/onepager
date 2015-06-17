@@ -12,19 +12,21 @@ let Section = React.createClass({
   },
 
   componentDidUpdate(){
+    if(!this.props.active){
+      return false;
+    }
+
+    this.scrollIntoView();
     this.setSectionContent();
   },
 
   setSectionContent(){
     let content = this.props.section.content;
 
-    $(React.findDOMNode(this)).html(content);
-    
-    // if(!this.props.active){
-    //   return false;
-    // }
-    
+    $(React.findDOMNode(this)).html(content);    
+  },
 
+  scrollIntoView(){
     //TODO: find a way to scroll natively with animation
     // React.findDOMNode(this).scrollIntoView();
     // jQuery animation is costly cpu calculation
@@ -33,7 +35,6 @@ let Section = React.createClass({
     jQuery('html, body').animate({
         scrollTop: jQuery(React.findDOMNode(this)).offset().top - 32 //32px wpadminbar height
     }, 1000);
-    
   },
 
   handleClick(){
@@ -44,8 +45,8 @@ let Section = React.createClass({
     console.log("re rendering section view");
 
     let classes = cx({
-      'op-section-view': true
-      // 'active': this.props.active
+      'op-section-view': true,
+      'active': this.props.active
     });
 
     return <section className={classes} onClick={this.handleClick} />;

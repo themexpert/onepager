@@ -91,7 +91,6 @@ let SectionList = React.createClass({
               let updateTitle = (title)=>{
                 let uSection   = _.copy(section);
                 uSection.title = title;
-                console.log('title is `%s`', title);
                 
                 this.updateSection(index, uSection);
               };

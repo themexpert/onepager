@@ -16,7 +16,7 @@ let SectionViewCollection = React.createClass({
             let active = this.props.activeSectionIndex === index;
             let simpleSection = _.pick(section, ['content', 'key']);
 
-            return <SectionView section={simpleSection} key={section.key} index={index}/>;
+            return <SectionView active={active} section={simpleSection} key={section.key} index={index}/>;
           })
         }
       </div>
