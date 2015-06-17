@@ -1,7 +1,6 @@
 const React       = require('react');
 const swal        = require('sweetalert');
 const Input       = require('react-bootstrap/lib/Input');
-const _           = require('underscore');
 const AppActions  = require('../../actions/AppActions');
 const cx          = require('classnames');
 const PureMixin   = require('../../mixins/PureMixin.js');
@@ -19,7 +18,7 @@ function confirmDelete(proceed){
 }
 
 let Section = React.createClass({
-  mixins: [PureMixin],
+  // mixins: [PureMixin],
   
   getInitialState(){
     return {
@@ -48,7 +47,7 @@ let Section = React.createClass({
     this.setState({titleEditState: true});
   },
 
-  closeEditTitle(e){
+  updateEditTitle(e){
     //proceed on enter
     if(e.which !== 13) {
       return;
@@ -61,6 +60,7 @@ let Section = React.createClass({
     }
 
     this.props.updateTitle(title);
+
     this.setState({titleEditState: false});
   },
 
@@ -77,7 +77,7 @@ let Section = React.createClass({
       <div className={classes}>
         { this.state.titleEditState ?
           <div>
-            <Input type="text" ref="title" onKeyUp={this.closeEditTitle} defaultValue={title} /> 
+            <Input type="text" ref="title" onKeyUp={this.updateEditTitle} defaultValue={title} /> 
             <span className="label label-default">Enter</span>
           </div> :
           <div><h3 onClick={this.handleEditSection}>{title}</h3> <span className="fa fa-pencil" onClick={this.handleEditTitle}></span></div>

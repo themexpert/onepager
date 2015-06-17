@@ -12,7 +12,7 @@ const PureMixin           = require('../../mixins/PureMixin.js');
 const $s                  = require('string');
 
 let Sidebar = React.createClass({
-  mixins: [PureMixin],
+  // mixins: [PureMixin],
 
 componentDidMount(){
     jQuery(document).ready(function() {  
