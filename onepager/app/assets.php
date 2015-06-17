@@ -36,6 +36,7 @@ function enqueueOnepagerAssets() {
 	$q->script( 'tx-bootstrap', asset( 'dist/vendor/js/bootstrap.js' ), [ 'jquery' ] );
 	$q->script( 'tx-mixitup', asset( 'dist/vendor/js/jquery.mixitup.js' ), [ 'jquery' ] );
 	$q->script( 'tx-wow', asset('/dist/vendor/js/wow.js'), array( 'jquery' ) );
+	$q->script( 'tx-nicescroll', asset('/dist/vendor/js/jquery.nicescroll.js'), array( 'jquery' ) );
 
 	if ( onepager()->content()->isLiveMode() ) {
 		if ( function_exists( 'wp_enqueue_media' ) ) {

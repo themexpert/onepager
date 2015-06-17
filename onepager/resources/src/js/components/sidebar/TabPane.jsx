@@ -2,9 +2,9 @@ const React     = require('react');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const cx        = require('classnames');
 
-let Tab = React.createClass({
+let TabPane = React.createClass({
   mixins: [PureMixin],
-
+  
   propTypes: {
     id: React.PropTypes.string,
     icon: React.PropTypes.string,
@@ -37,4 +37,4 @@ let Tab = React.createClass({
   }
 });
 
-module.exports = Tab;
+module.exports = TabPane;
