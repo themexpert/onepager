@@ -21,16 +21,10 @@ let QuillControl = React.createClass({
   },
 
   render() {
-        // <ReactQuill>
-        //   <ReactQuill.Toolbar key="toolbar" ref="toolbar" items={ReactQuill.Toolbar.defaultItems} />
-        //   <div key="editor" ref="editor" className="quill-contents" dangerouslySetInnerHTML={{ __html: this.props.defaultValue }} />
-        // </ReactQuill>
     return (
       <div>
         <label>{this.props.label}</label>
         <ReactQuill theme="snow" value={this.props.defaultValue} onChange={this.onChange} />
-  
-
       </div>
     );
   }
