@@ -61,6 +61,9 @@ return array(
         'fadeInDown'    => 'Slide Down',  
       )
     ),
+  ),
+
+  'styles' => array(
     array(
       'name' => 'bg_color',
       'label' => 'Background Color',
@@ -85,7 +88,6 @@ return array(
       'type' => 'colorpicker',
       'tab' => 'Styles'
     ),
-
   ),
 
   'assets' => function( $path ){

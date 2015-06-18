@@ -44,36 +44,34 @@ return array(
       'label'=> 'Call To Action Text',  
       'value'=> 'Call To Action',
       'placeholder'=> 'Call To Action'
-    ),
-    
+    )
+  ),
+
+  'styles' => array(
     array(
       'name'  => 'link_color',
       'label' => 'Link Color',
       'type'  => 'colorpicker',
-      'value' => '#fff',
-      'tab'   => 'styles'
+      'value' => '#fff'
     ),
     array(
       'name'  => 'link_hover_color',
       'label' => 'Link Hover Color',
       'type'  => 'colorpicker',
-      'value' => '#000',
-      'tab'   => 'styles'
+      'value' => '#000'
     ),
     array(
       'name'    => 'cta_bg',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'value'   => '#4CAF50',
-      'tab'     => 'styles'
+      'value'   => '#4CAF50'
     ),
     array(
       'name'    => 'cta_color',
       'label'   => 'Button Text Color',
       'type'    => 'colorpicker',
-      'value'   => '#fff',
-      'tab'     => 'styles'
-    ),
+      'value'   => '#fff'
+    )
   ),
 
   "assets" => function( $path ){

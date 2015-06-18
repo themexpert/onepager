@@ -81,7 +81,7 @@ let SectionControls = React.createClass({
 
     return (
       <div>
-        <ul>
+        <ul className="nav nav-pills">
           <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab} />
           <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab} />
           <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/>

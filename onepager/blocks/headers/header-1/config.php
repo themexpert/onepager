@@ -22,42 +22,37 @@ return array(
     ),
   ),
   
-  // Settings - $settings available on view file to access the option
-  'settings' => array(    
+  // Styles - $styles available on view file to access the option
+  'styles' => array(    
     array(
       'name'    => 'bg_color',
       'label'   => 'Background Color',
       'type'    => 'colorpicker',
-      'value'   => '#ffffff',
-      'tab'     => 'styles'
+      'value'   => '#ffffff'
     ),
     array(
       'name'  => 'link_color',
       'label' => 'Link Color',
       'type'  => 'colorpicker',
-      'value' => '#777',
-      'tab'   => 'styles'
+      'value' => '#777'
     ),
     array(
       'name'  => 'link_hover_color',
       'label' => 'Link Hover Color',
       'type'  => 'colorpicker',
       'value' => '#222',
-      'tab'   => 'styles'
     ),
     array(
       'name'    => 'cta_bg',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
       'value'   => '#4CAF50',
-      'tab'     => 'styles'
     ),
     array(
       'name'    => 'cta_color',
       'label'   => 'Button Text Color',
       'type'    => 'colorpicker',
       'value'   => '#fff',
-      'tab'     => 'styles'
     ),
   ),
 

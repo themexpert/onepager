@@ -6,7 +6,7 @@
 	$animation_content = ($settings['animation_content']) ? $settings['animation_content'] : '';
 ?>
 
-<section id="<?php echo $id;?>" class="contents-1">
+<section id="<?php echo $id;?>" class="op-section content-1">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">

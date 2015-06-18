@@ -28,36 +28,31 @@ return array(
       'name'    => 'bg_color',
       'label'   => 'Background Color',
       'type'    => 'colorpicker',
-      'value'   => '#1f262b',
-      'tab'     => 'styles'
+      'value'   => '#1f262b'
     ),
     array(
       'name'  => 'link_color',
       'label' => 'Link Color',
       'type'  => 'colorpicker',
-      'value' => '#999',
-      'tab'   => 'styles'
+      'value' => '#999'
     ),
     array(
       'name'  => 'link_hover_color',
       'label' => 'Link Hover Color',
       'type'  => 'colorpicker',
-      'value' => '#fff',
-      'tab'   => 'styles'
+      'value' => '#fff'
     ),
     array(
       'name'    => 'cta_bg',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'value'   => '#4CAF50',
-      'tab'     => 'styles'
+      'value'   => '#4CAF50'
     ),
     array(
       'name'    => 'cta_color',
       'label'   => 'Button Text Color',
       'type'    => 'colorpicker',
-      'value'   => '#fff',
-      'tab'     => 'styles'
+      'value'   => '#fff'
     ),
   ),
 

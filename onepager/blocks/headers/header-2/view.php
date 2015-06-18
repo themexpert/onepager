@@ -1,7 +1,7 @@
 <?php
 $slide_num = 0;
 ?>
-<header id="<?php echo $id; ?>" class="op-section header-3">
+<header id="<?php echo $id; ?>" class="op-section header-2">
 	<div class="navbar-wrapper">
 		<div class="container">
 			<nav class="navbar navbar-static-top">

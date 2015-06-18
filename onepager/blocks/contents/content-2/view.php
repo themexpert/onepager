@@ -5,7 +5,7 @@
 	// WOW JS Animation delay for repeater
 	$animation_delay = 0.2;
 ?>
-<section id="<?php echo $id?>" class="op-section blurb-1">
+<section id="<?php echo $id?>" class="op-section content-2">
 	<div class="container">
 		<article>
 			

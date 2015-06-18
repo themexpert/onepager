@@ -47,8 +47,6 @@ function enqueueOnepagerAssets() {
 		$q->style( 'tx-iconselector', asset( 'dist/vendor/css/icon-selector.min.css' ) );
 		$q->style( 'tx-sweetalert', asset( 'dist/vendor/css/sweetalert.css' ) );
 		$q->style( 'tx-toastr', asset( 'dist/vendor/css/toastr.css' ) );
-		$q->style( 'tx-quill-base', asset( 'dist/vendor/css/quill.base.css' ) );
-		$q->style( 'tx-quill-snow', asset( 'dist/vendor/css/quill.snow.css' ) );
 
 		$q->script( 'tx-iconselector', asset( 'dist/vendor/js/icon-selector.min.js' ), [ 'jquery' ] );
 		$q->script( 'tx-colorpicker', asset( 'dist/vendor/js/bootstrap-colorpicker.js' ), [ 'jquery' ] );

@@ -52,6 +52,7 @@
     "react": "^0.13.2",
     "react-bootstrap": "^0.21.2",
     "react-dnd": "^1.0.0",
+    "react-quill": "^0.1.1",
     "sortablejs": "git+https://github.com/nadimtuhin/Sortable.git",
     "string": "^3.3.0",
     "sweetalert": "^1.0.1",
