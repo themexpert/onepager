@@ -14,7 +14,7 @@ return array(
       'fields' => array(
         array('name'=>'title', 'value' => 'Awesome Design'),
         array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design'),
-        array('name'=>'icon','type'=>'imicon', 'value'=> 'fa fa-magic fa-3x'),
+        array('name'=>'icon', 'type'=>'media', 'value'=> 'fa fa-magic fa-3x'),
       )
     )
   ),
