@@ -65,7 +65,6 @@ componentDidMount(){
         <ul className="tx-nav tx-nav-tabs">
           <Tab onClick={handleTabClick} id="op-sections" icon="cubes" title="Layout" active={activeTab}/>
           <Tab onClick={handleTabClick} id="op-contents" icon="sliders" title="Contents" active={activeTab} disabled={!sectionEditable} />
-          <Tab onClick={handleTabClick} id="op-settings" icon="sliders" title="Settings" active={activeTab} disabled={!sectionEditable} />
           <Tab onClick={handleTabClick} id="op-menu" icon="link" title="Menu" active={activeTab} disabled={!sectionEditable}/>
 
           <button disabled={!isDirty} onClick={this.handleSave} 
@@ -103,9 +102,6 @@ componentDidMount(){
           }
           </TabPane>
 
-          <TabPane id="op-settings" active={activeTab}>
-  
-          </TabPane> 
 
           <TabPane id="op-menu" active={activeTab}>
             {sectionEditable ? 
