@@ -3,8 +3,8 @@ const React         = require('react');
 const Input         = require('react-bootstrap/lib/Input');
 const ColorPicker   = require('./ColorPicker.jsx');
 const IconSelector  = require('./IconSelector.jsx');
-const ImageIcon     = require('./ImageIcon.jsx');
-const WpMedia       = require('./WpMedia.jsx');
+const Media         = require('./Media.jsx');
+const WpMediaFrame  = require('./WpMediaFrame.jsx');
 const WpSelect      = require('./WpSelect.jsx');
 const Select        = require('./Select.jsx');
 const QuillEditor   = require('./QuillEditor.jsx');
@@ -39,16 +39,16 @@ let InputControl = React.createClass({
 
         case "image":
           control =
-            <WpMedia ref="input"
+            <WpMediaFrame ref="input"
               className={options.class}
               defaultValue={options.value}
               label={options.label}
               onChange={this.onChange}/>;
           break;
 
-        case "imicon":
+        case "media":
           control =
-            <ImageIcon ref="input"
+            <Media ref="input"
               className={options.class}
               defaultValue={options.value}
               label={options.label}
