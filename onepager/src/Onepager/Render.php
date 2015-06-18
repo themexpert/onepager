@@ -29,7 +29,7 @@ class Render {
       return null;
 		}
 
-		$view_file = array_key_exists( 'view', $block ) ? $block['view'] : null;
+		$view_file = array_key_exists( 'view_file', $block ) ? $block['view_file'] : null;
 
 		//throw better exceptions
 		if ( ! FileSystem::exists( $view_file ) ) {
@@ -55,7 +55,7 @@ class Render {
       return null;
 		}
 
-		$style_file = array_key_exists( 'style', $block ) ? $block['style'] : null;
+		$style_file = array_key_exists( 'style_file', $block ) ? $block['style_file'] : null;
 
 		//throw better exceptions
 		if ( ! FileSystem::exists( $style_file ) ) {

@@ -4,7 +4,6 @@ const Tab                 = require('./Tab.jsx');
 const TabPane             = require('./TabPane.jsx');
 const SectionList         = require('../section-list/SectionList.jsx');
 const SectionControls     = require('../edit/SectionControls.jsx');
-const SectionSettings     = require('../edit/SectionSettings.jsx');
 const AddToMenu           = require('../menu/AddToMenu.jsx');
 const AppActions          = require('../../actions/AppActions');
 const AppStore            = require('../../stores/AppStore');
@@ -49,13 +48,25 @@ componentDidMount(){
       return id;
     };
 
+    let handleTabClick = function(id){
+      AppStore.setTabState({active: id});
+    };
+
+    let update=(key, fields)=>{
+      let section    = _.copy(sections[activeSectionIndex]);
+      section[key]   = fields;
+      AppActions.updateSection(activeSectionIndex, section);
+    };
+
+    let sectionSettings = activeSection ? _.pick(activeSection, ['settings', 'contents', 'styles']) : {};
+
     return (
       <div className="txop-sidebar op-ui clearfix">
         <ul className="tx-nav tx-nav-tabs">
-          <Tab id="op-sections" icon="cubes" title="Layout" active={activeTab}/>
-          <Tab id="op-contents" icon="sliders" title="Contents" active={activeTab} disabled={!sectionEditable} />
-          <Tab id="op-settings" icon="sliders" title="Settings" active={activeTab} disabled={!sectionEditable} />
-          <Tab id="op-menu" icon="link" title="Menu" active={activeTab} disabled={!sectionEditable}/>
+          <Tab onClick={handleTabClick} id="op-sections" icon="cubes" title="Layout" active={activeTab}/>
+          <Tab onClick={handleTabClick} id="op-contents" icon="sliders" title="Contents" active={activeTab} disabled={!sectionEditable} />
+          <Tab onClick={handleTabClick} id="op-settings" icon="sliders" title="Settings" active={activeTab} disabled={!sectionEditable} />
+          <Tab onClick={handleTabClick} id="op-menu" icon="link" title="Menu" active={activeTab} disabled={!sectionEditable}/>
 
           <button disabled={!isDirty} onClick={this.handleSave} 
             className="btn btn-primary btn--save">
@@ -84,25 +95,16 @@ componentDidMount(){
           <TabPane id="op-contents" active={activeTab}>
           {sectionEditable ?
             <SectionControls
-              update={(fields)=>{
-                let section    = _.copy(sections[activeSectionIndex]);
-                section.fields = fields;
-                AppActions.updateSection(activeSectionIndex, section);
-              }}
-              controls={activeSection.fields ? activeSection.fields: [] } 
-              sectionIndex={activeSectionIndex} /> : "please select a section" }
-          </TabPane> 
+              update = {update}
+              sectionSettings = {sectionSettings}
+              sectionIndex = {activeSectionIndex} /> :
+           
+            <h2>please select a section</h2> 
+          }
+          </TabPane>
 
           <TabPane id="op-settings" active={activeTab}>
-          {sectionEditable ?
-            <SectionSettings
-              update={(settings)=>{
-                let section       = _.copy(sections[activeSectionIndex]);
-                section.settings  = settings;
-                AppActions.updateSection(activeSectionIndex, section);
-              }}
-              controls={activeSection.settings ? activeSection.settings: [] } 
-              sectionIndex={activeSectionIndex} /> : "please select a section" }
+  
           </TabPane> 
 
           <TabPane id="op-menu" active={activeTab}>

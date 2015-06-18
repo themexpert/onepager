@@ -11,27 +11,29 @@ class ConfigTransformer {
     $default_view  = "view.php";
     $default_style = "style.php";
 
-    $dir = dirname( $file ) . DIRECTORY_SEPARATOR;
+    $dir      = dirname( $file ) . DIRECTORY_SEPARATOR;
 
     //configurations we want
-    $slug = $config['slug'];
+    $slug       = $config['slug'];
 
-    $groups   = $this->get( $config, 'groups', [ ] );
-    $name     = $this->get( $config, 'name', ucfirst( $config['slug'] ) );
-    $livemode = $this->get( $config, 'livemode', array( "[data-animated], .animated, .wow" => [ 'animated', 'wow' ] ) );
+    $groups     = $this->get( $config, 'groups', [ ] );
+    $name       = $this->get( $config, 'name', ucfirst( $config['slug'] ) );
+    $livemode   = $this->get( $config, 'livemode', array( "[data-animated], .animated, .wow" => [ 'animated', 'wow' ] ) );
 
-    $view  = $dir . $this->get( $config, 'view', $default_view );
-    $style = $dir . $this->get( $config, 'style', $default_style );
+    //files
+    $view_file  = $dir . $this->get( $config, 'view', $default_view );
+    $style_file = $dir . $this->get( $config, 'style', $default_style );
 
-    $image = trailingslashit( $url ) . $this->get( $config, 'image', $default_image );
+    $image      = trailingslashit( $url ) . $this->get( $config, 'image', $default_image );
 
     //closures
-    $init    = $this->get( $config, 'init', false );
-    $enqueue = $this->get( $config, 'assets', false );
+    $init       = $this->get( $config, 'init', false );
+    $enqueue    = $this->get( $config, 'assets', false );
 
     //fields
-    $settings = $this->settingsTransformer->transform( $this->get( $config, 'settings', [ ] ) );
-    $fields   = $this->fieldsTransformer->transform( $this->get( $config, 'fields', [ ] ) );
+    $contents   = $this->fieldsTransformer->transform( $this->get( $config, 'contents', [ ] ) );
+    $settings   = $this->fieldsTransformer->transform( $this->get( $config, 'settings', [ ] ) );
+    $styles     = $this->fieldsTransformer->transform( $this->get( $config, 'styles', [ ] ) );
 
     return compact(
       'url',
@@ -41,11 +43,14 @@ class ConfigTransformer {
       'enqueue',
       'name',
       'groups',
+
       'image',
-      'style',
-      'view',
+      'style_file',
+      'view_file',
+      
       'settings',
-      'fields'
+      'contents',
+      'styles'
     );
   }
 
