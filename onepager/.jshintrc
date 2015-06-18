@@ -22,7 +22,6 @@
     "window",
     "document",
     "jQuery",
-    "$",
     "alert",
     "onepager"
   ]
