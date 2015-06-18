@@ -11,7 +11,7 @@ let SectionControls = React.createClass({
   mixins: [PureMixin],
   getInitialState(){
     return {
-      activeTab: 'settings'
+      activeTab: 'contents'
     };
   },
 
@@ -82,14 +82,14 @@ let SectionControls = React.createClass({
     return (
       <div>
         <ul>
-          <Tab onClick={handleTabClick} id="content" title="Content" active={activeTab} />
+          <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab} />
           <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab} />
           <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/>
         </ul>
 
 
         <div className="tab-content" ref="tabContents">
-          <TabPane id="content" active={activeTab}>
+          <TabPane id="contents" active={activeTab}>
             {getControlsHTML('contents', sectionSettings.contents)}
           </TabPane>
           <TabPane id="settings" active={activeTab}>
