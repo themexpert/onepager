@@ -1,25 +1,25 @@
 <?php 
-	$items = array_chunk($fields['items'], (12/$settings['columns']) );
+	$items = array_chunk($contents['items'], (12/$settings['columns']) );
 	$animation_title = ($settings['animation_title']) ? $settings['animation_title'] : '';
 	$animation_item = ($settings['animation_item']) ? $settings['animation_item'] : '';
 	// WOW JS Animation delay for repeater
 	$animation_delay = 0.2;
 ?>
-<section id="<?php echo $id?>" class="op-section blurb-1">
+<section id="<?php echo $id?>" class="op-section content-2">
 	<div class="container">
 		<article>
 			
-			<?php if($fields['title']):?>
+			<?php if($contents['title']):?>
 				<!-- Section Title -->
 				<h1 class="section-title text-center wow <?php echo $animation_title?>">
-					<?php echo $fields['title']?>
+					<?php echo $contents['title']?>
 				</h1>
 			<?php endif; ?>
 
-			<?php if($fields['description']):?>
+			<?php if($contents['description']):?>
 				<!-- Section Sub Title -->
 				<p class="section-subtitle text-center wow <?php echo $animation_title?>">
-					<?php echo $fields['description']?>
+					<?php echo $contents['description']?>
 				</p>
 			<?php endif; ?>
 

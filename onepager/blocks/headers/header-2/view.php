@@ -1,15 +1,15 @@
 <?php
 $slide_num = 0;
 ?>
-<header id="<?php echo $id; ?>" class="op-section header-3">
+<header id="<?php echo $id; ?>" class="op-section header-2">
 	<div class="navbar-wrapper">
 		<div class="container">
 			<nav class="navbar navbar-static-top">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<a class="navbar-brand" href="<?php echo site_url(); ?>">
-						<?php if($fields['logo']) :?>
-							<img class="img-responsive" src="<?php echo $fields['logo']?>" alt="<?php wp_title(); ?>">
+						<?php if($contents['logo']) :?>
+							<img class="img-responsive" src="<?php echo $contents['logo']?>" alt="<?php wp_title(); ?>">
 						<?php else : ?>
 							<?php wp_title(); ?>
 						<?php endif; ?>
@@ -25,7 +25,7 @@ $slide_num = 0;
 				<!-- Menu -->
 				<div class="collapse navbar-collapse">
 					<?php wp_nav_menu(array(
-					'menu' =>$fields['menu'] ,
+					'menu' =>$contents['menu'] ,
 					'menu_class'=>'nav navbar-nav navbar-right',
 					'container' =>false,
 					)) ?>
@@ -46,10 +46,10 @@ $slide_num = 0;
 </header>
 
 <div id="slide-<?php echo $id ?>" class="carousel slide" data-ride="carousel">
-	<?php if(count($fields['sliders']) > 1): // Indicator will only show when more then one item publish?>
+	<?php if(count($contents['sliders']) > 1): // Indicator will only show when more then one item publish?>
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
-		<?php for($i = 0; $i < count($fields['sliders']); $i++): ?>
+		<?php for($i = 0; $i < count($contents['sliders']); $i++): ?>
 		<li data-target="#slide-<?php echo $id ?>" data-slide-to="<?php echo $i;?>" class="<?php echo ($i === 0) ? 'active' : ''?>"></li>
 		<?php endfor;?>
 	</ol>
@@ -57,7 +57,7 @@ $slide_num = 0;
 	<!-- Wrapper for slides -->
 	<div class="carousel-inner" role="listbox">
 		
-		<?php foreach($fields['sliders'] as $slide): ?>
+		<?php foreach($contents['sliders'] as $slide): ?>
 		<div class="item <?php echo ($slide_num === 0) ? 'active' : ''?>">
 			<div class="slide-image" style="background: url(<?php echo $slide['image']?>);"></div>
 			<div class="container">
@@ -83,7 +83,7 @@ $slide_num = 0;
 <div class="offcanvas-menu">
 	<a href="#" class="pull-right offcanvas-close"><span class="fa fa-close"></span></a>
 	<?php wp_nav_menu(array(
-	'menu' =>$fields['menu'] ,
+	'menu' =>$contents['menu'] ,
 	'menu_class'=>'nav',
 	'container' =>false,
 	)) ?>

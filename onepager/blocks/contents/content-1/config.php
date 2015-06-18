@@ -5,18 +5,12 @@ return array(
   'slug'      => 'content-1', // Must be unique and singular
   'groups'    => ['contents'], // Blocks group for filter and plural
 
-  // Fields - $fields available on view file to access the option
+  // Fields - $contents available on view file to access the option
   'contents' => array(
     array('name'=>'title', 'value' => 'Lets make a better website together'),
-    // array('name'=>'editor', 'type'=>'editor', 'value' => 'Lets make a better website together'),
-    array('name'=>'description','type'=>'textarea', 'value'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit sem, semper nec pellentesque ut, aliquet aliquam justo. Praesent fermentum odio molestie erat cursus, a elementum nunc consequat.'),
+    array('name'=>'description','type'=>'editor', 'value'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit sem, semper nec pellentesque ut, aliquet aliquam justo. Praesent fermentum odio molestie erat cursus, a elementum nunc consequat.'),
     array('name'=>'image', 'type'=>'image'),
-    array('name'=>'link', 'class' => 'input-link'),
-  ),
-  // Fields - $fields available on view file to access the option
-  'styles' => array(
-    array('name'=>'image', 'type'=>'image'),
-    array('name'=>'link', 'class' => 'input-link'),
+    array('name'=>'link'),
   ),
   
   // Settings - $settings available on view file to access the option
@@ -30,7 +24,6 @@ return array(
         'left'    => 'Left',
         'right'   => 'Right'
       ),
-      'tab' => 'layout' // Define the tab where the settings belongs too. Default - General 
     ),
     array(
       'name'     => 'media_grid',
@@ -45,38 +38,33 @@ return array(
         '7'   => '7',
         '8'   => '8'
       ),
-      'tab' => 'layout'
     ),
-    array('label'=>'Items', 'type'=>'divider', 'tab'=>'layout'), // Divider - Items
-      array(
-        'name'     => 'title_size',
-        'label'    => 'Title Size',
-        'type'     => 'select',
-        'value'    => '3.5em',
-        'options'  => array(
-          '2em'     => 'Small',
-          '3.5em'   => 'Medium',
-          '5em'     => 'large'
-        ),
-        'tab' => 'layout'
+    array(
+      'name'     => 'title_size',
+      'label'    => 'Title Size',
+      'type'     => 'select',
+      'value'    => '3.5em',
+      'options'  => array(
+        '2em'     => 'Small',
+        '3.5em'   => 'Medium',
+        '5em'     => 'Large'
       ),
-      array(
-        'name'     => 'content_alignment',
-        'label'    => 'Items Alignment',
-        'type'     => 'select',
-        'value'    => 'top',
-        'options'  => array(
-          'top'      => 'Top',
-          'middle'   => 'Middle',
-          'bottom'   => 'Bottom'
-        ),
-        'tab' => 'layout'
+    ),
+    array(
+      'name'     => 'content_alignment',
+      'label'    => 'Items Alignment',
+      'type'     => 'select',
+      'value'    => 'top',
+      'options'  => array(
+        'top'      => 'Top',
+        'middle'   => 'Middle',
+        'bottom'   => 'Bottom'
       ),
+    ),
     
     array(
       'name'  => 'link_text', 
       'value' => 'Readmore', 
-      'tab'   => 'layout'
     ),
 
     array(
@@ -92,15 +80,14 @@ return array(
         'fadeInUp'    => 'Slide Up',
         'fadeInDown'  => 'Slide Down',
       ),
-      'tab'     => 'layout'
     ),
 
-     array(
-      'name'     => 'animation_media',
-      'label'    => 'Animation Media',
-      'type'     => 'select',
-      'value'    => 'none',
-      'options'  => array(
+   array(
+    'name'     => 'animation_media',
+    'label'    => 'Animation Media',
+    'type'     => 'select',
+    'value'    => 'none',
+    'options'  => array(
         '0'             => 'None',
         'fadeIn'        => 'Fade',
         'fadeInLeft'    => 'Slide Left',
@@ -108,8 +95,11 @@ return array(
         'fadeInUp'      => 'Slide Up',
         'fadeInDown'    => 'Slide Down',
       ),
-      'tab' => 'layout'
     ),
+  ),
+
+  // Fields - $styles available on view file to access the option
+  'styles' => array(
     array('label'=>'Background', 'type'=>'divider', 'tab'=>'styles'), // Divider - Background
     array(
       'name'  => 'bg_image', 

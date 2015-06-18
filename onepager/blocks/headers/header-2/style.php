@@ -1,17 +1,17 @@
 
 #<?php echo $id ?> .navbar-nav > li > a{
-	color : <?php echo $settings['link_color']; ?>;
+	color : <?php echo $styles['link_color']; ?>;
 }
 #<?php echo $id ?> .navbar-toggle .icon-bar{
-	background-color : <?php echo $settings['link_color']; ?>;
+	background-color : <?php echo $styles['link_color']; ?>;
 }
 
 #<?php echo $id ?> .navbar-nav > li:hover > a,
 #<?php echo $id ?> .navbar-nav > li.active > a{
-	color : <?php echo $settings['link_hover_color']; ?>;
+	color : <?php echo $styles['link_hover_color']; ?>;
 }
 
 #<?php echo $id ?> .navbar-btn{
-	background : <?php echo $settings['cta_bg']; ?>;
-	color : <?php echo $settings['cta_color']; ?>;
+	background : <?php echo $styles['cta_bg']; ?>;
+	color : <?php echo $styles['cta_color']; ?>;
 }

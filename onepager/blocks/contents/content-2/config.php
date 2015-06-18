@@ -4,7 +4,7 @@ return array(
   'slug'    => 'content-2',
   'groups'    => ['contents'],
 
-  'fields' => array(
+  'contents' => array(
     array('name'=>'title', 'value'=>'Ready for the launch of our new website'),
     array('name'=>'description', 'type'=>'textarea'),
 
@@ -14,7 +14,7 @@ return array(
       'fields' => array(
         array('name'=>'title', 'value' => 'Awesome Design'),
         array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design'),
-        array('name'=>'icon','type'=>'imicon', 'value'=> 'fa fa-magic fa-3x'),
+        array('name'=>'icon','type'=>'media', 'value'=> 'fa fa-magic fa-3x'),
       )
     )
   ),
@@ -61,6 +61,9 @@ return array(
         'fadeInDown'    => 'Slide Down',  
       )
     ),
+  ),
+
+  'styles' => array(
     array(
       'name' => 'bg_color',
       'label' => 'Background Color',
@@ -85,7 +88,6 @@ return array(
       'type' => 'colorpicker',
       'tab' => 'Styles'
     ),
-
   ),
 
   'assets' => function( $path ){

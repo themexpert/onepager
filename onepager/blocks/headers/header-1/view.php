@@ -9,8 +9,8 @@
 	        <span class="icon-bar"></span>
 	      </button>
 	      <a class="navbar-brand" href="<?php echo site_url(); ?>">
-	      	<?php if($fields['logo']) :?>
-				<img class="img-responsive" src="<?php echo $fields['logo']?>" alt="<?php wp_title(); ?>">
+	      	<?php if($contents['logo']) :?>
+				<img class="img-responsive" src="<?php echo $contents['logo']?>" alt="<?php wp_title(); ?>">
 			<?php else : ?>
 				<?php wp_title(); ?>
 			<?php endif; ?>
@@ -18,11 +18,11 @@
 	    </div>
 	    <!-- Menu -->
 	    <nav class="collapse navbar-collapse" id="nav-<?php echo $id; ?>">
-            <?php if( $fields['cta']): ?>
-            <a href="<?php echo $fields['cta']?>" class="btn navbar-btn navbar-right"><?php echo $fields['cta_text']?></a>
+            <?php if( $contents['cta']): ?>
+            <a href="<?php echo $contents['cta']?>" class="btn navbar-btn navbar-right"><?php echo $contents['cta_text']?></a>
 	    	<?php endif; ?>
 	    	<?php wp_nav_menu(array(
-                'menu' =>$fields['menu'] , 
+                'menu' =>$contents['menu'] , 
                 'menu_class'=>'nav navbar-nav navbar-right', 
                 'container' =>false,
             )) ?>

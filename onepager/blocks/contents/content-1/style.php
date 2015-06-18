@@ -1,17 +1,17 @@
 #<?php echo $id ?>{
-	<?php if($settings['bg_image']):?>
-	background-image: url(<?php echo $settings['bg_image']?>);
-	background-repeat: <?php echo $settings['bg_repeat']?>;
+	<?php if($styles['bg_image']):?>
+	background-image: url(<?php echo $styles['bg_image']?>);
+	background-repeat: <?php echo $styles['bg_repeat']?>;
 	<?php endif;?>
-	background-color : <?php echo $settings['bg_color'] ?>;
-	color : <?php echo $settings['text_color']?>;
+	background-color : <?php echo $styles['bg_color'] ?>;
+	color : <?php echo $styles['text_color']?>;
 }
 
 #<?php echo $id ?> .title{
-	font-size: <?php echo $settings['title_size']?>;
+	font-size: <?php echo $styles['title_size']?>;
 }
 
 #<?php echo $id ?> .btn{
-	background: <?php echo $settings['button_bg_color']?>;
-	color : <?php echo $settings['button_text_color']?>;
+	background: <?php echo $styles['button_bg_color']?>;
+	color : <?php echo $styles['button_text_color']?>;
 }
