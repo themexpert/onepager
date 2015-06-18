@@ -5,8 +5,8 @@ return array(
   'slug'      => 'header-3', // Must be unique
   'groups'    => ['headers'], // Blocks group for filter
 
-  // Fields - $fields available on view file to access the option
-  'fields' => array(
+  // Fields - $contents available on view file to access the option
+  'contents' => array(
     array('name'=>'logo', 'type'=> 'image'),
     array('name'=>'menu','type'=>'menu'),
     array(

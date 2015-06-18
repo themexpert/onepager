@@ -4,7 +4,7 @@ return array(
   'slug'    => 'content-2',
   'groups'    => ['contents'],
 
-  'fields' => array(
+  'contents' => array(
     array('name'=>'title', 'value'=>'Ready for the launch of our new website'),
     array('name'=>'description', 'type'=>'textarea'),
 

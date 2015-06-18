@@ -6,7 +6,7 @@ return array(
   'groups'    => ['headers'], // Blocks group for filter
 
   // Fields - $fields available on view file to access the option
-  'fields' => array(
+  'contents' => array(
     array('name'=>'logo', 'type'=> 'image'),
     array('name'=>'menu','type'=>'menu'),
     array(
