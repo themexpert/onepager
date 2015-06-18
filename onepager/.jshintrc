@@ -20,6 +20,7 @@
   "white": true,
   "predef": [
     "window",
+    "wp",
     "document",
     "jQuery",
     "alert",
