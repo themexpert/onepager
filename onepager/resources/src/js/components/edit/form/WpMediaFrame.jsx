@@ -54,6 +54,11 @@ let WpMediaFrame = React.createClass({
     $(React.findDOMNode(this.refs.select)).unbind();
   },
 
+  handleReset(){
+    React.findDOMNode(this.refs.input).value = "";
+    this.props.onChange();
+  },
+
 
   render() {
     let classes = this.props.className+" form-control image-input";
@@ -69,7 +74,7 @@ let WpMediaFrame = React.createClass({
               <button className="btn btn-primary" ref="select" type="button">
                 <span className="fa fa-picture-o"></span> image
               </button>
-              <button className="btn btn-primary" ref="refresh" type="button">
+              <button onClick={this.handleReset} className="btn btn-primary" ref="refresh" type="button">
                 <span className="fa fa-refresh"></span>
               </button>
             </span>
