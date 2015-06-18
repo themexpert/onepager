@@ -53,8 +53,8 @@ componentDidMount(){
     return (
       <div className="txop-sidebar op-ui clearfix">
         <ul className="tx-nav tx-nav-tabs">
-          <Tab id="op-sections" icon="bars" title="Layout" active={activeTab}/>
-          <Tab id="op-contents" icon="database" title="Contents" active={activeTab} disabled={!sectionEditable} />
+          <Tab id="op-sections" icon="cubes" title="Layout" active={activeTab}/>
+          <Tab id="op-contents" icon="sliders" title="Contents" active={activeTab} disabled={!sectionEditable} />
           <Tab id="op-settings" icon="sliders" title="Settings" active={activeTab} disabled={!sectionEditable} />
           <Tab id="op-menu" icon="link" title="Menu" active={activeTab} disabled={!sectionEditable}/>
 
