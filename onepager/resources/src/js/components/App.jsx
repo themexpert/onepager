@@ -3,6 +3,7 @@ const AppStore              = require('../stores/AppStore');
 const Sidebar               = require('./sidebar/Sidebar.jsx');
 const SectionViewCollection = require('./section-view/SectionViewCollection.jsx');
 const _                     = require('underscore');
+// const swal                  = require('sweetalert');
 
 let App = React.createClass({
   getInitialState() {
@@ -14,6 +15,12 @@ let App = React.createClass({
   },
 
   componentDidMount() {
+    jQuery(window).on('beforeunload', ()=>{
+      if(this.state.isDirty){
+        return "You have unsaved changes!!";
+      }
+    });
+
     AppStore.addChangeListener(this._onChange);
   },
 

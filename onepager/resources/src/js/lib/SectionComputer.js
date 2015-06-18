@@ -35,22 +35,24 @@ function unifySection(section, duplicate=false){
   section.key  = _.randomId("k_"); //do we need key? //yes we need //need better organization
 
   //bug because repeater is getting itself turned into null
-  section.fields.forEach(field=>{
-    // if(!field) return; //if its null? why should field be
-    field.ref = _.uniqueId("ref_");
+  var reffer = function(fields){
+    fields.forEach(field=>{
+      // if(!field) return; //if its null? why should field be
+      field.ref = _.uniqueId("ref_");
 
-    if(!field.fields) {
-      return;
-    }
+      if(!field.fields) {
+        return;
+      }
 
-    field.fields.forEach(child=>{
-        child.forEach( gchild => gchild.ref = _.uniqueId("ref_"));
+      field.fields.forEach(child=>{
+          child.forEach( gchild => gchild.ref = _.uniqueId("ref_"));
+      });
     });
-  });
+  };
 
-  section.settings.forEach(function(field){
-    field.ref = _.uniqueId("ref_");
-  });
+  reffer(section.contents);
+  reffer(section.settings);
+  reffer(section.styles);
 
   return section;
 }
@@ -58,7 +60,9 @@ function unifySection(section, duplicate=false){
 
 let mistify = function(databaseFields, sectionFields){
   let getInput = function(field){
-    field.value = databaseFields[field.name];
+    if(databaseFields){
+      field.value = databaseFields[field.name];
+    }
     
     return field;
   };
@@ -113,8 +117,10 @@ let misitifySections = function(sections, blocks){
     block.content   = getLiveModeHTML(block.livemode, section.content);
     block.title     = section.title;
     block.style     = section.style;
-		block.fields    = mistify(section.fields, block.fields);
-		block.settings  = mistify(section.settings, block.settings);
+    block.contents  = mistify(section.contents, block.contents);
+    block.settings  = mistify(section.settings, block.settings);
+		block.styles    = mistify(section.styles, block.styles);
+
 
 		// console.log(block);
 		return unifySection(block);
@@ -159,8 +165,9 @@ function simplifySections(sections){
         id       : section.id,
         slug     : section.slug,
         title    : section.title,
-        fields   : simplify(section.fields),
+        contents : simplify(section.contents),
         settings : simplify(section.settings),
+        styles   : simplify(section.styles),
     };
 
     return data;

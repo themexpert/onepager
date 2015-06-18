@@ -4,12 +4,19 @@ const Divider     = require('./Divider.jsx');
 const Input       = require('./form/Input.jsx');
 const Repeater    = require('./repeater/Repeater.jsx');
 const PureMixin   = require('../../mixins/PureMixin.js');
+const Tab         = require('../sidebar/Tab.jsx');
+const TabPane     = require('../sidebar/TabPane.jsx');
 
 let SectionControls = React.createClass({ 
   mixins: [PureMixin],
+  getInitialState(){
+    return {
+      activeTab: 'settings'
+    };
+  },
 
-  update(){
-    let controls  = _.copy(this.props.controls);
+  update(key){
+    let controls  = _.copy(this.props.sectionSettings[key]);
 
     controls = controls.map(control=>{
       let ref = this.refs[control.ref];
@@ -31,42 +38,69 @@ let SectionControls = React.createClass({
       return control;
     });
 
-    this.props.update(controls);
+    this.props.update(key, controls);
   },
 
-  updateControl(controlIndex, rGroups){
-    let controls  = _.copy(this.props.controls);
+  updateControl(key, controlIndex, rGroups){
+    let contentControls  = _.copy(this.props.sectionSettings[key]);
 
-    controls[controlIndex].fields = rGroups;
+    contentControls[controlIndex].fields = rGroups;
 
-    this.props.update(controls);
+    this.props.update(key, contentControls);
   },
 
 
   render() {
-    console.log('rendering section controls');
+    console.log('rendering section contentControls');
 
-    let {sectionIndex, controls} = this.props;
+    let {sectionIndex, sectionSettings} = this.props;
 
-    let controlsHTML = controls.map((control, ii)=>{
-      let props = {
-        onChange: this.update,
-        options: control,
-        ref: control.ref,
-        id: control.ref,
-        key: control.ref,
-        sectionIndex: sectionIndex,
-      };
 
-      switch(control.type){
-        case "repeater": return <Repeater updateControl={this.updateControl.bind(this, ii)} {...props}/>;
-        case "divider": return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
-        default: return <Input {...props} />;
-      }
+    let getControlsHTML = (key, controls)=>{
+
+      return controls.map((control, ii)=>{
+        let props = {
+          onChange: this.update.bind(this, key),
+          options: control,
+          ref: control.ref,
+          id: control.ref,
+          key: control.ref,
+          sectionIndex: sectionIndex,
+        };
+
+        switch(control.type){
+          case "repeater": return <Repeater updateControl={this.updateControl.bind(this, key, ii)} {...props}/>;
+          case "divider": return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
+          default: return <Input {...props} />;
+        }
     });
+    };
+
+    let handleTabClick = (id)=> this.setState({activeTab: id});
+    let activeTab = this.state.activeTab;
 
     return (
-        <div> {controlsHTML} </div>
+      <div>
+        <ul>
+          <Tab onClick={handleTabClick} id="content" title="Content" active={activeTab} />
+          <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab} />
+          <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/>
+        </ul>
+
+
+        <div className="tab-content" ref="tabContents">
+          <TabPane id="content" active={activeTab}>
+            {getControlsHTML('contents', sectionSettings.contents)}
+          </TabPane>
+          <TabPane id="settings" active={activeTab}>
+            {getControlsHTML('settings', sectionSettings.settings)}
+          </TabPane>
+          <TabPane id="styles" active={activeTab}>
+            {getControlsHTML('styles', sectionSettings.styles)}
+          </TabPane>
+        </div>
+
+      </div>
     );
   }
 });

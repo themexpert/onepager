@@ -1,7 +1,6 @@
 const React     = require('react');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const cx        = require('classnames');
-const AppStore  = require('../../stores/AppStore.js');
 
 let Tab = React.createClass({
   mixins: [PureMixin],
@@ -21,7 +20,7 @@ let Tab = React.createClass({
 
   handleClick(){
     if(!this.props.disabled){
-      AppStore.setTabState({active: this.props.id});
+      this.props.onClick(this.props.id);
     }
   },
 
@@ -37,7 +36,10 @@ let Tab = React.createClass({
     return (
       <li className={classes}>
         <a href="javascript:void(0)" onClick={this.handleClick}>
-          <span className={icon} data-toggle="tooltip" data-placement="bottom" title={title}></span>
+          { this.props.icon ?
+            <span className={icon} data-toggle="tooltip" data-placement="bottom" title={title}></span>:
+            <span>{title}</span>
+          }
         </a>
       </li>
     );
