@@ -5,8 +5,9 @@ const ColorPicker   = require('./ColorPicker.jsx');
 const IconSelector  = require('./IconSelector.jsx');
 const ImageIcon     = require('./ImageIcon.jsx');
 const WpMedia       = require('./WpMedia.jsx');
-const Select        = require('./Select.jsx');
 const WpSelect      = require('./WpSelect.jsx');
+const Select        = require('./Select.jsx');
+const QuillEditor   = require('./QuillEditor.jsx');
 const PureMixin     = require('../../../mixins/PureMixin.js');
 const Activity      = require('../../../lib/Activity');
 
@@ -85,6 +86,16 @@ let InputControl = React.createClass({
               onChange={this.onChange}/>;
           break;
 
+        case "editor":
+          control =
+            <QuillEditor ref="input"
+              label={options.label}
+              className={options.class}
+              placeholder={options.placeholder}
+              defaultValue={options.value}
+              onChange={this.onChange}/>;
+          break;
+          
         case "text":
         case "textarea":
           let addons = _.pick(options, ['addonBefore', 'addonAfter']);

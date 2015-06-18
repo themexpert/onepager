@@ -1,33 +1,35 @@
 const React       = require('react');
 const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
+const ReactQuill    = require('react-quill');
 
 let QuillControl = React.createClass({
   mixins: [PureMixin],
 
-  getValue(){
-    var editor = new Quill('.editor'); //jshint ignore:line
-    return editor.getText();
+  getInitialState(){
+    return {
+      value: this.props.defaultValue //anti pattern
+    };
   },
 
-  componentDidMount(){
-    var editor = new Quill('.editor'); //jshint ignore:line
-    editor.addModule('toolbar', { container: '.toolbar' });
-    editor.on('text-change', this.props.onChange);
+  getValue(){
+    return this.state.value;
+  },
+
+  onChange(value) {
+    this.setState({ value: value });
+    this.props.onChange();
   },
 
   render() {
+        // <ReactQuill>
+        //   <ReactQuill.Toolbar key="toolbar" ref="toolbar" items={ReactQuill.Toolbar.defaultItems} />
+        //   <div key="editor" ref="editor" className="quill-contents" dangerouslySetInnerHTML={{ __html: this.props.defaultValue }} />
+        // </ReactQuill>
     return (
       <div>
         <label>{this.props.label}</label>
-
-        <div className="toolbar">
-          <button className="ql-bold">Bold</button>
-          <button className="ql-italic">Italic</button>
-        </div>
-
-        <div className="editor">
-          <div dangerouslySetInnerHTML={{__html: this.props.defaultValue}} />
-        </div>
+        <ReactQuill theme="snow" value={this.props.defaultValue} onChange={this.onChange} />
+  
 
       </div>
     );

@@ -24,8 +24,8 @@ let _blockState         = {open: false};
 let _menuState          = {id: null, index: null, title: null};
 let _sidebarTabState    = {active: 'op-sections'};
 let _activeSectionIndex = null;
-let AUTO_SAVE_DELAY     = 500;
 let _savedSections      = _.copy(_sections);
+let AUTO_SAVE_DELAY     = 500;
 
 // di
 let shouldLiveSectionsSync  = ShouldSync(_sections, 'sections'); //jshint ignore:line

@@ -48,6 +48,7 @@
     "immutable": "^3.7.3",
     "lodash": "^3.9.3",
     "object-assign": "^2.0.0",
+    "quill": "^0.19.14",
     "react": "^0.13.2",
     "react-bootstrap": "^0.21.2",
     "react-dnd": "^1.0.0",

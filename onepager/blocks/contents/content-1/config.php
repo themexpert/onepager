@@ -8,6 +8,7 @@ return array(
   // Fields - $fields available on view file to access the option
   'fields' => array(
     array('name'=>'title', 'value' => 'Lets make a better website together'),
+    array('name'=>'editor', 'type'=>'editor', 'value' => 'Lets make a better website together'),
     array('name'=>'description','type'=>'textarea', 'value'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit sem, semper nec pellentesque ut, aliquet aliquam justo. Praesent fermentum odio molestie erat cursus, a elementum nunc consequat.'),
     array('name'=>'image', 'type'=>'image'),
     array('name'=>'link', 'class' => 'input-link'),
