@@ -2,7 +2,7 @@
 
 class ApiController {
 	function saveSections() {
-		$sections = $_POST['sections'];
+		$sections = array_key_exists('sections', $_POST) ? $_POST['sections'] : [] ;
 		$updated  = $_POST['updated'];
 		$pageId   = array_key_exists('pageId', $_POST) ? $_POST['pageId'] : false ;
 		$response = [ ];
