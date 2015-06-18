@@ -10,16 +10,15 @@ const AppActions          = require('../../actions/AppActions');
 const AppStore            = require('../../stores/AppStore');
 // const PureMixin           = require('../../mixins/PureMixin.js');
 const $s                  = require('string');
+const $                   = jQuery;
 
 let Sidebar = React.createClass({
   // we need to optimize this with immutability
   // mixins: [PureMixin],
 
 componentDidMount(){
-    jQuery(document).ready(function() {  
-        console.log("nicescroll added");
-        jQuery('.tab-content').niceScroll({cursorcolor:"#2d363f", cursorborder: "0"});
-    });
+    let tabContents = React.findDOMNode(this.refs.tabContents);
+    $(()=> $(tabContents).niceScroll({cursorcolor:"#2d363f", cursorborder: "0"}));
   },
 
   getInitialState(){
@@ -71,7 +70,7 @@ componentDidMount(){
           </button>
         </ul>
 
-        <div className="tab-content" ref="tab-contents">
+        <div className="tab-content" ref="tabContents">
           <TabPane id="op-sections" active={activeTab}>
             <SectionList 
               activeSectionIndex={activeSectionIndex}
