@@ -10,6 +10,7 @@ const TabPane     = require('../sidebar/TabPane.jsx');
 let SectionControls = React.createClass({ 
   mixins: [PureMixin],
   getInitialState(){
+
     return {
       activeTab: 'contents'
     };
@@ -82,9 +83,12 @@ let SectionControls = React.createClass({
     return (
       <div>
         <ul className="nav nav-pills">
-          <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab} />
-          <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab} />
-          <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/>
+          {sectionSettings.contents.length ? 
+            <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab} /> : ""}
+          {sectionSettings.settings.length ? 
+            <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab} /> : ""}
+          {sectionSettings.styles.length ? 
+            <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/> : ""}
         </ul>
 
 

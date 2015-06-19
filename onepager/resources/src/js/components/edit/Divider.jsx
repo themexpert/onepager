@@ -1,8 +1,8 @@
 const React = require("react");
-const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 
 let Divider = React.createClass({
-  mixins: [ReactComponentWithPureRenderMixin],
+  mixins: [PureMixin],
   
   render(){
     return(
