@@ -3,6 +3,12 @@
 class ApiController {
 	function saveSections() {
 		$sections = array_key_exists('sections', $_POST) ? $_POST['sections'] : [] ;
+
+		//strip slashes
+		array_walk_recursive($sections, function (&$value) {
+			$value = stripslashes($value);
+		});
+
 		$updated  = $_POST['updated'];
 		$pageId   = array_key_exists('pageId', $_POST) ? $_POST['pageId'] : false ;
 		$response = [ ];
