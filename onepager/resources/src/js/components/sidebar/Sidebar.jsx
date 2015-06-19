@@ -17,7 +17,7 @@ let Sidebar = React.createClass({
 
 componentDidMount(){
     let tabContents = React.findDOMNode(this.refs.tabContents);
-    $(()=> $(tabContents).niceScroll({cursorcolor:"#2d363f", cursorborder: "0"}));
+    $(()=> $(tabContents).niceScroll({cursorcolor:"#2ab0ad", cursorborder: "0"}));
   },
 
   getInitialState(){
