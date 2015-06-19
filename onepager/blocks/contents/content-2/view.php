@@ -28,7 +28,13 @@
 			<?php foreach($item as $feature): ?>
 				<div class="col-md-<?php echo $settings['columns']?>">
 					<div class="blurb-inner text-center wow <?php echo $animation_item?>" data-wow-delay="<?php echo $animation_delay += 0.2 ?>s">	
-						<?php op_the_media($feature['icon']) ?>
+						
+						<?php if( op_is_image($feature['media'])):?>
+							<img src="<?php echo $feature['media'] ?>" alt="<?php echo $feature['title']?>" />
+						<?php else :?>
+							<span class="<?php echo $feature['media'] ?>"></span>
+						<?php endif;?>
+						
 						<h3 class="title"><?php echo $feature['title']?></h3>
 						<p class="desc text-muted"><?php echo $feature['description']?></p>
 					</div>

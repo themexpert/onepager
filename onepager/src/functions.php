@@ -86,43 +86,55 @@ if ( ! function_exists( 'pd' ) ) {
 
 }
 
-if ( ! function_exists( 'startsWith' ) ) {
-	function startsWith($haystack, $needle) {
-	    // search backwards starting from haystack length characters from the end
-	    return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== FALSE;
-	}
-}
+// if ( ! function_exists( 'startsWith' ) ) {
+// 	function startsWith($haystack, $needle) {
+// 	    // search backwards starting from haystack length characters from the end
+// 	    return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== FALSE;
+// 	}
+// }
 
-if ( ! function_exists( 'endsWith' ) ) {
-	function endsWith($haystack, $needle) {
-	    // search forward starting from end minus needle length characters
-	    return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== FALSE);
-	}
-}
+// if ( ! function_exists( 'endsWith' ) ) {
+// 	function endsWith($haystack, $needle) {
+// 	    // search forward starting from end minus needle length characters
+// 	    return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== FALSE);
+// 	}
+// }
 
-function op_get_attrs($props){
-	return implode(" ", array_map(function($prop, $attr){
-		return "{$attr}=\"{$prop}\""; 
-	}, $props, array_keys($props)));
-}
+// function op_get_attrs($props){
+// 	return implode(" ", array_map(function($prop, $attr){
+// 		return "{$attr}=\"{$prop}\""; 
+// 	}, $props, array_keys($props)));
+// }
 
-function op_get_the_media($media, $defaults=[]){
-	if(startsWith($media, 'http')){
-		$props = array_merge(array("src" 	=> $media), $defaults);
-		$props = op_get_attrs($props);
+// function op_get_the_media($media, $defaults=[]){
+// 	if(startsWith($media, 'http')){
+// 		$props = array_merge(array("src" 	=> $media), $defaults);
+// 		$props = op_get_attrs($props);
 
-		return "<img {$props} >";
-	}
+// 		return "<img {$props} >";
+// 	}
 
-	$props 					= array_merge(array("class" 	=> ""), $defaults);
-	$props['class'] = trim($props['class']." ".$media);
+// 	$props 					= array_merge(array("class" 	=> ""), $defaults);
+// 	$props['class'] = trim($props['class']." ".$media);
 
-	$props = op_get_attrs($props);
+// 	$props = op_get_attrs($props);
 
 	
-	return "<span {$props}></span>";
-}
+// 	return "<span {$props}></span>";
+// }
 
-function op_the_media($media){
-	echo op_get_the_media($media);
+// function op_the_media($media){
+// 	echo op_get_the_media($media);
+// }
+
+// Determine media type based on the input
+function op_is_image($media)
+{
+	$protocall = array('http', 'https', '//');
+	
+	// If we find the query string then its image
+	foreach($protocall as $query) {
+        if(strpos($media, $query, 0) !== false) return true; // stop on first true result
+    }
+    return false;
 }
