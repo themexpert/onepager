@@ -27,9 +27,17 @@ componentDidMount(){
   },
 
   handleSave(){
-    this.setState({saving:true});
     let updated = AppStore.save();
-    updated.then(()=>this.setState({saving: false}));
+    this.setState({saving:true});
+    
+    updated.then(()=>{
+      console.log("we are here");
+      this.setState({saving: false});
+    }, ()=>{
+      console.log("we are failed");
+      this.setState({saving: false});
+      alert("could not save");
+    });
   },
 
   render() {
