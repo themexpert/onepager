@@ -1,18 +1,41 @@
 css class
-width
 responsive selector
 
+side width / resize
+hide
+resize
+
 settings reset
-media icon broken
+
 highlight editing section
 
 advanced
-page css
-profile
-margin, padding input
-align input
-hide based on screen
-addons search
-hide
-resize
-onsave with animation
+	page css
+	margin, padding input
+	slider
+	google font
+	save layouts	
+	align input
+
+	profile
+	hide based on screen
+
+
+	addons search
+
+	onsave with animation
+
+
+what if user gives wrong type
+what if user skips settings
+what if user skips controls
+what if user skips styles
+what if user skips view.php
+what if user malformats fields
+what is user malformats repeater
+
+
+array(name=>'image-margin', type='margin')
+array(name=>'image-padding', type='padding')
+array(name=>'align', type='align')
+
