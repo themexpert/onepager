@@ -33,6 +33,7 @@ function enqueueOnepagerAssets() {
 	$q->style( 'tx-bootstrap', asset( 'dist/vendor/css/bootstrap.css' ) );
 	$q->style( 'tx-animatecss', asset( 'dist/vendor/css/animate.css' ) );
 	$q->style( 'tx-fontawesome', asset( 'dist/vendor/css/font-awesome.css' ) );
+	$q->style( 'op-blocks', asset( 'dist/styles/blocks.css' ) );
 	$q->script( 'tx-bootstrap', asset( 'dist/vendor/js/bootstrap.js' ), [ 'jquery' ] );
 	$q->script( 'tx-mixitup', asset( 'dist/vendor/js/jquery.mixitup.js' ), [ 'jquery' ] );
 	$q->script( 'tx-wow', asset('/dist/vendor/js/wow.js'), array( 'jquery' ) );
@@ -47,7 +48,6 @@ function enqueueOnepagerAssets() {
 		$q->style( 'tx-iconselector', asset( 'dist/vendor/css/icon-selector.min.css' ) );
 		$q->style( 'tx-sweetalert', asset( 'dist/vendor/css/sweetalert.css' ) );
 		$q->style( 'tx-toastr', asset( 'dist/vendor/css/toastr.css' ) );
-		$q->style( 'op-blocks', asset( 'dist/styles/blocks.css' ) );
 
 		$q->script( 'tx-iconselector', asset( 'dist/vendor/js/icon-selector.min.js' ), [ 'jquery' ] );
 		$q->script( 'tx-colorpicker', asset( 'dist/vendor/js/bootstrap-colorpicker.js' ), [ 'jquery' ] );
