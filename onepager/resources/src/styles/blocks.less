@@ -12,15 +12,21 @@
 // ==========================================
 @navbar-btn-radius : 0px;
 
+body{ position: relative; .transition(all .25s ease-out); }
 
 /* ==========================================
    Blocks: Navbar
  ============================================ */
 
 /*
-	Remvoe BS navbar margin and give it a min height
+	Remvoe BS navbar margin
 */
-.navbar{ margin-bottom: 0; border : 0; min-height: 60px; }
+.navbar{ margin-bottom: 0; border : 0; }
+
+/*
+	Default height for Navbar 1
+*/
+.navbar-1{ height: 60px; }
 
 /*
 	Make the navbar brand less paddable
@@ -49,6 +55,32 @@
 
 	.navbar-btn{ display: inline-block;} 
 }
+
+/* OFF CANVAS MENU
+-------------------------------------------------- */
+.offcanvas-menu { 
+	position: fixed; top: 0; bottom: 0; right: -20%;  
+	width: 20%;
+	.transition(all .25s ease-in-out); 
+}
+.offcanvas-active { right: 20%; }
+// .offcanvas-menu{ display: none; }
+
+.offcanvas-active .offcanvas-menu { right: 0; }
+
+.offcanvas-menu .nav { margin: 40px 0 0; }
+.offcanvas-menu .nav li { float: none; }
+
+.offcanvas-menu .nav > li > a:hover,
+.offcanvas-menu .nav > li > a:focus,
+.offcanvas-menu .nav > li.active > a{ background: rgba(0,0,0,0.5); color: #fff; }
+
+.offcanvas-trigger{ margin: 8px; }
+.offcanvas-close{ font-size: 20px; color: #FFF; margin-right: 10px; margin-top: 10px; }
+
+// Build mode excetion
+.op-build-active.offcanvas-active{ right: 15%; } // Reduce right value becaus we are in build mode
+.op-build-active .offcanvas-menu{ width: 15%; }
 
 /* ==========================================
    Blocks: Header

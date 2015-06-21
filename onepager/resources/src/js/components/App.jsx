@@ -21,6 +21,8 @@ let App = React.createClass({
       }
     });
 
+    jQuery("body").addClass("op-build-active");
+
     AppStore.addChangeListener(this._onChange);
   },
 
