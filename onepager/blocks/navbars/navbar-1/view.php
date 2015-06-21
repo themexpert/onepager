@@ -1,4 +1,4 @@
-<header id="<?php echo $id; ?>" class="op-section navbar navbar-static-top header-1">
+<header id="<?php echo $id; ?>" class="op-section navbar navbar-static-top navbar-1">
 	<div class="container">
 		<!-- Brand -->
 	    <div class="navbar-header">
