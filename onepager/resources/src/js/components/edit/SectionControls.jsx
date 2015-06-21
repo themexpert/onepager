@@ -1,5 +1,5 @@
 const React       = require('react');
-const _           = require("underscore");
+const _           = require('underscore');
 const Divider     = require('./Divider.jsx');
 const Input       = require('./form/Input.jsx');
 const Repeater    = require('./repeater/Repeater.jsx');
@@ -9,8 +9,8 @@ const TabPane     = require('../sidebar/TabPane.jsx');
 
 let SectionControls = React.createClass({ 
   mixins: [PureMixin],
-  getInitialState(){
 
+  getInitialState(){
     return {
       activeTab: 'contents'
     };
@@ -70,8 +70,10 @@ let SectionControls = React.createClass({
         };
 
         switch(control.type){
-          case "repeater": return <Repeater updateControl={this.updateControl.bind(this, key, ii)} {...props}/>;
-          case "divider": return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
+          case "repeater": 
+            return <Repeater updateControl={this.updateControl.bind(this, key, ii)} {...props}/>;
+          case "divider": 
+            return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
           default: return <Input {...props} />;
         }
     });
@@ -84,11 +86,11 @@ let SectionControls = React.createClass({
       <div>
         <ul className="nav nav-pills">
           {sectionSettings.contents.length ? 
-            <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab} /> : ""}
+            <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab} /> : null}
           {sectionSettings.settings.length ? 
-            <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab} /> : ""}
+            <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab} /> : null}
           {sectionSettings.styles.length ? 
-            <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/> : ""}
+            <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/> : null}
         </ul>
 
 
