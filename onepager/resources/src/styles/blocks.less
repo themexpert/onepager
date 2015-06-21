@@ -1,0 +1,55 @@
+// Boostrap path
+@path : "../../vendor/bootstrap/less";
+
+// Core variables and mixins
+@import "@{path}/variables.less";
+@import "@{path}/mixins.less";
+
+// Less Hat - DO NOT REMOVE IT
+@import "../../vendor/lesshat/build/lesshat.less";
+
+// Variables
+// ==========================================
+@navbar-btn-radius : 0px;
+
+
+/* ==========================================
+   Blocks: Navbar
+ ============================================ */
+
+/*
+	Remvoe BS navbar margin and give it a min height
+*/
+.navbar{ margin-bottom: 0; border : 0; min-height: 60px; }
+
+/*
+	Make the navbar brand less paddable
+*/
+.navbar-brand{ padding-top: 5px; padding-bottom: 5px; }
+
+/*
+	Make navbar vertically center
+*/
+.navbar-nav{ margin-top: 5px; }
+
+/*
+	Adjust navbar-button vertical alignment and give space to right
+*/
+.navbar-btn{ margin-top: 13px; margin-right: 0; display: block; .border-radius( @navbar-btn-radius ); }
+
+/*
+	Responsive Mobile first style
+*/
+@media (min-width: @screen-sm-min) { 
+	/*
+	Turn off the hover background
+	*/
+	.nav > li > a:hover, 
+	.nav > li > a:focus { background-color: transparent; }
+
+	.navbar-btn{ display: inline-block;} 
+}
+
+/* ==========================================
+   Blocks: Header
+ ============================================ */
