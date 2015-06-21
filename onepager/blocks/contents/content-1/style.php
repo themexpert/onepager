@@ -7,10 +7,6 @@
 	color : <?php echo $styles['text_color']?>;
 }
 
-#<?php echo $id ?> .title{
-	font-size: <?php echo $styles['title_size']?>;
-}
-
 #<?php echo $id ?> .btn{
 	background: <?php echo $styles['button_bg_color']?>;
 	color : <?php echo $styles['button_text_color']?>;
