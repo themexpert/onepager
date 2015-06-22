@@ -3,18 +3,15 @@
   "version": "0.1.0",
   "dependencies": {
     "fontawesome": "latest",
-    "bootstrap": "~3.3.4",
     "fontawesome-selector": "git@github.com:themexpert/fontawesome-selector.git",
     "lesshat": "~3.0.2",
-    "mixitup": "~2.1.8",
-    "interact": "~1.2.4",
     "toastr": "~2.1.1",
     "mjolnic-bootstrap-colorpicker": "~2.1.2",
     "sweetalert": "~1.0.1",
     "animate.css": "~3.2.5",
     "wow": "~1.1.2",
     "jquery.nicescroll": "~3.6.0",
-    "quill": "git@github.com:nadimtuhin/quill.git#~0.19.15"
+    "bootstrap": "~3.3.5"
   },
   "devDependencies": {}
 }
