@@ -11,9 +11,9 @@ Thumbs.db
 *.sublime-project
 
 # Node + Composer
-onepager/resources/dist/
+onepager/dist/
 onepager/node_modules/
+onepager/bower_components/
 onepager/vendor/
-onepager/resources/vendor/
 onepager/composer.lock
 *.composer.lock
