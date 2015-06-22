@@ -7,7 +7,7 @@ return array(
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
-    array('name'=>'logo', 'type'=> 'image'),
+    array('name'=>'logo', 'type'=> 'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/logo-dark.png'),
     array('name'=>'menu','type'=>'menu'),
     array(
       'name'=>'cta', 
@@ -20,6 +20,20 @@ return array(
       'value'=> 'Call To Action',
       'placeholder'=> 'Call To Action'
     ),
+  ),
+
+  // Settings
+  'settings' => array(
+    array(
+      'name' => 'sticky_nav',
+      'label' => 'Sticky Nav',
+      'type' => 'select',
+      'value' => 1,
+      'options' => array(
+        1 => 'Enabled',
+        0 => 'Disabled'
+      )
+    )
   ),
   
   // Styles - $styles available on view file to access the option

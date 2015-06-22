@@ -8,9 +8,21 @@ return array(
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array('name'=>'retext', "type"=>"text", "value"=>["one", "two"]),
-    array('name'=>'title', 'value' => 'Lets make a better website together'),
-    array('name'=>'description','type'=>'editor', 'value'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit sem, semper nec pellentesque ut, aliquet aliquam justo. Praesent fermentum odio molestie erat cursus, a elementum nunc consequat.'),
-    array('name'=>'image', 'type'=>'image'),
+
+    array(
+      'name'=>'title', 
+      'value' => 'Lets make a better website together'
+    ),
+    array(
+      'name'=>'description',
+      'type'=>'editor', 
+      'value'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit sem, semper nec pellentesque ut, aliquet aliquam justo. Praesent fermentum odio molestie erat cursus, a elementum nunc consequat.'
+    ),
+    array(
+      'name'=>'image', 
+      'type'=>'image', 
+      'value'=> 'http://s3.amazonaws.com/quantum-assets/img-1.png'
+    ),
     array('name'=>'link'),
 
   ),
@@ -31,7 +43,7 @@ return array(
       'name'     => 'media_grid',
       'label'    => 'Meida Grid',
       'type'     => 'select',
-      'value'    => '6',
+      'value'    => '5',
       'options'  => array(
         '3'   => '3',
         '4'   => '4',
@@ -67,7 +79,7 @@ return array(
       'name'     => 'content_alignment',
       'label'    => 'Items Alignment',
       'type'     => 'select',
-      'value'    => 'top',
+      'value'    => 'middle',
       'options'  => array(
         'top'      => 'Top',
         'middle'   => 'Middle',
@@ -85,7 +97,7 @@ return array(
       'name'     => 'animation_content',
       'label'    => 'Animation Content',
       'type'     => 'select',
-      'value'    => 'none',
+      'value'    => 'fadeInLeft',
       'options'  => array(
         '0'           => 'None',
         'fadeIn'      => 'Fade',
@@ -100,7 +112,7 @@ return array(
     'name'     => 'animation_media',
     'label'    => 'Animation Media',
     'type'     => 'select',
-    'value'    => 'none',
+    'value'    => 'fadeInRight',
     'options'  => array(
         '0'             => 'None',
         'fadeIn'        => 'Fade',

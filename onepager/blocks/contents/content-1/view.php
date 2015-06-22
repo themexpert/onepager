@@ -20,18 +20,20 @@
 					<?php endif; ?>
 					
 					<div class="col-md-<?php echo $content_cols ?> wow <?php echo $animation_content ?>">	
-						<!-- Title -->
-						<?php if($contents['title']): ?>
-							<h1 class="section-title <?php echo $settings['title_transformation']?> <?php echo $settings['title_size']?>"><?php echo $contents['title']?></h1>
-						<?php endif; ?>
-						<!-- Description -->
-						<?php if($contents['description']): ?>
-							<p><?php echo $contents['description']?></p>
-						<?php endif; ?>
+						<div class="pad-right-big">
+							<!-- Title -->
+							<?php if($contents['title']): ?>
+								<h1 class="section-title <?php echo $settings['title_transformation']?> <?php echo $settings['title_size']?>"><?php echo $contents['title']?></h1>
+							<?php endif; ?>
+							<!-- Description -->
+							<?php if($contents['description']): ?>
+								<p><?php echo $contents['description']?></p>
+							<?php endif; ?>
 
-						<?php if( $contents['link']): ?>
-							<a class="btn btn-primary btn-lg" href="<?php echo $contents['link']?>"><?php echo $settings['link_text']; ?></a>
-						<?php endif; ?>
+							<?php if( $contents['link']): ?>
+								<a class="btn btn-primary btn-lg" href="<?php echo $contents['link']?>"><?php echo $settings['link_text']; ?></a>
+							<?php endif; ?>
+						</div>
 					</div>
 					
 					<?php // Image right
