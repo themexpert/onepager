@@ -7,7 +7,7 @@ return array(
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
-    array('name'=>'logo', 'type'=> 'image'),
+    array('name'=>'logo', 'type'=> 'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/logo-dark.png'),
     array('name'=>'menu','type'=>'menu'),
     array(
       'name'=>'cta', 
