@@ -51,6 +51,17 @@ return array(
       ),
     ),
     array(
+      'name'     => 'title_transformation',
+      'label'    => 'Title Transformation',
+      'type'     => 'select',
+      'value'    => 'text-uppercase',
+      'options'  => array(
+        'text-lowercase'   => 'Lowercase',
+        'text-uppercase'   => 'Uppercase',
+        'text-capitalize'  => 'Capitalized'
+      ),
+    ),
+    array(
       'name'     => 'content_alignment',
       'label'    => 'Items Alignment',
       'type'     => 'select',
@@ -64,6 +75,7 @@ return array(
     
     array(
       'name'  => 'link_text', 
+      'label' => 'Link Text',
       'value' => 'Readmore', 
     ),
 
@@ -124,9 +136,16 @@ return array(
     ),
     array('label'=>'Text', 'type'=>'divider'), // Divider - Text
     array(
+      'name'  => 'title_color',
+      'label' => 'Title Color',
+      'type'  => 'colorpicker',
+      'value' => '#323232'
+    ),
+    array(
       'name'  => 'text_color',
       'label' => 'Text Color',
-      'type'  => 'colorpicker'
+      'type'  => 'colorpicker',
+      'value' => '#323232'
     ),
     array(
       'name'    => 'button_bg_color',
@@ -142,7 +161,7 @@ return array(
     ),
   ),
 
-  // 'assets' => function( $path ){
-  //   onepager()->asset()->style( 'content-1', $path . 'style.css' );
-  // }
+  'assets' => function( $path ){
+    onepager()->asset()->style( 'content-1', $path . 'style.css' );
+  }
 );
