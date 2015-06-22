@@ -21,7 +21,7 @@ return array(
       'name'     => 'media_alignment',
       'label'    => 'Meida Alignment',
       'type'     => 'select',
-      'value'    => 'left',
+      'value'    => 'right',
       'options'  => array(
         'left'    => 'Left',
         'right'   => 'Right'
@@ -45,11 +45,22 @@ return array(
       'name'     => 'title_size',
       'label'    => 'Title Size',
       'type'     => 'select',
-      'value'    => '3.5em',
+      'value'    => 'title-sm',
       'options'  => array(
-        '2em'     => 'Small',
-        '3.5em'   => 'Medium',
-        '5em'     => 'Large'
+        'title-sm'      => 'Small',
+        'title-md'      => 'Medium',
+        'title-lg'      => 'Large'
+      ),
+    ),
+    array(
+      'name'     => 'title_transformation',
+      'label'    => 'Title Transformation',
+      'type'     => 'select',
+      'value'    => 'text-uppercase',
+      'options'  => array(
+        'text-lowercase'   => 'Lowercase',
+        'text-uppercase'   => 'Uppercase',
+        'text-capitalize'  => 'Capitalized'
       ),
     ),
     array(
@@ -66,6 +77,7 @@ return array(
     
     array(
       'name'  => 'link_text', 
+      'label' => 'Link Text',
       'value' => 'Readmore', 
     ),
 
@@ -106,8 +118,7 @@ return array(
     array(
       'name'  => 'bg_image', 
       'label' => 'Image', 
-      'type'  => 'image', 
-      'tab'   => 'styles'
+      'type'  => 'image'
     ),
     array(
       'name'     => 'bg_repeat',
@@ -117,33 +128,38 @@ return array(
         'no-repeat'     => 'No Repeat',
         'repeat-x'      => 'Repeat X',
         'repeat-y'      => 'Repeat Y',
-      ),
-      'tab' => 'styles'
+      )
     ),
     array(
       'name'    => 'bg_color',
       'label'   => 'Color',
       'type'    => 'colorpicker',
-      'tab'     => 'styles'
+      'value'   => '#ebeff2'
     ),
     array('label'=>'Text', 'type'=>'divider'), // Divider - Text
+    array(
+      'name'  => 'title_color',
+      'label' => 'Title Color',
+      'type'  => 'colorpicker',
+      'value' => '#323232'
+    ),
     array(
       'name'  => 'text_color',
       'label' => 'Text Color',
       'type'  => 'colorpicker',
-      'tab'   => 'styles'
+      'value' => '#323232'
     ),
     array(
       'name'    => 'button_bg_color',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'tab'     => 'styles'
+      'value'   => '#4cb257'
     ),
     array(
       'name'    => 'button_text_color',
       'label'   => 'Button Text',
       'type'    => 'colorpicker',
-      'tab'     => 'styles'
+      'value'   => '#fff'
     ),
   ),
 

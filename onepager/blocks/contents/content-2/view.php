@@ -11,7 +11,7 @@
 			
 			<?php if($contents['title']):?>
 				<!-- Section Title -->
-				<h1 class="section-title text-center wow <?php echo $animation_title?>">
+				<h1 class="section-title text-center <?php echo $settings['title_transformation']?> wow <?php echo $animation_title?>">
 					<?php echo $contents['title']?>
 				</h1>
 			<?php endif; ?>
@@ -27,15 +27,15 @@
 			<div class="row">
 			<?php foreach($item as $feature): ?>
 				<div class="col-md-<?php echo $settings['columns']?>">
-					<div class="blurb-inner text-center wow <?php echo $animation_item?>" data-wow-delay="<?php echo $animation_delay += 0.2 ?>s">	
+					<div class="blurb text-center wow <?php echo $animation_item?>" data-wow-delay="<?php echo $animation_delay += 0.2 ?>s">	
 						
 						<?php if( op_is_image($feature['media'])):?>
-							<img src="<?php echo $feature['media'] ?>" alt="<?php echo $feature['title']?>" />
+							<img class="media" src="<?php echo $feature['media'] ?>" alt="<?php echo $feature['title']?>" />
 						<?php else :?>
-							<span class="<?php echo $feature['media'] ?>"></span>
+							<span class="media <?php echo $feature['media'] ?>"></span>
 						<?php endif;?>
 						
-						<h3 class="title"><?php echo $feature['title']?></h3>
+						<h3 class="title <?php echo $settings['title_transformation']?>"><?php echo $feature['title']?></h3>
 						<p class="desc text-muted"><?php echo $feature['description']?></p>
 					</div>
 				</div>

@@ -1,7 +1,14 @@
-/*Full section*/
-.content-2{ padding: 60px 0; }
-/*Section Title*/
-.content-2 .section-title{ text-transform: uppercase; }
+/*
+	Full section
+*/
+.content-2 { padding: 60px 0; font-size: 1.125em; }
+.content-2 .section-title { font-weight: bold; font-size: 2.625em; }
 
-/*Item*/
-.content-2 .blurb-inner{ margin: 3rem 0 0; }
+.content-2 .section-title,
+.content-2 .section-subtitle { margin: 1rem 10rem; }
+
+/*
+	Blurbs
+*/
+.content-2 .blurb { margin: 3.5rem 0 0; }
+.content-2 .blurb h3 { font-weight: bold; font-size: 1.125em; }

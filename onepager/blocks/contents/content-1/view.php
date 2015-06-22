@@ -7,7 +7,7 @@
 ?>
 
 <section id="<?php echo $id;?>" class="op-section content-1">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<article class="flex-grid flex-grid-<?php echo $settings['content_alignment']?>">
@@ -22,7 +22,7 @@
 					<div class="col-md-<?php echo $content_cols ?> wow <?php echo $animation_content ?>">	
 						<!-- Title -->
 						<?php if($contents['title']): ?>
-							<h1 class="title"><?php echo $contents['title']?></h1>
+							<h1 class="section-title <?php echo $settings['title_transformation']?> <?php echo $settings['title_size']?>"><?php echo $contents['title']?></h1>
 						<?php endif; ?>
 						<!-- Description -->
 						<?php if($contents['description']): ?>
