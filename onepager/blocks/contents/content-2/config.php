@@ -12,7 +12,7 @@ return array(
     array(
       'name'=>'description', 
       'type'=>'textarea', 
-      'value' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pellentesque eget metus a vulputate.'
+      'value' => 'A fool thinks himself to be wise, but a wise man knows himself to be a fool.'
     ),
 
     array(

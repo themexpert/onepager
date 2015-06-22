@@ -12,7 +12,7 @@ return array(
     array(
       'name'=>'description', 
       'type'=>'textarea', 
-      'value' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pellentesque eget metus a vulputate. Nam non neque tempus, venenatis nisl vitae, viverra nulla.'
+      'value' => 'Dont limit yourself. Many people limit themselves to what they think they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve'
     ),
     array(
       'name' => 'image',
@@ -25,7 +25,7 @@ return array(
       'type'=>'repeater',
       'fields' => array(
         array('name'=>'title', 'value' => 'Beautiful and Responsive Design'),
-        array('name'=>'description', 'type'=> 'textarea', 'value'=>'Phasellus tempus tortor at placerat suscipit. Sed porttitor ut nibh et finibus. Curabitur cursus pulvinar metus quis vehicula.'),
+        array('name'=>'description', 'type'=> 'textarea', 'value'=>'The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart'),
         array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-camera.png'),
       )
     )

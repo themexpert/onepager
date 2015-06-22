@@ -14,7 +14,7 @@ return array(
     array(
       'name'=>'description',
       'type'=>'editor', 
-      'value'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit sem, semper nec pellentesque ut, aliquet aliquam justo. Praesent fermentum odio molestie erat cursus, a elementum nunc consequat.'
+      'value'=> 'The world is a dangerous place to live; not because of the people who are evil, but because of the people who dont do anything about it.'
     ),
     array(
       'name'=>'image', 
