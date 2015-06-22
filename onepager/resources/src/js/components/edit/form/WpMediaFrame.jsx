@@ -75,7 +75,7 @@ let WpMediaFrame = React.createClass({
                 <span className="fa fa-picture-o"></span> image
               </button>
               <button onClick={this.handleReset} className="btn btn-primary" ref="refresh" type="button">
-                <span className="fa fa-refresh"></span>
+                <span className="fa fa-undo"></span>
               </button>
             </span>
           </div>

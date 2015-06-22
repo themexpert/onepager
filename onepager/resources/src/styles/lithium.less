@@ -9,14 +9,14 @@
 @import "../../vendor/lesshat/build/lesshat.less";
 
 // Background 
-@bg-primary     : #404a53;
-@bg-secondary   : #2d363f;
+@bg-primary     : #222c3a;
+@bg-secondary   : #1d2733;
 
 // Text Color
-@text-color     : #A5A5A5;
+@text-color     : #b9c0c9;
 
 // Bootstrap override
-@brand-primary:           #009688;
+@brand-primary:           #2ab0ad;
 @brand-success:           #2196F3;
 @brand-info:              #26A69A;
 
@@ -188,7 +188,7 @@ a{ text-decoration: inherit; color: @brand-primary; }
   }
 
   // Panel
-  .panel{ background: darken(@bg-primary, 5%); }
+  .panel{ background: darken(@bg-primary, 2%); }
   .panel-heading{ background: darken(@bg-secondary, 1%); color: @text-color;}
   .panel,
   .panel-heading{ border-color: darken(@bg-secondary, 2%); }
@@ -202,18 +202,22 @@ a{ text-decoration: inherit; color: @brand-primary; }
 
   // Thumbnail
   .thumbnail{ background: @bg-secondary; border-color: darken(@bg-secondary, 10%);}
+  
   //Divider
   h3.form-divider {
-    margin: 4px 0px 10px;
-    padding: 0px 0px 5px;
-    font-size: 12px;
-    text-transform: uppercase;
-    color: rgb(153, 153, 153);
-    font-weight: normal;
-    border-bottom: 1px solid rgb(221, 221, 221);
+    color: @text-color;
+    border-bottom: 1px solid lighten(@bg-primary, 5%);
+    .box-shadow(0 1px 0 darken(@bg-secondary, 1%));
   }
 }
-
+//Divider
+h3.form-divider {
+  margin: 4px 0px 10px;
+  padding: 0px 0px 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: normal;
+}
 // Cards - Sections list
 .txop-cards{
   padding: 10px 25px 10px 10px; 
@@ -249,7 +253,7 @@ a{ text-decoration: inherit; color: @brand-primary; }
 //  Sidebar / Configure
 // ****************************************************
 .txop-sidebar{
-  position: fixed; left: 0; top: 0; bottom: 0; width: 23%;
+  position: fixed; left: 0; top: 0; bottom: 0; width: 23%; z-index: 9999;
   padding-top: 54px; 
 
   // Buttons
@@ -280,7 +284,7 @@ a{ text-decoration: inherit; color: @brand-primary; }
   }
 
   // Navigation Tabs
-  .tx-nav-tabs{ position: fixed; top: 2px; left: 0; z-index: 9999; width: 22.9%; }
+  .tx-nav-tabs{ position: fixed; top: 0; left: 0; z-index: 9999; width: 22.9%; }
   // Tab content
   > .tab-content{ overflow-y: auto; overflow-x: hidden; height: 100%; }
 

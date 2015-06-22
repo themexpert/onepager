@@ -1,0 +1,88 @@
+// Boostrap path
+@path : "../../vendor/bootstrap/less";
+
+// Core variables and mixins
+@import "@{path}/variables.less";
+@import "@{path}/mixins.less";
+
+// Less Hat - DO NOT REMOVE IT
+@import "../../vendor/lesshat/build/lesshat.less";
+
+// Variables
+// ==========================================
+@navbar-btn-radius : 0px;
+
+body{ position: relative; .transition(all .25s ease-out); }
+
+/* ==========================================
+   Blocks: Navbar
+ ============================================ */
+
+/*
+	Remvoe BS navbar margin
+*/
+.navbar{ margin-bottom: 0; border : 0; }
+
+/*
+	Default height for Navbar 1
+*/
+.navbar-1,
+.navbar-3{ height: 60px; }
+
+/*
+	Make the navbar brand less paddable
+*/
+.navbar-brand{ padding-top: 5px; padding-bottom: 5px; }
+
+/*
+	Make navbar vertically center
+*/
+.navbar-nav{ margin-top: 5px; }
+
+/*
+	Adjust navbar-button vertical alignment and give space to right
+*/
+.navbar-btn{ margin-top: 13px; margin-right: 0; display: block; .border-radius( @navbar-btn-radius ); }
+
+/*
+	Responsive Mobile first style
+*/
+@media (min-width: @screen-sm-min) { 
+	/*
+	Turn off the hover background
+	*/
+	.nav > li > a:hover, 
+	.nav > li > a:focus { background-color: transparent; }
+
+	.navbar-btn{ display: inline-block;} 
+}
+
+/* OFF CANVAS MENU
+-------------------------------------------------- */
+.offcanvas-menu { 
+	position: fixed; top: 0; bottom: 0; right: -20%;  
+	width: 20%;
+	.transition(all .25s ease-in-out); 
+}
+.offcanvas-active { right: 20%; }
+// .offcanvas-menu{ display: none; }
+
+.offcanvas-active .offcanvas-menu { right: 0; }
+
+.offcanvas-menu .nav { margin: 40px 0 0; }
+.offcanvas-menu .nav li { float: none; }
+
+.offcanvas-menu .nav > li > a:hover,
+.offcanvas-menu .nav > li > a:focus,
+.offcanvas-menu .nav > li.active > a{ background: rgba(0,0,0,0.5); color: #fff; }
+
+.offcanvas-trigger{ margin: 8px; }
+.offcanvas-close{ font-size: 20px; color: #FFF; margin-right: 10px; margin-top: 10px; }
+
+// Build mode excetion
+.op-build-active.offcanvas-active{ right: 15%; } // Reduce right value becaus we are in build mode
+.op-build-active .offcanvas-menu{ width: 15%; }
+
+/* ==========================================
+   Blocks: Header
+ ============================================ */

@@ -10,12 +10,7 @@ return array(
     array('name'=>'title', 'value' => 'Lets make a better website together'),
     array('name'=>'description','type'=>'editor', 'value'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit sem, semper nec pellentesque ut, aliquet aliquam justo. Praesent fermentum odio molestie erat cursus, a elementum nunc consequat.'),
     array('name'=>'image', 'type'=>'image'),
-  ),
-  // Fields - $fields available on view file to access the option
-  'styles' => array(
-    array('name'=>'image', 'type'=>'image'),
-    array('name'=>'link', 'type' => 'media'),
-    array('name'=>'icon', 'type' => 'icon'),
+    array('name'=>'link'),
   ),
   
   // Settings - $settings available on view file to access the option
@@ -105,7 +100,7 @@ return array(
 
   // Fields - $styles available on view file to access the option
   'styles' => array(
-    array('label'=>'Background', 'type'=>'divider', 'tab'=>'styles'), // Divider - Background
+    array('label'=>'Background', 'type'=>'divider'), // Divider - Background
     array(
       'name'  => 'bg_image', 
       'label' => 'Image', 
@@ -129,7 +124,7 @@ return array(
       'type'    => 'colorpicker',
       'tab'     => 'styles'
     ),
-    array('label'=>'Text', 'type'=>'divider', 'tab'=>'styles'), // Divider - Text
+    array('label'=>'Text', 'type'=>'divider'), // Divider - Text
     array(
       'name'  => 'text_color',
       'label' => 'Text Color',
@@ -138,13 +133,13 @@ return array(
     ),
     array(
       'name'    => 'button_bg_color',
-      'label'   => 'Button Background Color',
+      'label'   => 'Button Background',
       'type'    => 'colorpicker',
       'tab'     => 'styles'
     ),
     array(
       'name'    => 'button_text_color',
-      'label'   => 'Button Background Color',
+      'label'   => 'Button Text',
       'type'    => 'colorpicker',
       'tab'     => 'styles'
     ),

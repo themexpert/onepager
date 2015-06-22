@@ -2,8 +2,8 @@
 
 return array(
   
-  'slug'      => 'header-1', // Must be unique
-  'groups'    => ['headers'], // Blocks group for filter
+  'slug'      => 'navbar-3', // Must be unique
+  'groups'    => ['navbars'], // Blocks group for filter
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
@@ -34,7 +34,7 @@ return array(
       'name'  => 'link_color',
       'label' => 'Link Color',
       'type'  => 'colorpicker',
-      'value' => '#777'
+      'value' => '#666'
     ),
     array(
       'name'  => 'link_hover_color',
@@ -46,7 +46,7 @@ return array(
       'name'    => 'cta_bg',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'value'   => '#4CAF50',
+      'value'   => '#2196F3',
     ),
     array(
       'name'    => 'cta_color',
@@ -57,6 +57,6 @@ return array(
   ),
 
   // "assets" => function( $path ){
-  //   onepager()->asset()->style( 'blurb', $path . "style.css" );
+  //   onepager()->asset()->style( 'navbar-1', $path . "style.css" );
   // }
 );

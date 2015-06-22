@@ -1,11 +1,3 @@
-body{
-    position: relative;
-    right: 0;
-    overflow-x: hidden;
-    -webkit-transition: all .25s ease-out;
-    -o-transition: all .25s ease-out;
-    transition: all .25s ease-out;
-}
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
@@ -63,38 +55,7 @@ body{
   flex-direction: column;
 }
 
-/* OFF CANVAS MENU
--------------------------------------------------- */
-.offcanvas-menu { right: -20%; }
-.offcanvas-active { right: 20%; }
-.offcanvas-menu{ display: none; }
 
-.offcanvas-active .offcanvas-menu {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 20%; /* 6 columns */
-  display: block;
-  background: #222;
-  display: block;
-}
-.offcanvas-menu .nav { margin: 40px 0 0; }
-.offcanvas-menu .nav li { float: none; }
-.offcanvas-menu .nav > li > a{ color: #fff; }
-.offcanvas-menu .nav > li > a:hover,
-.offcanvas-menu .nav > li > a:focus,
-.offcanvas-menu .nav > li.active > a{ background: rgba(0,0,0,0.5); color: #fff; }
-
-.offcanvas-active:after{
-  content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 1090;
-    background: rgba(0, 0, 0, 0.8);
-}
-.offcanvas-trigger{ margin: 8px; color: #fff; }
-.offcanvas-close{ font-size: 20px; color: #999; margin-right: 10px; margin-top: 10px; }
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 

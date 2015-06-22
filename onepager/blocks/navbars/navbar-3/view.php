@@ -1,4 +1,4 @@
-<header id="<?php echo $id; ?>" class="op-section navbar navbar-static-top header-1">
+<header id="<?php echo $id; ?>" class="op-section navbar navbar-static-top navbar-3">
 	<div class="container">
 		<!-- Brand -->
 	    <div class="navbar-header">
@@ -18,14 +18,14 @@
 	    </div>
 	    <!-- Menu -->
 	    <nav class="collapse navbar-collapse" id="nav-<?php echo $id; ?>">
+	    	<?php wp_nav_menu(array(
+                'menu' =>$contents['menu'] , 
+                'menu_class'=>'nav navbar-nav', 
+                'container' =>false,
+            )) ?>
             <?php if( $contents['cta']): ?>
             <a href="<?php echo $contents['cta']?>" class="btn navbar-btn navbar-right"><?php echo $contents['cta_text']?></a>
 	    	<?php endif; ?>
-	    	<?php wp_nav_menu(array(
-                'menu' =>$contents['menu'] , 
-                'menu_class'=>'nav navbar-nav navbar-right', 
-                'container' =>false,
-            )) ?>
 	    </nav>
 	</div>
 </header>
