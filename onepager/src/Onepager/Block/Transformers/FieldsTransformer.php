@@ -10,6 +10,11 @@ class FieldsTransformer {
       //optional
       $type = isset( $control['type'] ) ? $control['type'] : "text";
 
+      if(endsWith($type, '-repeater')){
+        $inner = substr($type, 0, strpos($type, '-repeater'));
+        $type = "repeater";
+      }
+
       $default = array();
 
       switch ( $type ) {
@@ -20,7 +25,6 @@ class FieldsTransformer {
           break;
 
         case 'repeater':
-          $control['fields'] = $this->transform( $control['fields'] );
 
           $default = array(
             "label"  => ucfirst( $name ),
@@ -30,6 +34,12 @@ class FieldsTransformer {
             "fields" => [ ]
           );
 
+          if(isset($inner)){
+            $default['inner'] = $inner;
+            $control['fields'] = [$control];
+          }
+
+          $control['fields'] = $this->transform( $control['fields'] );
           break;
 
         default:

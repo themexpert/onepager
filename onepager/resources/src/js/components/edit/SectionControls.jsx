@@ -9,8 +9,8 @@ const TabPane     = require('../sidebar/TabPane.jsx');
 
 let SectionControls = React.createClass({ 
   mixins: [PureMixin],
-  getInitialState(){
 
+  getInitialState(){
     return {
       activeTab: 'contents'
     };
@@ -19,7 +19,8 @@ let SectionControls = React.createClass({
   update(key){
     let controls  = _.copy(this.props.sectionSettings[key]);
 
-    controls = controls.map(control=>{
+    controls = controls.map(ocontrol=>{
+      let control = _.copy(ocontrol);
       let ref = this.refs[control.ref];
 
       switch(control.type){
@@ -60,6 +61,7 @@ let SectionControls = React.createClass({
     let getControlsHTML = (key, controls)=>{
 
       return controls.map((control, ii)=>{
+        
         let props = {
           onChange: this.update.bind(this, key),
           options: control,
@@ -68,8 +70,9 @@ let SectionControls = React.createClass({
           key: control.ref,
           sectionIndex: sectionIndex,
         };
+        
 
-        switch(control.type){
+        switch(type){
           case "repeater": return <Repeater updateControl={this.updateControl.bind(this, key, ii)} {...props}/>;
           case "divider": return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
           default: return <Input {...props} />;

@@ -11,6 +11,9 @@ return array(
     array('name'=>'description','type'=>'editor', 'value'=> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elit sem, semper nec pellentesque ut, aliquet aliquam justo. Praesent fermentum odio molestie erat cursus, a elementum nunc consequat.'),
     array('name'=>'image', 'type'=>'image'),
     array('name'=>'link'),
+    
+    array('name'=>'retext', "type"=>"text-repeater"),
+    array('name'=>'retext', "type"=>"icon-repeater"),
   ),
   
   // Settings - $settings available on view file to access the option
