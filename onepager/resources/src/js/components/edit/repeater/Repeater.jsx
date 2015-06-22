@@ -90,8 +90,8 @@ let Repeater = React.createClass({
     }
 
     confirmDelete(()=>{
-        rGroups.splice(rgIndex, 1);
-        this.props.updateControl(rGroups);
+      rGroups.splice(rgIndex, 1);
+      this.props.updateControl(rGroups);
     });
   },
 

@@ -1,5 +1,5 @@
 const $               = jQuery; //jshint ignore: line
-const SectionComputer = require('../lib/SectionComputer');
+const SectionTransformer = require('../lib/SectionTransformer');
 const notify          = require('../lib/notify');
 const ODataStore      = require('./ODataStore');
 const AppActions      = require('../actions/AppActions');
@@ -15,7 +15,7 @@ function SyncService(pageId, inactive, shouldSectionsSync){
       pageId  : pageId,
       action  : 'save_sections',
       updated : sectionIndex,
-      sections: SectionComputer.simplifySections(sections),
+      sections: SectionTransformer.simplifySections(sections),
     };
 
     let sync = function(){
@@ -49,7 +49,7 @@ function SyncService(pageId, inactive, shouldSectionsSync){
         pageId  : pageId,
         action  : 'save_sections',
         updated : null,
-        sections: SectionComputer.simplifySections(sections),
+        sections: SectionTransformer.simplifySections(sections),
       };
 
       let sync = function(){
