@@ -1,5 +1,8 @@
 const React = require('react');
-const App = require('./components/App.jsx');
+const App   = require('./components/App.jsx');
+
+require("./styles/flex.less");
+require("./styles/lithium.less");
 
 require("underscore");
 require("./lib/_mixins");

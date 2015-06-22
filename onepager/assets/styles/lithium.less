@@ -1,12 +1,12 @@
 // Boostrap path
-@path : "../../vendor/bootstrap/less";
+@path : "../../bower_components/bootstrap/less";
 
 // Core variables and mixins
 @import "@{path}/variables.less";
 @import "@{path}/mixins.less";
 
 // Less Hat - DO NOT REMOVE IT
-@import "../../vendor/lesshat/build/lesshat.less";
+@import "../../bower_components/lesshat/build/lesshat.less";
 
 // Background 
 @bg-primary     : #404a53;
@@ -326,7 +326,7 @@ a{ text-decoration: inherit; color: @brand-primary; }
 .txop-noblock{
   #sections:before{
     content: ''; display: block;
-    background: url(../../images/add-block.png); 
+    background: url(./../images/add-block.png); 
     width: 170px; height: 76px;
     position: absolute; top: 75px; left: 1%;
   }
