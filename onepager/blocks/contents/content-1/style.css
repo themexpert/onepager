@@ -6,9 +6,9 @@
 /*
 	Title
 */
-.section-title{ font-weight: bold; }
+.content-1 .section-title{ font-weight: bold; }
 
 /*
 	Button
 */
-.btn{ margin-top: 20px; border-radius: 0px; }
+.content-1 .btn{ margin-top: 20px; border-radius: 0px; }
