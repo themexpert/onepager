@@ -18,16 +18,18 @@
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.4",
     "main-bower-files": "^2.7.0",
+    "react-hot-loader": "^1.2.7",
     "reactify": "^1.1.0",
     "require-dir": "^0.3.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.2.1"
+    "watchify": "^3.2.1",
+    "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.9.0"
   },
   "scripts": {
-    "dev": "gulp --type dev",
-    "start": "gulp",
-    "build": "gulp build"
+    "build": "webpack",
+    "dev": "webpack-dev-server --watch --devtool eval --progress --colors --hot --content-base build"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
@@ -43,20 +45,28 @@
   },
   "dependencies": {
     "async": "^1.2.1",
+    "babel-loader": "^5.1.4",
     "classnames": "^2.1.1",
+    "css-loader": "^0.15.1",
+    "event-stream": "^3.3.1",
     "flux": "^2.0.3",
+    "gulp-rename": "^1.2.2",
     "immutable": "^3.7.3",
+    "less": "^2.5.1",
+    "less-loader": "^2.2.0",
     "lodash": "^3.9.3",
+    "node-libs-browser": "^0.5.2",
     "object-assign": "^2.0.0",
     "quill": "^0.19.14",
     "react": "^0.13.2",
     "react-bootstrap": "^0.21.2",
-    "react-dnd": "^1.0.0",
     "react-quill": "^0.1.1",
     "sortablejs": "git+https://github.com/nadimtuhin/Sortable.git",
     "string": "^3.3.0",
     "sweetalert": "^1.0.1",
     "tinycolor2": "^1.1.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.9.0"
   }
 }
