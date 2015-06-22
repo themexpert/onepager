@@ -52,14 +52,17 @@ let Section = React.createClass({
     if(e.which !== 13) {
       return;
     }
+    
+    let id = null;
+    let title = this.refs.title.getValue();
 
-    let title     = this.refs.title.getValue();
-
+    console.log("title is %s", title);
     if(this.props.title === 'untitlted section'){
-      this.props.id  = this.props.getUniqueSectionId(this.props.index, title);
+      console.log("changing title first time %s", title);
+      id  = this.props.getUniqueSectionId(this.props.index, title);
     }
 
-    this.props.updateTitle(title);
+    this.props.updateTitle(title, id);
 
     this.setState({titleEditState: false});
   },

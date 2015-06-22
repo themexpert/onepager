@@ -88,9 +88,12 @@ let SectionList = React.createClass({
           
           <div ref="sections">
             {sections.map((section, index)=> {
-              let updateTitle = (title)=>{
+              let updateTitle = (title, id)=>{
                 let uSection   = _.copy(section);
                 uSection.title = title;
+                if(id){
+                  uSection.id = id;
+                }
                 
                 this.updateSection(index, uSection);
               };

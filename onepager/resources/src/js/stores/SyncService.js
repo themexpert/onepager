@@ -55,9 +55,9 @@ function SyncService(pageId, inactive, shouldSectionsSync){
       let sync = function(){
         $.post(ODataStore.ajaxUrl, payload, (res)=>{
           if(!res || !res.success){
-            notify.error('Unable to save. Make sure you are logged in');
+            notify.error('Unable to save. Make sure you are logged in'); //bad message
 
-            return reject();
+            return reject('Unable to save. Make sure you are logged in'); //bad message
           }
 
           

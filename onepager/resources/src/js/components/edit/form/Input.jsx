@@ -99,6 +99,9 @@ let InputControl = React.createClass({
         case "text":
         case "textarea":
           let addons = _.pick(options, ['addonBefore', 'addonAfter']);
+          if(options.type === "textarea"){
+            addons.rows = 5;
+          }
           control =
             <Input ref="input"
               {...addons}
