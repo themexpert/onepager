@@ -19,7 +19,7 @@ return array(
     array(
       'name'=>'image', 
       'type'=>'image', 
-      'valur'=> 'http://s3.amazonaws.com/quantum-assets/img-1.png'
+      'value'=> 'http://s3.amazonaws.com/quantum-assets/img-1.png'
     ),
     array('name'=>'link'),
   ),

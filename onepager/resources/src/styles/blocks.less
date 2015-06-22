@@ -56,6 +56,12 @@ body{ position: relative; .transition(all .25s ease-out); }
 .navbar-btn{ margin-top: 13px; margin-right: 0; display: block; .border-radius( @navbar-btn-radius ); }
 
 /*
+	Affix Enabled
+*/
+.navbar.affix{ width: 100%; border-bottom: 1px solid #eee; }
+.op-build-active .navbar.affix{ width: 77%; }
+
+/*
 	Responsive Mobile first style
 */
 @media (min-width: @screen-sm-min) { 

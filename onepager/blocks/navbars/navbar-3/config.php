@@ -21,6 +21,20 @@ return array(
       'placeholder'=> 'Call To Action'
     ),
   ),
+
+  // Settings
+  'settings' => array(
+    array(
+      'name' => 'sticky_nav',
+      'label' => 'Sticky Nav',
+      'type' => 'select',
+      'value' => 1,
+      'options' => array(
+        1 => 'Enabled',
+        0 => 'Disabled'
+      )
+    )
+  ),
   
   // Styles - $styles available on view file to access the option
   'styles' => array(    

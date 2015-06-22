@@ -25,7 +25,7 @@
 						<?php endif; ?>	
 
 						<?php foreach($contents['items'] as $feature): ?>
-						<div class="media wow <?php echo $animation_item?>" data-wow-delay="<?php echo $animation_delay += 0.2 ?>s">	
+						<div class="media wow <?php echo $animation_item?>" data-wow-delay="<?php echo $animation_delay += 0.1 ?>s">	
 							<div class="media-left">
 								<?php if( op_is_image($feature['media'])):?>
 									<img src="<?php echo $feature['media'] ?>" alt="<?php echo $feature['title']?>" />
