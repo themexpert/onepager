@@ -5,22 +5,39 @@ return array(
   'groups'    => ['contents'],
 
   'contents' => array(
-    array('name'=>'title', 'value'=>'Ready for the launch of our new website'),
-    array('name'=>'description', 'type'=>'textarea'),
+    array(
+      'name'=>'title', 
+      'value'=>'Modern and Ridiculously Easy Page Builder for All'
+    ),
+    array(
+      'name'=>'description', 
+      'type'=>'textarea', 
+      'value' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pellentesque eget metus a vulputate.'
+    ),
 
     array(
       'name'=>'items',
       'type'=>'repeater',
       'fields' => array(
         array('name'=>'title', 'value' => 'Awesome Design'),
-        array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design'),
-        array('name'=>'media', 'type'=>'media', 'value'=> 'fa fa-magic fa-3x'),
+        array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design for all devices'),
+        array('name'=>'media', 'type'=>'media', 'value'=> 'https://s3.amazonaws.com/quantum-assets/icon-tools.png'),
       )
     )
   ),
 
   'settings' => array(
-    array('name' => 'test'),
+    array(
+      'name'     => 'title_transformation',
+      'label'    => 'Title Transformation',
+      'type'     => 'select',
+      'value'    => 'text-uppercase',
+      'options'  => array(
+        'text-lowercase'   => 'Lowercase',
+        'text-uppercase'   => 'Uppercase',
+        'text-capitalize'  => 'Capitalized'
+      ),
+    ),
     array(
       'name'     => 'columns',
       'label'    => 'Columns',
@@ -68,25 +85,25 @@ return array(
       'name' => 'bg_color',
       'label' => 'Background Color',
       'type' => 'colorpicker',
-      'tab' => 'Styles'
+      'value' => '#fff'
     ),
     array(
       'name' => 'title_color',
-      'label' => 'Section Title Color',
+      'label' => 'Title Color',
       'type' => 'colorpicker',
-      'tab' => 'Styles'
+      'value' => '#323232'
+
     ),
     array(
       'name' => 'text_color',
       'label' => 'Text Color',
       'type' => 'colorpicker',
-      'tab' => 'Styles'
+      'value' => '#727272'
     ),
     array(
       'name' => 'icon_color',
       'label' => 'Icon Color',
-      'type' => 'colorpicker',
-      'tab' => 'Styles'
+      'type' => 'colorpicker'
     ),
   ),
 
