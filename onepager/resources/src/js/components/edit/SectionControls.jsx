@@ -72,7 +72,7 @@ let SectionControls = React.createClass({
         };
         
 
-        switch(type){
+        switch(control.type){
           case "repeater": return <Repeater updateControl={this.updateControl.bind(this, key, ii)} {...props}/>;
           case "divider": return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
           default: return <Input {...props} />;
@@ -82,6 +82,19 @@ let SectionControls = React.createClass({
 
     let handleTabClick = (id)=> this.setState({activeTab: id});
     let activeTab = this.state.activeTab;
+    
+    if(!sectionSettings[activeTab].length){
+      let tabs = ['contens', 'settings', 'styles'];
+      tabs.splice(tabs.indexOf(activeTab), 1);
+
+      if(sectionSettings[tabs[0]] && sectionSettings[tabs[0]].length){
+        activeTab = tabs[0];
+      } else if(sectionSettings[tabs[1]] && sectionSettings[tabs[1]].length)  {
+        activeTab = tabs[1];
+      }else{
+        activeTab = tabs[2];
+      }
+    }
 
     return (
       <div>
