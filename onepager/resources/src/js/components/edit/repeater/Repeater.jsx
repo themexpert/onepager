@@ -72,7 +72,7 @@ let Repeater = React.createClass({
     });
 
     if(duplicate){
-      rGroups = _.pushAt(rGroups, rgIndex, rGroup);
+      rGroups = _.pushAt(rGroups, rgIndex+1, rGroup);
     } else {
       rGroups.push(rGroup);
     }

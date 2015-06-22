@@ -34,7 +34,7 @@ let RepeatInput = React.createClass({
     input.value = "";
     input.ref = _.uniqueId('ir-');
 
-    inputs = _.pushAt(inputs, ii, input);
+    inputs = _.pushAt(inputs, ii+1, input);
 
     this.props.updateInput('inputs', inputs);
   },

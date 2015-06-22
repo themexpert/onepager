@@ -70,7 +70,7 @@ function duplicateSection(index){
   let section = SectionTransformer.unifySection(_sections[index], true);
   
   
-  _sections = _.pushAt(_.copy(_sections), index, section);
+  _sections = _.pushAt(_.copy(_sections), index+1, section);
 
   
   liveService.updateSection(_sections, sectionIndex);
