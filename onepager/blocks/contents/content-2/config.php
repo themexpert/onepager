@@ -21,7 +21,7 @@ return array(
       'fields' => array(
         array('name'=>'title', 'value' => 'Awesome Design'),
         array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design for all devices'),
-        array('name'=>'media', 'type'=>'media', 'value'=> 'https://s3.amazonaws.com/quantum-assets/icon-tools.png'),
+        array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-tools.png'),
       )
     )
   ),
@@ -52,7 +52,7 @@ return array(
       'name'     => 'animation_title',
       'label'    => 'Animation Title',
       'type'     => 'select',
-      'value'    => 'none',
+      'value'    => 'fadeInDown',
       'options'  => array(
         '0'           => 'None',
         'fadeIn'      => 'Fade',
@@ -67,7 +67,7 @@ return array(
       'name'     => 'animation_item',
       'label'    => 'Animation Items',
       'type'     => 'select',
-      'value'    => 'none',
+      'value'    => 'zoomIn',
       'options'  => array(
         '0'             => 'None',
         'fadeIn'        => 'Fade',

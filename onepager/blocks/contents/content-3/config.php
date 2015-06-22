@@ -26,7 +26,7 @@ return array(
       'fields' => array(
         array('name'=>'title', 'value' => 'Beautiful and Responsive Design'),
         array('name'=>'description', 'type'=> 'textarea', 'value'=>'Phasellus tempus tortor at placerat suscipit. Sed porttitor ut nibh et finibus. Curabitur cursus pulvinar metus quis vehicula.'),
-        array('name'=>'media', 'type'=>'media', 'value'=> 'https://s3.amazonaws.com/quantum-assets/icon-camera.png'),
+        array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-camera.png'),
       )
     )
   ),
