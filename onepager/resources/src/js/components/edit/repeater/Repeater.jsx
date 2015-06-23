@@ -72,7 +72,7 @@ let Repeater = React.createClass({
     });
 
     if(duplicate){
-      rGroups = _.pushAt(rGroups, rgIndex, rGroup);
+      rGroups = _.pushAt(rGroups, rgIndex+1, rGroup);
     } else {
       rGroups.push(rGroup);
     }
@@ -90,8 +90,8 @@ let Repeater = React.createClass({
     }
 
     confirmDelete(()=>{
-        rGroups.splice(rgIndex, 1);
-        this.props.updateControl(rGroups);
+      rGroups.splice(rgIndex, 1);
+      this.props.updateControl(rGroups);
     });
   },
 

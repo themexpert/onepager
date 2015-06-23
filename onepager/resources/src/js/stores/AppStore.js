@@ -1,25 +1,25 @@
 "use strict";
 
-const $               = jQuery; //jshint ignore: line
-const _               = require('underscore');
-const assign          = require('object-assign');
-const AppDispatcher   = require('../dispatchers/AppDispatcher');
-const Constants       = require('../constants/AppConstants');
-const SectionComputer = require('../lib/SectionComputer');
-const ShouldSync      = require('../lib/ShouldSync');
-const Activity        = require('../lib/Activity');
-const ODataStore      = require('./ODataStore');
-const BaseStore       = require('./BaseStore');
-const SyncService     = require('./SyncService');
-
-
+const $                   = jQuery; //jshint ignore: line
+const _                   = require('underscore');
+const assign              = require('object-assign');
+const AppDispatcher       = require('../dispatchers/AppDispatcher');
+const Constants           = require('../constants/AppConstants');
+const SectionTransformer  = require('../lib/SectionTransformer');
+const ShouldSync          = require('../lib/ShouldSync');
+const Activity            = require('../lib/Activity');
+const ODataStore          = require('./ODataStore');
+const BaseStore           = require('./BaseStore')    ;
+const SyncService         = require('./SyncService');
 
 require('../lib/_mixins');
 
 
+
+
 // data storage
 let _blocks             = ODataStore.blocks;
-let _sections           = SectionComputer.misitifySections(ODataStore.sections, ODataStore.blocks);
+let _sections           = SectionTransformer.misitifySections(ODataStore.sections, ODataStore.blocks);
 let _blockState         = {open: false};
 let _menuState          = {id: null, index: null, title: null};
 let _sidebarTabState    = {active: 'op-sections'};
@@ -35,27 +35,6 @@ let syncService             = SyncService(ODataStore.pageId, inactive, shouldSec
 let liveService             = SyncService(null, inactive, shouldLiveSectionsSync); //jshint ignore:line
 
 
-//move to a better place
-let getLiveModeHTML = function(livemode, content){
-  let $section = $("<div />", {html: content});
-  
-  
-  _.each(livemode, function(classNames, selector){
-    _.each(classNames, function(className){
-      $section.find(selector).removeClass(className);
-    });
-  });
-
-  return $section.html();
-};
-
-let appendStyleToDOM = function(sectionId, style){
-  $(`#style-${sectionId}`).remove();
-  $("head").append(style);
-};
-//move to a better place
-
-
 // function to activate a section
 function setActiveSection(index){
   _activeSectionIndex = index;
@@ -66,7 +45,7 @@ function addSection(section) {
   let sectionIndex = _sections.length; //isnt it :p
   
   //its a row section to need to uni(quei)fy
-  section = SectionComputer.unifySection(section);
+  section = SectionTransformer.unifySection(section);
   _sections.push(section);
   
   liveService.updateSection(_sections, sectionIndex);
@@ -88,10 +67,10 @@ function duplicateSection(index){
   let sectionIndex = _sections.length; //isnt it :p
   
   //its a row section to need to uni(quei)fy
-  let section = SectionComputer.unifySection(_sections[index], true);
+  let section = SectionTransformer.unifySection(_sections[index], true);
   
   
-  _sections = _.pushAt(_.copy(_sections), index, section);
+  _sections = _.pushAt(_.copy(_sections), index+1, section);
 
   
   liveService.updateSection(_sections, sectionIndex);
@@ -117,8 +96,8 @@ function sectionSynced(index, res){
   _sections[index]  = _.copy(_sections[index]);
   section           = _sections[index];
 
-  section.content   = getLiveModeHTML(section.livemode, res.content);
-  appendStyleToDOM(section.id, res.style);
+  section.content   = SectionTransformer.getLiveModeHTML(section.livemode, res.content);
+  SectionTransformer.appendStyleToDOM(section.id, res.style);
 }
 
 // Facebook style store creation.

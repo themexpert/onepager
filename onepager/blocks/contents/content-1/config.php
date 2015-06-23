@@ -7,6 +7,8 @@ return array(
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
+    array('name'=>'retext', "type"=>"text", "value"=>["one", "two"]),
+
     array(
       'name'=>'title', 
       'value' => 'Lets make a better website together'
@@ -22,6 +24,7 @@ return array(
       'value'=> 'http://s3.amazonaws.com/quantum-assets/img-1.png'
     ),
     array('name'=>'link'),
+
   ),
   
   // Settings - $settings available on view file to access the option

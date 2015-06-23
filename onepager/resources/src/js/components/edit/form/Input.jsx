@@ -15,6 +15,12 @@ let inactive        = Activity(100); //jshint ignore:line
 
 let InputControl = React.createClass({
   mixins: [PureMixin],
+  
+  propTypes: {
+    options: React.PropTypes.object,
+    onChange: React.PropTypes.func
+  },
+
 
   getValue(){
     return this.refs.input.getValue();
@@ -26,7 +32,6 @@ let InputControl = React.createClass({
 
   render() {
       let control, options = this.props.options; 
-      // console.log("i m input %s", options.name);
 
       switch(options.type){
         case "icon":

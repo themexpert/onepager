@@ -2,6 +2,7 @@ const React       = require('react');
 const _           = require("underscore");
 const Divider     = require('./Divider.jsx');
 const Input       = require('./form/Input.jsx');
+const RepeatInput = require('./form/RepeatInput.jsx');
 const Repeater    = require('./repeater/Repeater.jsx');
 const PureMixin   = require('../../mixins/PureMixin.js');
 const Tab         = require('../sidebar/Tab.jsx');
@@ -10,23 +11,22 @@ const TabPane     = require('../sidebar/TabPane.jsx');
 let SectionControls = React.createClass({ 
   mixins: [PureMixin],
   getInitialState(){
-
     return {
       activeTab: 'contents'
     };
   },
 
-  update(key){
-    let controls  = _.copy(this.props.sectionSettings[key]);
+  update(tabName){
+    let controls  = _.copy(this.props.sectionSettings[tabName]);
 
     controls = controls.map(control=>{
       let ref = this.refs[control.ref];
+      let type = control.type;
 
-      switch(control.type){
+      switch(type){
         case "divider":
           //we do not need to compute anything for a divider
           break;
-        
         case "repeater":
           control.fields = ref.getFields();
           break;
@@ -39,15 +39,23 @@ let SectionControls = React.createClass({
       return control;
     });
 
-    this.props.update(key, controls);
+    this.props.update(tabName, controls);
   },
 
-  updateControl(key, controlIndex, rGroups){
-    let contentControls  = _.copy(this.props.sectionSettings[key]);
+  updateControl(tabName, controlIndex, rGroups){
+    let contentControls  = _.copy(this.props.sectionSettings[tabName]);
 
     contentControls[controlIndex].fields = rGroups;
 
-    this.props.update(key, contentControls);
+    this.props.update(tabName, contentControls);
+  },
+
+  updateInput(tabName, controlIndex, key, inputs){
+    let contentControls  = _.copy(this.props.sectionSettings[tabName]);
+
+    contentControls[controlIndex][key] = inputs;
+    
+    this.props.update(tabName, contentControls);
   },
 
 
@@ -57,11 +65,10 @@ let SectionControls = React.createClass({
     let {sectionIndex, sectionSettings} = this.props;
 
 
-    let getControlsHTML = (key, controls)=>{
-
+    let getControlsHTML = (tabName, controls)=>{
       return controls.map((control, ii)=>{
         let props = {
-          onChange: this.update.bind(this, key),
+          onChange: this.update.bind(this, tabName),
           options: control,
           ref: control.ref,
           id: control.ref,
@@ -69,16 +76,40 @@ let SectionControls = React.createClass({
           sectionIndex: sectionIndex,
         };
 
-        switch(control.type){
-          case "repeater": return <Repeater updateControl={this.updateControl.bind(this, key, ii)} {...props}/>;
-          case "divider": return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
-          default: return <Input {...props} />;
+        let type = control.type;
+        
+        if(_.isArray(control.value)){
+          type = 'repeat-input';
+        }
+
+        switch(type){
+          case "repeat-input":
+            return <RepeatInput updateInput={this.updateInput.bind(this, tabName, ii)} {...props} />;
+          case "divider": 
+            return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
+          case "repeater": 
+            return <Repeater updateControl={this.updateControl.bind(this, tabName, ii)} {...props}/>;
+          default: 
+            return <Input {...props} />;
         }
     });
     };
 
     let handleTabClick = (id)=> this.setState({activeTab: id});
     let activeTab = this.state.activeTab;
+    
+    if(!sectionSettings[activeTab].length){
+      let tabs = ['contens', 'settings', 'styles'];
+      tabs.splice(tabs.indexOf(activeTab), 1);
+
+      if(sectionSettings[tabs[0]] && sectionSettings[tabs[0]].length){
+        activeTab = tabs[0];
+      } else if(sectionSettings[tabs[1]] && sectionSettings[tabs[1]].length)  {
+        activeTab = tabs[1];
+      }else{
+        activeTab = tabs[2];
+      }
+    }
 
     return (
       <div>

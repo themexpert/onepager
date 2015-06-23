@@ -1,10 +1,9 @@
 const _ = require('underscore');
+const $ = jQuery; //jshint ignore: line
 require("./_mixins");
-const $               = jQuery; //jshint ignore: line
 
 let getLiveModeHTML = function(livemode, content){
   let $section = $("<div />", {html: content});
-  
   
   _.each(livemode, function(classNames, selector){
     _.each(classNames, function(className){
@@ -13,6 +12,10 @@ let getLiveModeHTML = function(livemode, content){
   });
 
   return $section.html();
+};
+let appendStyleToDOM = function(sectionId, style){
+  $(`#style-${sectionId}`).remove();
+  $("head").append(style);
 };
 
 function unifySection(section, duplicate=false){
@@ -34,16 +37,30 @@ function unifySection(section, duplicate=false){
 
   section.key  = _.randomId("k_"); //do we need key? //yes we need //need better organization
 
+
   //bug because repeater is getting itself turned into null
   var reffer = function(fields){
     fields.forEach(field=>{
       // if(!field) return; //if its null? why should field be
       field.ref = _.uniqueId("ref_");
 
+
+      if(_.isArray(field.value)){
+        let control = _.copy(field);
+        field.inputs = field.value.map((val)=>{
+          let input   = _.omit(_.copy(control), 'label');
+          input.ref   = _.uniqueId("ir-");
+          input.value = val;  
+          
+          return input;
+        });
+      }
+
       if(!field.fields) {
         return;
       }
 
+      //repeater
       field.fields.forEach(child=>{
           child.forEach( gchild => gchild.ref = _.uniqueId("ref_"));
       });
@@ -179,5 +196,7 @@ function simplifySections(sections){
 module.exports = {
 	simplifySections,
 	misitifySections,
-	unifySection
+	unifySection,
+  getLiveModeHTML,
+  appendStyleToDOM
 };
