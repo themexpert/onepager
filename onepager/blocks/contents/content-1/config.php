@@ -7,8 +7,6 @@ return array(
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
-    array('name'=>'retext', "type"=>"text", "value"=>["one", "two"]),
-
     array(
       'name'=>'title', 
       'value' => 'Lets make a better website together'

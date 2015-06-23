@@ -5,8 +5,6 @@ return array(
   'groups'    => ['contents'],
 
   'contents' => array(
-    array('name'=>'retext', "type"=>"text", "value"=>["one", "two"]),
-    
     array(
       'name'=>'title', 
       'value'=>'Onepage Makes Website Building Easy and Fun'

@@ -113,7 +113,7 @@ let Repeater = React.createClass({
       return (
         <div ref="container" className="repeatable-control">
 
-          <Button bsStyle="primary" className="btn--add-repeater" onClick={this.addRepeatGroup.bind(this, false, 0)}>
+          <Button bsStyle="primary" className="btn--add-repeater btn-block" onClick={this.addRepeatGroup.bind(this, false, 0)}>
             <span className="fa fa-plus" /> Add New
           </Button>
 
