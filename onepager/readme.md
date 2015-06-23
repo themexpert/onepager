@@ -39,3 +39,6 @@ array(name=>'image-margin', type='margin')
 array(name=>'image-padding', type='padding')
 array(name=>'align', type='align')
 
+http://builder.vebto.com/#/builder/Demo-2
+http://codepen.io/zz85/pen/gbOoVP
+https://www.twinhelix.com/javascript/dragresize/demo/

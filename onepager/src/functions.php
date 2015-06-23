@@ -28,7 +28,7 @@ function op_send_json( $response ) {
 if ( ! function_exists( 'asset' ) ) {
 	function asset( $path ) {
 		//TODO: fix this
-		return onepager()->url( 'resources/' . $path );
+		return onepager()->url($path);
 	}
 }
 

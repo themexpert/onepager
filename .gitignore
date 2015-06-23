@@ -12,10 +12,11 @@ Thumbs.db
 
 # Node + Composer
 onepager/resources/dist/
+onepager/resources/vendor
+/
 onepager/dist/
-onepager/bower_components/
-onepager/node_modules/
 onepager/vendor/
-onepager/resources/vendor/
+onepager/node_modules/
+onepager/bower_components/
 onepager/composer.lock
 *.composer.lock

@@ -17,7 +17,7 @@ let App = React.createClass({
   componentDidMount() {
     jQuery(window).on('beforeunload', ()=>{
       if(this.state.isDirty){
-        return "You have unsaved changes!!";
+        // return "You have unsaved changes!!";
       }
     });
 

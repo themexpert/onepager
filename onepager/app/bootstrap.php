@@ -18,4 +18,5 @@ $onepager = new Onepager(
 require( __DIR__ . "/assets.php" );
 require( __DIR__ . "/routes.php" );
 require( __DIR__ . "/blocks.php" );
+require( __DIR__ . "/settings.php" );
 require( __DIR__ . "/init.php" );

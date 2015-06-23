@@ -1,5 +1,5 @@
 const React       = require('react');
-const _           = require("underscore");
+const _           = require('underscore');
 const Divider     = require('./Divider.jsx');
 const Input       = require('./form/Input.jsx');
 const RepeatInput = require('./form/RepeatInput.jsx');
@@ -8,8 +8,8 @@ const PureMixin   = require('../../mixins/PureMixin.js');
 const Tab         = require('../sidebar/Tab.jsx');
 const TabPane     = require('../sidebar/TabPane.jsx');
 
-let SectionControls = React.createClass({ 
-  mixins: [PureMixin],
+let SectionControls = React.createClass({
+//  mixins: [PureMixin],
   getInitialState(){
     return {
       activeTab: 'contents'
@@ -31,7 +31,7 @@ let SectionControls = React.createClass({
           control.fields = ref.getFields();
           break;
 
-        default: 
+        default:
           //normal input
           control.value = ref.getValue();
       }
@@ -46,7 +46,7 @@ let SectionControls = React.createClass({
     let contentControls  = _.copy(this.props.sectionSettings[tabName]);
 
     contentControls[controlIndex][key] = value;
-    
+
     this.props.update(tabName, contentControls);
   },
 
@@ -69,7 +69,7 @@ let SectionControls = React.createClass({
         };
 
         let type = control.type;
-        
+
         if(_.isArray(control.value)){
           type = 'repeat-input';
         }
@@ -77,12 +77,12 @@ let SectionControls = React.createClass({
         switch(type){
           case "repeat-input":
             return <RepeatInput updateControl={this.updateControl.bind(this, tabName, ii)} {...props} />;
-          case "divider": 
+          case "divider":
             return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
-          case "repeater": 
+          case "repeater":
             let updateControl = this.updateControl.bind(this, tabName, ii);
             return <Repeater updateControl={updateControl} {...props}/>;
-          default: 
+          default:
             return <Input {...props} />;
         }
     });
@@ -90,9 +90,9 @@ let SectionControls = React.createClass({
 
     let handleTabClick = (id)=> this.setState({activeTab: id});
     let activeTab = this.state.activeTab;
-    
+
     if(!sectionSettings[activeTab].length){
-      let tabs = ['contens', 'settings', 'styles'];
+      let tabs = ['contents', 'settings', 'styles'];
       tabs.splice(tabs.indexOf(activeTab), 1);
 
       if(sectionSettings[tabs[0]] && sectionSettings[tabs[0]].length){
@@ -107,12 +107,12 @@ let SectionControls = React.createClass({
     return (
       <div>
         <ul className="nav nav-pills">
-          {sectionSettings.contents.length ? 
-            <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab} /> : ""}
-          {sectionSettings.settings.length ? 
-            <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab} /> : ""}
-          {sectionSettings.styles.length ? 
-            <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/> : ""}
+          {sectionSettings.contents.length ?
+            <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab} /> : null}
+          {sectionSettings.settings.length ?
+            <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab} /> : null}
+          {sectionSettings.styles.length ?
+            <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/> : null}
         </ul>
 
 

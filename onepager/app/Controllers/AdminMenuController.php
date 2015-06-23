@@ -11,6 +11,6 @@ namespace App\Controllers;
 
 class AdminMenuController {
 	public function getIndex() {
-		echo "Hello World!!";
+		include dirname(__FILE__)."/../views/admin.tpl.php";
 	}
 }

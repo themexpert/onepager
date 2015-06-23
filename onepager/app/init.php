@@ -1,17 +1,5 @@
 <?php
 
-//DASHBOARD
-if ( is_admin() ) {
-	onepager()->menu()->add(
-		'onepager', //slug
-		'Onepager', //menu title
-		'WordPress Onepager', //page title
-		'App\Controllers\AdminMenuController@getIndex',
-		onepager()->url( 'resources/images/dashicon-onepager.svg' )
-	);
-}
-
-
 //LIVE MODE TOOLBAR
 add_action( 'wp', function () {
 	$url   = League\Url\Url::createFromUrl( getCurrentPageURL() );
