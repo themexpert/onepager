@@ -88,7 +88,8 @@ let SectionControls = React.createClass({
           case "divider": 
             return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
           case "repeater": 
-            return <Repeater updateControl={this.updateControl.bind(this, tabName, ii)} {...props}/>;
+            let updateControl = this.updateControl.bind(this, tabName, ii);
+            return <Repeater updateControl={updateControl} {...props}/>;
           default: 
             return <Input {...props} />;
         }

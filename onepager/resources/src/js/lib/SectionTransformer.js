@@ -59,10 +59,21 @@ function unifySection(section, duplicate=false){
       if(!field.fields) {
         return;
       }
-
       //repeater
       field.fields.forEach(child=>{
-          child.forEach( gchild => gchild.ref = _.uniqueId("ref_"));
+          child.forEach( gchild => {
+            gchild.ref = _.uniqueId("ref_");
+            if(_.isArray(gchild.value)){
+              let control = _.copy(gchild);
+              gchild.inputs = gchild.value.map((val)=>{
+                let input   = _.omit(_.copy(control), 'label');
+                input.ref   = _.uniqueId("ir-");
+                input.value = val;  
+                
+                return input;
+              });
+            }
+          });
       });
     });
   };
