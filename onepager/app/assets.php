@@ -29,7 +29,6 @@ function getOnepagerData( $pageId ) {
 function enqueueOnepagerAssets() {
 	$q = onepager()->asset();
 
-
 	$q->style( 'tx-bootstrap', asset( 'dist/vendor/css/bootstrap.css' ) );
 	$q->style( 'tx-animatecss', asset( 'dist/vendor/css/animate.css' ) );
 	$q->style( 'tx-fontawesome', asset( 'dist/vendor/css/font-awesome.css' ) );
@@ -37,6 +36,9 @@ function enqueueOnepagerAssets() {
 	$q->script( 'tx-bootstrap', asset( 'dist/vendor/js/bootstrap.js' ), [ 'jquery' ] );
 	$q->script( 'tx-wow', asset('/dist/vendor/js/wow.js'), array( 'jquery' ) );
 	$q->script( 'tx-nicescroll', asset('/dist/vendor/js/jquery.nicescroll.js'), array( 'jquery' ) );
+
+	$q->style( 'tx-flexbox', asset( 'dist/styles/flex.css' ) );
+	$q->style( 'lithium', asset( 'dist/styles/lithium.css' ) );
 
 	if ( onepager()->content()->isLiveMode() ) {
 		if ( function_exists( 'wp_enqueue_media' ) ) {
@@ -56,9 +58,6 @@ function enqueueOnepagerAssets() {
 
 		$q->localizeScript( 'onepager', getOnepagerData( onepager()->content()->getCurrentPageId() ), 'onepager' );
 	}
-
-	$q->style( 'tx-flexbox', asset( 'dist/styles/flex.css' ) );
-	$q->style( 'lithium', asset( 'dist/styles/lithium.css' ) );
 
 }
 
