@@ -1,4 +1,5 @@
-const _                   = require("underscore");
+const _                   = require('underscore');
+const swal                = require('sweetalert');
 const React               = require('react');
 const Tab                 = require('./Tab.jsx');
 const TabPane             = require('./TabPane.jsx');
@@ -17,7 +18,7 @@ let Sidebar = React.createClass({
 
 componentDidMount(){
     let tabContents = React.findDOMNode(this.refs.tabContents);
-    $(()=> $(tabContents).niceScroll({cursorcolor:"#2ab0ad", cursorborder: "0"}));
+    $(()=> $(tabContents).niceScroll({cursorcolor:'#2ab0ad', cursorborder: '0'}));
   },
 
   getInitialState(){
@@ -31,12 +32,10 @@ componentDidMount(){
     this.setState({saving:true});
     
     updated.then(()=>{
-      console.log("we are here");
       this.setState({saving: false});
     }, ()=>{
-      console.log("we are failed");
       this.setState({saving: false});
-      alert("could not save");
+      swal('could not save');
     });
   },
 
@@ -47,7 +46,7 @@ componentDidMount(){
 
 
     let getUniqueSectionId = function(sections, index, title){
-      let id = $s(title.trim()).dasherize().s; //make es3 compitable
+      let id = $s(title.trim()).dasherize().s; //make es4 compitable
 
       while(!_.arrIsUniqueProperty(sections, index, id, 'id')){
         id = id+1;
@@ -69,27 +68,27 @@ componentDidMount(){
     let sectionSettings = activeSection ? _.pick(activeSection, ['settings', 'contents', 'styles']) : {};
 
     return (
-      <div className="txop-sidebar op-ui clearfix">
-        <ul className="tx-nav tx-nav-tabs">
-          <Tab onClick={handleTabClick} id="op-sections" icon="cubes" title="Layout" active={activeTab}/>
-          <Tab onClick={handleTabClick} id="op-contents" icon="sliders" title="Contents" active={activeTab} disabled={!sectionEditable} />
-          <Tab onClick={handleTabClick} id="op-menu" icon="link" title="Menu" active={activeTab} disabled={!sectionEditable}/>
+      <div className='txop-sidebar op-ui clearfix'>
+        <ul className='tx-nav tx-nav-tabs'>
+          <Tab onClick={handleTabClick} id='op-sections' icon='cubes' title='Layout' active={activeTab}/>
+          <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab} disabled={!sectionEditable} />
+          <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab} disabled={!sectionEditable}/>
 
           <button disabled={!isDirty} onClick={this.handleSave} 
-            className="btn btn-primary btn--save">
+            className='btn btn-primary btn--save'>
             {
               this.state.saving ? 
-                <span className="fa fa-refresh fa-spin"></span> :
+                <span className='fa fa-refresh fa-spin'></span> :
                 <span>
-                  <span className="fa fa-save"></span> 
+                  <span className='fa fa-save'></span> 
                   &nbsp; Save
                 </span> 
             }
           </button>
         </ul>
 
-        <div className="tab-content" ref="tabContents">
-          <TabPane id="op-sections" active={activeTab}>
+        <div className='tab-content' ref='tabContents'>
+          <TabPane id='op-sections' active={activeTab}>
             <SectionList 
               activeSectionIndex={activeSectionIndex}
               blocks={blocks} 
@@ -99,7 +98,7 @@ componentDidMount(){
               }} />
           </TabPane>
 
-          <TabPane id="op-contents" active={activeTab}>
+          <TabPane id='op-contents' active={activeTab}>
           {sectionEditable ?
             <SectionControls
               update = {update}
@@ -111,9 +110,9 @@ componentDidMount(){
           </TabPane>
 
 
-          <TabPane id="op-menu" active={activeTab}>
+          <TabPane id='op-menu' active={activeTab}>
             {sectionEditable ? 
-              <AddToMenu section={activeSection} index={activeSectionIndex} /> : "please select a section" }
+              <AddToMenu section={activeSection} index={activeSectionIndex} /> : 'please select a section' }
           </TabPane> 
 
         </div>

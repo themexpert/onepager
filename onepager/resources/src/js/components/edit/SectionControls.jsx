@@ -42,18 +42,10 @@ let SectionControls = React.createClass({
     this.props.update(tabName, controls);
   },
 
-  updateControl(tabName, controlIndex, rGroups){
+  updateControl(tabName, controlIndex, key, value){
     let contentControls  = _.copy(this.props.sectionSettings[tabName]);
 
-    contentControls[controlIndex].fields = rGroups;
-
-    this.props.update(tabName, contentControls);
-  },
-
-  updateInput(tabName, controlIndex, key, inputs){
-    let contentControls  = _.copy(this.props.sectionSettings[tabName]);
-
-    contentControls[controlIndex][key] = inputs;
+    contentControls[controlIndex][key] = value;
     
     this.props.update(tabName, contentControls);
   },
@@ -84,11 +76,12 @@ let SectionControls = React.createClass({
 
         switch(type){
           case "repeat-input":
-            return <RepeatInput updateInput={this.updateInput.bind(this, tabName, ii)} {...props} />;
+            return <RepeatInput updateControl={this.updateControl.bind(this, tabName, ii)} {...props} />;
           case "divider": 
             return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
           case "repeater": 
-            return <Repeater updateControl={this.updateControl.bind(this, tabName, ii)} {...props}/>;
+            let updateControl = this.updateControl.bind(this, tabName, ii);
+            return <Repeater updateControl={updateControl} {...props}/>;
           default: 
             return <Input {...props} />;
         }
