@@ -38,7 +38,7 @@ let Repeater = React.createClass({
     rGroups[e.newIndex].ref  = _.randomId('rs_');
     
     // TODO: need unique keys for each rGroup
-    this.props.updateControl(rGroups);
+    this.props.updateControl('fields', rGroups);
   },
 
   getGroupRef(ii){
@@ -56,7 +56,7 @@ let Repeater = React.createClass({
     return rGroups;
   },
 
-   addRepeatGroup(duplicate=false, rgIndex=0){
+  addRepeatGroup(duplicate=false, rgIndex=0){
     let rControl = this.props.options;
     let rGroups  = _.copy(rControl.fields);
     let rGroup   = _.copy(rGroups[rgIndex]);
@@ -77,7 +77,7 @@ let Repeater = React.createClass({
       rGroups.push(rGroup);
     }
 
-    this.props.updateControl(rGroups);
+    this.props.updateControl('fields', rGroups);
    },
 
   removeRepeatGroup(rgIndex){
@@ -91,7 +91,7 @@ let Repeater = React.createClass({
 
     confirmDelete(()=>{
       rGroups.splice(rgIndex, 1);
-      this.props.updateControl(rGroups);
+      this.props.updateControl('fields', rGroups);
     });
   },
 
@@ -116,6 +116,7 @@ let Repeater = React.createClass({
               return (
                 <RepeatGroup 
                   options={rGroup}
+                  updateGroup={this.updateGroup}
                   duplicate={this.addRepeatGroup.bind(this, true, ii)}
                   onChange={this.props.onChange}
                   remove={this.removeRepeatGroup.bind(this, ii)} 

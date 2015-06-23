@@ -40,7 +40,7 @@ let RepeatInput = React.createClass({
 
     inputs = _.pushAt(inputs, ii+1, input);
 
-    this.props.updateInput('inputs', inputs);
+    this.props.updateControl('inputs', inputs);
     setTimeout(this.props.onChange, 100); //buggy need a better solution
   },
   
@@ -54,7 +54,7 @@ let RepeatInput = React.createClass({
 
     confirmDelete(()=>{
       inputs.splice(ii, 1);
-      this.props.updateInput('inputs', inputs);
+      this.props.updateControl('inputs', inputs);
       setTimeout(this.props.onChange, 100); //buggy need a better solution
     });
   },
@@ -62,7 +62,7 @@ let RepeatInput = React.createClass({
   // update(){
   //   let value = this.getValue();
 
-  //   this.props.updateInput('value',value);
+  //   this.props.updateControl('value',value);
   // },
 
   render() {
@@ -82,15 +82,12 @@ let RepeatInput = React.createClass({
                 options={control}
                 onChange={this.props.onChange}/>
             
-              <span>
-                <button ref="minus" type="button" onClick={this.remove.bind(this, ii)}>
-                  <span className="fa fa-minus"></span>
-                </button>
-                <button ref="add" type="button" onClick={this.add.bind(this, ii)}>
-                  <span className="fa fa-plus"></span>
-                </button>
-              </span>
 
+              <span className="input-group-btn">
+                <button className="btn btn-primary" onClick={this.add.bind(this, ii)} type="button"><span className="fa fa-plus"></span></button>
+                <button className="btn btn-primary" onClick={this.remove.bind(this, ii)} type="button"><span className="fa fa-minus"></span></button>
+              </span>
+    
             </div>
           );
         })

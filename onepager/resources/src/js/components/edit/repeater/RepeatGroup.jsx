@@ -1,9 +1,11 @@
-const React     = require('react');
-const _         = require('underscore');
-const Input     = require('./../form/Input.jsx');
-const Heading   = require('./RepeatGroupHeading.jsx');
-const cx        = require('classnames');
-const PureMixin = require('../../../mixins/PureMixin.js');
+const React       = require('react');
+const _           = require('underscore');
+const cx          = require('classnames');
+const PureMixin   = require('../../../mixins/PureMixin.js');
+const Input       = require('./../form/Input.jsx');
+const RepeatInput = require('./../form/RepeatInput.jsx');
+const Divider     = require('../Divider.jsx');
+const Heading     = require('./RepeatGroupHeading.jsx');
 
 let RepeatGroup = React.createClass({
   mixins: [PureMixin],
@@ -21,6 +23,10 @@ let RepeatGroup = React.createClass({
     });
 
     return rGroup;
+  },
+
+  updateControl(){
+
   },
 
 
@@ -52,8 +58,29 @@ let RepeatGroup = React.createClass({
       "in": this.props.active
     });
 
-    let controls  = rGroup.map((rControl)=>{
-      return <Input onChange={this.props.onChange} ref={rControl.ref} key={rControl.ref} options={rControl} />;
+    let controls  = rGroup.map((rControl, ii)=>{
+      let props = {
+        onChange: this.props.onChange,
+        options: rControl,
+        ref: rControl.ref,
+        id: rControl.ref,
+        key: rControl.ref
+      };
+
+      let type = rControl.type;
+
+      if(_.isArray(rControl.value)){
+        type = 'repeat-input';
+      }
+      switch(type){
+        case "repeat-input":
+          return <RepeatInput updateControl={this.props.updateControl} {...props} />;
+        case "divider": 
+          return <Divider key={ii} label={rControl.label} />;
+        default: 
+          return <Input {...props} />;
+      }
+
     });
 
     return (
