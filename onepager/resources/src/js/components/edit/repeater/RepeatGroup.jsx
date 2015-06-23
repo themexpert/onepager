@@ -25,9 +25,7 @@ let RepeatGroup = React.createClass({
     return rGroup;
   },
 
-  updateControl(){
 
-  },
 
 
   getGroupTitle(){
@@ -74,7 +72,10 @@ let RepeatGroup = React.createClass({
       }
       switch(type){
         case "repeat-input":
-          return <RepeatInput updateControl={this.props.updateControl} {...props} />;
+          let updateControl = (key, value)=>{
+            this.props.updateGroupControl(ii, key, value);
+          };
+          return <RepeatInput updateControl={updateControl} {...props} />;
         case "divider": 
           return <Divider key={ii} label={rControl.label} />;
         default: 

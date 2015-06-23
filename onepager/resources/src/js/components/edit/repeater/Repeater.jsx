@@ -95,6 +95,14 @@ let Repeater = React.createClass({
     });
   },
 
+  updateGroupControl(rgIndex, rControlIndex, key, value){
+    let rControl  = this.props.options;
+    let rGroups   = _.copy(rControl.fields);
+
+    rGroups[rgIndex][rControlIndex][key] = value;
+    this.props.updateControl('fields', rGroups);
+  },
+
 
 
   render() {
@@ -116,7 +124,7 @@ let Repeater = React.createClass({
               return (
                 <RepeatGroup 
                   options={rGroup}
-                  updateGroup={this.updateGroup}
+                  updateGroupControl={this.updateGroupControl.bind(this, ii)}
                   duplicate={this.addRepeatGroup.bind(this, true, ii)}
                   onChange={this.props.onChange}
                   remove={this.removeRepeatGroup.bind(this, ii)} 
