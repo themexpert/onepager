@@ -11,12 +11,11 @@ Thumbs.db
 *.sublime-project
 
 # Node + Composer
-onepager/resources/dist/
-onepager/dist/
-onepager/assets/
-onepager/bower_components/
-onepager/node_modules/
-onepager/vendor/
-onepager/resources/vendor/
+onepager/resources
+onepager/assets
+onepager/dist
+onepager/vendor
+onepager/node_modules
+onepager/bower_components
 onepager/composer.lock
 *.composer.lock

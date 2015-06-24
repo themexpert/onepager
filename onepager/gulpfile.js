@@ -1,16 +1,107 @@
-/*
- gulpfile.js
- ===========
- NOTE: adapted from github.com/greypants/gulp-starter
- Rather than manage one giant configuration file responsible
- for creating multiple tasks, each task has been broken out into
- its own file in gulp/tasks. Any files in that directory get
- automatically required below.
- To add a new task, simply add a new task file that directory.
- gulp/tasks/default.js specifies the default set of tasks to run
- when you run `gulp`.
- */
-var requireDir = require('require-dir');
+var gulp = require('gulp');
+var less = require('gulp-less');
+var mainBowerFiles = require('main-bower-files');
+var gulpFilter = require('gulp-filter');
+var concat = require('gulp-concat');
+var minify = require('gulp-minify-css');
+var rename = require('gulp-rename');
 
-// Require all tasks in gulp/tasks, including subfolders
-requireDir('./gulp/tasks', {recurse: true});
+
+
+var dest  = './assets';
+var src   = './engine';
+
+var config = {
+  less: {
+    src: src + '/lithium/*.less',
+    dest: dest + '/css',
+    settings: {
+      indentedSyntax: false, // Enable .less syntax?
+      imagePath: '/images' // Used by the image-url helper
+    }
+  },
+  images: {
+    src: src+'/images/**/*',
+    dest: dest + '/images'
+  },
+  fonts: {
+    src: src+'/fonts/**/*',
+    dest: dest + '/fonts'
+  },
+  bower: {
+    js: dest + '/js',
+    css: dest + '/css',
+    images: dest + '/images',
+    fonts: dest + '/fonts'
+  },
+  watch: {
+    src: src+'/**/*.*',
+    tasks: ['build']
+  }
+};
+
+
+gulp.task('less', function () {
+  return gulp.src(config.less.src)
+    .pipe(less(config.less.settings))
+    .pipe(gulp.dest(config.less.dest));
+});
+
+gulp.task('fonts', function () {
+  return gulp.src(config.fonts.src)
+    .pipe(gulp.dest(config.fonts.dest));
+});
+
+gulp.task('images', function () {
+  return gulp.src(config.images.src)
+    .pipe(gulp.dest(config.images.dest));
+});
+
+/*** Filters for bower main files **/
+var jsFilter = gulpFilter('**/*.js'),
+  cssFilter = gulpFilter('**/*.css'),
+  lessFilter = gulpFilter('**/*.less'),
+  fontFilter = gulpFilter(['**/*.svg', '**/*.eot', '**/*.woff', '**/*.ttf']),
+  imgFilter = gulpFilter(['**/*.png', '**/*.gif', '**/*.jpg']);
+
+gulp.task('bower', function () {
+  return gulp.src(mainBowerFiles())
+
+    .pipe(jsFilter)
+    // .pipe(sourcemaps.init())
+    // .pipe(uglify())
+    // .pipe(concat('lib.min.js'))
+    // .pipe(sourcemaps.write())
+    .pipe(gulp.dest(config.bower.js))
+    .pipe(jsFilter.restore())
+
+    .pipe(lessFilter)
+    .pipe(less())
+    .pipe(gulp.dest(config.bower.css))
+    .pipe(rename({extname:"css"}))
+    .pipe(lessFilter.restore())
+
+    .pipe(cssFilter)
+    // .pipe(minify())
+    // .pipe(sourcemaps.init())
+    // .pipe(concat('lib.min.css'))
+    // .pipe(sourcemaps.write())
+    .pipe(gulp.dest(config.bower.css))
+    .pipe(cssFilter.restore())
+
+    .pipe(imgFilter)
+    .pipe(gulp.dest(config.bower.images))
+    .pipe(imgFilter.restore())
+
+    .pipe(fontFilter)
+    .pipe(gulp.dest(config.bower.fonts))
+    .pipe(fontFilter.restore());
+});
+
+gulp.task('watch', function () {
+  return gulp.watch(config.less.src, ['less']);
+});
+
+gulp.task('default', ['fonts', 'bower', 'images', 'build', 'watch']);
+
+gulp.task('build', ['less']);
