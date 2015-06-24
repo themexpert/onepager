@@ -4,7 +4,7 @@ require("./_mixins");
 
 let getLiveModeHTML = function(livemode, content){
   let $section = $("<div />", {html: content});
-  
+
   _.each(livemode, function(classNames, selector){
     _.each(classNames, function(className){
       $section.find(selector).removeClass(className);
@@ -28,7 +28,7 @@ function unifySection(section, duplicate=false){
   } else if(duplicate) {
     section.title = `${section.title} (copy)`;
   }
-    
+
   //TODO: bad pattern
   // console.log("changing id");
   if(duplicate || !section.id){
@@ -50,8 +50,8 @@ function unifySection(section, duplicate=false){
         field.inputs = field.value.map((val)=>{
           let input   = _.omit(_.copy(control), 'label');
           input.ref   = _.uniqueId("ir-");
-          input.value = val;  
-          
+          input.value = val;
+
           return input;
         });
       }
@@ -68,8 +68,8 @@ function unifySection(section, duplicate=false){
               gchild.inputs = gchild.value.map((val)=>{
                 let input   = _.omit(_.copy(control), 'label');
                 input.ref   = _.uniqueId("ir-");
-                input.value = val;  
-                
+                input.value = val;
+
                 return input;
               });
             }
@@ -91,7 +91,7 @@ let mistify = function(databaseFields, sectionFields){
     if(databaseFields){
       field.value = databaseFields[field.name];
     }
-    
+
     return field;
   };
 
@@ -110,10 +110,10 @@ let mistify = function(databaseFields, sectionFields){
     let totalGroups = databaseFields[field.name].length; //what if its not an array?
 
     //we have only one repeatgroup so lets increse it by how much we need
-    _.times(totalGroups-1, function(){ 
+    _.times(totalGroups-1, function(){
       field.fields.push(field.fields[0]); //what if field.fields does not exist?
     });
-    
+
 
     field.fields = getRepeaterGroups(field.fields, databaseFields[field.name]);
 
@@ -133,13 +133,13 @@ let mistify = function(databaseFields, sectionFields){
 
 let misitifySections = function(sections, blocks){
 	return _.map(sections, function(section){
-    let block = _.find(blocks, {slug: section.slug}); 
-    
+    let block = _.find(blocks, {slug: section.slug});
+
     //what if a block disappears
     if(!block) {
 			return false;
 		}
-		
+
     block           = _.copy(block);
     block.id        = section.id;
     block.content   = getLiveModeHTML(block.livemode, section.content);
@@ -160,7 +160,7 @@ let simplify = function(fields){
   return _.reduce(fields, function(collection, field){
     if(field.type === "repeater"){
 
-      //instatiate an empty array 
+      //instatiate an empty array
       collection[field.name] = [];
 
       _.forEach(field.fields, function(rgroup, gi){
