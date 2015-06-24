@@ -9,7 +9,7 @@ var config = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: __dirname + '/dist',
+    path: __dirname + '/assets',
   },
   module: {
     loaders: [

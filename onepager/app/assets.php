@@ -54,7 +54,7 @@ function enqueueOnepagerAssets() {
 		$q->script( 'tx-colorpicker', asset( 'assets/js/bootstrap-colorpicker.js' ), [ 'jquery' ] );
 		$q->script( 'tx-toastr', asset( 'assets/js/toastr.js' ), [ 'jquery' ] );
 
-		$q->script( 'onepager', ONEPAGER_URL."dist/app.bundle.js", ['jquery']);
+		$q->script( 'onepager', asset('assets/app.bundle.js'), ['jquery']);
 
 		$q->localizeScript( 'onepager', getOnepagerData( onepager()->content()->getCurrentPageId() ), 'onepager' );
 	}
@@ -72,7 +72,7 @@ function enqueueOnepagerAdminAssets(){
 	$q->style( 'tx-fontawesome', asset( 'assets/css/font-awesome.css' ) );
 	$q->script( 'tx-bootstrap', asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
 
-	$q->script( 'admin-bundle', asset('dist/admin.bundle.js'), ['jquery']);
+	$q->script( 'admin-bundle', asset('assets/admin.bundle.js'), ['jquery']);
 
 	$q->style( 'tx-colorpicker', asset( 'bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css' ) );
 	$q->style( 'tx-iconselector', asset( 'assets/css/icon-selector.min.css' ) );
