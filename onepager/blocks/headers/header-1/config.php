@@ -22,8 +22,8 @@ return array(
           array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
         ),
         array(
-          array('name'=>'title', 'value' => 'Onepage Website Builder for WordPress'),
-          array('name'=>'description', 'type'=> 'textarea', 'value' => 'Build website quickly and efficiently with simple easy to use page builder'),
+          array('name'=>'title', 'value' => 'Revolutionary Way of Building OnePage Website'),
+          array('name'=>'description', 'type'=> 'textarea', 'value' => 'Ridiculously easy and built for tomorrows internet in mind'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/browser-1.png'),
           array('name'=>'link', 'value' => 'http://getonepager.com'),
           array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
@@ -35,6 +35,16 @@ return array(
 
   // Settings - $settings available on view file to access the option
   'settings' => array(
+    array(
+      'name' => 'sticky_nav',
+      'label' => 'Sticky Nav',
+      'type' => 'select',
+      'value' => 1,
+      'options' => array(
+        1 => 'Enabled',
+        0 => 'Disabled'
+      )
+    ),
     array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
@@ -65,13 +75,13 @@ return array(
     ),
   ),
   'styles' => array(
-     array(
-      'name'=>'slider_bg',
-      'label' => 'Slider Background',
-      'type'  => 'image',
-      'value' => 'http://s3.amazonaws.com/quantum-assets/hero-bg3.jpg'
+    array('label'=> 'Nav Style' , 'type'=> 'divider'),
+    array(
+      'name'  => 'nav_bg',
+      'label' => 'Sticky Background',
+      'type'  => 'colorpicker',
+      'value' => '#453750'
     ),
-
     array(
       'name'  => 'link_color',
       'label' => 'Link Color',
@@ -95,6 +105,13 @@ return array(
       'label'   => 'Button Text Color',
       'type'    => 'colorpicker',
       'value'   => '#fff'
+    ),
+    array('label'=> 'Slider Style' , 'type'=> 'divider'),
+    array(
+      'name'=>'slider_bg',
+      'label' => 'Slider Background',
+      'type'  => 'image',
+      'value' => 'http://s3.amazonaws.com/quantum-assets/bg/bg3.jpg'
     ),
   ),
 

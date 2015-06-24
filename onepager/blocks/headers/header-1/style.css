@@ -1,5 +1,9 @@
+/*
+  Navbar Sticky
+*/
+.header-1 .navbar.affix{ border: 0; top: 0; }
 /* 
-  Navbar
+  Navbar Button
 */
 
 .header-1 .navbar-btn{ margin-left: 10px;}

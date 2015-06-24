@@ -2,7 +2,8 @@
 	$slide_num = 0;
 ?>
 <header id="<?php echo $id; ?>" class="op-section header-1">
-	<div class="navbar navbar-static-top">
+	
+	<div class="navbar navbar-static-top" <?php echo ($settings['sticky_nav']) ? 'data-spy="affix"' : '';?> data-offset-top="60">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">

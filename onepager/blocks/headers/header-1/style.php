@@ -4,16 +4,10 @@
 	background-repeat : no-repeat;
 }
 
-#slide-<?php echo $id; ?>,
-#slide-<?php echo $id; ?> .item{
-	height : <?php echo $settings['slider_height'] - 200 ?>px;	
-}
 
-#slide-<?php echo $id; ?> .btn{
-	background : <?php echo $styles['cta_bg']; ?>;
-	color : <?php echo $styles['cta_color']; ?>;
+#<?php echo $id; ?> .navbar.affix{
+	background-color : <?php echo $styles['nav_bg']?>
 }
-
 #<?php echo $id ?> .navbar-nav > li > a{
 	color : <?php echo $styles['link_color']; ?>;
 }
@@ -30,6 +24,27 @@
 	background : <?php echo $styles['cta_bg']; ?>;
 	color : <?php echo $styles['cta_color']; ?>;
 }
+#<?php echo $id ?> .navbar.affix .navbar-btn{
+	background : <?php echo $styles['cta_color']; ?>;
+	color : <?php echo $styles['cta_bg']; ?>;
+}
+
+#<?php echo $id ?> .navbar.affix .navbar-btn:hover{
+	box-shadow: 0 0 4px #444;
+}
+
+
+#slide-<?php echo $id; ?>,
+#slide-<?php echo $id; ?> .item{
+	height : <?php echo $settings['slider_height'] - 200 ?>px;	
+}
+
+#slide-<?php echo $id; ?> .btn{
+	background : <?php echo $styles['cta_bg']; ?>;
+	color : <?php echo $styles['cta_color']; ?>;
+}
+
+
 
 @media (min-width: 992px) { 
 	#slide-<?php echo $id; ?>,
