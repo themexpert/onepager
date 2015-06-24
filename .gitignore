@@ -13,6 +13,7 @@ Thumbs.db
 # Node + Composer
 onepager/resources/
 onepager/assets/
+onepager/dist/
 onepager/vendor/
 onepager/node_modules/
 onepager/bower_components/

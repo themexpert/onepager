@@ -8,13 +8,13 @@ var rename = require('gulp-rename');
 
 
 
-var dest  = './dist';
-var src   = './assets';
+var dest  = './assets';
+var src   = './engine';
 
 var config = {
   less: {
-    src: src + '/styles/*.less',
-    dest: dest + '/styles',
+    src: src + '/lithium/*.less',
+    dest: dest + '/css',
     settings: {
       indentedSyntax: false, // Enable .less syntax?
       imagePath: '/images' // Used by the image-url helper
@@ -29,10 +29,10 @@ var config = {
     dest: dest + '/fonts'
   },
   bower: {
-    js: dest + '/vendor/js',
-    css: dest + '/vendor/css',
-    images: dest + '/vendor/images',
-    fonts: dest + '/vendor/fonts'
+    js: dest + '/js',
+    css: dest + '/css',
+    images: dest + '/images',
+    fonts: dest + '/fonts'
   },
   watch: {
     src: src+'/**/*.*',

@@ -4,20 +4,20 @@ var path    = require('path');
 // webpack.config.js
 var config = {
   entry: {
-     admin: ['./assets/admin.jsx'],
-     app: ['./assets/app.jsx']
+     admin: ['./engine/admin.jsx'],
+     app: ['./engine/app.jsx'],
   },
   output: {
     filename: '[name].bundle.js',
-    path: __dirname + '/dist'
+    path: __dirname + '/dist',
   },
   module: {
     loaders: [
       // The module to load. "babel" is short for "babel-loader"
-      { test: /\.jsx?$/, loaders: ['babel'], include: path.join(__dirname, '/assets')},
+      { test: /\.jsx?$/, loaders: ['babel'], include: path.join(__dirname, '/engine')},
       // use ! to chain loaders
-      { test: /\.less$/, loader: 'style!css!less' },
       { test: /\.css$/, loader: 'style!css' },
+      { test: /\.less$/, loader: 'style!css!less' },
       // inline base64 URLs for <=8k images, direct URLs for the rest
       { test: /\.(png|jpg)$/, loader: 'url?limit=8192'},
 
