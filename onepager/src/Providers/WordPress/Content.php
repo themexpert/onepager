@@ -11,7 +11,7 @@ class Content implements ContentInterface {
 	 * @return array
 	 */
 	public function getPages() {
-		return [""=>"select"]+$this->objAsArray( get_pages(), 'ID', 'post_title' );
+		return $this->objAsArray( get_pages(), 'ID', 'post_title' )+[""=>"Select"];
 	}
 
 	/**
@@ -42,7 +42,7 @@ class Content implements ContentInterface {
 	 * @return array
 	 */
 	public function getMenus() {
-		return [""=>"select"]+$this->objAsArray( get_terms( 'nav_menu', array('hide_empty'=> 0) ), 'term_id', 'name' );
+		return $this->objAsArray( get_terms( 'nav_menu', array('hide_empty'=> 0) ), 'term_id', 'name' ) + [""=>"Select"];
 	}
 
 	/**
