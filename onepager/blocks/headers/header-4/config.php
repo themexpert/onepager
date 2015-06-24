@@ -1,7 +1,7 @@
 <?php
 
 return array(
-  
+
   'slug'      => 'header-4', // Must be unique
   'groups'    => ['headers'], // Blocks group for filter
 
@@ -13,17 +13,26 @@ return array(
       "name"=>"sliders",
       "type"=>"repeater",
       "fields" => array(
-        array("name"=>"title"),
-        array("name"=>"description", 'type'=> 'textarea'),
-        array("name"=>"image","type"=>"image"),
-        array("name"=>"link"),
-        array("name"=>"link_text", 'label'=> 'Link Text', 'placeholder'=> 'Download Now'),
+        array(
+          array("name"=>"title"),
+          array("name"=>"description", 'type'=> 'textarea'),
+          array("name"=>"image","type"=>"image"),
+          array("name"=>"link"),
+          array("name"=>"link_text", 'label'=> 'Link Text', 'placeholder'=> 'Download Now'),
+        ),
+        array(
+          array("name"=>"title"),
+          array("name"=>"description", 'type'=> 'textarea'),
+          array("name"=>"image","type"=>"image"),
+          array("name"=>"link"),
+          array("name"=>"link_text", 'label'=> 'Link Text', 'placeholder'=> 'Download Now'),
+        )
       )
     )
   ),
-  
+
   // Settings - $settings available on view file to access the option
-  'settings' => array(    
+  'settings' => array(
      array(
       'name' => 'menu_type',
       'label' => 'Menu Type',
@@ -35,17 +44,17 @@ return array(
       )
     ),
     array(
-      'name'=>'cta', 
+      'name'=>'cta',
       'label'=> 'Call To Action Link',
       'placeholder' => 'http://doamin.com'
     ),
     array(
-      'name'=>'cta_text', 
-      'label'=> 'Call To Action Text',  
+      'name'=>'cta_text',
+      'label'=> 'Call To Action Text',
       'value'=> 'Call To Action',
       'placeholder'=> 'Call To Action'
     ),
-    
+
     array(
       'name'  => 'link_color',
       'label' => 'Link Color',
