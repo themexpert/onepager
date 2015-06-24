@@ -13,6 +13,7 @@ let getLiveModeHTML = function(livemode, content){
 
   return $section.html();
 };
+
 let appendStyleToDOM = function(sectionId, style){
   $(`#style-${sectionId}`).remove();
   $("head").append(style);
@@ -21,7 +22,7 @@ let appendStyleToDOM = function(sectionId, style){
 function unifySection(section, duplicate=false){
 
   // make a section refs and ids unique so we can duplicate
-  section     = _.copy(section);
+  section = _.copy(section);
 
   if(!section.id){
     section.title = "untitlted section";
@@ -35,7 +36,8 @@ function unifySection(section, duplicate=false){
     section.id  = _.randomId("s_"); //do we need id?
   }
 
-  section.key  = _.randomId("k_"); //do we need key? //yes we need //need better organization
+  //do we need key? //yes we need //need better organization
+  section.key  = _.randomId("k_");
 
 
   //bug because repeater is getting itself turned into null
@@ -87,7 +89,7 @@ function unifySection(section, duplicate=false){
 
 
 let mistify = function(databaseFields, sectionFields){
-  let getInput = function(field){
+  function getInput(field){
     if(databaseFields){
       field.value = databaseFields[field.name];
     }
@@ -95,8 +97,7 @@ let mistify = function(databaseFields, sectionFields){
     return field;
   };
 
-  let getRepeaterGroups = function(bGroups, dbGroups){
-
+  function getRepeaterGroups(bGroups, dbGroups){
     return _.map(bGroups, function(rGroup, groupIndex){
       return _.map(rGroup, function(rField){
         let field   = _.copy(rField);
@@ -108,12 +109,12 @@ let mistify = function(databaseFields, sectionFields){
 
   let getRepeaterField = function(field){
     let totalGroups = databaseFields[field.name].length; //what if its not an array?
+    let totalDbGroups = databaseFields[field.name].length;
 
     //we have only one repeatgroup so lets increse it by how much we need
-    _.times(totalGroups-1, function(){
+    _.times(totalGroups-totalDbGroups, function(){
       field.fields.push(field.fields[0]); //what if field.fields does not exist?
     });
-
 
     field.fields = getRepeaterGroups(field.fields, databaseFields[field.name]);
 
