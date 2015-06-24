@@ -7,6 +7,12 @@ use ThemeXpert\Providers\Contracts\ContentInterface;
  * @package ThemeXpert\Providers\WordPress
  */
 class Content implements ContentInterface {
+	/**
+	 * @return array
+	 */
+	public function getPages() {
+		return [""=>"select"]+$this->objAsArray( get_pages(), 'ID', 'post_title' );
+	}
 
 	/**
 	 * @param $obj
@@ -35,28 +41,15 @@ class Content implements ContentInterface {
 	/**
 	 * @return array
 	 */
-	public function getPages() {
-		$data = $this->objAsArray( get_pages(), 'ID', 'post_title' );
-		array_unshift($data, "select");
-		return $data;
-	}
-
-	/**
-	 * @return array
-	 */
 	public function getMenus() {
-		$data = $this->objAsArray( get_terms( 'nav_menu', array('hide_empty'=> 0) ), 'term_id', 'name' );
-		array_unshift($data, "select");
-		return $data;
+		return [""=>"select"]+$this->objAsArray( get_terms( 'nav_menu', array('hide_empty'=> 0) ), 'term_id', 'name' );
 	}
 
 	/**
 	 * @return array
 	 */
 	public function getCategories() {
-		$data = $this->objAsArray( get_terms( 'category', array('hide_empty'=> 0) ), 'term_id', 'name' );
-		array_unshift($data, "select");
-		return $data;
+		return [""=>"select"]+$this->objAsArray( get_terms( 'category', array('hide_empty'=> 0) ), 'term_id', 'name' );
 	}
 
 	/**
