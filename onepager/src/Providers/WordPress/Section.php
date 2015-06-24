@@ -22,6 +22,8 @@ class Section implements SectionInterface {
 	}
 
 	public function all( $pageId ) {
+		//delete_post_meta( $pageId, $this->ONEPAGER_SECTIONS);
+
 		if ( ! $this->sections ) {
 			$this->sections = get_post_meta( $pageId, $this->ONEPAGER_SECTIONS, true );
 		}

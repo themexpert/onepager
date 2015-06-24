@@ -6,12 +6,12 @@ return array(
 
   'contents' => array(
     array(
-      'name'=>'title', 
+      'name'=>'title',
       'value'=>'Modern and Ridiculously Easy Page Builder for All'
     ),
     array(
-      'name'=>'description', 
-      'type'=>'textarea', 
+      'name'=>'description',
+      'type'=>'textarea',
       'value' => 'A fool thinks himself to be wise, but a wise man knows himself to be a fool.'
     ),
 
@@ -19,10 +19,23 @@ return array(
       'name'=>'items',
       'type'=>'repeater',
       'fields' => array(
-        array('name'=>'title', 'value' => 'Awesome Design'),
-        array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design for all devices'),
-        array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-tools.png'),
+        array(
+          array('name'=>'title', 'value' => 'Awesome Design'),
+          array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design for all devices'),
+          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-tools.png'),
+        ),
+        array(
+          array('name'=>'title', 'value' => 'Awesome Design'),
+          array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design for all devices'),
+          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-tools.png'),
+        ),
+        array(
+          array('name'=>'title', 'value' => 'Awesome Design'),
+          array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design for all devices'),
+          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-tools.png'),
+        )
       )
+
     )
   ),
 
@@ -75,7 +88,7 @@ return array(
         'fadeInLeft'    => 'Slide Left',
         'fadeInRight'   => 'Slide Right',
         'fadeInUp'      => 'Slide Up',
-        'fadeInDown'    => 'Slide Down',  
+        'fadeInDown'    => 'Slide Down',
       )
     ),
   ),
@@ -111,4 +124,3 @@ return array(
     onepager()->asset()->style( 'content-2', $path . 'style.css' );
   }
 );
-

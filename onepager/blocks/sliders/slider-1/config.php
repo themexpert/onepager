@@ -1,7 +1,7 @@
 <?php
 
 return array(
-  
+
   'slug'      => 'slider-1', // Must be unique
   'groups'    => ['sliders'], // Blocks group for filter
 
@@ -11,17 +11,26 @@ return array(
       'name'=>'sliders',
       'type'=>'repeater',
       'fields' => array(
-        array('name'=>'title', 'value' => 'Onepage Website Builder for WordPress & Joomla'),
-        array('name'=>'description', 'type'=> 'textarea', 'value' => 'Building onepage website has never been easier before'),
-        array('name'=>'image','type'=>'image', 'value' => 'https://s3.amazonaws.com/quantum-assets/icon-headphone-big.png'),
-        array('name'=>'link', 'value' => 'http://getonepager.com'),
-        array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
+        array(
+          array('name'=>'title', 'value' => 'Onepage Website Builder for WordPress & Joomla'),
+          array('name'=>'description', 'type'=> 'textarea', 'value' => 'Building onepage website has never been easier before'),
+          array('name'=>'image','type'=>'image', 'value' => 'https://s3.amazonaws.com/quantum-assets/icon-headphone-big.png'),
+          array('name'=>'link', 'value' => 'http://getonepager.com'),
+          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
+        ),
+        array(
+          array('name'=>'title', 'value' => 'Onepage Website Builder for WordPress & Joomla'),
+          array('name'=>'description', 'type'=> 'textarea', 'value' => 'Building onepage website has never been easier before'),
+          array('name'=>'image','type'=>'image', 'value' => 'https://s3.amazonaws.com/quantum-assets/icon-headphone-big.png'),
+          array('name'=>'link', 'value' => 'http://getonepager.com'),
+          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
+        )
       )
     )
   ),
-  
+
   // Settings - $settings available on view file to access the option
-  'settings' => array(    
+  'settings' => array(
     array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',

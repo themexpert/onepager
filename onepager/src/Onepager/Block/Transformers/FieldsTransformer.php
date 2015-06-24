@@ -20,7 +20,9 @@ class FieldsTransformer {
           break;
 
         case 'repeater':
-          $control['fields'] = $this->transform( $control['fields'] );
+          $control['fields'] = array_map(function($control){
+            return $this->transform($control);
+          }, $control['fields']);
 
           $default = array(
             "label"  => ucfirst( $name ),
@@ -55,9 +57,9 @@ class FieldsTransformer {
       $control = array_merge( $default, $control );
 
       //HACK
-      if ( array_key_exists( 'fields', $control ) ) {
-        $control['fields'] = [ $control['fields'] ];
-      }
+      // if ( array_key_exists( 'fields', $control ) ) {
+      //   $control['fields'] = [ $control['fields'] ];
+      // }
 
       return $control;
     }, $fields );

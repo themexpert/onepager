@@ -7,12 +7,6 @@ use ThemeXpert\Providers\Contracts\ContentInterface;
  * @package ThemeXpert\Providers\WordPress
  */
 class Content implements ContentInterface {
-	/**
-	 * @return array
-	 */
-	public function getPages() {
-		return $this->objAsArray( get_pages(), 'ID', 'post_title' );
-	}
 
 	/**
 	 * @param $obj
@@ -41,15 +35,28 @@ class Content implements ContentInterface {
 	/**
 	 * @return array
 	 */
+	public function getPages() {
+		$data = $this->objAsArray( get_pages(), 'ID', 'post_title' );
+		array_unshift($data, "select");
+		return $data;
+	}
+
+	/**
+	 * @return array
+	 */
 	public function getMenus() {
-		return $this->objAsArray( get_terms( 'nav_menu', array('hide_empty'=> 0) ), 'term_id', 'name' );
+		$data = $this->objAsArray( get_terms( 'nav_menu', array('hide_empty'=> 0) ), 'term_id', 'name' );
+		array_unshift($data, "select");
+		return $data;
 	}
 
 	/**
 	 * @return array
 	 */
 	public function getCategories() {
-		return $this->objAsArray( get_terms( 'category', array('hide_empty'=> 0) ), 'term_id', 'name' );
+		$data = $this->objAsArray( get_terms( 'category', array('hide_empty'=> 0) ), 'term_id', 'name' );
+		array_unshift($data, "select");
+		return $data;
 	}
 
 	/**
@@ -61,7 +68,7 @@ class Content implements ContentInterface {
 
 	public function isLiveMode() {
 		$livemode = array_key_exists( 'livemode', $_GET ) ? $_GET['livemode'] : false;
-		
+
 		return ( is_super_admin() && $this->isOnepage() && $livemode );
 	}
 
@@ -76,7 +83,7 @@ class Content implements ContentInterface {
 		$onepager = get_post_meta( $this->getCurrentPageId(), '_onepager_updated', true );
 
 		return $onepager ? true : false;
-	}	
+	}
 
 	public function isOnepage() {
 		return $this->isOnepagerByTemplate();

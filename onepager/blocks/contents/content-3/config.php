@@ -6,12 +6,12 @@ return array(
 
   'contents' => array(
     array(
-      'name'=>'title', 
+      'name'=>'title',
       'value'=>'Onepage Makes Website Building Easy and Fun'
     ),
     array(
-      'name'=>'description', 
-      'type'=>'textarea', 
+      'name'=>'description',
+      'type'=>'textarea',
       'value' => 'Dont limit yourself. Many people limit themselves to what they think they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve'
     ),
     array(
@@ -24,9 +24,16 @@ return array(
       'name'=>'items',
       'type'=>'repeater',
       'fields' => array(
-        array('name'=>'title', 'value' => 'Beautiful and Responsive Design'),
-        array('name'=>'description', 'type'=> 'textarea', 'value'=>'The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart'),
-        array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-camera.png'),
+        array(
+          array('name'=>'title', 'value' => 'Beautiful and Responsive Design'),
+          array('name'=>'description', 'type'=> 'textarea', 'value'=>'The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart'),
+          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-camera.png'),
+        ),
+        array(
+          array('name'=>'title', 'value' => 'Beautiful and Responsive Design'),
+          array('name'=>'description', 'type'=> 'textarea', 'value'=>'The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart'),
+          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-camera.png'),
+        )
       )
     )
   ),
@@ -43,7 +50,7 @@ return array(
         'text-capitalize'  => 'Capitalized'
       ),
     ),
-    
+
     array(
       'name'     => 'animation_media',
       'label'    => 'Animation Media',
@@ -84,7 +91,7 @@ return array(
         'fadeInLeft'    => 'Slide Left',
         'fadeInRight'   => 'Slide Right',
         'fadeInUp'      => 'Slide Up',
-        'fadeInDown'    => 'Slide Down',  
+        'fadeInDown'    => 'Slide Down',
       )
     ),
   ),
@@ -120,4 +127,3 @@ return array(
     onepager()->asset()->style( 'content-3', $path . 'style.css' );
   }
 );
-
