@@ -11,10 +11,8 @@ Thumbs.db
 *.sublime-project
 
 # Node + Composer
-onepager/resources/dist/
-onepager/resources/vendor
-/
-onepager/dist/
+onepager/resources/
+onepager/assets/
 onepager/vendor/
 onepager/node_modules/
 onepager/bower_components/
