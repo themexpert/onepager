@@ -36,8 +36,11 @@ function enqueueOnepagerAssets() {
 	$q->script( 'tx-bootstrap', asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
 	$q->script( 'tx-wow', asset('assets/js/wow.js'), array( 'jquery' ) );
 	$q->script( 'tx-nicescroll', asset('assets/js/jquery.nicescroll.js'), array( 'jquery' ) );
+	$q->script( 'tx-magnific-popup', asset('assets/js/jquery.magnific-popup.js'), array( 'jquery' ) );
 
 	$q->style( 'tx-flexbox', asset( 'assets/css/flex.css' ) );
+	$q->style( 'tx-magnific-popup', asset( 'assets/css/magnific-popup.css' ) );
+	
 	$q->style( 'lithium', asset( 'assets/css/lithium.css' ) );
 
 	if ( onepager()->content()->isLiveMode() ) {
