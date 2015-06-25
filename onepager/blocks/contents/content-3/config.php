@@ -27,12 +27,17 @@ return array(
         array(
           array('name'=>'title', 'value' => 'Beautiful and Responsive Design'),
           array('name'=>'description', 'type'=> 'textarea', 'value'=>'The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart'),
-          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-camera.png'),
+          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icons/camera.png'),
         ),
         array(
-          array('name'=>'title', 'value' => 'Beautiful and Responsive Design'),
-          array('name'=>'description', 'type'=> 'textarea', 'value'=>'The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart'),
-          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-camera.png'),
+          array('name'=>'title', 'value' => 'Cross Browser Compatibility'),
+          array('name'=>'description', 'type'=> 'textarea', 'value'=>'TDesign is not how it looks like of feels lie, design is how its works'),
+          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icons/browser.png'),
+        ),
+        array(
+          array('name'=>'title', 'value' => 'Well Documenation'),
+          array('name'=>'description', 'type'=> 'textarea', 'value'=>'Start by doing whats necessary; then do whats possible; and suddenly you are doing the impossible.'),
+          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icons/documents.png'),
         )
       )
     )
