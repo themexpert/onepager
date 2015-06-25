@@ -7,6 +7,8 @@ return array(
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
+    array("name"=>"test"),
+    array("name"=>"show_title", "type"=>"switch", "value"=>true),
     array(
       'name'=>'sliders',
       'type'=>'repeater',
