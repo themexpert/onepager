@@ -4,6 +4,7 @@ const Input         = require('react-bootstrap/lib/Input');
 const ColorPicker   = require('./ColorPicker.jsx');
 const IconSelector  = require('./IconSelector.jsx');
 const Media         = require('./Media.jsx');
+const Switch         = require('./Switch.jsx');
 const WpMediaFrame  = require('./WpMediaFrame.jsx');
 const WpSelect      = require('./WpSelect.jsx');
 const Select        = require('./Select.jsx');
@@ -11,19 +12,23 @@ const QuillEditor   = require('./QuillEditor.jsx');
 const PureMixin     = require('../../../mixins/PureMixin.js');
 const Activity      = require('../../../lib/Activity');
 
+
 let inactive        = Activity(100); //jshint ignore:line
 
 let InputControl = React.createClass({
   mixins: [PureMixin],
-  
+
   propTypes: {
     options: React.PropTypes.object,
     onChange: React.PropTypes.func
   },
 
-
   getValue(){
-    return this.refs.input.getValue();
+    if(this.refs.input){
+      return this.refs.input.getValue();
+    } else {
+      console.log("unknown input type");
+    }
   },
 
   onChange(){
@@ -31,95 +36,106 @@ let InputControl = React.createClass({
   },
 
   render() {
-      let control, options = this.props.options; 
+      let controlHtml, control = this.props.options;
 
-      switch(options.type){
+      switch(control.type){
         case "icon":
+          controlHtml =
             <IconSelector ref="input"
-              className={options.class}
-              defaultValue={options.value}
-              label={options.label}
+              className={control.class}
+              defaultValue={control.value}
+              label={control.label}
               onChange={this.onChange}/>;
           break;
 
         case "image":
-          control =
+          controlHtml =
             <WpMediaFrame ref="input"
-              className={options.class}
-              defaultValue={options.value}
-              label={options.label}
+              className={control.class}
+              defaultValue={control.value}
+              label={control.label}
               onChange={this.onChange}/>;
           break;
 
         case "media":
-          control =
+          controlHtml =
             <Media ref="input"
-              className={options.class}
-              defaultValue={options.value}
-              label={options.label}
+              className={control.class}
+              defaultValue={control.value}
+              label={control.label}
               onChange={this.onChange}/>;
           break;
 
         case "colorpicker":
-          control =
+          controlHtml =
             <ColorPicker ref="input"
-              className={options.class}
-              defaultValue={options.value}
-              label={options.label}
+              className={control.class}
+              defaultValue={control.value}
+              label={control.label}
               onChange={this.onChange}/>;
           break;
 
         case "menu":
         case "page":
         case "category":
-          control =
-            <WpSelect ref="input" type={options.type}
-              className={options.class}
-              label={options.label}
-              defaultValue={options.value}
+          controlHtml =
+            <WpSelect ref="input" type={control.type}
+              className={control.class}
+              label={control.label}
+              defaultValue={control.value}
               onChange={this.onChange}/>;
           break;
 
         case "select":
-          control =
+          controlHtml =
             <Select ref="input"
-              className={options.class}
-              type={options.type}
-              options={options.options}
-              defaultValue={options.value}
-              label={options.label}
+              className={control.class}
+              type={control.type}
+              options={control.options}
+              defaultValue={control.value}
+              label={control.label}
               onChange={this.onChange}/>;
           break;
 
+          case "switch":
+            controlHtml =
+              <Switch ref="input"
+                className={control.class}
+                name={control.name}
+                label={control.label}
+                defaultChecked={control.value}
+                onChange={this.onChange}/>;
+            break;
+
         case "editor":
-          control =
+          controlHtml =
             <QuillEditor ref="input"
-              label={options.label}
-              className={options.class}
-              placeholder={options.placeholder}
-              defaultValue={options.value}
+              label={control.label}
+              className={control.class}
+              placeholder={control.placeholder}
+              defaultValue={control.value}
               onChange={this.onChange}/>;
           break;
-          
+
         case "text":
         case "textarea":
-          let addons = _.pick(options, ['addonBefore', 'addonAfter']);
-          if(options.type === "textarea"){
+          let addons = _.pick(control, ['addonBefore', 'addonAfter']);
+          if(control.type === "textarea"){
             addons.rows = 5;
           }
-          control =
+          controlHtml =
             <Input ref="input"
               {...addons}
-              type={options.type}
-              label={options.label}
-              className={options.class}
-              placeholder={options.placeholder}
-              defaultValue={options.value}
+              type={control.type}
+              label={control.label}
+              className={control.class}
+              placeholder={control.placeholder}
+              defaultValue={control.value}
               onChange={this.onChange}/>;
       }
 
       return (
-        <div>{control}</div>
+        <div>{controlHtml}</div>
       );
   }
 });
