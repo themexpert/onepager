@@ -14,16 +14,16 @@ return array(
       'type'=>'repeater',
       'fields' => array(
         array(
-          array('name'=>'title', 'value' => 'Onepage Website Builder for WordPress & Joomla'),
+          array('name'=>'title', 'value' => 'Onepage Builder for WordPress'),
           array('name'=>'description', 'type'=> 'textarea', 'value' => 'Building onepage website has never been easier before'),
-          array('name'=>'image','type'=>'image', 'value' => 'https://s3.amazonaws.com/quantum-assets/icon-headphone-big.png'),
+          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/icons/headphone-big.png'),
           array('name'=>'link', 'value' => 'http://getonepager.com'),
           array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
         ),
         array(
-          array('name'=>'title', 'value' => 'Onepage Website Builder for WordPress & Joomla'),
-          array('name'=>'description', 'type'=> 'textarea', 'value' => 'Building onepage website has never been easier before'),
-          array('name'=>'image','type'=>'image', 'value' => 'https://s3.amazonaws.com/quantum-assets/icon-headphone-big.png'),
+          array('name'=>'title', 'value' => 'Revolutionary Website Builder'),
+          array('name'=>'description', 'type'=> 'textarea', 'value' => 'Ridiculously easy and built for tomorrows internet in mind'),
+          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/icons/responsive-big.png'),
           array('name'=>'link', 'value' => 'http://getonepager.com'),
           array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
         )
@@ -57,7 +57,7 @@ return array(
       'name'=>'slider_bg',
       'label' => 'Slider Background',
       'type'  => 'image',
-      'value' => 'http://s3.amazonaws.com/quantum-assets/hero-bg2.jpg'
+      'value' => 'http://s3.amazonaws.com/quantum-assets/bg/bg2.jpg'
     ),
     array(
       'name'    => 'button_color',
