@@ -38,16 +38,14 @@ function enqueueOnepagerAssets() {
 	$q->style( 'tx-animatecss', asset( 'assets/css/animate.css' ) );
 	$q->style( 'tx-fontawesome', asset( 'assets/css/font-awesome.css' ) );
 	$q->style( 'op-blocks', asset( 'assets/css/blocks.css' ) );
-	
+
 	$q->script( 'tx-bootstrap', asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
 	$q->script( 'tx-wow', asset('assets/js/wow.js'), array( 'jquery' ) );
 	$q->script( 'tx-nicescroll', asset('assets/js/jquery.nicescroll.js'), array( 'jquery' ) );
 	$q->script( 'tx-magnific-popup', asset('assets/js/jquery.magnific-popup.js'), array( 'jquery' ) );
 
-	$q->style( 'tx-flexbox', asset( 'assets/css/flex.css' ) );
 	$q->style( 'tx-magnific-popup', asset( 'assets/css/magnific-popup.css' ) );
-	
-	$q->style( 'lithium', asset( 'assets/css/lithium.css' ) );
+	$q->style( 'tx-flexbox', asset( 'assets/css/flex.css' ) );
 
 	if ( onepager()->content()->isLiveMode() ) {
 		if ( function_exists( 'wp_enqueue_media' ) ) {

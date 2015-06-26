@@ -1,11 +1,11 @@
-const React               = require('react');
+const React = require('react');
 
 let Sidebar = React.createClass({
   render() {
 
     return (
-      <div>
-        Hello world
+      <div class="sidebar">
+        Hello Yoyo world
       </div>
     );
   }

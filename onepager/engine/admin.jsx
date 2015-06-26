@@ -1,8 +1,8 @@
 const React = require('react');
 const Admin = require('./components/Admin.jsx');
 
-// require("./lithium/flex.less");
-// require("./lithium/lithium.less");
+require("../assets/css/sweetalert.css");
+require("./lithium/lithium.less");
 
 let mount = document.getElementById("onepager-settings-mount");
 
