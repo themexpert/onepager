@@ -4,7 +4,7 @@
   1. Flex Default value to ensure it work well
   2. Grid can be use stanalone with any component
  ========================================================================== */
-.flex-grid {
+.flex {
   /*1*/
   .display(flex);
   .flex-direction(row);
@@ -17,15 +17,15 @@
   &:extend(.clearfix);
 }
 
-.flex-grid-inline {
+.flex-inline {
   .display(inline-flex);
 }
 
 /*
  * Fixes initial flex-shrink value in IE10
  */
-.flex-grid > *,
-.flex-grid-inline > * {
+.flex > *,
+.flex-inline > * {
   -ms-flex-negative: 1;
 }
 
@@ -36,15 +36,15 @@
  * Default value is `stretch`
  */
 
-.flex-grid-top {
+.flex-top {
   .align-items(flex-start);
 }
 
-.flex-grid-middle {
+.flex-middle {
   .align-items(center);
 }
 
-.flex-grid-bottom {
+.flex-bottom {
   .align-items(flex-end);
 }
 
@@ -53,18 +53,18 @@
  * Default value is `flex-start`
  */
 
-.flex-grid-center {
+.flex-center {
   .justify-content(center);
 }
 
-.flex-grid-right {
+.flex-right {
   .justify-content(flex-end);
 }
 
-.flex-grid-space-between {
+.flex-space-between {
   .justify-content(space-between);
 }
 
-.flex-grid-space-around {
+.flex-space-around {
   .justify-content(space-around);
 }

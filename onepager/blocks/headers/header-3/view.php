@@ -1,3 +1,4 @@
+
 <?php
 	$image_cols = $settings['media_grid'];
 	$content_cols = 12 - $image_cols; // Default 12 grid 
@@ -9,7 +10,7 @@
 <section id="<?php echo $id;?>" class="op-section header-3">
 	<div class="container">
 		<div class="row">
-			<article class="flex-grid flex-grid-<?php echo $settings['content_alignment']?>">
+			<article class="flex flex-<?php echo $settings['content_alignment']?>">
 			<?php // Image Left
 			if ('left' == $settings['media_alignment']) : ?>
 				<div class="col-sm-<?php echo $image_cols?>">

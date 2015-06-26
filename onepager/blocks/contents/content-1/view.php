@@ -9,7 +9,7 @@
 <section id="<?php echo $id;?>" class="op-section content-1">
 	<div class="container">
 		<div class="row">
-			<article class="flex-grid flex-grid-<?php echo $settings['content_alignment']?>">
+			<article class="flex flex-<?php echo $settings['content_alignment']?>">
 				
 				<?php // Image Left
 				if ('left' == $settings['media_alignment']) : ?>

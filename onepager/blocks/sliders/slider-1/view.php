@@ -19,7 +19,7 @@ $slide_num = 0;
 			<?php foreach($contents['sliders'] as $slide): ?>
 			<div class="item <?php echo ($slide_num === 0) ? 'active' : ''?>">
 				<div class="container">
-					<div class="carousel-caption flex-grid flex-grid-center flex-grid-middle">
+					<div class="carousel-caption flex flex-center flex-middle">
 						<?php if($slide['image']):?>
 							<img class="img-responsive" src="<?php echo $slide['image']?>" alt="<?php echo $slide['title']?>">
 						<?php endif; ?>
