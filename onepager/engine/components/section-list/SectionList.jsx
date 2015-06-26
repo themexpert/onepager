@@ -9,6 +9,7 @@ const AppStore            = require('../../stores/AppStore.js');
 const AppActions          = require('../../actions/AppActions.js');
 // const PureMixin           = require('../../mixins/PureMixin.js');
 const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
+const Footer              = require('../sidebar/Footer.jsx');
 
 let SectionList = React.createClass({
   mixins: [SortableMixin, PureMixin],
@@ -99,6 +100,8 @@ let SectionList = React.createClass({
               };
 
               return (
+                <div>
+
                 <SectionLi
                   active={this.props.activeSectionIndex === index} 
                   getUniqueSectionId={this.props.getUniqueSectionId} 
@@ -106,6 +109,9 @@ let SectionList = React.createClass({
                   title={section.title} 
                   key={section.key} 
                   index={index} />
+
+        <Footer />
+        </div>
               );
             })}
           </div>
@@ -114,6 +120,8 @@ let SectionList = React.createClass({
         <div className={blocksClass}>
           <BlockCollection closeBlocks={this.closeBlocks} blocks={blocks} />
         </div>
+
+
       </div>
     ); //end jsx
   } //end render
