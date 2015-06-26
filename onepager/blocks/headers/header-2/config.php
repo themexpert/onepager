@@ -2,35 +2,36 @@
 
 return array(
 
-  'slug'      => 'header-1', // Must be unique
+  'slug'      => 'header-2', // Must be unique
   'groups'    => ['headers'], // Blocks group for filter
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array('name'=>'logo', 'type'=> 'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/logo-white.png'),
     array('name'=>'menu','type'=>'menu'),
-
     array(
       'name'=>'sliders',
       'type'=>'repeater',
       'fields' => array(
         array(
           array('name'=>'title', 'value' => 'Onepage Website Builder for WordPress'),
-          array('name'=>'description', 'type'=> 'editor', 'value' => 'Build website quickly and efficiently with simple easy to use page builder'),
-          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/browser-1.png'),
-          array('name'=>'link', 'value' => 'http://getonepager.com'),
-          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
+          array('name'=>'description', 'type'=> 'editor', 'value' => 'Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.'),
+          array('name'=>'link', 'value' => '#'),
+          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Button Text', 'value'=> 'Download Now'),
+          array('name'=>'image','type'=>'image', 'value' => 'https://s3.amazonaws.com/quantum-assets/video-thumb.jpg'),
+          array('name'=> 'video_url', 'label' => 'Video URL', 'value' => 'https://www.youtube.com/watch?v=SSrvuFgYc-g')
         ),
         array(
-          array('name'=>'title', 'value' => 'Revolutionary Way of Building OnePage Website'),
-          array('name'=>'description', 'type'=> 'editor', 'value' => 'Ridiculously easy and built for tomorrows internet in mind'),
-          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/browser-1.png'),
-          array('name'=>'link', 'value' => 'http://getonepager.com'),
-          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
+          array('name'=>'title', 'value' => 'First Page Builder for WordPress & Joomla'),
+          array('name'=>'description', 'type'=> 'editor', 'value' => 'Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.'),
+          array('name'=>'link', 'value' => '#'),
+          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Button Text', 'value'=> 'Download Now'),
+          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/video-thumb-2.jpg'),
+          array('name'=> 'video_url', 'label' => 'Video URL', 'value' => 'https://vimeo.com/channels/staffpicks/128807157')
         )
       )
     )
-
+    
   ),
 
   // Settings - $settings available on view file to access the option
@@ -60,7 +61,7 @@ return array(
       'name' => 'slider_height',
       'label' => 'Slider Height',
       'append' => 'px',
-      'value' => '550'
+      'value' => '450'
     ),
     array(
       'name'=>'cta',
@@ -80,7 +81,7 @@ return array(
       'name'  => 'nav_bg',
       'label' => 'Sticky Background',
       'type'  => 'colorpicker',
-      'value' => '#453750'
+      'value' => '#6A6B83'
     ),
     array(
       'name'  => 'link_color',
@@ -111,11 +112,12 @@ return array(
       'name'=>'slider_bg',
       'label' => 'Slider Background',
       'type'  => 'image',
-      'value' => 'http://s3.amazonaws.com/quantum-assets/bg/bg3.jpg'
+      'value' => 'http://s3.amazonaws.com/quantum-assets/bg/bg4.jpg'
     ),
+    
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'header-1', $path . 'style.css' );
+    onepager()->asset()->style( 'header-2', $path . 'style.css' );
   }
 );

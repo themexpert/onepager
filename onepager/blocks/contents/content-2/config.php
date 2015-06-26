@@ -20,19 +20,19 @@ return array(
       'type'=>'repeater',
       'fields' => array(
         array(
-          array('name'=>'title', 'value' => 'Awesome Design'),
-          array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design for all devices'),
-          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-tools.png'),
+          array('name'=>'title', 'value' => 'Responsive Design'),
+          array('name'=>'description', 'type'=> 'textarea', 'value'=>'Blocks fit all devices'),
+          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icons/presentation.png'),
         ),
         array(
-          array('name'=>'title', 'value' => 'Awesome Design'),
-          array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design for all devices'),
-          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-tools.png'),
+          array('name'=>'title', 'value' => 'WYSIWYG Editor'),
+          array('name'=>'description', 'type'=> 'textarea', 'value'=>'Do Everything In One Place'),
+          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icons/tools.png'),
         ),
         array(
-          array('name'=>'title', 'value' => 'Awesome Design'),
-          array('name'=>'description', 'type'=> 'textarea', 'value'=>'Beautiful crafted design for all devices'),
-          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icon-tools.png'),
+          array('name'=>'title', 'value' => 'Intuitive Configuration'),
+          array('name'=>'description', 'type'=> 'textarea', 'value'=>'No more boalted configuration panel'),
+          array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icons/gear.png'),
         )
       )
 
