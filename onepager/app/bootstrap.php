@@ -1,7 +1,18 @@
 <?php
+
 //require autoloading files
 require( __DIR__ . "/../vendor/autoload.php" );
 require( __DIR__ . "/../src/functions.php" );
+
+//if we are on debug mode run
+//whoops to give nice error messages
+if(WP_DEBUG){
+	//add whoops
+	$whoops = new \Whoops\Run;
+	$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+	$whoops->register();
+}
+
 
 //create onepager instance
 use Pimple\Container;
@@ -12,6 +23,7 @@ $onepager = new Onepager(
 	new WordPress( new Container, ONEPAGER_PATH, ONEPAGER_URL ),
 	new Container
 );
+
 
 //require assets and more
 // require( __DIR__ . "/metabox.php" );

@@ -8,7 +8,8 @@
   ],
   "require": {
     "pimple/pimple": "^3.0",
-    "league/url": "^3.3"
+    "league/url": "^3.3",
+    "filp/whoops": "^1.1"
   },
   "autoload": {
     "psr-4": {

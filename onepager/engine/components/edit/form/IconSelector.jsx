@@ -3,6 +3,9 @@ const React     = require('react');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const dom       = React.domDOMNode;
 
+require("../../../../assets/css/icon-selector.min.css");
+
+
 let IconSelector = React.createClass({
   mixins: [PureMixin],
 
@@ -29,10 +32,10 @@ let IconSelector = React.createClass({
     return (
       <div className="form-group">
         <label>{this.props.label}</label>
-        
+
         <div className="input-group">
           <input {...this.props} type="text" className={classes} ref="input"/>
-        
+
           <span className="input-group-btn">
             <button className="btn btn-primary" ref="select" type="button">
               <span className="fa fa-diamond"></span> Icon
@@ -40,7 +43,7 @@ let IconSelector = React.createClass({
           </span>
 
         </div>
-        
+
         <div className="media-preview"></div>
       </div>
     );

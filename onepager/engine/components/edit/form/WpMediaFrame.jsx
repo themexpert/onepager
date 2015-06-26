@@ -2,6 +2,8 @@ const React     = require('react');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const $         = jQuery;
 
+require("../../../../assets/css/icon-selector.min.css");
+
 let WpMediaFrame = React.createClass({
   mixins: [PureMixin],
 

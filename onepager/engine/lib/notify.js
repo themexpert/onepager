@@ -1,3 +1,5 @@
+require("../../assets/css/toastr.css");
+
 toastr.options = {
     "closeButton": true,
     "newestOnTop": true,

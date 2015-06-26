@@ -30,7 +30,7 @@ let SwitchControl = React.createClass({
     return (
       <label>
         {this.props.label}
-        <input ref="input" {...props} />
+        <input ref="input" data-size="mini" {...props} />
       </label>
     );
   }

@@ -15,6 +15,10 @@ function getOnepagerData( $pageId ) {
 		return $section;
 	}, onepager()->section()->all( $pageId ) );
 
+	$url   = League\Url\Url::createFromUrl( getCurrentPageURL() );
+	$query = $url->getQuery();
+	$query->modify( array( 'livemode' => false ) );
+
 	return array(
 		'ajaxUrl'    => $ajaxUrl,
 		'blocks'     => $blocks,
@@ -22,7 +26,8 @@ function getOnepagerData( $pageId ) {
 		'sections'   => $sections,
 		'menus'      => $nav_arr,
 		'pages'      => $pages_arr,
-		'categories' => $cat_arr
+		'categories' => $cat_arr,
+		'disable'		=> $url->__toString()
 	);
 }
 
@@ -33,13 +38,12 @@ function enqueueOnepagerAssets() {
 	$q->style( 'tx-animatecss', asset( 'assets/css/animate.css' ) );
 	$q->style( 'tx-fontawesome', asset( 'assets/css/font-awesome.css' ) );
 	$q->style( 'op-blocks', asset( 'assets/css/blocks.css' ) );
-	
+
 	$q->script( 'tx-bootstrap', asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
 	$q->script( 'tx-wow', asset('assets/js/wow.js'), array( 'jquery' ) );
 	$q->script( 'tx-nicescroll', asset('assets/js/jquery.nicescroll.js'), array( 'jquery' ) );
 
 	$q->style( 'tx-flexbox', asset( 'assets/css/flex.css' ) );
-	$q->style( 'lithium', asset( 'assets/css/lithium.css' ) );
 
 	if ( onepager()->content()->isLiveMode() ) {
 		if ( function_exists( 'wp_enqueue_media' ) ) {

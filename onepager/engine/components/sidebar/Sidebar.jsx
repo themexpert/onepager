@@ -11,6 +11,7 @@ const AppStore            = require('../../stores/AppStore');
 // const PureMixin           = require('../../mixins/PureMixin.js');
 const $s                  = require('string');
 const $                   = jQuery;
+const Footer              = require('./Footer.jsx');
 
 let Sidebar = React.createClass({
   // we need to optimize this with immutability
@@ -96,6 +97,8 @@ componentDidMount(){
               getUniqueSectionId={(index, id)=>{
                 return getUniqueSectionId(sections, index, id);
               }} />
+
+              <Footer />
           </TabPane>
 
           <TabPane id='op-contents' active={activeTab}>

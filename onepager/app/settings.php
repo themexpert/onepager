@@ -11,7 +11,7 @@ class OpSettings{
 			$name, //menu title
 			$name, //page title
 			'App\Controllers\AdminMenuController@getIndex',
-			onepager()->url( 'dist/images/dashicon-onepager.svg' )
+			$icon
 		);
 
 		add_action('admin_enqueue_scripts', [$this, 'localizeScript']);
@@ -19,7 +19,7 @@ class OpSettings{
 
 
 	public function localizeScript(){
-		if(get_current_screen()->id == "toplevel_page_".$this->name){			
+		if(get_current_screen()->id == "toplevel_page_".$this->name){
 			enqueueOnepagerAdminAssets();
 			$config = $this->transformConfig($this->config);
 
@@ -90,8 +90,8 @@ class OpSettings{
 }
 
 $opAdminPage = new OpSettings(
-	"onepager", 
-	onepager()->url( 'dist/images/dashicon-onepager.svg' )
+	"onepager",
+	onepager()->url( 'assets/images/dashicon-onepager.svg' )
 );
 
 $opAdminPage->tab("General", array(
