@@ -23,12 +23,10 @@ let Footer = React.createClass({
 
   render() {
     return (
-      <footer className="sidebar-footer">
-        <ul className="nav nav-tabs">
-          <li> <a href={ODataStore.disable}>Disable</a> </li> 
-          <li> <a href={ODataStore.disable}>Tutorial</a> </li> 
-        </ul>
-      </footer>
+      <div className="footer flex flex-space-between">
+          <a href={ODataStore.disable}><span className="fa fa-adjust"></span> Live Mode</a>
+          <a href="http://docs.getonepager.com" target="_blank"><span className="fa fa-video-camera"></span> Video Tutorial</a>
+      </div>
     );
   }
 });

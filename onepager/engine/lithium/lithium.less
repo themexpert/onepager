@@ -195,6 +195,8 @@ a{ text-decoration: inherit; color: @brand-primary; }
     .box-shadow(0 1px 0 darken(@bg-secondary, 1%));
   }
 }
+
+
 //Divider
 h3.form-divider {
   margin: 4px 0px 10px;
@@ -203,6 +205,8 @@ h3.form-divider {
   text-transform: uppercase;
   font-weight: normal;
 }
+
+
 // Cards - Sections list
 .txop-cards{
   padding: 10px 25px 10px 10px;
@@ -234,12 +238,16 @@ h3.form-divider {
 
   }
 }
+
 // ****************************************************
 //  Sidebar / Configure
 // ****************************************************
 .txop-sidebar{
+  // Turn off underline
+  a{ text-decoration: none; }
+
   position: fixed; left: 0; top: 0; bottom: 0; width: 23%; z-index: 9999;
-  padding-top: 54px;
+  padding-top: 54px; overflow-x: hidden;
 
   // Buttons
   .btn--save { float: right; margin: 12px 6px 0 0; padding: 5px 10px; font-size: 13px; outline: 0 !important; }
@@ -274,6 +282,19 @@ h3.form-divider {
   > .tab-content{ overflow-y: auto; overflow-x: hidden; height: 100%; }
 
   #op-contents .tab-pane{ padding : 10px 3px; }
+
+  #op-sections{ height: 100%; }
+  // Footer
+  // -----------------------------------------------
+  .footer{
+    background: @bg-secondary;
+    padding: 10px 0 ;
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    > a{ 
+      color: @text-color; width: 50%; padding: 5px 20px; 
+      &:hover{ color: lighten(@brand-primary, 5%); }
+    }
+  }
 }
 
 // ****************************************************
