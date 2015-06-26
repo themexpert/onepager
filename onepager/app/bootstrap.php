@@ -4,10 +4,12 @@
 require( __DIR__ . "/../vendor/autoload.php" );
 require( __DIR__ . "/../src/functions.php" );
 
-//add whoops
-$whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-$whoops->register();
+if(WP_DEBUG){
+	//add whoops
+	$whoops = new \Whoops\Run;
+	$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+	$whoops->register();
+}
 
 //create onepager instance
 use Pimple\Container;
