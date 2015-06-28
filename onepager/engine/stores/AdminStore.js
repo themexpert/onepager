@@ -1,5 +1,4 @@
 const _               = require('underscore');
-const s               = require('string');
 const Reflux          = require('reflux');
 const Immutable       = require('immutable');
 const ODataStore      = require('./ODataStore.js');
@@ -16,31 +15,27 @@ function transformer(fields){
   return fields;
 }
 
-let iblet = {
-	where(list, prop, val){
-		return list.filter((item)=>{
-			return item.get(prop) === val;
-		});
-	}
-};
+//add refs to controsl
+let _optionPanel  = _.map(_.copy(ODataStore.optionPanel), (panel)=>{
+	panel.fields = transformer(panel.fields);
+	return panel;
+});
 
-let _options  = transformer(_.copy(ODataStore.config));
-let _tabs  = _.chain(_options).pluck('tab').unique().map((tab)=>{
-  let id = s(tab.trim()).dasherize().s;
-  return {id: id, name: tab};
-}).value();
+//get tabs
+let _tabs  = _.map(_optionPanel, tab=>{
+  return {id: tab.id, name: tab.name};
+});
 
-_options = Immutable.fromJS(_options);
-
+//implement immutable js
+_optionPanel = Immutable.fromJS(_optionPanel);
 
 let AdminStore   = Reflux.createStore({
   listenables: [AdminActions],
   
   data: {
     tabs: _tabs,
-    options: _options,
-    activeTab: _tabs[0].name,
-	  activeTabOptions: iblet.where(_options, 'tab', _tabs[0].name)
+    optionPanel: _optionPanel,
+    activeTabIndex: 0
   },
   
   getInitialState(){
@@ -48,18 +43,19 @@ let AdminStore   = Reflux.createStore({
   },
 
   init() {
-
   },
 
   onChangeTab(tabIndex){
-    let tab = _tabs[tabIndex];
-    
     let data = {
-      activeTab: tab.name,
-      activeTabOptions: iblet.where(_options, 'tab', tab.name)
+      activeTabIndex: tabIndex
     };
 
     this.trigger(data);
+  },
+  onSaveTab(index, panel){
+  	_optionPanel = _optionPanel.set(index, panel);
+
+  	this.trigger({optionPanel: _optionPanel});
   }
 
 });

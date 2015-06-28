@@ -1,32 +1,26 @@
-const React 			= require('react');
-const Reflux  		= require('reflux');
-const AdminStore 	= require('../stores/AdminStore.js');
-const AdminActions 	= require('../actions/AdminActions.js');
-const _ = require("underscore");
+const React 				= require('react');
+const Reflux  			= require('reflux');
+const PureMixin 		= require('react/lib/ReactComponentWithPureRenderMixin');
 
-const Content  		= require('./Admin/Content.jsx');
+const AdminStore 		= require('../stores/AdminStore.js');
+const Content  			= require('./Admin/Content.jsx');
+const Tabs  				= require('./Admin/Tabs.jsx');
 
 let Admin = React.createClass({
-	mixins: [Reflux.connect(AdminStore)],
-
-	handleTabChange(tabIndex){
-		AdminActions.changeTab(tabIndex);
-	},
+	mixins: [PureMixin, Reflux.connect(AdminStore)],
 
 	render(){
-		console.log(this.state.activeTabOptions.toJS());
+		console.log("rendering Admin");
 
 		return (
 			<div>
-				<ul>
-				{this.state.tabs.map((tab, tabIndex)=>
-					<li onClick={this.handleTabChange.bind(this, tabIndex)} key={tab.id} id={tab.id}>{tab.name}</li>
-				)}
-				</ul>
+				<Tabs 
+					active={this.state.activeTabIndex} 
+					tabs={this.state.tabs} />
 
 				<Content 
-					activeTabName={this.state.activeTabName} 
-					controls={this.state.activeTabOptions} />
+					index={this.state.activeTabIndex} 
+					panel={this.state.optionPanel.get(this.state.activeTabIndex)} />
 			</div>
 		);
 	}

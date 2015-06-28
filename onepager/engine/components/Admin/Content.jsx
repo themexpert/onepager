@@ -1,16 +1,19 @@
-const React 	= require("react");
-const _ 			= require("underscore");
-const Input 	= require("../edit/form/Input.jsx");
-const Divider = require('../edit/Divider.jsx');
+const React 				= require("react");
+const PureMixin 		= require('react/lib/ReactComponentWithPureRenderMixin');
 
-// const AdminActions 	= require('../../actions/AdminActions.js');
+const Input 				= require("../edit/form/Input.jsx");
+const Divider 			= require('../edit/Divider.jsx');
+const AdminActions 	= require('../../actions/AdminActions.js');
 
 
 let Content = React.createClass({
+	mixins: [PureMixin],
   update(){
-  	let controls = controls.map(control=>{
-      let ref = this.refs[control.ref];
-      let type = control.type;
+		let controls = this.props.panel.get('fields');
+
+  	controls = controls.map(control=>{
+      let ref = this.refs[control.get('ref')];
+      let type = control.get('type');
 
       switch(type){
         case "divider":
@@ -18,37 +21,49 @@ let Content = React.createClass({
           break;
         default:
           //normal input
-          control.value = ref.getValue();
+          return control.set('value', ref.getValue());
       }
 
       return control;
     });
 
-    // this.props.update(tabName, controls);
+    let panel = this.props.panel.set('fields', controls);
+    AdminActions.saveTab(this.props.index, panel);
   },
 
 	render(){
-		let controlsHtml = this.props.controls.map((control, ii)=>{
-        let props = {
-          onChange: this.update,
-          options: control.toJS(),
-          ref: control.get('ref'),
-          key: control.get('ref')
-        };
+		console.log("rendering Content");
 
-        let type = control.get('type');
+		let controls = this.props.panel.get('fields');
 
-        switch(type){
-          case "divider":
-            return <Divider key={ii} label={control.get('label')} />;
-          default:
-            return <Input {...props} />;
-        }
+		let controlsHtml = controls.map((control, ii)=>{
+      let props = {
+        onChange: this.update,
+        options: control.toJS(),
+        ref: control.get('ref'),
+        key: control.get('ref')
+      };
+
+      let type = control.get('type');
+
+      switch(type){
+        case "divider":
+          return <Divider key={ii} label={control.get('label')} />;
+        default:
+          return <Input {...props} />;
+      }
 	  });
 
 
 		return (
-			<div>{controlsHtml}</div>
+			<div>
+				<div className="col-md-6">
+				{controlsHtml}
+				</div>
+				<pre  className="col-md-6">
+				{JSON.stringify(this.props.panel.toObject(), null, 2)}
+				</pre>
+			</div>
 		);
 	}
 });
