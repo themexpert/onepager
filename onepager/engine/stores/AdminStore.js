@@ -3,23 +3,29 @@ require('../lib/_mixins');
 
 const Reflux          = require('reflux');
 const Immutable       = require('immutable');
-const ODataStore      = require('./ODataStore');
 const AdminActions    = require('../actions/AdminActions');
 const Sync 						= require("../components/Admin/Sync");
 const notify					= require("../lib/notify");
 
+const ODataStore      = require('./ODataStore');
+let options 					= ODataStore.options;
 let sync 							= Sync(ODataStore.ajaxUrl, ODataStore.page);
 
-function transformer(fields){
+function transformer(fields, panelId){
   return fields.map(field=>{
-    field.ref = _.uniqueId("ref_");
+    field.ref 	= _.uniqueId("ref_");
+    
+    if(options[panelId][field.name]){
+	    field.value = options[panelId][field.name];
+    }
+
     return field;
   });
 }
 
 //add refs to controsl
 let _optionPanel  = _.map(_.copy(ODataStore.optionPanel), (panel)=>{
-	panel.fields = transformer(panel.fields);
+	panel.fields = transformer(panel.fields, panel.id);
 	return panel;
 });
 
