@@ -108,11 +108,11 @@ let mistify = function(databaseFields, sectionFields){
   };
 
   let getRepeaterField = function(field){
-    let totalGroups = databaseFields[field.name].length; //what if its not an array?
+    let defaultTotalGroups = field.fields.length; //what if its not an array?
     let totalDbGroups = databaseFields[field.name].length;
 
     //we have only one repeatgroup so lets increse it by how much we need
-    _.times(totalGroups-totalDbGroups, function(){
+    _.times(totalDbGroups - defaultTotalGroups, function(){
       field.fields.push(field.fields[0]); //what if field.fields does not exist?
     });
 
