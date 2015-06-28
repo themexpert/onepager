@@ -16,8 +16,20 @@ return array(
         array(
           array('name'=>'title', 'value' => 'Unity'),
           array('name'=>'description', 'type'=> 'textarea', 'value' => 'Onepage Joomla Template'),
-          array('name'=>'thumb','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/icons/headphone-big.png'),
-          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/icons/headphone-big.png'),
+          array('name'=>'thumb','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/1-thumb.jpg'),
+          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/1.jpg'),
+        ),
+        array(
+          array('name'=>'title', 'value' => 'BizCorp'),
+          array('name'=>'description', 'type'=> 'textarea', 'value' => 'Onepage Joomla Template'),
+          array('name'=>'thumb','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/2-thumb.jpg'),
+          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/2.jpg'),
+        ),
+        array(
+          array('name'=>'title', 'value' => 'Eventx'),
+          array('name'=>'description', 'type'=> 'textarea', 'value' => 'Event Template for Joomla'),
+          array('name'=>'thumb','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/3-thumb.jpg'),
+          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/3.jpg'),
         )
       )
     )
@@ -34,28 +46,46 @@ return array(
         'text-lowercase'   => 'Lowercase',
         'text-uppercase'   => 'Uppercase',
         'text-capitalize'  => 'Capitalized'
-      ),
+      )
+    ),
+    array(
+      'name'     => 'animation',
+      'label'    => 'Animation Title',
+      'type'     => 'select',
+      'value'    => 'zoomIn',
+      'options'  => array(
+        '0'           => 'None',
+        'fadeIn'      => 'Fade',
+        'zoomIn'        => 'Zoom In',
+        'fadeInLeft'  => 'Slide Left',
+        'fadeInRight' => 'Slide Right',
+        'fadeInUp'    => 'Slide Up',
+        'fadeInDown'  => 'Slide Down',
+      )
+    ),
+    array(
+      'name'     => 'overlay_animation',
+      'label'    => 'Overlay Animation',
+      'type'     => 'select',
+      'value'    => 'scale',
+      'options'  => array(
+        'slide-top'     => 'Slide Top',
+        'slide-bottom'  => 'Slide Bottom',
+        'slide-left'    => 'Slide Left',
+        'slide-right'   => 'Slide RIght',
+        'fade'          => 'Fade',
+        'scale'         => 'Scale',
+        'spin'          => 'Spin',
+      )
     )
   ),
 
   'styles' => array(
     array(
-      'name'=>'slider_bg',
-      'label' => 'Slider Background',
-      'type'  => 'image',
-      'value' => 'http://s3.amazonaws.com/quantum-assets/bg/bg2.jpg'
-    ),
-    array(
-      'name'    => 'button_color',
-      'label'   => 'Button Color',
-      'type'    => 'colorpicker',
-      'value'   => '#323232'
-    ),
-    array(
-      'name'    => 'button_hover_color',
-      'label'   => 'Button Hover Color',
-      'type'    => 'colorpicker',
-      'value'   => '#2196F3'
+      'name'=>'icon_bg',
+      'label' => 'Icon Background',
+      'type'  => 'colorpicker',
+      'value' => '#fd541d'
     ),
   ),
 
