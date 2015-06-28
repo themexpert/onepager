@@ -82,6 +82,18 @@ return array(
 
   'styles' => array(
     array(
+      'name'=>'bg_color',
+      'label' => 'Background Color',
+      'type'  => 'colorpicker',
+      'value' => '#fff'
+    ),
+    array(
+      'name'=>'title_color',
+      'label' => 'Title Color',
+      'type'  => 'colorpicker',
+      'value' => '#323232'
+    ),
+    array(
       'name'=>'icon_bg',
       'label' => 'Icon Background',
       'type'  => 'colorpicker',
