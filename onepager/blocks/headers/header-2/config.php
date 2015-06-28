@@ -118,6 +118,10 @@ return array(
   ),
 
   'assets' => function( $path ){
+    // Magnefic popup 
+    onepager()->asset()->script( 'tx-magnific-popup', asset('assets/js/jquery.magnific-popup.js'), array( 'jquery' ) );
+    onepager()->asset()->style( 'tx-magnific-popup', asset( 'assets/css/magnific-popup.css' ) );
+    
     onepager()->asset()->style( 'header-2', $path . 'style.css' );
   }
 );
