@@ -23,8 +23,8 @@ let SwitchControl = React.createClass({
     let props = {
       name: this.props.name,
       type: 'checkbox',
-      defaultChecked: this.props.defaultChecked === "true",
-      onChange: ()=>{}
+      defaultChecked: this.props.defaultChecked === true,
+      onChange: this.props.onChange
     };
 
     return (
