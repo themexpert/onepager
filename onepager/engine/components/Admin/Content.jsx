@@ -28,7 +28,7 @@ let Content = React.createClass({
     });
 
     let panel = this.props.panel.set('fields', controls);
-    AdminActions.saveTab(this.props.index, panel);
+    AdminActions.update(this.props.index, panel);
   },
 
 	render(){

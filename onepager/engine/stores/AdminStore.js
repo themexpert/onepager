@@ -1,18 +1,20 @@
 const _               = require('underscore');
-const Reflux          = require('reflux');
-const Immutable       = require('immutable');
-const ODataStore      = require('./ODataStore.js');
-const AdminActions    = require('../actions/AdminActions');
-
-
 require('../lib/_mixins');
 
-function transformer(fields){
-  fields.forEach(field=>{
-    field.ref = _.uniqueId("ref_");
-  });
+const Reflux          = require('reflux');
+const Immutable       = require('immutable');
+const ODataStore      = require('./ODataStore');
+const AdminActions    = require('../actions/AdminActions');
+const Sync 						= require("../components/Admin/Sync");
+const notify					= require("../lib/notify");
 
-  return fields;
+let sync 							= Sync(ODataStore.ajaxUrl, ODataStore.page);
+
+function transformer(fields){
+  return fields.map(field=>{
+    field.ref = _.uniqueId("ref_");
+    return field;
+  });
 }
 
 //add refs to controsl
@@ -21,40 +23,47 @@ let _optionPanel  = _.map(_.copy(ODataStore.optionPanel), (panel)=>{
 	return panel;
 });
 
-//implement immutable js
-_optionPanel = Immutable.fromJS(_optionPanel);
+let AppState = {
+    activeTabIndex: 0,
+		//implement immutable js
+		optionPanel: Immutable.fromJS(_optionPanel),
+};
 
 //get tabs
-let _tabs  = _optionPanel.map(tab=>{
+AppState.tabs = AppState.optionPanel.map(tab=>{
   return {id: tab.get('id'), name: tab.get('name')};
 }).toList();
 
 
+
 let AdminStore   = Reflux.createStore({
   listenables: [AdminActions],
-  
-  data: {
-    tabs: _tabs,
-    optionPanel: _optionPanel,
-    activeTabIndex: 0
-  },
-  
+  data: AppState,
   getInitialState(){
     return this.data;
   },
 
-  init() {
-  },
-
   onChangeTab(tabIndex){
-    let data = {
-      activeTabIndex: tabIndex
-    };
-
-    this.trigger(data);
+    this.trigger({activeTabIndex: tabIndex});
   },
-  onSaveTab(index, panel){
-  	this.trigger({optionPanel: this.data.optionPanel.set(index, panel)});
+
+  onUpdate(index, panel){
+  	this.data.optionPanel = this.data.optionPanel.set(index, panel);
+  	this.trigger({optionPanel: this.data.optionPanel});
+  },
+
+  onSync(){
+		let options ={}, panels = this.data.optionPanel.toJS();
+
+		panels.map(function(panel){
+			options[panel.id] = panel.fields.reduce((map, control)=>{
+				map[control.name] = control.value;
+				return map;
+			}, {});
+		});
+
+		let update = sync(options);
+		update.then(notify.success.bind(this, 'successfully saved, %s'));
   }
 
 });

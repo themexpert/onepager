@@ -4,7 +4,6 @@ const notify          = require('../lib/notify');
 const ODataStore      = require('./ODataStore');
 const AppActions      = require('../actions/AppActions');
 const async           = require('async');
-//const _               = require('underscore');
 
 require('../lib/_mixins');
 

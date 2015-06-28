@@ -1,8 +1,8 @@
 var Reflux = require('reflux');
 
 var AdminActions = Reflux.createActions([
-    "saveOptions",
-    "saveTab",
+    "sync",
+    "update",
     "changeTab"
 ]);
 
