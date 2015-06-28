@@ -11,10 +11,44 @@ body{ position: relative; .transition(all .25s ease-out); }
 .title-md{ font-size: 3.5em; }
 .title-lg{ font-size: 5em; }
 
+// Section
+.op-section:not(.navbar):not(.header) { 
+	padding: 80px 0; 
+	// Section title
+	.section-title{ font-weight: bold; font-size: 3em; }
+	// Subtitle(aka desc) and media objects
+	> .desc, 
+	> .media p { font-size: 1.143em; }
+}
+
+// Section + Button
 .op-section .btn{ border: 0;}
+
+// Figure margin
+.op-section figure { margin-top: 15px; margin-bottom: 15px; }
+
+// Utilities
+// -------------------------------------------
 .pad-right-big{ padding-right: 60px; }
 .pad-left-big{ padding-left: 60px; }
 
+// Social icons based on wildcard slector
+// -------------------------------------------
+.social-links{
+	> a{ font-family: FontAwesome; display: inline-block; text-decoration: none; margin: 0 5px; }
+	> a[href*='facebook.com']:before{ content : '\f09a'; }
+	> a[href*='twitter.com']:before{ content : '\f099'; }
+	> a[href*='linkedin.com']:before{ content : '\f0e1'; }
+	> a[href*='plus.google.com']:before{ content : '\f0d5'; }
+	// Design Community
+	> a[href*='behance.net']:before{ content : '\f1b4'; }
+	> a[href*='dribbble.com']:before{ content : '\f17d'; }
+	> a[href*='flickr.com']:before{ content : '\f16e'; }
+	// Coding Community
+	> a[href*='github.com']:before{ content : '\f09b'; }
+	> a[href*='codepen.io']:before{ content : '\f1cb'; }
+
+}
 /* ==========================================
    Blocks: Navbar
  ============================================ */
@@ -122,27 +156,6 @@ body{ position: relative; .transition(all .25s ease-out); }
 /* ==========================================
    Blocks: Contents
  ============================================ */
- .content-1,
- .content-2,
- .content-3,
- .content-4,
- .content-5 { padding: 80px 0; }
-
-/*
-	Title + desc
-*/
-.content-1,
-.content-2,
-.content-3,
-.content-4,
-.content-5,
-.portfolio-1 {
-
-	.section-title{ font-weight: bold; font-size: 3em; }
-	
-	> .desc, 
-	> .media p { font-size: 1.143em; }
-}
 
 /*
 	Button

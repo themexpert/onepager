@@ -1,7 +1,7 @@
 <?php
 	$slide_num = 0;
 ?>
-<header id="<?php echo $id; ?>" class="op-section header-2">
+<header id="<?php echo $id; ?>" class="op-section header header-2">
 	
 	<div class="navbar navbar-static-top" <?php echo ($settings['sticky_nav']) ? 'data-spy="affix"' : '';?> data-offset-top="60">
 		<div class="container">

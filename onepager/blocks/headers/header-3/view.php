@@ -7,7 +7,7 @@
 	$animation_content = ($settings['animation_content']) ? $settings['animation_content'] : '';
 ?>
 
-<section id="<?php echo $id;?>" class="op-section header-3">
+<section id="<?php echo $id;?>" class="op-section header header-3">
 	<div class="container">
 		<div class="row">
 			<article class="flex flex-<?php echo $settings['content_alignment']?>">

@@ -1,5 +1,5 @@
 
-#slide-<?php echo $id; ?>{
+#<?php echo $id; ?>{
 	background-image : url(<?php echo $styles['slider_bg']?>);
 	background-size : cover;
 	background-repeat : no-repeat;
