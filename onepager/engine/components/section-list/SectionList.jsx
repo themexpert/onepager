@@ -101,7 +101,6 @@ let SectionList = React.createClass({
 
               return (
                 <div>
-
                 <SectionLi
                   active={this.props.activeSectionIndex === index} 
                   getUniqueSectionId={this.props.getUniqueSectionId} 
@@ -110,11 +109,11 @@ let SectionList = React.createClass({
                   key={section.key} 
                   index={index} />
 
-        <Footer />
-        </div>
+              </div>
               );
             })}
           </div>
+          <Footer />
         </div>
 
         <div className={blocksClass}>
