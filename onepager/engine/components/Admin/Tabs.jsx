@@ -11,10 +11,11 @@ let Tabs = React.createClass({
 	
 	render(){
 		console.log("rendering Tabs");
+		let tabs = this.props.tabs;
 
 		return (
 				<ul className="nav nav-tabs">
-				{this.props.tabs.map((tab, ii)=>{
+				{tabs.map((tab, ii)=>{
 					let classes = (ii===this.props.active) ? "active" : "";
 
 					return <li key={tab.id} className={classes}>

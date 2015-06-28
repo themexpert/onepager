@@ -21,13 +21,14 @@ let _optionPanel  = _.map(_.copy(ODataStore.optionPanel), (panel)=>{
 	return panel;
 });
 
-//get tabs
-let _tabs  = _.map(_optionPanel, tab=>{
-  return {id: tab.id, name: tab.name};
-});
-
 //implement immutable js
 _optionPanel = Immutable.fromJS(_optionPanel);
+
+//get tabs
+let _tabs  = _optionPanel.map(tab=>{
+  return {id: tab.get('id'), name: tab.get('name')};
+}).toList();
+
 
 let AdminStore   = Reflux.createStore({
   listenables: [AdminActions],
@@ -53,9 +54,7 @@ let AdminStore   = Reflux.createStore({
     this.trigger(data);
   },
   onSaveTab(index, panel){
-  	_optionPanel = _optionPanel.set(index, panel);
-
-  	this.trigger({optionPanel: _optionPanel});
+  	this.trigger({optionPanel: this.data.optionPanel.set(index, panel)});
   }
 
 });
