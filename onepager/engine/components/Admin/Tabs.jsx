@@ -14,7 +14,7 @@ let Tabs = React.createClass({
 		let tabs = this.props.tabs;
 
 		return (
-				<ul className="nav nav-tabs">
+				<ul className="nav nav-pills">
 				{tabs.map((tab, ii)=>{
 					let classes = (ii===this.props.active) ? "active" : "";
 

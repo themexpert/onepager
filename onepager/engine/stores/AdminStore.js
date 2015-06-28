@@ -69,7 +69,7 @@ let AdminStore   = Reflux.createStore({
     });
 
     let update = sync(options);
-    update.then(notify.success.bind(this, 'successfully saved, %s'));
+    update.then(notify.success.bind(this, 'Successfully saved settings'));
   }
 
 });

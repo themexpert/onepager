@@ -7,10 +7,14 @@ const SectionList         = require('../section-list/SectionList.jsx');
 const SectionControls     = require('../edit/SectionControls.jsx');
 const AddToMenu           = require('../menu/AddToMenu.jsx');
 const AppActions          = require('../../actions/AppActions');
+const AdminActions        = require('../../actions/AdminActions');
+
 const AppStore            = require('../../stores/AppStore');
 // const PureMixin           = require('../../mixins/PureMixin.js');
 const $s                  = require('string');
 const $                   = jQuery;
+const Settings = require("./Settings.jsx");
+
 
 let Sidebar = React.createClass({
   // we need to optimize this with immutability
@@ -73,18 +77,25 @@ componentDidMount(){
           <Tab onClick={handleTabClick} id='op-sections' icon='cubes' title='Layout' active={activeTab}/>
           <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab} disabled={!sectionEditable} />
           <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab} disabled={!sectionEditable}/>
+          <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Settings' active={activeTab}/>
 
-          <button disabled={!isDirty} onClick={this.handleSave} 
-            className='btn btn-primary btn--save'>
-            {
-              this.state.saving ? 
-                <span className='fa fa-refresh fa-spin'></span> :
-                <span>
-                  <span className='fa fa-save'></span> 
-                  &nbsp; Save
-                </span> 
-            }
-          </button>
+          {
+            activeTab === 'op-settings' ?
+            <button onClick={AdminActions.sync} className='btn btn-primary btn--save'>
+              <span className='fa fa-save'></span> &nbsp; Save
+            </button>:
+            <button disabled={!isDirty} onClick={this.handleSave} 
+              className='btn btn-primary btn--save'>
+              {
+                this.state.saving ? 
+                  <span className='fa fa-refresh fa-spin'></span> :
+                  <span>
+                    <span className='fa fa-save'></span> 
+                    &nbsp; Save
+                  </span> 
+              }
+            </button>
+          }
         </ul>
 
         <div className='tab-content' ref='tabContents'>
@@ -114,6 +125,10 @@ componentDidMount(){
           <TabPane id='op-menu' active={activeTab}>
             {sectionEditable ? 
               <AddToMenu section={activeSection} index={activeSectionIndex} /> : 'please select a section' }
+          </TabPane> 
+
+          <TabPane id='op-settings' active={activeTab}>
+            <Settings />
           </TabPane> 
 
         </div>
