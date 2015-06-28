@@ -1,5 +1,7 @@
 const React = require('react');
 const Admin = require('./components/Admin.jsx');
+require("./lib/_mixins");
+
 
 require("../assets/css/sweetalert.css");
 require("./lithium/lithium.less");

@@ -1,7 +1,7 @@
 <?php
 
 class OpSettings{
-	protected $config = array();
+	protected $options = array();
 
 	public function __construct($name, $icon){
 		$this->name = $name;
@@ -21,7 +21,13 @@ class OpSettings{
 	public function localizeScript(){
 		if(get_current_screen()->id == "toplevel_page_".$this->name){
 			enqueueOnepagerAdminAssets();
-			$config = $this->transformConfig($this->config);
+			$optionPanel = array_map(function($options){
+				$options['fields'] = $this->transformOptions($options['fields']);
+				
+				return $options;
+			}, $this->options);
+
+			$savedOptions = get_option($this->name);
 
 			$onepager = onepager();
 
@@ -32,7 +38,8 @@ class OpSettings{
 
 			$data = array(
 				'ajaxUrl'    	=> $ajaxUrl,
-				'config'     	=> $config,
+				'optionPanel' => $optionPanel,
+				'options'			=> $savedOptions,
 				'page'     		=> $this->name,
 				'menus'      	=> $nav_arr,
 				'pages'      	=> $pages_arr,
@@ -73,19 +80,38 @@ class OpSettings{
 		return update_option ( $slug, $options );
 	}
 
-	public function transformConfig($config){
+	public function transformOptions($options){
 		$transformer = new ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
-		return $transformer->transform($config);
+		return $transformer->transform($options);
 	}
 
-	public function tab($tab, $config){
-		$config = array_map(function($field) use ($tab){
-			$field['tab'] = $tab;
+	public function tab($id, $name=null){
+		$this->tabId = $id;
+		$this->tabName = $name ? : ucfirst($id);
+		return $this;
+	}
 
-			return $field;
-		}, $config);
+	public function add(){
+		//if tab does not exist create one
+		if(!array_key_exists($this->tabId, $this->options)){
+			$this->options[$this->tabId] = array(
+				"name"=>$this->tabName,
+				"id"=>$this->tabId,
+				"icon"=> "TODO: icon",
+				"fields"=> []
+			);
+		}
 
-		$this->config = array_merge($this->config, $config);
+		$this->options[$this->tabId]['fields'] = array_merge(
+			$this->options[$this->tabId]['fields'], 
+			func_get_args()
+		);
+
+		return $this;
+	}
+
+	public function getOptions(){
+		return $this->options;
 	}
 }
 
@@ -94,12 +120,17 @@ $opAdminPage = new OpSettings(
 	onepager()->url( 'assets/images/dashicon-onepager.svg' )
 );
 
-$opAdminPage->tab("General", array(
+
+$opAdminPage
+->tab("general", "General")
+->add(
 	array("name"=>"title"),
 	array("name"=>"type")
-));
-
-$opAdminPage->tab("Options", array(
+)
+->tab("options", "Options")
+->add(
 	array("name"=>"title 1"),
 	array("name"=>"type 1")
-));
+);
+
+// pd($opAdminPage->getOptions());
