@@ -21,29 +21,20 @@ class OpSettings{
 	public function localizeScript(){
 		if(get_current_screen()->id == "toplevel_page_".$this->name){
 			enqueueOnepagerAdminAssets();
-			$optionPanel = array_map(function($options){
-				$options['fields'] = $this->transformOptions($options['fields']);
-				
-				return $options;
-			}, $this->options);
 
+			$optionPanel 	= $this->getOptions();
 			$savedOptions = get_option($this->name);
-
-			$onepager = onepager();
-
-			$ajaxUrl   = $onepager->api()->getAjaxUrl();
-			$nav_arr   = $onepager->content()->getMenus();
-			$cat_arr   = $onepager->content()->getCategories();
-			$pages_arr = $onepager->content()->getPages();
+			$onepager 		= onepager();
 
 			$data = array(
-				'ajaxUrl'    	=> $ajaxUrl,
 				'optionPanel' => $optionPanel,
 				'options'			=> $savedOptions,
 				'page'     		=> $this->name,
-				'menus'      	=> $nav_arr,
-				'pages'      	=> $pages_arr,
-				'categories' 	=> $cat_arr
+				
+				'ajaxUrl'    	=> $onepager->api()->getAjaxUrl(),
+				'menus'      	=> $onepager->content()->getMenus(),
+				'pages'      	=> $onepager->content()->getPages(),
+				'categories' 	=> $onepager->content()->getCategories()
 			);
 
 			wp_localize_script("admin-bundle", "onepager", $data);
@@ -111,17 +102,21 @@ class OpSettings{
 	}
 
 	public function getOptions(){
-		return $this->options;
+		return array_map(function($options){
+				$options['fields'] = $this->transformOptions($options['fields']);
+				
+				return $options;
+			}, $this->options);
 	}
 }
 
-$opAdminPage = new OpSettings(
+$onepagerAdminPage = new OpSettings(
 	"onepager",
 	onepager()->url( 'assets/images/dashicon-onepager.svg' )
 );
 
 
-$opAdminPage
+$onepagerAdminPage
 ->tab("general", "General")
 ->add(
 	array("name"=>"title"),

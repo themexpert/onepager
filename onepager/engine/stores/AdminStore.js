@@ -4,19 +4,19 @@ require('../lib/_mixins');
 const Reflux          = require('reflux');
 const Immutable       = require('immutable');
 const AdminActions    = require('../actions/AdminActions');
-const Sync 						= require("../components/Admin/Sync");
-const notify					= require("../lib/notify");
+const Sync            = require("../components/Admin/Sync");
+const notify          = require("../lib/notify");
 
 const ODataStore      = require('./ODataStore');
-let options 					= ODataStore.options;
-let sync 							= Sync(ODataStore.ajaxUrl, ODataStore.page);
+let options           = ODataStore.options;
+let sync              = Sync(ODataStore.ajaxUrl, ODataStore.page); /*jshint ignore:line*/
 
 function transformer(fields, panelId){
   return fields.map(field=>{
-    field.ref 	= _.uniqueId("ref_");
+    field.ref   = _.uniqueId("ref_");
     
     if(options[panelId][field.name]){
-	    field.value = options[panelId][field.name];
+      field.value = options[panelId][field.name];
     }
 
     return field;
@@ -25,14 +25,14 @@ function transformer(fields, panelId){
 
 //add refs to controsl
 let _optionPanel  = _.map(_.copy(ODataStore.optionPanel), (panel)=>{
-	panel.fields = transformer(panel.fields, panel.id);
-	return panel;
+  panel.fields = transformer(panel.fields, panel.id);
+  return panel;
 });
 
 let AppState = {
     activeTabIndex: 0,
-		//implement immutable js
-		optionPanel: Immutable.fromJS(_optionPanel),
+    //implement immutable js
+    optionPanel: Immutable.fromJS(_optionPanel),
 };
 
 //get tabs
@@ -54,22 +54,22 @@ let AdminStore   = Reflux.createStore({
   },
 
   onUpdate(index, panel){
-  	this.data.optionPanel = this.data.optionPanel.set(index, panel);
-  	this.trigger({optionPanel: this.data.optionPanel});
+    this.data.optionPanel = this.data.optionPanel.set(index, panel);
+    this.trigger({optionPanel: this.data.optionPanel});
   },
 
   onSync(){
-		let options ={}, panels = this.data.optionPanel.toJS();
+    let options ={}, panels = this.data.optionPanel.toJS();
 
-		panels.map(function(panel){
-			options[panel.id] = panel.fields.reduce((map, control)=>{
-				map[control.name] = control.value;
-				return map;
-			}, {});
-		});
+    panels.map(function(panel){
+      options[panel.id] = panel.fields.reduce((map, control)=>{
+        map[control.name] = control.value;
+        return map;
+      }, {});
+    });
 
-		let update = sync(options);
-		update.then(notify.success.bind(this, 'successfully saved, %s'));
+    let update = sync(options);
+    update.then(notify.success.bind(this, 'Successfully saved settings'));
   }
 
 });

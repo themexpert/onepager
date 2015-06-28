@@ -1,5 +1,6 @@
 <?php
 function getOnepagerData( $pageId ) {
+	global $onepagerAdminPage;
 	$onepager = onepager();
 
 	$ajaxUrl   = $onepager->api()->getAjaxUrl();
@@ -20,7 +21,10 @@ function getOnepagerData( $pageId ) {
 	$query->modify( array( 'livemode' => false ) );
 
 	return array(
-		'ajaxUrl'    => $ajaxUrl,
+		'ajaxUrl'    	=> $ajaxUrl,
+		'optionPanel' => $onepagerAdminPage->getOptions(),
+		'options'			=> get_option('onepager'),
+		'page'     		=> 'onepager',
 		'blocks'     => $blocks,
 		'pageId'     => $pageId,
 		'sections'   => $sections,

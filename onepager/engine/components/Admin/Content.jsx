@@ -54,15 +54,9 @@ let Content = React.createClass({
       }
 	  });
 
-
-		return (
-			<div>
-				<div className="col-md-6">
-				{controlsHtml}
-				</div>
-				<pre  className="col-md-6">
-				{JSON.stringify(this.props.panel.toObject(), null, 2)}
-				</pre>
+    return (
+      <div>
+        {controlsHtml}
 			</div>
 		);
 	}

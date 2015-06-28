@@ -89,7 +89,7 @@ let SectionList = React.createClass({
           
           <div ref="sections">
             {sections.map((section, index)=> {
-              let updateTitle = (title, id)=>{
+              let updateTitle  = (title, id)=>{
                 let uSection   = _.copy(section);
                 uSection.title = title;
                 if(id){
@@ -100,8 +100,6 @@ let SectionList = React.createClass({
               };
 
               return (
-                <div>
-
                 <SectionLi
                   active={this.props.activeSectionIndex === index} 
                   getUniqueSectionId={this.props.getUniqueSectionId} 
@@ -109,12 +107,10 @@ let SectionList = React.createClass({
                   title={section.title} 
                   key={section.key} 
                   index={index} />
-
-        <Footer />
-        </div>
               );
             })}
           </div>
+          <Footer />
         </div>
 
         <div className={blocksClass}>
