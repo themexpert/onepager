@@ -1,5 +1,5 @@
 <?php
-	$aniamtion = ($settings['animation']) ? $settings['animation'] : '';
+	$animation = ($settings['animation']) ? $settings['animation'] : '';
 ?>
 
 <section id="<?php echo $id;?>" class="op-section content-4">
@@ -15,14 +15,14 @@
 						<?php endif; ?>
 						<!-- Description -->
 						<?php if($contents['description']): ?>
-							<p class="desc"><?php echo $contents['description']?></p>
+							<p class="desc wow <?php echo $animation;?>"><?php echo $contents['description']?></p>
 						<?php endif; ?>
 					</div>
 				</div>
 				
 				<div class="col-sm-3">	
 					<?php if( $contents['link']): ?>
-						<a class="btn btn-primary btn-lg pull-right" href="<?php echo $contents['link']?>"><?php echo $contents['link_text']; ?></a>
+						<a class="btn btn-primary btn-lg pull-right wow <?php echo $animation;?>" href="<?php echo $contents['link']?>"><?php echo $contents['link_text']; ?></a>
 					<?php endif; ?>
 				</div>
 				

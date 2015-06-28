@@ -132,3 +132,31 @@ body{ position: relative; .transition(all .25s ease-out); }
 /* ==========================================
    Blocks: Contents
  ============================================ */
+ .content-1,
+ .content-2,
+ .content-3,
+ .content-4,
+ .content-5 { padding: 80px 0; }
+
+/*
+	Title + desc
+*/
+.content-1,
+.content-2,
+.content-3,
+.content-4,
+.content-5 {
+	> .section-title{ font-weight: bold; font-size: 3em; }
+	
+	> .desc, 
+	> .media p { font-size: 1.143em; }
+}
+
+/*
+	Button
+*/
+.content-1,
+.content-4,
+.content-5{
+	.btn{ margin-top: 20px; border-radius: 0px; .transition(all 0.2s linear); }
+} 

@@ -173,7 +173,7 @@ return array(
     ),
   ),
 
-  'assets' => function( $path ){
-    onepager()->asset()->style( 'content-1', $path . 'style.css' );
-  }
+  // 'assets' => function( $path ){
+  //   onepager()->asset()->style( 'content-1', $path . 'style.css' );
+  // }
 );

@@ -1,13 +1,6 @@
-/*
-	Full section
-*/
-.content-2 { padding: 60px 0; font-size: 1.125em; }
-.content-2 .section-title { font-weight: bold; font-size: 2.625em; }
-
-
 @media (min-width: 768px){
 	.content-2 .section-title,
-	.content-2 .section-subtitle { margin: 1rem 10rem; }	
+	.content-2 .desc { margin: 1rem 10rem; }	
 }
 /*
 	Blurbs

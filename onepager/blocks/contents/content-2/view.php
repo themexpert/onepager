@@ -18,7 +18,7 @@
 
 			<?php if($contents['description']):?>
 				<!-- Section Sub Title -->
-				<p class="section-subtitle text-center wow <?php echo $animation_title?>">
+				<p class="desc text-center wow <?php echo $animation_title?>">
 					<?php echo $contents['description']?>
 				</p>
 			<?php endif; ?>

@@ -2,20 +2,21 @@
 
 return array(
   
-  'slug'      => 'content-4', // Must be unique and singular
+  'slug'      => 'content-5', // Must be unique and singular
   'groups'    => ['contents'], // Blocks group for filter and plural
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array(
       'name'=>'title', 
-      'value' => 'Lets make a better website together'
+      'value' => 'Modern and ridiculusly easy page builder for all'
     ),
     array(
       'name'=>'description',
       'type'=>'editor', 
-      'value'=> 'The world is a dangerous place to live; not because of the people who are evil, but because of the people who dont do anything about it.'
+      'value'=> 'I dream my painting and I paint my dream'
     ),
+    array('name'=>'image', 'type' => 'image', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icons/download.png'),
     array('name'=>'link', 'value'=> '#'),
     array(
       'name'  => 'link_text', 
@@ -53,7 +54,7 @@ return array(
       'name'     => 'animation',
       'label'    => 'Animation',
       'type'     => 'select',
-      'value'    => 'fadeInDown',
+      'value'    => 'fadeInUp',
       'options'  => array(
         '0'           => 'None',
         'fadeIn'      => 'Fade',
@@ -68,10 +69,10 @@ return array(
   // Fields - $styles available on view file to access the option
   'styles' => array(
     array(
-      'name'    => 'bg_color',
-      'label'   => 'Color',
-      'type'    => 'colorpicker',
-      'value'   => '#262624'
+      'name'    => 'bg_image',
+      'label'   => 'Background',
+      'type'    => 'image',
+      'value'   => 'http://s3.amazonaws.com/quantum-assets/bg/bg6.jpg'
     ),
     array(
       'name'  => 'title_color',
@@ -100,6 +101,6 @@ return array(
   ),
 
   // 'assets' => function( $path ){
-  //   onepager()->asset()->style( 'content-4', $path . 'style.css' );
+  //   onepager()->asset()->style( 'content-5', $path . 'style.css' );
   // }
 );
