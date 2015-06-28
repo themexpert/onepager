@@ -34,16 +34,16 @@ function getOnepagerData( $pageId ) {
 function enqueueOnepagerAssets() {
 	$q = onepager()->asset();
 
+	// TX Namespaced assets to avoid multipel assets loading from other ThemeXpert product
 	$q->style( 'tx-bootstrap', asset( 'assets/css/bootstrap.css' ) );
 	$q->style( 'tx-animatecss', asset( 'assets/css/animate.css' ) );
 	$q->style( 'tx-fontawesome', asset( 'assets/css/font-awesome.css' ) );
-	$q->style( 'op-blocks', asset( 'assets/css/blocks.css' ) );
 
 	$q->script( 'tx-bootstrap', asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
 	$q->script( 'tx-wow', asset('assets/js/wow.js'), array( 'jquery' ) );
 	$q->script( 'tx-nicescroll', asset('assets/js/jquery.nicescroll.js'), array( 'jquery' ) );
 
-	$q->style( 'tx-flexbox', asset( 'assets/css/flex.css' ) );
+	$q->style( 'tx-flexbox', asset( 'assets/css/lithium.css' ) );
 
 	if ( onepager()->content()->isLiveMode() ) {
 		if ( function_exists( 'wp_enqueue_media' ) ) {

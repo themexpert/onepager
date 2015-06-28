@@ -16,6 +16,7 @@ var config = {
     src: src + '/lithium/*.less',
     dest: dest + '/css',
     settings: {
+      paths: [ '/site', '/builder' ], // Include path
       indentedSyntax: false, // Enable .less syntax?
       imagePath: '/images' // Used by the image-url helper
     }
