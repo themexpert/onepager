@@ -41,4 +41,14 @@ class ApiController {
 		//TODO: better response
 		op_send_json_success();
 	}
+
+	function saveOptions(){
+		$page    = $_POST['page'];
+		$options = $_POST['options'];
+
+		update_option($page, $options);
+
+		//TODO: better response
+		op_send_json_success();	
+	}
 }

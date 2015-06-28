@@ -27,6 +27,8 @@ class OpSettings{
 				return $options;
 			}, $this->options);
 
+			$savedOptions = get_option($this->name);
+
 			$onepager = onepager();
 
 			$ajaxUrl   = $onepager->api()->getAjaxUrl();
@@ -37,6 +39,7 @@ class OpSettings{
 			$data = array(
 				'ajaxUrl'    	=> $ajaxUrl,
 				'optionPanel' => $optionPanel,
+				'options'			=> $savedOptions,
 				'page'     		=> $this->name,
 				'menus'      	=> $nav_arr,
 				'pages'      	=> $pages_arr,
@@ -116,6 +119,7 @@ $opAdminPage = new OpSettings(
 	"onepager",
 	onepager()->url( 'assets/images/dashicon-onepager.svg' )
 );
+
 
 $opAdminPage
 ->tab("general", "General")
