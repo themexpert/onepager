@@ -15,7 +15,7 @@ function transformer(fields, panelId){
   return fields.map(field=>{
     field.ref   = _.uniqueId("ref_");
     
-    if(options[panelId][field.name]){
+    if(options && options[panelId] && options[panelId][field.name]){
       field.value = options[panelId][field.name];
     }
 

@@ -16,7 +16,6 @@ var config = {
     src: src + '/lithium/*.less',
     dest: dest + '/css',
     settings: {
-      paths: [ '/site', '/builder' ], // Include path
       indentedSyntax: false, // Enable .less syntax?
       imagePath: '/images' // Used by the image-url helper
     }
@@ -37,6 +36,7 @@ var config = {
   },
   watch: {
     src: src+'/**/*.*',
+    less: src+'/lithium/**/*.less',
     tasks: ['build']
   }
 };
@@ -100,7 +100,7 @@ gulp.task('bower', function () {
 });
 
 gulp.task('watch', function () {
-  return gulp.watch(config.less.src, ['less']);
+  return gulp.watch(config.watch.less, ['less']);
 });
 
 gulp.task('default', ['fonts', 'bower', 'images', 'build', 'watch']);
