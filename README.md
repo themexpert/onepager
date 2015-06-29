@@ -1,37 +1,44 @@
-# OnePager (onepager)
+css class
+responsive selector
 
-> One Stop OnePage Theme Solution wordpress and joomla
+side width / resize
+hide
+resize
 
-## Running your project
+settings reset
 
-The generated project includes a live-reloading static server on port `8080` (you can change the port in the `gulpfile.js` config), which will build, launch, and rebuild the app whenever you change application code. To start the server, run:
+highlight editing section
 
-```bash
-$ npm start
-```
+advanced
+	page css
+	margin, padding input
+	slider
+	google font
+	save layouts	
+	align input
 
-If you prefer to just build without the live reload and build-on-each-change watcher, run:
-
-```bash
-$ npm run build
-```
+	profile
+	hide based on screen
 
 
-## Generating Additional Code
+	addons search
 
-You can add additional functionality to your application by invoking the subgenerators included in the Flux Generator. You can add components using the following commands:
+	onsave with animation
 
-#### Components
-```bash
-$ yo flux:component ComponentName
-```
 
-#### Actions
-```bash
-$ yo flux:action AppActionsName
-```
+what if user gives wrong type
+what if user skips settings
+what if user skips controls
+what if user skips styles
+what if user skips view.php
+what if user malformats fields
+what is user malformats repeater
 
-#### Stores
-```bash
-$ yo flux:store StoreName
-```
+
+array(name=>'image-margin', type='margin')
+array(name=>'image-padding', type='padding')
+array(name=>'align', type='align')
+
+http://builder.vebto.com/#/builder/Demo-2
+http://codepen.io/zz85/pen/gbOoVP
+https://www.twinhelix.com/javascript/dragresize/demo/
