@@ -20,7 +20,6 @@
     "gulp-shell": "^0.4.2",
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.4",
-    "gulp-zip": "^3.0.2",
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
     "main-bower-files": "^2.7.0",
@@ -33,7 +32,7 @@
     "webpack-dev-server": "^1.9.0"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack -p",
     "dev": "webpack-dev-server --watch --devtool eval --progress --colors --hot --content-base build"
   },
   "jest": {
