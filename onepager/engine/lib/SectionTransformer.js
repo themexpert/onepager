@@ -95,7 +95,7 @@ let mistify = function(databaseFields, sectionFields){
     }
 
     return field;
-  };
+  }
 
   function getRepeaterGroups(bGroups, dbGroups){
     return _.map(bGroups, function(rGroup, groupIndex){
@@ -105,16 +105,23 @@ let mistify = function(databaseFields, sectionFields){
         return field;
       });
     });
-  };
+  }
 
   let getRepeaterField = function(field){
     let defaultTotalGroups = field.fields.length; //what if its not an array?
     let totalDbGroups = databaseFields[field.name].length;
 
-    //we have only one repeatgroup so lets increse it by how much we need
-    _.times(totalDbGroups - defaultTotalGroups, function(){
-      field.fields.push(field.fields[0]); //what if field.fields does not exist?
-    });
+    //say we have default 3 groups
+    //and user have deleted one say we have 2 in database
+    //if user has more
+    if(totalDbGroups - defaultTotalGroups > 0){
+      _.times(totalDbGroups - defaultTotalGroups, function(){
+        field.fields.push(field.fields[0]); //what if field.fields does not exist?
+      });
+    //if user has less
+    } else {
+      field.fields = field.fields.splice(0, totalDbGroups);
+    }
 
     field.fields = getRepeaterGroups(field.fields, databaseFields[field.name]);
 
