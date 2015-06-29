@@ -18,6 +18,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 define( 'ONEPAGER_URL', plugins_url( '/', __FILE__ ) );
-define( 'ONEPAGER_PATH', dirname(__FILE__));
+define( 'ONEPAGER_PATH', __DIR__);
 
 require('app/bootstrap.php');

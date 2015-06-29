@@ -7,12 +7,6 @@
  * wp_send_json_success
  */
 
-function onepager() {
-	global $onepager;
-
-	return $onepager;
-}
-
 
 function op_send_json_success() {
 	//TODO: fix this
