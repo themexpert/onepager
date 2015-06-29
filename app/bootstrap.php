@@ -1,8 +1,8 @@
 <?php
 
 //require autoloading files
-require( __DIR__ . "/../vendor/autoload.php" );
-require( __DIR__ . "/../src/functions.php" );
+require( ONEPAGER_PATH."/vendor/autoload.php" );
+require( ONEPAGER_PATH."/src/functions.php" );
 
 //if we are on debug mode run
 //whoops to give nice error messages

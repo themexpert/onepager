@@ -17,9 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
   die;
 }
 
+define( 'ONEPAGER_URL', plugins_url( '/', __FILE__ ) );
+define( 'ONEPAGER_PATH', dirname(__FILE__));
 
-define( 'ONEPAGER_URL', trailingslashit( get_template_directory_uri() ) . "onepager/" );
-define( 'ONEPAGER_PATH', __DIR__ . DIRECTORY_SEPARATOR . "onepager" );
-
-require( __DIR__ . "/onepager/app/bootstrap.php" );
-
+require('app/bootstrap.php');
