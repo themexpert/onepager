@@ -81,7 +81,7 @@ return array(
       'name'  => 'nav_bg',
       'label' => 'Sticky Background',
       'type'  => 'colorpicker',
-      'value' => '#6A6B83'
+      'value' => 'rgba(0,0,0,0.5)'
     ),
     array(
       'name'  => 'link_color',
