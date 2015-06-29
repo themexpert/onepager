@@ -46,3 +46,6 @@ add_filter('upload_mimes', function($mimes){
   $mimes['svg'] = 'image/svg+xml';
     return $mimes;
 });
+
+$pageTemplater = new ThemeXpert\WordPress\PageTemplater();
+$pageTemplater->addTemplate('onepage template', ONEPAGER_PATH."/app/Templates/onepage.php");
