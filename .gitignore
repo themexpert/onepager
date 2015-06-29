@@ -11,7 +11,6 @@ Thumbs.db
 *.sublime-project
 
 # Node + Composer
-resources
 assets
 dist
 vendor
