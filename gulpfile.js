@@ -5,7 +5,9 @@ var gulpFilter = require('gulp-filter');
 var concat = require('gulp-concat');
 var minify = require('gulp-minify-css');
 var rename = require('gulp-rename');
-
+var archiver = require('archiver');
+var fs = require('fs');
+var shell = require('gulp-shell')
 
 
 var dest  = './assets';
@@ -106,3 +108,29 @@ gulp.task('watch', function () {
 gulp.task('default', ['fonts', 'bower', 'images', 'build', 'watch']);
 
 gulp.task('build', ['less']);
+
+
+gulp.task('webpack', shell.task(['webpack  -p']))
+gulp.task('package', ['webpack'], function(){
+  var output  = fs.createWriteStream(__dirname + '/dist/wponepager.zip');
+  var archive = archiver.create('zip', {}); // or archiver('zip', {});
+
+  var dirs  = ['app', 'assets', 'blocks', 'src', 'vendor'];
+  var files = ['wponepager.php'];
+
+  dirs.map(function(dir){
+    archive.directory(dir);
+  });
+
+  files.map(function(file){
+    archive.file(file);
+  });
+  
+  output.on('close', function() {
+    console.log(archive.pointer() + ' total bytes');
+    console.log('find built package dist/package.zip');
+  });
+
+  archive.pipe(output);
+  archive.finalize();
+});
