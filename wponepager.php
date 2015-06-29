@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       onepager
+ * Plugin Name:       OnePager
  * Plugin URI:        http://themexpert.com/wordpress-plugins/xpert-extender
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Onepage Builder that helps you to make one page website seamlessly. Beautifully
  * Version:           1.0.0
  * Author:            ThemeXpert
  * Author URI:        http://www.themexpert.com
