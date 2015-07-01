@@ -48,4 +48,4 @@ add_filter('upload_mimes', function($mimes){
 });
 
 $pageTemplater = new ThemeXpert\WordPress\PageTemplater();
-$pageTemplater->addTemplate('onepage template', ONEPAGER_PATH."/app/Templates/onepage.php");
+$pageTemplater->addTemplate('OnePage Template', ONEPAGER_PATH."/app/Templates/onepage.php");
