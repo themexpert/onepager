@@ -1,4 +1,9 @@
 /*
+  Navbar
+*/
+.header-1 .navbar { background: transparent; }
+
+/*
   Navbar Sticky
 */
 .header-2 .navbar.affix{ border: 0; top: 0; }
