@@ -104,13 +104,14 @@ function op_is_image($media) {
     return false;
 }
 
-function op_the_excerpt($excerpt_length=55, $excerpt_more="") {
+function op_the_excerpt($excerpt_length=55, $readmore=null) {
   $text = get_the_content('');
   $text = strip_shortcodes( $text );
 
   $text = apply_filters( 'the_content', $text );
   $text = str_replace(']]>', ']]&gt;', $text);
 
-  $text = wp_trim_words( $text, $excerpt_length, $excerpt_more );
-  echo $text;
+  $text = wp_trim_words( $text, $excerpt_length );
+  
+  echo $text . (!$readmore ? '' : ' <a href="'.get_permalink().'">'.$readmore.'</a>');
 }
