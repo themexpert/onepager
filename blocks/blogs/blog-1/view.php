@@ -47,5 +47,7 @@
 			<?php endwhile; ?>
 		<?php endif; ?>
 
+		<?php wp_reset_query(); ?>
+
 	</div>
 </section>
