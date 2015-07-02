@@ -24,7 +24,10 @@ define( 'ONEPAGER_PATH', dirname(__FILE__));
 require( ONEPAGER_PATH.'/vendor/autoload.php' );
 require( ONEPAGER_PATH.'/src/functions.php' );
 require( ONEPAGER_PATH.'/app/bootstrap.php' );
-require( ONEPAGER_PATH.'/app/routes.php' );
+require( ONEPAGER_PATH.'/app/routes.php' ); 
 require( ONEPAGER_PATH.'/app/assets.php' );
 require( ONEPAGER_PATH.'/app/settings.php' );
 require( ONEPAGER_PATH.'/app/frontend.php' );
+
+
+do_action('onepager_init');

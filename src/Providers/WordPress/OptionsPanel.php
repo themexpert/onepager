@@ -21,9 +21,24 @@ class OptionsPanel implements OptionsPanelInterface{
 		add_action('admin_enqueue_scripts', [$this, 'localizeScript']);
 	}
 
-	public function addMenuPage($pageTitle, $menuTitle, $iconUrl){
-		add_action('admin_menu', function() use ($pageTitle, $menuTitle, $iconUrl){
+	public function addMenuPage($pageTitle, $menuTitle, $iconUrl, $positon=null){
+		add_action('admin_menu', function() use ($pageTitle, $menuTitle, $iconUrl, $positon){
 			add_menu_page( 
+				$pageTitle, 
+				$menuTitle, 
+				'manage_options', 
+				$this->menuSlug, 
+				[$this, 'printMountNode'], 
+				$iconUrl,
+				$positon
+			);
+		});
+	}
+
+	public function addSubMenuPage($parentSlug, $pageTitle, $menuTitle, $iconUrl){
+		add_action('admin_menu', function() use ($parentSlug, $pageTitle, $menuTitle, $iconUrl){
+			add_submenu_page( 
+				$parentSlug,
 				$pageTitle, 
 				$menuTitle, 
 				'manage_options', 
@@ -39,7 +54,7 @@ class OptionsPanel implements OptionsPanelInterface{
 	}
 
 	public function isOptionsPanel(){
-		return get_current_screen()->id == "toplevel_page_".$this->menuSlug;
+		return endsWith(get_current_screen()->id, "_page_".$this->menuSlug);
 	}
 	
 	public function localizeScript(){

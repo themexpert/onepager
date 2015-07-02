@@ -3,9 +3,11 @@
 
 $onepagerOptionsPanel = onepager()->optionsPanel("onepager");
 
-$onepagerOptionsPanel->addMenuPage(
+$onepagerOptionsPanel
+->addSubMenuPage(
+	"themes.php",
 	"onepager title", //page title
-	"onepager", //menu name
+	"Onepager Options", //menu name
 	onepager()->url( 'assets/images/dashicon-onepager.svg' ) //menu icon
 );
 
@@ -20,3 +22,4 @@ $onepagerOptionsPanel
 	array("name"=>"title 1"),
 	array("name"=>"type 1")
 );
+
