@@ -8,7 +8,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var archiver = require('archiver');
 var fs = require('fs');
-var shell = require('gulp-shell')
+var shell = require('gulp-shell');
 
 
 var dest  = './assets';
@@ -111,18 +111,17 @@ gulp.task('bower', function () {
     .pipe(gulp.dest(config.bower.fonts))
     .pipe(fontFilter.restore());
 });
-
 gulp.task('watch', function () {
   return gulp.watch(config.watch.less, ['less']);
 });
 
-gulp.task('default', ['js', 'fonts', 'bower', 'images', 'build', 'watch']);
+gulp.task('default', ['build', 'webpack-watch', 'watch']);
 
-gulp.task('build', ['less']);
+gulp.task('build', ['js', 'fonts', 'bower', 'images', 'less', 'webpack']);
 
-
-gulp.task('webpack', shell.task(['webpack  -p']))
-gulp.task('package', ['webpack'], function(){
+gulp.task('webpack', shell.task(['webpack  -p']));
+gulp.task('webpack-watch', shell.task(['webpack  --watch']));
+gulp.task('package', ['build'], function(){
   var output  = fs.createWriteStream(__dirname + '/dist/wponepager.zip');
   var archive = archiver.create('zip', {}); // or archiver('zip', {});
 
