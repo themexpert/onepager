@@ -18,6 +18,8 @@ add_action( 'wp_head', function () {
 } );
 
 
+
+
 //TODO: optimize
 //block have external stylesheets and scripts  
 //if its onepager page enqueue onepager block scripts on initialization
@@ -89,7 +91,9 @@ add_filter( 'the_content', function ( $content ) {
     return '<div class="wrap"> <div id="onepager-mount"></div> </div>';
   }
 
-  if ( $isOnepage ) {
+  if ( $isOnepage && !defined('ONEPAGE_CONTENT_LOADED') ) {
+  	define('ONEPAGE_CONTENT_LOADED', true);
+  	
     $sections = onepager()->section()->all( $pageId );
 
     return onepager()->render()->sections( $sections );
