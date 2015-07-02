@@ -4,6 +4,7 @@ var mainBowerFiles = require('main-bower-files');
 var gulpFilter = require('gulp-filter');
 var concat = require('gulp-concat');
 var minify = require('gulp-minify-css');
+var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var archiver = require('archiver');
 var fs = require('fs');
@@ -21,6 +22,10 @@ var config = {
       indentedSyntax: false, // Enable .less syntax?
       imagePath: '/images' // Used by the image-url helper
     }
+  },
+  js: {
+    src: src+'/lithium/*.js',
+    dest: dest + '/js'
   },
   images: {
     src: src+'/images/**/*',
@@ -48,6 +53,12 @@ gulp.task('less', function () {
   return gulp.src(config.less.src)
     .pipe(less(config.less.settings))
     .pipe(gulp.dest(config.less.dest));
+});
+
+gulp.task('js', function(){
+  return gulp.src(config.js.src)
+  .pipe(uglify())
+  .pipe(gulp.dest(config.js.dest));
 });
 
 gulp.task('fonts', function () {
@@ -105,7 +116,7 @@ gulp.task('watch', function () {
   return gulp.watch(config.watch.less, ['less']);
 });
 
-gulp.task('default', ['fonts', 'bower', 'images', 'build', 'watch']);
+gulp.task('default', ['js', 'fonts', 'bower', 'images', 'build', 'watch']);
 
 gulp.task('build', ['less']);
 

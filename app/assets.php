@@ -47,6 +47,7 @@ function enqueueOnepagerAssets() {
 	$q->script( 'tx-bootstrap', asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
 	$q->script( 'tx-wow', asset('assets/js/wow.js'), array( 'jquery' ) );
 	$q->script( 'tx-nicescroll', asset('assets/js/jquery.nicescroll.js'), array( 'jquery' ) );
+	$q->script( 'lithium', asset('assets/js/lithium.js'), array( 'jquery' ) );
 
 	$q->style( 'tx-flexbox', asset( 'assets/css/lithium.css' ) );
 
