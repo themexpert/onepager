@@ -84,34 +84,17 @@ return array(
 
   // Fields - $styles available on view file to access the option
   'styles' => array(
-    array('label'=>'Background', 'type'=>'divider'), // Divider - Background
-    array(
-      'name'  => 'bg_image', 
-      'label' => 'Image', 
-      'type'  => 'image'
-    ),
-    array(
-      'name'     => 'bg_repeat',
-      'label'    => 'Repeat',
-      'type'     => 'select',
-      'options'  => array(
-        'no-repeat'     => 'No Repeat',
-        'repeat-x'      => 'Repeat X',
-        'repeat-y'      => 'Repeat Y',
-      )
-    ),
     array(
       'name'    => 'bg_color',
-      'label'   => 'Color',
+      'label'   => 'Background Color',
       'type'    => 'colorpicker',
-      'value'   => '#ebeff2'
+      'value'   => '#fff'
     ),
-    array('label'=>'Text', 'type'=>'divider'), // Divider - Text
     array(
       'name'  => 'title_color',
       'label' => 'Title Color',
       'type'  => 'colorpicker',
-      'value' => '#323232'
+      'value' => '#232323'
     ),
     array(
       'name'  => 'text_color',
@@ -120,16 +103,10 @@ return array(
       'value' => '#323232'
     ),
     array(
-      'name'    => 'button_bg_color',
-      'label'   => 'Button Background',
+      'name'    => 'link_color',
+      'label'   => 'Link Color',
       'type'    => 'colorpicker',
       'value'   => '#4cb257'
-    ),
-    array(
-      'name'    => 'button_text_color',
-      'label'   => 'Button Text',
-      'type'    => 'colorpicker',
-      'value'   => '#fff'
     ),
   ),
   // 'assets' => function( $path ){

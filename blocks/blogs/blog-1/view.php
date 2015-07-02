@@ -8,7 +8,7 @@
 	// Arguments
 	$args = array(
 		'posts_per_page'   => $contents['total_posts'],
-		'category'         => $contents['category'],
+		'cat'         => $contents['category'],
 	);
 	// Build query
 	$query = new WP_Query( $args );
@@ -41,7 +41,7 @@
 				
 				<div class="col-md-<?php echo $content_cols ?>">	
 					<h2 class="title <?php echo $settings['title_transformation']?>"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-					 <?php op_the_excerpt($contents['text_limit'], $settings['readmore_text']); ?> 
+					<p class="desc"><?php op_the_excerpt($contents['text_limit'], $settings['readmore_text']); ?> </p>
 				</div>
 			</div>
 			<?php endwhile; ?>
