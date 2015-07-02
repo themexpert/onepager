@@ -9,7 +9,7 @@ class OptionsPanel implements OptionsPanelInterface{
 	
 	public static function getInstance($menuSlug){
 		if(!array_key_exists($menuSlug, self::$panels)){
-			self::$panels[$menuSlug] = new Self($menuSlug);
+			self::$panels[$menuSlug] = new self($menuSlug);
 		}
 
 		return self::$panels[$menuSlug];
