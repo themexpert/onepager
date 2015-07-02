@@ -1,8 +1,16 @@
 <?php
+/**
+* TABLE OF CONTENTS
+*
+* 1. if wp_debug is true run whoops
+* 2. create $onepager
+* 3. register livemode toolbar
+* 4. register blocks
+* 5. support svg upload mime
+* 6. add onepage templates
+* 
+**/
 
-//require autoloading files
-require( ONEPAGER_PATH."/vendor/autoload.php" );
-require( ONEPAGER_PATH."/src/functions.php" );
 
 //if we are on debug mode
 //run whoops to give nice error messages
@@ -32,10 +40,49 @@ function onepager() {
 	return $onepager;
 }
 
-//require assets and more
-// require( __DIR__ . "/metabox.php" );
-require( __DIR__ . "/assets.php" );
-require( __DIR__ . "/routes.php" );
-require( __DIR__ . "/blocks.php" );
-require( __DIR__ . "/settings.php" );
-require( __DIR__ . "/init.php" );
+
+
+//LIVE MODE TOOLBAR
+add_action( 'wp', function () {
+  $isOnepage = onepager()->content()->isOnepage();
+  $isLiveMode = onepager()->content()->isLiveMode();
+
+  if (  $isOnepage && !$isLiveMode){
+    $url = League\Url\Url::createFromUrl( getCurrentPageURL() );
+    $url->getQuery()->modify( array( 'livemode' => true ) );
+    
+    onepager()->toolbar()->addMenu( 
+      'op-enable-livemode', 
+      $url->__toString(), 
+      '<span class="fa fa-circle"></span> Enable Build Mode'
+    );
+  }
+
+  //hide the navbar when livemode
+  if($isLiveMode){
+    show_admin_bar(false);
+  }
+} );
+
+
+//this is the right time to add more blocks
+do_action( 'onepager_blocks' );
+
+//LOAD ALL BLOCKS BEFOREHAND
+//WE WILL NEED THEM IN OUR AJAX REQUESTS
+onepager()->blockManager()->loadAllFromPath(
+  onepager()->path( "blocks" ),
+  onepager()->url( "blocks" )
+);
+
+
+// Add svg upload support
+add_filter('upload_mimes', function($mimes){
+  $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+});
+
+
+// Add page templates
+$pageTemplater = new ThemeXpert\WordPress\PageTemplater();
+$pageTemplater->addTemplate('onepage template', ONEPAGER_PATH."/app/Templates/onepage.php");
