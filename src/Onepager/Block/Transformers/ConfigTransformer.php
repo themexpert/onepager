@@ -34,7 +34,7 @@ class ConfigTransformer {
     //for example you want to remove wow class from aticle  tag you do it this way
     //$removables = array("article" => [ 'wow' ] );
     $removables = array( 
-      "[data-animated], .animated, .wow" => [ 'animated', 'wow' ] 
+      "[data-animated], .animated, .wow" => array( 'animated', 'wow' ) 
     );
     $livemode   = $this->get( $config, 'livemode',  $removables);
 

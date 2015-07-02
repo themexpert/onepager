@@ -3,7 +3,7 @@
 return array(
   
   'slug'      => 'header-3', // Must be unique and singular
-  'groups'    => ['headers'], // Blocks group for filter and plural
+  'groups'    => array('headers'), // Blocks group for filter and plural
 
   // Fields - $contents available on view file to access the option
   'contents' => array(

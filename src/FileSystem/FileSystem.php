@@ -4,7 +4,7 @@ use DirectoryIterator;
 
 class FileSystem {
 	public static function folders( $path ) {
-		$folders = [ ];
+		$folders = array();
 
 		foreach ( new DirectoryIterator( $path ) as $file ) {
 			if ( $file->isDot() ) {

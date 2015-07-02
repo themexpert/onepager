@@ -2,7 +2,7 @@
 
 return array(
   'slug'    => 'content-2',
-  'groups'    => ['contents'],
+  'groups'    => array('contents'),
 
   'contents' => array(
     array(

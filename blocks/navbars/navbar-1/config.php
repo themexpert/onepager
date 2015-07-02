@@ -3,7 +3,7 @@
 return array(
   
   'slug'      => 'navbar-1', // Must be unique
-  'groups'    => ['navbars'], // Blocks group for filter
+  'groups'    => array('navbars'), // Blocks group for filter
 
   // Fields - $contents available on view file to access the option
   'contents' => array(

@@ -3,18 +3,18 @@
 return array(
   
   'slug'      => 'blog-1', // Must be unique and singular
-  'groups'    => ['blogs'], // Blocks group for filter and plural
+  'groups'    => array('blogs'), // Blocks group for filter and plural
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array(
       'name'=>'title', 
-      'value' => 'Lets make a better website together'
+      'value' => 'Latest Thoughts'
     ),
     array(
       'name'=>'description',
-      'type'=>'editor', 
-      'value'=> 'The world is a dangerous place to live; not because of the people who are evil, but because of the people who dont do anything about it.'
+      'type'=>'textarea', 
+      'value'=> 'Latest posts from our blog'
     ),
     array(
       'name'=>'category', 
@@ -26,7 +26,7 @@ return array(
       'value' => '3'
     ),
     array(
-      'name' => 'intro_limit',
+      'name' => 'text_limit',
       'label' => 'Excerpt Length',
       'value' => 20
     )
@@ -35,16 +35,7 @@ return array(
   
   // Settings - $settings available on view file to access the option
   'settings' => array(    
-    array(
-      'name'     => 'media_alignment',
-      'label'    => 'Meida Alignment',
-      'type'     => 'select',
-      'value'    => 'right',
-      'options'  => array(
-        'left'    => 'Left',
-        'right'   => 'Right'
-      ),
-    ),
+    
     array(
       'name'     => 'media_grid',
       'label'    => 'Meida Grid',
@@ -54,22 +45,9 @@ return array(
         '3'   => '3',
         '4'   => '4',
         '5'   => '5',
-        '6'   => '6',
-        '7'   => '7',
-        '8'   => '8'
       ),
     ),
-    array(
-      'name'     => 'title_size',
-      'label'    => 'Title Size',
-      'type'     => 'select',
-      'value'    => 'title-sm',
-      'options'  => array(
-        'title-sm'      => 'Small',
-        'title-md'      => 'Medium',
-        'title-lg'      => 'Large'
-      ),
-    ),
+    
     array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
@@ -81,44 +59,18 @@ return array(
         'text-capitalize'  => 'Capitalized'
       ),
     ),
+   
     array(
-      'name'     => 'content_alignment',
-      'label'    => 'Items Alignment',
-      'type'     => 'select',
-      'value'    => 'middle',
-      'options'  => array(
-        'top'      => 'Top',
-        'middle'   => 'Middle',
-        'bottom'   => 'Bottom'
-      ),
-    ),
-    
-    array(
-      'name'  => 'link_text', 
-      'label' => 'Link Text',
+      'name'  => 'readmore_text', 
+      'label' => 'Readmore Text',
       'value' => 'Readmore', 
     ),
 
-    array(
-      'name'     => 'animation_content',
-      'label'    => 'Animation Content',
-      'type'     => 'select',
-      'value'    => 'fadeInLeft',
-      'options'  => array(
-        '0'           => 'None',
-        'fadeIn'      => 'Fade',
-        'fadeInLeft'  => 'Slide Left',
-        'fadeInRight' => 'Slide Right',
-        'fadeInUp'    => 'Slide Up',
-        'fadeInDown'  => 'Slide Down',
-      ),
-    ),
-
    array(
-    'name'     => 'animation_media',
-    'label'    => 'Animation Media',
+    'name'     => 'animation_item',
+    'label'    => 'Animation Item',
     'type'     => 'select',
-    'value'    => 'fadeInRight',
+    'value'    => 'fadeInUp',
     'options'  => array(
         '0'             => 'None',
         'fadeIn'        => 'Fade',

@@ -52,44 +52,51 @@ class Onepager implements OnepagerInterface {
 	 * @return NavigationMenuInterface
 	 */
 	public function navigationMenu() {
-		return $this->adapter->getContainer()['navigationMenu'];
+		$container = $this->adapter->getContainer();
+		return $container['navigationMenu'];
 	}
 
 	/**
 	 * @return ToolbarInterface
 	 */
 	public function toolbar() {
-		return $this->adapter->getContainer()['toolbar'];
+		$container = $this->adapter->getContainer();
+		return $container['toolbar'];
 	}
 
 	/**
 	 * @return ContentInterface
 	 */
 	public function content() {
-		return $this->adapter->getContainer()['content'];
+		$container = $this->adapter->getContainer();
+		return $container['content'];
 	}
 
 	/**
 	 * @return AssetInterface
 	 */
 	public function asset() {
-		return $this->adapter->getContainer()['asset'];
+		$container = $this->adapter->getContainer();
+		return $container['asset'];
 	}
 
 	/**
 	 * @return ApiInterface
 	 */
 	public function api() {
-		return $this->adapter->getContainer()['api'];
+		$container = $this->adapter->getContainer();
+		return $container['api'];
 	}
 
 
 	public function security() {
-		return $this->adapter->getContainer()['security'];
+		$container = $this->adapter->getContainer();
+		return $container['security'];
 	}
 
 	public function view() {
-		return $this->adapter->getContainer()['view'];
+		$container = $this->adapter->getContainer();
+		return $container['view'];
 	}
 
 	public function url( $string ) {
@@ -101,7 +108,8 @@ class Onepager implements OnepagerInterface {
 	}
 
 	public function section() {
-		return $this->adapter->getContainer()['section'];
+		$container = $this->adapter->getContainer();
+		return $container['section'];
 	}
 
 	public function blockManager() {
