@@ -154,6 +154,11 @@ return array(
       'type'    => 'colorpicker',
       'value'   => '#ebeff2'
     ),
+    array(
+      'name'=>'bg_parallax', 
+      'type'=> 'switch', 
+      'label'=>'Parallax Background'
+    ),
     array('label'=>'Text', 'type'=>'divider'), // Divider - Text
     array(
       'name'  => 'title_color',
