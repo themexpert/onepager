@@ -83,20 +83,20 @@ add_action( 'wp_enqueue_scripts', function () {
 
 //inject onepager
 add_filter( 'the_content', function ( $content ) {
-  $pageId = onepager()->content()->getCurrentPageId();
   $isOnepage = onepager()->content()->isOnepage();
-  $isLiveMode = onepager()->content()->isLiveMode();
 
-  if ( $isLiveMode ) {
-    return '<div class="wrap"> <div id="onepager-mount"></div> </div>';
-  }
-
-  if ( $isOnepage && !defined('ONEPAGE_CONTENT_LOADED') ) {
+  if(!defined('ONEPAGE_CONTENT_LOADED') && $isOnepage){
   	define('ONEPAGE_CONTENT_LOADED', true);
-  	
-    $sections = onepager()->section()->all( $pageId );
+	  $isLiveMode = onepager()->content()->isLiveMode();
 
-    return onepager()->render()->sections( $sections );
+	  if ( $isLiveMode ) {
+	    return '<div class="wrap"> <div id="onepager-mount"></div> </div>';
+	  } else {
+		  $pageId = onepager()->content()->getCurrentPageId();
+	    $sections = onepager()->section()->all( $pageId );
+
+	    return onepager()->render()->sections( $sections );
+	  }
   }
 
   return $content;
