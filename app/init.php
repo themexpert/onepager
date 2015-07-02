@@ -38,6 +38,8 @@ add_filter( 'the_content', function ( $content ) {
 
     return onepager()->render()->sections( $sections );
   }
+  
+  return $content;
 
 } );
 
