@@ -45,6 +45,11 @@ class ApiController {
 	function saveOptions(){
 		$page    = $_POST['page'];
 		$options = $_POST['options'];
+		
+		//strip slashes
+		array_walk_recursive($options, function (&$value) {
+			$value = stripslashes($value);
+		});
 
 		update_option($page, $options);
 
