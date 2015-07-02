@@ -32,7 +32,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	$sections = onepager()->section()->all( $pageId );
 	$blocks = (array) onepager()->blockManager()->all();
 
-	if(onepager()->isLiveMode()){
+	if(onepager()->content()->isLiveMode()){
 		$blocks = (array) onepager()->blockManager()->all();
 
 
@@ -50,7 +50,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		return;
 	}
 
-	
+
 	//if onepager then get all the blocks that were used in this page
 	//walk all the used blocks to enqueue their styles
 	array_map(function($section){
