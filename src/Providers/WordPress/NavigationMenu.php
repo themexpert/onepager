@@ -51,22 +51,22 @@ class NavigationMenu implements NavigationMenuInterface {
 
 		$query =
 			"SELECT
-                max(menu_order) as lastItemOrder
-             FROM
-                wp_posts
-             WHERE
-                ID in (
-                    SELECT
-                    wp_term_relationships.object_id
-                    FROM
-                        wp_terms
-                    JOIN
-                      wp_term_relationships
-                    WHERE
-                      wp_terms.term_id = wp_term_relationships.term_taxonomy_id
-                    AND
-                      wp_terms.term_id = %s
-                )";
+          max(menu_order) as lastItemOrder
+       FROM
+          wp_posts
+       WHERE
+          ID in (
+            SELECT
+	            wp_term_relationships.object_id
+            FROM
+              wp_terms
+            JOIN
+              wp_term_relationships
+            WHERE
+              wp_terms.term_id = wp_term_relationships.term_taxonomy_id
+            AND
+              wp_terms.term_id = %s
+          )";
 
 		$result = $wpdb->get_results( $wpdb->prepare( $query, $menuId ) );
 
