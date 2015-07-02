@@ -2,7 +2,7 @@
 	$items = array_chunk($contents['items'], 3);
 	$animation = ($settings['animation']) ? $settings['animation'] : '';
 ?>
-<section id="<?php echo $id; ?>" class="op-section portfolio-1">
+<section id="<?php echo $id; ?>" class="op-section portfolios portfolio-1">
 	<div class="container">
 		
 		<h1 class="section-title text-center <?php echo $settings['title_transformation']?>"><?php echo $contents['title']?></h1>
