@@ -1,7 +1,7 @@
 <?php
 namespace ThemeXpert\Onepager\Adapters;
 
-use ThemeXpert\Providers\WordPress\AdminMenu;
+use ThemeXpert\Providers\WordPress\OptionsPanel;
 use ThemeXpert\Providers\WordPress\Api;
 use ThemeXpert\Providers\WordPress\Asset;
 use ThemeXpert\Providers\WordPress\Content;
@@ -38,12 +38,6 @@ class WordPress extends BaseAdapter {
 
 	public function setHooksProvider() {
 		// TODO: Implement setHooksProvider() method.
-	}
-
-	public function setAdminMenuProvider() {
-		$this->container['adminMenu'] = function () {
-			return new AdminMenu();
-		};
 	}
 
 	public function setToolbarProvider() {

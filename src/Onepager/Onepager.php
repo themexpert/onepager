@@ -7,8 +7,7 @@ use ThemeXpert\Onepager\Block\BlockCollection;
 use ThemeXpert\Onepager\Block\BlockManager;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
-use ThemeXpert\Onepager\Block\Transformers\SettingsTransformer;
-use ThemeXpert\Providers\Contracts\AdminMenuInterface;
+use ThemeXpert\Providers\Wordpress\OptionsPanel;
 use ThemeXpert\Providers\Contracts\ApiInterface;
 use ThemeXpert\Providers\Contracts\AssetInterface;
 use ThemeXpert\Providers\Contracts\ContentInterface;
@@ -30,10 +29,7 @@ class Onepager implements OnepagerInterface {
 	public function setBlockManager() {
 		$this->container['blockManager'] = function () {
 			$blockCollection   = new BlockCollection;
-			$configTransformer = new ConfigTransformer(
-				new SettingsTransformer(),
-				new FieldsTransformer()
-			);
+			$configTransformer = new ConfigTransformer(new FieldsTransformer);
 
 			return new BlockManager( $configTransformer, $blockCollection );
 		};
@@ -57,13 +53,6 @@ class Onepager implements OnepagerInterface {
 	 */
 	public function navigationMenu() {
 		return $this->adapter->getContainer()['navigationMenu'];
-	}
-
-	/**
-	 * @return AdminMenuInterface
-	 */
-	public function menu() {
-		return $this->adapter->getContainer()['adminMenu'];
 	}
 
 	/**
@@ -121,6 +110,14 @@ class Onepager implements OnepagerInterface {
 
 	public function render() {
 		return $this->container['render'];
+	}
+
+	public function optionsPanel($menuSlug){
+		return OptionsPanel::getInstance($menuSlug);
+	}
+
+	public function getOption(){
+
 	}
 
 }

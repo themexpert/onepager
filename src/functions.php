@@ -8,19 +8,19 @@
 
 
 function op_send_json_success() {
-  //TODO: fix this
+  //TODO: replace this in future release
   wp_send_json_success();
 }
 
 function op_send_json( $response ) {
-  //TODO: fix this
+  //TODO: replace this in future release
   wp_send_json( $response );
 }
 
 
 if ( ! function_exists( 'asset' ) ) {
   function asset( $path ) {
-    //TODO: fix this
+    //TODO: replace this in future release
     return onepager()->url($path);
   }
 }
@@ -102,4 +102,15 @@ function op_is_image($media) {
         if(strpos($media, $query, 0) !== false) return true; // stop on first true result
     }
     return false;
+}
+
+function op_the_excerpt($excerpt_length=55, $excerpt_more="") {
+  $text = get_the_content('');
+  $text = strip_shortcodes( $text );
+
+  $text = apply_filters( 'the_content', $text );
+  $text = str_replace(']]>', ']]&gt;', $text);
+
+  $text = wp_trim_words( $text, $excerpt_length, $excerpt_more );
+  echo $text;
 }

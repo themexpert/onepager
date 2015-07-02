@@ -10,8 +10,6 @@ namespace ThemeXpert\Onepager;
 interface OnepagerInterface {
 	public function navigationMenu();
 
-	public function menu();
-
 	public function toolbar();
 
 	public function content();

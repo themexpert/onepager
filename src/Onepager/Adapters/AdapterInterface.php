@@ -3,8 +3,6 @@
 interface AdapterInterface {
 	public function setNavigationMenuProvider();
 
-	public function setAdminMenuProvider();
-
 	public function setSecurityProvider();
 
 	public function setToolbarProvider();
