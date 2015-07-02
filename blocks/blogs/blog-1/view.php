@@ -36,16 +36,26 @@
 			<?php while( $query->have_posts() ) : $query->the_post(); ?>
 			<div class="row wow <?php echo $animation_item?>" data-wow-delay="<?php echo $animation_delay += 0.1 ?>s">
 				<div class="col-md-<?php echo $image_cols?>">
-					<?php the_post_thumbnail('', array('', 'class'=> 'img-responsive')); ?> 
+					<a href="<?php the_permalink(); ?>">
+						<figure class="overlay overlay-hover">
+							<?php the_post_thumbnail('', array('', 'class'=> 'img-responsive')); ?> 
+							<div class="overlay-panel overlay-background overlay-icon"></div>
+						</figure>
+					</a>
 				</div>
 				
 				<div class="col-md-<?php echo $content_cols ?>">	
-					<h2 class="title <?php echo $settings['title_transformation']?>"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-					<p class="desc"><?php op_the_excerpt($contents['text_limit'], $settings['readmore_text']); ?> </p>
+					<h2 class="title <?php echo $settings['title_transformation']?>">
+						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+					</h2>
+					<p class="desc">
+						<?php op_the_excerpt($contents['text_limit'], $settings['readmore_text']); ?> 
+					</p>
 				</div>
 			</div>
 			<?php endwhile; ?>
 		<?php endif; ?>
+		<?php wp_reset_query(); ?>
 
 		<?php wp_reset_query(); ?>
 

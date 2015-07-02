@@ -69,7 +69,7 @@ let ColorPicker = React.createClass({
   render() {
       let style = {background: this.state.bgColor, color: this.state.textColor};
       return (
-      	<div ref="container">
+      	<div className="form-group" ref="container">
           <label className="control-label">{this.props.label}</label>					
 			    <div className="cp-container">
             <input 

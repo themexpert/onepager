@@ -28,10 +28,10 @@ let SwitchControl = React.createClass({
     };
 
     return (
-      <label>
-        {this.props.label}
-        <input ref="input" data-size="mini" {...props} />
-      </label>
+      <div className="form-group">
+          <label className="control-label">{this.props.label}</label>
+          <input ref="input" data-size="small" data-label-width="10" {...props} />
+      </div>
     );
   }
 });

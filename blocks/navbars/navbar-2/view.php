@@ -1,4 +1,4 @@
-<header id="<?php echo $id; ?>" class="op-section navbar navbar-static-top navbar-2" <?php echo ($settings['sticky_nav']) ? 'data-spy="affix"' : '';?>>
+<header id="<?php echo $id; ?>" class="op-section navbar navbar-static-top navbar-2" <?php echo ($settings['sticky_nav']) ? 'data-spy="affix"' : '';?> data-offset-top="80">
 	<div class="container-fluid">
 		<!-- Brand -->
 	    <div class="navbar-header">

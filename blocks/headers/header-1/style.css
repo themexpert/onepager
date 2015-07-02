@@ -51,12 +51,12 @@
 
 @media (min-width: 992px) { 
 
-  .header-1 .carousel .title { font-size: 2em; }
+  .header-1 .carousel .title { font-size: 3em; }
   .header-1 .carousel .desc { font-size: 1.143em; }
 
   .header-1 .carousel .title{ margin-top: 2em; margin-bottom: 1em; }
   .header-1 .carousel .title,
-  .header-1 .carousel .desc{ margin-left: 3em; margin-right: 3em; }
+  .header-1 .carousel .desc{ margin-left: 2em; margin-right: 2em; }
 
   .header-1 .carousel img{ max-width: 100%; }
 }
