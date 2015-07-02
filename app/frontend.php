@@ -32,6 +32,25 @@ add_action( 'wp_enqueue_scripts', function () {
 	$sections = onepager()->section()->all( $pageId );
 	$blocks = (array) onepager()->blockManager()->all();
 
+	if(onepager()->isLiveMode()){
+		$blocks = (array) onepager()->blockManager()->all();
+
+
+		array_walk( $blocks, function ( $block ) {
+			$enqueueCb = $block['enqueue'];
+			
+			if ( ! $enqueueCb ) {
+				return;
+			}
+
+			$blockUrl = $block['url'];
+			$enqueueCb( $blockUrl );
+		} );
+
+		return;
+	}
+
+	
 	//if onepager then get all the blocks that were used in this page
 	//walk all the used blocks to enqueue their styles
 	array_map(function($section){
