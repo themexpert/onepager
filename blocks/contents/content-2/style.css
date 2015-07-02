@@ -1,6 +1,6 @@
 @media (min-width: 768px){
 	.content-2 .section-title,
-	.content-2 .desc { margin: 1rem 10rem; }	
+	.content-2 > .desc { margin: 1rem 10rem; }	
 }
 /*
 	Blurbs
