@@ -15,7 +15,6 @@ abstract class BaseAdapter implements AdapterInterface {
 
 	final function setProviders() {
 		$this->setNavigationMenuProvider();
-		$this->setAdminMenuProvider();
 		$this->setSecurityProvider();
 		$this->setContentProvider();
 		$this->setToolbarProvider();

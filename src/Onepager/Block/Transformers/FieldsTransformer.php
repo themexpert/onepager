@@ -29,7 +29,7 @@ class FieldsTransformer {
             "type"   => "repeater",
             "class"  => "{$name}-control",
             "help"   => "",
-            "fields" => [ ]
+            "fields" => array()
           );
 
           break;
@@ -44,10 +44,15 @@ class FieldsTransformer {
             "value"       => ""
           );
 
+
+          //because react-bootstrap expects addonAfter
+          //append is just a syntactiacal sugar
           if ( array_key_exists( 'append', $control ) ) {
             $default['addonAfter'] = $control['append'];
           }
 
+          //because react-bootstrap expects addonBefore
+          //prepend is just a syntactiacal sugar
           if ( array_key_exists( 'prepend', $control ) ) {
             $default['addonBefore'] = $control['prepend'];
           }
@@ -55,11 +60,6 @@ class FieldsTransformer {
 
 
       $control = array_merge( $default, $control );
-
-      //HACK
-      // if ( array_key_exists( 'fields', $control ) ) {
-      //   $control['fields'] = [ $control['fields'] ];
-      // }
 
       return $control;
     }, $fields );

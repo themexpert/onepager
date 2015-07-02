@@ -1,6 +1,7 @@
 <?php
+
 function getOnepagerData( $pageId ) {
-	global $onepagerAdminPage;
+	global $onepagerOptionsPanel;
 	$onepager = onepager();
 
 	$ajaxUrl   = $onepager->api()->getAjaxUrl();
@@ -22,7 +23,7 @@ function getOnepagerData( $pageId ) {
 
 	return array(
 		'ajaxUrl'    	=> $ajaxUrl,
-		'optionPanel' => $onepagerAdminPage->getOptions(),
+		'optionPanel' => $onepagerOptionsPanel->getOptions(),
 		'options'			=> get_option('onepager'),
 		'page'     		=> 'onepager',
 		'blocks'     => $blocks,
@@ -38,7 +39,7 @@ function getOnepagerData( $pageId ) {
 function enqueueOnepagerAssets() {
 	$q = onepager()->asset();
 
-	// TX Namespaced assets to avoid multipel assets loading from other ThemeXpert product
+	// TX Namespaced assets to avoid multiple assets loading from other ThemeXpert product
 	$q->style( 'tx-bootstrap', asset( 'assets/css/bootstrap.css' ) );
 	$q->style( 'tx-animatecss', asset( 'assets/css/animate.css' ) );
 	$q->style( 'tx-fontawesome', asset( 'assets/css/font-awesome.css' ) );
@@ -85,5 +86,5 @@ function enqueueOnepagerAdminAssets(){
 	$q->script( 'admin-bundle', asset('assets/admin.bundle.js'), ['jquery']);
 }
 
-//frontend
+//live edit mode
 add_action( 'wp_enqueue_scripts', 'enqueueOnepagerAssets' );
