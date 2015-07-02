@@ -28,6 +28,7 @@ require( ONEPAGER_PATH.'/app/routes.php' );
 require( ONEPAGER_PATH.'/app/assets.php' );
 require( ONEPAGER_PATH.'/app/settings.php' );
 require( ONEPAGER_PATH.'/app/frontend.php' );
+// require( ONEPAGER_PATH.'/app/getting-started.php' );
 
 
 do_action('onepager_init');
