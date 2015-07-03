@@ -1,0 +1,22 @@
+{
+  "curly": false,
+  "esnext":true,
+  "eqeqeq": true,
+  "immed": true,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "sub": true,
+  "undef": false,
+  "unused": true,
+  "boss": true,
+  "eqnull": true,
+  "browser": true,
+
+  "predef": [
+    "define",
+    "module",
+    "mfp"
+  ],
+  "jquery": true
+}
