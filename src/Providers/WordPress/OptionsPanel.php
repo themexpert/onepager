@@ -26,7 +26,7 @@ class OptionsPanel implements OptionsPanelInterface{
 			add_menu_page( 
 				$pageTitle, 
 				$menuTitle, 
-				'manage_options', 
+				'edit_theme_options', 
 				$this->menuSlug, 
 				[$this, 'printMountNode'], 
 				$iconUrl,
@@ -41,7 +41,7 @@ class OptionsPanel implements OptionsPanelInterface{
 				$parentSlug,
 				$pageTitle, 
 				$menuTitle, 
-				'manage_options', 
+				'edit_theme_options', 
 				$this->menuSlug, 
 				[$this, 'printMountNode'], 
 				$iconUrl
