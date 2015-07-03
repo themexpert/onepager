@@ -4,6 +4,7 @@ var path    = require('path');
 // webpack.config.js
 var config = {
   entry: {
+     dashboard: ['./engine/dashboard.jsx'],
      admin: ['./engine/admin.jsx'],
      app: ['./engine/app.jsx'],
   },
