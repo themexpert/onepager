@@ -12,7 +12,8 @@ add_action('admin_menu', function(){
 		'edit_theme_options', 
 		'onepager-dashboard', 
 		$template, 
-		$icon
+		$icon,
+		4
 	);
 });
 
