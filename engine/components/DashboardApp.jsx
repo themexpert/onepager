@@ -5,13 +5,18 @@ const Router 				= require('react-router');
 const RouteHandler 	= Router.RouteHandler;
 const Navbar = require('./Dashboard/Navbar.jsx');
 
+require("./Dashboard/dashboard.less");
+
 let DashboardApp = React.createClass({
 	render(){
 		console.log("rendering Dashboard");
 
 		return (
-			<div className="col-md-10 col-md-offset-1" style={{marginTop: 50}}>
-				<Navbar />
+			<div className="col-md-12" style={{marginTop: 50}}>
+				<div style={{marginBottom:50}}>
+					<Navbar />
+				</div>
+
         <RouteHandler/>
 			</div>
 		);
