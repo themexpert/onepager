@@ -23,9 +23,13 @@ let SwitchControl = React.createClass({
     let props = {
       name: this.props.name,
       type: 'checkbox',
-      defaultChecked: this.props.defaultChecked === true,
+      //FIXME: bad design why should true be turned into 'true'?
+      defaultChecked: this.props.defaultChecked === true || this.props.defaultChecked === 'true',
       onChange: this.props.onChange
     };
+
+    console.log(this.props.defaultChecked);
+    console.log(this.props.defaultChecked === true);
 
     return (
       <div className="form-group">
