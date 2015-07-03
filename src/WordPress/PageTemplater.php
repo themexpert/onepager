@@ -64,6 +64,9 @@ class PageTemplater {
   /** * Checks if the template is assigned to the page */
   public function view_project_template($template) {
     global $post;
+
+    //if its a 404 page then return default template
+    if(is_404()) return $template;
     
     $wp_page_template = get_post_meta($post->ID, '_wp_page_template', true);
 
