@@ -86,6 +86,19 @@ let About = React.createClass({
 					</div>
     		</section>
 
+    		<section className="col-md-3">
+					<div className="panel panel-default">
+					  <div className="panel-heading">Contribute to Onepager</div>
+					  <div className="panel-body">
+								<p>
+									Get involved with the community of this awesome project
+									and contribute enhancements, features, and bug fixes to the core code of 
+									<a href="#" target="_blank"> Onepager on GitHub</a>. Check out the Issues tab for ways to help!								
+								</p>
+						</div>
+					</div>
+    		</section>
+
 			</section>
     );
   }
