@@ -8,7 +8,7 @@ const SectionControls     = require('../edit/SectionControls.jsx');
 const AddToMenu           = require('../menu/AddToMenu.jsx');
 const AppActions          = require('../../actions/AppActions');
 const AdminActions        = require('../../actions/AdminActions');
-
+const SectionTransformer = require('../../lib/SectionTransformer');
 const AppStore            = require('../../stores/AppStore');
 // const PureMixin           = require('../../mixins/PureMixin.js');
 const $s                  = require('string');
@@ -41,6 +41,21 @@ componentDidMount(){
       this.setState({saving: false});
       swal('could not save');
     });
+  },
+
+  export(){
+    let sections = SectionTransformer.simplifySections(this.props.sections);
+    let data = {
+      sections,
+      name : "template.json",
+    };
+
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+
+    var dlAnchorElem = document.getElementById('downloadAnchorElem');
+    dlAnchorElem.setAttribute("href", dataStr);
+    dlAnchorElem.setAttribute("download", "template.json");
+    dlAnchorElem.click();
   },
 
   render() {
