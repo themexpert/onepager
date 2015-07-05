@@ -1,6 +1,6 @@
 <?php namespace ThemeXpert\Onepager\Block;
 
-class BlockCollection extends \ArrayObject {
+class Collection extends \ArrayObject {
 	public function get( $key ) {
 		return isset( $this[ $key ] ) ? $this[ $key ] : null;
 	}

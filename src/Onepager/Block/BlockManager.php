@@ -5,7 +5,7 @@ use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 
 class BlockManager {
 
-	public function __construct( ConfigTransformer $configTransformer, BlockCollection $blocksCollection ) {
+	public function __construct( ConfigTransformer $configTransformer, Collection $blocksCollection) {
 		$this->configTransformer = $configTransformer;
 		$this->blocksCollection  = $blocksCollection;
 	}
