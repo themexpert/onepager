@@ -5,6 +5,7 @@ use Pimple\Container;
 use ThemeXpert\Onepager\Adapters\BaseAdapter;
 use ThemeXpert\Onepager\Block\Collection;
 use ThemeXpert\Onepager\Block\BlockManager;
+use ThemeXpert\Onepager\Block\TemplateManager;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
 use ThemeXpert\Providers\WordPress\OptionsPanel;
@@ -22,6 +23,7 @@ class Onepager implements OnepagerInterface {
 		$this->adapter   = $adapter;
 		$this->container = $container;
 		$this->setBlockManager();
+		$this->setTemplateManager();
 		$this->setRenderer();
 		$this->setViewProvider();
 	}
@@ -32,6 +34,11 @@ class Onepager implements OnepagerInterface {
 			$configTransformer = new ConfigTransformer(new FieldsTransformer);
 
 			return new BlockManager( $configTransformer, $blockCollection );
+		};
+	}
+	public function setTemplateManager() {
+		$this->container['templateManager'] = function () {
+			return new TemplateManager;
 		};
 	}
 
