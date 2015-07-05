@@ -3,11 +3,11 @@ namespace ThemeXpert\Onepager;
 
 use Pimple\Container;
 use ThemeXpert\Onepager\Adapters\BaseAdapter;
-use ThemeXpert\Onepager\Block\BlockCollection;
+use ThemeXpert\Onepager\Block\Collection;
 use ThemeXpert\Onepager\Block\BlockManager;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
-use ThemeXpert\Providers\Wordpress\OptionsPanel;
+use ThemeXpert\Providers\WordPress\OptionsPanel;
 use ThemeXpert\Providers\Contracts\ApiInterface;
 use ThemeXpert\Providers\Contracts\AssetInterface;
 use ThemeXpert\Providers\Contracts\ContentInterface;
@@ -28,7 +28,7 @@ class Onepager implements OnepagerInterface {
 
 	public function setBlockManager() {
 		$this->container['blockManager'] = function () {
-			$blockCollection   = new BlockCollection;
+			$blockCollection   = new Collection;
 			$configTransformer = new ConfigTransformer(new FieldsTransformer);
 
 			return new BlockManager( $configTransformer, $blockCollection );
