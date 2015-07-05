@@ -43,21 +43,6 @@ componentDidMount(){
     });
   },
 
-  export(){
-    let sections = SectionTransformer.simplifySections(this.props.sections);
-    let data = {
-      sections,
-      name : "template.json",
-    };
-
-    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
-
-    var dlAnchorElem = document.getElementById('downloadAnchorElem');
-    dlAnchorElem.setAttribute("href", dataStr);
-    dlAnchorElem.setAttribute("download", "template.json");
-    dlAnchorElem.click();
-  },
-
   render() {
     let {sections, blocks, activeSectionIndex, activeSection, isDirty} = this.props;
     let sectionEditable = activeSectionIndex === null ? false : true;
