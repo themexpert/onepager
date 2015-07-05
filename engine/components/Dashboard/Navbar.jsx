@@ -13,7 +13,7 @@ let Navbar = React.createClass({
 		console.log("rendering Navbar");
 
 		const tabs = [
-			{href: '#/dashboard', name: "Dashboard"},
+			{href: '#/', name: "Dashboard"},
 			{href: '#/getting-started', name: "Getting Started"},
 			{href: '#/new-page', name: "Add new page"},
 			{href: 'http://lost/test/wp/wp-admin/admin.php', name: "Pages"},

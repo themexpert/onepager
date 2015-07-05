@@ -29,5 +29,10 @@ add_action( 'admin_enqueue_scripts', function(){
 	$q->script( 'tx-bootstrap', asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
 	$q->script( 'tx-nicescroll', asset('assets/js/jquery.nicescroll.js'), array( 'jquery' ) );
 	$q->script( 'onepager-dashboard', asset('assets/dashboard.bundle.js'), array( 'jquery' ) );
+	$ajaxUrl   = onepager()->api()->getAjaxUrl();
+	$q->localizeScript( 'onepager', array(
+		'ajaxUrl' => $ajaxUrl
+	), 'onepager-dashboard' );
+
 });
 

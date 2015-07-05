@@ -56,4 +56,32 @@ class ApiController {
 		//TODO: better response
 		op_send_json_success();	
 	}
+
+	function addPage(){
+		$title = $_POST['title'];
+		$sections = array_key_exists('sections', $_POST) ? $_POST['sections'] : [] ;
+
+		//strip slashes
+		array_walk_recursive($sections, function (&$value) {
+			$value = stripslashes($value);
+		});
+
+		$id = wp_insert_post(array(
+			'post_title'=> $title,
+			'post_name' => sanitize_title($title), 
+			'post_content' => '',
+			'post_excerpt' => '',
+			'post_status' => 'publish',
+			'post_type' => 'page',
+			'page_template' => 'onepage.php'
+		));
+
+		onepager()->section()->save( $id, $sections );
+    $url = \League\Url\Url::createFromUrl( get_permalink($id) );
+    $url->getQuery()->modify( array( 'livemode' => true ) );
+
+		op_send_json(array('id'=>$id, 'url'=>$url->__toString()));
+	}
+
+
 }
