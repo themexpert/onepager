@@ -75,7 +75,7 @@ let RepeatInput = React.createClass({
         _.map(options.inputs, (control, ii)=>{
 
           return (
-            <div className="input-group" key={control.ref}>
+            <div className="input-group repeat-input" key={control.ref}>
               <Input 
                 ref={control.ref} 
                 type={this.props.type}

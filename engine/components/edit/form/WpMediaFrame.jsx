@@ -66,9 +66,8 @@ let WpMediaFrame = React.createClass({
     let classes = this.props.className+" form-control image-input";
 
     return (
-      <div ref="container" className="image-selector">
         <div className="form-group">
-          <label>{this.props.label}</label>
+          {this.props.label ? <label>{this.props.label}</label> : null }
 
           <div className="input-group">
             <input {...this.props} type="text" className={classes} ref="input"/>
@@ -84,7 +83,6 @@ let WpMediaFrame = React.createClass({
 
           <div className="media-preview"></div>
         </div>
-      </div>
     );
   }
 });
