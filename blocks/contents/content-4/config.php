@@ -16,10 +16,15 @@ return array(
       'type'=>'editor', 
       'value'=> 'The world is a dangerous place to live; not because of the people who are evil, but because of the people who dont do anything about it.'
     ),
-    array('name'=>'link', 'value'=> '#'),
+    array(
+      'name'=>'link', 
+      'label'=> 'Button', 
+      'placeholder'=> 'http://example.com',
+      'value'=> '#'
+    ),
     array(
       'name'  => 'link_text', 
-      'label' => 'Link Text',
+      'label' => 'Button Text',
       'value' => 'Download Now', 
     ),
   ),

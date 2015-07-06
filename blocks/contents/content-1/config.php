@@ -21,8 +21,12 @@ return array(
       'type'=>'image', 
       'value'=> 'http://s3.amazonaws.com/quantum-assets/img-1.png'
     ),
-    array('name'=>'link'),
-
+    array(
+      'name'=>'link', 
+      'label'=> 'Button', 
+      'placeholder'=> 'http://example.com',
+      'value' => '#'
+    ),
   ),
   
   // Settings - $settings available on view file to access the option

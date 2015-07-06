@@ -64,13 +64,13 @@ return array(
     ),
     array(
       'name'=>'cta',
-      'label'=> 'Call To Action Link',
+      'label'=> 'Button Link',
       'placeholder' => 'http://doamin.com'
     ),
     array(
       'name'=>'cta_text',
-      'label'=> 'Call To Action Text',
-      'value'=> 'Call To Action',
+      'label'=> 'Button Text',
+      'value'=> 'Join Now',
       'placeholder'=> 'Call To Action'
     ),
   ),
