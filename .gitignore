@@ -9,6 +9,9 @@ Thumbs.db
 #blocks
 blocks/blocks.cache
 
+#package
+wponepager.zip
+
 # Sublime
 *.sublime-workspace
 *.sublime-project
