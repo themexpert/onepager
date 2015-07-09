@@ -2,24 +2,24 @@ const React 				= require('react');
 const Reflux  			= require('reflux');
 const PureMixin 		= require('react/lib/ReactComponentWithPureRenderMixin');
 
-const AdminStore 		= require('../../stores/AdminStore.js');
-const Content  			= require('../Admin/Content.jsx');
-const Tabs  				= require('../Admin/Tabs.jsx');
+const OptionsPanelStore 		= require('../../stores/OptionsPanelStore.js');
+const Content  			= require('../Optionspanel/Content.jsx');
+const Tabs  				= require('../Optionspanel/Tabs.jsx');
 
 let Admin = React.createClass({
-	mixins: [PureMixin, Reflux.connect(AdminStore)],
-	
+	mixins: [PureMixin, Reflux.connect(OptionsPanelStore)],
+
 	render(){
 		console.log("rendering Admin");
 
 		return (
 			<div>
-				<Tabs 
-					active={this.state.activeTabIndex} 
+				<Tabs
+					active={this.state.activeTabIndex}
 					tabs={this.state.tabs} />
 
-				<Content 
-					index={this.state.activeTabIndex} 
+				<Content
+					index={this.state.activeTabIndex}
 					panel={this.state.optionPanel.get(this.state.activeTabIndex)} />
 			</div>
 		);

@@ -7,7 +7,7 @@ const SectionList         = require('../section-list/SectionList.jsx');
 const SectionControls     = require('../edit/SectionControls.jsx');
 const AddToMenu           = require('../menu/AddToMenu.jsx');
 const AppActions          = require('../../actions/AppActions');
-const AdminActions        = require('../../actions/AdminActions');
+const AdminActions        = require('../../actions/OptionsPanelActions');
 const SectionTransformer = require('../../lib/SectionTransformer');
 const AppStore            = require('../../stores/AppStore');
 // const PureMixin           = require('../../mixins/PureMixin.js');
@@ -34,7 +34,7 @@ componentDidMount(){
   handleSave(){
     let updated = AppStore.save();
     this.setState({saving:true});
-    
+
     updated.then(()=>{
       this.setState({saving: false});
     }, ()=>{
@@ -84,15 +84,15 @@ componentDidMount(){
             <button onClick={AdminActions.sync} className='btn btn-primary btn--save'>
               <span className='fa fa-save'></span> &nbsp; Save
             </button>:
-            <button disabled={!isDirty} onClick={this.handleSave} 
+            <button disabled={!isDirty} onClick={this.handleSave}
               className='btn btn-primary btn--save'>
               {
-                this.state.saving ? 
+                this.state.saving ?
                   <span className='fa fa-refresh fa-spin'></span> :
                   <span>
-                    <span className='fa fa-save'></span> 
+                    <span className='fa fa-save'></span>
                     &nbsp; Save
-                  </span> 
+                  </span>
               }
             </button>
           }
@@ -100,10 +100,10 @@ componentDidMount(){
 
         <div className='tab-content' ref='tabContents'>
           <TabPane id='op-sections' active={activeTab}>
-            <SectionList 
+            <SectionList
               activeSectionIndex={activeSectionIndex}
-              blocks={blocks} 
-              sections={sections} 
+              blocks={blocks}
+              sections={sections}
               getUniqueSectionId={(index, id)=>{
                 return getUniqueSectionId(sections, index, id);
               }} />
@@ -116,20 +116,20 @@ componentDidMount(){
               update = {update}
               sectionSettings = {sectionSettings}
               sectionIndex = {activeSectionIndex} /> :
-           
-            <h2>please select a section</h2> 
+
+            <h2>please select a section</h2>
           }
           </TabPane>
 
 
           <TabPane id='op-menu' active={activeTab}>
-            {sectionEditable ? 
+            {sectionEditable ?
               <AddToMenu section={activeSection} index={activeSectionIndex} /> : 'please select a section' }
-          </TabPane> 
+          </TabPane>
 
           <TabPane id='op-settings' active={activeTab}>
             <Settings />
-          </TabPane> 
+          </TabPane>
 
         </div>
 

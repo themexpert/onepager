@@ -3,7 +3,7 @@ const PureMixin 		= require('react/lib/ReactComponentWithPureRenderMixin');
 
 const Input 				= require("../edit/form/Input.jsx");
 const Divider 			= require('../edit/Divider.jsx');
-const AdminActions 	= require('../../actions/AdminActions.js');
+const OptionsPanelActions 	= require('../../actions/OptionsPanelActions.js');
 
 
 let Content = React.createClass({
@@ -28,7 +28,7 @@ let Content = React.createClass({
     });
 
     let panel = this.props.panel.set('fields', controls);
-    AdminActions.update(this.props.index, panel);
+    OptionsPanelActions.update(this.props.index, panel);
   },
 
 	render(){

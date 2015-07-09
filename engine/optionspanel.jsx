@@ -1,5 +1,5 @@
 const React = require('react');
-const Admin = require('./components/Admin.jsx');
+const Admin = require('./components/OptionsPanel.jsx');
 require("./lib/_mixins");
 
 

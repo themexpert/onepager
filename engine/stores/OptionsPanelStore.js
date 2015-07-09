@@ -3,8 +3,8 @@ require('../lib/_mixins');
 
 const Reflux          = require('reflux');
 const Immutable       = require('immutable');
-const AdminActions    = require('../actions/AdminActions');
-const Sync            = require("../components/Admin/Sync");
+const AdminActions    = require('../actions/OptionsPanelActions');
+const Sync            = require("../components/Optionspanel/Sync");
 const notify          = require("../lib/notify");
 
 const ODataStore      = require('./ODataStore');
@@ -14,7 +14,7 @@ let sync              = Sync(ODataStore.ajaxUrl, ODataStore.page); /*jshint igno
 function transformer(fields, panelId){
   return fields.map(field=>{
     field.ref   = _.uniqueId("ref_");
-    
+
     if(options && options[panelId] && options[panelId][field.name]){
       field.value = options[panelId][field.name];
     }
@@ -42,7 +42,7 @@ AppState.tabs = AppState.optionPanel.map(tab=>{
 
 
 
-let AdminStore   = Reflux.createStore({
+let OptionsPanelStore   = Reflux.createStore({
   listenables: [AdminActions],
   data: AppState,
   getInitialState(){
@@ -74,4 +74,4 @@ let AdminStore   = Reflux.createStore({
 
 });
 
-module.exports = AdminStore;
+module.exports = OptionsPanelStore;
