@@ -37,7 +37,57 @@ class Render {
       return null;
 		}
 
+		$section = $this->sectionBlockDataMerge($section);
+
+		
 		return $this->view->make( $view_file, $section );
+	}
+
+	public function sectionBlockDataMerge($section){
+		$block = $this->blockManager->get( $section['slug'] );
+
+		foreach(['settings', 'contents', 'styles'] as $tab){
+			$sectionTab = &$section[$tab];
+			$blockTab 	= $block[$tab];
+
+			array_walk($blockTab, function($control) use(&$sectionTab) {
+				if($control['type'] === "divider") return;
+				$type = $control['type'];
+				$name = $control['name'];
+
+				switch ($control['type']) {
+					case 'repeater':
+						$controlFields = &$control['fields'];
+						//if a new control is added which is not persisted in database it could throw an error
+						//so we are merging them to make it like persisted
+						$sectionTab[$name] = array_key_exists($name, $sectionTab) ? $sectionTab[$name]: array_map(function($rGroup){
+							return array_reduce($rGroup, function($carry, $control){
+								$carry[$control['name']] = $control['value'];
+								return $carry;
+							}, []);
+						}, $controlFields);
+
+						//now if a new control is added to the repeater
+						// if(count($sectionTab[$name]) < count($controlFields)){
+						$rGroupDataStrucuture = $controlFields[0];
+						$rGroupDataStrucuture = array_reduce($rGroupDataStrucuture, function($carry, $control){
+							$carry[$control['name']] = $control['value'];
+							return $carry;
+						}, []);
+
+						foreach($sectionTab[$name] as &$rGroup){
+							$rGroup = array_merge($rGroup, $rGroupDataStrucuture);
+						}
+
+						break;
+					default:
+						$sectionTab[$name] = array_key_exists($name, $sectionTab) ? $sectionTab[$name]: $control['value'];
+						break;
+				}
+			});
+		}
+
+		return $section;
 	}
 
 	public function styles( $sections ) {
