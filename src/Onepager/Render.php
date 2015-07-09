@@ -69,14 +69,14 @@ class Render {
 
 						//now if a new control is added to the repeater
 						// if(count($sectionTab[$name]) < count($controlFields)){
-						$rGroupDataStrucuture = $controlFields[0];
-						$rGroupDataStrucuture = array_reduce($rGroupDataStrucuture, function($carry, $control){
+						$rGroupDataStructure = $controlFields[0];
+						$rGroupDataStructure = array_reduce($rGroupDataStructure, function($carry, $control){
 							$carry[$control['name']] = $control['value'];
 							return $carry;
 						}, []);
 
 						foreach($sectionTab[$name] as &$rGroup){
-							$rGroup = array_merge($rGroup, $rGroupDataStrucuture);
+							$rGroup = array_merge($rGroupDataStructure, $rGroup);
 						}
 
 						break;
