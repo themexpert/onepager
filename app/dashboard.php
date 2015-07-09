@@ -15,7 +15,7 @@ function tx_add_dashboard_page()
   };
 
   add_menu_page(
-    'Onepager',
+    'Onepager Dashboard',
     'Onepager',
     'edit_theme_options',
     'onepager-dashboard',
@@ -33,7 +33,7 @@ function tx_add_tutorials_page()
 
   add_submenu_page(
     'onepager-dashboard',
-    'Tutorial',
+    'Onepager Tutorial',
     'Tutorial',
     'edit_theme_options',
     'onepager-tutorial',
@@ -46,7 +46,7 @@ function tx_add_onepager_options_page()
 {
   onepager()->optionsPanel("onepager")->addSubMenuPage(
     "onepager-dashboard",
-    "onepager title",
+    "Onepager Global Options",
     "Global Options"
   );
 }
