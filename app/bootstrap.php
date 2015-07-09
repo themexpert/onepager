@@ -16,9 +16,9 @@
 //run whoops to give nice error messages
 if(WP_DEBUG){
 	//add whoops
-	$whoops = new \Whoops\Run;
-	$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-	$whoops->register();
+	// $whoops = new \Whoops\Run;
+	// $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+	// $whoops->register();
 }
 
 

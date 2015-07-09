@@ -9,7 +9,7 @@ add_action('admin_menu', function(){
 	add_menu_page(
 		'Onepager', 
 		'Onepager', 
-		'edit_theme_options', 
+		'manage_options', 
 		'onepager-dashboard', 
 		$template, 
 		$icon,
