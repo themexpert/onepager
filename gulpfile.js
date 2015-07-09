@@ -117,26 +117,53 @@ gulp.task('build', ['js', 'fonts', 'bower', 'images', 'less', 'webpack']);
 
 gulp.task('webpack', shell.task(['webpack  -p']));
 gulp.task('webpack-watch', shell.task(['webpack  --watch']));
+
 gulp.task('package', ['build'], function(){
-  var output  = fs.createWriteStream(__dirname + '/dist/wponepager.zip');
+  var plugin = "wponepager";
+  var dirs  = ['app', 'assets', 'blocks', 'src', 'vendor'];
+  var files = ['wponepager.php', 'uninstall.php'];
+
+  generateArchive(plugin, dirs, files);
+});
+
+function generateArchive(plugin, dirs, files){
+  var output  = fs.createWriteStream(__dirname + '/'+plugin+'.zip');
   var archive = archiver.create('zip', {}); // or archiver('zip', {});
 
-  var dirs  = ['app', 'assets', 'blocks', 'src', 'vendor'];
-  var files = ['wponepager.php'];
+  //create the archive
+  //mac filesystem error
+  if(!fs.existsSync(plugin+'.zip')){
+    fs.writeSync(plugin+'.zip');
+  }
 
+  //create parent directory
+  if(!fs.existsSync(plugin)){
+    fs.mkdirSync(plugin);
+  }
+
+  //add parent directory to the zip file
+  archive.directory(plugin);
+
+  //add the zip files
   dirs.map(function(dir){
-    archive.directory(dir);
+    archive.directory(dir, plugin+"/"+dir);
   });
 
+  //add the files
   files.map(function(file){
-    archive.file(file);
+    archive.file(file, {name: plugin+'/'+file});
   });
-  
+
+  //show message on close
   output.on('close', function() {
     console.log(archive.pointer() + ' total bytes');
-    console.log('find built package dist/wponepager.zip');
+    console.log('find built package /'+plugin+'.zip');
   });
 
+  //pipe out the output
   archive.pipe(output);
   archive.finalize();
-});
+
+  //cleanup
+  fs.rmdirSync(plugin);
+}
