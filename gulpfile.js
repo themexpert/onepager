@@ -9,7 +9,8 @@ var rename = require('gulp-rename');
 var archiver = require('archiver');
 var fs = require('fs');
 var shell = require('gulp-shell');
-
+var runSequence = require('gulp-run-sequence');
+var clean = require('gulp-clean');
 
 var dest  = './assets';
 var src   = './engine';
@@ -90,7 +91,7 @@ gulp.task('bower', function () {
     .pipe(lessFilter)
     .pipe(less())
     .pipe(gulp.dest(config.bower.css))
-    .pipe(rename({extname:"css"}))
+    .pipe(rename({extname:'css'}))
     .pipe(lessFilter.restore())
 
     .pipe(cssFilter)
@@ -106,25 +107,56 @@ gulp.task('bower', function () {
     .pipe(gulp.dest(config.bower.fonts))
     .pipe(fontFilter.restore());
 });
+
 gulp.task('watch', function () {
   gulp.watch(config.watch.less, ['less']);
   gulp.watch(config.watch.js, ['js']);
 });
 
-gulp.task('default', ['build', /*'webpack-watch',*/ 'watch']);
 
-gulp.task('build', ['js', 'fonts', 'bower', 'images', 'less', 'webpack']);
 
-gulp.task('webpack', shell.task(['webpack  -p']));
+/**
+ * Build section
+ */
+gulp.task('build-clean', function() {
+  return gulp.src(dest).pipe(clean());
+});
+
+gulp.task('build', function(cb){
+  return runSequence('build-clean', ['js', 'fonts', 'bower', 'images', 'less'], cb);
+});
+
+
+/**
+ * webpack section
+ */
+gulp.task('webpack-production', shell.task(['webpack  -p']));
 gulp.task('webpack-watch', shell.task(['webpack  --watch']));
 
-gulp.task('package', ['build'], function(){
-  var plugin = "wponepager";
+
+/**
+ * Package build section
+ */
+gulp.task('package-build', function(cb){
+  return runSequence('build', 'webpack-production', cb);
+});
+
+gulp.task('package', ['package-build'], function(){
+  var plugin = 'wponepager';
   var dirs  = ['app', 'assets', 'blocks', 'src', 'vendor'];
   var files = ['wponepager.php', 'uninstall.php'];
 
   generateArchive(plugin, dirs, files);
 });
+
+
+/**
+ * Default tasks
+ */
+gulp.task('default', function(){
+  runSequence('build', ['webpack-watch', 'watch']);
+});
+
 
 function generateArchive(plugin, dirs, files){
   var output  = fs.createWriteStream(__dirname + '/'+plugin+'.zip');
@@ -146,7 +178,7 @@ function generateArchive(plugin, dirs, files){
 
   //add the zip files
   dirs.map(function(dir){
-    archive.directory(dir, plugin+"/"+dir);
+    archive.directory(dir, plugin+'/'+dir);
   });
 
   //add the files
