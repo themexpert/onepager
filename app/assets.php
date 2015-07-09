@@ -1,7 +1,6 @@
 <?php
 
 function getOnepagerData( $pageId ) {
-	global $onepagerOptionsPanel;
 	$onepager = onepager();
 
 	$ajaxUrl   = $onepager->api()->getAjaxUrl();
@@ -24,7 +23,7 @@ function getOnepagerData( $pageId ) {
 
 	return array(
 		'ajaxUrl'    	=> $ajaxUrl,
-		'optionPanel'   => $onepagerOptionsPanel->getOptions(),
+		'optionPanel'   => onepager()->optionsPanel("onepager")->getOptions(),
 		'options'	    => get_option('onepager'),
 		'page'     		=> 'onepager',
 		'blocks'     => $blocks,
@@ -84,7 +83,7 @@ function enqueueOnepagerAdminAssets(){
 	$q->script( 'tx-iconselector', asset( 'assets/js/icon-selector.min.js' ), [ 'jquery' ] );
 	$q->script( 'tx-colorpicker', asset( 'assets/js/bootstrap-colorpicker.js' ), [ 'jquery' ] );
 	$q->script( 'tx-toastr', asset( 'assets/js/toastr.js' ), [ 'jquery' ] );
-	
+
 	$q->script( 'admin-bundle', asset('assets/admin.bundle.js'), ['jquery']);
 }
 

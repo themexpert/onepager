@@ -6,7 +6,7 @@ use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
 class OptionsPanel implements OptionsPanelInterface{
 	protected $options = array();
 	protected static $panels = [];
-	
+
 	public static function getInstance($menuSlug){
 		if(!array_key_exists($menuSlug, self::$panels)){
 			self::$panels[$menuSlug] = new self($menuSlug);
@@ -17,34 +17,33 @@ class OptionsPanel implements OptionsPanelInterface{
 
 	public function __construct($menuSlug){
 		$this->menuSlug = $menuSlug;
-		
+
 		add_action('admin_enqueue_scripts', [$this, 'localizeScript']);
 	}
 
 	public function addMenuPage($pageTitle, $menuTitle, $iconUrl, $positon=null){
 		add_action('admin_menu', function() use ($pageTitle, $menuTitle, $iconUrl, $positon){
-			add_menu_page( 
-				$pageTitle, 
-				$menuTitle, 
-				'edit_theme_options', 
-				$this->menuSlug, 
-				[$this, 'printMountNode'], 
+			add_menu_page(
+				$pageTitle,
+				$menuTitle,
+				'edit_theme_options',
+				$this->menuSlug,
+				[$this, 'printMountNode'],
 				$iconUrl,
 				$positon
 			);
 		});
 	}
 
-	public function addSubMenuPage($parentSlug, $pageTitle, $menuTitle, $iconUrl){
-		add_action('admin_menu', function() use ($parentSlug, $pageTitle, $menuTitle, $iconUrl){
-			add_submenu_page( 
+	public function addSubMenuPage($parentSlug, $pageTitle, $menuTitle){
+		add_action('admin_menu', function() use ($parentSlug, $pageTitle, $menuTitle){
+			add_submenu_page(
 				$parentSlug,
-				$pageTitle, 
-				$menuTitle, 
-				'edit_theme_options', 
-				$this->menuSlug, 
-				[$this, 'printMountNode'], 
-				$iconUrl
+				$pageTitle,
+				$menuTitle,
+				'edit_theme_options',
+				$this->menuSlug,
+				[$this, 'printMountNode']
 			);
 		});
 	}
@@ -56,7 +55,7 @@ class OptionsPanel implements OptionsPanelInterface{
 	public function isOptionsPanel(){
 		return endsWith(get_current_screen()->id, "_page_".$this->menuSlug);
 	}
-	
+
 	public function localizeScript(){
 		if(!$this->isOptionsPanel()) return;
 
@@ -70,7 +69,7 @@ class OptionsPanel implements OptionsPanelInterface{
 			'optionPanel' => $optionPanel,
 			'options'			=> $savedOptions,
 			'page'     		=> $this->menuSlug,
-			
+
 			'ajaxUrl'    	=> $onepager->api()->getAjaxUrl(),
 			'menus'      	=> $onepager->content()->getMenus(),
 			'pages'      	=> $onepager->content()->getPages(),
@@ -133,7 +132,7 @@ class OptionsPanel implements OptionsPanelInterface{
 		}
 
 		$this->options[$this->tabId]['fields'] = array_merge(
-			$this->options[$this->tabId]['fields'], 
+			$this->options[$this->tabId]['fields'],
 			func_get_args()
 		);
 
@@ -143,7 +142,7 @@ class OptionsPanel implements OptionsPanelInterface{
 	public function getOptions(){
 		return array_map(function($options){
 				$options['fields'] = $this->transformOptions($options['fields']);
-				
+
 				return $options;
 			}, $this->options);
 	}
