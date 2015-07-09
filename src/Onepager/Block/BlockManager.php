@@ -15,7 +15,7 @@ class BlockManager
     public function loadAllFromPath($path, $url)
     {
         try {
-            if(!file_exists($path)){
+            if(!FS::exists($path)){
                 $msg = __("You were trying to add blocks from ".$path." but this path does not exist. Please create this folder.", "onepager");
                 throw new \Exception($msg);
             }
