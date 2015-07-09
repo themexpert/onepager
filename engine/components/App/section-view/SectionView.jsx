@@ -1,8 +1,8 @@
 const $           = jQuery; //jshint ignore:line
 const React       = require('react');
 const cx          = require('classnames');
-const AppActions  = require('../../actions/AppActions');
-const PureMixin   = require('../../mixins/PureMixin.js');
+const AppActions  = require('../../../actions/AppActions');
+const PureMixin   = require('../../../mixins/PureMixin.js');
 
 let Section = React.createClass({
   mixins: [PureMixin],
@@ -23,7 +23,7 @@ let Section = React.createClass({
   setSectionContent(){
     let content = this.props.section.content;
 
-    $(React.findDOMNode(this)).html(content);    
+    $(React.findDOMNode(this)).html(content);
   },
 
   scrollIntoView(){

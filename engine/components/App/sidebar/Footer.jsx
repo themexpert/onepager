@@ -1,13 +1,13 @@
-const React     = require('react');
+const React = require('react');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const Tab                 = require('./Tab.jsx');
-const ODataStore          = require('../../stores/ODataStore.js');
+const Tab = require('./../../shared/Tab.jsx');
+const ODataStore = require('../../../stores/ODataStore.js');
 
 require('./footer.less');
 
 let Footer = React.createClass({
   mixins: [PureMixin],
-  
+
   propTypes: {
     id: React.PropTypes.string,
     icon: React.PropTypes.string,
@@ -24,8 +24,9 @@ let Footer = React.createClass({
   render() {
     return (
       <div className="footer flex flex-space-between">
-          <a href={ODataStore.disable}><span className="fa fa-close"></span> Close</a>
-          <a href="http://docs.getonepager.com" target="_blank"><span className="fa fa-video-camera"></span> Video Tutorial</a>
+        <a href={ODataStore.disable}><span className="fa fa-close"></span> Close</a>
+        <a href="http://docs.getonepager.com" target="_blank"><span className="fa fa-video-camera"></span> Video
+          Tutorial</a>
       </div>
     );
   }

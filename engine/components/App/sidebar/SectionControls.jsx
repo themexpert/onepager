@@ -1,12 +1,12 @@
 const React       = require('react');
 const _           = require('underscore');
-const Divider     = require('./Divider.jsx');
-const Input       = require('./form/Input.jsx');
-const RepeatInput = require('./form/RepeatInput.jsx');
-const Repeater    = require('./repeater/Repeater.jsx');
-const PureMixin   = require('../../mixins/PureMixin.js');
-const Tab         = require('../sidebar/Tab.jsx');
-const TabPane     = require('../sidebar/TabPane.jsx');
+const Divider     = require('./../../shared/form/Divider.jsx');
+const Input       = require('./../../shared/form/Input.jsx');
+const RepeatInput = require('./../../shared/form/RepeatInput.jsx');
+const Repeater    = require('./../../shared/repeater/Repeater.jsx');
+const PureMixin   = require('../../../mixins/PureMixin.js');
+const Tab         = require('./../../shared/Tab.jsx');
+const TabPane     = require('./../../shared/TabPane.jsx');
 
 let SectionControls = React.createClass({
 //  mixins: [PureMixin],

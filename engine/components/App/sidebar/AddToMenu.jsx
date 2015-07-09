@@ -4,16 +4,16 @@ const PureComponent   = require('react/lib/ReactComponentWithPureRenderMixin');
 const React           = require("react");
 const _               = require("underscore");
 const Button          = require('react-bootstrap/lib/Button');
-const Input           = require("../edit/form/Input.jsx");
-const ODataStore      = require('../../stores/ODataStore');
-const notify          = require('../../lib/notify');
-const AppStore        = require('../../stores/AppStore');
-const AppActions      = require('../../actions/AppActions');
+const Input           = require("../../shared/form/Input.jsx");
+const ODataStore      = require('../../../stores/ODataStore');
+const notify          = require('../../../lib/notify');
+const AppStore        = require('../../../stores/AppStore');
+const AppActions      = require('../../../actions/AppActions');
 
 
 let AddToMenu = React.createClass({
   mixins: [PureComponent],
-  
+
   getInitialState(){
     return {
       isUnique: true

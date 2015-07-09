@@ -4,10 +4,10 @@ const cx                  = require('classnames');
 const SortableMixin       = require('sortablejs/react-sortable-mixin');
 const Button              = require('react-bootstrap/lib/Button');
 const SectionLi           = require('./Section.jsx');
-const BlockCollection     = require('../blocks/BlockCollection.jsx');
-const AppStore            = require('../../stores/AppStore.js');
-const AppActions          = require('../../actions/AppActions.js');
-// const PureMixin           = require('../../mixins/PureMixin.js');
+const BlockCollection     = require('./../blocks/BlockCollection.jsx');
+const AppStore            = require('../../../stores/AppStore.js');
+const AppActions          = require('../../../actions/AppActions.js');
+// const PureMixin           = require('../../../mixins/PureMixin.js');
 const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
 const Footer              = require('../sidebar/Footer.jsx');
 
@@ -86,7 +86,7 @@ let SectionList = React.createClass({
           <Button bsStyle='primary' className="btn-block" onClick={this.showBlocks}>
             <span className="fa fa-plus"></span> Add Block
           </Button>
-          
+
           <div ref="sections">
             {sections.map((section, index)=> {
               let updateTitle  = (title, id)=>{
@@ -95,17 +95,17 @@ let SectionList = React.createClass({
                 if(id){
                   uSection.id = id;
                 }
-                
+
                 this.updateSection(index, uSection);
               };
 
               return (
                 <SectionLi
-                  active={this.props.activeSectionIndex === index} 
-                  getUniqueSectionId={this.props.getUniqueSectionId} 
-                  updateTitle={updateTitle} 
-                  title={section.title} 
-                  key={section.key} 
+                  active={this.props.activeSectionIndex === index}
+                  getUniqueSectionId={this.props.getUniqueSectionId}
+                  updateTitle={updateTitle}
+                  title={section.title}
+                  key={section.key}
                   index={index} />
               );
             })}

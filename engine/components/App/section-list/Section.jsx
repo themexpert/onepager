@@ -1,9 +1,9 @@
 const React       = require('react');
 const swal        = require('sweetalert');
 const Input       = require('react-bootstrap/lib/Input');
-const AppActions  = require('../../actions/AppActions');
 const cx          = require('classnames');
-const PureMixin   = require('../../mixins/PureMixin.js');
+const PureMixin   = require('../../../mixins/PureMixin.js');
+const AppActions  = require('../../../actions/AppActions');
 
 function confirmDelete(proceed){
   swal({
@@ -19,7 +19,7 @@ function confirmDelete(proceed){
 
 let Section = React.createClass({
   mixins: [PureMixin],
-  
+
   getInitialState(){
     return {
       titleEditState: false
@@ -41,7 +41,7 @@ let Section = React.createClass({
   handleEditSection(){
     AppActions.editSection(this.props.index);
   },
-  
+
 
   handleEditTitle(){
     this.setState({titleEditState: true});
@@ -52,7 +52,7 @@ let Section = React.createClass({
     if(e.which !== 13) {
       return;
     }
-    
+
     let id = null;
     let title = this.refs.title.getValue();
 
@@ -70,7 +70,7 @@ let Section = React.createClass({
 
   render() {
     let title = this.props.title;
-    
+
     let classes = cx({
       'txop-cards' : true,
       'active'     : this.props.active
@@ -80,7 +80,7 @@ let Section = React.createClass({
       <div className={classes}>
         { this.state.titleEditState ?
           <div>
-            <Input type="text" ref="title" onKeyUp={this.updateEditTitle} defaultValue={title} /> 
+            <Input type="text" ref="title" onKeyUp={this.updateEditTitle} defaultValue={title} />
             <span className="label label-default">Enter</span>
           </div> :
           <div><h3 onClick={this.handleEditSection}>{title}</h3> <span className="fa fa-pencil" onClick={this.handleEditTitle}></span></div>

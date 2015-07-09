@@ -4,7 +4,7 @@ const cx          = require('classnames');
 const PureMixin   = require('../../../mixins/PureMixin.js');
 const Input       = require('./../form/Input.jsx');
 const RepeatInput = require('./../form/RepeatInput.jsx');
-const Divider     = require('../Divider.jsx');
+const Divider     = require('../form/Divider.jsx');
 const Heading     = require('./RepeatGroupHeading.jsx');
 
 let RepeatGroup = React.createClass({
@@ -32,11 +32,11 @@ let RepeatGroup = React.createClass({
     //TODO: get the first text type field
     let rGroups = this.props.options;
 
-    let title = _.find(rGroups, {'name':'title'}); 
+    let title = _.find(rGroups, {'name':'title'});
     if(title) {
       return title.value || "Untitled";
     }
-    
+
     let name = _.find(rGroups, {'name':'name'});
     if(name) {
       return name.value || "Untitled";
@@ -76,9 +76,9 @@ let RepeatGroup = React.createClass({
             this.props.updateGroupControl(ii, key, value);
           };
           return <RepeatInput updateControl={updateControl} {...props} />;
-        case "divider": 
+        case "divider":
           return <Divider key={ii} label={rControl.label} />;
-        default: 
+        default:
           return <Input {...props} />;
       }
 
@@ -86,11 +86,11 @@ let RepeatGroup = React.createClass({
 
     return (
       <div className="panel panel-default">
-        <Heading 
-          id={id} 
-          parentId={this.props.parentId} 
-          title={title} 
-          remove={this.props.remove} 
+        <Heading
+          id={id}
+          parentId={this.props.parentId}
+          title={title}
+          remove={this.props.remove}
           duplicate={this.props.duplicate} />
 
         <div id={id} className={classes} role="tabpanel">

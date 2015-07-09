@@ -1,7 +1,7 @@
 const React                 = require('react');
 const AppStore              = require('../stores/AppStore');
-const Sidebar               = require('./sidebar/Sidebar.jsx');
-const SectionViewCollection = require('./section-view/SectionViewCollection.jsx');
+const Sidebar               = require('./App/sidebar/Sidebar.jsx');
+const SectionViewCollection = require('./App/section-view/SectionViewCollection.jsx');
 const _                     = require('underscore');
 // const swal                  = require('sweetalert');
 

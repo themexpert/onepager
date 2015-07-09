@@ -1,8 +1,8 @@
 const React 				= require("react");
 const PureMixin 		= require('react/lib/ReactComponentWithPureRenderMixin');
 
-const Input 				= require("../edit/form/Input.jsx");
-const Divider 			= require('../edit/Divider.jsx');
+const Input 				= require("./../shared/form/Input.jsx");
+const Divider 			= require('./../shared/form/Divider.jsx');
 const OptionsPanelActions 	= require('../../actions/OptionsPanelActions.js');
 
 
