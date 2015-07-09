@@ -5,7 +5,12 @@
  * wp_send_json
  * wp_send_json_success
  */
-
+if(!function_exists('array_find_by')){
+  function array_find_by($collection, $key, $value){
+    $foundKey = array_search($value, array_column($collection, $key));
+    return array_key_exists($foundKey, $collection) ? $collection[$foundKey] : null;
+  }
+}
 
 function op_send_json_success() {
   //TODO: replace this in future release
