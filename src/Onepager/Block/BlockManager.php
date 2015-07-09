@@ -3,44 +3,59 @@
 use ThemeXpert\FileSystem\FileSystem as FS;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 
-class BlockManager {
+class BlockManager
+{
 
-	public function __construct( ConfigTransformer $configTransformer, Collection $blocksCollection) {
-		$this->configTransformer = $configTransformer;
-		$this->blocksCollection  = $blocksCollection;
-	}
+    public function __construct(ConfigTransformer $configTransformer, Collection $blocksCollection)
+    {
+        $this->configTransformer = $configTransformer;
+        $this->blocksCollection = $blocksCollection;
+    }
 
-	public function loadAllFromPath( $path, $url ) {
-		$folders = FS::folders( $path );
+    public function loadAllFromPath($path, $url)
+    {
+        try {
+            if(!file_exists($path)){
+                $msg = __("You were trying to add blocks from ".$path." but this path does not exist. Please create this folder.", "onepager");
+                throw new \Exception($msg);
+            }
 
-		foreach ( $folders as $folder ) {
-			$config_file = untrailingslashit($path) . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . "config.php";
+            $folders = FS::folders($path);
 
-
-      if ( ! FS::exists( $config_file ) ) {
-      	$this->loadAllFromPath($path . DIRECTORY_SEPARATOR . $folder, $url."/".$folder);
-
-        continue;
-      }
-
-      $this->add( $config_file, trailingslashit( $url ) . $folder );
-		}
-	}
-
-	public function add( $file, $url ) {
-		$url    = trailingslashit( $url );
-		$config = require( $file );
+            foreach ($folders as $folder) {
+                $config_file = untrailingslashit($path) . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . "config.php";
 
 
-		$config = $this->configTransformer->transform( $config, $file, $url );
-		$this->blocksCollection->set( $config['slug'], $config );
-	}
+                if (!FS::exists($config_file)) {
+                    $this->loadAllFromPath($path . DIRECTORY_SEPARATOR . $folder, $url . "/" . $folder);
 
-	public function get( $key ) {
-		return $this->blocksCollection->get( $key );
-	}
+                    continue;
+                }
 
-	public function all() {
-		return $this->blocksCollection;
-	}
+                $this->add($config_file, trailingslashit($url) . $folder);
+            }
+        } catch(\Exception $e){
+            die('Caught exception: '.  $e->getMessage(). "\n<br>");
+        }
+    }
+
+    public function add($file, $url)
+    {
+        $url = trailingslashit($url);
+        $config = require($file);
+
+
+        $config = $this->configTransformer->transform($config, $file, $url);
+        $this->blocksCollection->set($config['slug'], $config);
+    }
+
+    public function get($key)
+    {
+        return $this->blocksCollection->get($key);
+    }
+
+    public function all()
+    {
+        return $this->blocksCollection;
+    }
 }
