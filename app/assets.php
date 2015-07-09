@@ -11,6 +11,7 @@ function getOnepagerData( $pageId ) {
 	$blocks    = array_values( (array) $onepager->blockManager()->all() );
 
 	$sections = array_map( function ( $section ) {
+		$section = onepager()->render()->sectionBlockDataMerge($section);
 		$section['content'] = onepager()->render()->section( $section );
 		$section['style']   = onepager()->render()->style( $section );
 
@@ -23,8 +24,8 @@ function getOnepagerData( $pageId ) {
 
 	return array(
 		'ajaxUrl'    	=> $ajaxUrl,
-		'optionPanel' => $onepagerOptionsPanel->getOptions(),
-		'options'			=> get_option('onepager'),
+		'optionPanel'   => $onepagerOptionsPanel->getOptions(),
+		'options'	    => get_option('onepager'),
 		'page'     		=> 'onepager',
 		'blocks'     => $blocks,
 		'pageId'     => $pageId,

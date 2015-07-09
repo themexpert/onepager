@@ -7,11 +7,11 @@ const AdminStore 		= require('../stores/AdminStore.js');
 const Content  			= require('./Admin/Content.jsx');
 const Tabs  				= require('./Admin/Tabs.jsx');
 
-let Admin = React.createClass({
+let OptionsPanel = React.createClass({
 	mixins: [PureMixin, Reflux.connect(AdminStore)],
 	
 	render(){
-		console.log("rendering Admin");
+		console.log("rendering OptionsPanel");
 
 		return (
 			<div>
@@ -29,4 +29,4 @@ let Admin = React.createClass({
 	}
 });
 
-module.exports = Admin;
+module.exports = OptionsPanel;

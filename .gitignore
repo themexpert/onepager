@@ -6,6 +6,9 @@ Thumbs.db
 # PhpStorm
 .idea
 
+#blocks
+blocks/blocks.cache
+
 # Sublime
 *.sublime-workspace
 *.sublime-project

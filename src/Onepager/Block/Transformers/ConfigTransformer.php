@@ -12,6 +12,7 @@ class ConfigTransformer {
     $default_image = "block.jpg";
     $default_view  = "view.php";
     $default_style = "style.php";
+    $config_file = $file;
 
     //directory path of this block
     $dir        = dirname( $file ) . DIRECTORY_SEPARATOR;
@@ -69,6 +70,7 @@ class ConfigTransformer {
       'image',
       'style_file',
       'view_file',
+      'config_file',
       
       'settings',
       'contents',

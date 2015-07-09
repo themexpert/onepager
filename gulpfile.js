@@ -24,8 +24,8 @@ var config = {
     }
   },
   js: {
-    src: src+'/lithium/*.js',
-    dest: dest + '/js'
+    src: src+'/*.js',
+    dest: dest + '/'
   },
   images: {
     src: src+'/images/**/*',
@@ -44,6 +44,7 @@ var config = {
   watch: {
     src: src+'/**/*.*',
     less: src+'/lithium/**/*.less',
+    js: src+'/*.js',
     tasks: ['build']
   }
 };
@@ -82,10 +83,7 @@ gulp.task('bower', function () {
   return gulp.src(mainBowerFiles())
 
     .pipe(jsFilter)
-    // .pipe(sourcemaps.init())
-    // .pipe(uglify())
-    // .pipe(concat('lib.min.js'))
-    // .pipe(sourcemaps.write())
+    .pipe(uglify())
     .pipe(gulp.dest(config.bower.js))
     .pipe(jsFilter.restore())
 
@@ -96,10 +94,7 @@ gulp.task('bower', function () {
     .pipe(lessFilter.restore())
 
     .pipe(cssFilter)
-    // .pipe(minify())
-    // .pipe(sourcemaps.init())
-    // .pipe(concat('lib.min.css'))
-    // .pipe(sourcemaps.write())
+    .pipe(minify())
     .pipe(gulp.dest(config.bower.css))
     .pipe(cssFilter.restore())
 
@@ -112,10 +107,11 @@ gulp.task('bower', function () {
     .pipe(fontFilter.restore());
 });
 gulp.task('watch', function () {
-  return gulp.watch(config.watch.less, ['less']);
+  gulp.watch(config.watch.less, ['less']);
+  gulp.watch(config.watch.js, ['js']);
 });
 
-gulp.task('default', ['build', 'webpack-watch', 'watch']);
+gulp.task('default', ['build', /*'webpack-watch',*/ 'watch']);
 
 gulp.task('build', ['js', 'fonts', 'bower', 'images', 'less', 'webpack']);
 
@@ -138,7 +134,7 @@ gulp.task('package', ['build'], function(){
   
   output.on('close', function() {
     console.log(archive.pointer() + ' total bytes');
-    console.log('find built package dist/package.zip');
+    console.log('find built package dist/wponepager.zip');
   });
 
   archive.pipe(output);

@@ -3,11 +3,12 @@ namespace ThemeXpert\Onepager;
 
 use Pimple\Container;
 use ThemeXpert\Onepager\Adapters\BaseAdapter;
-use ThemeXpert\Onepager\Block\BlockCollection;
+use ThemeXpert\Onepager\Block\Collection;
 use ThemeXpert\Onepager\Block\BlockManager;
+use ThemeXpert\Onepager\Block\TemplateManager;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
-use ThemeXpert\Providers\Wordpress\OptionsPanel;
+use ThemeXpert\Providers\WordPress\OptionsPanel;
 use ThemeXpert\Providers\Contracts\ApiInterface;
 use ThemeXpert\Providers\Contracts\AssetInterface;
 use ThemeXpert\Providers\Contracts\ContentInterface;
@@ -22,16 +23,22 @@ class Onepager implements OnepagerInterface {
 		$this->adapter   = $adapter;
 		$this->container = $container;
 		$this->setBlockManager();
+		$this->setTemplateManager();
 		$this->setRenderer();
 		$this->setViewProvider();
 	}
 
 	public function setBlockManager() {
 		$this->container['blockManager'] = function () {
-			$blockCollection   = new BlockCollection;
+			$blockCollection   = new Collection;
 			$configTransformer = new ConfigTransformer(new FieldsTransformer);
 
 			return new BlockManager( $configTransformer, $blockCollection );
+		};
+	}
+	public function setTemplateManager() {
+		$this->container['layoutManager'] = function () {
+			return new TemplateManager;
 		};
 	}
 
@@ -122,6 +129,10 @@ class Onepager implements OnepagerInterface {
 
 	public function optionsPanel($menuSlug){
 		return OptionsPanel::getInstance($menuSlug);
+	}
+
+	public function layoutManager(){
+		return $this->container['layoutManager'];
 	}
 
 	public function getOption(){

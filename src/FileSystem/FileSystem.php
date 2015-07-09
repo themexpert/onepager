@@ -19,6 +19,13 @@ class FileSystem {
 		return $folders;
 	}
 
+	public static function files($path){
+		$files = scandir($path);
+		return array_filter($files, function($file){
+			return substr($file, 0, 1) !== ".";
+		});
+	}
+
 	public static function exists( $file ) {
 		return file_exists( $file );
 	}

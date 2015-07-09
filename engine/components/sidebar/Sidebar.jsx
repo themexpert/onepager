@@ -8,7 +8,7 @@ const SectionControls     = require('../edit/SectionControls.jsx');
 const AddToMenu           = require('../menu/AddToMenu.jsx');
 const AppActions          = require('../../actions/AppActions');
 const AdminActions        = require('../../actions/AdminActions');
-
+const SectionTransformer = require('../../lib/SectionTransformer');
 const AppStore            = require('../../stores/AppStore');
 // const PureMixin           = require('../../mixins/PureMixin.js');
 const $s                  = require('string');

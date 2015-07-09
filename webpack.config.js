@@ -4,13 +4,12 @@ var path    = require('path');
 // webpack.config.js
 var config = {
   entry: {
-     dashboard: ['./engine/dashboard.jsx'],
      admin: ['./engine/admin.jsx'],
-     app: ['./engine/app.jsx'],
+     app: ['./engine/app.jsx']
   },
   output: {
     filename: '[name].bundle.js',
-    path: __dirname + '/assets',
+    path: __dirname + '/assets'
   },
   module: {
     loaders: [
