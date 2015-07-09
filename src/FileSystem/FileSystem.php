@@ -21,10 +21,9 @@ class FileSystem {
 
 	public static function files($path){
 		$files = scandir($path);
-
-		return array_map(function($file){
-			return substr($file, 0, 0) !== ".";
-		},$files);
+		return array_filter($files, function($file){
+			return substr($file, 0, 1) !== ".";
+		});
 	}
 
 	public static function exists( $file ) {
