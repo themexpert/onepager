@@ -16,11 +16,11 @@ class TemplateManager {
 
 	public function add( $file, $url ) {
 		$config = json_decode(file_get_contents( $file ), true);
-
 		if(!array_key_exists('screenshot', $config)){
 			$filename = basename($file);
 			$imagename = str_replace('.json', '.png', $filename);
-			$config['screenshot'] = trailingslashit( $url ) + $imagename;
+			$config['screenshot'] = trailingslashit( $url ) . $imagename;
+			$config['id'] = $filename;
 		}
 
 		$this->templates[] = $config;
@@ -28,11 +28,13 @@ class TemplateManager {
 
 	public function loadAll(){
 		foreach($this->paths as $path){
-			$files = FS::files( $path['path'] );
+			$files = array_filter(FS::files( $path['path'] ), function($file){
+				return substr($file, -4, strrpos($file, '.json')) === "json";
+			});
 
 			foreach ( $files as $file ) {
-				$config_file = untrailingslashit($path) . DIRECTORY_SEPARATOR . $file;
-	      $this->add( $config_file, $url );
+				$config_file = untrailingslashit($path['path']) . DIRECTORY_SEPARATOR . $file;
+	      $this->add( $config_file, $path['url'] );
 			}
 		}
 	}

@@ -37,7 +37,7 @@ class Onepager implements OnepagerInterface {
 		};
 	}
 	public function setTemplateManager() {
-		$this->container['templateManager'] = function () {
+		$this->container['layoutManager'] = function () {
 			return new TemplateManager;
 		};
 	}
@@ -129,6 +129,10 @@ class Onepager implements OnepagerInterface {
 
 	public function optionsPanel($menuSlug){
 		return OptionsPanel::getInstance($menuSlug);
+	}
+
+	public function layoutManager(){
+		return $this->container['layoutManager'];
 	}
 
 	public function getOption(){
