@@ -1,10 +1,10 @@
-const React     = require('react');
-const _         = require('underscore');
-const Alert     = require('react-bootstrap/lib/Alert');
-const Button    = require('react-bootstrap/lib/Button');
+const React = require('react');
+const _ = require('underscore');
+const Alert = require('react-bootstrap/lib/Alert');
+const Button = require('react-bootstrap/lib/Button');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const Block     = require('./Block.jsx');
-const Select    = require("../edit/form/Select.jsx");
+const Block = require('./Block.jsx');
+const Select = require("../edit/form/Select.jsx");
 // const AppStore  = require('../../stores/AppStore');
 
 
@@ -28,15 +28,32 @@ let BlockCollection = React.createClass({
   },
 
   render() {
-    console.log("readering blocks");
+    console.log("rendering blocks");
+
     let {blocks} = this.props;
 
-    let groups = _.unique(blocks.reduceRight(function(groups, block){
+    let groups = _.unique(blocks.reduceRight(function (groups, block) {
       return groups.concat(block.groups);
-    }, ['all']));
+    }, [])).sort();
 
+    let groupOrder = [
+      "navbars",
+      "headers",
+      "contents",
+      "portfolios",
+      "teams",
+      "testimonials",
+      "blog",
+      "sliders",
+      "pricings",
+      "footers",
+      "themes"
+    ];
 
-    let groupOptions = groups.reduce(function(o, v) {
+    groups = (_.intersection(groupOrder, groups)).concat(_.difference(groups, _.intersection(groupOrder, groups)));
+    groups.unshift('all');
+
+    let groupOptions = groups.reduce(function (o, v) {
       o[v] = v;
       return o;
     }, {});
@@ -55,20 +72,22 @@ let BlockCollection = React.createClass({
       <div>
         <div className="blocks-nav">
           <Select type="select" ref="group"
-            defaultValue={this.state.group}
-            options={groupOptions} 
-            onChange={this.handleChange} />
+                  defaultValue={this.state.group}
+                  options={groupOptions}
+                  onChange={this.handleChange}/>
 
-          <Button bsStyle='primary' className="btn--back" onClick={this.props.closeBlocks}><span className="fa fa-arrow-left"></span> Back</Button>
+          <Button bsStyle='primary' className="btn--back" onClick={this.props.closeBlocks}>
+            <span className="fa fa-arrow-left"></span> Back
+          </Button>
         </div>
 
         <div>
           {blocks.map((block) => {
-            let active = (this.state.group === "all") || block.groups.indexOf(this.state.group) !==-1;
-            return active ? <Block closeBlocks={this.props.closeBlocks} key={block.slug} block={block} /> : "";
-          } )}
+            let active = (this.state.group === "all") || block.groups.indexOf(this.state.group) !== -1;
+            return active ? <Block closeBlocks={this.props.closeBlocks} key={block.slug} block={block}/> : "";
+          })}
         </div>
-		  </div>
+      </div>
     );
 
   }
