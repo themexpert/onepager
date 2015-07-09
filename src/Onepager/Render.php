@@ -25,7 +25,9 @@ class Render
 
     public function section($section)
     {
+        if(!(is_array($section) && isset($section['slug']))) return;
         $block = $this->blockManager->get($section['slug']);
+        if(!$block) return;
 
         //throw better exceptions
         if (!$block) {
@@ -49,7 +51,9 @@ class Render
 
     public function sectionBlockDataMerge($section)
     {
+        if(!(is_array($section) && isset($section['slug']))) return;
         $block = $this->blockManager->get($section['slug']);
+        if(!$block) return;
 
         foreach (['settings', 'contents', 'styles'] as $tab) {
             $sectionTab = &$section[$tab];
