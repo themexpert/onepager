@@ -13,22 +13,24 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-  die;
+if (!defined('WPINC')) {
+    die;
 }
 
-define( 'ONEPAGER_URL', plugins_url( '/', __FILE__ ) );
-define( 'ONEPAGER_PATH', dirname(__FILE__));
+// load_plugin_textdomain( 'p3-profiler', false, plugin_basename( P3_PATH ) . '/languages/' );
+define('ONEPAGER_URL', plugins_url('/', __FILE__));
+define('ONEPAGER_PATH', dirname(__FILE__));
 
 //require autoloading files
-require( ONEPAGER_PATH.'/vendor/autoload.php' );
-require( ONEPAGER_PATH.'/src/functions.php' );
-require( ONEPAGER_PATH.'/app/bootstrap.php' );
-require( ONEPAGER_PATH.'/app/routes.php' ); 
-require( ONEPAGER_PATH.'/app/assets.php' );
-require( ONEPAGER_PATH.'/app/settings.php' );
-require( ONEPAGER_PATH.'/app/frontend.php' );
-require( ONEPAGER_PATH.'/app/dashbboard.php' );
+require(ONEPAGER_PATH . '/src/functions.php');
+require(ONEPAGER_PATH . '/vendor/autoload.php');
+require(ONEPAGER_PATH . '/app/bootstrap.php');
+require(ONEPAGER_PATH . '/app/routes.php');
+require(ONEPAGER_PATH . '/app/assets.php');
+require(ONEPAGER_PATH . '/app/settings.php');
+require(ONEPAGER_PATH . '/app/frontend.php');
+require(ONEPAGER_PATH . '/app/metabox.php');
+require(ONEPAGER_PATH . '/app/dashboard.php');
 
 
 do_action('onepager_init');
