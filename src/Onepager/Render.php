@@ -5,119 +5,130 @@ use ThemeXpert\FileSystem\FileSystem;
 use ThemeXpert\Onepager\Block\BlockManager;
 use ThemeXpert\View\View;
 
-class Render {
-	protected $blockManager;
-	protected $view;
+class Render
+{
+    protected $blockManager;
+    protected $view;
 
-	public function __construct( View $view, BlockManager $blockManager ) {
-		$this->blockManager = $blockManager;
-		$this->view         = $view;
-	}
+    public function __construct(View $view, BlockManager $blockManager)
+    {
+        $this->blockManager = $blockManager;
+        $this->view = $view;
+    }
 
-	public function sections( $sections ) {
-		foreach ( $sections as $section ) {
-			echo $this->section( $section );
-		}
-	}
+    public function sections($sections)
+    {
+        foreach ($sections as $section) {
+            echo $this->section($section);
+        }
+    }
 
-	public function section( $section ) {
-		$block = $this->blockManager->get( $section['slug'] );
+    public function section($section)
+    {
+        if(!(is_array($section) && isset($section['slug']))) return;
+        $block = $this->blockManager->get($section['slug']);
+        if(!$block) return;
 
-		//throw better exceptions
-		if ( ! $block ) {
-			//throw new \Exception( "Block Does not exist" );
-      return null;
-		}
+        //throw better exceptions
+        if (!$block) {
+            //throw new \Exception( "Block Does not exist" );
+            return null;
+        }
 
-		$view_file = array_key_exists( 'view_file', $block ) ? $block['view_file'] : null;
+        $view_file = array_key_exists('view_file', $block) ? $block['view_file'] : null;
 
-		//throw better exceptions
-		if ( ! FileSystem::exists( $view_file ) ) {
-			//throw new \Exception( "Block View Does not exist" );
-      return null;
-		}
+        //throw better exceptions
+        if (!FileSystem::exists($view_file)) {
+            //throw new \Exception( "Block View Does not exist" );
+            return null;
+        }
 
-		$section = $this->sectionBlockDataMerge($section);
+        $section = $this->sectionBlockDataMerge($section);
 
-		
-		return $this->view->make( $view_file, $section );
-	}
 
-	public function sectionBlockDataMerge($section){
-		$block = $this->blockManager->get( $section['slug'] );
+        return $this->view->make($view_file, $section);
+    }
 
-		foreach(['settings', 'contents', 'styles'] as $tab){
-			$sectionTab = &$section[$tab];
-			$blockTab 	= $block[$tab];
+    public function sectionBlockDataMerge($section)
+    {
+        if(!(is_array($section) && isset($section['slug']))) return;
+        $block = $this->blockManager->get($section['slug']);
+        if(!$block) return;
 
-			array_walk($blockTab, function($control) use(&$sectionTab) {
-				if($control['type'] === "divider") return;
-				$type = $control['type'];
-				$name = $control['name'];
+        foreach (['settings', 'contents', 'styles'] as $tab) {
+            $sectionTab = &$section[$tab];
+            $blockTab = $block[$tab];
 
-				switch ($control['type']) {
-					case 'repeater':
-						$controlFields = &$control['fields'];
-						//if a new control is added which is not persisted in database it could throw an error
-						//so we are merging them to make it like persisted
-						$sectionTab[$name] = array_key_exists($name, $sectionTab) ? $sectionTab[$name]: array_map(function($rGroup){
-							return array_reduce($rGroup, function($carry, $control){
-								$carry[$control['name']] = $control['value'];
-								return $carry;
-							}, []);
-						}, $controlFields);
+            array_walk($blockTab, function ($control) use (&$sectionTab) {
+                if ($control['type'] === "divider") return;
+                $type = $control['type'];
+                $name = $control['name'];
 
-						//now if a new control is added to the repeater
-						// if(count($sectionTab[$name]) < count($controlFields)){
-						$rGroupDataStructure = $controlFields[0];
-						$rGroupDataStructure = array_reduce($rGroupDataStructure, function($carry, $control){
-							$carry[$control['name']] = $control['value'];
-							return $carry;
-						}, []);
+                switch ($control['type']) {
+                    case 'repeater':
+                        $controlFields = &$control['fields'];
+                        //if a new control is added which is not persisted in database it could throw an error
+                        //so we are merging them to make it like persisted
+                        $sectionTab[$name] = array_key_exists($name, $sectionTab) ? $sectionTab[$name] : array_map(function ($rGroup) {
+                            return array_reduce($rGroup, function ($carry, $control) {
+                                $carry[$control['name']] = $control['value'];
+                                return $carry;
+                            }, []);
+                        }, $controlFields);
 
-						foreach($sectionTab[$name] as &$rGroup){
-							$rGroup = array_merge($rGroupDataStructure, $rGroup);
-						}
+                        //now if a new control is added to the repeater
+                        // if(count($sectionTab[$name]) < count($controlFields)){
+                        $rGroupDataStructure = $controlFields[0];
+                        $rGroupDataStructure = array_reduce($rGroupDataStructure, function ($carry, $control) {
+                            $carry[$control['name']] = $control['value'];
+                            return $carry;
+                        }, []);
 
-						break;
-					default:
-						$sectionTab[$name] = array_key_exists($name, $sectionTab) ? $sectionTab[$name]: $control['value'];
-						break;
-				}
-			});
-		}
+                        foreach ($sectionTab[$name] as &$rGroup) {
+                            $rGroup = array_merge($rGroupDataStructure, $rGroup);
+                        }
 
-		return $section;
-	}
+                        break;
+                    default:
+                        $sectionTab[$name] = array_key_exists($name, $sectionTab) ? $sectionTab[$name] : $control['value'];
+                        break;
+                }
+            });
+        }
 
-	public function styles( $sections ) {
-		foreach ( $sections as $section ) {
-			echo $this->style( $section );
-		}
-	}
+        return $section;
+    }
 
-	public function style( $section ) {
-		$block = $this->blockManager->get( $section['slug'] );
+    public function styles($sections)
+    {
+        foreach ($sections as $section) {
+            echo $this->style($section);
+        }
+    }
 
-		//throw better exceptions
-		if ( ! $block ) {
-			//throw new \Exception( "Block Does not exist" );
-      return null;
-		}
+    public function style($section)
+    {
+        $block = $this->blockManager->get($section['slug']);
 
-		$style_file = array_key_exists( 'style_file', $block ) ? $block['style_file'] : null;
+        //throw better exceptions
+        if (!$block) {
+            //throw new \Exception( "Block Does not exist" );
+            return null;
+        }
 
-		//throw better exceptions
-		if ( ! FileSystem::exists( $style_file ) ) {
-      //throw new \Exception( "Block style Does not exist" );
-			return null;
-		}
+        $style_file = array_key_exists('style_file', $block) ? $block['style_file'] : null;
 
-		//better section styles
-		$style = "<style id='style-{$section['id']}'>";
-		$style .= $this->view->make( $style_file, $section );
-		$style .= "</style>";
+        //throw better exceptions
+        if (!FileSystem::exists($style_file)) {
+            //throw new \Exception( "Block style Does not exist" );
+            return null;
+        }
 
-		return $style;
-	}
+        //better section styles
+        $style = "<style id='style-{$section['id']}'>";
+        $style .= $this->view->make($style_file, $section);
+        $style .= "</style>";
+
+        return $style;
+    }
 }

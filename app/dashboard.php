@@ -1,25 +1,63 @@
 <?php
 
-add_action('admin_menu', function(){
-	$icon = onepager()->url( 'assets/images/dashicon-onepager.svg');
+add_action('admin_menu', 'tx_add_dashboard_page');
+add_action('admin_menu', 'tx_add_tutorials_page');
+add_action('admin_menu', 'tx_rename_onepager_dashboard_submenu_name');
+add_action('admin_enqueue_scripts', 'tx_add_onepager_dashboard_scripts');
+tx_add_onepager_options_page();
 
-	$template = function(){
-		echo "<div id='dashboard-mount'></div>";
-	};
-	
-	add_menu_page(
-		'Onepager', 
-		'Onepager', 
-		'edit_theme_options', 
-		'onepager-dashboard', 
-		$template, 
-		$icon,
-		4
-	);
-});
+function tx_add_dashboard_page()
+{
+  $icon = onepager()->url('assets/images/dashicon-onepager.svg');
 
-add_action( 'admin_enqueue_scripts', function(){
-	$dashboard = endsWith(get_current_screen()->id, "_page_onepager-dashboard");
-	if(!$dashboard) return;
-});
+  $template = function () {
+    include __DIR__ . "/views/dashboard-page.php";
+  };
 
+  add_menu_page(
+    'Onepager Dashboard',
+    'Onepager',
+    'edit_theme_options',
+    'onepager-dashboard',
+    $template,
+    $icon,
+    4
+  );
+}
+
+function tx_add_tutorials_page()
+{
+  $template = function () {
+    include __DIR__ . "/views/tutorial-page.php";
+  };
+
+  add_submenu_page(
+    'onepager-dashboard',
+    'Onepager Tutorial',
+    'Tutorial',
+    'edit_theme_options',
+    'onepager-tutorial',
+    $template,
+    4
+  );
+}
+
+function tx_add_onepager_options_page()
+{
+  onepager()->optionsPanel("onepager")->addSubMenuPage(
+    "onepager-dashboard",
+    "Onepager Global Options",
+    "Global Options"
+  );
+}
+
+function tx_rename_onepager_dashboard_submenu_name(){
+    global $submenu;
+    $submenu['onepager-dashboard'][0][0] = __('Dashboard', 'onepager');
+}
+
+function tx_add_onepager_dashboard_scripts()
+{
+  $dashboard = endsWith(get_current_screen()->id, "_page_onepager-dashboard");
+  if (!$dashboard) return;
+}
