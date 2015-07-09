@@ -138,7 +138,7 @@ gulp.task('package', ['build'], function(){
   
   output.on('close', function() {
     console.log(archive.pointer() + ' total bytes');
-    console.log('find built package dist/package.zip');
+    console.log('find built package dist/wponepager.zip');
   });
 
   archive.pipe(output);
