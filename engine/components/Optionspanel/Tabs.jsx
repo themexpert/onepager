@@ -1,6 +1,6 @@
 const React 				= require('react');
 const PureMixin 		= require('react/lib/ReactComponentWithPureRenderMixin');
-const AdminActions 	= require('../../actions/AdminActions.js');
+const AdminActions 	= require('../../actions/OptionsPanelActions.js');
 
 let Tabs = React.createClass({
 	mixins: [PureMixin],
@@ -8,7 +8,7 @@ let Tabs = React.createClass({
 	handleTabChange(event){
 		AdminActions.changeTab(parseInt(event.target.dataset.index));
 	},
-	
+
 	render(){
 		console.log("rendering Tabs");
 		let tabs = this.props.tabs;
