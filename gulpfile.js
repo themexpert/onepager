@@ -142,9 +142,9 @@ gulp.task('package-build', function(cb){
 });
 
 gulp.task('package', ['package-build'], function(){
-  var plugin = 'wponepager';
+  var plugin = 'onepager';
   var dirs  = ['app', 'assets', 'blocks', 'src', 'vendor'];
-  var files = ['wponepager.php', 'uninstall.php'];
+  var files = ['onepager.php', 'uninstall.php'];
 
   generateArchive(plugin, dirs, files);
 });

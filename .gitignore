@@ -5,12 +5,13 @@ Thumbs.db
 
 # PhpStorm
 .idea
+.phpintel
 
 #blocks
 blocks/blocks.cache
 
 #package
-wponepager.zip
+onepager.zip
 
 # Sublime
 *.sublime-workspace
