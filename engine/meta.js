@@ -136,8 +136,7 @@
 
         jQuery.post(ajaxurl, data, function (res) {
             if (res && res.success) {
-                alert("layout inserted");
-                //location.href=res.url;
+                location.href = onepager.livemode;
             } else {
                 alert("failed to insert layout ");
             }
