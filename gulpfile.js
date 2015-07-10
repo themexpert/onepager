@@ -143,7 +143,7 @@ gulp.task('package-build', function(cb){
 
 gulp.task('package', ['package-build'], function(){
   var plugin = 'onepager';
-  var dirs  = ['app', 'assets', 'blocks', 'src', 'vendor'];
+  var dirs  = ['app', 'assets', 'blocks', 'src', 'vendor', 'presets'];
   var files = ['onepager.php', 'uninstall.php'];
 
   generateArchive(plugin, dirs, files);
