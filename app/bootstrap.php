@@ -8,20 +8,13 @@
 * 4. register blocks
 * 5. support svg upload mime
 * 6. add onepage templates
-* 
+*
 **/
 
 use Pimple\Container;
 use ThemeXpert\Onepager\Adapters\WordPress;
 use ThemeXpert\Onepager\Onepager;
 use Whoops\Handler\PrettyPageHandler;
-
-if (WP_DEBUG) {
-    // $whoops = new \Whoops\Run;
-    // $whoops->pushHandler(new PrettyPageHandler);
-    // $whoops->register();
-}
-
 
 function onepager()
 {

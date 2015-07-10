@@ -3,7 +3,6 @@ const PureMixin  = require('react/lib/ReactComponentWithPureRenderMixin');
 const Tab        = require('../../shared/Tab.jsx');
 const ODataStore = require('../../../lib/ODataStore.js');
 
-require('./footer.less');
 
 let Footer = React.createClass({
   mixins: [PureMixin],
