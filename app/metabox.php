@@ -17,7 +17,7 @@ function tx_add_onepager_metabox(){
 
     add_meta_box(
         'onepager-metabox',
-        __( 'Onepager', 'onepager' ),
+        __( 'OnePager Templates', 'onepager' ),
         $template,
         'page'
     );
