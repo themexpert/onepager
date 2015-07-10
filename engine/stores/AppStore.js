@@ -1,20 +1,18 @@
 "use strict";
 
-const $                   = jQuery; //jshint ignore: line
-const _                   = require('underscore');
-const assign              = require('object-assign');
-const AppDispatcher       = require('../dispatchers/AppDispatcher');
-const Constants           = require('../constants/AppConstants');
-const SectionTransformer  = require('../lib/SectionTransformer');
-const ShouldSync          = require('../lib/ShouldSync');
-const Activity            = require('../lib/Activity');
-const ODataStore          = require('./ODataStore');
-const BaseStore           = require('./BaseStore')    ;
-const SyncService         = require('./SyncService');
+const $ = jQuery; //jshint ignore: line
+const _                  = require('underscore');
+const assign             = require('object-assign');
+const AppDispatcher      = require('../dispatchers/AppDispatcher');
+const Constants          = require('../constants/AppConstants');
+const SectionTransformer = require('../lib/SectionTransformer');
+const ShouldSync         = require('../lib/ShouldSync');
+const Activity           = require('../lib/Activity');
+const ODataStore         = require('../lib/ODataStore');
+const BaseStore          = require('./BaseStore');
+const SyncService        = require('../lib/AppSyncService');
 
 require('../lib/_mixins');
-
-
 
 
 // data storage
@@ -28,26 +26,26 @@ let _savedSections      = _.copy(_sections);
 let AUTO_SAVE_DELAY     = 500;
 
 // di
-let shouldLiveSectionsSync  = ShouldSync(_sections, 'sections'); //jshint ignore:line
-let shouldSectionsSync      = ShouldSync(_sections, 'sections'); //jshint ignore:line
-let inactive                = Activity(AUTO_SAVE_DELAY); //jshint ignore:line
-let syncService             = SyncService(ODataStore.pageId, inactive, shouldSectionsSync); //jshint ignore:line
-let liveService             = SyncService(null, inactive, shouldLiveSectionsSync); //jshint ignore:line
+let shouldLiveSectionsSync = ShouldSync(_sections, 'sections'); //jshint ignore:line
+let shouldSectionsSync = ShouldSync(_sections, 'sections'); //jshint ignore:line
+let inactive = Activity(AUTO_SAVE_DELAY); //jshint ignore:line
+let syncService = SyncService(ODataStore.pageId, inactive, shouldSectionsSync); //jshint ignore:line
+let liveService = SyncService(null, inactive, shouldLiveSectionsSync); //jshint ignore:line
 
 
 // function to activate a section
-function setActiveSection(index){
+function setActiveSection(index) {
   _activeSectionIndex = index;
 }
 
 // function to add a section
 function addSection(section) {
   let sectionIndex = _sections.length; //isnt it :p
-  
+
   //its a row section to need to uni(quei)fy
   section = SectionTransformer.unifySection(section);
   _sections.push(section);
-  
+
   liveService.updateSection(_sections, sectionIndex);
 
   setActiveSection(sectionIndex);
@@ -55,24 +53,24 @@ function addSection(section) {
 
 
 // function to update a section
-function updateSection(sectionIndex, section){
+function updateSection(sectionIndex, section) {
   //immutable please?
-  _sections[sectionIndex] = section; 
+  _sections[sectionIndex] = section;
 
   liveService.updateSection(_sections, sectionIndex);
 }
 
 // function to duplicate a section
-function duplicateSection(index){
+function duplicateSection(index) {
   let sectionIndex = _sections.length; //isnt it :p
-  
+
   //its a row section to need to uni(quei)fy
   let section = SectionTransformer.unifySection(_sections[index], true);
-  
-  
-  _sections = _.pushAt(_.copy(_sections), index+1, section);
 
-  
+
+  _sections = _.pushAt(_.copy(_sections), index + 1, section);
+
+
   liveService.updateSection(_sections, sectionIndex);
 
   setActiveSection(sectionIndex);
@@ -80,7 +78,7 @@ function duplicateSection(index){
 
 
 // function to remove section
-function removeSection(index){
+function removeSection(index) {
   //immutable please
   _sections.splice(index, 1);
 
@@ -90,13 +88,13 @@ function removeSection(index){
   setActiveSection(null);
 }
 
-function sectionSynced(index, res){
+function sectionSynced(index, res) {
   let section;
-  
-  _sections[index]  = _.copy(_sections[index]);
-  section           = _sections[index];
 
-  section.content   = SectionTransformer.getLiveModeHTML(section.livemode, res.content);
+  _sections[index] = _.copy(_sections[index]);
+  section          = _sections[index];
+
+  section.content = SectionTransformer.getLiveModeHTML(section.livemode, res.content);
   SectionTransformer.appendStyleToDOM(section.id, res.style);
 }
 
@@ -119,8 +117,8 @@ let AppStore = assign({}, BaseStore, {
 
   save(){
     let updated = syncService.rawUpdate(_sections);
-    
-    updated.then(()=>{
+
+    updated.then(()=> {
       _savedSections = _.copy(_sections);
       AppStore.emitChange();
     });
@@ -166,10 +164,10 @@ let AppStore = assign({}, BaseStore, {
   },
 
   // register store with dispatcher, allowing actions to flow through
-  dispatcherIndex: AppDispatcher.register(function(payload) {
+  dispatcherIndex: AppDispatcher.register(function (payload) {
     let action = payload.action;
 
-    switch(action.type) {
+    switch (action.type) {
       case Constants.ActionTypes.ADD_SECTION:
         // NOTE: if this action needs to wait on another store:
         // AppDispatcher.waitFor([OtherStore.dispatchToken]);

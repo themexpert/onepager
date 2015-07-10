@@ -1,10 +1,10 @@
-const React = require('react');
-const _ = require('underscore');
-const Alert = require('react-bootstrap/lib/Alert');
-const Button = require('react-bootstrap/lib/Button');
+const React     = require('react');
+const _         = require('underscore');
+const Alert     = require('react-bootstrap/lib/Alert');
+const Button    = require('react-bootstrap/lib/Button');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const Block = require('./Block.jsx');
-const Select = require("../../shared/form/Select.jsx");
+const Block     = require('./Block.jsx');
+const Select    = require("../../shared/form/Select.jsx");
 // const AppStore  = require('../../stores/AppStore');
 
 

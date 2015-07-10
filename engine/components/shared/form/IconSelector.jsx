@@ -14,8 +14,8 @@ let IconSelector = React.createClass({
   },
 
   componentDidMount() {
-    let buttonEl  = dom(this.refs.select);
-    let inputEl   = dom(this.refs.input);
+    let buttonEl = dom(this.refs.select);
+    let inputEl  = dom(this.refs.input);
 
     $(buttonEl).iconSelector({input: inputEl});
     $(inputEl).on("icon:inserted", this.props.onChange);
@@ -27,7 +27,7 @@ let IconSelector = React.createClass({
   },
 
   render() {
-    let classes = "form-control icon-input "+this.props.className;
+    let classes = "form-control icon-input " + this.props.className;
 
     return (
       <div className="form-group">

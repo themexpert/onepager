@@ -16,19 +16,19 @@ let WpMediaFrame = React.createClass({
     let opMediaFrame;
 
     // Bind to our click event in order to open up the new media experience.
-    $(btn).click(function(e){
+    $(btn).click(function (e) {
       // Prevent the default action from occurring.
       e.preventDefault();
 
       // If the frame already exists, re-open it.
-      if ( opMediaFrame ) {
+      if (opMediaFrame) {
         opMediaFrame.open();
         return;
       }
 
       opMediaFrame = wp.media.frames.opMediaFrame = wp.media({});
 
-      opMediaFrame.on('select', function(){
+      opMediaFrame.on('select', function () {
         // Grab our attachment selection and construct a JSON representation of the model.
         let mediaAttachment = opMediaFrame.state().get('selection').first().toJSON();
 
@@ -42,10 +42,10 @@ let WpMediaFrame = React.createClass({
   },
 
   componentDidMount() {
-    let buttonEl  = React.findDOMNode(this.refs.select);
-    let inputEl   = React.findDOMNode(this.refs.input);
+    let buttonEl = React.findDOMNode(this.refs.select);
+    let inputEl  = React.findDOMNode(this.refs.input);
 
-    this.wpMedia(buttonEl, imageSrc=>{
+    this.wpMedia(buttonEl, imageSrc=> {
       $(inputEl).val(imageSrc);
       this.props.onChange();
     });
@@ -63,14 +63,14 @@ let WpMediaFrame = React.createClass({
 
 
   render() {
-    let classes = this.props.className+" form-control image-input";
+    let classes = this.props.className + " form-control image-input";
 
     return (
-        <div className="form-group">
-          {this.props.label ? <label>{this.props.label}</label> : null }
+      <div className="form-group">
+        {this.props.label ? <label>{this.props.label}</label> : null }
 
-          <div className="input-group">
-            <input {...this.props} type="text" className={classes} ref="input"/>
+        <div className="input-group">
+          <input {...this.props} type="text" className={classes} ref="input"/>
             <span className="input-group-btn">
               <button className="btn btn-primary" ref="select" type="button">
                 <span className="fa fa-picture-o"></span> image
@@ -79,10 +79,10 @@ let WpMediaFrame = React.createClass({
                 <span className="fa fa-undo"></span>
               </button>
             </span>
-          </div>
-
-          <div className="media-preview"></div>
         </div>
+
+        <div className="media-preview"></div>
+      </div>
     );
   }
 });

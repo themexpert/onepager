@@ -2,52 +2,100 @@
 // ==========================================
 @navbar-btn-radius : 0px;
 
-body{ position: relative; .transition(all .25s ease-out); }
+body {
+  position: relative;
+  .transition(all .25s ease-out);
+}
 
 /* ==========================================
    Blocks: Common
  ============================================ */
-.title-sm{ font-size: 2em; }
-.title-md{ font-size: 3.5em; }
-.title-lg{ font-size: 5em; }
+.title-sm {
+  font-size: 2em;
+}
+
+.title-md {
+  font-size: 3.5em;
+}
+
+.title-lg {
+  font-size: 5em;
+}
 
 // Section
-.op-section:not(.navbar):not(.header) { 
-	padding: 80px 0; 
+.op-section:not(.navbar):not(.header) {
+  padding: 80px 0;
 }
-.op-section{
-	// Section title
-	.section-title{ font-weight: bold; font-size: 3em; }
-	// Subtitle(aka desc) and media objects
-	> .desc, 
-	> .media p { font-size: 1.143em; }
+
+.op-section {
+  // Section title
+  .section-title {
+    font-weight: bold;
+    font-size: 3em;
+  }
+  // Subtitle(aka desc) and media objects
+  > .desc,
+  > .media p {
+    font-size: 1.143em;
+  }
 }
 
 // Section + Button
-.op-section .btn{ border: 0;}
+.op-section .btn {
+  border: 0;
+}
 
 // Utilities
 // -------------------------------------------
-.pad-right-big{ padding-right: 60px; }
-.pad-left-big{ padding-left: 60px; }
+.pad-right-big {
+  padding-right: 60px;
+}
+
+.pad-left-big {
+  padding-left: 60px;
+}
 
 // Social icons based on wildcard slector
 // -------------------------------------------
-.social-links{
-	> a{ font-family: FontAwesome; display: inline-block; text-decoration: none; margin: 0 5px; }
-	> a[href*='facebook.com']:before{ content : '\f09a'; }
-	> a[href*='twitter.com']:before{ content : '\f099'; }
-	> a[href*='linkedin.com']:before{ content : '\f0e1'; }
-	> a[href*='plus.google.com']:before{ content : '\f0d5'; }
-	// Design Community
-	> a[href*='behance.net']:before{ content : '\f1b4'; }
-	> a[href*='dribbble.com']:before{ content : '\f17d'; }
-	> a[href*='flickr.com']:before{ content : '\f16e'; }
-	// Coding Community
-	> a[href*='github.com']:before{ content : '\f09b'; }
-	> a[href*='codepen.io']:before{ content : '\f1cb'; }
+.social-links {
+  > a {
+    font-family: FontAwesome;
+    display: inline-block;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  > a[href*='facebook.com']:before {
+    content: '\f09a';
+  }
+  > a[href*='twitter.com']:before {
+    content: '\f099';
+  }
+  > a[href*='linkedin.com']:before {
+    content: '\f0e1';
+  }
+  > a[href*='plus.google.com']:before {
+    content: '\f0d5';
+  }
+  // Design Community
+  > a[href*='behance.net']:before {
+    content: '\f1b4';
+  }
+  > a[href*='dribbble.com']:before {
+    content: '\f17d';
+  }
+  > a[href*='flickr.com']:before {
+    content: '\f16e';
+  }
+  // Coding Community
+  > a[href*='github.com']:before {
+    content: '\f09b';
+  }
+  > a[href*='codepen.io']:before {
+    content: '\f1cb';
+  }
 
 }
+
 /* ==========================================
    Blocks: Navbar
  ============================================ */
@@ -55,100 +103,166 @@ body{ position: relative; .transition(all .25s ease-out); }
 /*
 	Remvoe BS navbar margin
 */
-.navbar{ margin-bottom: 0; border : 0; }
+.navbar {
+  margin-bottom: 0;
+  border: 0;
+}
 
 /*
 	Default height for Navbar 1
 */
 .navbar-1,
-.navbar-3{ height: 60px; }
+.navbar-3 {
+  height: 60px;
+}
 
 /*
 	Make the navbar brand less paddable
 */
-.navbar-brand{ padding-top: 5px; padding-bottom: 5px; }
+.navbar-brand {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
 /*
 	Make navbar vertically center
 */
-.navbar-nav{ margin-top: 5px; }
+.navbar-nav {
+  margin-top: 5px;
+}
 
 /*
 	Adjust navbar-button vertical alignment and give space to right
 */
-.navbar-btn{ margin-top: 13px; margin-right: 0; display: block; .border-radius( @navbar-btn-radius ); }
+.navbar-btn {
+  margin-top: 13px;
+  margin-right: 0;
+  display: block;
+  .border-radius(@navbar-btn-radius);
+}
 
 /*
 	Affix Enabled
 */
-.navbar.affix{ width: 100%; border-bottom: 1px solid #eee; }
-.navbar.affix .navbar-nav{ margin-top: 0; }
-.op-build-active .navbar.affix{ width: 77%; }
+.navbar.affix {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar.affix .navbar-nav {
+  margin-top: 0;
+}
+
+.op-build-active .navbar.affix {
+  width: 77%;
+}
 
 /*
 	Responsive Mobile first style
 */
-@media (min-width: @screen-sm-min) { 
-	/*
-	Turn off the hover background
-	*/
-	.nav > li > a:hover, 
-	.nav > li > a:focus { background-color: transparent; }
+@media (min-width: @screen-sm-min) {
+  /*
+    Turn off the hover background
+    */
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    background-color: transparent;
+  }
 
-	.navbar-btn{ display: inline-block;} 
+  .navbar-btn {
+    display: inline-block;
+  }
 }
 
 /* OFF CANVAS MENU
 -------------------------------------------------- */
-.offcanvas-menu { 
-	position: fixed; top: 0; bottom: 0; right: -20%;  
-	width: 20%;
-	.transition(all .25s ease-in-out); 
+.offcanvas-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -20%;
+  width: 20%;
+  .transition(all .25s ease-in-out);
 }
-.offcanvas-active { right: 20%; }
+
+.offcanvas-active {
+  right: 20%;
+}
+
 // .offcanvas-menu{ display: none; }
 
-.offcanvas-active .offcanvas-menu { right: 0; }
+.offcanvas-active .offcanvas-menu {
+  right: 0;
+}
 
-.offcanvas-menu .nav { margin: 40px 0 0; }
-.offcanvas-menu .nav li { float: none; }
+.offcanvas-menu .nav {
+  margin: 40px 0 0;
+}
+
+.offcanvas-menu .nav li {
+  float: none;
+}
 
 .offcanvas-menu .nav > li > a:hover,
 .offcanvas-menu .nav > li > a:focus,
-.offcanvas-menu .nav > li.active > a{ background: rgba(0,0,0,0.5); color: #fff; }
+.offcanvas-menu .nav > li.active > a {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
 
-.offcanvas-trigger{ margin: 8px; }
-.offcanvas-close{ font-size: 20px; color: #FFF; margin-right: 10px; margin-top: 10px; }
+.offcanvas-trigger {
+  margin: 8px;
+}
+
+.offcanvas-close {
+  font-size: 20px;
+  color: #FFF;
+  margin-right: 10px;
+  margin-top: 10px;
+}
 
 // Build mode excetion
-.op-build-active.offcanvas-active{ right: 15%; } // Reduce right value becaus we are in build mode
-.op-build-active .offcanvas-menu{ width: 15%; }
+.op-build-active.offcanvas-active {
+  right: 15%;
+}
+
+// Reduce right value becaus we are in build mode
+.op-build-active .offcanvas-menu {
+  width: 15%;
+}
 
 /* ==========================================
    Blocks: Header
  ============================================ */
 
-
-
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
 /* Carousel base class */
-.carousel {  }
+.carousel {
+}
 
 /* Since positioning the image, we need to help out the caption */
-.carousel-caption { z-index: 10; }
+.carousel-caption {
+  z-index: 10;
+}
 
 /* Declare heights because of positioning of img element */
-.carousel .item { }
+.carousel .item {
+}
+
 .carousel-inner > .item > .slide-image {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   min-width: 100%;
 }
-.carousel-inner > .item .carousel-caption{
-  top: 0; bottom: 0;
-  left: 0; right: 0;
+
+.carousel-inner > .item .carousel-caption {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 /* ==========================================
@@ -160,19 +274,32 @@ body{ position: relative; .transition(all .25s ease-out); }
 */
 .content-1,
 .content-4,
-.content-5{
-	.btn{ margin-top: 20px; border-radius: 0px; .transition(all 0.2s linear); }
-} 
+.content-5 {
+  .btn {
+    margin-top: 20px;
+    border-radius: 0px;
+    .transition(all 0.2s linear);
+  }
+}
 
 /* ==========================================
    Blocks: Portfolios
  ============================================ */
-.portfolios figure { margin-top: 15px; margin-bottom: 15px; }
+.portfolios figure {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 
- /* ==========================================
-   Blocks: Blogs
- ============================================ */
-.blogs .row { margin-top: 30px; }
-.blog-1{
-	.title{ margin-top: 0; margin-bottom: 1rem; }
+/* ==========================================
+  Blocks: Blogs
+============================================ */
+.blogs .row {
+  margin-top: 30px;
+}
+
+.blog-1 {
+  .title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
 }

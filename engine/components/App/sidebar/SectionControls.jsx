@@ -1,12 +1,12 @@
 const React       = require('react');
 const _           = require('underscore');
-const Divider     = require('./../../shared/form/Divider.jsx');
-const Input       = require('./../../shared/form/Input.jsx');
-const RepeatInput = require('./../../shared/form/RepeatInput.jsx');
-const Repeater    = require('./../../shared/repeater/Repeater.jsx');
+const Divider     = require('../../shared/form/Divider.jsx');
+const Input       = require('../../shared/form/Input.jsx');
+const RepeatInput = require('../../shared/form/RepeatInput.jsx');
+const Repeater    = require('../../shared/repeater/Repeater.jsx');
 const PureMixin   = require('../../../mixins/PureMixin.js');
-const Tab         = require('./../../shared/Tab.jsx');
-const TabPane     = require('./../../shared/TabPane.jsx');
+const Tab         = require('../../shared/Tab.jsx');
+const TabPane     = require('../../shared/TabPane.jsx');
 
 let SectionControls = React.createClass({
 //  mixins: [PureMixin],
@@ -17,13 +17,13 @@ let SectionControls = React.createClass({
   },
 
   update(tabName){
-    let controls  = _.copy(this.props.sectionSettings[tabName]);
+    let controls = _.copy(this.props.sectionSettings[tabName]);
 
-    controls = controls.map(control=>{
-      let ref = this.refs[control.ref];
+    controls = controls.map(control=> {
+      let ref  = this.refs[control.ref];
       let type = control.type;
 
-      switch(type){
+      switch (type) {
         case "divider":
           //we do not need to compute anything for a divider
           break;
@@ -43,7 +43,7 @@ let SectionControls = React.createClass({
   },
 
   updateControl(tabName, controlIndex, key, value){
-    let contentControls  = _.copy(this.props.sectionSettings[tabName]);
+    let contentControls = _.copy(this.props.sectionSettings[tabName]);
 
     contentControls[controlIndex][key] = value;
 
@@ -57,49 +57,49 @@ let SectionControls = React.createClass({
     let {sectionIndex, sectionSettings} = this.props;
 
 
-    let getControlsHTML = (tabName, controls)=>{
-      return controls.map((control, ii)=>{
+    let getControlsHTML = (tabName, controls)=> {
+      return controls.map((control, ii)=> {
         let props = {
-          onChange: this.update.bind(this, tabName),
-          options: control,
-          ref: control.ref,
-          id: control.ref,
-          key: control.ref,
+          onChange    : this.update.bind(this, tabName),
+          options     : control,
+          ref         : control.ref,
+          id          : control.ref,
+          key         : control.ref,
           sectionIndex: sectionIndex,
         };
 
         let type = control.type;
 
-        if(_.isArray(control.value)){
+        if (_.isArray(control.value)) {
           type = 'repeat-input';
         }
 
-        switch(type){
+        switch (type) {
           case "repeat-input":
             return <RepeatInput updateControl={this.updateControl.bind(this, tabName, ii)} {...props} />;
           case "divider":
-            return <Divider key={sectionIndex+"-"+ii} label={control.label} />;
+            return <Divider key={sectionIndex+"-"+ii} label={control.label}/>;
           case "repeater":
             let updateControl = this.updateControl.bind(this, tabName, ii);
             return <Repeater updateControl={updateControl} {...props}/>;
           default:
             return <Input {...props} />;
         }
-    });
+      });
     };
 
     let handleTabClick = (id)=> this.setState({activeTab: id});
-    let activeTab = this.state.activeTab;
+    let activeTab      = this.state.activeTab;
 
-    if(!sectionSettings[activeTab].length){
+    if (!sectionSettings[activeTab].length) {
       let tabs = ['contents', 'settings', 'styles'];
       tabs.splice(tabs.indexOf(activeTab), 1);
 
-      if(sectionSettings[tabs[0]] && sectionSettings[tabs[0]].length){
+      if (sectionSettings[tabs[0]] && sectionSettings[tabs[0]].length) {
         activeTab = tabs[0];
-      } else if(sectionSettings[tabs[1]] && sectionSettings[tabs[1]].length)  {
+      } else if (sectionSettings[tabs[1]] && sectionSettings[tabs[1]].length) {
         activeTab = tabs[1];
-      }else{
+      } else {
         activeTab = tabs[2];
       }
     }
@@ -108,9 +108,9 @@ let SectionControls = React.createClass({
       <div>
         <ul className="nav nav-pills">
           {sectionSettings.contents.length ?
-            <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab} /> : null}
+            <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab}/> : null}
           {sectionSettings.settings.length ?
-            <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab} /> : null}
+            <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab}/> : null}
           {sectionSettings.styles.length ?
             <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/> : null}
         </ul>

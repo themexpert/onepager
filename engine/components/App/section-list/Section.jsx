@@ -1,19 +1,19 @@
-const React       = require('react');
-const swal        = require('sweetalert');
-const Input       = require('react-bootstrap/lib/Input');
-const cx          = require('classnames');
-const PureMixin   = require('../../../mixins/PureMixin.js');
-const AppActions  = require('../../../actions/AppActions');
+const React      = require('react');
+const swal       = require('sweetalert');
+const Input      = require('react-bootstrap/lib/Input');
+const cx         = require('classnames');
+const PureMixin  = require('../../../mixins/PureMixin.js');
+const AppActions = require('../../../actions/AppActions');
 
-function confirmDelete(proceed){
+function confirmDelete(proceed) {
   swal({
-    title: "Are you sure?",
-    text: "Time travel is still hard and there is no way back",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Yes, delete it",
-    closeOnConfirm: true,
-    confirmButtonColor : '#d32f2f'
+    title             : "Are you sure?",
+    text              : "Time travel is still hard and there is no way back",
+    type              : "warning",
+    showCancelButton  : true,
+    confirmButtonText : "Yes, delete it",
+    closeOnConfirm    : true,
+    confirmButtonColor: '#d32f2f'
   }, proceed);
 }
 
@@ -27,7 +27,7 @@ let Section = React.createClass({
   },
 
   handleRemoveSection(){
-    confirmDelete(()=>{
+    confirmDelete(()=> {
       AppActions.removeSection(this.props.index);
       swal("Deleted!", "Section has been deleted.");
     });
@@ -49,17 +49,17 @@ let Section = React.createClass({
 
   updateEditTitle(e){
     //proceed on enter
-    if(e.which !== 13) {
+    if (e.which !== 13) {
       return;
     }
 
-    let id = null;
+    let id    = null;
     let title = this.refs.title.getValue();
 
     console.log("title is %s", title);
-    if(this.props.title === 'untitlted section'){
+    if (this.props.title === 'untitlted section') {
       console.log("changing title first time %s", title);
-      id  = this.props.getUniqueSectionId(this.props.index, title);
+      id = this.props.getUniqueSectionId(this.props.index, title);
     }
 
     this.props.updateTitle(title, id);
@@ -72,22 +72,23 @@ let Section = React.createClass({
     let title = this.props.title;
 
     let classes = cx({
-      'txop-cards' : true,
-      'active'     : this.props.active
+      'txop-cards': true,
+      'active'    : this.props.active
     });
 
     return (
       <div className={classes}>
         { this.state.titleEditState ?
           <div>
-            <Input type="text" ref="title" onKeyUp={this.updateEditTitle} defaultValue={title} />
+            <Input type="text" ref="title" onKeyUp={this.updateEditTitle} defaultValue={title}/>
             <span className="label label-default">Enter</span>
           </div> :
-          <div><h3 onClick={this.handleEditSection}>{title}</h3> <span className="fa fa-pencil" onClick={this.handleEditTitle}></span></div>
+          <div><h3 onClick={this.handleEditSection}>{title}</h3> <span className="fa fa-pencil"
+                                                                       onClick={this.handleEditTitle}></span></div>
         }
         <div className="action-btns">
-          <span className="fa fa-copy" onClick={this.handleDuplicateSection} ></span>
-          <span className="fa fa-close" onClick={this.handleRemoveSection} ></span>
+          <span className="fa fa-copy" onClick={this.handleDuplicateSection}></span>
+          <span className="fa fa-close" onClick={this.handleRemoveSection}></span>
         </div>
       </div>
     );

@@ -1,14 +1,14 @@
 // const swal            = require('sweetalert');
-const $               = jQuery; //jshint ignore: line
-const PureComponent   = require('react/lib/ReactComponentWithPureRenderMixin');
-const React           = require("react");
-const _               = require("underscore");
-const Button          = require('react-bootstrap/lib/Button');
-const Input           = require("../../shared/form/Input.jsx");
-const ODataStore      = require('../../../stores/ODataStore');
-const notify          = require('../../../lib/notify');
-const AppStore        = require('../../../stores/AppStore');
-const AppActions      = require('../../../actions/AppActions');
+const $ = jQuery; //jshint ignore: line
+const PureComponent = require('react/lib/ReactComponentWithPureRenderMixin');
+const React         = require("react");
+const _             = require("underscore");
+const Button        = require('react-bootstrap/lib/Button');
+const Input         = require("../../shared/form/Input.jsx");
+const ODataStore    = require('../../../lib/ODataStore');
+const notify        = require('../../../lib/notify');
+const AppStore      = require('../../../stores/AppStore');
+const AppActions    = require('../../../actions/AppActions');
 
 
 let AddToMenu = React.createClass({
@@ -26,8 +26,8 @@ let AddToMenu = React.createClass({
   },
 
   isItemIdUnique(){
-    let itemId    = this.refs.itemId.getValue();
-    let sections  = _.map(AppStore.getAll().sections, function(section){
+    let itemId   = this.refs.itemId.getValue();
+    let sections = _.map(AppStore.getAll().sections, function (section) {
       return section.id;
     });
 
@@ -40,11 +40,11 @@ let AddToMenu = React.createClass({
 
   handleSubmit(){
     let sectionIndex = this.props.index;
-    let data = {
-      action     : 'onepager_menu_add',
-      menuId     : this.refs.menuId.getValue(), //jshint ignore:line
-      itemId     : this.refs.itemId.getValue(), //jshint ignore:line
-      itemTitle  : this.refs.itemTitle.getValue() //jshint ignore:line
+    let data         = {
+      action   : 'onepager_menu_add',
+      menuId   : this.refs.menuId.getValue(), //jshint ignore:line
+      itemId   : this.refs.itemId.getValue(), //jshint ignore:line
+      itemTitle: this.refs.itemTitle.getValue() //jshint ignore:line
     };
 
     let section = _.copy(AppStore.getAll().sections[sectionIndex]);
@@ -52,8 +52,8 @@ let AddToMenu = React.createClass({
     section.key = data.itemId;
 
 
-    $.post(ODataStore.ajaxUrl, data, (res)=>{
-      if(res && res.success){
+    $.post(ODataStore.ajaxUrl, data, (res)=> {
+      if (res && res.success) {
         notify.success("successfully added menu");
         AppActions.updateSection(sectionIndex, section);
       } else {
@@ -70,43 +70,45 @@ let AddToMenu = React.createClass({
 
     let fields = [
       {
-        type  : "menu",
-        id    : "menu",
-        value : "",
-        label : "Menu Position",
-        ref   : "menuId",
-        onChange: ()=>{}
+        type    : "menu",
+        id      : "menu",
+        value   : "",
+        label   : "Menu Position",
+        ref     : "menuId",
+        onChange: ()=> {
+        }
       },
       {
-        type  : "text",
-        id    : "name",
-        value : title,
-        label : "Menu name",
-        ref   : "itemTitle",
+        type       : "text",
+        id         : "name",
+        value      : title,
+        label      : "Menu name",
+        ref        : "itemTitle",
         placeholder: "Item name",
-        onChange: ()=>{}
+        onChange   : ()=> {
+        }
       },
       {
-        type  : "text",
-        id    : "id",
-        value : id,
-        label : "Menu ID",
-        ref   : "itemId",
+        type       : "text",
+        id         : "id",
+        value      : id,
+        label      : "Menu ID",
+        ref        : "itemId",
         addonBefore: "#",
         placeholder: "Item Id",
-        onChange: this.isItemIdUnique
+        onChange   : this.isItemIdUnique
       }
     ];
 
-    return(
+    return (
       <div>
         {
-          fields.map(field=>{
+          fields.map(field=> {
             return <Input key={field.value+field.id} ref={field.ref} options={field} onChange={field.onChange}/>;
           })
         }
 
-        <h1>{this.state.isUnique ? "unique":"not unique"}</h1>
+        <h1>{this.state.isUnique ? "unique" : "not unique"}</h1>
 
         <Button bsStyle='primary' disabled={!this.state.isUnique} onClick={this.handleSubmit}>Add to Menu</Button>
       </div>

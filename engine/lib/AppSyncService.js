@@ -1,15 +1,15 @@
-const $               = jQuery; //jshint ignore: line
-const SectionTransformer = require('../lib/SectionTransformer');
-const notify          = require('../lib/notify');
-const ODataStore      = require('./ODataStore');
-const AppActions      = require('../actions/AppActions');
-const async           = require('async');
+const async = require('async');
+const $     = jQuery; //jshint ignore: line
+const notify             = require('./notify');
+const ODataStore         = require('./ODataStore');
+const SectionTransformer = require('./SectionTransformer');
+const AppActions         = require('../actions/AppActions');
 
-require('../lib/_mixins');
+require('./_mixins');
 
-function SyncService(pageId, inactive, shouldSectionsSync){
+function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
-  let updateSection = function(sections, sectionIndex){
+  let updateSection = function (sections, sectionIndex) {
     let payload = {
       pageId  : pageId,
       action  : 'save_sections',
@@ -17,16 +17,16 @@ function SyncService(pageId, inactive, shouldSectionsSync){
       sections: SectionTransformer.simplifySections(sections),
     };
 
-    let sync = function(){
-      $.post(ODataStore.ajaxUrl, payload, (res)=>{
-        if(!res || !res.success){
+    let sync = function () {
+      $.post(ODataStore.ajaxUrl, payload, (res)=> {
+        if (!res || !res.success) {
           return notify.error('Unable to sync. Make sure you are logged in');
         }
 
         //else
         AppActions.sectionSynced(sectionIndex, res);
-        
-        if(pageId){
+
+        if (pageId) {
           notify.success('Sync Successful');
         }
 
@@ -40,9 +40,9 @@ function SyncService(pageId, inactive, shouldSectionsSync){
     ]);
   };
 
-  let rawUpdate = function(sections){
-    
-    return new Promise((resolve, reject)=>{
+  let rawUpdate = function (sections) {
+
+    return new Promise((resolve, reject)=> {
 
       let payload = {
         pageId  : pageId,
@@ -51,16 +51,16 @@ function SyncService(pageId, inactive, shouldSectionsSync){
         sections: SectionTransformer.simplifySections(sections),
       };
 
-      let sync = function(){
-        $.post(ODataStore.ajaxUrl, payload, (res)=>{
-          if(!res || !res.success){
+      let sync = function () {
+        $.post(ODataStore.ajaxUrl, payload, (res)=> {
+          if (!res || !res.success) {
             notify.error('Unable to save. Make sure you are logged in'); //bad message
 
             return reject('Unable to save. Make sure you are logged in'); //bad message
           }
 
-          
-          if(pageId){
+
+          if (pageId) {
             notify.success('Database Update Successful');
           }
           return resolve();
@@ -83,4 +83,4 @@ function SyncService(pageId, inactive, shouldSectionsSync){
 }
 
 
-module.exports = SyncService;
+module.exports = AppSyncService;

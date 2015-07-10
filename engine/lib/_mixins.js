@@ -6,28 +6,28 @@ _.mixin({
   },
 
   randomId(prefix){
-  	prefix = prefix || "";
-  	return _.uniqueId(prefix + Math.ceil(Math.random() * 1000000));
+    prefix = prefix || "";
+    return _.uniqueId(prefix + Math.ceil(Math.random() * 1000000));
   },
 
   move(array, fromIndex, toIndex) {
     let arr = _.copy(array);
-    arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0] );
+    arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
     return arr;
   },
 
   getPosition(element) {
     var xPosition = 0;
     var yPosition = 0;
-  
-    while(element) {
-        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
-        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
-        element = element.offsetParent;
+
+    while (element) {
+      xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+      yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+      element = element.offsetParent;
     }
-    return { x: xPosition, y: yPosition };
+    return {x: xPosition, y: yPosition};
   },
-  
+
   pushAt(arr, index, item){
     let spliced = arr.splice(index);
     arr.push(item);
@@ -41,7 +41,7 @@ _.mixin({
   },
 
   arrIsUniqueProperty(list, index, propName, id){
-    let props = _.map(list, function(item){
+    let props = _.map(list, function (item) {
       return item[propName];
     });
 

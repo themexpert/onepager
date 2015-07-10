@@ -1,6 +1,6 @@
-const React       = require('react');
-const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
-const ReactQuill    = require('react-quill');
+const React      = require('react');
+const PureMixin  = require('react/lib/ReactComponentWithPureRenderMixin');
+const ReactQuill = require('react-quill');
 require("./quill-editor.less");
 
 let QuillControl = React.createClass({
@@ -17,7 +17,7 @@ let QuillControl = React.createClass({
   },
 
   onChange(value) {
-    this.setState({ value: value });
+    this.setState({value: value});
     this.props.onChange();
   },
 
@@ -25,7 +25,7 @@ let QuillControl = React.createClass({
     return (
       <div>
         <label>{this.props.label}</label>
-        <ReactQuill theme="snow" value={this.props.defaultValue} onChange={this.onChange} />
+        <ReactQuill theme="snow" value={this.props.defaultValue} onChange={this.onChange}/>
       </div>
     );
   }
