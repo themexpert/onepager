@@ -13,7 +13,7 @@ class GeneratorStore {
   }
 
   addControl(control) {
-    this.setState({ controls: this.state.controls.concat(control) });
+    this.setState({controls: this.state.controls.concat(control)});
   }
 }
 

@@ -9,7 +9,7 @@ const Tab         = require('../../../shared/components/Tab.jsx');
 const TabPane     = require('../../../shared/components/TabPane.jsx');
 
 let SectionControls = React.createClass({
-//  mixins: [PureMixin],
+  //  mixins: [PureMixin],
   getInitialState(){
     return {
       activeTab: 'contents'

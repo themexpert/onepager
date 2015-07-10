@@ -171,7 +171,8 @@ let AppStore = assign({}, BaseStore, {
       case Constants.ActionTypes.ADD_SECTION:
         // NOTE: if this action needs to wait on another store:
         // AppDispatcher.waitFor([OtherStore.dispatchToken]);
-        // For details, see: http://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html#why-we-need-a-dispatcher
+        // For details, see:
+        // http://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html#why-we-need-a-dispatcher
         addSection(action.section);
         AppStore.emitChange();
         break;

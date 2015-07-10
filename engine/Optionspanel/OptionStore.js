@@ -1,11 +1,11 @@
 const _ = require('underscore');
 require('../shared/lib/_mixins.js');
 
-const Reflux       = require('reflux');
-const Immutable    = require('immutable');
+const Reflux        = require('reflux');
+const Immutable     = require('immutable');
 const OptionActions = require('./OptionActions.js');
-const Sync         = require("../shared/lib/OptionsPanelSync.js");
-const notify       = require("../shared/lib/notify.js");
+const Sync          = require("../shared/lib/OptionsPanelSync.js");
+const notify        = require("../shared/lib/notify.js");
 
 const ODataStore = require('../shared/lib/ODataStore.js');
 let options      = ODataStore.options;
