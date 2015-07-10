@@ -49,7 +49,7 @@ function enqueueOnepagerAssets() {
 	$q->script( 'tx-nicescroll', asset('assets/js/jquery.nicescroll.js'), array( 'jquery' ) );
 	$q->script( 'lithium', asset('assets/lithium.js'), array( 'jquery' ) );
 
-	$q->style( 'tx-flexbox', asset( 'assets/css/lithium.css' ) );
+	$q->style( 'lithium', asset( 'assets/css/lithium.css' ) );
 
 	if ( onepager()->content()->isLiveMode() ) {
 		if ( function_exists( 'wp_enqueue_media' ) ) {
