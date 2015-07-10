@@ -6,7 +6,6 @@ const $         = jQuery; //jshint ignore:line
 require("../../../../bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css");
 
 
-
 let ColorPicker = React.createClass({
   mixins: [PureMixin],
 
@@ -15,7 +14,7 @@ let ColorPicker = React.createClass({
 
     return {
       textColor: this.getTextColor(bgColor),
-      bgColor: bgColor
+      bgColor  : bgColor
     };
   },
 
@@ -25,13 +24,13 @@ let ColorPicker = React.createClass({
 
   getTextColor(bgColor){
     let rgb = tinycolor(bgColor).toRgb();
-    
-    if(rgb.a < 0.5){
+
+    if (rgb.a < 0.5) {
       return tinycolor({
         r: 0,
         g: 0,
         b: 0,
-      }).toString();      
+      }).toString();
     }
 
     return tinycolor({
@@ -43,7 +42,7 @@ let ColorPicker = React.createClass({
   },
 
   onChange(){
-    let bgColor = this.getValue();
+    let bgColor   = this.getValue();
     let textColor = this.getTextColor(bgColor);
 
     this.setState({textColor, bgColor});
@@ -51,37 +50,38 @@ let ColorPicker = React.createClass({
   },
 
   componentDidMount() {
-    $( React.findDOMNode(this.refs.input) )
+    $(React.findDOMNode(this.refs.input))
       .colorpicker({
         sliders: {
-            saturation: { maxLeft: 140, maxTop: 140},
-            hue: { maxTop: 140 },
-            alpha: { maxTop: 140 }
+          saturation: {maxLeft: 140, maxTop: 140},
+          hue       : {maxTop: 140},
+          alpha     : {maxTop: 140}
         }
       })
       .on("changeColor.colorpicker, .color-icon", this.onChange);
   },
 
   componentWillUnmount(){
-		$( React.findDOMNode(this.refs.input) ).unbind();
+    $(React.findDOMNode(this.refs.input)).unbind();
   },
 
   render() {
-      let style = {background: this.state.bgColor, color: this.state.textColor};
-      return (
-      	<div className="form-group" ref="container">
-          <label className="control-label">{this.props.label}</label>					
-			    <div className="cp-container">
-            <input 
-              {...this.props} 
-              style={style} 
-              ref="input" 
-              type="text" 
-              className={"form-control op-colorpicker "+this.props.className}/>
-            <span style={style} className="fa fa-tint color-icon"></span>
-          </div>
-      	</div>
-      );
+    let style = {background: this.state.bgColor, color: this.state.textColor};
+    return (
+      <div className="form-group" ref="container">
+        <label className="control-label">{this.props.label}</label>
+
+        <div className="cp-container">
+          <input
+            {...this.props}
+            style={style}
+            ref="input"
+            type="text"
+            className={"form-control op-colorpicker "+this.props.className}/>
+          <span style={style} className="fa fa-tint color-icon"></span>
+        </div>
+      </div>
+    );
   }
 });
 

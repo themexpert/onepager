@@ -1,15 +1,15 @@
-const _                   = require('underscore');
-const React               = require('react');
-const cx                  = require('classnames');
-const SortableMixin       = require('sortablejs/react-sortable-mixin');
-const Button              = require('react-bootstrap/lib/Button');
-const SectionLi           = require('./Section.jsx');
-const BlockCollection     = require('./../blocks/BlockCollection.jsx');
-const AppStore            = require('../../../stores/AppStore.js');
-const AppActions          = require('../../../actions/AppActions.js');
+const _               = require('underscore');
+const React           = require('react');
+const cx              = require('classnames');
+const SortableMixin   = require('sortablejs/react-sortable-mixin');
+const Button          = require('react-bootstrap/lib/Button');
+const SectionLi       = require('./Section.jsx');
+const BlockCollection = require('../blocks/BlockCollection.jsx');
+const AppStore        = require('../../../stores/AppStore.js');
+const AppActions      = require('../../../actions/AppActions.js');
 // const PureMixin           = require('../../../mixins/PureMixin.js');
-const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
-const Footer              = require('../sidebar/Footer.jsx');
+const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const Footer    = require('../sidebar/Footer.jsx');
 
 let SectionList = React.createClass({
   mixins: [SortableMixin, PureMixin],
@@ -21,7 +21,7 @@ let SectionList = React.createClass({
   },
 
   setBodyClass(){
-    if(this.props.sections.length === 0){
+    if (this.props.sections.length === 0) {
       jQuery('body').addClass('txop-noblock');
     } else {
       jQuery('body').removeClass('txop-noblock');
@@ -41,15 +41,15 @@ let SectionList = React.createClass({
   },
 
   handleEnd(e) {
-    if(e.oldIndex  === undefined || e.newIndex === undefined) {
+    if (e.oldIndex === undefined || e.newIndex === undefined) {
       return;
     }
 
-    let sections  = _.copy(this.props.sections);
-    sections      = _.move(sections, e.oldIndex, e.newIndex);
+    let sections = _.copy(this.props.sections);
+    sections     = _.move(sections, e.oldIndex, e.newIndex);
 
-    sections[e.oldIndex].key  = _.randomId('s_');
-    sections[e.newIndex].key  = _.randomId('s_');
+    sections[e.oldIndex].key = _.randomId('s_');
+    sections[e.newIndex].key = _.randomId('s_');
 
     AppStore.reorder(sections, e.newIndex);
   },
@@ -72,12 +72,12 @@ let SectionList = React.createClass({
 
     let blocksClass = cx({
       "list-blocks": true,
-      "hidden": !this.state.showBlocks
+      "hidden"     : !this.state.showBlocks
     });
 
     let sectionsClass = cx({
       "list-sections": true,
-      "hidden": this.state.showBlocks
+      "hidden"       : this.state.showBlocks
     });
 
     return (
@@ -89,10 +89,10 @@ let SectionList = React.createClass({
 
           <div ref="sections">
             {sections.map((section, index)=> {
-              let updateTitle  = (title, id)=>{
+              let updateTitle = (title, id)=> {
                 let uSection   = _.copy(section);
                 uSection.title = title;
-                if(id){
+                if (id) {
                   uSection.id = id;
                 }
 
@@ -106,7 +106,7 @@ let SectionList = React.createClass({
                   updateTitle={updateTitle}
                   title={section.title}
                   key={section.key}
-                  index={index} />
+                  index={index}/>
               );
             })}
           </div>
@@ -114,7 +114,7 @@ let SectionList = React.createClass({
         </div>
 
         <div className={blocksClass}>
-          <BlockCollection closeBlocks={this.closeBlocks} blocks={blocks} />
+          <BlockCollection closeBlocks={this.closeBlocks} blocks={blocks}/>
         </div>
 
 

@@ -6,12 +6,13 @@
  *  Copyright (c) 2013, salesforce.com
  */
 
- @toolbar-bg : darken(@bg-primary, 2%);
+@toolbar-bg : darken(@bg-primary, 2%);
 
 // Editor Box
 // --------------------------------------
 .ql-container {
-  background: @bg-secondary; color: @text-color;
+  background: @bg-secondary;
+  color: @text-color;
   box-sizing: border-box;
   cursor: text;
   height: 100%;
@@ -20,6 +21,7 @@
   padding: 10px;
   position: relative;
 }
+
 .ql-editor {
   box-sizing: border-box;
   min-height: 100px !important;
@@ -30,29 +32,54 @@
 
 // HTML Inside Editor
 // ---------------------------------------
-.ql-editor{
-  div { margin: 0; padding: 0; }
-  a { text-decoration: underline; }
-  b { font-weight: bold; color: #fff; }
-  i { font-style: italic; }
-  s { text-decoration: line-through; }
-  u { text-decoration: underline; }
+.ql-editor {
+  div {
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: underline;
+  }
+  b {
+    font-weight: bold;
+    color: #fff;
+  }
+  i {
+    font-style: italic;
+  }
+  s {
+    text-decoration: line-through;
+  }
+  u {
+    text-decoration: underline;
+  }
 
-  a, b, i, s, u, span { background-color: inherit; }
+  a, b, i, s, u, span {
+    background-color: inherit;
+  }
 
-  blockquote, ol, ul { margin: 0 0 0 2em; padding: 0; }
-  ol { list-style-type: decimal; }
-  ul { list-style-type: disc; }
+  blockquote, ol, ul {
+    margin: 0 0 0 2em;
+    padding: 0;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  ul {
+    list-style-type: disc;
+  }
   .ql-ie-9 br,
   .ql-ie-10 br {
-  display: none;
+    display: none;
   }
 }
 
 // Toolbar
 // --------------------------------------
 .ql-toolbar {
-  padding: 3px 0; background: @toolbar-bg; color: @text-color;
+  padding: 3px 0;
+  background: @toolbar-bg;
+  color: @text-color;
 
   // Hide Buttons that not necessery
   // Seperator + Font + Size + list + bullet + link + image + authorship + color + background
@@ -65,18 +92,22 @@
   .ql-format-button.ql-image,
   .ql-format-button.ql-authorship,
   .ql-color,
-  .ql-background  { display: none; }
+  .ql-background {
+    display: none;
+  }
 
   // Toolbar Button style
   .ql-format-button,
   .ql-picker,
   .ql-picker.ql-align .ql-picker-options {
-    padding : 4px 8px;
+    padding: 4px 8px;
     text-align: center;
     font: normal normal normal 14px/1 FontAwesome;
     cursor: pointer;
   }
-  .ql-picker{ position: relative; }
+  .ql-picker {
+    position: relative;
+  }
   .ql-picker-label.ql-active,
   .ql-picker-label:hover,
   .ql-format-button:hover,
@@ -91,30 +122,41 @@
     position: absolute;
     width: 100%;
   }
-  .ql-picker-options{
-      .ql-picker-item { display: block; }
-      .ql-picker-item + .ql-picker-item { margin-top: 3px; }
+  .ql-picker-options {
+    .ql-picker-item {
+      display: block;
+    }
+    .ql-picker-item + .ql-picker-item {
+      margin-top: 3px;
+    }
   }
 }
+
 .ql-toolbar .ql-picker .ql-picker-options .ql-picker-item.ql-selected,
-.ql-toolbar .ql-picker .ql-picker-options .ql-picker-item:hover {}
+.ql-toolbar .ql-picker .ql-picker-options .ql-picker-item:hover {
+}
+
 .ql-toolbar .ql-picker.ql-expanded .ql-picker-label {
   z-index: 2;
 }
+
 .ql-toolbar .ql-picker.ql-expanded .ql-picker-options {
   background: @toolbar-bg;
   display: block;
   margin-top: -1px;
   z-index: 1;
 }
+
 .ql-toolbar .ql-picker.ql-color-picker .ql-picker-label {
   background-position: center center;
   width: 28px;
 }
+
 .ql-toolbar .ql-picker.ql-color-picker .ql-picker-options {
   padding: 5px;
   width: 152px;
 }
+
 .ql-toolbar .ql-picker.ql-color-picker .ql-picker-options .ql-picker-item {
   border: 1px solid transparent;
   float: left;
@@ -123,6 +165,7 @@
   padding: 0px;
   width: 16px;
 }
+
 .ql-toolbar .ql-picker.ql-color-picker .ql-picker-options .ql-picker-item.ql-primary-color {
   margin-bottom: 8px;
 }
@@ -132,6 +175,7 @@
   padding-left: 8px;
   padding-right: 8px;
 }
+
 .ql-toolbar .ql-picker.ql-align .ql-picker-label {
   background-position: center center;
   width: 28px;
@@ -139,20 +183,32 @@
 }
 
 // Bold - Button
-.ql-toolbar .ql-format-button.ql-bold:before{ content: '\f032'; }
+.ql-toolbar .ql-format-button.ql-bold:before {
+  content: '\f032';
+}
+
 // Italic - Button
-.ql-toolbar .ql-format-button.ql-italic:before{ content: '\f033'; }
+.ql-toolbar .ql-format-button.ql-italic:before {
+  content: '\f033';
+}
+
 // Underline - Button
-.ql-toolbar .ql-format-button.ql-underline:before{ content: '\f0cd'; }
+.ql-toolbar .ql-format-button.ql-underline:before {
+  content: '\f0cd';
+}
+
 // Sticks - Button
-.ql-toolbar .ql-format-button.ql-strike:before{ content: '\f0cc'; }
+.ql-toolbar .ql-format-button.ql-strike:before {
+  content: '\f0cc';
+}
 
 .ql-toolbar .ql-format-button.ql-left:before,
 .ql-toolbar .ql-picker.ql-left .ql-picker-label:before,
 .ql-toolbar .ql-picker .ql-picker-label[data-value=left]:before,
 .ql-toolbar .ql-picker .ql-picker-item[data-value=left]:before {
-  content : '\f036';
+  content: '\f036';
 }
+
 .ql-toolbar .ql-format-button.ql-left.ql-active:before,
 .ql-toolbar .ql-picker.ql-left .ql-picker-label.ql-active:before,
 .ql-toolbar .ql-picker .ql-picker-label[data-value=left].ql-active:before,
@@ -163,12 +219,14 @@
 .ql-toolbar:not(.ios) .ql-picker .ql-picker-item[data-value=left]:hover:before {
   content: '\f036';
 }
+
 .ql-toolbar .ql-format-button.ql-right:before,
 .ql-toolbar .ql-picker.ql-right .ql-picker-label:before,
 .ql-toolbar .ql-picker .ql-picker-label[data-value=right]:before,
 .ql-toolbar .ql-picker .ql-picker-item[data-value=right]:before {
   content: '\f038';
 }
+
 .ql-toolbar .ql-format-button.ql-right.ql-active:before,
 .ql-toolbar .ql-picker.ql-right .ql-picker-label.ql-active:before,
 .ql-toolbar .ql-picker .ql-picker-label[data-value=right].ql-active:before,
@@ -179,12 +237,14 @@
 .ql-toolbar:not(.ios) .ql-picker .ql-picker-item[data-value=right]:hover:before {
   content: '\f038';
 }
+
 .ql-toolbar .ql-format-button.ql-center:before,
 .ql-toolbar .ql-picker.ql-center .ql-picker-label:before,
 .ql-toolbar .ql-picker .ql-picker-label[data-value=center]:before,
 .ql-toolbar .ql-picker .ql-picker-item[data-value=center]:before {
   content: '\f037';
 }
+
 .ql-toolbar .ql-format-button.ql-center.ql-active:before,
 .ql-toolbar .ql-picker.ql-center .ql-picker-label.ql-active:before,
 .ql-toolbar .ql-picker .ql-picker-label[data-value=center].ql-active:before,
@@ -195,12 +255,14 @@
 .ql-toolbar:not(.ios) .ql-picker .ql-picker-item[data-value=center]:hover:before {
   content: '\f037';
 }
+
 .ql-toolbar .ql-format-button.ql-justify:before,
 .ql-toolbar .ql-picker.ql-justify .ql-picker-label:before,
 .ql-toolbar .ql-picker .ql-picker-label[data-value=justify]:before,
 .ql-toolbar .ql-picker .ql-picker-item[data-value=justify]:before {
   content: '\f039';
 }
+
 .ql-toolbar .ql-format-button.ql-justify.ql-active:before,
 .ql-toolbar .ql-picker.ql-justify .ql-picker-label.ql-active:before,
 .ql-toolbar .ql-picker .ql-picker-label[data-value=justify].ql-active:before,

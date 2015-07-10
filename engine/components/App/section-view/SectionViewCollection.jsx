@@ -1,7 +1,7 @@
-const React         = require('react');
-const _             = require('underscore');
-const SectionView   = require('./SectionView.jsx');
-const PureMixin     = require('../../../mixins/PureMixin.js');
+const React       = require('react');
+const _           = require('underscore');
+const SectionView = require('./SectionView.jsx');
+const PureMixin   = require('../../../mixins/PureMixin.js');
 
 let SectionViewCollection = React.createClass({
   mixins: [PureMixin],
@@ -13,7 +13,7 @@ let SectionViewCollection = React.createClass({
       <div id="sections">
         {
           sections.map((section, index)=> {
-            let active = this.props.activeSectionIndex === index;
+            let active        = this.props.activeSectionIndex === index;
             let simpleSection = _.pick(section, ['content', 'key']);
 
             return <SectionView active={active} section={simpleSection} key={section.key} index={index}/>;

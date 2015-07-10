@@ -4,17 +4,17 @@ const cx        = require('classnames');
 
 let TabPane = React.createClass({
   mixins: [PureMixin],
-  
+
   propTypes: {
-    id: React.PropTypes.string,
-    icon: React.PropTypes.string,
+    id   : React.PropTypes.string,
+    icon : React.PropTypes.string,
     title: React.PropTypes.string
   },
 
   getDefaultProps(){
     return {
       disabled: false,
-      active: ""
+      active  : ""
     };
   },
 
@@ -24,9 +24,8 @@ let TabPane = React.createClass({
     let classes = cx({
       'tab-pane': true,
       "disabled": this.props.disabled,
-      "active": this.props.active === this.props.id && !this.props.disabled,
+      "active"  : this.props.active === this.props.id && !this.props.disabled,
     });
-
 
 
     return (

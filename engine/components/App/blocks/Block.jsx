@@ -1,7 +1,7 @@
-const React       = require('react');
-const PureMixin   = require('react/lib/ReactComponentWithPureRenderMixin');
-const AppActions  = require('../../../actions/AppActions');
-const AppStore    = require('../../../stores/AppStore');
+const React      = require('react');
+const PureMixin  = require('react/lib/ReactComponentWithPureRenderMixin');
+const AppActions = require('../../../actions/AppActions');
+const AppStore   = require('../../../stores/AppStore');
 
 let Block = React.createClass({
   mixins: [PureMixin],

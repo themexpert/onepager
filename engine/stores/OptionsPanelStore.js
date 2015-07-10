@@ -1,21 +1,22 @@
-const _               = require('underscore');
+const _ = require('underscore');
 require('../lib/_mixins');
 
-const Reflux          = require('reflux');
-const Immutable       = require('immutable');
-const AdminActions    = require('../actions/OptionsPanelActions');
-const Sync            = require("../components/Optionspanel/Sync");
-const notify          = require("../lib/notify");
+const Reflux       = require('reflux');
+const Immutable    = require('immutable');
+const AdminActions = require('../actions/OptionsPanelActions');
+const Sync         = require("../lib/OptionsPanelSync");
+const notify       = require("../lib/notify");
 
-const ODataStore      = require('./ODataStore');
-let options           = ODataStore.options;
-let sync              = Sync(ODataStore.ajaxUrl, ODataStore.page); /*jshint ignore:line*/
+const ODataStore = require('../lib/ODataStore');
+let options      = ODataStore.options;
+let sync         = Sync(ODataStore.ajaxUrl, ODataStore.page);
+/*jshint ignore:line*/
 
-function transformer(fields, panelId){
-  return fields.map(field=>{
-    field.ref   = _.uniqueId("ref_");
+function transformer(fields, panelId) {
+  return fields.map(field=> {
+    field.ref = _.uniqueId("ref_");
 
-    if(options && options[panelId] && options[panelId][field.name]){
+    if (options && options[panelId] && options[panelId][field.name]) {
       field.value = options[panelId][field.name];
     }
 
@@ -24,27 +25,26 @@ function transformer(fields, panelId){
 }
 
 //add refs to controsl
-let _optionPanel  = _.map(_.copy(ODataStore.optionPanel), (panel)=>{
+let _optionPanel = _.map(_.copy(ODataStore.optionPanel), (panel)=> {
   panel.fields = transformer(panel.fields, panel.id);
   return panel;
 });
 
 let AppState = {
-    activeTabIndex: 0,
-    //implement immutable js
-    optionPanel: Immutable.fromJS(_optionPanel),
+  activeTabIndex: 0,
+  //implement immutable js
+  optionPanel   : Immutable.fromJS(_optionPanel),
 };
 
 //get tabs
-AppState.tabs = AppState.optionPanel.map(tab=>{
+AppState.tabs = AppState.optionPanel.map(tab=> {
   return {id: tab.get('id'), name: tab.get('name')};
 }).toList();
 
 
-
-let OptionsPanelStore   = Reflux.createStore({
+let OptionsPanelStore = Reflux.createStore({
   listenables: [AdminActions],
-  data: AppState,
+  data       : AppState,
   getInitialState(){
     return this.data;
   },
@@ -59,10 +59,10 @@ let OptionsPanelStore   = Reflux.createStore({
   },
 
   onSync(){
-    let options ={}, panels = this.data.optionPanel.toJS();
+    let options = {}, panels = this.data.optionPanel.toJS();
 
-    panels.map(function(panel){
-      options[panel.id] = panel.fields.reduce((map, control)=>{
+    panels.map(function (panel) {
+      options[panel.id] = panel.fields.reduce((map, control)=> {
         map[control.name] = control.value;
         return map;
       }, {});

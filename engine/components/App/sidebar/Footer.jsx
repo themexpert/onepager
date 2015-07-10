@@ -1,7 +1,7 @@
-const React = require('react');
-const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const Tab = require('./../../shared/Tab.jsx');
-const ODataStore = require('../../../stores/ODataStore.js');
+const React      = require('react');
+const PureMixin  = require('react/lib/ReactComponentWithPureRenderMixin');
+const Tab        = require('../../shared/Tab.jsx');
+const ODataStore = require('../../../lib/ODataStore.js');
 
 require('./footer.less');
 
@@ -9,15 +9,15 @@ let Footer = React.createClass({
   mixins: [PureMixin],
 
   propTypes: {
-    id: React.PropTypes.string,
-    icon: React.PropTypes.string,
+    id   : React.PropTypes.string,
+    icon : React.PropTypes.string,
     title: React.PropTypes.string
   },
 
   getDefaultProps(){
     return {
       disabled: false,
-      active: ''
+      active  : ''
     };
   },
 

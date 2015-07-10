@@ -3,15 +3,15 @@
  * See post @ http://www.lab4games.net/zz85/blog/2014/11/15/resizing-moving-snapping-windows-with-js-css/
  */
 "use strict";
-function resizable(pane, ghostpane){
+function resizable(pane, ghostpane) {
 
   // Minimum resizable area
-  var minWidth = 60;
+  var minWidth  = 60;
   var minHeight = 40;
 
   // Thresholds
   var FULLSCREEN_MARGINS = -10;
-  var MARGINS = 4;
+  var MARGINS            = 4;
 
   // End of what's configurable.
   var clicked = null;
@@ -29,10 +29,10 @@ function resizable(pane, ghostpane){
   // var ghostpane = document.getElementById('ghostpane');
 
   function setBounds(element, x, y, w, h) {
-  	element.style.left = x + 'px';
-  	element.style.top = y + 'px';
-  	element.style.width = w + 'px';
-  	element.style.height = h + 'px';
+    element.style.left   = x + 'px';
+    element.style.top    = y + 'px';
+    element.style.width  = w + 'px';
+    element.style.height = h + 'px';
   }
 
   function hintHide() {
@@ -52,7 +52,7 @@ function resizable(pane, ghostpane){
   document.addEventListener('mousemove', onMove);
   document.addEventListener('mouseup', onUp);
 
-  // Touch events	
+  // Touch events
   pane.addEventListener('touchstart', onTouchDown);
   document.addEventListener('touchmove', onTouchMove);
   document.addEventListener('touchend', onTouchEnd);
@@ -64,11 +64,11 @@ function resizable(pane, ghostpane){
   }
 
   function onTouchMove(e) {
-    onMove(e.touches[0]);		
+    onMove(e.touches[0]);
   }
 
   function onTouchEnd(e) {
-    if (e.touches.length ===0) onUp(e.changedTouches[0]);
+    if (e.touches.length === 0) onUp(e.changedTouches[0]);
   }
 
   function onMouseDown(e) {
@@ -82,24 +82,24 @@ function resizable(pane, ghostpane){
     var isResizing = onRightEdge || onBottomEdge || onTopEdge || onLeftEdge;
 
     clicked = {
-      x: x,
-      y: y,
-      cx: e.clientX,
-      cy: e.clientY,
-      w: b.width,
-      h: b.height,
-      isResizing: isResizing,
-      isMoving: !isResizing && canMove(),
-      onTopEdge: onTopEdge,
-      onLeftEdge: onLeftEdge,
-      onRightEdge: onRightEdge,
+      x           : x,
+      y           : y,
+      cx          : e.clientX,
+      cy          : e.clientY,
+      w           : b.width,
+      h           : b.height,
+      isResizing  : isResizing,
+      isMoving    : !isResizing && canMove(),
+      onTopEdge   : onTopEdge,
+      onLeftEdge  : onLeftEdge,
+      onRightEdge : onRightEdge,
       onBottomEdge: onBottomEdge
     };
   }
 
   function canMove() {
     return x > 0 && x < b.width && y > 0 && y < b.height
-    && y < 30;
+      && y < 30;
   }
 
   function calc(e) {
@@ -107,12 +107,12 @@ function resizable(pane, ghostpane){
     x = e.clientX - b.left;
     y = e.clientY - b.top;
 
-    onTopEdge = y < MARGINS;
-    onLeftEdge = x < MARGINS;
-    onRightEdge = x >= b.width - MARGINS;
+    onTopEdge    = y < MARGINS;
+    onLeftEdge   = x < MARGINS;
+    onRightEdge  = x >= b.width - MARGINS;
     onBottomEdge = y >= b.height - MARGINS;
 
-    rightScreenEdge = window.innerWidth - MARGINS;
+    rightScreenEdge  = window.innerWidth - MARGINS;
     bottomScreenEdge = window.innerHeight - MARGINS;
   }
 
@@ -141,18 +141,18 @@ function resizable(pane, ghostpane){
       if (clicked.onBottomEdge) pane.style.height = Math.max(y, minHeight) + 'px';
 
       if (clicked.onLeftEdge) {
-        var currentWidth = Math.max(clicked.cx - e.clientX  + clicked.w, minWidth);
+        var currentWidth = Math.max(clicked.cx - e.clientX + clicked.w, minWidth);
         if (currentWidth > minWidth) {
           pane.style.width = currentWidth + 'px';
-          pane.style.left = e.clientX + 'px';	
+          pane.style.left  = e.clientX + 'px';
         }
       }
 
       if (clicked.onTopEdge) {
-        var currentHeight = Math.max(clicked.cy - e.clientY  + clicked.h, minHeight);
+        var currentHeight = Math.max(clicked.cy - e.clientY + clicked.h, minHeight);
         if (currentHeight > minHeight) {
           pane.style.height = currentHeight + 'px';
-          pane.style.top = e.clientY + 'px';	
+          pane.style.top    = e.clientY + 'px';
         }
       }
 
@@ -189,16 +189,16 @@ function resizable(pane, ghostpane){
 
       if (preSnapped) {
         setBounds(pane,
-        	e.clientX - preSnapped.width / 2,
-        	e.clientY - Math.min(clicked.y, preSnapped.height),
-        	preSnapped.width,
-        	preSnapped.height
+          e.clientX - preSnapped.width / 2,
+          e.clientY - Math.min(clicked.y, preSnapped.height),
+          preSnapped.width,
+          preSnapped.height
         );
         return;
       }
 
       // moving
-      pane.style.top = (e.clientY - clicked.y) + 'px';
+      pane.style.top  = (e.clientY - clicked.y) + 'px';
       pane.style.left = (e.clientX - clicked.x) + 'px';
 
       return;
@@ -230,7 +230,7 @@ function resizable(pane, ghostpane){
     if (clicked && clicked.isMoving) {
       // Snap
       var snapped = {
-        width: b.width,
+        width : b.width,
         height: b.height
       };
 

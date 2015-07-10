@@ -1,11 +1,10 @@
 var Reflux = require('reflux');
 
 var OptionsPanelActions = Reflux.createActions([
-    "sync",
-    "update",
-    "changeTab"
+  "sync",
+  "update",
+  "changeTab"
 ]);
-
 
 
 module.exports = OptionsPanelActions;

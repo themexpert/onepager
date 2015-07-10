@@ -1,4 +1,4 @@
-const assign = require('object-assign');
+const assign       = require('object-assign');
 const EventEmitter = require('events').EventEmitter;
 
 const CHANGE_EVENT = 'change';
