@@ -33,7 +33,7 @@
                     <img src="<?php echo $layout['screenshot']?>"/>
                     <figcaption>
                         <h3><?php echo $layout['name']?></h3>
-                        <button data-layout-id="<?php echo $layout['id']?>" class="op-btn" type="button">Select</button>
+                        <button data-layout-id="<?php echo $layout['id']?>" class="op-btn op-select-preset" type="button">Select</button>
                     </figcaption>
                 </figure>
             </div>

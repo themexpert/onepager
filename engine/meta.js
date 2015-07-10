@@ -10,7 +10,7 @@
     var $pageTemplate    = $("#page_template");
     var $export          = $("#onepager-export-layout");
     var $onepagerMetabox = $("#onepager-metabox");
-    var $selectLayoutBtn = $('.onepager-select-layout');
+    var $selectLayoutBtn = $('.op-select-preset');
 
     window.exportSections = function () {
       $export.click();
