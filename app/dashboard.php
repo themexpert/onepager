@@ -37,8 +37,7 @@ function tx_add_tutorials_page()
     'Tutorial',
     'edit_theme_options',
     'onepager-tutorial',
-    $template,
-    4
+    $template
   );
 }
 
@@ -58,6 +57,6 @@ function tx_rename_onepager_dashboard_submenu_name(){
 
 function tx_add_onepager_dashboard_scripts()
 {
-  $dashboard = endsWith(get_current_screen()->id, "_page_onepager-dashboard");
-  if (!$dashboard) return;
+//  $dashboard = endsWith(get_current_screen()->id, "_page_onepager-");
+//  if (!$dashboard) return;
 }

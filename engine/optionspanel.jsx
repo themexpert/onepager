@@ -1,10 +1,10 @@
 const React = require('react');
-const Admin = require('./components/OptionsPanel.jsx');
-require("./lib/_mixins");
+const Admin = require('./Optionspanel/OptionsPanel.jsx');
+require("./shared/lib/_mixins");
 
 
 require("../assets/css/sweetalert.css");
-require("./lithium/lithium.less");
+require("./ui/lithium/lithium.less");
 
 let mount = document.getElementById("onepager-settings-mount");
 

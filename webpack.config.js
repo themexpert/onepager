@@ -5,7 +5,8 @@ var path = require('path');
 var config = {
   entry: {
     optionspanel: ['./engine/optionspanel.jsx'],
-    app: ['./engine/app.jsx']
+    app: ['./engine/app.jsx'],
+    generator: ['./engine/generator.jsx'],
   },
   output: {
     filename: '[name].bundle.js',
