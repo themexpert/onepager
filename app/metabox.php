@@ -40,6 +40,8 @@ function tx_onepager_metabox_scripts($hook){
     );
 
     wp_enqueue_script('tx-onepager-page-meta', asset('assets/meta.js'), true);
+    wp_enqueue_style( 'tx-lithium', asset( 'assets/css/lithium-builder.css' ) );
+
     wp_localize_script('tx-onepager-page-meta', 'onepager', $data);
 }
 
