@@ -1,51 +1,51 @@
-var gulp = require('gulp');
-var less = require('gulp-less');
+var gulp           = require('gulp');
+var less           = require('gulp-less');
 var mainBowerFiles = require('main-bower-files');
-var gulpFilter = require('gulp-filter');
-var concat = require('gulp-concat');
-var minify = require('gulp-minify-css');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var archiver = require('archiver');
-var fs = require('fs');
-var shell = require('gulp-shell');
-var runSequence = require('gulp-run-sequence');
-var clean = require('gulp-clean');
+var gulpFilter     = require('gulp-filter');
+var concat         = require('gulp-concat');
+var minify         = require('gulp-minify-css');
+var uglify         = require('gulp-uglify');
+var rename         = require('gulp-rename');
+var archiver       = require('archiver');
+var fs             = require('fs');
+var shell          = require('gulp-shell');
+var runSequence    = require('gulp-run-sequence');
+var clean          = require('gulp-clean');
 
-var dest  = './assets';
-var src   = './engine';
+var dest = './assets';
+var src  = './engine';
 
 var config = {
-  less: {
-    src: src + '/resources/lithium/*.less',
-    dest: dest + '/css',
+  less  : {
+    src     : src + '/resources/lithium/*.less',
+    dest    : dest + '/css',
     settings: {
       indentedSyntax: false, // Enable .less syntax?
-      imagePath: '/images' // Used by the image-url helper
+      imagePath     : '/images' // Used by the image-url helper
     }
   },
-  js: {
-    src: [src+'/*.js', src+'/resources/lithium/*.js'],
+  js    : {
+    src : [src + '/*.js', src + '/resources/lithium/*.js'],
     dest: dest + '/'
   },
   images: {
-    src: src+'/images/**/*',
+    src : src + '/images/**/*',
     dest: dest + '/images'
   },
-  fonts: {
-    src: src+'/fonts/**/*',
+  fonts : {
+    src : src + '/fonts/**/*',
     dest: dest + '/fonts'
   },
-  bower: {
-    js: dest + '/js',
-    css: dest + '/css',
+  bower : {
+    js    : dest + '/js',
+    css   : dest + '/css',
     images: dest + '/images',
-    fonts: dest + '/fonts'
+    fonts : dest + '/fonts'
   },
-  watch: {
-    src: src+'/**/*.*',
-    less: src+'/resources/lithium/**/*.less',
-    js: src+'/*.js',
+  watch : {
+    src  : src + '/**/*.*',
+    less : src + '/resources/lithium/**/*.less',
+    js   : src + '/*.js',
     tasks: ['build']
   }
 };
@@ -57,10 +57,10 @@ gulp.task('less', function () {
     .pipe(gulp.dest(config.less.dest));
 });
 
-gulp.task('js', function(){
+gulp.task('js', function () {
   return gulp.src(config.js.src)
-  .pipe(uglify())
-  .pipe(gulp.dest(config.js.dest));
+    .pipe(uglify())
+    .pipe(gulp.dest(config.js.dest));
 });
 
 gulp.task('fonts', function () {
@@ -74,11 +74,11 @@ gulp.task('images', function () {
 });
 
 /*** Filters for bower main files **/
-var jsFilter = gulpFilter('**/*.js'),
-  cssFilter = gulpFilter('**/*.css'),
-  lessFilter = gulpFilter('**/*.less'),
-  fontFilter = gulpFilter(['**/*.svg', '**/*.eot', '**/*.woff', '**/*.ttf']),
-  imgFilter = gulpFilter(['**/*.png', '**/*.gif', '**/*.jpg']);
+var jsFilter   = gulpFilter('**/*.js'),
+    cssFilter  = gulpFilter('**/*.css'),
+    lessFilter = gulpFilter('**/*.less'),
+    fontFilter = gulpFilter(['**/*.svg', '**/*.eot', '**/*.woff', '**/*.ttf']),
+    imgFilter  = gulpFilter(['**/*.png', '**/*.gif', '**/*.jpg']);
 
 gulp.task('bower', function () {
   return gulp.src(mainBowerFiles())
@@ -91,7 +91,7 @@ gulp.task('bower', function () {
     .pipe(lessFilter)
     .pipe(less())
     .pipe(gulp.dest(config.bower.css))
-    .pipe(rename({extname:'css'}))
+    .pipe(rename({extname: 'css'}))
     .pipe(lessFilter.restore())
 
     .pipe(cssFilter)
@@ -114,15 +114,14 @@ gulp.task('watch', function () {
 });
 
 
-
 /**
  * Build section
  */
-gulp.task('build-clean', function() {
+gulp.task('build-clean', function () {
   return gulp.src(dest).pipe(clean());
 });
 
-gulp.task('build', function(cb){
+gulp.task('build', function (cb) {
   return runSequence('build-clean', ['js', 'fonts', 'bower', 'images', 'less'], cb);
 });
 
@@ -137,14 +136,14 @@ gulp.task('webpack-watch', shell.task(['webpack  --watch']));
 /**
  * Package build section
  */
-gulp.task('package-build', function(cb){
+gulp.task('package-build', function (cb) {
   return runSequence('build', 'webpack-production', cb);
 });
 
-gulp.task('package', ['package-build'], function(){
+gulp.task('package', ['package-build'], function () {
   var plugin = 'onepager';
-  var dirs  = ['app', 'assets', 'blocks', 'src', 'vendor', 'presets'];
-  var files = ['onepager.php', 'uninstall.php'];
+  var dirs   = ['app', 'assets', 'blocks', 'src', 'vendor', 'presets'];
+  var files  = ['onepager.php', 'uninstall.php'];
 
   generateArchive(plugin, dirs, files);
 });
@@ -153,23 +152,23 @@ gulp.task('package', ['package-build'], function(){
 /**
  * Default tasks
  */
-gulp.task('default', function(){
+gulp.task('default', function () {
   runSequence('build', ['webpack-watch', 'watch']);
 });
 
 
-function generateArchive(plugin, dirs, files){
-  var output  = fs.createWriteStream(__dirname + '/'+plugin+'.zip');
+function generateArchive(plugin, dirs, files) {
+  var output  = fs.createWriteStream(__dirname + '/' + plugin + '.zip');
   var archive = archiver.create('zip', {}); // or archiver('zip', {});
 
   //create the archive
   //mac filesystem error
-  if(!fs.existsSync(plugin+'.zip')){
-    fs.writeSync(plugin+'.zip');
+  if (!fs.existsSync(plugin + '.zip')) {
+    fs.writeSync(plugin + '.zip');
   }
 
   //create parent directory
-  if(!fs.existsSync(plugin)){
+  if (!fs.existsSync(plugin)) {
     fs.mkdirSync(plugin);
   }
 
@@ -177,19 +176,19 @@ function generateArchive(plugin, dirs, files){
   archive.directory(plugin);
 
   //add the zip files
-  dirs.map(function(dir){
-    archive.directory(dir, plugin+'/'+dir);
+  dirs.map(function (dir) {
+    archive.directory(dir, plugin + '/' + dir);
   });
 
   //add the files
-  files.map(function(file){
-    archive.file(file, {name: plugin+'/'+file});
+  files.map(function (file) {
+    archive.file(file, {name: plugin + '/' + file});
   });
 
   //show message on close
-  output.on('close', function() {
+  output.on('close', function () {
     console.log(archive.pointer() + ' total bytes');
-    console.log('find built package /'+plugin+'.zip');
+    console.log('find built package /' + plugin + '.zip');
   });
 
   //pipe out the output
