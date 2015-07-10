@@ -2,15 +2,15 @@
 (function ($) {
   $(function ($) {
     var pageId              = onepager.pageId;
-    var $onepagerEnableBtn  = $('<button type="button" id="enable-onepager">Enable Onepager</button>');
-    var $onepagerDisableBtn = $('<button type="button" id="disable-onepager">Disable Onepager</button>');
+    var $onepagerEnableBtn  = $('<button type="button" id="enable-onepager" class="op-btn op-btn-with-logo">Enable Onepager</button>');
+    var $onepagerDisableBtn = $('<button type="button" id="disable-onepager" class="op-btn op-btn-with-logo">Disable Onepager</button>');
 
     //var $editorTabs = $(".wp-editor-tabs");
     var $postArea        = $("#postdivrich");
     var $pageTemplate    = $("#page_template");
     var $export          = $("#onepager-export-layout");
     var $onepagerMetabox = $("#onepager-metabox");
-    var $selectLayoutBtn = $('.onepager-select-layout');
+    var $selectLayoutBtn = $('.op-select-preset');
 
     window.exportSections = function () {
       $export.click();

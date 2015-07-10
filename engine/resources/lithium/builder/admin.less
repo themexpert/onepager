@@ -1,0 +1,82 @@
+@btn : #673AB7;
+
+.op-btn{
+	background: @btn;
+	color: #fff;
+	padding: 15px;
+	border : 1px solid darken(@btn, 10%);
+	position: relative;
+	cursor: pointer;
+	border-radius: 4px;
+	font-weight: bold; line-height: 1em;
+	text-transform: uppercase;
+	margin-top: 10px;
+}
+.op-btn-with-logo{
+	padding: 14px 15px 14px 50px;
+
+	&:before{
+		content: '';
+		display: block;
+		position: absolute; left: 10px; top: 10px;
+		width: 30px; height: 23px;
+		background: url('../../images/logo-white.png') no-repeat;
+		background-size: contain;
+	}
+}
+
+#disable-onepager{
+	background: darken(@btn, 15%);
+}
+
+// Toolbar
+//--------------------------------------------
+.toolbar{
+	background: #f5f5f5;
+	margin: -6px -12px 10px;
+	padding: 5px;
+	.clearfix();
+
+	.op-btns-group{
+		float: left;
+		> a{ padding: 5px; display: inline-block;}
+	}
+	#filter{
+		float: right;
+	}
+}
+
+#op-presets{
+	.clearfix();
+	.media{
+		float: left;
+		width: 33.33333333%;
+		.box-sizing(border-box);
+	}
+	.thumbnails{
+		padding: 10px;
+		margin: 6px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		text-align: center;
+		text-transform: uppercase;
+		position: relative;
+
+		.transition(all 0.3s linear);
+
+		img{ max-width: 100%; }
+
+		.op-btn{
+			position: absolute; top: 50%; left: 50%;
+			margin: -20px 0 0 -63px;
+			padding: 12px 40px;
+			opacity: 0;
+			.transition(opacity 0.3s linear);
+		}
+
+		&:hover{
+			border-color: @btn;
+			.op-btn{ opacity: 1; }
+		}
+	}
+}

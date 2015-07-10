@@ -17,7 +17,7 @@ function tx_add_onepager_metabox(){
 
     add_meta_box(
         'onepager-metabox',
-        __( 'Onepager', 'onepager' ),
+        __( 'OnePager Templates', 'onepager' ),
         $template,
         'page'
     );
@@ -40,6 +40,8 @@ function tx_onepager_metabox_scripts($hook){
     );
 
     wp_enqueue_script('tx-onepager-page-meta', asset('assets/meta.js'), true);
+    wp_enqueue_style( 'tx-lithium', asset( 'assets/css/lithium-builder.css' ) );
+
     wp_localize_script('tx-onepager-page-meta', 'onepager', $data);
 }
 

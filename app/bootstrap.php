@@ -81,7 +81,7 @@ onepager()->blockManager()->loadAllFromPath(
  * Add page Templates
  */
 $pageTemplater = new ThemeXpert\WordPress\PageTemplater();
-$pageTemplater->addTemplate('onepage template', ONEPAGER_PATH . "/app/views/onepage.php");
+$pageTemplater->addTemplate('OnePager', ONEPAGER_PATH . "/app/views/onepage.php");
 
 /**
  * Add preset layouts
