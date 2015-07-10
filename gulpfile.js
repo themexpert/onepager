@@ -17,7 +17,7 @@ var src   = './engine';
 
 var config = {
   less: {
-    src: src + '/ui/lithium/*.less',
+    src: src + '/resources/lithium/*.less',
     dest: dest + '/css',
     settings: {
       indentedSyntax: false, // Enable .less syntax?
@@ -25,7 +25,7 @@ var config = {
     }
   },
   js: {
-    src: [src+'/*.js', src+'/ui/lithium/*.js'],
+    src: [src+'/*.js', src+'/resources/lithium/*.js'],
     dest: dest + '/'
   },
   images: {
@@ -44,7 +44,7 @@ var config = {
   },
   watch: {
     src: src+'/**/*.*',
-    less: src+'/ui/lithium/**/*.less',
+    less: src+'/resources/lithium/**/*.less',
     js: src+'/*.js',
     tasks: ['build']
   }
