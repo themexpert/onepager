@@ -4,14 +4,14 @@ var Constants     = require('../constants/AppConstants');
 module.exports = {
   addSection (section) {
     AppDispatcher.handleViewAction({
-      type: Constants.ActionTypes.ADD_SECTION,
+      type   : Constants.ActionTypes.ADD_SECTION,
       section: section
     });
   },
 
   editSection (index){
     AppDispatcher.handleViewAction({
-      type: Constants.ActionTypes.EDIT_SECTION,
+      type : Constants.ActionTypes.EDIT_SECTION,
       index: index
     });
   },

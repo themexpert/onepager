@@ -8,6 +8,6 @@ require("./lithium/lithium.less");
 
 let mount = document.getElementById("onepager-settings-mount");
 
-if(mount){
-	React.render(<Admin />, mount);
+if (mount) {
+  React.render(<Admin />, mount);
 }

@@ -25,7 +25,7 @@ var config = {
     }
   },
   js: {
-    src: src+'/*.js',
+    src: [src+'/*.js', src+'/lithium/*.js'],
     dest: dest + '/'
   },
   images: {

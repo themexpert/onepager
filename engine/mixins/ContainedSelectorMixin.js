@@ -4,18 +4,18 @@
 const React = require('react');
 
 module.exports = {
-    getContainerReactId(){
-      let el = React.findDOMNode(this.refs.container);
-      if (!el) return false;
+  getContainerReactId(){
+    let el = React.findDOMNode(this.refs.container);
+    if (!el) return false;
 
-      let reactId = el.getAttribute('data-reactid');
+    let reactId = el.getAttribute('data-reactid');
 
-      return reactId;
-    },
+    return reactId;
+  },
 
-    getSelector(selector){
-      let reactId = this.getContainerReactId();
+  getSelector(selector){
+    let reactId = this.getContainerReactId();
 
-      return "[data-reactid='"+reactId+"']" + " "+selector;
-    }
+    return "[data-reactid='" + reactId + "']" + " " + selector;
+  }
 };

@@ -1,11 +1,11 @@
-const React = require('react');
-const Reflux = require('reflux');
+const React     = require('react');
+const Reflux    = require('reflux');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 
-const AdminActions = require('../actions/OptionsPanelActions');
+const AdminActions      = require('../actions/OptionsPanelActions');
 const OptionsPanelStore = require('../stores/OptionsPanelStore.js');
-const Content = require('./Optionspanel/Content.jsx');
-const Tabs = require('./Optionspanel/Tabs.jsx');
+const Content           = require('./Optionspanel/Content.jsx');
+const Tabs              = require('./Optionspanel/Tabs.jsx');
 
 let OptionsPanel = React.createClass({
   mixins: [PureMixin, Reflux.connect(OptionsPanelStore)],
