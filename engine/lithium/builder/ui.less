@@ -248,9 +248,10 @@ h3.form-divider {
 .txop-sidebar{
   // Turn off underline
   a{ text-decoration: none; }
-
-  position: fixed; left: 0; top: 0; bottom: 0; width: 23%; z-index: 9999;
-  padding-top: 54px; overflow-x: hidden;
+  width: @sidebar-width;
+  position: fixed; left: 0; top: 0; bottom: 0; z-index: 9999;
+  padding-top: 54px; 
+  overflow: hidden;
 
   // Buttons
   .btn--save { float: right; margin: 12px 6px 0 0; padding: 5px 10px; font-size: 13px; outline: 0 !important; }
@@ -280,7 +281,11 @@ h3.form-divider {
   }
 
   // Navigation Tabs
-  .tx-nav-tabs{ position: fixed; top: 0; left: 0; z-index: 9999; width: 22.9%; }
+  .tx-nav-tabs{ 
+    width: (@sidebar-width - 0.1);
+    position: fixed; top: 0; left: 0; z-index: 9999;  
+  }
+
   // Tab content
   > .tab-content{ overflow-y: auto; overflow-x: hidden; height: 100%; }
 
@@ -331,8 +336,8 @@ h3.form-divider {
 //  Sections
 // ****************************************************
 #sections{
-  width: 77%;
-  margin-left: 23%;
+  width: (100 - @sidebar-width);
+  margin-left: @sidebar-width;
   position: relative;
 }
 

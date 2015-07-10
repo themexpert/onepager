@@ -17,9 +17,9 @@ use ThemeXpert\Onepager\Onepager;
 use Whoops\Handler\PrettyPageHandler;
 
 if (WP_DEBUG) {
-    $whoops = new \Whoops\Run;
-    $whoops->pushHandler(new PrettyPageHandler);
-    $whoops->register();
+    // $whoops = new \Whoops\Run;
+    // $whoops->pushHandler(new PrettyPageHandler);
+    // $whoops->register();
 }
 
 
