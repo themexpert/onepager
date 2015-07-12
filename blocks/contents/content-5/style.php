@@ -1,5 +1,9 @@
 #<?php echo $id ?>{
 	background : url(<?php echo $styles['bg_image'] ?>); 
+	<?php if($styles['bg_parallax']):?>
+	background-attachment : fixed;
+	<?php endif;?>
+	background-size : cover;
 	color : <?php echo $styles['text_color']?>;
 }
 #<?php echo $id ?> .section-title{
