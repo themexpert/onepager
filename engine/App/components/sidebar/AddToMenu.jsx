@@ -108,8 +108,6 @@ let AddToMenu = React.createClass({
           })
         }
 
-        <h1>{this.state.isUnique ? "unique" : "not unique"}</h1>
-
         <Button bsStyle='primary' disabled={!this.state.isUnique} onClick={this.handleSubmit}>Add to Menu</Button>
       </div>
     );
