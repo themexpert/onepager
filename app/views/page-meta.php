@@ -31,12 +31,13 @@
                 <img src="<?php echo plugins_url( '../../assets/images/blank-template.jpg', __FILE__ );?>"/>
                 <figcaption>
                     <h3>Blank Template</h3>
-                    <button data-layout-id="blank-template" class="op-btn op-select-preset" type="button">Create</button>
+                    <button id="blank-template" data-layout-id="blank-template" class="op-btn" type="button">Create</button>
                 </figcaption>
             </figure>
         </div>
+
         <?php foreach($onepagerLayouts as $layout): ?>
-           
+
             <div class="media">
                 <figure class="thumbnails">
                     <img src="<?php echo $layout['screenshot']?>"/>

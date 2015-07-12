@@ -10,7 +10,8 @@
     var $pageTemplate    = $("#page_template");
     var $export          = $("#onepager-export-layout");
     var $onepagerMetabox = $("#onepager-metabox");
-    var $selectLayoutBtn = $('.op-select-preset');
+    var $selectLayoutBtn = $(".op-select-preset");
+    var $blankTemplate   = $("#blank-template");
 
     window.exportSections = function () {
       $export.click();
@@ -19,6 +20,24 @@
     $export.on('click', exportHandler);
     $pageTemplate.on('change', templateChangeHandler);
     $selectLayoutBtn.on('click', layoutSelectHandler);
+
+    $blankTemplate.on('click', function(){
+      $.post(ajaxurl, {action: 'onepager_get_sections', pageId: pageId}, function(res){
+        if(res && res.success && res.sections.length !== 0){
+          var confirmationMsg =
+            "Are you sure you want to insert this layout?" +
+            "This layout will replace your current layout!";
+
+          var proceed  = confirm(confirmationMsg);
+
+          $.post(ajaxurl, {action: 'save_sections', updated: null, pageId: pageId, sections: []}, function(res){
+            if(res && res.success){
+              location.href = onepager.livemode;
+            }
+          });
+        }
+      })
+    });
 
     $onepagerEnableBtn.on('click', enableOnepagerHandler);
     $onepagerDisableBtn.on('click', disableOnepagerHandler);
