@@ -18,15 +18,27 @@ class TemplateManager
 
     public function add($file, $url)
     {
-        $config = json_decode(file_get_contents($file), true);
-        if (!array_key_exists('screenshot', $config)) {
-            $filename = basename($file);
-            $imagename = str_replace('.json', '.png', $filename);
-            $config['screenshot'] = trailingslashit($url) . $imagename;
-            $config['id'] = $filename;
-        }
+      $config = json_decode(file_get_contents($file), true);
+      if(!is_array($config)) return;
 
-        $this->templates[] = $config;
+      $filename = basename($file);
+
+      if (!array_key_exists('screenshot', $config)) {
+        $imagename = str_replace('.json', '.png', $filename);
+        $config['screenshot'] = trailingslashit($url) . $imagename;
+      }
+
+      if (!array_key_exists('group', $config)) {
+        $config['group'] = ['General'];
+      }
+
+      if(!is_array($config['group'])){
+        $config['group'] = (array) $config['group'];
+      }
+
+      $config['id'] = $filename;
+
+      $this->templates[] = $config;
     }
 
     public function loadAll()

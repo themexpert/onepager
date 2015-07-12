@@ -1,11 +1,13 @@
 <div class="onepager-meta-container">
     <?php if ($post->post_status == "publish"): ?>
     <div class="toolbar">
-        <div id="filter">
+        <div id="op-group-filter">
             <label>Filter :</label>
             <select>
-              <option>OnePager</option>
-              <option>Eventx [Themes]</option>
+              <option value="all">All</option>
+              <?php foreach($groups as $group): ?>
+              <option><?php echo $group ?></option>
+              <?php endforeach; ?>
             </select>
         </div>
 
@@ -35,10 +37,8 @@
                 </figcaption>
             </figure>
         </div>
-
         <?php foreach($onepagerLayouts as $layout): ?>
-
-            <div class="media">
+            <div class="media <?php echo tx_get_groups($layout['group'])?>">
                 <figure class="thumbnails">
                     <img src="<?php echo $layout['screenshot']?>"/>
                     <figcaption>

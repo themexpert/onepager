@@ -36,19 +36,7 @@ let BlockCollection = React.createClass({
       return groups.concat(block.groups);
     }, [])).sort();
 
-    let groupOrder = [
-      "navbars",
-      "headers",
-      "contents",
-      "portfolios",
-      "teams",
-      "testimonials",
-      "blog",
-      "sliders",
-      "pricings",
-      "footers",
-      "themes"
-    ];
+    let groupOrder = onepager.groupOrder;
 
     groups = (_.intersection(groupOrder, groups)).concat(_.difference(groups, _.intersection(groupOrder, groups)));
     groups.unshift('all');

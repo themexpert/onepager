@@ -12,10 +12,23 @@
     var $onepagerMetabox = $("#onepager-metabox");
     var $selectLayoutBtn = $(".op-select-preset");
     var $blankTemplate   = $("#blank-template");
+    var $filter          = $("#op-group-filter select");
+    var $presets         = $("#op-presets>.media");
 
     window.exportSections = function () {
       $export.click();
     };
+
+    $filter.on('change', function(){
+      var group = $(this).val();
+      if(group === 'all'){
+        $presets.show();
+        return;
+      }
+      
+      $presets.hide();
+      $(".og-"+group).show();
+    });
 
     $export.on('click', exportHandler);
     $pageTemplate.on('change', templateChangeHandler);
