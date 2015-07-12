@@ -6,6 +6,10 @@ use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 class BlockManager
 {
 
+    protected $groupOrder = [];
+
+
+
     public function __construct(ConfigTransformer $configTransformer, Collection $blocksCollection)
     {
         $this->configTransformer = $configTransformer;
@@ -58,4 +62,20 @@ class BlockManager
     {
         return $this->blocksCollection;
     }
+
+  /**
+   * @return array
+   */
+  public function getGroupOrder()
+  {
+    return $this->groupOrder;
+  }
+
+  /**
+   * @param array $groupOrder
+   */
+  public function setGroupOrder($groupOrder)
+  {
+    $this->groupOrder = $groupOrder;
+  }
 }
