@@ -6,8 +6,9 @@ use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
 class OptionsPanel implements OptionsPanelInterface{
 	protected $options = array();
 	protected static $panels = [];
+  protected $flatOptions;
 
-	public static function getInstance($menuSlug){
+  public static function getInstance($menuSlug){
 		if(!array_key_exists($menuSlug, self::$panels)){
 			self::$panels[$menuSlug] = new self($menuSlug);
 		}
@@ -85,9 +86,24 @@ class OptionsPanel implements OptionsPanelInterface{
 		return ( array_key_exists( $index, $options ) ) ? $options[ $index ] : null;
 	}
 
+  public function getOption($name){
+    if ( ! $this->flatOptions ) {
+      $options = get_option( $this->menuSlug, true );
+
+      if(!$options || !is_array($options)) {
+        $this->flatOptions = array();
+      } else {
+        $this->flatOptions = call_user_func_array('array_merge', $options);
+      }
+    }
+
+    //get default value
+    return (array_key_exists($name, $this->flatOptions)) ? $this->flatOptions[$name] : "";
+  }
+
 	public function all( $menuSlug ) {
 		if ( ! $this->options ) {
-			$this->options = get_option( $menuSlug, true );
+			$this->options = get_option( $this->menuSlug, true );
 		}
 
 		return ! empty( $this->options ) ? $this->options : [ ];
