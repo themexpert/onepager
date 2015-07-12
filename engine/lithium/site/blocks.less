@@ -60,31 +60,41 @@ body {
 .social-links {
   > a {
     font-family: FontAwesome;
+    font-size: 20px;
     display: inline-block;
     text-decoration: none;
     margin: 0 5px;
+    &:hover{ text-decoration: none; }
   }
-  > a[href*='facebook.com']:before {
-    content: '\f09a';
+  > a[href*='facebook.com']{
+    &:before { content: '\f09a';}
+    &:hover:before{ color: #3b5998; }
   }
-  > a[href*='twitter.com']:before {
-    content: '\f099';
+
+  > a[href*='twitter.com']{
+    &:before {content: '\f099';}
+    &:hover:before { color : #00abf0; }
   }
-  > a[href*='linkedin.com']:before {
-    content: '\f0e1';
+  > a[href*='linkedin.com']{
+    &:before {content: '\f0e1';}
+    &:hover:before { color: #105b88;}
   }
-  > a[href*='plus.google.com']:before {
-    content: '\f0d5';
+  > a[href*='plus.google.com']{
+    &:before { content: '\f0d5'; }
+    &:hover:before { color : #df4b38; }
   }
   // Design Community
-  > a[href*='behance.net']:before {
-    content: '\f1b4';
+  > a[href*='behance.net']{
+    &:before { content: '\f1b4'; }
+    &:hover:before { color: #1478ff; }
   }
-  > a[href*='dribbble.com']:before {
-    content: '\f17d';
+  > a[href*='dribbble.com']{
+    &:before { content: '\f17d'; }
+    &:hover:before { color: #f16396; }
   }
-  > a[href*='flickr.com']:before {
-    content: '\f16e';
+  > a[href*='flickr.com']{
+    &:before { content: '\f16e'; }
+    &:hover:before { color: #fe0084; }
   }
   // Coding Community
   > a[href*='github.com']:before {
@@ -301,5 +311,16 @@ body {
   .title {
     margin-top: 0;
     margin-bottom: 1rem;
+  }
+}
+
+/* ==========================================
+  Blocks: Team
+============================================ */
+.teams{
+  figure{ margin-bottom: 15px; }
+
+  .overlay-background{
+    .social-links a{ color: #fff; }
   }
 }

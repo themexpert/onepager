@@ -75,6 +75,11 @@ return array(
       'value'   => 'http://s3.amazonaws.com/quantum-assets/bg/bg6.jpg'
     ),
     array(
+      'name'=>'bg_parallax', 
+      'type'=> 'switch', 
+      'label'=>'Parallax Background'
+    ),
+    array(
       'name'  => 'title_color',
       'label' => 'Title Color',
       'type'  => 'colorpicker',
