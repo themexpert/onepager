@@ -1,5 +1,65 @@
 @btn : #673AB7;
 
+// ------------------------------------------
+// Wordpress Admin overrid + Style
+// ------------------------------------------
+
+// Admin Toolbar
+// #wp-admin-bar-op-add-block {
+//   background: @brand-primary !important;
+//   color: #fff;
+//   cursor: pointer;
+//   &:hover .ab-item {
+//     background: darken(@brand-primary, 4%) !important;
+//     color: #fff !important;
+//   }
+
+// }
+// Logo - Sidebar menu
+#adminmenu .toplevel_page_onepager-dashboard .wp-menu-image img {
+  width: 22px;
+}
+
+// Font awesome for top menu
+.ab-top-menu {
+  .fa {
+    font-family: FontAwesome !important;
+  }
+}
+
+// Buildmode/livemood
+#wp-admin-bar-op-enable-livemode .fa,
+#wp-admin-bar-op-disable-livemode .fa {
+  font-size: 11px;
+  .transition(color .2s linear);
+}
+
+// Live mode enable
+#wp-admin-bar-op-enable-livemode {
+  .fa {
+    color: #f44336;
+  }
+  &:hover {
+    .fa {
+      color: #4CAF50;
+    }
+  }
+}
+
+// Live mode disabled
+#wp-admin-bar-op-disable-livemode {
+  .fa {
+    color: #4CAF50;
+  }
+  &:hover {
+    .fa {
+      color: #f44336;
+    }
+  }
+}
+
+// Admin UI 
+// -----------------------------------
 .op-btn {
   background: @btn;
   color: #fff;
@@ -25,7 +85,7 @@
     top: 10px;
     width: 30px;
     height: 23px;
-    background: url('../../images/logo-white.png') no-repeat;
+    background: url('../images/logo-white.png') no-repeat;
     background-size: contain;
   }
 }
@@ -43,14 +103,14 @@
   .clearfix();
 
   .op-btns-group {
-    float: left;
+    float: right;
     > a {
       padding: 5px;
       display: inline-block;
     }
   }
   #filter {
-    float: right;
+    float: left;
   }
 }
 
@@ -73,7 +133,7 @@
     .transition(all 0.3s linear);
 
     img {
-      max-width: 100%;
+      max-width: 100%; height: 243px;
     }
 
     .op-btn {

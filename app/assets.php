@@ -77,6 +77,7 @@ function enqueueOnepagerAdminAssets(){
 	$q->style( 'tx-bootstrap', asset( 'assets/css/bootstrap.css' ) );
 	$q->style( 'tx-animatecss', asset( 'assets/css/animate.css' ) );
 	$q->style( 'tx-fontawesome', asset( 'assets/css/font-awesome.css' ) );
+	$q->style( 'lithium-ui', asset( 'assets/css/lithium-builder.css' ) );
 
 	$q->script( 'tx-bootstrap', asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
 
