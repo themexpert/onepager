@@ -4,7 +4,7 @@ require("./shared/lib/_mixins");
 
 
 require("../assets/css/sweetalert.css");
-require("./resources/lithium/lithium.less");
+require("./lithium/lithium.less");
 
 let mount = document.getElementById("onepager-settings-mount");
 
