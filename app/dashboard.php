@@ -8,7 +8,7 @@ tx_add_onepager_options_page();
 
 function tx_add_dashboard_page()
 {
-  $icon = onepager()->url('assets/images/dashicon-onepager.svg');
+  $icon = onepager()->url('assets/images/logo-white.png');
 
   $template = function () {
     include __DIR__ . "/views/dashboard-page.php";
