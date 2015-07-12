@@ -3,9 +3,16 @@
 add_action('add_meta_boxes', 'tx_add_onepager_metabox');
 add_action('admin_enqueue_scripts', 'tx_onepager_metabox_scripts');
 
+function tx_get_groups($groups){
+  return implode("", array_map(function($group){return "og-".$group;}, $groups));
+}
+
 function tx_add_onepager_metabox(){
     $template = function($post){
         $onepagerLayouts = onepager()->layoutManager()->all();
+        $groups = array_unique(array_reduce($onepagerLayouts, function($carry, $layout){
+          return array_merge($carry, $layout['group']);
+        }, []));
 
         //generate livemode url
         $url = League\Url\Url::createFromUrl(get_permalink($post->ID));
