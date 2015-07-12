@@ -52,6 +52,11 @@ let Sidebar = React.createClass({
     let getUniqueSectionId = function (sections, index, title) {
       let id = $s(title.trim()).dasherize().s; //make es4 compitable
 
+      //remove starting dash
+      if(id && id.indexOf("-") === 0){
+        id = id.replace("-", "", 1);
+      }
+
       while (!_.arrIsUniqueProperty(sections, index, id, 'id')) {
         id = id + 1;
       }
