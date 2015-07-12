@@ -3,19 +3,21 @@
 ehthumbs.db
 Thumbs.db
 
-# PhpStorm
+# IDE
 .idea
 .phpintel
+*.sublime*
 
-#blocks
+#arbitary
+.scratch
+
+# blocks
 blocks/blocks.cache
 
-#package
+# package
 onepager.zip
 
-# Sublime
-*.sublime-workspace
-*.sublime-project
+
 
 # Node + Composer
 assets
@@ -23,5 +25,3 @@ dist
 vendor
 node_modules
 bower_components
-composer.lock
-*.composer.lock
