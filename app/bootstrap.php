@@ -72,6 +72,20 @@ onepager()->blockManager()->loadAllFromPath(
     onepager()->url("blocks")
 );
 
+onepager()->blockManager()->setGroupOrder(array(
+    "navbars",
+    "headers",
+    "contents",
+    "portfolios",
+    "teams",
+    "testimonials",
+    "blog",
+    "sliders",
+    "pricings",
+    "footers",
+    "themes"
+));
+
 //if (!file_exists(onepager()->path("blocks/blocks.cache")) && is_writable(onepager()->path("blocks"))) {
 //    file_put_contents(onepager()->path("blocks/blocks.cache"), json_encode((array)onepager()->blockManager()->all()));
 //}

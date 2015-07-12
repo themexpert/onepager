@@ -8,6 +8,7 @@ function getOnepagerData( $pageId ) {
 	$cat_arr   = $onepager->content()->getCategories();
 	$pages_arr = $onepager->content()->getPages();
 	$blocks    = array_values( (array) $onepager->blockManager()->all() );
+  $groupOrder = $onepager->blockManager()->getGroupOrder();
 
 	$sections = array_map( function ( $section ) {
 		$section = onepager()->render()->sectionBlockDataMerge($section);
@@ -32,6 +33,7 @@ function getOnepagerData( $pageId ) {
 		'menus'      => $nav_arr,
 		'pages'      => $pages_arr,
 		'categories' => $cat_arr,
+    'groupOrder' => $groupOrder,
 		'disable'		=> $url->__toString()
 	);
 }
