@@ -1,0 +1,14 @@
+.testimonial-1 .item{ margin: 0 20%;  }
+.testimonial-1 .carousel-indicators{ position: relative; }
+.testimonial-1 .carousel-indicators li{ 
+	width: 15px; height: 15px;
+	border-color: transparent; 
+	background: rgba(50,50,50,.1); 
+}
+.testimonial-1 .carousel-indicators li.active{ 
+	width: 18px; height: 18px;
+	background: rgba(50,50,50,.4); 
+}
+.testimonial-1 figure{ margin: 2rem 0; }
+.testimonial-1 img{ border-radius: 100%; }
+.testimonial-1 .name{ margin-bottom: 10px; font-weight: bold; }
