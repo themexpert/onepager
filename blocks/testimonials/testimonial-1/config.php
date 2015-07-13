@@ -50,12 +50,12 @@ return array(
   'styles' => array(
     array(
       'name'  => 'bg_image', 
-      'label' => 'Image', 
+      'label' => 'Background Image', 
       'type'  => 'image'
     ),
     array(
       'name'     => 'bg_repeat',
-      'label'    => 'Repeat',
+      'label'    => 'Image Repeat',
       'type'     => 'select',
       'value'    => 'no-repeat',
       'options'  => array(
@@ -66,7 +66,7 @@ return array(
     ),
     array(
       'name'    => 'bg_color',
-      'label'   => 'Color',
+      'label'   => 'Background Color',
       'type'    => 'colorpicker',
       'value'   => '#f5f5f5'
     ),
