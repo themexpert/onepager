@@ -14,7 +14,7 @@
     var $blankTemplate   = $("#blank-template");
     var $filter          = $("#op-group-filter select");
     var $presets         = $("#op-presets>.media");
-
+    var $publish         = $("#publish");
     window.exportSections = function () {
       $export.click();
     };
@@ -48,7 +48,10 @@
               location.href = onepager.livemode;
             }
           });
+        } else {
+          location.href = onepager.livemode;
         }
+
       })
     });
 
@@ -63,6 +66,8 @@
     function enableOnepagerHandler() {
       $pageTemplate.val("onepage.php");
       $pageTemplate.trigger('change');
+
+      $publish.click();
     }
 
     function disableOnepagerHandler() {
