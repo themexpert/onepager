@@ -1,0 +1,221 @@
+{
+  "sections": [
+    {
+      "id": "navbar",
+      "slug": "navbar-1",
+      "title": "Navbar",
+      "contents": {
+        "logo": "http://s3.amazonaws.com/quantum-assets/logo-dark.png",
+        "menu": "6",
+        "cta": "#",
+        "cta_text": "Contact us"
+      },
+      "settings": {
+        "sticky_nav": "0"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "link_color": "#777777",
+        "link_hover_color": "#222222",
+        "cta_bg": "#2196f3",
+        "cta_color": "#ffffff"
+      }
+    },
+    {
+      "id": "slider",
+      "slug": "slider-1",
+      "title": "Slider",
+      "contents": {
+        "sliders": [
+          {
+            "title": "Onepage Builder for WordPress",
+            "description": "Building onepage website has never been easier before",
+            "image": "http://s3.amazonaws.com/quantum-assets/icons/headphone-big.png",
+            "link": "http://getonepager.com",
+            "link_text": "Our Works"
+          },
+          {
+            "title": "Revolutionary Website Builder",
+            "description": "Ridiculously easy and built for tomorrows internet in mind",
+            "image": "http://s3.amazonaws.com/quantum-assets/icons/responsive-big.png",
+            "link": "http://getonepager.com",
+            "link_text": "More Works"
+          }
+        ]
+      },
+      "settings": {
+        "title_transformation": "text-uppercase",
+        "slider_height": "600"
+      },
+      "styles": {
+        "slider_bg": "http://s3.amazonaws.com/quantum-assets/bg/bg2.jpg",
+        "button_color": "#323232",
+        "button_hover_color": "#2196F3"
+      }
+    },
+    {
+      "id": "features",
+      "slug": "content-2",
+      "title": "Features",
+      "contents": {
+        "title": "Modern and Ridiculously Easy Page Builder for All",
+        "description": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
+        "items": [
+          {
+            "title": "Responsive Design",
+            "description": "Blocks fit all devices",
+            "media": "http://s3.amazonaws.com/quantum-assets/icons/presentation.png"
+          },
+          {
+            "title": "WYSIWYG Editor",
+            "description": "Do Everything In One Place",
+            "media": "http://s3.amazonaws.com/quantum-assets/icons/tools.png"
+          },
+          {
+            "title": "Intuitive Configuration",
+            "description": "No more boalted configuration panel",
+            "media": "http://s3.amazonaws.com/quantum-assets/icons/gear.png"
+          }
+        ]
+      },
+      "settings": {
+        "title_transformation": "text-uppercase",
+        "columns": "4",
+        "animation_title": "fadeInDown",
+        "animation_item": "zoomIn"
+      },
+      "styles": {
+        "bg_color": "#fff",
+        "title_color": "#323232",
+        "text_color": "#727272",
+        "icon_color": ""
+      }
+    },
+    {
+      "id": "call-to-action",
+      "slug": "content-5",
+      "title": "Call to action",
+      "contents": {
+        "title": "Modern and ridiculusly easy page builder for all",
+        "description": "<div>We are a nimble team of passionate developer and designer.</div>",
+        "image": "",
+        "link": "#",
+        "link_text": "Hire Us Today"
+      },
+      "settings": {
+        "title_size": "title-sm",
+        "title_transformation": "text-uppercase",
+        "animation": "fadeInUp"
+      },
+      "styles": {
+        "bg_image": "http://s3.amazonaws.com/quantum-assets/bg/bg6.jpg",
+        "bg_parallax": "false",
+        "title_color": "#ffffff",
+        "text_color": "#dddddd",
+        "button_border_color": "#ffffff",
+        "button_text_color": "#ffffff"
+      }
+    },
+    {
+      "id": "teams",
+      "slug": "team-1",
+      "title": "Teams",
+      "contents": {
+        "title": "Meet The Team",
+        "items": [
+          {
+            "title": "Steve Jobs",
+            "designation": "CEO, Apple Inc",
+            "image": "http://s3.amazonaws.com/quantum-assets/images/4-thumb.jpg",
+            "social": [
+              "http://facebook.com/ThemeXpert",
+              "http://twitter.com/themexpert",
+              "http://linkedin.com/themexpert"
+            ]
+          },
+          {
+            "title": "Nikola Tesla",
+            "designation": "Scientist",
+            "image": "http://s3.amazonaws.com/quantum-assets/images/5-thumb.jpg",
+            "social": [
+              "http://behance.net/ThemeXpert",
+              "http://dribbble.com/themexpert",
+              "http://twitter.com/themexpert.com"
+            ]
+          },
+          {
+            "title": "Elon Musk",
+            "designation": "CEO, Tesla Motors",
+            "image": "http://s3.amazonaws.com/quantum-assets/images/6-thumb.jpg",
+            "social": [
+              "http://github.com/ThemeXpert",
+              "http://codepen.io/themexpert"
+            ]
+          }
+        ]
+      },
+      "settings": {
+        "title_transformation": "text-uppercase",
+        "animation": "zoomIn",
+        "overlay_animation": "scale"
+      },
+      "styles": {
+        "bg_color": "#ebeff2",
+        "title_color": "#323232"
+      }
+    },
+    {
+      "id": "testimonials",
+      "slug": "testimonial-1",
+      "title": "Testimonials",
+      "contents": {
+        "title": "People Love Us",
+        "testimonials": [
+          {
+            "name": "John Resig",
+            "designation": "Creator of jQuery",
+            "image": "http://s3.amazonaws.com/quantum-assets/images/8-thumb.jpg",
+            "testimony": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis ex risus. Vivamus hendrerit nec ex vitae varius. Aliquam sollicitudin dapibus dapibus. Duis lacus diam, lacinia a fringilla semper, laoreet eget tellus. Vestibulum sed nisi rutrum, efficitur odio et, varius mi."
+          },
+          {
+            "name": "Elon Musk",
+            "designation": "CEO and CTO of SpaceX",
+            "image": "http://s3.amazonaws.com/quantum-assets/images/7-thumb.jpg",
+            "testimony": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis ex risus. Vivamus hendrerit nec ex vitae varius. Aliquam sollicitudin dapibus dapibus. Duis lacus diam, lacinia a fringilla semper, laoreet eget tellus. Vestibulum sed nisi rutrum, efficitur odio et, varius mi."
+          }
+        ]
+      },
+      "settings": {
+        "title_transformation": "text-uppercase"
+      },
+      "styles": {
+        "bg_image": "",
+        "bg_repeat": "no-repeat",
+        "bg_color": "#f5f5f5",
+        "bg_parallax": "",
+        "text_color": ""
+      }
+    },
+    {
+      "id": "footer",
+      "slug": "footer-1",
+      "title": "Footer",
+      "contents": {
+        "social": [
+          "http://facebook.com/ThemeXpert",
+          "http://twitter.com/themexpert",
+          "http://linkedin.com/themexpert",
+          "http://behance.net/ThemeXpert",
+          "http://dribbble.com/themexpert"
+        ],
+        "menu": "",
+        "copyright": "Copyright &copy; 2015 OnePager, All Rights Reserved"
+      },
+      "styles": {
+        "bg_color": "#e6e6e6",
+        "text_color": "#383838"
+      }
+    }
+  ],
+  "name": "Corporate 1"
+}

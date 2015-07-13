@@ -20,7 +20,6 @@
   Carousel Indicator
 */
 .slider-1 .carousel-indicators { bottom: 0px; }
-.slider-1 .carousel-indicators .active { background-color: #332323; }
 
 /*Responsive*/
 @media (min-width: 992px) { 

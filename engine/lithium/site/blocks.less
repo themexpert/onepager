@@ -6,7 +6,7 @@ body {
   position: relative;
   .transition(all .25s ease-out);
 }
-
+.op-section{ outline: 0; }
 /* ==========================================
    Blocks: Common
  ============================================ */
@@ -273,6 +273,15 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+}
+.carousel-indicators li{ 
+  width: 15px; height: 15px;
+  border-color: transparent; 
+  background: rgba(50,50,50,.1); 
+}
+.carousel-indicators li.active{ 
+  width: 18px; height: 18px;
+  background: rgba(50,50,50,.4); 
 }
 
 /* ==========================================

@@ -24,7 +24,7 @@ class TemplateManager
       $filename = basename($file);
 
       if (!array_key_exists('screenshot', $config)) {
-        $imagename = str_replace('.json', '.png', $filename);
+        $imagename = str_replace('.json', '.jpg', $filename);
         $config['screenshot'] = trailingslashit($url) . $imagename;
       }
 
