@@ -16,9 +16,11 @@ Template Name: Onepage
 
 <body <?php body_class(); ?> >
 
-	<?php while(have_posts()): the_post(); ?>
-		<?php the_content(); ?>
-	<?php endwhile; ?>
+	<div class="op-sections">
+		<?php while(have_posts()): the_post(); ?>
+			<?php the_content(); ?>
+		<?php endwhile; ?>
+	</div>
 
 	<?php wp_footer(); ?>
 </body>

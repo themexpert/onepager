@@ -27,10 +27,8 @@
 				<?php endforeach; ?>
 			</div>
 		<?php endforeach; ?>
-
 	</div>
-</section>
-
+<?php // For Full screen effer we need to keep the js inside section ?>
 <script type="text/javascript">
   jQuery(document).ready(function() {
     jQuery('.portfolio-1 .op-lightbox').magnificPopup({ 
@@ -39,3 +37,5 @@
     });
   });
 </script>
+</section>
+
