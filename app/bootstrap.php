@@ -79,7 +79,7 @@ onepager()->blockManager()->setGroupOrder(array(
     "portfolios",
     "teams",
     "testimonials",
-    "blog",
+    "blogs",
     "sliders",
     "pricings",
     "footers",
