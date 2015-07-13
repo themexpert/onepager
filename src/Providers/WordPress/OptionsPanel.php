@@ -86,7 +86,7 @@ class OptionsPanel implements OptionsPanelInterface{
 		return ( array_key_exists( $index, $options ) ) ? $options[ $index ] : null;
 	}
 
-  public function getOption($name){
+  public function getOption($name, $default=""){
     if ( ! $this->flatOptions ) {
       $options = get_option( $this->menuSlug, true );
 
@@ -98,7 +98,7 @@ class OptionsPanel implements OptionsPanelInterface{
     }
 
     //get default value
-    return (array_key_exists($name, $this->flatOptions)) ? $this->flatOptions[$name] : "";
+    return (array_key_exists($name, $this->flatOptions)) ? $this->flatOptions[$name] : $default;
   }
 
 	public function all( $menuSlug ) {
