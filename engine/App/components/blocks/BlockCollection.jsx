@@ -1,12 +1,41 @@
-const React     = require('react');
-const _         = require('underscore');
-const Alert     = require('react-bootstrap/lib/Alert');
-const Button    = require('react-bootstrap/lib/Button');
+const React = require('react');
+const _ = require('underscore');
+const Alert = require('react-bootstrap/lib/Alert');
+const Button = require('react-bootstrap/lib/Button');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const Block     = require('./Block.jsx');
-const Select    = require("../../../shared/components/form/Select.jsx");
+const Block = require('./Block.jsx');
+const Select = require("../../../shared/components/form/Select.jsx");
 // const AppStore  = require('../../stores/AppStore');
 
+function orderGroups(blocks, groupOrder) {
+  let groups = _.unique(blocks.reduceRight(function (groups, block) {
+    return groups.concat(block.groups);
+  }, [])).sort();
+
+  let foundGroups = _.intersection(groupOrder, groups);
+
+  groups = (foundGroups).concat(_.difference(groups, foundGroups));
+  groups.unshift('all');
+
+  return groups;
+}
+
+function orderBlocks(blocks, groups) {
+  return _.unique(groups.map(function (group) {
+    return blocks.filter(function (block) {
+      return block.groups.indexOf(group) !== -1;
+    });
+  }).reduce(function (carry, blocks) {
+    return carry.concat(blocks);
+  }, []));
+}
+
+function arrayKeyMirror(groups) {
+  return groups.reduce(function (o, v) {
+    o[v] = v;
+    return o;
+  }, {});
+}
 
 let BlockCollection = React.createClass({
   mixins: [PureMixin],
@@ -30,21 +59,8 @@ let BlockCollection = React.createClass({
   render() {
     console.log("rendering blocks");
 
-    let {blocks} = this.props;
-
-    let groups = _.unique(blocks.reduceRight(function (groups, block) {
-      return groups.concat(block.groups);
-    }, [])).sort();
-
-    let groupOrder = onepager.groupOrder;
-
-    groups = (_.intersection(groupOrder, groups)).concat(_.difference(groups, _.intersection(groupOrder, groups)));
-    groups.unshift('all');
-
-    let groupOptions = groups.reduce(function (o, v) {
-      o[v] = v;
-      return o;
-    }, {});
+    let groups = orderGroups(this.props.blocks, onepager.groupOrder);
+    let blocks = orderBlocks(this.props.blocks, groups);
 
 
     if (blocks.length === 0) {
@@ -61,7 +77,7 @@ let BlockCollection = React.createClass({
         <div className="blocks-nav">
           <Select type="select" ref="group"
                   defaultValue={this.state.group}
-                  options={groupOptions}
+                  options={arrayKeyMirror(groups)}
                   onChange={this.handleChange}/>
 
           <Button bsStyle='primary' className="btn--back" onClick={this.props.closeBlocks}>
