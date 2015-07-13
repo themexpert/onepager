@@ -66,7 +66,7 @@
     }
 
     function disableOnepagerHandler() {
-      $pageTemplate.val("");
+      $pageTemplate.val("default");
       $pageTemplate.trigger('change');
     }
 
