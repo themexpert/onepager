@@ -43,12 +43,11 @@ function tx_add_build_mode_button_to_toolbar()
     $isLiveMode = onepager()->content()->isLiveMode();
 
     if ($isOnepage && !$isLiveMode) {
-        $url = League\Url\Url::createFromUrl(getCurrentPageURL());
-        $url->getQuery()->modify(array('livemode' => true));
+        $url = getBuildModeUrl(getCurrentPageURL(), true);
 
         onepager()->toolbar()->addMenu(
             'op-enable-livemode',
-            $url->__toString(),
+            $url,
             '<span class="fa fa-circle"></span> Enable Build Mode'
         );
     }

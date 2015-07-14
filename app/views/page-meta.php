@@ -12,7 +12,7 @@
         </div>
 
         <div class="op-btns-group">
-            <a href="<?php echo $url->__toString() ?>">Load Editor</a>
+            <a href="<?php echo $editorUrl ?>">Load Editor</a>
 
             <div style="display:none">
                 <button type="button" id="onepager-save-layout" class="onepager-button">Save Layout</button>

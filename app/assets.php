@@ -18,9 +18,7 @@ function getOnepagerData( $pageId ) {
 		return $section;
 	}, onepager()->section()->all( $pageId ) );
 
-	$url   = League\Url\Url::createFromUrl( getCurrentPageURL() );
-	$query = $url->getQuery();
-	$query->modify( array( 'livemode' => false ) );
+	$disableUrl   = getBuildModeUrl( getCurrentPageURL(), false);
 
 	return array(
 		'ajaxUrl'    	=> $ajaxUrl,
@@ -34,7 +32,7 @@ function getOnepagerData( $pageId ) {
 		'pages'      => $pages_arr,
 		'categories' => $cat_arr,
     'groupOrder' => $groupOrder,
-		'disable'		=> $url->__toString()
+		'disable'		=> $disableUrl
 	);
 }
 

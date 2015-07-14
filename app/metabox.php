@@ -15,9 +15,7 @@ function tx_add_onepager_metabox(){
         }, []));
 
         //generate livemode url
-        $url = League\Url\Url::createFromUrl(get_permalink($post->ID));
-        $query = $url->getQuery();
-        $query->modify(array('livemode' => true));
+        $editorUrl = getBuildModeUrl(get_permalink($post->ID), true);
 
         include __DIR__ . "/views/page-meta.php";
     };

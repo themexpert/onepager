@@ -60,9 +60,7 @@ class Content implements ContentInterface {
 	}
 
 	public function isLiveMode() {
-		$livemode = array_key_exists( 'livemode', $_GET ) ? $_GET['livemode'] : false;
-
-		return ( is_super_admin() && $this->isOnepage() && $livemode );
+		return ( is_super_admin() && $this->isOnepage() && isBuildMode() );
 	}
 
 	public function isOnepagerByTemplate(){
