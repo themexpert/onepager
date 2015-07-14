@@ -362,7 +362,7 @@ h3.form-divider {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 23%;
+  width: @sidebar-width;
   z-index: 9999;
   padding-top: 54px;
   overflow-x: hidden;
@@ -430,7 +430,7 @@ h3.form-divider {
     top: 0;
     left: 0;
     z-index: 9999;
-    width: 22.9%;
+    width: @sidebar-width - 0.1;
   }
   // Tab content
   > .tab-content {
@@ -509,8 +509,8 @@ h3.form-divider {
 //  Sections
 // ****************************************************
 #sections {
-  width: 77%;
-  margin-left: 23%;
+  width: (100 - @sidebar-width);
+  margin-left: @sidebar-width;
   position: relative;
 }
 
