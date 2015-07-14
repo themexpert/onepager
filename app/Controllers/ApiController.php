@@ -11,6 +11,9 @@ class ApiController
         //strip slashes
         array_walk_recursive($sections, function (&$value) {
             $value = stripslashes($value);
+
+            if($value === "true") $value = true;
+            if($value === "false") $value = false;
         });
 
         $updated = $_POST['updated'];
@@ -70,7 +73,10 @@ class ApiController
 
         //strip slashes
         array_walk_recursive($sections, function (&$value) {
-            $value = stripslashes($value);
+          $value = stripslashes($value);
+
+          if($value === "true") $value = true;
+          if($value === "false") $value = false;
         });
 
         $id = wp_insert_post(array(
