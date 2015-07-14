@@ -12,6 +12,18 @@ if(!function_exists('array_find_by')){
   }
 }
 
+function getOpBuildModeUrl($url, $mode){
+  $url   = League\Url\Url::createFromUrl($url);
+  $query = $url->getQuery();
+  $query->modify( array( 'onepager' => $mode ) );
+
+  return $url->__toString();
+}
+
+function isOpBuildMode(){
+  return array_key_exists( 'onepager', $_GET ) ? $_GET['onepager'] : false;
+}
+
 function op_send_json_success() {
   //TODO: replace this in future release
   wp_send_json_success();
@@ -101,7 +113,7 @@ if ( ! function_exists( 'endsWith' ) ) {
 // Determine media type based on the input
 function op_is_image($media) {
   $protocall = array('http', 'https', '//');
-  
+
   // If we find the query string then its image
   foreach($protocall as $query) {
         if(strpos($media, $query, 0) !== false) return true; // stop on first true result
@@ -117,6 +129,6 @@ function op_the_excerpt($excerpt_length=55, $readmore=null) {
   $text = str_replace(']]>', ']]&gt;', $text);
 
   $text = wp_trim_words( $text, $excerpt_length );
-  
+
   echo $text . (!$readmore ? '' : ' <a href="'.get_permalink().'">'.$readmore.'</a>');
 }

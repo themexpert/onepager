@@ -18,7 +18,7 @@ function getOnepagerData( $pageId ) {
 		return $section;
 	}, onepager()->section()->all( $pageId ) );
 
-	$disableUrl   = getBuildModeUrl( getCurrentPageURL(), false);
+	$disableUrl   = getOpBuildModeUrl( getCurrentPageURL(), false);
 
 	return array(
 		'ajaxUrl'    	=> $ajaxUrl,

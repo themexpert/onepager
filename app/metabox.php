@@ -15,7 +15,7 @@ function tx_add_onepager_metabox(){
         }, []));
 
         //generate livemode url
-        $editorUrl = getBuildModeUrl(get_permalink($post->ID), true);
+        $editorUrl = getOpBuildModeUrl(get_permalink($post->ID), true);
 
         include __DIR__ . "/views/page-meta.php";
     };

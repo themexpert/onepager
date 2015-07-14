@@ -43,7 +43,7 @@ function tx_add_build_mode_button_to_toolbar()
     $isLiveMode = onepager()->content()->isLiveMode();
 
     if ($isOnepage && !$isLiveMode) {
-        $url = getBuildModeUrl(getCurrentPageURL(), true);
+        $url = getOpBuildModeUrl(getCurrentPageURL(), true);
 
         onepager()->toolbar()->addMenu(
             'op-enable-livemode',
