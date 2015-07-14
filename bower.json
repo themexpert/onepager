@@ -12,8 +12,9 @@
     "wow": "~1.1.2",
     "jquery.nicescroll": "~3.6.0",
     "bootstrap": "~3.3.5",
-    "magnific-popup" : "~1.0.0",
-    "bootstrap-switch": "~3.3.2"
+    "magnific-popup": "~1.0.0",
+    "bootstrap-switch": "~3.3.2",
+    "fullpage.js": "~2.6.7"
   },
   "devDependencies": {}
 }

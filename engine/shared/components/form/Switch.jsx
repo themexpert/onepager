@@ -6,7 +6,7 @@ let SwitchControl = React.createClass({
   mixins: [PureMixin],
 
   getValue(){
-    return React.findDOMNode(this.refs.input).checked ? 1 : 0;
+    return React.findDOMNode(this.refs.input).checked;
   },
 
   componentDidMount(){
