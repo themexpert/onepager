@@ -51,7 +51,8 @@ function enqueueOnepagerAssets() {
 	$q->script( 'tx-nicescroll', asset('assets/js/jquery.nicescroll.js'), array( 'jquery' ) );
 	$q->script( 'lithium', asset('assets/lithium.js'), array( 'jquery' ) );
 
-	$q->style( 'lithium', asset( 'assets/css/lithium.css' ) );
+  $q->style( 'lithium', asset( 'assets/css/lithium.css' ) );
+  $q->style( 'lithium', asset( 'assets/css/lithium-builder.css' ) );
 
 	if ( onepager()->content()->isLiveMode() ) {
 		if ( function_exists( 'wp_enqueue_media' ) ) {
@@ -76,6 +77,7 @@ function enqueueOnepagerAdminAssets(){
 	if ( function_exists( 'wp_enqueue_media' ) ) {
 		wp_enqueue_media();
 	}
+
 	$q->style( 'tx-bootstrap', asset( 'assets/css/bootstrap.css' ) );
 	$q->style( 'tx-animatecss', asset( 'assets/css/animate.css' ) );
 	$q->style( 'tx-fontawesome', asset( 'assets/css/font-awesome.css' ) );

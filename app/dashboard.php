@@ -57,6 +57,8 @@ function tx_rename_onepager_dashboard_submenu_name(){
 
 function tx_add_onepager_dashboard_scripts()
 {
+  wp_enqueue_script("lithium-builder", asset("assets/css/lithium-builder.css"));
+
 //  $dashboard = endsWith(get_current_screen()->id, "_page_onepager-");
 //  if (!$dashboard) return;
 }
