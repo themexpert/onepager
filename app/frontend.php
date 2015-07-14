@@ -12,7 +12,7 @@ add_action( 'wp_head', function () {
 
 	//get page sections
 	$sections = onepager()->section()->all( $pageId );
-	
+
 	//render its styles on head section
 	onepager()->render()->styles( $sections );
 } );
@@ -21,7 +21,7 @@ add_action( 'wp_head', function () {
 
 
 //TODO: optimize
-//block have external stylesheets and scripts  
+//block have external stylesheets and scripts
 //if its onepager page enqueue onepager block scripts on initialization
 add_action( 'wp_enqueue_scripts', function () {
 	//if requested page is not onepager then get out right away
@@ -35,12 +35,11 @@ add_action( 'wp_enqueue_scripts', function () {
 	$blocks = (array) onepager()->blockManager()->all();
 
 	if(onepager()->content()->isLiveMode()){
-		$blocks = (array) onepager()->blockManager()->all();
 
 
 		array_walk( $blocks, function ( $block ) {
 			$enqueueCb = $block['enqueue'];
-			
+
 			if ( ! $enqueueCb ) {
 				return;
 			}
@@ -64,9 +63,9 @@ add_action( 'wp_enqueue_scripts', function () {
 
 		//get the enqueue callback
 		$enqueueCb = $block['enqueue'];
-		
-		//if this block does not have styles attached to 
-		//reurn right away
+
+		//if this block does not have styles attached to
+		//return right away
 		if ( ! $enqueueCb ) {
 			return;
 		}
@@ -77,27 +76,29 @@ add_action( 'wp_enqueue_scripts', function () {
 		//call the enqueue callback with block folder url
 		$enqueueCb( $blockUrl );
 	}, $sections);
-	
+
 
 } );
 
 //inject onepager
-add_filter( 'the_content', function ( $content ) {
+add_filter( 'the_content',  'echo_onepager_content');
+
+function echo_onepager_content($content){
   $isOnepage = onepager()->content()->isOnepage();
 
   if(!defined('ONEPAGE_CONTENT_LOADED') && $isOnepage){
-  	define('ONEPAGE_CONTENT_LOADED', true);
-	  $isLiveMode = onepager()->content()->isLiveMode();
+    define('ONEPAGE_CONTENT_LOADED', true);
+    $isLiveMode = onepager()->content()->isLiveMode();
 
-	  if ( $isLiveMode ) {
-	    return '<div class="wrap"> <div id="onepager-mount"></div> </div>';
-	  } else {
-		  $pageId = onepager()->content()->getCurrentPageId();
-	    $sections = onepager()->section()->all( $pageId );
+    if ( $isLiveMode ) {
+      return '<div class="wrap"> <div id="onepager-mount"></div> </div>';
+    } else {
+      $pageId = onepager()->content()->getCurrentPageId();
+      $sections = onepager()->section()->all( $pageId );
 
-	    return onepager()->render()->sections( $sections );
-	  }
+      return onepager()->render()->sections( $sections );
+    }
   }
 
   return $content;
-} );
+}
