@@ -40,7 +40,7 @@ function tx_add_svg_upload_support($mimes)
 function tx_add_build_mode_button_to_toolbar()
 {
     $isOnepage = onepager()->content()->isOnepage();
-    $isLiveMode = onepager()->content()->isLiveMode();
+    $isLiveMode = onepager()->content()->isBuildMode();
 
     if ($isOnepage && !$isLiveMode) {
         $url = getOpBuildModeUrl(getCurrentPageURL(), true);

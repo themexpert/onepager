@@ -28,14 +28,16 @@
     "node-libs-browser": "^0.5.2",
     "react-hot-loader": "^1.2.7",
     "reactify": "^1.1.0",
+    "strip-loader": "^0.1.0",
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.9.11",
-    "webpack-dev-server": "^1.9.0"
+    "webpack-dev-server": "^1.9.0",
+    "webpack-merge": "^0.1.2"
   },
   "scripts": {
-    "build": "webpack -p",
-    "dev": "webpack-dev-server --watch --devtool eval --progress --colors --hot --content-base build"
+    "dev": "TARGET=dev webpack --watch --devtool eval --progress --colors --hot",
+    "build": "TARGET=build webpack -p"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
