@@ -29,11 +29,11 @@ var common = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
+//    new webpack.optimize.UglifyJsPlugin({
+//      compress: {
+//        warnings: false
+//      }
+//    }),
     new webpack.DefinePlugin({
       'process.env': {
         // This has effect on the react lib size
