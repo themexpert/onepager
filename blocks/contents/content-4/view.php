@@ -5,7 +5,7 @@
 <section id="<?php echo $id;?>" class="op-section content-4">
 	<div class="container">
 		<div class="row">
-			<article class="flex flex-middle">
+			<article class="flex flex-middle flex-center">
 
 				<div class="col-sm-9">
 					<div class="pad-right-big">

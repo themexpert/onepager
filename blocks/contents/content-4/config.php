@@ -104,7 +104,7 @@ return array(
     ),
   ),
 
-  // 'assets' => function( $path ){
-  //   onepager()->asset()->style( 'content-4', $path . 'style.css' );
-  // }
+  'assets' => function( $path ){
+    onepager()->asset()->style( 'content-4', $path . 'style.css' );
+  }
 );
