@@ -19,7 +19,7 @@
 				<?php endif; ?>
 				
 				<div class="col-md-<?php echo $content_cols ?> wow <?php echo $animation_content ?>">	
-					<div class="pad-right-big">
+					<div class="pad-<?php echo $settings['media_alignment']?>-big">
 						<!-- Title -->
 						<?php if($contents['title']): ?>
 							<h1 class="section-title <?php echo $settings['title_transformation']?> <?php echo $settings['title_size']?>"><?php echo $contents['title']?></h1>
