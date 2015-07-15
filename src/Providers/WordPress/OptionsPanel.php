@@ -22,8 +22,8 @@ class OptionsPanel implements OptionsPanelInterface{
 		add_action('admin_enqueue_scripts', [$this, 'localizeScript']);
 	}
 
-	public function addMenuPage($pageTitle, $menuTitle, $iconUrl, $positon=null){
-		add_action('admin_menu', function() use ($pageTitle, $menuTitle, $iconUrl, $positon){
+	public function addMenuPage($pageTitle, $menuTitle, $iconUrl, $position=null){
+		add_action('admin_menu', function() use ($pageTitle, $menuTitle, $iconUrl, $position){
 			add_menu_page(
 				$pageTitle,
 				$menuTitle,
@@ -31,7 +31,7 @@ class OptionsPanel implements OptionsPanelInterface{
 				$this->menuSlug,
 				[$this, 'printMountNode'],
 				$iconUrl,
-				$positon
+				$position
 			);
 		});
 	}

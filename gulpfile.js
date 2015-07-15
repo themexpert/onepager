@@ -129,8 +129,8 @@ gulp.task('build', function (cb) {
 /**
  * webpack section
  */
-gulp.task('webpack-production', shell.task(['webpack  -p']));
-gulp.task('webpack-watch', shell.task(['webpack  --watch']));
+gulp.task('webpack-production', shell.task(['webpack  -p --color --progress']));
+gulp.task('webpack-watch', shell.task(['webpack  --watch --color --progress']));
 
 
 /**

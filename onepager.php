@@ -21,6 +21,10 @@ if (!defined('WPINC')) {
 define('ONEPAGER_URL', plugins_url('/', __FILE__));
 define('ONEPAGER_PATH', dirname(__FILE__));
 
+if(!defined('ONEPAGER_DEBUG')){
+  define('ONEPAGER_DEBUG', true);
+}
+
 //require autoloading files
 require(ONEPAGER_PATH . '/src/functions.php');
 require(ONEPAGER_PATH . '/vendor/autoload.php');

@@ -39,7 +39,7 @@ function getOnepagerData( $pageId ) {
 function enqueueOnepagerAssets() {
 	$q = onepager()->asset();
 
-	// TX Namespaced assets to avoid multiple assets loading from other ThemeXpert product
+	// TX namespaced assets to avoid multiple assets loading from other ThemeXpert product
 	$q->style( 'tx-bootstrap', asset( 'assets/css/bootstrap.css' ) );
 	$q->style( 'tx-animatecss', asset( 'assets/css/animate.css' ) );
 	$q->style( 'tx-fontawesome', asset( 'assets/css/font-awesome.css' ) );
@@ -55,7 +55,7 @@ function enqueueOnepagerAssets() {
     $q->style( 'lithium-ui', asset( 'assets/css/lithium-builder.css' ) );
   }
 
-	if ( onepager()->content()->isLiveMode() ) {
+	if ( onepager()->content()->isBuildMode() ) {
 		if ( function_exists( 'wp_enqueue_media' ) ) {
 			wp_enqueue_media();
 		}
@@ -91,6 +91,8 @@ function enqueueOnepagerAdminAssets(){
 	$q->script( 'tx-toastr', asset( 'assets/js/toastr.js' ), [ 'jquery' ] );
 
 	$q->script( 'admin-bundle', asset('assets/optionspanel.bundle.js'), ['jquery']);
+
+  $q->enqueue();
 }
 
 //live edit mode

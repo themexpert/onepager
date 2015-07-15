@@ -6,7 +6,7 @@ interface ContentInterface {
 
 	public function isOnepage();
 
-	public function isLiveMode();
+	public function isBuildMode();
 
 	public function getPages();
 

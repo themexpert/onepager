@@ -59,7 +59,7 @@ class Content implements ContentInterface {
 		// TODO: Implement getMenuLocations() method.
 	}
 
-	public function isLiveMode() {
+	public function isBuildMode() {
 		return ( is_super_admin() && $this->isOnepage() && isOpBuildMode() );
 	}
 

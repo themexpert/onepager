@@ -52,11 +52,14 @@ function tx_add_onepager_options_page()
 
 function tx_rename_onepager_dashboard_submenu_name(){
     global $submenu;
+
+    //rename onepager to dashboard in menu
     $submenu['onepager-dashboard'][0][0] = __('Dashboard', 'onepager');
 }
 
 function tx_add_onepager_dashboard_scripts()
 {
+  //add builder.css so icons and other stuff styles
   wp_enqueue_style("lithium-builder", asset("assets/css/lithium-builder.css"));
 
 //  $dashboard = endsWith(get_current_screen()->id, "_page_onepager-");

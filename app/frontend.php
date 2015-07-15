@@ -1,94 +1,107 @@
 <?php
 
+add_action( 'wp_head',  'onepager_inject_inline_styles');
+add_filter( 'the_content',  'onepager_inject_content');
+add_action( 'wp_enqueue_scripts', 'onepager_enqueue_assets' );
+
 //block have internal stylesheets
 //if its onepager page render onepager block styles on header
-add_action( 'wp_head', function () {
-	//if requested page is not onepager then get out right away
-	if ( ! onepager()->content()->isOnepage() ) {
-		return;
-	}
-	//get page id
-	$pageId   = onepager()->content()->getCurrentPageId();
+function onepager_inject_inline_styles(){
+    //if requested page is not onepager then get out right away
+    if ( ! onepager()->content()->isOnepage() ) {
+      return;
+    }
 
-	//get page sections
-	$sections = onepager()->section()->all( $pageId );
+    //get page id
+    $pageId   = onepager()->content()->getCurrentPageId();
 
-	//render its styles on head section
-	onepager()->render()->styles( $sections );
-} );
+    //get page sections
+    $sections = onepager()->section()->all( $pageId );
 
-
-
+    //render its styles on head section
+    onepager()->render()->styles( $sections );
+}
 
 //TODO: optimize
 //block have external stylesheets and scripts
 //if its onepager page enqueue onepager block scripts on initialization
-add_action( 'wp_enqueue_scripts', function () {
-	//if requested page is not onepager then get out right away
-	if ( ! onepager()->content()->isOnepage() ) {
-		return;
-	}
+function onepager_enqueue_assets() {
+  //if requested page is not onepager then get out right away
+  if ( ! onepager()->content()->isOnepage() ) {
+    return;
+  }
 
-	//get page sections
-	$pageId   = onepager()->content()->getCurrentPageId();
-	$sections = onepager()->section()->all( $pageId );
-	$blocks = (array) onepager()->blockManager()->all();
+  //get page sections
+  $pageId   = onepager()->content()->getCurrentPageId();
+  $sections = onepager()->section()->all( $pageId );
+  $blocks = (array) onepager()->blockManager()->all();
 
-	if(onepager()->content()->isLiveMode()){
+  if(onepager()->content()->isBuildMode()){
+    onepager_build_mode_load_all_assets($blocks);
 
+    return;
+  }
 
-		array_walk( $blocks, function ( $block ) {
-			$enqueueCb = $block['enqueue'];
+  //if onepager then get all the blocks that were used in this page
+  //walk all the used blocks to enqueue their styles
+  onepager_enqueue_section_assets($sections);
+}
 
-			if ( ! $enqueueCb ) {
-				return;
-			}
+function onepager_build_mode_load_all_assets($blocks){
+  array_walk( $blocks, function ( $block ) {
+    $enqueueCb = $block['enqueue'];
 
-			$blockUrl = $block['url'];
-			$enqueueCb( $blockUrl );
-		} );
+    if ( ! $enqueueCb ) {
+      return;
+    }
 
-		return;
-	}
+    $blockUrl = $block['url'];
+    $enqueueCb( $blockUrl );
+  } );
 
+  onepager_compile_assets();
+}
 
-	//if onepager then get all the blocks that were used in this page
-	//walk all the used blocks to enqueue their styles
-	array_map(function($section){
-		$block = onepager()->blockManager()->get($section['slug']);
+function onepager_enqueue_section_assets($sections){
 
-		//if its an invalid block return immediately
-		//TODO: need a better exception handling
-		if(!$block) return;
+  array_map(function($section){
+    $block = onepager()->blockManager()->get($section['slug']);
 
-		//get the enqueue callback
-		$enqueueCb = $block['enqueue'];
+    //if its an invalid block return immediately
+    //TODO: need a better exception handling
+    if(!$block) return;
 
-		//if this block does not have styles attached to
-		//return right away
-		if ( ! $enqueueCb ) {
-			return;
-		}
+    //get the enqueue callback
+    $enqueueCb = $block['enqueue'];
 
-		//get the blocks folder url
-		$blockUrl = $block['url'];
+    //if this block does not have styles attached to
+    //return right away
+    if ( ! $enqueueCb ) {
+      return;
+    }
 
-		//call the enqueue callback with block folder url
-		$enqueueCb( $blockUrl );
-	}, $sections);
+    //get the blocks folder url
+    $blockUrl = $block['url'];
 
+    //call the enqueue callback with block folder url
+    $enqueueCb( $blockUrl );
+  }, $sections);
 
-} );
+  onepager_compile_assets();
+
+}
+
+function onepager_compile_assets(){
+  onepager()->asset()->enqueue();
+}
 
 //inject onepager
-add_filter( 'the_content',  'echo_onepager_content');
-
-function echo_onepager_content($content){
+function onepager_inject_content($content){
   $isOnepage = onepager()->content()->isOnepage();
 
   if(!defined('ONEPAGE_CONTENT_LOADED') && $isOnepage){
     define('ONEPAGE_CONTENT_LOADED', true);
-    $isLiveMode = onepager()->content()->isLiveMode();
+    $isLiveMode = onepager()->content()->isBuildMode();
 
     if ( $isLiveMode ) {
       return '<div class="wrap"> <div id="onepager-mount"></div> </div>';
