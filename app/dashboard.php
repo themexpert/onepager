@@ -1,8 +1,8 @@
 <?php
 
-add_action('admin_menu', 'tx_add_dashboard_page');
-add_action('admin_menu', 'tx_add_tutorials_page');
-add_action('admin_menu', 'tx_rename_onepager_dashboard_submenu_name');
+//add_action('admin_menu', 'tx_add_dashboard_page');
+//add_action('admin_menu', 'tx_add_tutorials_page');
+//add_action('admin_menu', 'tx_rename_onepager_dashboard_submenu_name');
 add_action('admin_enqueue_scripts', 'tx_add_onepager_dashboard_scripts');
 tx_add_onepager_options_page();
 
@@ -43,10 +43,13 @@ function tx_add_tutorials_page()
 
 function tx_add_onepager_options_page()
 {
-  onepager()->optionsPanel("onepager")->addSubMenuPage(
-    "onepager-dashboard",
+  $icon = onepager()->url('assets/images/logo-white.png');
+
+  onepager()->optionsPanel("onepager")->addMenuPage(
     "Onepager Global Options",
-    "Global Options"
+    "Global Options",
+    $icon,
+    3
   );
 }
 
@@ -62,6 +65,4 @@ function tx_add_onepager_dashboard_scripts()
   //add builder.css so icons and other stuff styles
   wp_enqueue_style("lithium-builder", asset("assets/css/lithium-builder.css"));
 
-//  $dashboard = endsWith(get_current_screen()->id, "_page_onepager-");
-//  if (!$dashboard) return;
 }
