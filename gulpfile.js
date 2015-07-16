@@ -131,21 +131,27 @@ gulp.task('build', function (cb) {
  */
 gulp.task('webpack-production', shell.task(['webpack  -p --color --progress']));
 gulp.task('webpack-watch', shell.task(['webpack  --watch --color --progress']));
+gulp.task('file-permission', shell.task([
+  'sudo find . -type d -not -path "./node_modules/*" -and -not -path "./vendor/*" -and -not -path "./bower_components/*" -and -not -path "./.git/*" -exec chmod 755 {} \\;',
+  'sudo find . -type f -not -path "./node_modules/*" -and -not -path "./vendor/*" -and -not -path "./bower_components/*" -and -not -path "./.git/*" -exec chmod 644 {} \\;'
+]));
 
 
 /**
  * Package build section
  */
 gulp.task('package-build', function (cb) {
-  return runSequence('build', 'webpack-production', cb);
+  return runSequence('build', 'webpack-production', 'file-permission', cb);
 });
 
 gulp.task('package', ['package-build'], function () {
-  var plugin = 'onepager';
-  var dirs   = ['app', 'assets', 'blocks', 'src', 'vendor', 'presets'];
-  var files  = ['onepager.php', 'uninstall.php'];
+  var buildPackage = {
+    name: "onepager",
+    dirs: ['app', 'assets', 'blocks', 'src', 'vendor', 'presets'],
+    files: ['onepager.php', 'uninstall.php']
+  };
 
-  generateArchive(plugin, dirs, files);
+  generateArchive(buildPackage.name, buildPackage.dirs, buildPackage.files);
 });
 
 
