@@ -16,7 +16,7 @@ function onepager_inject_inline_styles(){
     $pageId   = onepager()->content()->getCurrentPageId();
 
     //get page sections
-    $sections = onepager()->section()->all( $pageId );
+    $sections = onepager()->section()->getAllValid($pageId);
 
     //render its styles on head section
     onepager()->render()->styles( $sections );
@@ -107,7 +107,7 @@ function onepager_inject_content($content){
       return '<div class="wrap"> <div id="onepager-mount"></div> </div>';
     } else {
       $pageId = onepager()->content()->getCurrentPageId();
-      $sections = onepager()->section()->all( $pageId );
+      $sections = onepager()->section()->getAllValid($pageId);
 
       return onepager()->render()->sections( $sections );
     }

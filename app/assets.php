@@ -1,6 +1,6 @@
 <?php
 
-function getOnepagerData($pageId)
+function onepager_localize_script_data($pageId)
 {
   $onepager = onepager();
 
@@ -17,7 +17,7 @@ function getOnepagerData($pageId)
     $section['style'] = onepager()->render()->style($section);
 
     return $section;
-  }, onepager()->section()->all($pageId));
+  }, onepager()->section()->getAllValid($pageId));
 
   $disableUrl = getOpBuildModeUrl(getCurrentPageURL(), false);
 
@@ -37,7 +37,7 @@ function getOnepagerData($pageId)
   );
 }
 
-function enqueueOnepagerAssets()
+function onepager_enqueue_scripts()
 {
   if(!onepager()->content()->isOnepage()) return;
 
@@ -71,7 +71,7 @@ function enqueueOnepagerAssets()
 
     $q->script('onepager', asset('assets/app.bundle.js'), ['jquery']);
 
-    $q->localizeScript('onepager', getOnepagerData(onepager()->content()->getCurrentPageId()), 'onepager');
+    $q->localizeScript('onepager', onepager_localize_script_data(onepager()->content()->getCurrentPageId()), 'onepager');
   }
 
 }
@@ -100,7 +100,7 @@ function enqueueOnepagerAdminAssets()
   $q->enqueue();
 }
 
-function remove_theme_styles()
+function onepager_remove_theme_styles()
 {
   if(!onepager()->content()->isOnepage()) return;
 
@@ -109,6 +109,6 @@ function remove_theme_styles()
   remove_action('wp_enqueue_scripts', 'twentyfifteen_scripts');
 }
 
-add_action('after_setup_theme', 'remove_theme_styles');
+add_action('after_setup_theme', 'onepager_remove_theme_styles');
 //live edit mode
-add_action('wp_enqueue_scripts', 'enqueueOnepagerAssets');
+add_action('wp_enqueue_scripts', 'onepager_enqueue_scripts');
