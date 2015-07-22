@@ -59,9 +59,9 @@ class Content implements ContentInterface {
 		// TODO: Implement getMenuLocations() method.
 	}
 
-	public function isBuildMode() {
-		return ( is_super_admin() && $this->isOnepage() && isOpBuildMode() );
-	}
+  public function isBuildMode() {
+      return is_super_admin() && $this->isOnepage() && (array_key_exists('onepager', $_GET) ? (int) $_GET['onepager'] : 0);
+  }
 
 	public function isOnepagerByTemplate(){
 		$template = get_post_meta( $this->getCurrentPageId(), '_wp_page_template', true );

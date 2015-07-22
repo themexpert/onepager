@@ -20,10 +20,6 @@ function getOpBuildModeUrl($url, $mode){
   return $url->__toString();
 }
 
-function isOpBuildMode(){
-  return array_key_exists( 'onepager', $_GET ) ? $_GET['onepager'] : false;
-}
-
 function op_send_json_success() {
   //TODO: replace this in future release
   wp_send_json_success();
