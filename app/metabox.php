@@ -34,14 +34,8 @@ function tx_onepager_metabox_scripts($hook){
     if (!($post && $post->post_type == "page")) return;
     if (!($hook == 'post-new.php' || $hook == 'post.php')) return;
 
-    //generate livemode url
-    $url = League\Url\Url::createFromUrl(get_permalink($post->ID));
-    $query = $url->getQuery();
-    $query->modify(array('livemode' => true));
-
     $data = array(
-        'pageId' => $post->ID,
-        'livemode' => $url->__toString()
+        'pageId' => $post->ID
     );
 
     wp_enqueue_script('tx-onepager-page-meta', asset('assets/meta.js'), true);
