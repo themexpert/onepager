@@ -3,119 +3,99 @@
 
 use ThemeXpert\FileSystem\FileSystem;
 use ThemeXpert\Onepager\Block\BlockManager;
+use ThemeXpert\Onepager\Block\Transformers\SectionTransformer;
 use ThemeXpert\View\View;
 
-class Render
-{
+class Render {
   protected $blockManager;
   protected $view;
+  protected $sectionTransformer;
 
-  public function __construct(View $view, BlockManager $blockManager)
-  {
-    $this->blockManager = $blockManager;
-    $this->view = $view;
+  public function __construct(View $view, BlockManager $blockManager, SectionTransformer $sectionTransformer) {
+    $this->blockManager       = $blockManager;
+    $this->view               = $view;
+    $this->sectionTransformer = $sectionTransformer;
   }
 
-  public function sections($sections)
-  {
+  public function sections($sections) {
     foreach ($sections as $section) {
       echo $this->section($section);
     }
   }
 
-  public function section($section)
-  {
-    if(!(is_array($section) && isset($section['slug']))) return;
+  /**
+   * FIXME: Currently we are not smartly handling non existent blocks exceptions
+   *
+   * @param $section
+   *
+   * @return bool|mixed|null
+   */
+  public function isValidSection($section) {
     $block = $this->blockManager->get($section['slug']);
-    if(!$block) return;
 
-    //throw better exceptions
     if (!$block) {
-      //throw new \Exception( "Block Does not exist" );
-      return null;
+      return false;
+    }
+
+    return $block;
+  }
+
+  public function section($section) {
+    /**
+     * FIXME: Currently we are not smartly handling non existent blocks exceptions
+     */
+    if (!$block = $this->isValidSection($section)) {
+      return $this->noBlockDefined($section['slug']);
     }
 
     $view_file = array_key_exists('view_file', $block) ? $block['view_file'] : null;
 
     //throw better exceptions
     if (!FileSystem::exists($view_file)) {
-      //throw new \Exception( "Block View Does not exist" );
-      return null;
+      return $this->noViewFile($block['name']);
     }
 
     $section = $this->sectionBlockDataMerge($section);
 
-
     return $this->view->make($view_file, $section);
   }
 
-  public function sectionBlockDataMerge($section)
-  {
-    if(!(is_array($section) && isset($section['slug']))) return;
-    $block = $this->blockManager->get($section['slug']);
-    if(!$block) return;
+  public function sectionBlockDataMerge($section) {
+    /**
+     * FIXME: Currently we are not smartly handling non existent blocks exceptions
+     */
+
+    if (!$block = $this->isValidSection($section)) {
+      return $section;
+      // return $this->noBlockDefined($section['slug']);
+    }
+
 
     foreach (['settings', 'contents', 'styles'] as $tab) {
-      $sectionTab = &$section[$tab];
-      $blockTab = $block[$tab];
-
-      array_walk($blockTab, function ($control) use (&$sectionTab) {
-        if ($control['type'] === "divider") return;
-        $type = $control['type'];
-        $name = $control['name'];
-
-        switch ($control['type']) {
-          case 'repeater':
-            $controlFields = &$control['fields'];
-            //if a new control is added which is not persisted in database it could throw an error
-            //so we are merging them to make it like persisted
-            $sectionTab[$name] = array_key_exists($name, $sectionTab) ? $sectionTab[$name] : array_map(function ($rGroup) {
-              return array_reduce($rGroup, function ($carry, $control) {
-                $carry[$control['name']] = $control['value'];
-                return $carry;
-              }, []);
-            }, $controlFields);
-
-            //now if a new control is added to the repeater
-            // if(count($sectionTab[$name]) < count($controlFields)){
-            $rGroupDataStructure = $controlFields[0];
-            $rGroupDataStructure = array_reduce($rGroupDataStructure, function ($carry, $control) {
-              $carry[$control['name']] = $control['value'];
-              return $carry;
-            }, []);
-
-            foreach ($sectionTab[$name] as &$rGroup) {
-              $rGroup = array_merge($rGroupDataStructure, $rGroup);
-            }
-
-            break;
-          default:
-            $sectionTab[$name] = array_key_exists($name, $sectionTab) ? $sectionTab[$name] : $control['value'];
-            break;
-        }
-      });
+      $section[$tab] = $this->sectionTransformer->mergePersistedDataAndBlockData($block[$tab], $section[$tab]);
     }
 
     return $section;
   }
 
-  public function styles($sections)
-  {
+  public function styles($sections) {
     foreach ($sections as $section) {
       echo $this->style($section);
     }
   }
 
-  public function style($section)
-  {
-    if(!(is_array($section) && isset($section['slug']))) return;
+  /**
+   * @param $section
+   *
+   * @return null|string
+   */
+  public function style($section) {
 
-    $block = $this->blockManager->get($section['slug']);
-
-    //throw better exceptions
-    if (!$block) {
-      //throw new \Exception( "Block Does not exist" );
-      return null;
+    /**
+     * FIXME: Currently we are not smartly handling non existent blocks exceptions
+     */
+    if (!$block = $this->isValidSection($section)) {
+      return $this->noBlockDefined($section['slug']);
     }
 
     $style_file = array_key_exists('style_file', $block) ? $block['style_file'] : null;
@@ -126,11 +106,40 @@ class Render
       return null;
     }
 
-    //better section styles
+    $style = $this->getStyleHTML($section, $style_file);
+
+    return $style;
+  }
+
+  /**
+   * @param $section
+   * @param $style_file
+   *
+   * @return string
+   */
+  public function getStyleHTML($section, $style_file) {
     $style = "<style id='style-{$section['id']}'>";
     $style .= $this->view->make($style_file, $section);
     $style .= "</style>";
 
     return $style;
+  }
+
+  /**
+   * @param $blockName
+   *
+   * @return mixed
+   */
+  public function noViewFile($blockName) {
+    return "<!--No view file found for block {$blockName}-->";
+  }
+
+  /**
+   * @param $sectionSlug
+   *
+   * @return string
+   */
+  public function noBlockDefined($sectionSlug) {
+    return "<!--No block found for section {$sectionSlug}-->";
   }
 }

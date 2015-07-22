@@ -21,6 +21,12 @@ class Section implements SectionInterface {
 		return ! empty( $this->sections ) ? $this->sections : [ ];
 	}
 
+  public function getAllValid($pageId) {
+    return array_filter($this->all($pageId), function($section){
+      return array_key_exists('slug', $section) && array_key_exists('id', $section) && array_key_exists('title', $section);
+    });
+  }
+
 	public function set( $pageId, $index, $section ) {
 		$sections           = $this->all( $pageId );
 		$sections[ $index ] = $section;

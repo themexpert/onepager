@@ -8,6 +8,7 @@ use ThemeXpert\Onepager\Block\BlockManager;
 use ThemeXpert\Onepager\Block\TemplateManager;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
+use ThemeXpert\Onepager\Block\Transformers\SectionTransformer;
 use ThemeXpert\Providers\WordPress\OptionsPanel;
 use ThemeXpert\Providers\Contracts\ApiInterface;
 use ThemeXpert\Providers\Contracts\AssetInterface;
@@ -42,11 +43,11 @@ class Onepager implements OnepagerInterface {
 		};
 	}
 
-	private function setRenderer() {
-		$this->container['render'] = function ( $container ) {
-			return new Render( $container['view'], $container['blockManager'] );
-		};
-	}
+  private function setRenderer() {
+    $this->container['render'] = function ($container) {
+      return new Render($container['view'], $container['blockManager'], new SectionTransformer());
+    };
+  }
 
 
 	public function setViewProvider() {
