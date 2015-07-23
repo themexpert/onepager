@@ -2,7 +2,7 @@
 
 add_action( 'wp_head',  'onepager_inject_inline_styles');
 add_filter( 'the_content',  'onepager_inject_content');
-add_action( 'wp_enqueue_scripts', 'onepager_enqueue_assets' );
+add_action( 'wp_enqueue_scripts', 'onepager_enqueue_block_assets' );
 
 //block have internal stylesheets
 //if its onepager page render onepager block styles on header
@@ -22,32 +22,32 @@ function onepager_inject_inline_styles(){
     onepager()->render()->styles( $sections );
 }
 
-//TODO: optimize
 //block have external stylesheets and scripts
 //if its onepager page enqueue onepager block scripts on initialization
-function onepager_enqueue_assets() {
+function onepager_enqueue_block_assets() {
   //if requested page is not onepager then get out right away
   if ( ! onepager()->content()->isOnepage() ) {
     return;
   }
 
-  //get page sections
-  $pageId   = onepager()->content()->getCurrentPageId();
-  $sections = onepager()->section()->all( $pageId );
-  $blocks = (array) onepager()->blockManager()->all();
+  $isBuildMode = onepager()->content()->isBuildMode();
 
-  if(onepager()->content()->isBuildMode()){
-    onepager_build_mode_load_all_assets($blocks);
-
-    return;
+  /**
+   * if build mode load everything
+   * if in normal mode load only required assets
+   */
+  if($isBuildMode){
+    $blocks = (array) onepager()->blockManager()->all();
+  } else {
+    //get page sections
+    $pageId   = onepager()->content()->getCurrentPageId();
+    $sections = onepager()->section()->getAllValid( $pageId );
+    $blocks   = array_map(function($section){
+      $block = onepager()->blockManager()->get($section['slug']);
+      return $block?:false;
+    }, $sections);
   }
 
-  //if onepager then get all the blocks that were used in this page
-  //walk all the used blocks to enqueue their styles
-  onepager_enqueue_section_assets($sections);
-}
-
-function onepager_build_mode_load_all_assets($blocks){
   array_walk( $blocks, function ( $block ) {
     $enqueueCb = $block['enqueue'];
 
@@ -59,39 +59,6 @@ function onepager_build_mode_load_all_assets($blocks){
     $enqueueCb( $blockUrl );
   } );
 
-  onepager_compile_assets();
-}
-
-function onepager_enqueue_section_assets($sections){
-
-  array_map(function($section){
-    $block = onepager()->blockManager()->get($section['slug']);
-
-    //if its an invalid block return immediately
-    //TODO: need a better exception handling
-    if(!$block) return;
-
-    //get the enqueue callback
-    $enqueueCb = $block['enqueue'];
-
-    //if this block does not have styles attached to
-    //return right away
-    if ( ! $enqueueCb ) {
-      return;
-    }
-
-    //get the blocks folder url
-    $blockUrl = $block['url'];
-
-    //call the enqueue callback with block folder url
-    $enqueueCb( $blockUrl );
-  }, $sections);
-
-  onepager_compile_assets();
-
-}
-
-function onepager_compile_assets(){
   onepager()->asset()->enqueue();
 }
 
