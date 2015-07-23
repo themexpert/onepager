@@ -25,7 +25,7 @@
         $presets.show();
         return;
       }
-      
+
       $presets.hide();
       $(".og-"+group).show();
     });
@@ -45,11 +45,11 @@
 
           $.post(ajaxurl, {action: 'save_sections', updated: null, pageId: pageId, sections: []}, function(res){
             if(res && res.success){
-              location.href = onepager.livemode;
+              location.href = onepager.buildModeUrl;
             }
           });
         } else {
-          location.href = onepager.livemode;
+          location.href = onepager.buildModeUrl;
         }
 
       })
@@ -173,7 +173,7 @@
 
     jQuery.post(ajaxurl, data, function (res) {
       if (res && res.success) {
-        location.href = onepager.livemode;
+        location.href = onepager.buildModeUrl;
       } else {
         alert("failed to insert layout ");
       }

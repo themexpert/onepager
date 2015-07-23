@@ -35,7 +35,8 @@ function tx_onepager_metabox_scripts($hook){
     if (!($hook == 'post-new.php' || $hook == 'post.php')) return;
 
     $data = array(
-        'pageId' => $post->ID
+        'pageId' => $post->ID,
+        'buildModeUrl' => getOpBuildModeUrl(get_permalink($post->ID), true)
     );
 
     wp_enqueue_script('tx-onepager-page-meta', asset('assets/meta.js'), true);
