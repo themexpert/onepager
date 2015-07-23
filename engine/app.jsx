@@ -3,7 +3,7 @@ const App   = require('./App/App.jsx');
 
 
 require("../assets/css/sweetalert.css");
-require("./lithium/lithium-builder.less");
+//require("./lithium/lithium-builder.less");
 
 
 require("./shared/lib/_mixins");
