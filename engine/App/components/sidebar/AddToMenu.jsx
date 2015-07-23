@@ -17,16 +17,11 @@ let AddToMenu = React.createClass({
 
   getInitialState(){
     return {
-      isUnique: true
+      isValid: false
     };
   },
 
-  handleCloseMenu(){
-    AppStore.setMenuState(null, null);
-    document.querySelector('body').classList.remove('op-edit-section'); //jshint ignore:line
-  },
-
-  isItemIdUnique(){
+  isFormValid(){
     let itemId   = this.refs.itemId.getValue();
     let sections = _.map(AppStore.getAll().sections, function (section) {
       return section.id;
@@ -34,9 +29,9 @@ let AddToMenu = React.createClass({
 
     sections.splice(this.props.index, 1);
 
-    let isUnique = sections.indexOf(itemId) === -1;
+    let isValid = sections.indexOf(itemId) === -1 && this.refs.menuId.getValue();
 
-    this.setState({isUnique});
+    this.setState({isValid});
   },
 
   handleSubmit(){
@@ -77,8 +72,7 @@ let AddToMenu = React.createClass({
         value   : "",
         label   : "Menu Position",
         ref     : "menuId",
-        onChange: ()=> {
-        }
+        onChange: this.isFormValid
       },
       {
         type       : "text",
@@ -87,8 +81,7 @@ let AddToMenu = React.createClass({
         label      : "Menu name",
         ref        : "itemTitle",
         placeholder: "Item name",
-        onChange   : ()=> {
-        }
+        onChange   : this.isFormValid
       },
       {
         type       : "text",
@@ -98,7 +91,7 @@ let AddToMenu = React.createClass({
         ref        : "itemId",
         addonBefore: "#",
         placeholder: "Item Id",
-        onChange   : this.isItemIdUnique
+        onChange   : this.isFormValid
       }
     ];
 
@@ -110,7 +103,7 @@ let AddToMenu = React.createClass({
           })
         }
 
-        <Button bsStyle='primary' disabled={!this.state.isUnique} onClick={this.handleSubmit}>Add to Menu</Button>
+        <Button bsStyle='primary' disabled={!this.state.isValid} onClick={this.handleSubmit}>Add to Menu</Button>
       </div>
     );
   }
