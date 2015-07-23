@@ -107,7 +107,7 @@ class ApiController
         }
 
 
-        $sections = onepager()->section()->all($pageId);
+        $sections = onepager()->section()->getAllValid($pageId);
         $response['sections'] = $sections;
         $response["success"] = true;
 
@@ -139,5 +139,22 @@ class ApiController
 
     }
 
+  public function reloadSections() {
+    $sections = array_key_exists('sections', $_POST) ? $_POST['sections'] : [];
+
+    $sections = array_map(function ($section) {
+      $section['content'] = onepager()->render()->section($section);
+      $section['style'] = onepager()->render()->style($section);
+
+      return $section;
+    }, $sections);
+
+    $response = array(
+      'success' => true,
+      'sections' => $sections
+    );
+
+    op_send_json($response);
+  }
 
 }

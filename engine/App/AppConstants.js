@@ -11,7 +11,9 @@ module.exports = {
     CLOSE_SECTION    : null,
     DUPLICATE_SECTION: null,
     ADD_TO_MENU      : null,
-    SECTIONS_SYNCED  : null
+    SECTIONS_SYNCED  : null,
+    RELOAD_SECTIONS  : null,
+    UPDATE_SECTIONS  : null
   }),
 
   ActionSources: keyMirror({

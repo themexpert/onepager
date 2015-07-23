@@ -76,7 +76,34 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
   };
 
+  function reloadSections(sections){
+    return new Promise((resolve, reject)=>{
+      let payload = {
+        action: "onepager_reload_sections",
+        sections: SectionTransformer.simplifySections(sections)
+      };
+
+      $.post(ODataStore.ajaxUrl, payload, (res)=> {
+        if (!res || !res.success) {
+          notify.error('Unable to save. Make sure you are logged in'); //bad message
+
+          return reject('Unable to save. Make sure you are logged in'); //bad message
+        }
+
+        AppActions.updateSections(res.sections);
+
+        if (pageId) {
+          notify.success('Page reloaded');
+        }
+
+        return resolve();
+      });
+
+    });
+  }
+
   return {
+    reloadSections,
     updateSection,
     rawUpdate
   };

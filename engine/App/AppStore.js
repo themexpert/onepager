@@ -25,7 +25,6 @@ let _activeSectionIndex = null;
 let _savedSections      = _.copy(_sections);
 let AUTO_SAVE_DELAY     = 500;
 
-// di
 let shouldLiveSectionsSync = ShouldSync(_sections, 'sections'); //jshint ignore:line
 let shouldSectionsSync = ShouldSync(_sections, 'sections'); //jshint ignore:line
 let inactive = Activity(AUTO_SAVE_DELAY); //jshint ignore:line
@@ -67,9 +66,7 @@ function duplicateSection(index) {
   //its a row section to need to uni(quei)fy
   let section = SectionTransformer.unifySection(_sections[index], true);
 
-
   _sections = _.pushAt(_.copy(_sections), index + 1, section);
-
 
   liveService.updateSection(_sections, sectionIndex);
 
@@ -111,7 +108,7 @@ let AppStore = assign({}, BaseStore, {
       sidebarTabState   : _sidebarTabState,
       blockState        : _blockState,
       activeSection     : _sections[_activeSectionIndex],
-      activeSectionIndex: _activeSectionIndex,
+      activeSectionIndex: _activeSectionIndex
     };
   },
 
@@ -203,6 +200,14 @@ let AppStore = assign({}, BaseStore, {
         AppStore.emitChange();
         break;
 
+      case Constants.ActionTypes.RELOAD_SECTIONS:
+        liveService.reloadSections(_sections);
+        break;
+
+      case Constants.ActionTypes.UPDATE_SECTIONS:
+        _sections = SectionTransformer.misitifySections(action.sections, ODataStore.blocks);
+        AppStore.emitChange();
+        break;
       // add more cases for other actionTypes...
     }
   })

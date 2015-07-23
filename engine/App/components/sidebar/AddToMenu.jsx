@@ -11,6 +11,7 @@ const AppStore      = require('../../AppStore.js');
 const AppActions    = require('../../AppActions.js');
 
 
+
 let AddToMenu = React.createClass({
   mixins: [PureComponent],
 
@@ -56,6 +57,7 @@ let AddToMenu = React.createClass({
       if (res && res.success) {
         notify.success("successfully added menu");
         AppActions.updateSection(sectionIndex, section);
+        AppActions.reloadSections();
       } else {
         notify.warning("failed to add menu");
       }

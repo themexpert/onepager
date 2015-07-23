@@ -26,7 +26,20 @@ module.exports = {
     AppDispatcher.handleViewAction({
       type   : Constants.ActionTypes.UPDATE_SECTION,
       index  : index,
-      section: section,
+      section: section
+    });
+  },
+
+  reloadSections() {
+    AppDispatcher.handleViewAction({
+      type   : Constants.ActionTypes.RELOAD_SECTIONS
+    });
+  },
+
+  updateSections(sections){
+    AppDispatcher.handleViewAction({
+      type: Constants.ActionTypes.UPDATE_SECTIONS,
+      sections: sections
     });
   },
 
