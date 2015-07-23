@@ -1,51 +1,57 @@
-var gulp           = require('gulp');
-var less           = require('gulp-less');
+var gulp = require('gulp');
+var less = require('gulp-less');
 var mainBowerFiles = require('main-bower-files');
-var gulpFilter     = require('gulp-filter');
-var concat         = require('gulp-concat');
-var minify         = require('gulp-minify-css');
-var uglify         = require('gulp-uglify');
-var rename         = require('gulp-rename');
-var archiver       = require('archiver');
-var fs             = require('fs');
-var shell          = require('gulp-shell');
-var runSequence    = require('gulp-run-sequence');
-var clean          = require('gulp-clean');
+var gulpFilter = require('gulp-filter');
+var concat = require('gulp-concat');
+var minify = require('gulp-minify-css');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+var archiver = require('archiver');
+var fs = require('fs');
+var gulpShell = require('gulp-shell');
+var runSequence = require('gulp-run-sequence');
+var clean = require('gulp-clean');
+var wrench = require('wrench');
+var path = require('path');
+var Promise = require('bluebird');
+var shell = require("shelljs");
+
+var ROOT_PATH = path.resolve(__dirname);
 
 var dest = './assets';
-var src  = './engine';
+var src = './engine';
 
 var config = {
-  less  : {
-    src     : src + '/lithium/*.less',
-    dest    : dest + '/css',
+  less: {
+    src: src + '/lithium/*.less',
+    dest: dest + '/css',
     settings: {
       indentedSyntax: false, // Enable .less syntax?
-      imagePath     : '/images' // Used by the image-url helper
+      imagePath: '/images' // Used by the image-url helper
     }
   },
-  js    : {
-    src : [src + '/*.js', src + '/lithium/*.js'],
+  js: {
+    src: [src + '/*.js', src + '/lithium/*.js'],
     dest: dest + '/'
   },
   images: {
-    src : src + '/lithium/images/**/*',
+    src: src + '/lithium/images/**/*',
     dest: dest + '/images'
   },
-  fonts : {
-    src : src + '/fonts/**/*',
+  fonts: {
+    src: src + '/fonts/**/*',
     dest: dest + '/fonts'
   },
-  bower : {
-    js    : dest + '/js',
-    css   : dest + '/css',
+  bower: {
+    js: dest + '/js',
+    css: dest + '/css',
     images: dest + '/images',
-    fonts : dest + '/fonts'
+    fonts: dest + '/fonts'
   },
-  watch : {
-    src  : src + '/**/*.*',
-    less : src + '/lithium/**/*.less',
-    js   : src + '/*.js',
+  watch: {
+    src: src + '/**/*.*',
+    less: src + '/lithium/**/*.less',
+    js: src + '/*.js',
     tasks: ['build']
   }
 };
@@ -74,11 +80,11 @@ gulp.task('images', function () {
 });
 
 /*** Filters for bower main files **/
-var jsFilter   = gulpFilter('**/*.js'),
-    cssFilter  = gulpFilter('**/*.css'),
-    lessFilter = gulpFilter('**/*.less'),
-    fontFilter = gulpFilter(['**/*.svg', '**/*.eot', '**/*.woff', '**/*.ttf']),
-    imgFilter  = gulpFilter(['**/*.png', '**/*.gif', '**/*.jpg']);
+var jsFilter = gulpFilter('**/*.js'),
+cssFilter = gulpFilter('**/*.css'),
+lessFilter = gulpFilter('**/*.less'),
+fontFilter = gulpFilter(['**/*.svg', '**/*.eot', '**/*.woff', '**/*.ttf']),
+imgFilter = gulpFilter(['**/*.png', '**/*.gif', '**/*.jpg']);
 
 gulp.task('bower', function () {
   return gulp.src(mainBowerFiles())
@@ -129,31 +135,16 @@ gulp.task('build', function (cb) {
 /**
  * webpack section
  */
-gulp.task('webpack-production', shell.task(['webpack  -p --color --progress']));
-gulp.task('webpack-watch', shell.task(['webpack  --watch --color --progress']));
-gulp.task('file-permission', shell.task([
-  'sudo find . -type d -not -path "./node_modules/*" -and -not -path "./vendor/*" -and -not -path "./bower_components/*" -and -not -path "./.git/*" -exec chmod 755 {} \\;',
-  'sudo find . -type f -not -path "./node_modules/*" -and -not -path "./vendor/*" -and -not -path "./bower_components/*" -and -not -path "./.git/*" -exec chmod 644 {} \\;'
-]));
+gulp.task('webpack-production', gulpShell.task(['webpack  -p --color --progress']));
+gulp.task('webpack-watch', gulpShell.task(['webpack  --watch --color --progress']));
 
 
 /**
  * Package build section
  */
 gulp.task('package-build', function (cb) {
-  return runSequence('build', 'webpack-production', 'file-permission', cb);
+  return runSequence('build', 'webpack-production', cb);
 });
-
-gulp.task('package', ['package-build'], function () {
-  var buildPackage = {
-    name: "onepager",
-    dirs: ['app', 'assets', 'blocks', 'src', 'vendor', 'presets'],
-    files: ['onepager.php', 'uninstall.php']
-  };
-
-  generateArchive(buildPackage.name, buildPackage.dirs, buildPackage.files);
-});
-
 
 /**
  * Default tasks
@@ -162,45 +153,73 @@ gulp.task('default', function () {
   runSequence('build', ['webpack-watch', 'watch']);
 });
 
+gulp.task('package', ['package-build'], function () {
+  var files = ['app', 'assets', 'blocks', 'src', 'vendor', 'presets', 'onepager.php', 'uninstall.php'];
 
-function generateArchive(plugin, dirs, files) {
-  var output  = fs.createWriteStream(__dirname + '/' + plugin + '.zip');
+  packager("onepager", files, ROOT_PATH);
+});
+
+function packager(name, files, root) {
+  var tmpPath = ".op" + Math.ceil(Math.random() * 100).toString();
+  var archiveName = name + ".zip";
+
+  copier(root, tmpPath, files);
+
+  shell.exec('sudo find ' + tmpPath + ' -type d -exec chmod 755 {} \\;');
+  shell.exec('sudo find ' + tmpPath + ' -type f -exec chmod 644 {} \\;');
+
+  zipper(archiveName, tmpPath, name)
+    .then(function () {
+      wrench.rmdirSyncRecursive(tmpPath, true);
+    });
+}
+
+
+function copier(root, dest, src) {
+  function includePattern(f, p) {
+    var file = path.resolve(p, f);
+
+    return files.filter(function (white) {
+      return file.indexOf(white) !== -1;
+    }).length ? true : false;
+  }
+
+  var files = src.map(function (file) {
+    return path.resolve(root, file);
+  });
+
+  //remove previous one
+  wrench.rmdirSyncRecursive(dest, true);
+
+  //copy files
+  wrench.copyDirSyncRecursive(root, dest, {
+    forceDelete: true,
+    include: includePattern
+  });
+}
+
+function zipper(packageName, localDirectory, destinationDirectory) {
+  var output = fs.createWriteStream(packageName);
   var archive = archiver.create('zip', {}); // or archiver('zip', {});
 
-  //create the archive
-  //mac filesystem error
-  if (!fs.existsSync(plugin + '.zip')) {
-    fs.writeSync(plugin + '.zip');
+  //create the archive if it does not exists
+  if (!fs.existsSync(packageName)) {
+    fs.writeSync(packageName);
   }
 
-  //create parent directory
-  if (!fs.existsSync(plugin)) {
-    fs.mkdirSync(plugin);
-  }
-
-  //add parent directory to the zip file
-  archive.directory(plugin);
-
-  //add the zip files
-  dirs.map(function (dir) {
-    archive.directory(dir, plugin + '/' + dir);
-  });
-
-  //add the files
-  files.map(function (file) {
-    archive.file(file, {name: plugin + '/' + file});
-  });
-
-  //show message on close
-  output.on('close', function () {
-    console.log(archive.pointer() + ' total bytes');
-    console.log('find built package /' + plugin + '.zip');
-  });
+  //add package directory to the zip file
+  archive.directory(localDirectory, destinationDirectory);
 
   //pipe out the output
   archive.pipe(output);
   archive.finalize();
 
-  //cleanup
-  fs.rmdirSync(plugin);
+  return new Promise(function (resolve, reject) {
+    output.on('close', function () {
+      console.log(archive.pointer() + ' total bytes');
+      console.log('built package: ' + packageName);
+
+      resolve();
+    });
+  });
 }

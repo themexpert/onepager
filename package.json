@@ -9,6 +9,7 @@
     "archiver": "^0.14.4",
     "babel-loader": "^5.1.4",
     "babelify": "^6.0.2",
+    "bluebird": "^2.9.34",
     "css-loader": "^0.15.1",
     "file-loader": "^0.8.4",
     "gulp": "^3.8.11",
@@ -28,12 +29,14 @@
     "node-libs-browser": "^0.5.2",
     "react-hot-loader": "^1.2.7",
     "reactify": "^1.1.0",
+    "shelljs": "^0.5.1",
     "strip-loader": "^0.1.0",
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.9.11",
     "webpack-dev-server": "^1.9.0",
-    "webpack-merge": "^0.1.2"
+    "webpack-merge": "^0.1.2",
+    "wrench": "^1.5.8"
   },
   "scripts": {
     "dev": "TARGET=dev webpack --watch --devtool eval --progress --colors --hot",
