@@ -72,6 +72,8 @@ class Render {
 
 
     foreach (['settings', 'contents', 'styles'] as $tab) {
+      if(!array_key_exists('settings', $section)) continue;
+
       $section[$tab] = $this->sectionTransformer->mergePersistedDataAndBlockData($block[$tab], $section[$tab]);
     }
 
