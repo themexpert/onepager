@@ -56,14 +56,6 @@ class Asset implements AssetInterface
     $this->enqueueLocalizations();
   }
 
-  public function compileStyles()
-  {
-    $compiled = array_map(function($style){
-      return file_get_contents($style['src']);
-    }, $this->styles );
-
-    return implode(" ", $compiled);
-  }
 
   public function localizeScript($name, $data, $handle = "")
   {
@@ -71,21 +63,4 @@ class Asset implements AssetInterface
       "handle"=>$handle, "name"=>$name, "data"=>$data
     );
   }
-
-  /**
-   * @return array
-   */
-  public function getScripts()
-  {
-    return $this->scripts;
-  }
-
-  /**
-   * @return array
-   */
-  public function getStyles()
-  {
-    return $this->styles;
-  }
-
 }
