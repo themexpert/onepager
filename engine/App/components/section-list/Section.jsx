@@ -72,7 +72,7 @@ let Section = React.createClass({
     let title = this.props.title;
 
     let classes = cx({
-      'txop-cards': true,
+      'section': true,
       'active'    : this.props.active
     });
 
@@ -83,10 +83,11 @@ let Section = React.createClass({
             <Input type="text" ref="title" onKeyUp={this.updateEditTitle} defaultValue={title}/>
             <span className="label label-default">Enter</span>
           </div> :
-          <div><h3 onClick={this.handleEditSection}>{title}</h3> <span className="fa fa-pencil"
-                                                                       onClick={this.handleEditTitle}></span></div>
+          <h3><span className="fa fa-ellipsis-v"></span><span className="fa fa-ellipsis-v"></span> {title}</h3>
         }
         <div className="action-btns">
+          {/*<span className="fa fa-pencil" onClick={this.handleEditTitle}></span>*/}
+          <span className="fa fa-edit" onClick={this.handleEditSection}></span>
           <span className="fa fa-copy" onClick={this.handleDuplicateSection}></span>
           <span className="fa fa-close" onClick={this.handleRemoveSection}></span>
         </div>

@@ -137,29 +137,28 @@ a {
     }
   }
 
-  // Cards
-  .txop-cards {
-    // Active card
-    &.active {
-    }
-    background: @bg-secondary;
-    color: @text-color;
+  // Section List - Sidebar
+  .list-sections{
+    .section {
+      // Active card
+      &.active {
+        background : darken(@bg-secondary, 3%);
+        border : 1px solid lighten(@brand-primary, 5%);
+        // margin : -1px;
+      }
+      background: @bg-secondary;
+      color: @text-color;
+      .border-radius(2px);
 
-    .action-btns {
-      border-left: 1px solid darken(@bg-secondary, 5%);
-    }
-    // Icons hover
-    .fa:hover {
-      color: lighten(@brand-primary, 15%);
-    }
-    span:first-child {
-      border-bottom: 1px solid darken(@bg-secondary, 5%);
-    }
-
-    // Labels
-    .label-default {
-      background-color: #FCFCFC;
-      color: #444;
+      // Icons hover
+      .fa:hover {
+        color: lighten(@brand-primary, 15%);
+      }
+      // Labels
+      .label-default {
+        background-color: #FCFCFC;
+        color: #444;
+      }
     }
   }
 
@@ -205,7 +204,7 @@ a {
     .border-radius(2px);
     padding: 6px 12px;
     text-shadow: none;
-    
+
     &:hover{
        background: none;
     }
@@ -297,57 +296,49 @@ h3.form-divider {
   font-weight: normal;
 }
 
-// Cards - Sections list
-.txop-cards {
-  padding: 10px 25px 10px 10px;
-  margin: 10px 0;
-  position: relative;
-  cursor: move;
+// Sections list - Sidebar
+// ---------------------------------------------------
+.list-sections{
+  .section {
+    padding: 13px 10px;
+    margin: 10px 0;
+    position: relative;
+    cursor: move;
 
-  h3 {
-    margin: 0 5px 0 0;
-    display: inline-block;
-    text-transform: uppercase;
-    font-size: 12px;
-    cursor: pointer;
-  }
-
-  span {
-    cursor: pointer;
-  }
-  .action-btns {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    span {
-      display: block;
-      padding: 0 7px;
+    h3 {
+      margin: 0 5px 0 0;
+      text-transform: uppercase;
       font-size: 12px;
-      line-height: 20px;
+      cursor: pointer;
     }
 
-  }
-  .form-control {
-    text-transform: uppercase;
-  }
-  .form-group {
-    margin: 0;
-    width: 96%;
-  }
+    span { cursor: pointer; }
 
-  .label {
-    position: absolute;
-    top: 21px;
-    right: 45px;
-    font-size: 9px;
-    line-height: 1em;
-    font-weight: normal;
-    text-transform: uppercase;
+    .action-btns{
+      display: none;
+      position: absolute; top: 0; right: 0;
+      padding: 10px;
+      background: @bg-secondary;
 
+      span:not(:last-child){ margin-right : 5px; }
+    }
+    .form-control { text-transform: uppercase; }
+    .form-group { margin: 0; position: relative; z-index: 9; }
+
+    .label {
+      position: absolute; top: 21px; right: 20px; z-index: 10;
+      font-size: 9px; line-height: 1em;
+      font-weight: normal; text-transform: uppercase;
+    }
+
+    &:hover{
+      .action-btns{
+        display: block;
+      }
+    }
   }
 }
+
 
 // ****************************************************
 //  Sidebar / Configure

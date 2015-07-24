@@ -17,7 +17,7 @@ var common = {
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, loader: "strip-loader?strip[]=console.log" },
+      // { test: /\.jsx?$/, loader: "strip-loader?strip[]=console.log" },
 
       // The module to load. "babel" is short for "babel-loader"
       {test: /\.jsx?$/, loaders: ['babel?stage=1'], include: path.resolve(ROOT_PATH, 'engine')},
