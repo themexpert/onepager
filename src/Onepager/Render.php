@@ -72,7 +72,7 @@ class Render {
 
 
     foreach (['settings', 'contents', 'styles'] as $tab) {
-      if(!array_key_exists('settings', $section)) continue;
+      if(!array_key_exists($tab, $section)) continue;
 
       $section[$tab] = $this->sectionTransformer->mergePersistedDataAndBlockData($block[$tab], $section[$tab]);
     }
@@ -90,7 +90,7 @@ class Render {
    * @param $section
    *
    * @return null|string
-   */
+   */\
   public function style($section) {
 
     /**
