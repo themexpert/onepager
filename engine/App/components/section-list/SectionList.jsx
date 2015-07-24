@@ -104,6 +104,7 @@ let SectionList = React.createClass({
                   active={this.props.activeSectionIndex === index}
                   getUniqueSectionId={this.props.getUniqueSectionId}
                   updateTitle={updateTitle}
+                  id={section.id}
                   title={section.title}
                   key={section.key}
                   index={index}/>

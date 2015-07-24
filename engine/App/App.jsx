@@ -16,8 +16,7 @@ let App = React.createClass({
   componentDidMount() {
     jQuery(window).on('beforeunload', ()=> {
       if (this.state.isDirty) {
-        return "You haven't saved your changes and by leaving the page they will be lost."+
-                "Do you want to leave without saving?";
+        return "You haven't saved your changes and by leaving the page they will be lost.";
       }
     });
 

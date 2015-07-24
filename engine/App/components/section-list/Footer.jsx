@@ -23,7 +23,6 @@ let Footer = React.createClass({
   render() {
     return (
       <div className="footer flex flex-space-between">
-        <a href={ODataStore.disable}><span className="fa fa-close"></span> Close</a>
         <a href="https://www.youtube.com/watch?v=pwKcmckBZD4" target="_blank">
           <span className="fa fa-video-camera"></span>
           Video Tutorial

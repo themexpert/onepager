@@ -4,6 +4,7 @@ const Input      = require('react-bootstrap/lib/Input');
 const cx         = require('classnames');
 const PureMixin  = require('../../../shared/mixins/PureMixin.js');
 const AppActions = require('../../AppActions.js');
+const scrollIntoView  = require('../../../shared/lib/scrollview.js');
 
 function confirmDelete(proceed) {
   swal({
@@ -67,6 +68,10 @@ let Section = React.createClass({
     this.setState({titleEditState: false});
   },
 
+  handleScrollIntoView(){
+    scrollIntoView(document.getElementById(this.props.id));
+  },
+
 
   render() {
     let title = this.props.title;
@@ -83,7 +88,7 @@ let Section = React.createClass({
             <Input type="text" ref="title" onKeyUp={this.updateEditTitle} defaultValue={title}/>
             <span className="label label-default">Enter</span>
           </div> :
-          <h3><span className="fa fa-ellipsis-v"></span><span className="fa fa-ellipsis-v"></span> {title}</h3>
+          <h3 onClick={this.handleScrollIntoView} onDoubleClick={this.handleEditTitle}><span className="fa fa-ellipsis-v"></span><span className="fa fa-ellipsis-v"></span> {title}</h3>
         }
         <div className="action-btns">
           {/*<span className="fa fa-pencil" onClick={this.handleEditTitle}></span>*/}

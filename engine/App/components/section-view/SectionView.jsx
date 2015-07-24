@@ -3,6 +3,7 @@ const React      = require('react');
 const cx         = require('classnames');
 const AppActions = require('../../AppActions.js');
 const PureMixin  = require('../../../shared/mixins/PureMixin.js');
+const scrollIntoView  = require('../../../shared/lib/scrollview.js');
 
 let Section = React.createClass({
   mixins: [PureMixin],
@@ -32,9 +33,7 @@ let Section = React.createClass({
     // jQuery animation is costly cpu calculation
     // also need to optimize it at a later time when speed is crucial
     // TODO: SPEED
-    jQuery('html, body').animate({
-      scrollTop: jQuery(React.findDOMNode(this)).offset().top - 32 //32px wpadminbar height
-    }, 1000);
+    scrollIntoView(React.findDOMNode(this))
   },
 
   handleClick(){

@@ -10,6 +10,7 @@ const AppActions         = require('../../AppActions.js');
 const AdminActions       = require('../../../Optionspanel/OptionActions.js');
 const SectionTransformer = require('../../../shared/lib/SectionTransformer.js');
 const AppStore           = require('../../AppStore.js');
+const ODataStore = require('../../../shared/lib/ODataStore.js');
 // const PureMixin           = require('../../mixins/PureMixin.js');
 const $s       = require('string');
 const $        = jQuery;
@@ -23,6 +24,9 @@ let Sidebar = React.createClass({
   componentDidMount(){
     let tabContents = React.findDOMNode(this.refs.tabContents);
     $(()=> $(tabContents).niceScroll({cursorcolor: '#2ab0ad', cursorborder: '0'}));
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
   },
 
   getInitialState(){
@@ -86,23 +90,25 @@ let Sidebar = React.createClass({
                disabled={!sectionEditable}/>
           <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Settings' active={activeTab}/>
 
+          <div className="btn-group">
+
           {
             activeTab === 'op-settings' ?
-              <button onClick={AdminActions.sync} className='btn btn-primary btn--save'>
-                <span className='fa fa-save'></span> &nbsp; Save
-              </button> :
-              <button disabled={!isDirty} onClick={this.handleSave}
-                      className='btn btn-primary btn--save'>
-                {
-                  this.state.saving ?
-                    <span className='fa fa-refresh fa-spin'></span> :
-                    <span>
-                    <span className='fa fa-save'></span>
-                      &nbsp; Save
-                  </span>
-                }
-              </button>
+                <button onClick={AdminActions.sync} className='btn btn-primary btn--save'>
+                  <span className='fa fa-check'></span>
+                </button> :
+                <button disabled={!isDirty} onClick={this.handleSave}
+                        className='btn btn-primary btn--save'>
+                  {
+                    this.state.saving ?
+                      <span className='fa fa-refresh fa-spin'></span> : <span className='fa fa-check'></span>
+                  }
+                </button>
           }
+          <a href={ODataStore.disable} className="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Close">
+            <span className="fa fa-close"></span>
+          </a>
+        </div>
         </ul>
 
         <div className='tab-content' ref='tabContents'>

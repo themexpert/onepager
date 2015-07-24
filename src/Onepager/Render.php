@@ -90,7 +90,7 @@ class Render {
    * @param $section
    *
    * @return null|string
-   */\
+   */
   public function style($section) {
 
     /**
