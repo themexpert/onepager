@@ -3,17 +3,19 @@ const PureMixin  = require('react/lib/ReactComponentWithPureRenderMixin');
 const ReactQuill = require('react-quill');
 require("./quill-editor.less");
 
+function transformDivIntoP(str){
+  return str.split("div>").join("p>");
+}
+
 let QuillControl = React.createClass({
   mixins: [PureMixin],
 
   getInitialState(){
-    return {
-      value: this.props.defaultValue //anti pattern
-    };
+    return { value : transformDivIntoP(this.props.defaultValue) };
   },
 
   getValue(){
-    return this.state.value;
+    return transformDivIntoP(this.state.value);
   },
 
   onChange(value) {
