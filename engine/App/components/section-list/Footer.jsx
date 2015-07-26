@@ -22,12 +22,7 @@ let Footer = React.createClass({
 
   render() {
     return (
-      <div className="footer flex flex-space-between">
-        <a href="https://www.youtube.com/watch?v=pwKcmckBZD4" target="_blank">
-          <span className="fa fa-video-camera"></span>
-          Video Tutorial
-        </a>
-      </div>
+      <div className="footer flex flex-space-between" dangerouslySetInnerHTML={{__html: ODataStore.footer}}></div>
     );
   }
 });

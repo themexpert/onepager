@@ -19,6 +19,7 @@ function onepager_localize_script_data($pageId)
     return $section;
   }, onepager()->section()->getAllValid($pageId));
 
+  $footer_markup = get_editor_section_list_footer();
   $disableUrl = getOpBuildModeUrl(getCurrentPageURL(), false);
 
   return array(
@@ -33,7 +34,8 @@ function onepager_localize_script_data($pageId)
     'pages'       => $pages_arr,
     'categories'  => $cat_arr,
     'groupOrder'  => $groupOrder,
-    'disable'     => $disableUrl,
+    'footer'      => $footer_markup,
+    'disable'     => $disableUrl
   );
 }
 
