@@ -6,8 +6,8 @@ use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 class BlockManager
 {
 
-    protected $groupOrder = [];
-
+    protected $groupOrder = array();
+    protected $ignoredGroups = array();
 
 
     public function __construct(ConfigTransformer $configTransformer, Collection $blocksCollection)
@@ -16,11 +16,13 @@ class BlockManager
         $this->blocksCollection = $blocksCollection;
     }
 
-    public function loadAllFromPath($path, $url)
+    public function loadAllFromPath($path, $url, $groups=array())
     {
         try {
             if(!FS::exists($path)){
-                $msg = __("You were trying to add blocks from ".$path." but this path does not exist. Please create this folder.", "onepager");
+                $msg = __(
+                  "You were trying to add blocks from ".$path.
+                  " but this path does not exist. Please create this folder.", "onepager");
                 throw new \Exception($msg);
             }
 
@@ -31,25 +33,26 @@ class BlockManager
 
 
                 if (!FS::exists($config_file)) {
-                    $this->loadAllFromPath($path . DIRECTORY_SEPARATOR . $folder, $url . "/" . $folder);
+                    $this->loadAllFromPath($path . DIRECTORY_SEPARATOR . $folder, $url . "/" . $folder, $groups);
 
                     continue;
                 }
 
-                $this->add($config_file, trailingslashit($url) . $folder);
+                $this->add($config_file, trailingslashit($url) . $folder, $groups);
             }
         } catch(\Exception $e){
-            die('Caught exception: '.  $e->getMessage(). "\n<br>");
+            print('Caught exception: '.  $e->getMessage(). "\n<br>");
         }
     }
 
-    public function add($file, $url)
+    public function add($file, $url, $groups=array())
     {
         $url = trailingslashit($url);
         $config = require($file);
 
 
         $config = $this->configTransformer->transform($config, $file, $url);
+        $config['groups'] = array_merge($config['groups'], (array) $groups);
         $this->blocksCollection->set($config['slug'], $config);
     }
 
@@ -58,10 +61,14 @@ class BlockManager
         return $this->blocksCollection->get($key);
     }
 
-    public function all()
-    {
-        return $this->blocksCollection;
-    }
+  public function all()
+  {
+    $ignoredGroups = $this->getIgnoredGroups();
+
+    return array_filter((array)$this->blocksCollection, function($block) use ($ignoredGroups){
+      return !count(array_intersect($block['groups'], $ignoredGroups));
+    });
+  }
 
   /**
    * @return array
@@ -77,5 +84,19 @@ class BlockManager
   public function setGroupOrder($groupOrder)
   {
     $this->groupOrder = $groupOrder;
+  }
+
+  /**
+   * @return array
+   */
+  public function getIgnoredGroups() {
+    return $this->ignoredGroups;
+  }
+
+  /**
+   * @param array $ignoredGroups
+   */
+  public function setIgnoredGroups($ignoredGroups) {
+    $this->ignoredGroups = (array) $ignoredGroups;
   }
 }
