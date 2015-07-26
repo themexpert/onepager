@@ -5,6 +5,7 @@ const cx         = require('classnames');
 const PureMixin  = require('../../../shared/mixins/PureMixin.js');
 const AppActions = require('../../AppActions.js');
 const scrollIntoView  = require('../../../shared/lib/scrollview.js');
+const SectionTitle = require("./SectionTitle.jsx");
 
 function confirmDelete(proceed) {
   swal({
@@ -20,6 +21,13 @@ function confirmDelete(proceed) {
 
 let Section = React.createClass({
   mixins: [PureMixin],
+
+  propTypes: {
+    active: React.PropTypes.bool,
+    id: React.PropTypes.number,
+    index: React.PropTypes.number,
+    title: React.PropTypes.string
+  },
 
   getInitialState(){
     return {
@@ -43,55 +51,25 @@ let Section = React.createClass({
     AppActions.editSection(this.props.index);
   },
 
-
-  handleEditTitle(){
-    this.setState({titleEditState: true});
-  },
-
-  updateEditTitle(e){
-    //proceed on enter
-    if (e.which !== 13) {
-      return;
-    }
-
-    let id    = null;
-    let title = this.refs.title.getValue();
-
-    console.log("title is %s", title);
-    if (this.props.title === 'untitlted section') {
-      console.log("changing title first time %s", title);
-      id = this.props.getUniqueSectionId(this.props.index, title);
-    }
-
-    this.props.updateTitle(title, id);
-
-    this.setState({titleEditState: false});
-  },
-
   handleScrollIntoView(){
     scrollIntoView(document.getElementById(this.props.id));
   },
 
-
   render() {
-    let title = this.props.title;
+    let {title, index} = this.props;
 
-    let classes = cx({
-      'section': true,
+    let classes = cx('section', {
       'active'    : this.props.active
     });
 
     return (
       <div className={classes}>
-        { this.state.titleEditState ?
-          <div>
-            <Input type="text" ref="title" onKeyUp={this.updateEditTitle} defaultValue={title}/>
-            <span className="label label-default">Enter</span>
-          </div> :
-          <h3 onClick={this.handleScrollIntoView} onDoubleClick={this.handleEditTitle}><span className="fa fa-ellipsis-v"></span><span className="fa fa-ellipsis-v"></span> {title}</h3>
-        }
+        <SectionTitle title={title} index={index} >
+          <h3 onClick={this.handleScrollIntoView}>
+            <span className="fa fa-ellipsis-v"></span><span className="fa fa-ellipsis-v"></span> {title}
+          </h3>
+        </SectionTitle>
         <div className="action-btns">
-          {/*<span className="fa fa-pencil" onClick={this.handleEditTitle}></span>*/}
           <span className="fa fa-edit" onClick={this.handleEditSection}></span>
           <span className="fa fa-copy" onClick={this.handleDuplicateSection}></span>
           <span className="fa fa-close" onClick={this.handleRemoveSection}></span>

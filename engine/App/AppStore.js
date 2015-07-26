@@ -85,6 +85,28 @@ function removeSection(index) {
   setActiveSection(null);
 }
 
+
+function updateTitle(index, previousTitle, newTitle){
+  let section   = _.copy(_sections[index]);
+  section.title = newTitle;
+
+  if ('untitled section' === previousTitle) {
+    section.id = getUniqueSectionId(_sections, index, newTitle);
+  }
+
+  updateSection(index, section);
+}
+
+function getUniqueSectionId (sections, index, title) {
+  let id = _.dasherize(title); //make es4 compatible
+
+  while (! _.isUniquePropInArray(sections, index, id, 'id')) {
+    id = id + 1;
+  }
+
+  return id;
+}
+
 function sectionSynced(index, res) {
   let section;
 
@@ -206,6 +228,11 @@ let AppStore = assign({}, BaseStore, {
 
       case Constants.ActionTypes.UPDATE_SECTIONS:
         _sections = SectionTransformer.misitifySections(action.sections, ODataStore.blocks);
+        AppStore.emitChange();
+        break;
+
+      case Constants.ActionTypes.UPDATE_TITLE:
+        updateTitle(action.index, action.previousTitle, action.newTitle);
         AppStore.emitChange();
         break;
       // add more cases for other actionTypes...

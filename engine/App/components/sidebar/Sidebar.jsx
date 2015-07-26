@@ -12,10 +12,8 @@ const SectionTransformer = require('../../../shared/lib/SectionTransformer.js');
 const AppStore           = require('../../AppStore.js');
 const ODataStore = require('../../../shared/lib/ODataStore.js');
 // const PureMixin           = require('../../mixins/PureMixin.js');
-const $s       = require('string');
 const $        = jQuery;
 const Settings = require("./Settings.jsx");
-
 
 let Sidebar = React.createClass({
   // we need to optimize this with immutability
@@ -49,24 +47,8 @@ let Sidebar = React.createClass({
 
   render() {
     let {sections, blocks, activeSectionIndex, activeSection, isDirty} = this.props;
-    let sectionEditable = activeSectionIndex === null ? false : true;
+    let sectionEditable = activeSectionIndex !== null;
     let activeTab       = this.props.sidebarTabState.active;
-
-
-    let getUniqueSectionId = function (sections, index, title) {
-      let id = $s(title.trim()).dasherize().s; //make es4 compitable
-
-      //remove starting dash
-      if(id && id.indexOf("-") === 0){
-        id = id.replace("-", "", 1);
-      }
-
-      while (!_.arrIsUniqueProperty(sections, index, id, 'id')) {
-        id = id + 1;
-      }
-
-      return id;
-    };
 
     let handleTabClick = function (id) {
       AppStore.setTabState({active: id});
@@ -116,10 +98,7 @@ let Sidebar = React.createClass({
             <SectionList
               activeSectionIndex={activeSectionIndex}
               blocks={blocks}
-              sections={sections}
-              getUniqueSectionId={(index, id)=>{
-                return getUniqueSectionId(sections, index, id);
-              }}/>
+              sections={sections} />
 
           </TabPane>
 
@@ -127,6 +106,7 @@ let Sidebar = React.createClass({
             {sectionEditable ?
               <SectionControls
                 update={update}
+                title={sections[activeSectionIndex].title}
                 sectionSettings={sectionSettings}
                 sectionIndex={activeSectionIndex}/> :
 

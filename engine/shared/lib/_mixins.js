@@ -1,4 +1,6 @@
 const _ = require('underscore');
+var slugify = require("underscore.string/slugify");
+var trim = require("underscore.string/trim");
 
 _.mixin({
   copy(obj){
@@ -14,6 +16,10 @@ _.mixin({
     let arr = _.copy(array);
     arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
     return arr;
+  },
+
+  dasherize(str){
+    return slugify(trim(str));
   },
 
   getPosition(element) {
@@ -34,17 +40,18 @@ _.mixin({
     return arr.concat(spliced);
   },
 
-  arrayIsUniqueExcept(items, item, index){
+  isUniqueInArrayExcept(items, item, index){
+    //remove given element
     items.splice(index, 1);
 
     return items.indexOf(item) === -1;
   },
 
-  arrIsUniqueProperty(list, index, propName, id){
+  isUniquePropInArray(list, index, propName, id){
     let props = _.map(list, function (item) {
       return item[propName];
     });
 
-    return this.arrayIsUniqueExcept(props, id, index);
+    return _.isUniqueInArrayExcept(props, id, index);
   }
 });

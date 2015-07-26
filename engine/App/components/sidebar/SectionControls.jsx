@@ -7,6 +7,7 @@ const Repeater    = require('../../../shared/components/repeater/Repeater.jsx');
 const PureMixin   = require('../../../shared/mixins/PureMixin.js');
 const Tab         = require('../../../shared/components/Tab.jsx');
 const TabPane     = require('../../../shared/components/TabPane.jsx');
+const SectionTitle = require("../section-list/SectionTitle.jsx");
 
 let SectionControls = React.createClass({
   //  mixins: [PureMixin],
@@ -54,7 +55,7 @@ let SectionControls = React.createClass({
   render() {
     console.log('rendering section contentControls');
 
-    let {sectionIndex, sectionSettings} = this.props;
+    let {title, sectionIndex, sectionSettings} = this.props;
 
 
     let getControlsHTML = (tabName, controls)=> {
@@ -65,7 +66,7 @@ let SectionControls = React.createClass({
           ref         : control.ref,
           id          : control.ref,
           key         : control.ref,
-          sectionIndex: sectionIndex,
+          sectionIndex: sectionIndex
         };
 
         let type = control.type;
@@ -106,6 +107,10 @@ let SectionControls = React.createClass({
 
     return (
       <div>
+        <SectionTitle title={title} index={sectionIndex} >
+          <label style={{color: "white"}}> Section: {title} </label>
+        </SectionTitle>
+
         <ul className="nav nav-pills">
           {sectionSettings.contents.length ?
             <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab}/> : null}

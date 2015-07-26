@@ -13,7 +13,8 @@ module.exports = {
     ADD_TO_MENU      : null,
     SECTIONS_SYNCED  : null,
     RELOAD_SECTIONS  : null,
-    UPDATE_SECTIONS  : null
+    UPDATE_SECTIONS  : null,
+    UPDATE_TITLE     : null
   }),
 
   ActionSources: keyMirror({

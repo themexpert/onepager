@@ -69,9 +69,9 @@
     "react-router": "^0.13.3",
     "reflux": "^0.2.8",
     "sortablejs": "git+https://github.com/nadimtuhin/Sortable.git",
-    "string": "^3.3.0",
     "sweetalert": "^1.0.1",
     "tinycolor2": "^1.1.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "underscore.string": "^3.1.1"
   }
 }

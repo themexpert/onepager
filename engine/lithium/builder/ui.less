@@ -317,8 +317,14 @@ h3.form-divider {
     .action-btns{
       display: none;
       position: absolute; top: 0; right: 0;
-      padding: 10px;
+      //padding: 10px;
       background: @bg-secondary;
+      span{
+        padding:  12px 12px 13px 12px;
+        &:hover{
+          background: #5A5656;
+        }
+      }
 
       span:not(:last-child){ margin-right : 5px; }
     }

@@ -11,8 +11,15 @@ const AppActions      = require('../../AppActions.js');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const Footer    = require('./Footer.jsx');
 
+
 let SectionList = React.createClass({
   mixins: [SortableMixin, PureMixin],
+
+  propTypes: {
+    activeSectionIndex: React.PropTypes.number,
+    blocks: React.PropTypes.array,
+    sections: React.PropTypes.array
+  },
 
   getInitialState(){
     return {
@@ -70,14 +77,12 @@ let SectionList = React.createClass({
     let sections = this.props.sections;
     let blocks   = this.props.blocks;
 
-    let blocksClass = cx({
-      "list-blocks": true,
-      "hidden"     : !this.state.showBlocks
+    let blocksClass = cx("list-blocks", {
+      "hidden" : !this.state.showBlocks
     });
 
-    let sectionsClass = cx({
-      "list-sections": true,
-      "hidden"       : this.state.showBlocks
+    let sectionsClass = cx("list-sections", {
+      "hidden" : this.state.showBlocks
     });
 
     return (
@@ -89,21 +94,9 @@ let SectionList = React.createClass({
 
           <div ref="sections">
             {sections.map((section, index)=> {
-              let updateTitle = (title, id)=> {
-                let uSection   = _.copy(section);
-                uSection.title = title;
-                if (id) {
-                  uSection.id = id;
-                }
-
-                this.updateSection(index, uSection);
-              };
-
               return (
                 <SectionLi
                   active={this.props.activeSectionIndex === index}
-                  getUniqueSectionId={this.props.getUniqueSectionId}
-                  updateTitle={updateTitle}
                   id={section.id}
                   title={section.title}
                   key={section.key}

@@ -25,7 +25,7 @@ function unifySection(section, duplicate = false) {
   section = _.copy(section);
 
   if (!section.id) {
-    section.title = "untitlted section";
+    section.title = "untitled section";
   } else if (duplicate) {
     section.title = `${section.title} (copy)`;
   }
