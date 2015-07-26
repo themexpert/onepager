@@ -12,6 +12,28 @@ if(!function_exists('array_find_by')){
   }
 }
 
+if(!function_exists('array_pick')){
+  /**
+   * Pick a value from every array inside of an array collection
+   *
+   * @param array[array]          $arrayCollection
+   * @param string                $pickKey
+   * @return array
+   */
+  function array_pick(array $arrayCollection, $pickKey)
+  {
+    $pickedValues = array();
+
+    foreach ($arrayCollection as $array) {
+      if (is_array($array) && isset($array[$pickKey])) {
+        $pickedValues[] = $array[$pickKey];
+      }
+    }
+
+    return $pickedValues;
+  }
+}
+
 function getOpBuildModeUrl($url, $mode){
   $url   = League\Url\Url::createFromUrl($url);
   $query = $url->getQuery();
