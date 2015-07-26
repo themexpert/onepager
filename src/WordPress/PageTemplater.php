@@ -4,28 +4,22 @@ class PageTemplater {
   /** * The array of templates that this plugin tracks. */
   protected $templates=array();
 
-  /** * Initializes the plugin by setting filters and administration functions. */
-  public function __construct() {
-		add_action('plugins_loaded', array($this, 'init'));
-  }
-
   public function addTemplate($name, $file){
     $key = basename($file);
   	$this->templates[$key] = ["name"=>$name, "file"=>$file, "key"=>$key];
   }
 
-  public function init(){
+  public function __construct(){
     // Add a filter to the attributes metabox to inject template into the cache.
     add_filter('page_attributes_dropdown_pages_args', array($this, 'register_project_templates'));
 
     // Add a filter to the save post to inject out template into the page cache
     add_filter('wp_insert_post_data', array($this, 'register_project_templates') );
 
-    // Add a filter to the template include to determine if the page has our 
+    // Add a filter to the template include to determine if the page has our
     // template assigned and return it's path
     add_filter('template_include', array($this, 'view_project_template'));
   }
-
 
   /**
    * Adds our template to the pages cache in order to trick WordPress
@@ -35,7 +29,7 @@ class PageTemplater {
     // Create the key used for the themes cache
     $cache_key = 'page_templates-'.md5(get_theme_root(). '/'.get_stylesheet());
 
-    // Retrieve the cache list. 
+    // Retrieve the cache list.
     // If it doesn't exist, or it's empty prepare an array
     $templates = wp_get_theme()->get_page_templates();
     if (empty($templates)) {
@@ -67,7 +61,7 @@ class PageTemplater {
 
     //if its a 404 page then return default template
     if(is_404()) return $template;
-    
+
     $wp_page_template = get_post_meta($post->ID, '_wp_page_template', true);
 
     if (!isset($this->templates[$wp_page_template])) {
@@ -80,7 +74,7 @@ class PageTemplater {
     // Just to be safe, we check if the file exist first
     if (file_exists($file)) {
       return $file;
-    } 
+    }
     else {
       echo "$file does not exist";
     }
