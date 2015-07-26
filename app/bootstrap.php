@@ -1,16 +1,4 @@
 <?php
-/**
-* TABLE OF CONTENTS
-*
-* 1. if wp_debug is true run whoops
-* 2. create $onepager
-* 3. register livemode toolbar
-* 4. register blocks
-* 5. support svg upload mime
-* 6. add onepage templates
-*
-**/
-
 use Pimple\Container;
 use ThemeXpert\Onepager\Adapters\WordPress;
 use ThemeXpert\Onepager\Onepager;
@@ -59,19 +47,22 @@ function tx_add_build_mode_button_to_toolbar()
 }
 
 
-do_action('onepager_blocks');
-
-
 /**
  * LOAD ALL BLOCKS BEFOREHAND
  * WE WILL NEED THEM IN OUR AJAX REQUESTS
  */
-onepager()->blockManager()->loadAllFromPath(
-    onepager()->path("blocks"),
-    onepager()->url("blocks")
-);
+function tx_load_default_onepager_blocks()
+{
+  onepager()->blockManager()->loadAllFromPath(
+    ONEPAGER_BLOCKS_PATH,
+    ONEPAGER_BLOCKS_URL,
+    'onepager' //default group added to the blocks (optional array)
+  );
+}
 
-onepager()->blockManager()->setGroupOrder(array(
+function tx_set_block_groups_order()
+{
+  onepager()->blockManager()->setGroupOrder(array(
     "navbars",
     "headers",
     "contents",
@@ -83,26 +74,53 @@ onepager()->blockManager()->setGroupOrder(array(
     "pricings",
     "footers",
     "themes"
-));
+  ));
+}
 
-//if (!file_exists(onepager()->path("blocks/blocks.cache")) && is_writable(onepager()->path("blocks"))) {
-//    file_put_contents(onepager()->path("blocks/blocks.cache"), json_encode((array)onepager()->blockManager()->all()));
-//}
+/** FIXME: NOT USED ANYWHERE YET **/
+function tx_cache_onepager_blocks(){
+  $cache_file = onepager()->path("blocks/blocks.cache");
+
+  if (!file_exists($cache_file) && is_writable(dirname($cache_file))) {
+    $blocks = (array)onepager()->blockManager()->all();
+
+    file_put_contents(
+      $cache_file,
+      json_encode($blocks)
+    );
+  }
+}
 
 
 /**
  * Add page Templates
  */
-$pageTemplater = new ThemeXpert\WordPress\PageTemplater();
-$pageTemplater->addTemplate('OnePager', ONEPAGER_PATH . "/app/views/onepage.php");
+function tx_load_onepager_page_templates()
+{
+  $pageTemplater = new ThemeXpert\WordPress\PageTemplater();
+  $pageTemplater->addTemplate('OnePager', onepager()->path("/app/views/onepage.php"));
+}
 
 /**
  * Add preset layouts
  */
-onepager()->layoutManager()->loadAllFromPath(ONEPAGER_PATH . "/presets", untrailingslashit(ONEPAGER_URL) . "/presets");
+function tx_load_onepager_presets()
+{
+  onepager()->layoutManager()->loadAllFromPath(
+    ONEPAGER_PRESETS_PATH,
+    ONEPAGER_PRESETS_URL
+  );
+}
 
-/**
- * Wordpress Action Hooks
- */
+
+
+
+/** WordPress Action Hooks **/
 add_action('wp', 'tx_add_build_mode_button_to_toolbar');
+add_action('admin_init', 'tx_load_onepager_presets');
+add_action('plugins_loaded', 'tx_load_onepager_page_templates');
+add_action('plugins_loaded', 'tx_set_block_groups_order');
+add_action('plugins_loaded', 'tx_load_default_onepager_blocks');
+
+/** WordPress Filter Hooks **/
 add_filter('upload_mimes', 'tx_add_svg_upload_support');
