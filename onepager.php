@@ -21,6 +21,11 @@ if (!defined('WPINC')) {
 define('ONEPAGER_URL', plugins_url('/', __FILE__));
 define('ONEPAGER_PATH', dirname(__FILE__));
 
+define('ONEPAGER_PRESETS_PATH', ONEPAGER_PATH . "/presets");
+define('ONEPAGER_PRESETS_URL', ONEPAGER_URL . "/presets");
+define('ONEPAGER_BLOCKS_PATH', ONEPAGER_PATH . "/blocks");
+define('ONEPAGER_BLOCKS_URL', ONEPAGER_URL . "/blocks");
+
 if(!defined('ONEPAGER_DEBUG')){
   define('ONEPAGER_DEBUG', true);
 }
