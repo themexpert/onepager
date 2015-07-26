@@ -75,6 +75,8 @@ function tx_set_block_groups_order()
     "footers",
     "themes"
   ));
+
+  //  onepager()->blockManager()->setIgnoredGroups(['navbars', 'blogs']);
 }
 
 /** FIXME: NOT USED ANYWHERE YET **/
