@@ -13,7 +13,8 @@ const Footer    = require('./Footer.jsx');
 
 
 let SectionList = React.createClass({
-  mixins: [SortableMixin, PureMixin],
+  //TODO: need pure mixin
+  mixins: [SortableMixin],
 
   propTypes: {
     activeSectionIndex: React.PropTypes.number,
