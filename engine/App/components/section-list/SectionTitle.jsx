@@ -20,29 +20,31 @@ let Title = React.createClass({
     this.setState({edit: true});
   },
 
-  updateEditTitle(e){
+  updateTitle() {
+    let newTitle = this.refs.title.getValue();
+    AppActions.updateTitle(this.props.index, this.props.title, newTitle);
+    this.setState({edit: false});
+  },
+
+  updateTitleOnEnter(e){
     //proceed on enter
     if (e.which !== 13) {
       return;
     }
 
-    let newTitle = this.refs.title.getValue();
-
-    AppActions.updateTitle(this.props.index, this.props.title, newTitle);
-
-    this.setState({edit: false});
+    this.updateTitle();
   },
 
   render() {
     let title = this.props.title;
 
     return (
-      <div onDoubleClick={this.handleEditTitle}>
+      <div onDoubleClick={this.handleEditTitle} className="section-title">
         { this.state.edit ?
           (
             <div>
-              <Input type="text" ref="title" onKeyUp={this.updateEditTitle} defaultValue={title}/>
-              <span className="label label-default">Enter</span>
+              <Input type="text" ref="title" onKeyUp={this.updateTitleOnEnter} defaultValue={title}/>
+              <span onClick={this.updateTitle} className="label label-default">Enter</span>
             </div>
           ) :
           (
