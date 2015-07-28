@@ -110,7 +110,8 @@ function tx_load_onepager_presets()
 {
   onepager()->layoutManager()->loadAllFromPath(
     ONEPAGER_PRESETS_PATH,
-    ONEPAGER_PRESETS_URL
+    ONEPAGER_PRESETS_URL,
+    "onepager"
   );
 }
 
@@ -132,9 +133,7 @@ function get_editor_section_list_footer(){
 }
 
 function getOnepagerConfig(){
-  $config = array(
-    'editOnSectionClick' => true
-  );
+  $config = array();
 
   return apply_filters('onepager_config', $config);
 }

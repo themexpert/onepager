@@ -27,4 +27,8 @@ abstract class Onepager {
   public static function disableBlocks($groups="onepager") {
     onepager()->blockManager()->setIgnoredGroups($groups);
   }
+
+  public static function disableTemplates($groups='onepager') {
+    onepager()->layoutManager()->setIgnoredGroups($groups);
+  }
 }
