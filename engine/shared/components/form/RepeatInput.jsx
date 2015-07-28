@@ -41,6 +41,8 @@ let RepeatInput = React.createClass({
     inputs = _.pushAt(inputs, ii + 1, input);
 
     this.props.updateControl('inputs', inputs);
+
+    //TODO: add explanation
     setTimeout(this.props.onChange, 100); //buggy need a better solution
   },
 
