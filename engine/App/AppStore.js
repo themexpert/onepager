@@ -202,6 +202,11 @@ let AppStore = assign({}, BaseStore, {
         AppStore.emitChange();
         break;
 
+      case Constants.ActionTypes.ACTIVATE_SECTION:
+        setActiveSection(action.index);
+        AppStore.emitChange();
+        break;
+
       case Constants.ActionTypes.UPDATE_SECTION:
         updateSection(action.index, action.section);
         AppStore.emitChange();

@@ -9,6 +9,13 @@ module.exports = {
     });
   },
 
+  activateSection(index){
+    AppDispatcher.handleViewAction({
+      type : Constants.ActionTypes.ACTIVATE_SECTION,
+      index
+    });
+  },
+
   editSection (index){
     AppDispatcher.handleViewAction({
       type : Constants.ActionTypes.EDIT_SECTION,

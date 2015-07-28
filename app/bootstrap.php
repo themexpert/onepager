@@ -131,6 +131,13 @@ function get_editor_section_list_footer(){
   return apply_filters('editor_section_list_footer', $footer);
 }
 
+function getOnepagerConfig(){
+  $config = array(
+    'editOnSectionClick' => true
+  );
+
+  return apply_filters('onepager_config', $config);
+}
 
 /** WordPress Action Hooks **/
 add_action('wp', 'tx_add_build_mode_button_to_toolbar');

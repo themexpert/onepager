@@ -37,7 +37,11 @@ let Section = React.createClass({
   },
 
   handleClick(){
-    AppActions.editSection(this.props.index);
+    if(onepager.config.editOnSectionClick){
+      AppActions.editSection(this.props.index);
+    } else {
+      AppActions.activateSection(this.props.index);
+    }
   },
 
   render() {

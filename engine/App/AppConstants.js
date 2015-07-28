@@ -7,6 +7,7 @@ module.exports = {
     ADD_SECTION      : null,
     REMOVE_SECTION   : null,
     EDIT_SECTION     : null,
+    ACTIVATE_SECTION : null,
     UPDATE_SECTION   : null,
     CLOSE_SECTION    : null,
     DUPLICATE_SECTION: null,

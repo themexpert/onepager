@@ -35,7 +35,8 @@ function onepager_localize_script_data($pageId)
     'categories'  => $cat_arr,
     'groupOrder'  => $groupOrder,
     'footer'      => $footer_markup,
-    'disable'     => $disableUrl
+    'disable'     => $disableUrl,
+    'config'      => getOnepagerConfig()
   );
 }
 
