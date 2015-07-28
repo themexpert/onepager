@@ -70,10 +70,9 @@ class Render {
       // return $this->noBlockDefined($section['slug']);
     }
 
-
+//    pd($section);
     foreach (['settings', 'contents', 'styles'] as $tab) {
-      if(!array_key_exists($tab, $section)) continue;
-
+      if(!array_key_exists($tab, $section)) $section[$tab] = [];
       $section[$tab] = $this->sectionTransformer->mergePersistedDataAndBlockData($block[$tab], $section[$tab]);
     }
 
