@@ -16,6 +16,13 @@ let Title = React.createClass({
     };
   },
 
+  componentDidUpdate(prevProps, prevState) {
+    if(this.state.edit === true && prevState.edit === false){
+      this.refs.title.getInputDOMNode().select();
+    }
+  },
+
+
   handleEditTitle(){
     this.setState({edit: true});
   },
