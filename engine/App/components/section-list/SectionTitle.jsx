@@ -39,7 +39,7 @@ let Title = React.createClass({
     let title = this.props.title;
 
     return (
-      <div onDoubleClick={this.handleEditTitle} className="section-title">
+      <div onDoubleClick={this.handleEditTitle} className="op-section-title">
         { this.state.edit ?
           (
             <div>
@@ -59,7 +59,3 @@ let Title = React.createClass({
 });
 
 module.exports = Title;
-
-//<h3 onClick={this.handleScrollIntoView} onDoubleClick={this.handleEditTitle}>
-//  <span className="fa fa-ellipsis-v"></span><span className="fa fa-ellipsis-v"></span> {title}
-//</h3>
