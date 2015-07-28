@@ -37,19 +37,15 @@ let Section = React.createClass({
   },
 
   handleClick(){
-    if(onepager.config.editOnSectionClick){
-      AppActions.editSection(this.props.index);
-    } else {
-      AppActions.activateSection(this.props.index);
-    }
+    AppActions.editSection(this.props.index);
+    // AppActions.activateSection(this.props.index);
   },
 
   render() {
     console.log("re rendering section view");
 
-    let classes = cx({
-      'op-section-view': true,
-      'active'         : this.props.active
+    let classes = cx('op-section-view', {
+      'active': this.props.active
     });
 
     return <section className={classes} onClick={this.handleClick}/>;
