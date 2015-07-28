@@ -28,8 +28,9 @@ class ApiController
         }
 
         if ($section) {
-            $response["content"] = onepager()->render()->section($section);
-            $response["style"] = onepager()->render()->style($section);
+          $section = onepager()->render()->sectionBlockDataMerge($section);
+          $response["content"] = onepager()->render()->section($section);
+          $response["style"] = onepager()->render()->style($section);
         }
 
         $response["success"] = true;
