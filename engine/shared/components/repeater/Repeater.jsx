@@ -68,7 +68,7 @@ let Repeater = React.createClass({
         return;
       }
 
-      rControl.value = "";
+      rControl.value = _.isArray(rControl.value) ? [] : "";
     });
 
     if (duplicate) {
