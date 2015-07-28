@@ -49,9 +49,8 @@ let RepeatGroup = React.createClass({
     let id      = this.getId();
     let title   = this.getGroupTitle();
     let rGroup  = this.props.options;
-    let classes = cx({
-      "panel-collapse collapse": true,
-      "in"                     : this.props.active
+    let classes = cx("panel-collapse collapse", {
+      "in": this.props.active
     });
 
     let controls = rGroup.map((rControl, ii)=> {
