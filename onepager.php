@@ -17,6 +17,15 @@ if (!defined('WPINC')) {
     die;
 }
 
+define('ONEPAGER_PHP_VERSION', '5.4');
+register_activation_hook(__FILE__, 'onepager_php_version_check');
+function onepager_php_version_check()
+{
+  if (version_compare(PHP_VERSION, ONEPAGER_PHP_VERSION, '<')) {
+    exit(sprintf('Onepager Plugin requires PHP %s or higher. You\'re still on %s.', ONEPAGER_PHP_VERSION, PHP_VERSION));
+  }
+}
+
 define('ONEPAGER_URL', plugins_url('/', __FILE__));
 define('ONEPAGER_PATH', dirname(__FILE__));
 
@@ -25,20 +34,10 @@ define('ONEPAGER_PRESETS_URL', ONEPAGER_URL . "/presets");
 define('ONEPAGER_BLOCKS_PATH', ONEPAGER_PATH . "/blocks");
 define('ONEPAGER_BLOCKS_URL', ONEPAGER_URL . "/blocks");
 
-define('ONEPAGER_PHP_VERSION', '5.4');
 
 if(!defined('ONEPAGER_DEBUG')){
   define('ONEPAGER_DEBUG', true);
 }
-
-function onepager_php_version_check()
-{
-  if (version_compare(PHP_VERSION, ONEPAGER_PHP_VERSION, '<')) {
-    exit(sprintf('Onepager Plugin requires PHP %s or higher. You\'re still on %s.', ONEPAGER_PHP_VERSION, PHP_VERSION));
-  }
-}
-
-register_activation_hook(__FILE__, 'onepager_php_version_check');
 
 //require autoloading files
 require(ONEPAGER_PATH . '/src/functions.php');
