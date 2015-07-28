@@ -20,6 +20,16 @@ function confirmDelete(proceed) {
 }
 
 
+function resetRepeatInput(rControl){
+  let input = rControl.inputs[0];
+  input.value = "";
+
+  rControl.inputs = [input];
+  rControl.value = [input.value];
+
+  return rControl;
+}
+
 let Repeater = React.createClass({
   mixins: [SortableMixin, PureMixin],
 
@@ -68,7 +78,11 @@ let Repeater = React.createClass({
         return;
       }
 
-      rControl.value = _.isArray(rControl.value) ? [] : "";
+      if(_.isArray(rControl.value)){
+        rControl = resetRepeatInput(rControl);
+      } else {
+        rControl.value = "";
+      }
     });
 
     if (duplicate) {
