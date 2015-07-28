@@ -23,4 +23,8 @@ abstract class Onepager {
 		  get_template_directory_uri() . '/' . $folder
 		);
 	}
+
+  public static function disableBlocks($groups="onepager") {
+    onepager()->blockManager()->setIgnoredGroups($groups);
+  }
 }
