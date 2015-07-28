@@ -96,7 +96,7 @@ class SectionTransformer {
     //if we are here that means we have this value persisted into database
     return $tab[$control['name']];
   }
-  
+
   /**
    * @param $blockData
    * @param $sectionData
@@ -109,11 +109,14 @@ class SectionTransformer {
      * so we will need varying types of data merging
      * algorithms
      */
-    return array_reduce($blockData, function ($carry, $control) {
+    $data = array_reduce($blockData, function ($carry, $control) {
       // Return if control type is divider
-      if($control['type'] == "divider") return $carry;
+      if ($control['type'] == "divider") {
+        return $carry;
+      }
 
       $name = $control['name'];
+
       switch ($control['type']) {
         case 'repeater':
           $carry[$name] = $this->getRepeaterControlValue($carry, $control);
@@ -125,6 +128,8 @@ class SectionTransformer {
 
       return $carry;
     }, $sectionData);
+
+    return $data;
   }
 
 }
