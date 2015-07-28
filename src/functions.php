@@ -150,3 +150,16 @@ function op_the_excerpt($excerpt_length=55, $readmore=null) {
 
   echo $text . (!$readmore ? '' : ' <a href="'.get_permalink().'">'.$readmore.'</a>');
 }
+
+
+function get_default_template_stylesheet_handle(){
+  global $wp_styles;
+
+  foreach($wp_styles->registered as $style){
+    if(get_stylesheet_uri() === $style->src){
+      return $style->handle;
+    }
+  }
+
+  return null;
+}

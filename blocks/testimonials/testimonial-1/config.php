@@ -29,7 +29,7 @@ return array(
         )
       )
     )
-    
+
   ),
 
   // Settings - $settings available on view file to access the option
@@ -46,11 +46,11 @@ return array(
       )
     )
   ),
-    
+
   'styles' => array(
     array(
-      'name'  => 'bg_image', 
-      'label' => 'Background Image', 
+      'name'  => 'bg_image',
+      'label' => 'Background Image',
       'type'  => 'image'
     ),
     array(
@@ -72,8 +72,8 @@ return array(
     ),
 
     array(
-      'name'=>'bg_parallax', 
-      'type'=> 'switch', 
+      'name'=>'bg_parallax',
+      'type'=> 'switch',
       'label'=>'Parallax Background'
     ),
     array(
@@ -84,6 +84,6 @@ return array(
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'testimonial-1', $path . 'style.css' );
+    onepager()->asset()->style( 'testimonial-1', $path . '/style.css' );
   }
 );

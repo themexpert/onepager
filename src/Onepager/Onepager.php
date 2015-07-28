@@ -108,7 +108,7 @@ class Onepager implements OnepagerInterface {
 	}
 
 	public function url( $string ) {
-		return $this->adapter->getUrl() . $string;
+		return trailingslashit($this->adapter->getUrl()) . $string;
 	}
 
 	public function path( $path ) {

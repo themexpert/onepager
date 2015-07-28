@@ -26,7 +26,7 @@ function onepager_php_version_check()
   }
 }
 
-define('ONEPAGER_URL', plugins_url('/', __FILE__));
+define('ONEPAGER_URL', plugins_url('', __FILE__));
 define('ONEPAGER_PATH', dirname(__FILE__));
 
 define('ONEPAGER_PRESETS_PATH', ONEPAGER_PATH . "/presets");
@@ -54,10 +54,5 @@ require(ONEPAGER_PATH . '/app/dashboard.php');
 do_action('onepager_init');
 
 
-//add_filter('onepager_config', function($config){
-//  $config['editOnSectionClick'] = false;
-//
-//  return $config;
-//});
-
 //Onepager::disableBlocks("onepager");
+//Onepager::disableTemplates("onepager");

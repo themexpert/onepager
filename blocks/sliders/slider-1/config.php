@@ -72,6 +72,6 @@ return array(
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'slider-1', $path . 'style.css' );
+    onepager()->asset()->style( 'slider-1', $path . '/style.css' );
   }
 );

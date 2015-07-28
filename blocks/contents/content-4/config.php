@@ -1,36 +1,36 @@
 <?php
 
 return array(
-  
+
   'slug'      => 'content-4', // Must be unique and singular
   'groups'    => array('contents'), // Blocks group for filter and plural
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array(
-      'name'=>'title', 
+      'name'=>'title',
       'value' => 'Lets make a better website together'
     ),
     array(
       'name'=>'description',
-      'type'=>'editor', 
+      'type'=>'editor',
       'value'=> 'The world is a dangerous place to live; not because of the people who are evil, but because of the people who dont do anything about it.'
     ),
     array(
-      'name'=>'link', 
-      'label'=> 'Button', 
+      'name'=>'link',
+      'label'=> 'Button',
       'placeholder'=> 'http://example.com',
       'value'=> '#'
     ),
     array(
-      'name'  => 'link_text', 
+      'name'  => 'link_text',
       'label' => 'Button Text',
-      'value' => 'Download Now', 
+      'value' => 'Download Now',
     ),
   ),
-  
+
   // Settings - $settings available on view file to access the option
-  'settings' => array(    
+  'settings' => array(
     array(
       'name'     => 'title_size',
       'label'    => 'Title Size',
@@ -53,7 +53,7 @@ return array(
         'text-capitalize'  => 'Capitalized'
       ),
     ),
-    
+
     array(
       'name'     => 'animation',
       'label'    => 'Animation',
@@ -105,6 +105,6 @@ return array(
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'content-4', $path . 'style.css' );
+    onepager()->asset()->style( 'content-4', $path . '/style.css' );
   }
 );

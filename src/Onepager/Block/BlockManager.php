@@ -33,7 +33,7 @@ class BlockManager
 
 
                 if (!FS::exists($config_file)) {
-                    $this->loadAllFromPath($path . DIRECTORY_SEPARATOR . $folder, $url . "/" . $folder, $groups);
+                    $this->loadAllFromPath($path . DIRECTORY_SEPARATOR . $folder, trailingslashit($url) . $folder, $groups);
 
                     continue;
                 }
@@ -47,7 +47,7 @@ class BlockManager
 
     public function add($file, $url, $groups=array())
     {
-        $url = trailingslashit($url);
+        $url = untrailingslashit($url);
         $config = require($file);
 
 

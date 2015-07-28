@@ -1,7 +1,7 @@
 <?php
 
 return array(
-  
+
   'slug'      => 'navbar-2', // Must be unique
   'groups'    => array('navbars'), // Blocks group for filter
 
@@ -24,9 +24,9 @@ return array(
       )
     )
   ),
-  
+
   // Styles - $styles available on view file to access the option
-  'styles' => array(    
+  'styles' => array(
     array(
       'name'    => 'bg_color',
       'label'   => 'Background Color',
@@ -54,6 +54,6 @@ return array(
   ),
 
   "assets" => function( $path ){
-    onepager()->asset()->style( 'op-navbar-2', $path . "style.css" );
+    onepager()->asset()->style( 'op-navbar-2', $path . "/style.css" );
   }
 );

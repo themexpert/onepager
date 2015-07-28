@@ -1,32 +1,32 @@
 <?php
 
 return array(
-  
+
   'slug'      => 'content-5', // Must be unique and singular
   'groups'    => array('contents'), // Blocks group for filter and plural
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array(
-      'name'=>'title', 
+      'name'=>'title',
       'value' => 'Modern and ridiculusly easy page builder for all'
     ),
     array(
       'name'=>'description',
-      'type'=>'editor', 
+      'type'=>'editor',
       'value'=> 'I dream my painting and I paint my dream'
     ),
     array('name'=>'image', 'type' => 'image', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icons/download.png'),
     array('name'=>'link', 'value'=> '#'),
     array(
-      'name'  => 'link_text', 
+      'name'  => 'link_text',
       'label' => 'Link Text',
-      'value' => 'Download Now', 
+      'value' => 'Download Now',
     ),
   ),
-  
+
   // Settings - $settings available on view file to access the option
-  'settings' => array(    
+  'settings' => array(
     array(
       'name'     => 'title_size',
       'label'    => 'Title Size',
@@ -49,7 +49,7 @@ return array(
         'text-capitalize'  => 'Capitalized'
       ),
     ),
-    
+
     array(
       'name'     => 'animation',
       'label'    => 'Animation',
@@ -75,8 +75,8 @@ return array(
       'value'   => 'http://s3.amazonaws.com/quantum-assets/bg/bg6.jpg'
     ),
     array(
-      'name'=>'bg_parallax', 
-      'type'=> 'switch', 
+      'name'=>'bg_parallax',
+      'type'=> 'switch',
       'label'=>'Parallax Background'
     ),
     array(
@@ -106,6 +106,6 @@ return array(
   ),
 
   // 'assets' => function( $path ){
-  //   onepager()->asset()->style( 'content-5', $path . 'style.css' );
+  //   onepager()->asset()->style( 'content-5', $path . '/style.css' );
   // }
 );

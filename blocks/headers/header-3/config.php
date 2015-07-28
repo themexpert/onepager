@@ -1,38 +1,38 @@
 <?php
 
 return array(
-  
+
   'slug'      => 'header-3', // Must be unique and singular
   'groups'    => array('headers'), // Blocks group for filter and plural
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array(
-      'name'=>'title', 
+      'name'=>'title',
       'value' => 'Lets make a better website together'
     ),
     array(
       'name'=>'description',
-      'type'=>'editor', 
+      'type'=>'editor',
       'value'=> 'The world is a dangerous place to live; not because of the people who are evil, but because of the people who dont do anything about it.'
     ),
     array(
-      'name'=>'logo', 
-      'type'=>'image', 
+      'name'=>'logo',
+      'type'=>'image',
       'value'=> 'http://s3.amazonaws.com/quantum-assets/logo-black-mid.png'
     ),
 
     array(
-      'name'=>'image', 
-      'type'=>'image', 
+      'name'=>'image',
+      'type'=>'image',
       'value'=> 'http://s3.amazonaws.com/quantum-assets/phone-dark.png'
     ),
     array('name'=>'link', 'value' => '#'),
 
   ),
-  
+
   // Settings - $settings available on view file to access the option
-  'settings' => array(    
+  'settings' => array(
     array(
       'name'     => 'media_alignment',
       'label'    => 'Meida Alignment',
@@ -90,11 +90,11 @@ return array(
         'bottom'   => 'Bottom'
       ),
     ),
-    
+
     array(
-      'name'  => 'link_text', 
+      'name'  => 'link_text',
       'label' => 'Link Text',
-      'value' => 'Download Now', 
+      'value' => 'Download Now',
     ),
 
     array(
@@ -132,8 +132,8 @@ return array(
   'styles' => array(
     array('label'=>'Background', 'type'=>'divider'), // Divider - Background
     array(
-      'name'  => 'bg_image', 
-      'label' => 'Image', 
+      'name'  => 'bg_image',
+      'label' => 'Image',
       'type'  => 'image',
       'value' => 'http://s3.amazonaws.com/quantum-assets/bg/bg5.jpg'
     ),
@@ -155,8 +155,8 @@ return array(
       'value'   => '#ebeff2'
     ),
     array(
-      'name'=>'bg_parallax', 
-      'type'=> 'switch', 
+      'name'=>'bg_parallax',
+      'type'=> 'switch',
       'label'=>'Parallax Background'
     ),
     array('label'=>'Text', 'type'=>'divider'), // Divider - Text
@@ -187,6 +187,6 @@ return array(
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'header-3', $path . 'style.css' );
+    onepager()->asset()->style( 'header-3', $path . '/style.css' );
   }
 );

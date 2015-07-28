@@ -31,7 +31,7 @@ return array(
         )
       )
     )
-    
+
   ),
 
   // Settings - $settings available on view file to access the option
@@ -114,14 +114,14 @@ return array(
       'type'  => 'image',
       'value' => 'http://s3.amazonaws.com/quantum-assets/bg/bg4.jpg'
     ),
-    
+
   ),
 
   'assets' => function( $path ){
-    // Magnefic popup 
+    // Magnefic popup
     onepager()->asset()->script( 'tx-magnific-popup', asset('assets/js/jquery.magnific-popup.js'), array( 'jquery' ) );
     onepager()->asset()->style( 'tx-magnific-popup', asset( 'assets/css/magnific-popup.css' ) );
-    
-    onepager()->asset()->style( 'header-2', $path . 'style.css' );
+
+    onepager()->asset()->style( 'header-2', $path . '/style.css' );
   }
 );

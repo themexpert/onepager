@@ -1,23 +1,23 @@
 <?php
 
 return array(
-  
+
   'slug'      => 'blog-1', // Must be unique and singular
   'groups'    => array('blogs'), // Blocks group for filter and plural
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array(
-      'name'=>'title', 
+      'name'=>'title',
       'value' => 'Latest Thoughts'
     ),
     array(
       'name'=>'description',
-      'type'=>'textarea', 
+      'type'=>'textarea',
       'value'=> 'Latest posts from our blog'
     ),
     array(
-      'name'=>'category', 
+      'name'=>'category',
       'type'=>'category'
     ),
     array(
@@ -32,10 +32,10 @@ return array(
     )
 
   ),
-  
+
   // Settings - $settings available on view file to access the option
-  'settings' => array(    
-    
+  'settings' => array(
+
     array(
       'name'     => 'media_grid',
       'label'    => 'Meida Grid',
@@ -47,7 +47,7 @@ return array(
         '5'   => '5',
       ),
     ),
-    
+
     array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
@@ -59,11 +59,11 @@ return array(
         'text-capitalize'  => 'Capitalized'
       ),
     ),
-   
+
     array(
-      'name'  => 'readmore_text', 
+      'name'  => 'readmore_text',
       'label' => 'Readmore Text',
-      'value' => 'Readmore', 
+      'value' => 'Readmore',
     ),
 
    array(
@@ -110,6 +110,6 @@ return array(
     ),
   ),
   // 'assets' => function( $path ){
-  //   onepager()->asset()->style( 'content-1', $path . 'style.css' );
+  //   onepager()->asset()->style( 'content-1', $path . '/style.css' );
   // }
 );

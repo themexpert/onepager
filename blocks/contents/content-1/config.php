@@ -1,36 +1,36 @@
 <?php
 
 return array(
-  
+
   'slug'      => 'content-1', // Must be unique and singular
   'groups'    => array('contents'), // Blocks group for filter and plural
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array(
-      'name'=>'title', 
+      'name'=>'title',
       'value' => 'Lets make a better website together'
     ),
     array(
       'name'=>'description',
-      'type'=>'editor', 
+      'type'=>'editor',
       'value'=> 'The world is a dangerous place to live; not because of the people who are evil, but because of the people who dont do anything about it.'
     ),
     array(
-      'name'=>'image', 
-      'type'=>'image', 
+      'name'=>'image',
+      'type'=>'image',
       'value'=> 'http://s3.amazonaws.com/quantum-assets/img-1.png'
     ),
     array(
-      'name'=>'link', 
-      'label'=> 'Button', 
+      'name'=>'link',
+      'label'=> 'Button',
       'placeholder'=> 'http://example.com',
       'value' => '#'
     ),
   ),
-  
+
   // Settings - $settings available on view file to access the option
-  'settings' => array(    
+  'settings' => array(
     array(
       'name'     => 'media_alignment',
       'label'    => 'Meida Alignment',
@@ -88,11 +88,11 @@ return array(
         'bottom'   => 'Bottom'
       ),
     ),
-    
+
     array(
-      'name'  => 'link_text', 
+      'name'  => 'link_text',
       'label' => 'Link Text',
-      'value' => 'Readmore', 
+      'value' => 'Readmore',
     ),
 
     array(
@@ -130,8 +130,8 @@ return array(
   'styles' => array(
     array('label'=>'Background', 'type'=>'divider'), // Divider - Background
     array(
-      'name'  => 'bg_image', 
-      'label' => 'Image', 
+      'name'  => 'bg_image',
+      'label' => 'Image',
       'type'  => 'image'
     ),
     array(
@@ -178,6 +178,6 @@ return array(
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'content-1', $path . 'style.css' );
+    onepager()->asset()->style( 'content-1', $path . '/style.css' );
   }
 );

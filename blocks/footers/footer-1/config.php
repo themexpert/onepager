@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return array(
 	'slug'      => 'footer-1', // Must be unique
@@ -28,6 +28,6 @@ return array(
 	),
 
 	'assets' => function( $path ){
-    	onepager()->asset()->style( 'footer-1', $path . 'style.css' );
+    	onepager()->asset()->style( 'footer-1', $path . '/style.css' );
   	}
 );
