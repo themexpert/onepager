@@ -52,3 +52,12 @@ require(ONEPAGER_PATH . '/app/metabox.php');
 require(ONEPAGER_PATH . '/app/dashboard.php');
 
 do_action('onepager_init');
+
+
+//add_filter('onepager_config', function($config){
+//  $config['editOnSectionClick'] = false;
+//
+//  return $config;
+//});
+
+//Onepager::disableBlocks("onepager");
