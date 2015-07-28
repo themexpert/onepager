@@ -103,15 +103,17 @@ function enqueueOnepagerAdminAssets()
   $q->enqueue();
 }
 
-function onepager_remove_theme_styles()
-{
+function dequeue_default_template_stylesheet(){
+  if(get_theme_support('onepager')) return;
+
   if(!onepager()->content()->isOnepage()) return;
 
-  remove_action('wp_enqueue_scripts', 'twentythirteen_scripts_styles');
-  remove_action('wp_enqueue_scripts', 'twentyfourteen_scripts');
-  remove_action('wp_enqueue_scripts', 'twentyfifteen_scripts');
+  global $wp_styles;
+
+  $wp_styles->remove(get_default_template_stylesheet_handle());
 }
 
-add_action('after_setup_theme', 'onepager_remove_theme_styles');
+add_action('wp_enqueue_scripts', 'dequeue_default_template_stylesheet', 999);
+
 //live edit mode
 add_action('wp_enqueue_scripts', 'onepager_enqueue_scripts');
