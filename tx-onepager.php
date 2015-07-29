@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       OnePager
+ * Plugin Name:       TX OnePager
  * Plugin URI:        http://themexpert.com/wordpress-plugins/xpert-wponepager
  * Description:       Onepage Builder that helps you to make one page website seamlessly. Beautifully
  * Version:           1.0.0
@@ -8,7 +8,7 @@
  * Author URI:        http://www.themexpert.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       onepager
+ * Text Domain:       tx-onepager
  * Domain Path:       /languages
  */
 
@@ -22,7 +22,7 @@ register_activation_hook(__FILE__, 'onepager_php_version_check');
 function onepager_php_version_check()
 {
   if (version_compare(PHP_VERSION, ONEPAGER_PHP_VERSION, '<')) {
-    exit(sprintf('Onepager Plugin requires PHP %s or higher. You\'re still on %s.', ONEPAGER_PHP_VERSION, PHP_VERSION));
+    exit(sprintf('Onepager requires PHP %s or higher to run. Your website PHP version is %s. Please update your PHP version in order to run this plugin. Updating PHP won\'t not harm your website, in-fact it will boost your website speed.', ONEPAGER_PHP_VERSION, PHP_VERSION));
   }
 }
 

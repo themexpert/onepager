@@ -154,9 +154,9 @@ gulp.task('default', function () {
 });
 
 gulp.task('package', ['package-build'], function () {
-  var files = ['app', 'assets', 'blocks', 'src', 'vendor', 'presets', 'onepager.php', 'uninstall.php'];
+  var files = ['app', 'assets', 'blocks', 'src', 'vendor', 'presets', 'tx-onepager.php', 'uninstall.php'];
 
-  packager("onepager", files, ROOT_PATH);
+  packager("tx-onepager", files, ROOT_PATH);
 });
 
 function packager(name, files, root) {
