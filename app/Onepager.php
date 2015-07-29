@@ -15,7 +15,7 @@ abstract class Onepager {
 	{
 		return onepager()->optionsPanel('onepager')->getOption($name, $default);
 	}
-	// Register block folder
+	// Register Custom Blocks Folder
 	public static function registerBlocks($folder = 'blocks')
 	{
 		onepager()->blockManager()->loadAllFromPath(
@@ -23,12 +23,22 @@ abstract class Onepager {
 		  get_template_directory_uri() . '/' . $folder
 		);
 	}
-
+	// Disable Core Blocks or Any Blocks Group
   public static function disableBlocks($groups="onepager") {
     onepager()->blockManager()->setIgnoredGroups($groups);
   }
-
-  public static function disableTemplates($groups='onepager') {
+	// Register Preset Paths
+	public static function registerPresets( $folder = 'presets')
+	{
+		onepager()->layoutManager()->loadAllFromPath(
+			get_template_directory() . '/' . $folder,
+			get_template_directory_uri() . '/' . $folder,
+			"onepager"
+		);
+	}
+	// Disable Core Presets
+  public static function disablePresets($groups='onepager')
+	{
     onepager()->layoutManager()->setIgnoredGroups($groups);
   }
 }
