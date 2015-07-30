@@ -317,13 +317,11 @@ h3.form-divider {
     .action-btns{
       display: none;
       position: absolute; top: 0; right: 0;
-      //padding: 10px;
-      background: @bg-secondary;
+      padding: 0 5px;
+      line-height: 39px;
+      background: darken(@bg-secondary, 1%);
       span{
-        padding:  12px 12px 13px 12px;
-        &:hover{
-          background: #5A5656;
-        }
+        padding:  0 2px;
       }
 
       span:not(:last-child){ margin-right : 5px; }
@@ -584,6 +582,9 @@ h3.form-divider {
     }
   }
 }
+// Quile Editor
+// -----------------
+.ql-align.ql-picker{ display: none; }
 
 /*--------------------------------------------------------------
 # Accessibility
@@ -683,10 +684,4 @@ h3.form-divider {
   position: absolute; top: 21px; right: 20px; z-index: 10;
   font-size: 9px; line-height: 1em;
   font-weight: normal; text-transform: uppercase;
-}
-
-
-//for now patch on editor
-.ql-picker-item[data-value=justify]{
-  display: none !important;
 }

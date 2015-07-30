@@ -6,7 +6,6 @@ const SortableMixin = require('sortablejs/react-sortable-mixin');
 const Button        = require('react-bootstrap/lib/Button');
 const PureMixin     = require('../../mixins/PureMixin.js');
 
-
 function confirmDelete(proceed) {
   swal({
     title             : "Are you sure?",

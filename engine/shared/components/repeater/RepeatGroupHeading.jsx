@@ -29,8 +29,8 @@ let RepeatGroupHeading = React.createClass({
              data-parent={"#"+this.props.parentId}>{this.props.title}</a>
 
           <div className="repeater-action-btns">
-            <span onClick={this.props.duplicate} className="fa fa-copy" title="Duplicate"></span>
-            <span onClick={this.props.remove} className="fa fa-trash-o" title="Remove"></span>
+            <span onClick={this.props.duplicate} className="fa fa-copy" data-toggle="tooltip" title="Duplicate"></span>
+            <span onClick={this.props.remove} className="fa fa-trash-o" data-toggle="tooltip" title="Delete"></span>
           </div>
         </h4>
       </div>
