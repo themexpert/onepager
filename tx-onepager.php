@@ -22,7 +22,11 @@ register_activation_hook(__FILE__, 'onepager_php_version_check');
 function onepager_php_version_check()
 {
   if (version_compare(PHP_VERSION, ONEPAGER_PHP_VERSION, '<')) {
-    exit(sprintf('Onepager requires PHP %s or higher to run. Your website PHP version is %s. Please update your PHP version in order to run this plugin. Updating PHP won\'t not harm your website, in-fact it will boost your website speed.', ONEPAGER_PHP_VERSION, PHP_VERSION));
+    $text = 'Onepager requires PHP %s or higher to run. Your website PHP version is %s. Please update your PHP version';
+    $text .= 'in order to run this plugin. Updating PHP won\'t not harm your website,';
+    $text .= 'in-fact it will boost your website speed.';
+
+    exit(sprintf($text, ONEPAGER_PHP_VERSION, PHP_VERSION));
   }
 }
 
