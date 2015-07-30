@@ -18,13 +18,15 @@ if (!defined('WPINC')) {
 }
 
 define('ONEPAGER_PHP_VERSION', '5.4');
-register_activation_hook(__FILE__, 'onepager_php_version_check');
+
 function onepager_php_version_check()
 {
   if (version_compare(PHP_VERSION, ONEPAGER_PHP_VERSION, '<')) {
-    exit(sprintf('Onepager requires PHP %s or higher to run. Your website PHP version is %s. Please update your PHP version in order to run this plugin. Updating PHP won\'t not harm your website, in-fact it will boost your website speed.', ONEPAGER_PHP_VERSION, PHP_VERSION));
+    wp_die(sprintf('You are running ancient version of PHP-<strong>%s</strong>. Onepager requires at least PHP <strong>%s</strong> to run smoothly. <br/>Please update your PHP version to run this plugin and keep you website secure.', PHP_VERSION, ONEPAGER_PHP_VERSION));
   }
 }
+// PHP Version check
+onepager_php_version_check();
 
 define('ONEPAGER_URL', plugins_url('', __FILE__));
 define('ONEPAGER_PATH', dirname(__FILE__));
