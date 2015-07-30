@@ -107,10 +107,6 @@ let SectionControls = React.createClass({
 
     return (
       <div>
-        <SectionTitle title={title} index={sectionIndex} >
-          <label style={{color: "white"}}> Section: {title} </label>
-        </SectionTitle>
-
         <ul className="nav nav-pills">
           {sectionSettings.contents.length ?
             <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab}/> : null}
@@ -119,8 +115,7 @@ let SectionControls = React.createClass({
           {sectionSettings.styles.length ?
             <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/> : null}
         </ul>
-
-
+        
         <div className="tab-content" ref="tabContents">
           <TabPane id="contents" active={activeTab}>
             {getControlsHTML('contents', sectionSettings.contents)}

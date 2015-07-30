@@ -5,7 +5,7 @@ Onepager::getOptionPanel()->tab('general', 'Generals')
         ->add(
           array('name' => 'favicon', 'type' => 'image'),
           array(
-            'name'  => 'google_analytics', 
+            'name'  => 'google_analytics',
             'type'  => 'textarea',
             'label' => 'Google Analytics',
             'placeholder' => 'Paste your code here'
@@ -16,10 +16,23 @@ Onepager::getOptionPanel()->tab('general', 'Generals')
           //   'label' => 'Full Screen Page',
           // )
         );
+Onepager::getOptionPanel()->tab('styles', 'Styles')
+        ->add(
+        array(
+          'name' => 'gloabl_palette',
+          'type' => 'colorpalette',
+          'colors' => array(
+            'primary'=> "#69D2E7",
+            'secondary' => '#A7DBD8',
+            'accent1' => '#FA6900'
+            'accent2' => '#F38630'
+          )
+        ),
+      );
 
 
 add_action('wp_head', function(){
-  // Favicion 
+  // Favicion
   echo '<link rel="icon" href="'. Onepager::getOption('favicon') .'">';
 
   // Google Analytics
@@ -28,13 +41,13 @@ add_action('wp_head', function(){
   // Full pager
   if( Onepager::getOption('full_screen') ){
     echo '<script>
-            jQuery(document).ready(function() { 
+            jQuery(document).ready(function() {
               jQuery(".op-sections").fullpage({
                   sectionSelector: ".op-section",
                   css3: true,
                   scrollingSpeed: 100,
-                  scrollBar: true  
-              }); 
+                  scrollBar: true
+              });
             });
           </script>';
   }

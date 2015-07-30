@@ -70,9 +70,9 @@ let Section = React.createClass({
           </h3>
         </SectionTitle>
         <div className="action-btns">
-          <span className="fa fa-edit" onClick={this.handleEditSection}></span>
-          <span className="fa fa-copy" onClick={this.handleDuplicateSection}></span>
-          <span className="fa fa-close" onClick={this.handleRemoveSection}></span>
+          <span className="fa fa-edit" onClick={this.handleEditSection} data-toggle="tooltip" title="Edit"></span>
+          <span className="fa fa-copy" onClick={this.handleDuplicateSection} data-toggle="tooltip" title="Copy"></span>
+          <span className="fa fa-trash-o" onClick={this.handleRemoveSection} data-toggle="tooltip" title="Delete"></span>
         </div>
       </div>
     );
