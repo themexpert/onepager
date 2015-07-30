@@ -21,7 +21,8 @@ define('ONEPAGER_PHP_VERSION', '5.4');
 
 function onepager_php_version_check()
 {
-  if (version_compare(PHP_VERSION, ONEPAGER_PHP_VERSION, '<')) {
+  if (version_compare(PHP_VERSION, ONEPAGER_PHP_VERSION, '<'))
+  {
     wp_die(sprintf('You are running ancient version of PHP-<strong>%s</strong>. Onepager requires at least PHP <strong>%s</strong> to run smoothly. <br/>Please update your PHP version to run this plugin and keep you website secure.', PHP_VERSION, ONEPAGER_PHP_VERSION));
   }
 }
