@@ -59,7 +59,7 @@ function onepager_enqueue_block_assets() {
     $enqueueCb( $blockUrl );
   } );
 
-  onepager()->asset()->enqueue();
+  onepager()->asset()->enqueue(!$isBuildMode, $pageId);
 }
 
 //inject onepager

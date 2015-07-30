@@ -1,5 +1,12 @@
 <?php namespace ThemeXpert\Providers\WordPress;
+use Assetic\Asset\AssetCache;
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\AssetManager;
+use Assetic\AssetWriter;
+use Assetic\Cache\FilesystemCache;
 
+use ThemeXpert\Onepager\AssetsCompiler;
 use ThemeXpert\Providers\Contracts\AssetInterface;
 
 class Asset implements AssetInterface
@@ -50,17 +57,40 @@ class Asset implements AssetInterface
     }, $this->localize);
   }
 
-  public function enqueue(){
-    $this->enqueueStyles();
-    $this->enqueueScripts();
-    $this->enqueueLocalizations();
+  public function enqueue($compile=false, $pageId=null){
+    if($compile && $pageId){
+      $js_file = content_url('cache/onepager.build'.$pageId.'.js');
+      $css_file = content_url('cache/onepager.build'.$pageId.'.css');
+
+      add_action('wp_head', function() use($pageId){
+        $this->compilePageAssets($pageId);
+      }, 5);
+
+      wp_enqueue_script('onepager', $js_file, $this->getDependencies($this->scripts));
+      wp_enqueue_style('onepager', $css_file, $this->getDependencies($this->styles));
+    } else {
+      $this->enqueueStyles();
+      $this->enqueueScripts();
+      $this->enqueueLocalizations();
+    }
   }
 
+  public function getDependencies($assets){
+    return array_reduce($assets, function($carry, $asset){
+      return array_merge($carry, $asset['dependency']);
+    }, []);
+  }
 
   public function localizeScript($name, $data, $handle = "")
   {
     $this->localize[$name] = array(
       "handle"=>$handle, "name"=>$name, "data"=>$data
     );
+  }
+
+  private function compilePageAssets($pageId) {
+    $compiler = new AssetsCompiler();
+    $compiler->addCollection(WP_CONTENT_DIR.'/cache/onepager.build'.$pageId.'.css', $this->styles);
+    $compiler->addCollection(WP_CONTENT_DIR.'/cache/onepager.build'.$pageId.'.js', $this->scripts);
   }
 }
