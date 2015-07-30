@@ -167,7 +167,7 @@ return array(
       'name'    => 'button_bg_color',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'value'   => '#4cb257'
+      'value'   => '@gloabl_pallet.primary'
     ),
     array(
       'name'    => 'button_text_color',
