@@ -167,7 +167,8 @@ return array(
       'name'    => 'button_bg_color',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'value'   => '@gloabl_pallet.primary'
+      'gloabl'  => '',
+      'value'   => OnePager::getOption('primary_color')
     ),
     array(
       'name'    => 'button_text_color',
