@@ -38,7 +38,7 @@ return array(
 
     array(
       'name'     => 'media_grid',
-      'label'    => 'Meida Grid',
+      'label'    => 'Media Grid',
       'type'     => 'select',
       'value'    => '3',
       'options'  => array(

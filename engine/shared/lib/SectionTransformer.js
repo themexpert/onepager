@@ -168,7 +168,7 @@ let simplify = function (fields) {
   return _.reduce(fields, function (collection, field) {
     if (field.type === "repeater") {
 
-      //instatiate an empty array
+      //instantiate an empty array
       collection[field.name] = [];
 
       _.forEach(field.fields, function (rgroup, gi) {
@@ -197,16 +197,14 @@ function simplifySections(sections) {
   let oSections = _.copy(sections);
 
   return _.map(oSections, function (section) {
-    let data = {
-      id      : section.id,
-      slug    : section.slug,
-      title   : section.title,
+    return {
+      id: section.id,
+      slug: section.slug,
+      title: section.title,
       contents: simplify(section.contents),
       settings: simplify(section.settings),
-      styles  : simplify(section.styles),
+      styles: simplify(section.styles),
     };
-
-    return data;
   });
 }
 
