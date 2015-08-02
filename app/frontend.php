@@ -38,6 +38,7 @@ function onepager_enqueue_block_assets() {
    */
   if($isBuildMode){
     $blocks = (array) onepager()->blockManager()->all();
+    $pageId = '';
   } else {
     //get page sections
     $pageId   = onepager()->content()->getCurrentPageId();

@@ -18,16 +18,34 @@ Onepager::getOptionPanel()->tab('general', 'Generals')
         );
 Onepager::getOptionPanel()->tab('styles', 'Styles')
         ->add(
+        // array(
+        //   'name' => 'gloabl_palette',
+        //   'type' => 'colorpalette',
+        //   'colors' => array(
+        //     'primary'=> "#69D2E7",
+        //     'secondary' => '#A7DBD8',
+        //     'accent1' => '#FA6900',
+        //     'accent2' => '#F38630'
+        //   )
+        // ),
         array(
-          'name' => 'gloabl_palette',
-          'type' => 'colorpalette',
-          'colors' => array(
-            'primary'=> "#69D2E7",
-            'secondary' => '#A7DBD8',
-            'accent1' => '#FA6900'
-            'accent2' => '#F38630'
-          )
+          'name' => 'primary_color',
+          'type' => 'colorpicker',
+          'label' => 'Primary Color',
+          'value' => '#2196F3'
         ),
+        array(
+          'name' => 'secondary_color',
+          'type' => 'colorpicker',
+          'label' => 'Secondary Color',
+          'value' => '#3F51B5'
+        ),
+        array(
+          'name' => 'accent_color',
+          'type' => 'colorpicker',
+          'label' => 'Secondary Color',
+          'value' => '#FF5722'
+        )
       );
 
 
