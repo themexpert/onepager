@@ -1,83 +1,64 @@
-var AppDispatcher = require('./AppDispatcher.js');
-var Constants     = require('./AppConstants.js');
+const dispatcher = require('./AppDispatcher.js');
+const actions = require('./AppConstants.js').ActionTypes;
 
 module.exports = {
+  openMenuScreen(){
+    let type = actions.OPEN_MENU_SCREEN;
+    dispatcher.handleViewAction({type});
+  },
+
   addSection (section) {
-    AppDispatcher.handleViewAction({
-      type   : Constants.ActionTypes.ADD_SECTION,
-      section
-    });
+    let type = actions.ADD_SECTION;
+    dispatcher.handleViewAction({type, section});
   },
 
   activateSection(index){
-    AppDispatcher.handleViewAction({
-      type : Constants.ActionTypes.ACTIVATE_SECTION,
-      index
-    });
+    let type = actions.ACTIVATE_SECTION;
+    dispatcher.handleViewAction({type, index});
   },
 
   editSection (index){
-    AppDispatcher.handleViewAction({
-      type : Constants.ActionTypes.EDIT_SECTION,
-      index
-    });
+    let type = actions.EDIT_SECTION;
+    dispatcher.handleViewAction({type, index});
   },
 
   updateSection (index, section){
-    AppDispatcher.handleViewAction({
-      type   : Constants.ActionTypes.UPDATE_SECTION,
-      index,
-      section
-    });
+    let type = actions.UPDATE_SECTION;
+    dispatcher.handleViewAction({type, index, section});
   },
 
   updateTitle(index, previousTitle, newTitle){
-    AppDispatcher.handleViewAction({
-      type : Constants.ActionTypes.UPDATE_TITLE,
-      index,
-      previousTitle,
-      newTitle
-    })
+    let type = actions.UPDATE_TITLE;
+    dispatcher.handleViewAction({type, index, previousTitle, newTitle})
   },
 
   reloadSections() {
-    AppDispatcher.handleViewAction({
-      type   : Constants.ActionTypes.RELOAD_SECTIONS
-    });
+    let type = actions.RELOAD_SECTIONS;
+    dispatcher.handleViewAction({type});
   },
 
   reloadBlocks(){
-    AppDispatcher.handleViewAction({
-      type   : Constants.ActionTypes.RELOAD_BLOCKS
-    });
+    let type = actions.RELOAD_BLOCKS;
+    dispatcher.handleViewAction({type});
   },
 
   updateSections(sections){
-    AppDispatcher.handleViewAction({
-      type: Constants.ActionTypes.UPDATE_SECTIONS,
-      sections
-    });
+    let type = actions.UPDATE_SECTIONS;
+    dispatcher.handleViewAction({type, sections});
   },
 
   removeSection (index){
-    AppDispatcher.handleViewAction({
-      type : Constants.ActionTypes.REMOVE_SECTION,
-      index
-    });
+    let type = actions.REMOVE_SECTION;
+    dispatcher.handleViewAction({type, index});
   },
 
   duplicateSection (index){
-    AppDispatcher.handleViewAction({
-      type : Constants.ActionTypes.DUPLICATE_SECTION,
-      index
-    });
+    let type = actions.DUPLICATE_SECTION;
+    dispatcher.handleViewAction({type, index});
   },
 
   sectionSynced(index, res){
-    AppDispatcher.handleViewAction({
-      type : Constants.ActionTypes.SECTIONS_SYNCED,
-      index,
-      res
-    });
+    let type = actions.SECTIONS_SYNCED;
+    dispatcher.handleViewAction({type, index, res});
   }
 };

@@ -11,7 +11,7 @@ module.exports = {
     UPDATE_SECTION   : null,
     CLOSE_SECTION    : null,
     DUPLICATE_SECTION: null,
-    ADD_TO_MENU      : null,
+    OPEN_MENU_SCREEN : null,
     SECTIONS_SYNCED  : null,
     RELOAD_SECTIONS  : null,
     RELOAD_BLOCKS    : null,

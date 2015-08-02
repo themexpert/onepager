@@ -10,7 +10,16 @@ const AppActions      = require('../../AppActions.js');
 // const PureMixin           = require('../../../mixins/PureMixin.js');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const Footer    = require('./Footer.jsx');
+const AddToMenu = require('../sidebar/AddToMenu.jsx');
 
+
+function setBodyClass(sections){
+  if (sections === 0) {
+    jQuery('body').addClass('txop-noblock');
+  } else {
+    jQuery('body').removeClass('txop-noblock');
+  }
+}
 
 let SectionList = React.createClass({
   //TODO: need pure mixin
@@ -24,24 +33,16 @@ let SectionList = React.createClass({
 
   getInitialState(){
     return {
-      showBlocks: false
+      screen: "home"
     };
   },
 
-  setBodyClass(){
-    if (this.props.sections.length === 0) {
-      jQuery('body').addClass('txop-noblock');
-    } else {
-      jQuery('body').removeClass('txop-noblock');
-    }
-  },
-
   componentDidMount(){
-    this.setBodyClass();
+    setBodyClass(this.props.sections.length);
   },
 
   componentDidUpdate(){
-    this.setBodyClass();
+    setBodyClass(this.props.sections.length)
   },
 
   sortableOptions: {
@@ -66,30 +67,40 @@ let SectionList = React.createClass({
     AppActions.updateSection(index, section);
   },
 
-  showBlocks(){
-    this.setState({showBlocks: true});
+  showBlocksScreen(){
+    this.setState({screen: "blocks"});
   },
 
-  closeBlocks(){
-    this.setState({showBlocks: false});
+  showHomeScreen(){
+    this.setState({screen: "home"});
+  },
+
+  showMenuScreen(){
+    this.setState({screen: "menu"});
   },
 
   render() {
     let sections = this.props.sections;
+    let activeSectionIndex = this.props.activeSectionIndex;
+    let activeSection = sections[activeSectionIndex];
     let blocks   = this.props.blocks;
 
     let blocksClass = cx("list-blocks", {
-      "hidden" : !this.state.showBlocks
+      "hidden" : this.state.screen !== "blocks"
     });
 
     let sectionsClass = cx("list-sections", {
-      "hidden" : this.state.showBlocks
+      "hidden" : this.state.screen !== "home"
+    });
+
+    let menuClasses = cx("add-to-menu-screen", {
+      "hidden" : this.state.screen !== "menu"
     });
 
     return (
       <div>
         <div className={sectionsClass}>
-          <Button bsStyle='primary' className="btn-block" onClick={this.showBlocks}>
+          <Button bsStyle='primary' className="btn-block" onClick={this.showBlocksScreen}>
             <span className="fa fa-plus"></span> Add Block
           </Button>
 
@@ -97,7 +108,8 @@ let SectionList = React.createClass({
             {sections.map((section, index)=> {
               return (
                 <SectionLi
-                  active={this.props.activeSectionIndex === index}
+                  openMenuScreen={this.showMenuScreen}
+                  active={activeSectionIndex === index}
                   id={section.id}
                   title={section.title}
                   key={section.key}
@@ -109,9 +121,15 @@ let SectionList = React.createClass({
         </div>
 
         <div className={blocksClass}>
-          <BlockCollection closeBlocks={this.closeBlocks} blocks={blocks}/>
+          <BlockCollection closeBlocks={this.showHomeScreen} blocks={blocks}/>
         </div>
 
+        <div className={menuClasses}>
+        {
+          activeSectionIndex !== null ?
+            <AddToMenu closeMenuScreen={this.showHomeScreen} section={activeSection} index={activeSectionIndex}/> : <div>:/</div>
+        }
+        </div>
 
       </div>
     ); //end jsx

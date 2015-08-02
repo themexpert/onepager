@@ -51,6 +51,11 @@ let Section = React.createClass({
     AppActions.editSection(this.props.index);
   },
 
+  handleAddToMenu(){
+    AppActions.activateSection(this.props.index);
+    this.props.openMenuScreen();
+  },
+
   handleScrollIntoView(){
     scrollIntoView(document.getElementById(this.props.id));
   },
@@ -72,6 +77,7 @@ let Section = React.createClass({
         <div className="action-btns">
           <span className="fa fa-edit" onClick={this.handleEditSection} data-toggle="tooltip" title="Edit"></span>
           <span className="fa fa-copy" onClick={this.handleDuplicateSection} data-toggle="tooltip" title="Copy"></span>
+          <span className="fa fa-anchor" onClick={this.handleAddToMenu} data-toggle="tooltip" title="Add to menu"></span>
           <span className="fa fa-trash-o" onClick={this.handleRemoveSection} data-toggle="tooltip" title="Delete"></span>
         </div>
       </div>

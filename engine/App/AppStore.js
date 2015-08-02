@@ -184,10 +184,11 @@ let AppStore = assign({}, BaseStore, {
 
   // register store with dispatcher, allowing actions to flow through
   dispatcherIndex: AppDispatcher.register(function (payload) {
-    let action = payload.action;
+    const actions = Constants.ActionTypes;
+    const action = payload.action;
 
     switch (action.type) {
-      case Constants.ActionTypes.ADD_SECTION:
+      case actions.ADD_SECTION:
         // NOTE: if this action needs to wait on another store:
         // AppDispatcher.waitFor([OtherStore.dispatchToken]);
         // For details, see:
@@ -196,57 +197,63 @@ let AppStore = assign({}, BaseStore, {
         AppStore.emitChange();
         break;
 
-      case Constants.ActionTypes.EDIT_SECTION:
+      case actions.EDIT_SECTION:
+        //FIXME: its not a place for business logic
         setActiveSection(action.index);
         AppStore.setTabState({active: 'op-contents'});
         AppStore.emitChange();
         break;
 
-      case Constants.ActionTypes.ACTIVATE_SECTION:
+      case actions.ACTIVATE_SECTION:
         setActiveSection(action.index);
         AppStore.emitChange();
         break;
 
-      case Constants.ActionTypes.UPDATE_SECTION:
+      case actions.UPDATE_SECTION:
         updateSection(action.index, action.section);
         AppStore.emitChange();
         break;
 
-      case Constants.ActionTypes.REMOVE_SECTION:
+      case actions.REMOVE_SECTION:
         removeSection(action.index);
         AppStore.emitChange();
         break;
 
-      case Constants.ActionTypes.DUPLICATE_SECTION:
+      case actions.DUPLICATE_SECTION:
         duplicateSection(action.index);
         AppStore.emitChange();
         break;
 
-      case Constants.ActionTypes.SECTIONS_SYNCED:
+      case actions.SECTIONS_SYNCED:
         sectionSynced(action.index, action.res);
         AppStore.emitChange();
         break;
 
-      case Constants.ActionTypes.RELOAD_SECTIONS:
+      case actions.RELOAD_SECTIONS:
         liveService.reloadSections(_sections);
         break;
 
-      case Constants.ActionTypes.RELOAD_BLOCKS:
+      case actions.RELOAD_BLOCKS:
+        //FIXME: its not a place for business logic
         syncService.reloadBlocks().then((blocks)=>{
           _blocks = blocks;
           AppStore.emitChange();
         });
         break;
 
-      case Constants.ActionTypes.UPDATE_SECTIONS:
+      case actions.UPDATE_SECTIONS:
+        //FIXME: its not a place for business logic
         _sections = SectionTransformer.misitifySections(action.sections, ODataStore.blocks);
         AppStore.emitChange();
         break;
 
-      case Constants.ActionTypes.UPDATE_TITLE:
+      case actions.UPDATE_TITLE:
         updateTitle(action.index, action.previousTitle, action.newTitle);
         AppStore.emitChange();
         break;
+
+      case actions.OPEN_MENU_SCREEN:
+        alert("we are here");
       // add more cases for other actionTypes...
     }
   })

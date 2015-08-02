@@ -97,6 +97,10 @@ let AddToMenu = React.createClass({
 
     return (
       <div>
+        <Button bsStyle='primary' className="btn--back" onClick={this.props.closeMenuScreen}>
+          <span className="fa fa-arrow-left"></span> Back
+        </Button>
+
         {
           fields.map(field=> {
             return <Input key={field.value+field.id} ref={field.ref} options={field} onChange={field.onChange}/>;
