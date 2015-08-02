@@ -3,17 +3,18 @@ const swal               = require('sweetalert');
 const React              = require('react');
 const Tab                = require('../../../shared/components/Tab.jsx');
 const TabPane            = require('../../../shared/components/TabPane.jsx');
+const AdminActions       = require('../../../Optionspanel/OptionActions.js');
+const SectionTransformer = require('../../../shared/lib/SectionTransformer.js');
+const ODataStore         = require('../../../shared/lib/ODataStore.js');
+const AppActions         = require('../../AppActions.js');
+const AppStore           = require('../../AppStore.js');
 const SectionList        = require('../section-list/SectionList.jsx');
 const SectionControls    = require('./SectionControls.jsx');
 const AddToMenu          = require('./AddToMenu.jsx');
-const AppActions         = require('../../AppActions.js');
-const AdminActions       = require('../../../Optionspanel/OptionActions.js');
-const SectionTransformer = require('../../../shared/lib/SectionTransformer.js');
-const AppStore           = require('../../AppStore.js');
-const ODataStore = require('../../../shared/lib/ODataStore.js');
-// const PureMixin           = require('../../mixins/PureMixin.js');
-const $        = jQuery;
-const Settings = require("./Settings.jsx");
+const Settings           = require("./Settings.jsx");
+const $                  = jQuery;
+
+import cx from "classnames";
 
 let Sidebar = React.createClass({
   // we need to optimize this with immutability
@@ -45,6 +46,18 @@ let Sidebar = React.createClass({
     });
   },
 
+  handleGlobalSettingsSave(){
+    let updated = AdminActions.sync.triggerPromise();
+    this.setState({saving: true});
+
+    updated.then(()=> {
+      this.setState({saving: false});
+    }, ()=> {
+      this.setState({saving: false});
+      swal('could not save');
+    });
+  },
+
   render() {
     let {sections, blocks, activeSectionIndex, activeSection, isDirty} = this.props;
     let sectionEditable = activeSectionIndex !== null;
@@ -61,6 +74,10 @@ let Sidebar = React.createClass({
     };
 
     let sectionSettings = activeSection ? _.pick(activeSection, ['settings', 'contents', 'styles']) : {};
+    let saveClasses = cx({
+      "fa fa-refresh fa-spin": this.state.saving,
+      "fa fa-check": !this.state.saving
+    });
 
     return (
       <div className='txop-sidebar op-ui clearfix'>
@@ -73,19 +90,14 @@ let Sidebar = React.createClass({
           <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Settings' active={activeTab}/>
 
           <div className="btn-group">
-
           {
             activeTab === 'op-settings' ?
-                <button onClick={AdminActions.sync} className='btn btn-primary btn--save'>
-                  <span className='fa fa-check'></span>
-                </button> :
-                <button disabled={!isDirty} onClick={this.handleSave}
-                        className='btn btn-primary btn--save'>
-                  {
-                    this.state.saving ?
-                      <span className='fa fa-refresh fa-spin'></span> : <span className='fa fa-check'></span>
-                  }
-                </button>
+              <button onClick={this.handleGlobalSettingsSave} className='btn btn-primary btn--save'>
+                <span className={saveClasses}></span>
+              </button> :
+              <button disabled={!isDirty} onClick={this.handleSave} className='btn btn-primary btn--save'>
+                  <span className={saveClasses}></span>
+              </button>
           }
           <a href={ODataStore.disable} className="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Close">
             <span className="fa fa-close"></span>
