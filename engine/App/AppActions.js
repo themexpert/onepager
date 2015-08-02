@@ -17,6 +17,11 @@ module.exports = {
     dispatcher.handleViewAction({type, index});
   },
 
+  collapseSidebar(collapse){
+    let type = actions.COLLAPSE_SIDEBAR;
+    dispatcher.handleViewAction({type, collapse});
+  },
+
   editSection (index){
     let type = actions.EDIT_SECTION;
     dispatcher.handleViewAction({type, index});

@@ -1,5 +1,3 @@
-"use strict";
-
 const $ = jQuery; //jshint ignore: line
 const _                  = require('underscore');
 const assign             = require('object-assign');
@@ -22,12 +20,14 @@ let _blockState         = {open: false};
 let _menuState          = {id: null, index: null, title: null};
 let _sidebarTabState    = {active: 'op-sections'};
 let _activeSectionIndex = null;
+let _collapseSidebar    = false;
 let _savedSections      = _.copy(_sections);
 let AUTO_SAVE_DELAY     = 500;
 
 let shouldLiveSectionsSync = ShouldSync(_sections, 'sections'); //jshint ignore:line
 let shouldSectionsSync = ShouldSync(_sections, 'sections'); //jshint ignore:line
 let inactive = Activity(AUTO_SAVE_DELAY); //jshint ignore:line
+
 let syncService = SyncService(ODataStore.pageId, inactive, shouldSectionsSync); //jshint ignore:line
 let liveService = SyncService(null, inactive, shouldLiveSectionsSync); //jshint ignore:line
 
@@ -35,6 +35,10 @@ let liveService = SyncService(null, inactive, shouldLiveSectionsSync); //jshint 
 // function to activate a section
 function setActiveSection(index) {
   _activeSectionIndex = index;
+}
+
+function collapseSidebar(collapse){
+  _collapseSidebar = collapse;
 }
 
 // function to add a section
@@ -61,7 +65,7 @@ function updateSection(sectionIndex, section) {
 
 // function to duplicate a section
 function duplicateSection(index) {
-  let sectionIndex = _sections.length; //isnt it :p
+  let sectionIndex = _sections.length; //isn't it :p
 
   //its a row section to need to uni(quei)fy
   let section = SectionTransformer.unifySection(_sections[index], true);
@@ -124,6 +128,7 @@ let AppStore = assign({}, BaseStore, {
   getAll() {
     return {
       blocks            : _blocks,
+      collapseSidebar   : _collapseSidebar,
       isDirty           : this.isDirty(),
       sections          : _sections,
       menuState         : _menuState,
@@ -231,6 +236,11 @@ let AppStore = assign({}, BaseStore, {
 
       case actions.RELOAD_SECTIONS:
         liveService.reloadSections(_sections);
+        break;
+
+      case actions.COLLAPSE_SIDEBAR:
+        collapseSidebar(action.collapse);
+        AppStore.emitChange();
         break;
 
       case actions.RELOAD_BLOCKS:

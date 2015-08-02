@@ -46,7 +46,8 @@ let SectionList = React.createClass({
   },
 
   sortableOptions: {
-    ref: "sections"
+    ref: "sections",
+    handle: ".section-handle"
   },
 
   handleEnd(e) {

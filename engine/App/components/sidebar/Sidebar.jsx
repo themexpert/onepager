@@ -10,7 +10,6 @@ const AppActions         = require('../../AppActions.js');
 const AppStore           = require('../../AppStore.js');
 const SectionList        = require('../section-list/SectionList.jsx');
 const SectionControls    = require('./SectionControls.jsx');
-const AddToMenu          = require('./AddToMenu.jsx');
 const Settings           = require("./Settings.jsx");
 const $                  = jQuery;
 
@@ -30,7 +29,8 @@ let Sidebar = React.createClass({
 
   getInitialState(){
     return {
-      saving: false
+      saving: false,
+      collapse: false
     };
   },
 
@@ -64,6 +64,16 @@ let Sidebar = React.createClass({
     let {sections, blocks, activeSectionIndex, activeSection, isDirty} = this.props;
     let sectionEditable = activeSectionIndex !== null;
     let activeTab       = this.props.sidebarTabState.active;
+    let sectionSettings = activeSection ? _.pick(activeSection, ['settings', 'contents', 'styles']) : {};
+
+    let saveClasses = cx({
+      "fa fa-refresh fa-spin": this.state.saving,
+      "fa fa-check": !this.state.saving
+    });
+
+    let classes = cx("txop-sidebar", "op-ui", "clearfix",{
+      'op-collapse-sidebar': this.props.collapseSidebar
+    });
 
     let handleTabClick = function (id) {
       AppStore.setTabState({active: id});
@@ -75,19 +85,11 @@ let Sidebar = React.createClass({
       AppActions.updateSection(activeSectionIndex, section);
     };
 
-    let sectionSettings = activeSection ? _.pick(activeSection, ['settings', 'contents', 'styles']) : {};
-    let saveClasses = cx({
-      "fa fa-refresh fa-spin": this.state.saving,
-      "fa fa-check": !this.state.saving
-    });
-
     return (
-      <div className='txop-sidebar op-ui clearfix'>
+      <div className={classes}>
         <ul className='tx-nav tx-nav-tabs'>
           <Tab onClick={handleTabClick} id='op-sections' icon='cubes' title='Layout' active={activeTab}/>
           <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab}
-               disabled={!sectionEditable}/>
-          <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab}
                disabled={!sectionEditable}/>
           <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Settings' active={activeTab}/>
 
@@ -126,12 +128,6 @@ let Sidebar = React.createClass({
 
               <h2>please select a section</h2>
             }
-          </TabPane>
-
-
-          <TabPane id='op-menu' active={activeTab}>
-            {sectionEditable ?
-              <AddToMenu section={activeSection} index={activeSectionIndex}/> : 'please select a section' }
           </TabPane>
 
           <TabPane id='op-settings' active={activeTab}>
