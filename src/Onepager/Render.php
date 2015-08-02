@@ -61,16 +61,13 @@ class Render {
   }
 
   public function sectionBlockDataMerge($section) {
-    /**
-     * FIXME: Currently we are not smartly handling non existent blocks exceptions
-     */
+    /** FIXME: Currently we are not smartly handling non existent blocks exceptions **/
 
     if (!$block = $this->isValidSection($section)) {
       return $section;
       // return $this->noBlockDefined($section['slug']);
     }
 
-//    pd($section);
     foreach (['settings', 'contents', 'styles'] as $tab) {
       if(!array_key_exists($tab, $section)) $section[$tab] = [];
       $section[$tab] = $this->sectionTransformer->mergePersistedDataAndBlockData($block[$tab], $section[$tab]);
@@ -92,9 +89,7 @@ class Render {
    */
   public function style($section) {
 
-    /**
-     * FIXME: Currently we are not smartly handling non existent blocks exceptions
-     */
+    /** FIXME: Currently we are not smartly handling non existent blocks exceptions **/
     if (!$block = $this->isValidSection($section)) {
       return $this->noBlockDefined($section['slug']);
     }

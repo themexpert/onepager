@@ -32,7 +32,7 @@ class ConfigTransformer {
     //as you see on live editing mode, the right side refreshes alot.
     //wow and other animated stuffs looks wired. so we remove them on live mode
     //so if you want a specific class on live mode you want to remove its here you do
-    //for example you want to remove wow class from aticle  tag you do it this way
+    //for example you want to remove wow class from article  tag you do it this way
     //$removables = array("article" => [ 'wow' ] );
     $removables = array(
       "[data-animated], .animated, .wow" => array( 'animated', 'wow' )

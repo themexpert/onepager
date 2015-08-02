@@ -4,6 +4,11 @@ class FieldsTransformer {
 
   public function transform( $fields ) {
     return array_map( function ( $control ) {
+      $value = array_key_exists('value', $control) ? $control['value'] : '';
+      if(is_string($value) && startsWith($value, '@')){
+        $control['value'] = \Onepager::getOption(str_replace('@', '', $value));
+      }
+
       //obligatory name
       $name = array_key_exists( 'name', $control ) ? $control['name'] : "";
 
@@ -41,12 +46,12 @@ class FieldsTransformer {
             "type"        => $type, //default type is text
             "class"       => "{$name}-control",
             "help"        => "",
-            "value"       => ""
+            "value"       => ''
           );
 
 
           //because react-bootstrap expects addonAfter
-          //append is just a syntactiacal sugar
+          //append is just a syntactical sugar
           if ( array_key_exists( 'append', $control ) ) {
             $default['addonAfter'] = $control['append'];
           }

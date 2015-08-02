@@ -48,7 +48,7 @@ return array(
       'name' => 'title_size',
       'label' => 'Title Size',
       'append' => 'px',
-      'value' => OnePager::getOption('section_title_size')
+      'value' => '@section_title_size'
     ),
     array(
       'name'     => 'title_transformation',

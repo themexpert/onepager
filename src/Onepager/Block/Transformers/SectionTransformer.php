@@ -1,12 +1,4 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: na
- * Date: 7/19/15
- * Time: 12:29 PM
- */
-
-namespace ThemeXpert\Onepager\Block\Transformers;
+<?php namespace ThemeXpert\Onepager\Block\Transformers;
 
 
 class SectionTransformer {

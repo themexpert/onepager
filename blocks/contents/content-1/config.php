@@ -64,7 +64,7 @@ return array(
       'name' => 'title_size',
       'label' => 'Title Size',
       'append' => 'px',
-      'value' => OnePager::getOption('section_title_size')
+      'value' => '@section_title_size'
     ),
     array(
       'name'     => 'title_transformation',
@@ -161,8 +161,7 @@ return array(
       'name'    => 'button_bg_color',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'gloabl'  => '',
-      'value'   => OnePager::getOption('accent_color')
+      'value'   => '@accent_color'
     ),
     array(
       'name'    => 'button_text_color',

@@ -102,8 +102,21 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     });
   }
 
+  function reloadBlocks(){
+    let payload = {
+      action  : 'onepager_reload_blocks'
+    };
+
+    return new Promise((resolve, reject)=>{
+      jQuery.post(ODataStore.ajaxUrl, payload, (res)=>{
+        return res.success ? resolve(res.blocks) : reject("Could not load blocks");
+      })
+    });
+  }
+
   return {
     reloadSections,
+    reloadBlocks,
     updateSection,
     rawUpdate
   };

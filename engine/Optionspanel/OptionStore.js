@@ -10,7 +10,6 @@ const notify        = require("../shared/lib/notify.js");
 const ODataStore = require('../shared/lib/ODataStore.js');
 let options      = ODataStore.options;
 let sync         = Sync(ODataStore.ajaxUrl, ODataStore.page);
-/*jshint ignore:line*/
 
 function transformer(fields, panelId) {
   return fields.map(field=> {
@@ -24,7 +23,7 @@ function transformer(fields, panelId) {
   });
 }
 
-//add refs to controsl
+//add refs to control
 let _optionPanel = _.map(_.copy(ODataStore.optionPanel), (panel)=> {
   panel.fields = transformer(panel.fields, panel.id);
   return panel;
@@ -32,8 +31,7 @@ let _optionPanel = _.map(_.copy(ODataStore.optionPanel), (panel)=> {
 
 let AppState = {
   activeTabIndex: 0,
-  //implement immutable js
-  optionPanel   : Immutable.fromJS(_optionPanel),
+  optionPanel   : Immutable.fromJS(_optionPanel)
 };
 
 //get tabs
@@ -69,7 +67,14 @@ let OptionsPanelStore = Reflux.createStore({
     });
 
     let update = sync(options);
-    update.then(notify.success.bind(this, 'Successfully saved settings'));
+
+    //FIXME: move this to UI
+    update.then(()=>{
+      notify.success('Successfully saved settings');
+      OptionActions.sync.completed();
+    }, ()=>{
+      OptionActions.sync.failed();
+    });
   }
 
 });
