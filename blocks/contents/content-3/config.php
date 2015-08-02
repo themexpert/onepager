@@ -45,6 +45,12 @@ return array(
 
   'settings' => array(
     array(
+      'name' => 'title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => OnePager::getOption('section_title_size')
+    ),
+    array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',

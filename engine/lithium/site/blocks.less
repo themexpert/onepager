@@ -10,29 +10,7 @@ body {
 /* ==========================================
    Blocks: Common
  ============================================ */
-.title-sm {
-  font-size: 2em;
-}
-
-.title-md {
-  font-size: 3.5em;
-}
-
-.title-lg {
-  font-size: 5em;
-}
-
-// Section
-.op-section:not(.navbar):not(.header) {
-  padding: 80px 0;
-}
-
 .op-section {
-  // Section title
-  .section-title {
-    font-weight: bold;
-    font-size: 3em;
-  }
   // Subtitle(aka desc) and media objects
   > .desc,
   > .media p {
@@ -47,12 +25,40 @@ body {
 
 // Utilities
 // -------------------------------------------
-.pad-right-big {
-  padding-right: 60px;
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) {
+  // Margin Left Big
+  .ml-big{ margin-left: 1rem;}
+  // Margin Right Big
+  .mr-big{ margin-right: 1rem;}
+  // Padding Left Big
+  .pl-big { padding-left: 20px; }
+  // Padding Right Big
+  .pr-big { padding-right: 20px; }
+
+}
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) {
+  // Big Margin Left
+  .ml-big{ margin-left: 4rem;}
+  // Big Margin Right
+  .mr-big{ margin-right: 4rem;}
+  // Padding Left Big
+  .pl-big { padding-left: 40px; }
+  // Padding Right Big
+  .pr-big { padding-right: 40px; }
 }
 
-.pad-left-big {
-  padding-left: 60px;
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) {
+  // Big Margin Left
+  .ml-big{ margin-left: 8rem;}
+  // Big Margin Right
+  .mr-big{ margin-right: 8rem;}
+  // Padding Left Big
+  .pl-big { padding-left: 60px; }
+  // Padding Right Big
+  .pr-big { padding-right: 60px; }
 }
 
 // Social icons based on wildcard slector
@@ -249,22 +255,16 @@ body {
 -------------------------------------------------- */
 
 /* Carousel base class */
-.carousel {
-}
+.carousel {}
 
 /* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
-}
+.carousel-caption { z-index: 10; }
 
 /* Declare heights because of positioning of img element */
-.carousel .item {
-}
+.carousel .item {}
 
 .carousel-inner > .item > .slide-image {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: absolute; top: 0; left: 0;
   min-width: 100%;
 }
 
@@ -274,14 +274,14 @@ body {
   left: 0;
   right: 0;
 }
-.carousel-indicators li{ 
+.carousel-indicators li{
   width: 15px; height: 15px;
-  border-color: transparent; 
-  background: rgba(50,50,50,.1); 
+  border-color: transparent;
+  background: rgba(50,50,50,.1);
 }
-.carousel-indicators li.active{ 
+.carousel-indicators li.active{
   width: 18px; height: 18px;
-  background: rgba(50,50,50,.4); 
+  background: rgba(50,50,50,.4);
 }
 
 /* ==========================================
@@ -291,15 +291,14 @@ body {
 /*
 	Button
 */
-.content-1,
-.content-4,
-.content-5 {
-  .btn {
-    margin-top: 20px;
-    border-radius: 0px;
-    .transition(all 0.2s linear);
-  }
-}
+// .content-4
+// .content-5 {
+//   .btn {
+//     margin-top: 20px;
+//     border-radius: 0px;
+//     .transition(all 0.2s linear);
+//   }
+// }
 
 /* ==========================================
    Blocks: Portfolios

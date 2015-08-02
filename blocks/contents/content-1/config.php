@@ -23,9 +23,14 @@ return array(
     ),
     array(
       'name'=>'link',
-      'label'=> 'Button',
+      'label'=> 'Button Link',
       'placeholder'=> 'http://example.com',
       'value' => '#'
+    ),
+    array(
+      'name'  => 'link_text',
+      'label' => 'Button Text',
+      'value' => 'Readmore',
     ),
   ),
 
@@ -56,15 +61,10 @@ return array(
       ),
     ),
     array(
-      'name'     => 'title_size',
-      'label'    => 'Title Size',
-      'type'     => 'select',
-      'value'    => 'title-sm',
-      'options'  => array(
-        'title-sm'      => 'Small',
-        'title-md'      => 'Medium',
-        'title-lg'      => 'Large'
-      ),
+      'name' => 'title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => OnePager::getOption('section_title_size')
     ),
     array(
       'name'     => 'title_transformation',
@@ -87,12 +87,6 @@ return array(
         'middle'   => 'Middle',
         'bottom'   => 'Bottom'
       ),
-    ),
-
-    array(
-      'name'  => 'link_text',
-      'label' => 'Link Text',
-      'value' => 'Readmore',
     ),
 
     array(
@@ -168,7 +162,7 @@ return array(
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
       'gloabl'  => '',
-      'value'   => OnePager::getOption('primary_color')
+      'value'   => OnePager::getOption('accent_color')
     ),
     array(
       'name'    => 'button_text_color',

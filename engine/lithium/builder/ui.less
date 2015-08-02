@@ -567,16 +567,16 @@ h3.form-divider {
 
 // Sweet Alert
 .sweet-alert {
-  background: @bg-secondary;
-  color: @text-color;
+  background: @bg-secondary !important;
+  color: @text-color !important;
   h2 {
-    color: lighten(@text-color, 15%);
+    color: lighten(@text-color, 15%) !important;
   }
 
   button.cancel {
-    background: @bg-primary;
+    background: @bg-primary !important;
     &:hover {
-      background: darken(@bg-primary, 5%);
+      background: darken(@bg-primary, 5%) !important;
     }
   }
 }

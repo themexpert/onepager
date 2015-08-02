@@ -1,3 +1,9 @@
-@media( max-width: 768px ){
-	.content-1 { text-align: center; }
+.content-1{ padding-top: 80px; padding-bottom: 80px;}
+.content-1 .btn{ border-radius: 0; margin-top: 20px;}
+@media (max-width: 768px){
+	.content-1{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		text-align: center;
+	}
 }

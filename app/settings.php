@@ -3,6 +3,12 @@
 
 Onepager::getOptionPanel()->tab('general', 'Generals')
         ->add(
+          array(
+            'name' => 'section_title_size',
+            'label' => 'Section Title Size',
+            'append' => 'px',
+            'value' => '44'
+          ),
           array('name' => 'favicon', 'type' => 'image'),
           array(
             'name'  => 'google_analytics',
