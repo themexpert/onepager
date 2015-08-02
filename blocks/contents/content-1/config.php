@@ -9,7 +9,7 @@ return array(
   'contents' => array(
     array(
       'name'=>'title',
-      'value' => 'Lets make a better website together'
+      'value' => '@global_palette'
     ),
     array(
       'name'=>'description',
@@ -161,14 +161,13 @@ return array(
       'name'  => 'text_color',
       'label' => 'Text Color',
       'type'  => 'colorpicker',
-      'value' => '#323232'
+      'value' => '@global_palette'
     ),
     array(
       'name'    => 'button_bg_color',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'gloabl'  => '',
-      'value'   => OnePager::getOption('primary_color')
+      'value'   => '@primary_color'
     ),
     array(
       'name'    => 'button_text_color',
