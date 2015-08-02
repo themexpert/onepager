@@ -46,6 +46,12 @@ module.exports = {
     });
   },
 
+  reloadBlocks(){
+    AppDispatcher.handleViewAction({
+      type   : Constants.ActionTypes.RELOAD_BLOCKS
+    });
+  },
+
   updateSections(sections){
     AppDispatcher.handleViewAction({
       type: Constants.ActionTypes.UPDATE_SECTIONS,

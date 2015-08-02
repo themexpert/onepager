@@ -231,6 +231,13 @@ let AppStore = assign({}, BaseStore, {
         liveService.reloadSections(_sections);
         break;
 
+      case Constants.ActionTypes.RELOAD_BLOCKS:
+        syncService.reloadBlocks().then((blocks)=>{
+          _blocks = blocks;
+          AppStore.emitChange();
+        });
+        break;
+
       case Constants.ActionTypes.UPDATE_SECTIONS:
         _sections = SectionTransformer.misitifySections(action.sections, ODataStore.blocks);
         AppStore.emitChange();

@@ -52,6 +52,8 @@ let Sidebar = React.createClass({
 
     updated.then(()=> {
       this.setState({saving: false});
+      AppActions.reloadSections();
+      AppActions.reloadBlocks();
     }, ()=> {
       this.setState({saving: false});
       swal('could not save');

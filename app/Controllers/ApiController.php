@@ -1,7 +1,5 @@
 <?php namespace App\Controllers;
 
-use League\Url\Url;
-
 class ApiController
 {
     function saveSections()
@@ -67,36 +65,6 @@ class ApiController
         op_send_json_success();
     }
 
-    function addPage()
-    {
-        $title = $_POST['title'];
-        $sections = array_key_exists('sections', $_POST) ? $_POST['sections'] : [];
-
-        //strip slashes
-        array_walk_recursive($sections, function (&$value) {
-          $value = stripslashes($value);
-
-          if($value === "true") $value = true;
-          if($value === "false") $value = false;
-        });
-
-        $id = wp_insert_post(array(
-            'post_title' => $title,
-            'post_name' => sanitize_title($title),
-            'post_content' => '',
-            'post_excerpt' => '',
-            'post_status' => 'publish',
-            'post_type' => 'page',
-            'page_template' => 'onepage.php'
-        ));
-
-        onepager()->section()->save($id, $sections);
-        $url = Url::createFromUrl(get_permalink($id));
-        $url->getQuery()->modify(array('livemode' => true));
-
-        op_send_json(array('id' => $id, 'url' => $url->__toString()));
-    }
-
     function get_sections()
     {
         $pageId = array_key_exists('pageId', $_POST) ? $_POST['pageId'] : false;
@@ -156,6 +124,13 @@ class ApiController
     );
 
     op_send_json($response);
+  }
+
+  public function reloadBlocks() {
+    $blocks = array_values(onepager()->blockManager()->all());
+    $success = true;
+
+    op_send_json(compact('success','blocks'));
   }
 
 }

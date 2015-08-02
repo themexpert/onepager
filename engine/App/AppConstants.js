@@ -14,6 +14,7 @@ module.exports = {
     ADD_TO_MENU      : null,
     SECTIONS_SYNCED  : null,
     RELOAD_SECTIONS  : null,
+    RELOAD_BLOCKS    : null,
     UPDATE_SECTIONS  : null,
     UPDATE_TITLE     : null
   }),
