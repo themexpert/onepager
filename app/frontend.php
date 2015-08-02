@@ -60,6 +60,8 @@ function onepager_enqueue_block_assets() {
     $enqueueCb( $blockUrl );
   } );
 
+  $pageId   = onepager()->content()->getCurrentPageId();
+
   onepager()->asset()->enqueue(!$isBuildMode, $pageId);
 }
 
