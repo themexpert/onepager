@@ -119,8 +119,13 @@ class Render {
    * @return string
    */
   public function getStyleHTML($section, $style_file) {
+    $data = array(
+      'id'=>$section['id'],
+      'styles'=>$section['styles'],
+      'settings'=>$section['settings'],
+    );
     $style = "<style id='style-{$section['id']}'>";
-    $style .= $this->view->make($style_file, $section);
+    $style .= $this->view->make($style_file, $data);
     $style .= "</style>";
 
     return $style;
