@@ -31,43 +31,20 @@ let App = React.createClass({
     AppStore.removeChangeListener(this._onChange);
   },
 
-  collapseSidebar(){
-    AppActions.collapseSidebar(!this.state.collapseSidebar);
-  },
-
   render() {
-    let {sections, activeSectionIndex, collapseSidebar} = this.state;
+    let {sections, activeSectionIndex} = this.state;
 
     let viewSections = _.map(sections, function (section) {
       return _.pick(section, ['content', 'key']);
     });
 
-    let styles = {
-      fontSize: 30,
-      zIndex: 99999999999999999,
-      color: "red",
-      backgroundColor: 'blue',
-      position: 'fixed',
-      bottom: 0
-    };
-
-    let classes = cx({
-      "fa fa-chevron-circle-left": !collapseSidebar,
-      "fa fa-chevron-circle-right": collapseSidebar
-    });
-
     return (
       <div className="one-pager-app">
         <SectionViewCollection
-          collapseSidebar={collapseSidebar}
           activeSectionIndex={activeSectionIndex}
           sections={viewSections}/>
 
         <Sidebar {...this.state}/>
-
-        <div className="restore-sidebar" style={styles}>
-          <span onClick={this.collapseSidebar} className={classes}></span>
-        </div>
       </div>
     );
   }

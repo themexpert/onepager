@@ -20,7 +20,6 @@ let _blockState         = {open: false};
 let _menuState          = {id: null, index: null, title: null};
 let _sidebarTabState    = {active: 'op-sections'};
 let _activeSectionIndex = null;
-let _collapseSidebar    = false;
 let _savedSections      = _.copy(_sections);
 let AUTO_SAVE_DELAY     = 500;
 
@@ -35,10 +34,6 @@ let liveService = SyncService(null, inactive, shouldLiveSectionsSync); //jshint 
 // function to activate a section
 function setActiveSection(index) {
   _activeSectionIndex = index;
-}
-
-function collapseSidebar(collapse){
-  _collapseSidebar = collapse;
 }
 
 // function to add a section
@@ -128,7 +123,6 @@ let AppStore = assign({}, BaseStore, {
   getAll() {
     return {
       blocks            : _blocks,
-      collapseSidebar   : _collapseSidebar,
       isDirty           : this.isDirty(),
       sections          : _sections,
       menuState         : _menuState,
@@ -236,11 +230,6 @@ let AppStore = assign({}, BaseStore, {
 
       case actions.RELOAD_SECTIONS:
         liveService.reloadSections(_sections);
-        break;
-
-      case actions.COLLAPSE_SIDEBAR:
-        collapseSidebar(action.collapse);
-        AppStore.emitChange();
         break;
 
       case actions.RELOAD_BLOCKS:

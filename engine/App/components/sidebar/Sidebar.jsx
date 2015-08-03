@@ -19,6 +19,16 @@ let Sidebar = React.createClass({
   // we need to optimize this with immutability
   // mixins: [PureMixin],
 
+  collapseSidebar(){
+    if(this.state.collapse){
+      jQuery('body').addClass('op-collapse-sidebar');
+    } else {
+      jQuery('body').removeClass('op-collapse-sidebar');
+    }
+
+    this.setState({collapse: !this.state.collapse});
+  },
+
   componentDidMount(){
     let tabContents = React.findDOMNode(this.refs.tabContents);
     $(()=> $(tabContents).niceScroll({cursorcolor: '#2ab0ad', cursorborder: '0'}));
@@ -71,10 +81,6 @@ let Sidebar = React.createClass({
       "fa fa-check": !this.state.saving
     });
 
-    let classes = cx("txop-sidebar", "op-ui", "clearfix",{
-      'op-collapse-sidebar': this.props.collapseSidebar
-    });
-
     let handleTabClick = function (id) {
       AppStore.setTabState({active: id});
     };
@@ -85,8 +91,14 @@ let Sidebar = React.createClass({
       AppActions.updateSection(activeSectionIndex, section);
     };
 
+    let classes = cx({
+      "fa fa-chevron-circle-left": !this.state.collapse,
+      "fa fa-chevron-circle-right": this.state.collapse
+    });
+
+
     return (
-      <div className={classes}>
+      <div className="txop-sidebar op-ui clearfix">
         <ul className='tx-nav tx-nav-tabs'>
           <Tab onClick={handleTabClick} id='op-sections' icon='cubes' title='Layout' active={activeTab}/>
           <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab}
@@ -103,7 +115,8 @@ let Sidebar = React.createClass({
                   <span className={saveClasses}></span>
               </button>
           }
-          <a href={ODataStore.disable} className="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Close">
+          <a href={ODataStore.disable} className="btn btn-primary" data-toggle="tooltip"
+             data-placement="bottom" title="Close">
             <span className="fa fa-close"></span>
           </a>
         </div>
@@ -134,6 +147,10 @@ let Sidebar = React.createClass({
             <Settings />
           </TabPane>
 
+        </div>
+
+        <div className="op-sidebar-control">
+          <span onClick={this.collapseSidebar} className={classes}></span>
         </div>
 
       </div>

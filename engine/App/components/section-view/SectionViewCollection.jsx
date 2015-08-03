@@ -9,12 +9,9 @@ let SectionViewCollection = React.createClass({
 
   render() {
     let sections = this.props.sections;
-    let classes = cx({
-      'op-collapse-sidebar': this.props.collapseSidebar
-    });
 
     return (
-      <div className={classes} id="sections">
+      <div id="sections">
         {
           sections.map((section, index)=> {
             let active        = this.props.activeSectionIndex === index;

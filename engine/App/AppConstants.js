@@ -1,7 +1,6 @@
 const keyMirror = require('react/lib/keyMirror');
 
 module.exports = {
-
   ActionTypes: keyMirror({
     ADD_TASK         : null,
     ADD_SECTION      : null,
@@ -12,7 +11,6 @@ module.exports = {
     CLOSE_SECTION    : null,
     DUPLICATE_SECTION: null,
     OPEN_MENU_SCREEN : null,
-    COLLAPSE_SIDEBAR : null,
     SECTIONS_SYNCED  : null,
     RELOAD_SECTIONS  : null,
     RELOAD_BLOCKS    : null,
