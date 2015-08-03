@@ -58,15 +58,13 @@ function onepager_enqueue_scripts()
 
   $q->style('lithium', asset('assets/css/lithium.css'));
 
-  if (is_super_admin()) {
-    $q->style('lithium-ui', asset('assets/css/lithium-builder.css'));
-  }
 
   if (onepager()->content()->isBuildMode()) {
     if (function_exists('wp_enqueue_media')) {
       wp_enqueue_media();
     }
 
+    $q->style('tx-colorpicker', asset("assets/css/bootstrap-colorpicker.css"));
     $q->script('tx-iconselector', asset('assets/js/icon-selector.min.js'), ['jquery']);
     $q->script('tx-colorpicker', asset('assets/js/bootstrap-colorpicker.js'), ['jquery']);
     $q->script('tx-bootstrap-switch', asset('assets/js/bootstrap-switch.js'), ['jquery']);
@@ -77,6 +75,9 @@ function onepager_enqueue_scripts()
     $q->localizeScript('onepager', onepager_localize_script_data(onepager()->content()->getCurrentPageId()), 'onepager');
   }
 
+  if (is_super_admin()) {
+    $q->style('lithium-ui', asset('assets/css/lithium-builder.css'));
+  }
 }
 
 function enqueueOnepagerAdminAssets()
@@ -90,6 +91,7 @@ function enqueueOnepagerAdminAssets()
   $q->style('tx-bootstrap', asset('assets/css/bootstrap.css'));
   $q->style('tx-animatecss', asset('assets/css/animate.css'));
   $q->style('tx-fontawesome', asset('assets/css/font-awesome.css'));
+  $q->style('tx-colorpicker', asset("assets/css/bootstrap-colorpicker.css"));
   $q->style('lithium-ui', asset('assets/css/lithium-builder.css'));
 
   $q->script('tx-bootstrap', asset('assets/js/bootstrap.js'), ['jquery']);

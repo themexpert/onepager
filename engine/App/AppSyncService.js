@@ -34,7 +34,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     };
 
     async.series([
-      (pass)=> inactive().then(pass),
+      (pass)=> inactive().then(pass, (err)=>console.log(err)),
       (pass)=> shouldSectionsSync(sections).then(pass),
       (pass)=> sync(pass)
     ]);
@@ -48,7 +48,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
         pageId  : pageId,
         action  : 'save_sections',
         updated : null,
-        sections: SectionTransformer.simplifySections(sections),
+        sections: SectionTransformer.simplifySections(sections)
       };
 
       let sync = function () {

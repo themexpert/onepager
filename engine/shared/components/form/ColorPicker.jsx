@@ -3,7 +3,7 @@ const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const tinycolor = require("tinycolor2");
 const $         = jQuery; //jshint ignore:line
 
-require("../../../../bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css");
+//require("../../../../bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css");
 
 
 let ColorPicker = React.createClass({

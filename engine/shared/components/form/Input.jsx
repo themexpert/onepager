@@ -32,7 +32,10 @@ let InputControl = React.createClass({
   },
 
   onChange(){
-    inactive().then(()=> this.props.onChange());
+    inactive().then(
+      ()=> this.props.onChange(),
+      (msg)=> console.log(msg)
+    );
   },
 
   render() {
