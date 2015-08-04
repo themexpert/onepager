@@ -16,15 +16,14 @@ const PaletteColor = React.createClass({
 
     let style = {
       backgroundColor: color,
-      width: `${width}%`,
-      textAlign: 'center'
+      width: `${width}%`
     };
 
     return (
       <span style={style}
             //onMouseEnter={activate}
             onClick={activate}>
-        <span style={{background: getOppositeColor(color), color: color}}>{name}</span>
+        <span className="palette-label">{name}</span>
       </span>
     );
   }

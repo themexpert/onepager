@@ -31,7 +31,7 @@ const PalettePicker = React.createClass({
 
   render(){
     return (
-      <input type="text" defaultValue={this.props.color} />
+      <input className="form-control" type="text" defaultValue={this.props.color} />
     );
   }
 });
