@@ -1,16 +1,17 @@
-const _            = require('underscore');
-const React        = require('react');
-const Input        = require('react-bootstrap/lib/Input');
-const ColorPicker  = require('./ColorPicker.jsx');
+const _ = require('underscore');
+const React = require('react');
+const Input = require('react-bootstrap/lib/Input');
+const ColorPicker = require('./color/ColorPicker.jsx');
+const ColorPalette = require('./color/ColorPalette.jsx');
 const IconSelector = require('./IconSelector.jsx');
-const Media        = require('./Media.jsx');
-const Switch       = require('./Switch.jsx');
+const Media = require('./Media.jsx');
+const Switch = require('./Switch.jsx');
 const WpMediaFrame = require('./WpMediaFrame.jsx');
-const WpSelect     = require('./WpSelect.jsx');
-const Select       = require('./Select.jsx');
-const QuillEditor  = require('./QuillEditor.jsx');
-const PureMixin    = require('../../mixins/PureMixin.js');
-const Activity     = require('../../lib/Activity.js');
+const WpSelect = require('./WpSelect.jsx');
+const Select = require('./Select.jsx');
+const QuillEditor = require('./QuillEditor.jsx');
+const PureMixin = require('../../mixins/PureMixin.js');
+const Activity = require('../../lib/Activity.js');
 
 
 let inactive = Activity(100); //jshint ignore:line
@@ -19,7 +20,7 @@ let InputControl = React.createClass({
   mixins: [PureMixin],
 
   propTypes: {
-    options : React.PropTypes.object,
+    options: React.PropTypes.object,
     onChange: React.PropTypes.func
   },
 
@@ -76,6 +77,10 @@ let InputControl = React.createClass({
                        defaultValue={control.value}
                        label={control.label}
                        onChange={this.onChange}/>;
+        break;
+      case "colorpalette":
+        controlHtml =
+          <ColorPalette ref="input" colors={control.value} label={control.label} onChange={this.onChange}/>;
         break;
 
       case "menu":
