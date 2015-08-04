@@ -13,7 +13,7 @@ class FieldsTransformer {
         if(count($pieces) == 2){
           $options = \Onepager::getOption($pieces[0]);
 
-          if(array_key_exists($pieces[1], $options)){
+          if(@array_key_exists($pieces[1], $options)){
             $control['value'] = $options[$pieces[1]];
           } else {
             $control['value'] = "";
