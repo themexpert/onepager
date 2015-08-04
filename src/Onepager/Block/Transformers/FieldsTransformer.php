@@ -4,9 +4,23 @@ class FieldsTransformer {
 
   public function transform( $fields ) {
     return array_map( function ( $control ) {
+
       $value = array_key_exists('value', $control) ? $control['value'] : '';
       if(is_string($value) && startsWith($value, '@')){
-        $control['value'] = \Onepager::getOption(str_replace('@', '', $value));
+        $option = str_replace('@', '', $value);
+
+        $pieces = explode(".", $option);
+        if(count($pieces) == 2){
+          $options = \Onepager::getOption($pieces[0]);
+
+          if(array_key_exists($pieces[1], $options)){
+            $control['value'] = $options[$pieces[1]];
+          } else {
+            $control['value'] = "";
+          }
+        } else {
+          $control['value'] = \Onepager::getOption($option);
+        }
       }
 
       //obligatory name

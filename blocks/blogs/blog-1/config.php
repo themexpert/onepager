@@ -94,7 +94,7 @@ return array(
       'name'  => 'title_color',
       'label' => 'Title Color',
       'type'  => 'colorpicker',
-      'value' => '#232323'
+      'value' => '@palette.primary'
     ),
     array(
       'name'  => 'text_color',
