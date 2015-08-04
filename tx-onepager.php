@@ -29,6 +29,7 @@ function onepager_php_version_check()
 // PHP Version check
 onepager_php_version_check();
 
+define('ONEPAGER_VERSION', '1.0');
 define('ONEPAGER_URL', plugins_url('', __FILE__));
 define('ONEPAGER_PATH', dirname(__FILE__));
 
@@ -53,9 +54,6 @@ require(ONEPAGER_PATH . '/app/settings.php');
 require(ONEPAGER_PATH . '/app/frontend.php');
 require(ONEPAGER_PATH . '/app/metabox.php');
 require(ONEPAGER_PATH . '/app/dashboard.php');
-
-do_action('onepager_init');
-
 
 //Onepager::disableBlocks("onepager");
 //Onepager::disableTemplates("onepager");
