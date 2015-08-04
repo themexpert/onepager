@@ -161,7 +161,7 @@ return array(
       'name'    => 'button_bg_color',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'value'   => '@accent_color'
+      'value'   => '@color.accent'
     ),
     array(
       'name'    => 'button_text_color',

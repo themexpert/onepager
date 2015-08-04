@@ -71,7 +71,7 @@ return array(
       'name'    => 'bg_color',
       'label'   => 'Background Color',
       'type'    => 'colorpicker',
-      'value'   => '@secondary_color'
+      'value'   => '@color.secondary'
     ),
     array(
       'name'  => 'title_color',
@@ -89,7 +89,7 @@ return array(
       'name'    => 'button_border_color',
       'label'   => 'Button Border Color',
       'type'    => 'colorpicker',
-      'value'   => '@accent_color'
+      'value'   => '@color.accent'
     ),
     array(
       'name'    => 'button_text_color',

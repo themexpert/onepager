@@ -182,7 +182,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.7.2",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
