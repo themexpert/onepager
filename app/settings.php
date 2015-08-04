@@ -49,7 +49,7 @@ Onepager::getOptionPanel()->tab('styles', 'Styles')
         array(
           'name' => 'accent_color',
           'type' => 'colorpicker',
-          'label' => 'Secondary Color',
+          'label' => 'Accent Color',
           'value' => '#FF5722'
         )
       );

@@ -28,15 +28,10 @@ return array(
   // Settings - $settings available on view file to access the option
   'settings' => array(
     array(
-      'name'     => 'title_size',
-      'label'    => 'Title Size',
-      'type'     => 'select',
-      'value'    => 'title-sm',
-      'options'  => array(
-        'title-sm'      => 'Small',
-        'title-md'      => 'Medium',
-        'title-lg'      => 'Large'
-      ),
+      'name' => 'title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => '@section_title_size'
     ),
     array(
       'name'     => 'title_transformation',
@@ -95,7 +90,7 @@ return array(
       'name'    => 'button_border_color',
       'label'   => 'Button Border Color',
       'type'    => 'colorpicker',
-      'value'   => '#fff'
+      'value'   => '@accent_color'
     ),
     array(
       'name'    => 'button_text_color',
@@ -105,7 +100,7 @@ return array(
     ),
   ),
 
-  // 'assets' => function( $path ){
-  //   onepager()->asset()->style( 'content-5', $path . '/style.css' );
-  // }
+  'assets' => function( $path ){
+    onepager()->asset()->style( 'content-5', $path . '/style.css' );
+  }
 );

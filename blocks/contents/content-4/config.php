@@ -32,15 +32,10 @@ return array(
   // Settings - $settings available on view file to access the option
   'settings' => array(
     array(
-      'name'     => 'title_size',
-      'label'    => 'Title Size',
-      'type'     => 'select',
-      'value'    => 'title-sm',
-      'options'  => array(
-        'title-sm'      => 'Small',
-        'title-md'      => 'Medium',
-        'title-lg'      => 'Large'
-      ),
+      'name' => 'title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => '@section_title_size'
     ),
     array(
       'name'     => 'title_transformation',
@@ -74,9 +69,9 @@ return array(
   'styles' => array(
     array(
       'name'    => 'bg_color',
-      'label'   => 'Color',
+      'label'   => 'Background Color',
       'type'    => 'colorpicker',
-      'value'   => '#262624'
+      'value'   => '@secondary_color'
     ),
     array(
       'name'  => 'title_color',
@@ -88,13 +83,13 @@ return array(
       'name'  => 'text_color',
       'label' => 'Text Color',
       'type'  => 'colorpicker',
-      'value' => '#ddd'
+      'value' => '#f5f5f5'
     ),
     array(
       'name'    => 'button_border_color',
       'label'   => 'Button Border Color',
       'type'    => 'colorpicker',
-      'value'   => '#fff'
+      'value'   => '@accent_color'
     ),
     array(
       'name'    => 'button_text_color',
