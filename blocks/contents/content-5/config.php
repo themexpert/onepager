@@ -90,7 +90,7 @@ return array(
       'name'    => 'button_border_color',
       'label'   => 'Button Border Color',
       'type'    => 'colorpicker',
-      'value'   => '@accent_color'
+      'value'   => '@color.accent'
     ),
     array(
       'name'    => 'button_text_color',

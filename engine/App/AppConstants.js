@@ -15,7 +15,8 @@ module.exports = {
     RELOAD_SECTIONS  : null,
     RELOAD_BLOCKS    : null,
     UPDATE_SECTIONS  : null,
-    UPDATE_TITLE     : null
+    UPDATE_TITLE     : null,
+    COLLAPSE_SIDEBAR : null
   }),
 
   ActionSources: keyMirror({

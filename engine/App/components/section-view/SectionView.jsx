@@ -38,6 +38,7 @@ let Section = React.createClass({
 
   handleClick(){
     AppActions.editSection(this.props.index);
+    AppActions.collapseSidebar(false);
     // AppActions.activateSection(this.props.index);
   },
 

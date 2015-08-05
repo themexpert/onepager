@@ -14,6 +14,7 @@ require('../shared/lib/_mixins.js');
 
 
 // data storage
+let _collapseSidebar    = false;
 let _blocks             = ODataStore.blocks;
 let _sections           = SectionTransformer.misitifySections(ODataStore.sections, ODataStore.blocks);
 let _blockState         = {open: false};
@@ -30,6 +31,9 @@ let inactive = Activity(AUTO_SAVE_DELAY); //jshint ignore:line
 let syncService = SyncService(ODataStore.pageId, inactive, shouldSectionsSync); //jshint ignore:line
 let liveService = SyncService(null, inactive, shouldLiveSectionsSync); //jshint ignore:line
 
+function collapseSidebar(collapse){
+  _collapseSidebar = collapse;
+}
 
 // function to activate a section
 function setActiveSection(index) {
@@ -126,6 +130,7 @@ let AppStore = assign({}, BaseStore, {
       isDirty           : this.isDirty(),
       sections          : _sections,
       menuState         : _menuState,
+      collapseSidebar   : _collapseSidebar,
       sidebarTabState   : _sidebarTabState,
       blockState        : _blockState,
       activeSection     : _sections[_activeSectionIndex],
@@ -200,6 +205,11 @@ let AppStore = assign({}, BaseStore, {
         //FIXME: its not a place for business logic
         setActiveSection(action.index);
         AppStore.setTabState({active: 'op-contents'});
+        AppStore.emitChange();
+        break;
+
+      case actions.COLLAPSE_SIDEBAR:
+        collapseSidebar(action.collapse);
         AppStore.emitChange();
         break;
 

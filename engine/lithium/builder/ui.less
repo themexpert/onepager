@@ -26,6 +26,7 @@
 }
 
 .tx-nav-tabs {
+  .transition(all 0.3s linear);
   > li {
     display: inline-block;
     margin: 0;
@@ -86,7 +87,6 @@ a {
 // Onepager UI style - Override default bootstrap
 // ****************************************************
 .op-ui {
-
   // Backgroudn and colors
   // ----------------------
 
@@ -346,13 +346,11 @@ h3.form-divider {
   }
 
   position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
+  left: 0; top: 0; bottom: 0; z-index: 9999;
   width: @sidebar-width;
-  z-index: 9999;
   padding-top: 54px;
-  overflow-x: hidden;
+  // overflow-x: hidden;
+  .transition(all 0.3s linear);
 
   // Buttons
   .tx-nav{
@@ -432,13 +430,9 @@ h3.form-divider {
     height: 100%;
   }
 
-  #op-contents .tab-pane {
-    padding: 10px 3px;
-  }
+  #op-contents .tab-pane { padding: 10px 3px;}
+  #op-sections { height: 100%;}
 
-  #op-sections {
-    height: 100%;
-  }
   // Footer
   // -----------------------------------------------
   .footer {
@@ -498,6 +492,19 @@ h3.form-divider {
   }
 }
 
+// Section View
+// ---------------------------------------------------
+.op-section-view{
+  position: relative;
+  &:hover:before{
+    content: '';
+    position: absolute; z-index: 9999;
+    width: 100%;
+    height: 100%;
+    border: 3px dashed lighten(@brand-primary, 10%);
+  }
+}
+
 // ****************************************************
 //  Sections
 // ****************************************************
@@ -505,6 +512,7 @@ h3.form-divider {
   width: (100 - @sidebar-width);
   margin-left: @sidebar-width;
   position: relative;
+  .transition(all 0.3s linear);
 }
 
 .txop-noblock {
@@ -693,10 +701,18 @@ h3.form-divider {
 }
 
 .op-sidebar-control{
-  font-size: 30px;
-  z-index: 999999999;
-  color: red;
-  background-color: blue;
-  position: fixed;
-  bottom: 0;
+  background : @bg-secondary;
+  color: @text-color;
+  padding: 10px;
+  border-radius: 0 4px 4px 0;
+  position: absolute; bottom: 6px; right: -30px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid darken(@bg-primary, 5%);
+  border-left: 0;
+}
+body.op-sidebar-collapsed{
+  #sections{ width: 100%; margin-left: 0; }
+  .txop-sidebar,
+  .tx-nav-tabs{ left: -290px; }
 }
