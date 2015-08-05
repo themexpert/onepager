@@ -57,6 +57,7 @@ let Section = React.createClass({
   },
 
   handleScrollIntoView(){
+    AppActions.activateSection(this.props.index);
     scrollIntoView(document.getElementById(this.props.id));
   },
 
