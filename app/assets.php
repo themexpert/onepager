@@ -65,7 +65,7 @@ function onepager_enqueue_scripts()
     }
 
     $q->style('tx-colorpicker', asset("assets/css/bootstrap-colorpicker.css"));
-    $q->script('tx-iconselector', asset('assets/js/icon-selector.min.js'), ['jquery']);
+    $q->script('tx-iconselector', asset('assets/js/icon-selector-bootstrap.min.js'), ['jquery']);
     $q->script('tx-colorpicker', asset('assets/js/bootstrap-colorpicker.js'), ['jquery']);
     $q->script('tx-bootstrap-switch', asset('assets/js/bootstrap-switch.js'), ['jquery']);
     $q->script('tx-toastr', asset('assets/js/toastr.js'), ['jquery']);
@@ -96,7 +96,7 @@ function enqueueOnepagerAdminAssets()
 
   $q->script('tx-bootstrap', asset('assets/js/bootstrap.js'), ['jquery']);
 
-  $q->script('tx-iconselector', asset('assets/js/icon-selector.min.js'), ['jquery']);
+  $q->script('tx-iconselector', asset('assets/js/icon-selector-bootstrap.min.js'), ['jquery']);
   $q->script('tx-colorpicker', asset('assets/js/bootstrap-colorpicker.js'), ['jquery']);
   $q->script('tx-toastr', asset('assets/js/toastr.js'), ['jquery']);
 
