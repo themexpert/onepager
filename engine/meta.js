@@ -43,6 +43,9 @@
 
           var proceed  = confirm(confirmationMsg);
 
+          //FIXME: give sweetalert :/
+          if(!proceed) return;
+
           $.post(ajaxurl, {action: 'save_sections', updated: null, pageId: pageId, sections: []}, function(res){
             if(res && res.success){
               location.href = onepager.buildModeUrl;
