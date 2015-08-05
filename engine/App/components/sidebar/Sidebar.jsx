@@ -20,19 +20,14 @@ let Sidebar = React.createClass({
   // mixins: [PureMixin],
 
   collapseSidebar(){
-    if(this.state.collapse){
-      jQuery('body').addClass('op-collapse-sidebar');
-    } else {
-      jQuery('body').removeClass('op-collapse-sidebar');
-    }
-
-    this.setState({collapse: !this.state.collapse});
+    AppActions.collapseSidebar(!this.props.collapseSidebar)
   },
 
   componentDidMount(){
     let tabContents = React.findDOMNode(this.refs.tabContents);
-    $(()=> $(tabContents).niceScroll({cursorcolor: '#2ab0ad', cursorborder: '0'}));
+
     $(function () {
+      $(tabContents).niceScroll({cursorcolor: '#2ab0ad', cursorborder: '0'});
       $('[data-toggle="tooltip"]').tooltip()
     })
   },
@@ -92,8 +87,8 @@ let Sidebar = React.createClass({
     };
 
     let classes = cx({
-      "fa fa-chevron-circle-left": !this.state.collapse,
-      "fa fa-chevron-circle-right": this.state.collapse
+      "fa fa-chevron-left": !this.props.collapseSidebar,
+      "fa fa-chevron-right": this.props.collapseSidebar
     });
 
 
@@ -149,8 +144,8 @@ let Sidebar = React.createClass({
 
         </div>
 
-        <div className="op-sidebar-control">
-          <span onClick={this.collapseSidebar} className={classes}></span>
+        <div className="op-sidebar-control" onClick={this.collapseSidebar}>
+          <span className={classes}></span>
         </div>
 
       </div>
