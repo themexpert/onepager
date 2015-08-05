@@ -98,7 +98,7 @@ let Sidebar = React.createClass({
           <Tab onClick={handleTabClick} id='op-sections' icon='cubes' title='Layout' active={activeTab}/>
           <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab}
                disabled={!sectionEditable}/>
-          <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Settings' active={activeTab}/>
+             <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab}/>
 
           <div className="btn-group">
           {
@@ -106,7 +106,8 @@ let Sidebar = React.createClass({
               <button onClick={this.handleGlobalSettingsSave} className='btn btn-primary btn--save'>
                 <span className={saveClasses}></span>
               </button> :
-              <button disabled={!isDirty} onClick={this.handleSave} className='btn btn-primary btn--save'>
+              <button disabled={!isDirty} onClick={this.handleSave} className='btn btn-primary btn--save' data-toggle="tooltip"
+                 data-placement="bottom" title="Save">
                   <span className={saveClasses}></span>
               </button>
           }
