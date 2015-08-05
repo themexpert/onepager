@@ -3,8 +3,7 @@ const React     = require('react');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const dom       = React.findDOMNode;
 
-require("../../../../assets/css/icon-selector.min.css");
-
+require("../../../../assets/css/icon-selector.bootstrap.min.css");
 
 let IconSelector = React.createClass({
   mixins: [PureMixin],
