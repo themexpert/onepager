@@ -115,7 +115,21 @@ function dequeue_default_template_stylesheet(){
   $wp_styles->remove(get_default_template_stylesheet_handle());
 }
 
+function onepager_dequeue_conflicting_scripts(){
+  if(!onepager()->content()->isOnepage()) return;
+
+  onepager_support_nextgen_scroll_gallery();
+}
+
+//NextGEN Scroll Gallery
+function onepager_support_nextgen_scroll_gallery(){
+  wp_dequeue_script('mootools');
+  wp_dequeue_script('powertools');
+  wp_dequeue_script('scrollGallery');
+}
+
 add_action('wp_enqueue_scripts', 'dequeue_default_template_stylesheet', 999);
+add_action('wp_print_scripts', 'onepager_dequeue_conflicting_scripts', 100);
 
 //live edit mode
 add_action('wp_enqueue_scripts', 'onepager_enqueue_scripts');
