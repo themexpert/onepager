@@ -1,8 +1,12 @@
 <?php
 
 add_action( 'wp_head',  'onepager_inject_inline_styles');
-add_filter( 'the_content',  'onepager_inject_content');
 add_action( 'wp_enqueue_scripts', 'onepager_enqueue_block_assets' );
+
+add_action('wp_head', function(){
+  add_filter( 'the_content',  'onepager_inject_content');
+}, 999);
+
 
 //block have internal stylesheets
 //if its onepager page render onepager block styles on header
