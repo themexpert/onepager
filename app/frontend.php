@@ -3,6 +3,7 @@
 add_action( 'wp_head',  'onepager_inject_inline_styles');
 add_action( 'wp_enqueue_scripts', 'onepager_enqueue_block_assets' );
 
+//resolves conflict with yoast and similar plugins who work on the_content in wp_head
 add_action('wp_head', function(){
   add_filter( 'the_content',  'onepager_inject_content');
 }, 999);
