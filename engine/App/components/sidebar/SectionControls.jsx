@@ -61,7 +61,7 @@ let SectionControls = React.createClass({
     let getControlsHTML = (tabName, controls)=> {
       return controls.map((control, ii)=> {
         let type = control.type;
-        let visible = true;
+        let hidden = false;
 
 
         if (_.isArray(control.value)) {
@@ -71,12 +71,12 @@ let SectionControls = React.createClass({
         if(control.depends){
           let depends = _.find(sectionSettings[tabName], {name: control.depends});
           if(!depends || depends.value !== true) {
-            visible = false;
+            hidden = true;
           }
         }
 
         let props = {
-          visible,
+          hidden,
           sectionIndex,
           onChange : this.update.bind(this, tabName),
           options  : control,

@@ -54,17 +54,17 @@ let RepeatGroup = React.createClass({
     });
 
     let controls = rGroup.map((rControl, ii)=>{
-      let visible = true;
+      let hidden = false;
 
       if(rControl.depends){
         let depends = _.find(rGroup, {name: rControl.depends});
         if(!depends || depends.value !== true) {
-          visible = false;
+          hidden = true;
         }
       }
 
       let props = {
-        visible,
+        hidden,
         onChange: this.props.onChange,
         options : rControl,
         ref     : rControl.ref,
