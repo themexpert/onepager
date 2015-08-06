@@ -31,7 +31,7 @@ return array(
             'type'=> 'switch',
             'label'=>'Parallax Background'
           ),
-          array('show_if' => 'bg_parallax', 'name'=>'description', 'type'=> 'textarea', 'value'=>'The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart'),
+          array('depends' => 'bg_parallax', 'name'=>'description', 'type'=> 'textarea', 'value'=>'The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart'),
           array('name'=>'media', 'type'=>'media', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icons/camera.png'),
         ),
         array(

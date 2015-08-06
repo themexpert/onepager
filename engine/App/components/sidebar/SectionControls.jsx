@@ -68,9 +68,9 @@ let SectionControls = React.createClass({
           type = 'repeat-input';
         }
 
-        if(control.show_if){
-          let show_if = _.find(sectionSettings[tabName], {name: control.show_if});
-          if(!show_if || show_if.value !== true) {
+        if(control.depends){
+          let depends = _.find(sectionSettings[tabName], {name: control.depends});
+          if(!depends || depends.value !== true) {
             visible = false;
           }
         }

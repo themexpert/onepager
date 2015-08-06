@@ -56,9 +56,9 @@ let RepeatGroup = React.createClass({
     let controls = rGroup.map((rControl, ii)=>{
       let visible = true;
 
-      if(rControl.show_if){
-        let show_if = _.find(rGroup, {name: rControl.show_if});
-        if(!show_if || show_if.value !== true) {
+      if(rControl.depends){
+        let depends = _.find(rGroup, {name: rControl.depends});
+        if(!depends || depends.value !== true) {
           visible = false;
         }
       }
