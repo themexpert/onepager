@@ -9,7 +9,7 @@ const Switch = require('./Switch.jsx');
 const WpMediaFrame = require('./WpMediaFrame.jsx');
 const WpSelect = require('./WpSelect.jsx');
 const Select = require('./Select.jsx');
-const QuillEditor = require('./QuillEditor.jsx');
+const QuillEditor = require('./editor/QuillEditor.jsx');
 const PureMixin = require('../../mixins/PureMixin.js');
 const Activity = require('../../lib/Activity.js');
 
