@@ -53,8 +53,18 @@ let RepeatGroup = React.createClass({
       "in": this.props.active
     });
 
-    let controls = rGroup.map((rControl, ii)=> {
+    let controls = rGroup.map((rControl, ii)=>{
+      let visible = true;
+
+      if(rControl.show_if){
+        let show_if = _.find(rGroup, {name: rControl.show_if});
+        if(!show_if || show_if.value !== true) {
+          visible = false;
+        }
+      }
+
       let props = {
+        visible,
         onChange: this.props.onChange,
         options : rControl,
         ref     : rControl.ref,

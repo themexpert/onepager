@@ -60,20 +60,30 @@ let SectionControls = React.createClass({
 
     let getControlsHTML = (tabName, controls)=> {
       return controls.map((control, ii)=> {
-        let props = {
-          onChange    : this.update.bind(this, tabName),
-          options     : control,
-          ref         : control.ref,
-          id          : control.ref,
-          key         : control.ref,
-          sectionIndex: sectionIndex
-        };
-
         let type = control.type;
+        let visible = true;
+
 
         if (_.isArray(control.value)) {
           type = 'repeat-input';
         }
+
+        if(control.show_if){
+          let show_if = _.find(sectionSettings[tabName], {name: control.show_if});
+          if(!show_if || show_if.value !== true) {
+            visible = false;
+          }
+        }
+
+        let props = {
+          visible,
+          sectionIndex,
+          onChange : this.update.bind(this, tabName),
+          options  : control,
+          id       : control.ref,
+          ref      : control.ref,
+          key      : control.ref
+        };
 
         switch (type) {
           case "repeat-input":
@@ -115,7 +125,7 @@ let SectionControls = React.createClass({
           {sectionSettings.styles.length ?
             <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/> : null}
         </ul>
-        
+
         <div className="tab-content" ref="tabContents">
           <TabPane id="contents" active={activeTab}>
             {getControlsHTML('contents', sectionSettings.contents)}

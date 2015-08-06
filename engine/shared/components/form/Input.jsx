@@ -142,8 +142,9 @@ let InputControl = React.createClass({
                  onChange={this.onChange}/>;
     }
 
+    let classes = !this.props.visible ? "hidden" : "";
     return (
-      <div>{controlHtml}</div>
+      <div className={classes}>{controlHtml}</div>
     );
   }
 });
