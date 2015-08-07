@@ -7,6 +7,8 @@ class OptionsPanel implements OptionsPanelInterface{
 	protected $options = array();
 	protected static $panels = [];
   protected $flatOptions;
+  protected $tabId;
+  protected $tabName;
 
   public static function getInstance($menuSlug){
 		if(!array_key_exists($menuSlug, self::$panels)){
@@ -147,19 +149,23 @@ class OptionsPanel implements OptionsPanelInterface{
 			);
 		}
 
-		$this->options[$this->tabId]['fields'] = array_merge(
-			$this->options[$this->tabId]['fields'],
-			func_get_args()
-		);
+    $fields = &$this->options[$this->tabId]['fields'];
+    $options = func_get_args();
 
-		return $this;
+    foreach($options as $option){
+      $fields[$option['name']] = $option;
+    }
+
+    return $this;
 	}
 
 	public function getOptions(){
-		return array_map(function($options){
-				$options['fields'] = $this->transformOptions($options['fields']);
-
+		$options = array_map(function($options){
+				$options['fields'] = array_values($this->transformOptions($options['fields']));
 				return $options;
 			}, $this->options);
+
+    return $options;
 	}
+
 }

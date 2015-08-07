@@ -9,6 +9,12 @@ Onepager::getOptionPanel()->tab('general', 'Generals')
             'append' => 'px',
             'value' => '44'
           ),
+          array(
+            'name' => 'section_title_size',
+            'label' => 'Section Title SZ',
+            'append' => 'PX',
+            'value' => '45'
+          ),
           array('name' => 'favicon', 'type' => 'image'),
           array(
             'name'  => 'google_analytics',
@@ -58,6 +64,7 @@ add_action('wp_head', function(){
   }
 
 });
+
 
 if( Onepager::getOption('full_screen') ){
 
