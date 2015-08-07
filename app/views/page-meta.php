@@ -12,7 +12,7 @@
         </div>
 
         <div class="op-btns-group">
-            <a href="<?php echo $editorUrl ?>">Load Editor</a>
+            <a href="<?php echo $editorUrl ?>" style="display: <?php echo !count($sections) ? "none":"" ?>">Load Editor</a>
 
             <div style="display:none">
                 <button type="button" id="onepager-save-layout" class="onepager-button">Save Layout</button>

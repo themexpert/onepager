@@ -14,6 +14,8 @@ function tx_add_onepager_metabox(){
           return array_merge($carry, $layout['group']);
         }, []));
 
+        $sections = onepager()->section()->getAllValid($post->ID);
+
         //generate livemode url
         $editorUrl = getOpBuildModeUrl(get_permalink($post->ID), true);
 

@@ -6,11 +6,11 @@
     var $onepagerDisableBtn = $('<button type="button" id="disable-onepager" class="op-btn op-btn-with-logo">Disable Onepager</button>');
 
     //var $editorTabs = $(".wp-editor-tabs");
+    var $selectLayoutBtn = $(".op-select-preset");
     var $postArea        = $("#postdivrich");
     var $pageTemplate    = $("#page_template");
     var $export          = $("#onepager-export-layout");
     var $onepagerMetabox = $("#onepager-metabox");
-    var $selectLayoutBtn = $(".op-select-preset");
     var $blankTemplate   = $("#blank-template");
     var $filter          = $("#op-group-filter select");
     var $presets         = $("#op-presets>.media");
@@ -34,29 +34,7 @@
     $pageTemplate.on('change', templateChangeHandler);
     $selectLayoutBtn.on('click', layoutSelectHandler);
 
-    $blankTemplate.on('click', function(){
-      $.post(ajaxurl, {action: 'onepager_get_sections', pageId: pageId}, function(res){
-        if(res && res.success && res.sections.length !== 0){
-          var confirmationMsg =
-            "Are you sure you want to insert this layout?" +
-            "This layout will replace your current layout!";
-
-          var proceed  = confirm(confirmationMsg);
-
-          //FIXME: give sweetalert :/
-          if(!proceed) return;
-
-          $.post(ajaxurl, {action: 'save_sections', updated: null, pageId: pageId, sections: []}, function(res){
-            if(res && res.success){
-              location.href = onepager.buildModeUrl;
-            }
-          });
-        } else {
-          location.href = onepager.buildModeUrl;
-        }
-
-      })
-    });
+    $blankTemplate.on('click', resetTemplate);
 
     $onepagerEnableBtn.on('click', enableOnepagerHandler);
     $onepagerDisableBtn.on('click', disableOnepagerHandler);
@@ -137,7 +115,7 @@
 
   /**
    * Given sections array it downloads them
-   * @param sections
+   * @param pageId
    */
   function exportOnepagerSections(pageId) {
     var payload = {
@@ -174,8 +152,34 @@
       pageId  : pageId
     };
 
-    jQuery.post(ajaxurl, data, function (res) {
-      if (res && res.success) {
+    loadEditor(data);
+  }
+
+  function resetTemplate() {
+    var payload = {action: 'onepager_get_sections', pageId: onepager.pageId};
+    $.post(ajaxurl, payload, function(res){
+      if(res && res.success && res.sections.length !== 0){
+        var confirmationMsg =
+          "Are you sure you want to insert this layout?" +
+          "This layout will replace your current layout!";
+
+        var proceed  = confirm(confirmationMsg);
+
+        //FIXME: give sweetalert :/
+        if(!proceed) return;
+
+        var data = {action: 'save_sections', updated: null, pageId: onepager.pageId, sections: []};
+        loadEditor(data);
+      } else {
+        loadEditor();
+      }
+
+    })
+  }
+
+  function loadEditor(data){
+    $.post(ajaxurl, data, function(res){
+      if(res && res.success) {
         location.href = onepager.buildModeUrl;
       } else {
         alert("failed to insert layout ");
