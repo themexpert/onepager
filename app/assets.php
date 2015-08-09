@@ -45,19 +45,19 @@ function onepager_enqueue_scripts()
 {
   if(!onepager()->content()->isOnepage()) return;
 
-  $q = onepager()->asset();
+  $asset = onepager()->asset();
 
   // TX namespaced assets to avoid multiple assets loading from other ThemeXpert product
-  $q->style('tx-bootstrap', asset('assets/css/bootstrap.css'));
-  $q->style('tx-animatecss', asset('assets/css/animate.css'));
-  $q->style('tx-fontawesome', asset('assets/css/font-awesome.css'));
+  $asset->style('bootstrap', asset('assets/css/bootstrap.css'));
+  $asset->style('animatecss', asset('assets/css/animate.css'));
+  $asset->style('fontawesome', asset('assets/css/font-awesome.css'));
 
-  $q->script('tx-bootstrap', asset('assets/js/bootstrap.js'), ['jquery']);
-  $q->script('tx-wow', asset('assets/js/wow.js'), array('jquery'));
-  $q->script('tx-nicescroll', asset('assets/js/jquery.nicescroll.js'), array('jquery'));
-  $q->script('lithium', asset('assets/lithium.js'), array('jquery'));
+  $asset->script('bootstrap', asset('assets/js/bootstrap.js'), ['jquery']);
+  $asset->script('wow', asset('assets/js/wow.js'), array('jquery'));
+  $asset->script('nicescroll', asset('assets/js/jquery.nicescroll.js'), array('jquery'));
+  $asset->script('lithium', asset('assets/lithium.js'), array('jquery'));
 
-  $q->style('lithium', asset('assets/css/lithium.css'));
+  $asset->style('lithium', asset('assets/css/lithium.css'));
 
 
   if (onepager()->content()->isBuildMode()) {
@@ -65,45 +65,45 @@ function onepager_enqueue_scripts()
       wp_enqueue_media();
     }
 
-    $q->style('tx-colorpicker', asset("assets/css/bootstrap-colorpicker.css"));
-    $q->script('tx-iconselector', asset('assets/js/icon-selector-bootstrap.min.js'), ['jquery']);
-    $q->script('tx-colorpicker', asset('assets/js/bootstrap-colorpicker.js'), ['jquery']);
-    $q->script('tx-bootstrap-switch', asset('assets/js/bootstrap-switch.js'), ['jquery']);
-    $q->script('tx-toastr', asset('assets/js/toastr.js'), ['jquery']);
+    $asset->style('tx-colorpicker', asset("assets/css/bootstrap-colorpicker.css"));
+    $asset->script('tx-iconselector', asset('assets/js/icon-selector-bootstrap.min.js'), ['jquery']);
+    $asset->script('tx-colorpicker', asset('assets/js/bootstrap-colorpicker.js'), ['jquery']);
+    $asset->script('tx-bootstrap-switch', asset('assets/js/bootstrap-switch.js'), ['jquery']);
+    $asset->script('tx-toastr', asset('assets/js/toastr.js'), ['jquery']);
 
-    $q->script('onepager', asset('assets/app.bundle.js'), ['jquery']);
+    $asset->script('onepager', asset('assets/app.bundle.js'), ['jquery']);
 
-    $q->localizeScript('onepager', onepager_localize_script_data(onepager()->content()->getCurrentPageId()), 'onepager');
+    $asset->localizeScript('onepager', onepager_localize_script_data(onepager()->content()->getCurrentPageId()), 'onepager');
   }
 
   if (is_super_admin()) {
-    $q->style('lithium-ui', asset('assets/css/lithium-builder.css'));
+    $asset->style('lithium-ui', asset('assets/css/lithium-builder.css'));
   }
 }
 
 function enqueueOnepagerAdminAssets()
 {
-  $q = onepager()->asset();
+  $asset = onepager()->asset();
 
   if (function_exists('wp_enqueue_media')) {
     wp_enqueue_media();
   }
 
-  $q->style('tx-bootstrap', asset('assets/css/bootstrap.css'));
-  $q->style('tx-animatecss', asset('assets/css/animate.css'));
-  $q->style('tx-fontawesome', asset('assets/css/font-awesome.css'));
-  $q->style('tx-colorpicker', asset("assets/css/bootstrap-colorpicker.css"));
-  $q->style('lithium-ui', asset('assets/css/lithium-builder.css'));
+  $asset->style('tx-bootstrap', asset('assets/css/bootstrap.css'));
+  $asset->style('tx-animatecss', asset('assets/css/animate.css'));
+  $asset->style('tx-fontawesome', asset('assets/css/font-awesome.css'));
+  $asset->style('tx-colorpicker', asset("assets/css/bootstrap-colorpicker.css"));
+  $asset->style('lithium-ui', asset('assets/css/lithium-builder.css'));
 
-  $q->script('tx-bootstrap', asset('assets/js/bootstrap.js'), ['jquery']);
+  $asset->script('tx-bootstrap', asset('assets/js/bootstrap.js'), ['jquery']);
 
-  $q->script('tx-iconselector', asset('assets/js/icon-selector-bootstrap.min.js'), ['jquery']);
-  $q->script('tx-colorpicker', asset('assets/js/bootstrap-colorpicker.js'), ['jquery']);
-  $q->script('tx-toastr', asset('assets/js/toastr.js'), ['jquery']);
+  $asset->script('tx-iconselector', asset('assets/js/icon-selector-bootstrap.min.js'), ['jquery']);
+  $asset->script('tx-colorpicker', asset('assets/js/bootstrap-colorpicker.js'), ['jquery']);
+  $asset->script('tx-toastr', asset('assets/js/toastr.js'), ['jquery']);
 
-  $q->script('admin-bundle', asset('assets/optionspanel.bundle.js'), ['jquery']);
+  $asset->script('admin-bundle', asset('assets/optionspanel.bundle.js'), ['jquery']);
 
-  $q->enqueue();
+  $asset->enqueue();
 }
 
 function dequeue_default_template_stylesheet(){
