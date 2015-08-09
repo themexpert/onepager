@@ -2,39 +2,45 @@ const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const Immutable = require("immutable");
 const React = require('react');
 const _ = require("underscore");
-const PaletteColor = require("./PaletteColor.jsx");
-const PalettePicker = require("./PalettePicker.jsx");
+const Color = require("./palette/Color.jsx");
+const PalettePicker = require("./palette/Picker.jsx");
 const Activity = require('../../../lib/Activity.js');
+const Button = require('react-bootstrap/lib/Button');
+const PalettePresets = require('./palette/Presets.jsx');
 
-let inactive = Activity(4000); //jshint ignore:line
+let inactive = Activity(4000);
 let completedUpdating = Activity(1000);
 
-require('./palette.less');
+require('./palette/palette.less');
 
+/**
+ * colors = {
+     *  primary: red,
+     *  secondary: blue
+     * }
+ */
+function transformColors(colors){
+  return _.map(colors, (color, key)=>{
+    return { name: key, code: color };
+  });
+}
 const ColorPalette = React.createClass({
   mixins: [PureMixin],
 
   propTypes: {
     "label": React.PropTypes.string,
     "colors": React.PropTypes.array,
+    "presets": React.PropTypes.array,
     "onChange": React.PropTypes.func
   },
 
   getInitialState(){
-    /**
-     * colors = {
-     *  primary: red,
-     *  secondary: blue
-     * }
-     */
-    let colors = this.props.colors;
-    colors = _.map(colors, (color, key)=>{
-      return { name: key, code: color };
-    });
+    let colors = transformColors(this.props.colors);
 
     return {
       colors: Immutable.fromJS(colors),
       active: null,
+      showPresets: false,
       color: '#fff'
     }
   },
@@ -47,14 +53,17 @@ const ColorPalette = React.createClass({
   },
 
   handleUpdate(value){
+    //automatically hide the picker after inactivity
     inactive().then(
-      ()=> {
-        this.setState({active: null});
-      },
+      ()=> this.setState({active: null}),
       (msg)=> console.log(msg)
     );
 
-    completedUpdating().then(this.props.onChange, (msg)=>console.log(msg));
+    //after its completed updating we will fire the onChange event
+    completedUpdating().then(
+      this.props.onChange,
+      (msg)=>console.log(msg)
+    );
 
     let colors = this.state.colors;
     let color = colors.get(this.state.active);
@@ -80,19 +89,43 @@ const ColorPalette = React.createClass({
     return active === ii ? width * 2 : width;
   },
 
+  handleSelectPreset(colors){
+    let state = {active: null, colors: Immutable.fromJS(colors)};
+    this.setState(state);
+    this.closePresetsDrawer();
+  },
+
+  openPresetsDrawer(){
+    this.setState({showPresets: true});
+  },
+  closePresetsDrawer(){
+    this.setState({showPresets: false});
+  },
+
   render(){
     const colors = this.state.colors;
+    const presets = this.props.presets;
 
     return (
       <div className="color-palette">
-        <label className="control-label">{this.props.label}</label><br/>
+
+        <label className="control-label">{this.props.label}</label> <br/>
+
+        <Button bsStyle='primary' className="btn-block" onClick={this.openPresetsDrawer}>
+          <span className="fa fa-search"></span> Select Preset
+        </Button>
+
+        <div style={{display: this.state.showPresets ? "block": "none"}}>
+          <PalettePresets activate={this.handleSelectPreset} palettes={presets} />
+        </div>
+
         { colors.map((color, ii)=> {
           let activate = this.handleActivate.bind(this, ii);
           let width = this.getWidth(ii);
 
           return (
-            <PaletteColor
-              activate={activate}
+            <Color
+              onClick={activate}
               width={width}
               name={color.get('name')}
               key={color.get('name')}

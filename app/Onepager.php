@@ -6,7 +6,9 @@
 abstract class Onepager {
 
 	// Get the global option panel object
-	public static function getOptionPanel()
+  protected static $presets = [];
+
+  public static function getOptionPanel()
 	{
 		return onepager()->optionsPanel("onepager");
 	}
@@ -51,4 +53,16 @@ abstract class Onepager {
 	{
 		self::disablePresets('onepager');
 	}
+
+  public static function addPresets($name, $presets){
+    if(!array_key_exists($name, static::$presets)){
+      static::$presets[$name] = [];
+    }
+
+    static::$presets[$name] = array_merge($presets, static::$presets[$name]);
+  }
+
+  public static function getPresets() {
+    return static::$presets;
+  }
 }

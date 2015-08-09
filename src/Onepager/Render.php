@@ -102,7 +102,7 @@ class Render {
       //throw new \Exception( "Block style Does not exist" );
       return null;
     }
-    
+
     $section['url'] = $block['url'];
     $style = $this->getStyleHTML($section, $style_file);
 

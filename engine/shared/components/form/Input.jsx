@@ -80,7 +80,7 @@ let InputControl = React.createClass({
         break;
       case "colorpalette":
         controlHtml =
-          <ColorPalette ref="input" colors={control.value} label={control.label} onChange={this.onChange}/>;
+          <ColorPalette presets={onepager.presets[control.presets]} ref="input" colors={control.value} label={control.label} onChange={this.onChange}/>;
         break;
 
       case "menu":
