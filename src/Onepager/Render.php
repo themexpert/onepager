@@ -55,8 +55,9 @@ class Render {
       return $this->noViewFile($block['name']);
     }
 
-    $section = $this->sectionBlockDataMerge($section);
 
+    $section = $this->sectionBlockDataMerge($section);
+    $section['url'] = $block['url'];
     return $this->view->make($view_file, $section);
   }
 
@@ -101,7 +102,8 @@ class Render {
       //throw new \Exception( "Block style Does not exist" );
       return null;
     }
-
+    
+    $section['url'] = $block['url'];
     $style = $this->getStyleHTML($section, $style_file);
 
     return $style;
