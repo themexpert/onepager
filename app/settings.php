@@ -22,17 +22,14 @@ Onepager::getOptionPanel()->tab('general', 'Generals')
             'label' => 'Google Analytics',
             'placeholder' => 'Paste your code here'
           )
-          // array(
-          //   'name' => 'full_screen',
-          //   'type' => 'switch',
-          //   'label' => 'Full Screen Page',
-          // )
         );
+
 Onepager::getOptionPanel()->tab('styles', 'Styles')
         ->add(
         array(
           'name'=>'color',
           'type'=>'colorpalette',
+          'presets'=> 'default',
           'value' => array(
             'primary'=> "#2196F3",
             'secondary' => '#3F51B5',
@@ -41,6 +38,10 @@ Onepager::getOptionPanel()->tab('styles', 'Styles')
         )
       );
 
+Onepager::addPresets("default", array(
+  ['primary'=>'red', 'secondary'=>'yellow'],
+  ['primary'=>'green', 'secondary'=>'yellow']
+));
 
 add_action('wp_head', function(){
   // Favicion
@@ -79,3 +80,4 @@ if( Onepager::getOption('full_screen') ){
   });
 
 }
+
