@@ -38,6 +38,12 @@ return array(
   // Settings - $settings available on view file to access the option
   'settings' => array(
     array(
+      'name' => 'title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => '@section_title_size'
+    ),
+    array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
@@ -97,15 +103,15 @@ return array(
       'name'=>'icon_bg',
       'label' => 'Icon Background',
       'type'  => 'colorpicker',
-      'value' => '#fd541d'
+      'value' => '@color.primary'
     ),
   ),
 
   'assets' => function( $path ){
-     // Magnefic popup
-    onepager()->asset()->script( 'tx-magnific-popup', asset('assets/js/jquery.magnific-popup.js'), array( 'jquery' ) );
-    onepager()->asset()->style( 'tx-magnific-popup', asset( 'assets/css/magnific-popup.css' ) );
-
-    onepager()->asset()->style( 'portfolio-1', $path . '/style.css' );
+     // Magnefic popup from Onepager assets dir
+    Onepager::addScript('magnific-popup', asset('assets/js/jquery.magnific-popup.js'), array( 'jquery' ));
+    Onepager::addStyle('magnific-popup', asset( 'assets/css/magnific-popup.css' ));
+    // Local file
+    Onepager::addStyle('portfolio-1', $path . '/style.css');
   }
 );

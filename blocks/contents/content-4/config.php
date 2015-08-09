@@ -100,6 +100,6 @@ return array(
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'content-4', $path . '/style.css' );
+    Onepager::addStyle('content-4', $path . '/style.css');
   }
 );

@@ -38,6 +38,12 @@ return array(
   // Settings - $settings available on view file to access the option
   'settings' => array(
     array(
+      'name' => 'title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => '@section_title_size'
+    ),
+    array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
@@ -95,7 +101,7 @@ return array(
     )
   ),
 
-  // 'assets' => function( $path ){
-  //   onepager()->asset()->style( 'team-1', $path . '/style.css' );
-  // }
+  'assets' => function( $path ){
+      Onepager::addStyle('team-1', $path . '/style.css');
+  }
 );

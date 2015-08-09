@@ -2,10 +2,13 @@
 	$items = array_chunk($contents['items'], 3);
 	$animation = ($settings['animation']) ? $settings['animation'] : '';
 ?>
-<section id="<?php echo $id; ?>" class="op-section teams team-1">
+<section id="<?php echo $id; ?>" class="op-section teams team-1 full-screen">
 	<div class="container">
-		
-		<h1 class="section-title text-center <?php echo $settings['title_transformation']?>"><?php echo $contents['title']?></h1>
+		<?php if($contents['title']): ?>
+			<h1 class="section-title ml-big mr-big text-center <?php echo $settings['title_transformation']?>">
+				<?php echo $contents['title']?>
+			</h1>
+		<?php endif;?>
 
 		<?php foreach( $items as $teams ) :?>
 			<div class="row">
@@ -29,6 +32,5 @@
 				<?php endforeach; ?>
 			</div>
 		<?php endforeach; ?>
-
 	</div>
 </section>

@@ -90,7 +90,7 @@ return array(
       'name'    => 'button_border_color',
       'label'   => 'Button Border Color',
       'type'    => 'colorpicker',
-      'value'   => '@color.accent'
+      'value'   => '@color.primary'
     ),
     array(
       'name'    => 'button_text_color',
@@ -101,6 +101,6 @@ return array(
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'content-5', $path . '/style.css' );
+    Onepager::addStyle('content-5', $path . '/style.css');
   }
 );

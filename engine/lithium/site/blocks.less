@@ -120,42 +120,30 @@ body {
 /*
 	Remvoe BS navbar margin
 */
-.navbar {
-  margin-bottom: 0;
-  border: 0;
-}
+.navbar { margin-bottom: 0; border: 0; }
 
 /*
 	Default height for Navbar 1
 */
 .navbar-1,
-.navbar-3 {
-  height: 60px;
-}
+.navbar-3 { height: 60px; }
 
 /*
 	Make the navbar brand less paddable
 */
-.navbar-brand {
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
+.navbar-brand { padding-top: 5px; padding-bottom: 5px; }
 
 /*
 	Make navbar vertically center
 */
-.navbar-nav {
-  margin-top: 5px;
-}
+.navbar-nav { margin-top: 5px; }
 
 /*
 	Adjust navbar-button vertical alignment and give space to right
 */
 .navbar-btn {
-  margin-top: 13px;
-  margin-right: 0;
   display: block;
-  .border-radius(@navbar-btn-radius);
+  margin-top: 13px; margin-right: 0;
 }
 
 /*
@@ -166,11 +154,9 @@ body {
   border-bottom: 1px solid #eee;
 }
 
-.navbar.affix .navbar-nav {
-  margin-top: 0;
-}
-
-.op-build-active .navbar.affix {
+.navbar.affix .navbar-nav { margin-top: 0; }
+// Exception for build mode only
+.op-build-active:not(.op-sidebar-collapsed) .navbar.affix {
   width: 77%;
 }
 

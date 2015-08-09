@@ -498,7 +498,8 @@ h3.form-divider {
   position: relative;
   &:hover:before{
     content: '';
-    position: absolute; z-index: 9999;
+    position: absolute;
+    // z-index: 9999;
     width: 100%;
     height: 100%;
     border: 3px dashed lighten(@brand-primary, 10%);
@@ -586,6 +587,7 @@ h3.form-divider {
       background: darken(@bg-primary, 5%) !important;
     }
   }
+  .sa-confirm-button-container{ display: inline-block; }
 }
 // Quile Editor
 // -----------------

@@ -187,6 +187,6 @@ return array(
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'header-3', $path . '/style.css' );
+    Onepager::addStyle( 'header-3', $path . '/style.css' );
   }
 );

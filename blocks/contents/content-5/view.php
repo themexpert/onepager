@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="text-center">
+				<div class="ml-big mr-big text-center">
 					<!-- Image -->
 					<?php if($contents['image']) :?>
 						<img class="op-media wow <?php echo $animation;?>" src="<?php echo $contents['image']?>" alt="<?php echo $contents['title']?>">

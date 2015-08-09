@@ -161,7 +161,7 @@ return array(
       'name'    => 'button_bg_color',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'value'   => '@color.accent'
+      'value'   => '@color.primary'
     ),
     array(
       'name'    => 'button_text_color',
@@ -172,6 +172,6 @@ return array(
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'content-1', $path . '/style.css' );
+    Onepager::addStyle('content-1', $path . '/style.css');
   }
 );

@@ -7,11 +7,13 @@
 
 #slide-<?php echo $id; ?>,
 #slide-<?php echo $id; ?> .item{
-	height : <?php echo $settings['slider_height'] - 200 ?>px;	
+	height : <?php echo $settings['slider_height'] - 200 ?>px;
 }
-
+#<?php echo $id?> .section-title{
+	font-size : <?php echo $settings['title_size']?>px;
+}
 #slide-<?php echo $id; ?> .btn{
-	border-color : <?php echo $styles['button_color']; ?>;
+	background : <?php echo $styles['button_color']; ?>;
 	color : <?php echo $styles['button_color']; ?>;
 }
 #slide-<?php echo $id; ?> .btn:hover{
@@ -19,9 +21,9 @@
 	color : <?php echo $styles['button_hover_color']; ?>;
 }
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
 	#slide-<?php echo $id; ?>,
 	#slide-<?php echo $id; ?> .item{
-		height : <?php echo $settings['slider_height']?>px;	
+		height : <?php echo $settings['slider_height']?>px;
 	}
 }

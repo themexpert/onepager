@@ -7,7 +7,7 @@ return array(
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
-    array('name'=>'logo', 'type'=> 'image'),
+    array('name'=>'logo', 'type'=> 'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/logo-dark.png'),
     array('name'=>'menu','type'=>'menu')
   ),
 
@@ -49,11 +49,11 @@ return array(
       'name'  => 'link_hover_color',
       'label' => 'Link Hover Color',
       'type'  => 'colorpicker',
-      'value' => '#fb5323',
+      'value' => '@color.primary',
     ),
   ),
 
   "assets" => function( $path ){
-    onepager()->asset()->style( 'op-navbar-2', $path . "/style.css" );
+    Onepager::addStyle('navbar-2', $path . '/style.css');
   }
 );

@@ -32,6 +32,12 @@ return array(
   // Settings - $settings available on view file to access the option
   'settings' => array(
     array(
+      'name' => 'title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => '@section_title_size'
+    ),
+    array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
@@ -58,20 +64,26 @@ return array(
       'value' => 'http://s3.amazonaws.com/quantum-assets/bg/bg2.jpg'
     ),
     array(
+      'name'    => 'button_bg',
+      'label'   => 'Button Background',
+      'type'    => 'colorpicker',
+      'value'   => '@color.primary'
+    ),
+    array(
       'name'    => 'button_color',
       'label'   => 'Button Color',
       'type'    => 'colorpicker',
-      'value'   => '#323232'
+      'value'   => '#fff'
     ),
     array(
       'name'    => 'button_hover_color',
       'label'   => 'Button Hover Color',
       'type'    => 'colorpicker',
-      'value'   => '#2196F3'
+      'value'   => '@color.accent'
     ),
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'slider-1', $path . '/style.css' );
+    Onepager::addStyle('slider-1', $path . '/style.css');
   }
 );

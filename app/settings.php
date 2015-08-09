@@ -31,9 +31,9 @@ Onepager::getOptionPanel()->tab('styles', 'Styles')
           'type'=>'colorpalette',
           'presets'=> 'default',
           'value' => array(
-            'primary'=> "#2196F3",
-            'secondary' => '#3F51B5',
-            'accent' => '#FF5722'
+            'primary'=> "#1565c0",
+            'secondary' => '#0a3d78',
+            'accent' => '#E64A19'
           )
         )
       );

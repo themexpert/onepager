@@ -46,6 +46,12 @@ return array(
       )
     ),
     array(
+      'name' => 'title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => '@section_title_size'
+    ),
+    array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
@@ -64,12 +70,12 @@ return array(
     ),
     array(
       'name'=>'cta',
-      'label'=> 'Button Link',
+      'label'=> 'Navbar Button Link',
       'placeholder' => 'http://doamin.com'
     ),
     array(
       'name'=>'cta_text',
-      'label'=> 'Button Text',
+      'label'=> 'Navbar Button Text',
       'value'=> 'Join Now',
       'placeholder'=> 'Call To Action'
     ),
@@ -116,6 +122,6 @@ return array(
   ),
 
   'assets' => function( $path ){
-    onepager()->asset()->style( 'header-1', $path . '/style.css' );
+    Onepager::addStyle('header-1', $path . '/style.css');
   }
 );

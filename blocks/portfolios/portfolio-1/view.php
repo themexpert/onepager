@@ -2,10 +2,14 @@
 	$items = array_chunk($contents['items'], 3);
 	$animation = ($settings['animation']) ? $settings['animation'] : '';
 ?>
-<section id="<?php echo $id; ?>" class="op-section portfolios portfolio-1">
+<section id="<?php echo $id; ?>" class="op-section portfolios portfolio-1 full-screen">
 	<div class="container">
-		
-		<h1 class="section-title text-center <?php echo $settings['title_transformation']?>"><?php echo $contents['title']?></h1>
+
+		<?php if($contents['title']): ?>
+			<h1 class="section-title ml-big mr-big text-center <?php echo $settings['title_transformation']?>">
+				<?php echo $contents['title']?>
+			</h1>
+		<?php endif;?>
 
 		<?php foreach( $items as $portfolio ) :?>
 			<div class="row">
@@ -31,11 +35,10 @@
 <?php // For Full screen effer we need to keep the js inside section ?>
 <script type="text/javascript">
   jQuery(document).ready(function() {
-    jQuery('.portfolio-1 .op-lightbox').magnificPopup({ 
+    jQuery('.portfolio-1 .op-lightbox').magnificPopup({
     	type: 'image',
     	gallery:{ enabled:true }
     });
   });
 </script>
 </section>
-

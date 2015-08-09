@@ -1,7 +1,7 @@
 <?php
 
 return array(
-  
+
   'slug'      => 'navbar-1', // Must be unique
   'groups'    => array('navbars'), // Blocks group for filter
 
@@ -10,13 +10,13 @@ return array(
     array('name'=>'logo', 'type'=> 'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/logo-dark.png'),
     array('name'=>'menu','type'=>'menu'),
     array(
-      'name'=>'cta', 
+      'name'=>'cta',
       'label'=> 'Call To Action Link',
       'placeholder' => 'http://doamin.com'
     ),
     array(
       'name'=>'cta_text',
-      'label'=> 'Call To Action Text', 
+      'label'=> 'Call To Action Text',
       'value'=> 'Call To Action',
       'placeholder'=> 'Call To Action'
     ),
@@ -35,9 +35,9 @@ return array(
       )
     )
   ),
-  
+
   // Styles - $styles available on view file to access the option
-  'styles' => array(    
+  'styles' => array(
     array(
       'name'    => 'bg_color',
       'label'   => 'Background Color',
@@ -60,7 +60,7 @@ return array(
       'name'    => 'cta_bg',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'value'   => '#2196F3',
+      'value'   => '@color.primary',
     ),
     array(
       'name'    => 'cta_color',
@@ -69,8 +69,4 @@ return array(
       'value'   => '#fff',
     ),
   ),
-
-  // "assets" => function( $path ){
-  //   onepager()->asset()->style( 'navbar-1', $path . "style.css" );
-  // }
 );
