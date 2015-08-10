@@ -9,6 +9,7 @@ const Switch = require('./Switch.jsx');
 const WpMediaFrame = require('./media/WpMediaFrame.jsx');
 const WpSelect = require('./WpSelect.jsx');
 const Select = require('./Select.jsx');
+const Link = require('./Link.jsx');
 const QuillEditor = require('./editor/QuillEditor.jsx');
 const PureMixin = require('../../mixins/PureMixin.js');
 const Activity = require('../../lib/Activity.js');
@@ -81,6 +82,15 @@ let InputControl = React.createClass({
       case "colorpalette":
         controlHtml =
           <ColorPalette basePreset={onepager.basePreset} presets={onepager.presets[control.presets]} ref="input" colors={control.value} label={control.label} onChange={this.onChange}/>;
+        break;
+
+      case "link":
+        controlHtml =
+          <Link ref="input"
+                onChange={this.onChange}
+                label={control.value.label}
+                link={control.value.link}
+                target={control.value.target} />;
         break;
 
       case "menu":
