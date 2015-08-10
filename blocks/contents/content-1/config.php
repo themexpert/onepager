@@ -32,6 +32,16 @@ return array(
       'label' => 'Button Text',
       'value' => 'Readmore',
     ),
+    array(
+      'name'  => 'mlink',
+      'label' => 'My link',
+      'type'  => 'link',
+      'value' => [
+        "link" => "http://google.com",
+        "label" => 'my label',
+        "target" => false
+      ],
+    ),
   ),
 
   // Settings - $settings available on view file to access the option
