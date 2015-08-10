@@ -95,12 +95,16 @@ function tx_cache_onepager_blocks(){
 
 
 /**
+ * if we have a onepage.php file in themes onepager directory
+ * then load that template
  * Add page Templates
  */
 function tx_load_onepager_page_templates()
 {
+  $default_onepage_template = locate_template('onepager/onepage.php') ? : onepager()->path("/app/views/onepage.php");
+
   $pageTemplater = new ThemeXpert\WordPress\PageTemplater();
-  $pageTemplater->addTemplate('OnePager', onepager()->path("/app/views/onepage.php"));
+  $pageTemplater->addTemplate('OnePager', $default_onepage_template);
 }
 
 /**
@@ -141,7 +145,7 @@ function getOnepagerConfig(){
 /** WordPress Action Hooks **/
 add_action('wp', 'tx_add_build_mode_button_to_toolbar');
 add_action('admin_init', 'tx_load_onepager_presets');
-add_action('plugins_loaded', 'tx_load_onepager_page_templates');
+add_action('wp_loaded', 'tx_load_onepager_page_templates');
 add_action('plugins_loaded', 'tx_set_block_groups_order');
 add_action('plugins_loaded', 'tx_load_default_onepager_blocks');
 
