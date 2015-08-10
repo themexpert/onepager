@@ -65,8 +65,9 @@ function onepager_enqueue_scripts()
       wp_enqueue_media();
     }
 
+
     $asset->style('tx-colorpicker', asset("assets/css/bootstrap-colorpicker.css"));
-    $asset->script('tx-iconselector', asset('assets/js/icon-selector-bootstrap.min.js'), ['jquery']);
+    $asset->script('tx-iconselector', asset('assets/js/icon-selector-bootstrap.js'), ['jquery']);
     $asset->script('tx-colorpicker', asset('assets/js/bootstrap-colorpicker.js'), ['jquery']);
     $asset->script('tx-bootstrap-switch', asset('assets/js/bootstrap-switch.js'), ['jquery']);
     $asset->script('tx-toastr', asset('assets/js/toastr.js'), ['jquery']);

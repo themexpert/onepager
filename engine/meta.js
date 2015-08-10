@@ -157,6 +157,8 @@
 
   function resetTemplate() {
     var payload = {action: 'onepager_get_sections', pageId: onepager.pageId};
+    var data = {action: 'save_sections', updated: null, pageId: onepager.pageId, sections: []};
+
     $.post(ajaxurl, payload, function(res){
       if(res && res.success && res.sections.length !== 0){
         var confirmationMsg =
@@ -168,10 +170,9 @@
         //FIXME: give sweetalert :/
         if(!proceed) return;
 
-        var data = {action: 'save_sections', updated: null, pageId: onepager.pageId, sections: []};
         loadEditor(data);
       } else {
-        loadEditor();
+        loadEditor(data);
       }
 
     })

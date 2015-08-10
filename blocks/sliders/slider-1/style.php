@@ -13,12 +13,12 @@
 	font-size : <?php echo $settings['title_size']?>px;
 }
 #slide-<?php echo $id; ?> .btn{
-	background : <?php echo $styles['button_color']; ?>;
+	background : <?php echo $styles['button_bg']; ?>;
 	color : <?php echo $styles['button_color']; ?>;
 }
 #slide-<?php echo $id; ?> .btn:hover{
-	border-color : <?php echo $styles['button_hover_color']; ?>;
-	color : <?php echo $styles['button_hover_color']; ?>;
+	background : <?php echo $styles['button_hover_color']; ?>;
+	color : <?php echo $styles['button_color']; ?>;
 }
 
 @media (min-width: 992px) {
