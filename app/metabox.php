@@ -1,6 +1,6 @@
 <?php
 
-add_action('add_meta_boxes', 'tx_add_onepager_metabox');
+add_action('add_meta_boxes', 'tx_add_onepager_metabox', 1);
 add_action('admin_enqueue_scripts', 'tx_onepager_metabox_scripts');
 
 function tx_get_groups($groups){
@@ -23,10 +23,11 @@ function tx_add_onepager_metabox(){
     };
 
     add_meta_box(
-        'onepager-metabox',
+        'onepager_meta',
         __( 'Preset Templates', 'onepager' ),
         $template,
-        'page'
+        'page',
+      'normal', apply_filters( 'onepager_metabox_prio', 'high' )
     );
 }
 

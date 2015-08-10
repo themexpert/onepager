@@ -10,7 +10,7 @@
     var $postArea        = $("#postdivrich");
     var $pageTemplate    = $("#page_template");
     var $export          = $("#onepager-export-layout");
-    var $onepagerMetabox = $("#onepager-metabox");
+    var $onepagerMetabox = $("#onepager_meta");
     var $blankTemplate   = $("#blank-template");
     var $filter          = $("#op-group-filter select");
     var $presets         = $("#op-presets>.media");
