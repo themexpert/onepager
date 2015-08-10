@@ -37,6 +37,7 @@ function onepager_localize_script_data($pageId)
     'footer'      => $footer_markup,
     'disable'     => $disableUrl,
     'presets'     => Onepager::getPresets(),
+    'basePreset'  => Onepager::getBasePreset(),
     'config'      => getOnepagerConfig()
   );
 }

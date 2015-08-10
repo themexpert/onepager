@@ -7,6 +7,7 @@ abstract class Onepager {
 
 	// Get the global option panel object
   protected static $presets = [];
+  protected static $basePreset;
 
   public static function getOptionPanel()
 	{
@@ -82,5 +83,13 @@ abstract class Onepager {
 	{
 			onepager()->asset()->script($name, $src, $dependency, $version, $footer);
 	}
-  
+
+  public static function basePreset($array) {
+    static::$basePreset = $array;
+  }
+
+  public static function getBasePreset() {
+    return static::$basePreset;
+  }
+
 }

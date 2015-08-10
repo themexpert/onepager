@@ -14,8 +14,8 @@ let Preset = React.createClass({
   },
 
   render() {
-    let {colors, activate} = this.props;
-    colors = _.map(colors, (color, name)=>{
+    let {activate} = this.props;
+    let colors = _.map(this.props.colors, (color, name)=>{
      return {
        name,
        code: color
@@ -23,7 +23,7 @@ let Preset = React.createClass({
     });
 
     return (
-      <div onClick={activate.bind(this, colors)}>
+      <div onClick={activate.bind(this, this.props.colors)}>
         {
           _.map(colors, (color)=>{
             return <Color key={color.name} activate={_.noop} name={color.name} color={color.code} width={100/colors.length}/>;

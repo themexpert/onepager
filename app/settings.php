@@ -38,9 +38,20 @@ Onepager::getOptionPanel()->tab('styles', 'Styles')
         )
       );
 
+Onepager::basePreset(array(
+  'primary'=> "#1565c0",
+  'secondary' => '#0a3d78',
+  'accent' => '#E64A19'
+));
+
 Onepager::addPresets("default", array(
   ['primary'=>'red', 'secondary'=>'yellow'],
   ['primary'=>'green', 'secondary'=>'yellow']
+));
+
+Onepager::addPresets("default", array(
+  ['primary'=>'blue', 'secondary'=>'yellow'],
+  ['primary'=>'green', 'secondary'=>'yellow','a1'=>'pink', 'a2'=>'red']
 ));
 
 add_action('wp_head', function(){

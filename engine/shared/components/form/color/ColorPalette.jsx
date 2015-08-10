@@ -7,6 +7,7 @@ const PalettePicker = require("./palette/Picker.jsx");
 const Activity = require('../../../lib/Activity.js');
 const Button = require('react-bootstrap/lib/Button');
 const PalettePresets = require('./palette/Presets.jsx');
+window.assign       = require('object-assign');
 
 let inactive = Activity(4000);
 let completedUpdating = Activity(1000);
@@ -24,6 +25,7 @@ function transformColors(colors){
     return { name: key, code: color };
   });
 }
+
 const ColorPalette = React.createClass({
   mixins: [PureMixin],
 
@@ -31,6 +33,7 @@ const ColorPalette = React.createClass({
     "label": React.PropTypes.string,
     "colors": React.PropTypes.array,
     "presets": React.PropTypes.array,
+    "basePreset": React.PropTypes.array,
     "onChange": React.PropTypes.func
   },
 
@@ -90,7 +93,10 @@ const ColorPalette = React.createClass({
   },
 
   handleSelectPreset(colors){
-    let state = {active: null, colors: Immutable.fromJS(colors)};
+    let newPreset = transformColors(assign(Immutable.fromJS(this.props.basePreset).toJS(), colors));
+
+    let state = {active: null, colors: Immutable.fromJS(newPreset)};
+
     this.setState(state);
     this.closePresetsDrawer();
   },
@@ -109,7 +115,7 @@ const ColorPalette = React.createClass({
     return (
       <div className="color-palette">
 
-        <label className="control-label">{this.props.label}</label> <br/>
+        <label className="control-label">{this.props.label}</label>
 
         <Button bsStyle='primary' className="btn-block" onClick={this.openPresetsDrawer}>
           <span className="fa fa-search"></span> Select Preset
@@ -119,6 +125,7 @@ const ColorPalette = React.createClass({
           <PalettePresets activate={this.handleSelectPreset} palettes={presets} />
         </div>
 
+        <div style={{display: !this.state.showPresets ? "block": "none"}}>
         { colors.map((color, ii)=> {
           let activate = this.handleActivate.bind(this, ii);
           let width = this.getWidth(ii);
@@ -135,6 +142,8 @@ const ColorPalette = React.createClass({
 
         {this.state.active !== null ?
           <PalettePicker ref="colorpicker" color={this.state.color} update={this.handleUpdate}/> : null }
+        </div>
+
       </div>
     );
   }
