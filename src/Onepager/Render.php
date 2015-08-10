@@ -49,6 +49,7 @@ class Render {
     }
 
     $view_file = array_key_exists('view_file', $block) ? $block['view_file'] : null;
+    $view_file = locate_template('blocks/'.$block['slug'].'/view.php') ? : $view_file;
 
     //throw better exceptions
     if (!FileSystem::exists($view_file)) {
@@ -96,6 +97,7 @@ class Render {
     }
 
     $style_file = array_key_exists('style_file', $block) ? $block['style_file'] : null;
+    $style_file = locate_template('blocks/'.$block['slug'].'/style.php') ? : $style_file;
 
     //throw better exceptions
     if (!FileSystem::exists($style_file)) {
