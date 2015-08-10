@@ -22,6 +22,8 @@
 		'menu' =>$contents['menu'] ,
 		'menu_class'=>'nav',
 		'container' =>false,
+    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+    'walker'            => new wp_bootstrap_navwalker()
 		)) ?>
 	</div>
 </header>
@@ -34,6 +36,6 @@ jQuery(document).ready(function(){
 	});
 	jQuery('.offcanvas-close').on('click', function(){
 		jQuery('body').removeClass('offcanvas-active');
-	});			
+	});
 });
 </script>

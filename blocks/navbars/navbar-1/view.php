@@ -22,9 +22,11 @@
             <a href="<?php echo $contents['cta']?>" class="btn navbar-btn navbar-right"><?php echo $contents['cta_text']?></a>
 	    	<?php endif; ?>
 	    	<?php wp_nav_menu(array(
-                'menu' =>$contents['menu'] , 
-                'menu_class'=>'nav navbar-nav navbar-right', 
+                'menu' =>$contents['menu'] ,
+                'menu_class'=>'nav navbar-nav navbar-right',
                 'container' =>false,
+                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                'walker'            => new wp_bootstrap_navwalker()
             )) ?>
 	    </nav>
 	</div>

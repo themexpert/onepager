@@ -13,6 +13,7 @@
     "ramsey/array_column": "^1.1"
   },
   "autoload": {
+    "classmap": ["src/WordPress"],
     "psr-4": {
       "ThemeXpert\\": "src/",
       "App\\": "app/"

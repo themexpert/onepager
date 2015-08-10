@@ -2,7 +2,7 @@
 	$slide_num = 0;
 ?>
 <header id="<?php echo $id; ?>" class="op-section header header-2">
-	
+
 	<div class="navbar navbar-static-top" <?php echo ($settings['sticky_nav']) ? 'data-spy="affix"' : '';?> data-offset-top="80">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -21,20 +21,22 @@
 				<?php endif; ?>
 		      </a>
 		    </div>
-		    
-		    
+
+
 		    <!-- Menu -->
 		    <nav class="collapse navbar-collapse" id="nav-<?php echo $id; ?>">
-			    
+
 			    <?php if( $settings['cta']): ?>
 			    	<!-- Navbar button -->
 	            	<a href="<?php echo $settings['cta']?>" class="btn navbar-btn navbar-right"><?php echo $settings['cta_text']?></a>
 		    	<?php endif; ?>
 
 		    	<?php wp_nav_menu(array(
-	                'menu' =>$contents['menu'] , 
-	                'menu_class'=>'nav navbar-nav navbar-right', 
+	                'menu' =>$contents['menu'] ,
+	                'menu_class'=>'nav navbar-nav navbar-right',
 	                'container' =>false,
+                  'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                  'walker'            => new wp_bootstrap_navwalker()
 	            )) ?>
 		    </nav>
 		</div>
@@ -42,7 +44,7 @@
 	<!-- Navbar end -->
 
 	<div id="slide-<?php echo $id ?>" class="carousel slide" data-ride="carousel">
-		
+
 		<?php if(count($contents['sliders']) > 1): // Indicator will only show when more then one item publish?>
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -54,7 +56,7 @@
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
-			
+
 			<?php foreach($contents['sliders'] as $slide): ?>
 			<div class="item <?php echo ($slide_num === 0) ? 'active' : ''?>">
 				<div class="container">
@@ -65,11 +67,11 @@
 									<?php if($slide['title']):?>
 									<h2 class="title <?php echo $settings['title_transformation']?> "><?php echo $slide['title']?></h2>
 									<?php endif; ?>
-									
+
 									<?php if($slide['description']):?>
 									<p class="desc"><?php echo $slide['description']?></p>
 									<?php endif; ?>
-									
+
 									<?php if($slide['link']): ?>
 									<p><a class="btn btn-lg btn-primary" href="<?php echo $slide['link']?>"><?php echo $slide['link_text']?></a></p>
 									<?php endif; ?>
@@ -83,7 +85,7 @@
 								<?php endif; ?>
 							</div>
 						</div>
-					</div>	
+					</div>
 				</div>
 			</div>
 			<?php $slide_num++; endforeach; ?>

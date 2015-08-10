@@ -19,9 +19,11 @@
 	    <!-- Menu -->
 	    <nav class="collapse navbar-collapse" id="nav-<?php echo $id; ?>">
 	    	<?php wp_nav_menu(array(
-                'menu' =>$contents['menu'] , 
-                'menu_class'=>'nav navbar-nav', 
+                'menu' =>$contents['menu'] ,
+                'menu_class'=>'nav navbar-nav',
                 'container' =>false,
+                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                'walker'            => new wp_bootstrap_navwalker()
             )) ?>
             <?php if( $contents['cta']): ?>
             <a href="<?php echo $contents['cta']?>" class="btn navbar-btn navbar-right"><?php echo $contents['cta_text']?></a>
