@@ -21,7 +21,7 @@ let _blockState         = {open: false};
 let _menuState          = {id: null, index: null, title: null};
 let _sidebarTabState    = {active: 'op-sections'};
 let _activeSectionIndex = null;
-let _savedSections      = _.copy(_sections);
+let _savedSections      = _prepareForDirtyCheck(_sections);
 let AUTO_SAVE_DELAY     = 500;
 
 let shouldLiveSectionsSync = ShouldSync(_sections, 'sections'); //jshint ignore:line
@@ -33,6 +33,10 @@ let liveService = SyncService(null, inactive, shouldLiveSectionsSync); //jshint 
 
 function collapseSidebar(collapse){
   _collapseSidebar = collapse;
+}
+
+function _prepareForDirtyCheck(section){
+  return JSON.stringify(SectionTransformer.simplifySections(section));
 }
 
 // function to activate a section
@@ -142,7 +146,7 @@ let AppStore = assign({}, BaseStore, {
     let updated = syncService.rawUpdate(_sections);
 
     updated.then(()=> {
-      _savedSections = _.copy(_sections);
+      _savedSections = _prepareForDirtyCheck(_sections);
       AppStore.emitChange();
     });
 
@@ -150,7 +154,8 @@ let AppStore = assign({}, BaseStore, {
   },
 
   isDirty(){
-    return JSON.stringify(_sections) !== JSON.stringify(_savedSections);
+    console.log(_savedSections);
+    return _prepareForDirtyCheck(_sections) !== _savedSections;
   },
 
   get(index){
