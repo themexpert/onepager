@@ -2,16 +2,16 @@
 
 class ApiController {
   function saveSections() {
-    $sections = array_key_exists('sections', $_POST) ? $_POST['sections'] : [];
+    $sections = array_get($_POST, 'sections', []);
 
     //strip slashes
     $sections = $this->filterInput($sections);
 
     $updated  = $_POST['updated'];
-    $pageId   = array_key_exists('pageId', $_POST) ? $_POST['pageId'] : false;
+    $pageId   = array_get($_POST, 'pageId', false);
     $response = [];
 
-    $section = array_key_exists($updated, $sections) ? $sections[$updated] : false;
+    $section = array_get($sections, $updated, false);
 
     //TODO: Improve this
     if ($pageId) {
@@ -19,9 +19,11 @@ class ApiController {
     }
 
     if ($section) {
-      $section             = onepager()->render()->sectionBlockDataMerge($section);
-      $response["content"] = onepager()->render()->section($section);
-      $response["style"]   = onepager()->render()->style($section);
+      $render = onepager()->render();
+
+      $section             = $render->sectionBlockDataMerge($section);
+      $response["content"] = $render->section($section);
+      $response["style"]   = $render->style($section);
     }
 
     $response["success"] = true;
@@ -54,7 +56,7 @@ class ApiController {
   }
 
   function get_sections() {
-    $pageId = array_key_exists('pageId', $_POST) ? $_POST['pageId'] : false;
+    $pageId = array_get($_POST, 'pageId', false);
 
     //TODO: Improve this
     if (!$pageId) {
@@ -72,8 +74,8 @@ class ApiController {
   }
 
   function selectLayout() {
-    $pageId   = array_key_exists('pageId', $_POST) ? $_POST['pageId'] : false;
-    $layoutId = array_key_exists('layoutId', $_POST) ? $_POST['layoutId'] : false;
+    $pageId   = array_get($_POST, 'pageId',  false);
+    $layoutId = array_get($_POST, 'layoutId',  false);
 
     $onepagerLayouts = onepager()->layoutManager()->all();
     $layout          = array_find_by($onepagerLayouts, 'id', $layoutId);
@@ -95,7 +97,7 @@ class ApiController {
   }
 
   public function reloadSections() {
-    $sections = array_key_exists('sections', $_POST) ? $_POST['sections'] : [];
+    $sections = array_get($_POST, 'sections', []);
 
     $sections = array_map(function ($section) {
       $section['content'] = onepager()->render()->section($section);

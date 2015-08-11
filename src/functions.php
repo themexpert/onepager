@@ -12,6 +12,20 @@ if(!function_exists('array_find_by')){
   }
 }
 
+if(!function_exists('array_get')){
+  /**
+   *
+   * @param $array
+   * @param $key
+   * @param $default
+   *
+   * @return mixed
+   */
+  function array_get($array, $key, $default){
+    return array_key_exists($key, $array) ? $array[$key] : $default;
+  }
+}
+
 if(!function_exists('array_pick')){
   /**
    * Pick a value from every array inside of an array collection
