@@ -154,7 +154,6 @@ let AppStore = assign({}, BaseStore, {
   },
 
   isDirty(){
-    console.log(_savedSections);
     return _prepareForDirtyCheck(_sections) !== _savedSections;
   },
 
@@ -265,9 +264,6 @@ let AppStore = assign({}, BaseStore, {
         updateTitle(action.index, action.previousTitle, action.newTitle);
         AppStore.emitChange();
         break;
-
-      case actions.OPEN_MENU_SCREEN:
-        alert("we are here");
       // add more cases for other actionTypes...
     }
   })
