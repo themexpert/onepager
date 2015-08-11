@@ -15,14 +15,6 @@ let App = React.createClass({
     this.setState(AppStore.getAll());
   },
 
-  _setSidebarCollapseClass(collapse){
-    if(collapse){
-      jQuery('body').addClass('op-sidebar-collapsed');
-    } else {
-      jQuery('body').removeClass('op-sidebar-collapsed');
-    }
-  },
-
   componentDidUpdate: function(prevProps, prevState) {
     if(this.state.collapseSidebar !== prevState.collapseSidebar){
       this._setSidebarCollapseClass(this.state.collapseSidebar);
@@ -31,20 +23,34 @@ let App = React.createClass({
 
   componentDidMount() {
     this._setSidebarCollapseClass(this.state.collapseSidebar);
-
-    jQuery(window).on('beforeunload', ()=> {
-      if (this.state.isDirty) {
-        return "You haven't saved your changes and by leaving the page they will be lost.";
-      }
-    });
-
-    jQuery("body").addClass("op-build-active");
+    this._unsavedAlert();
+    this._addBuildClassToBody();
 
     AppStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount() {
     AppStore.removeChangeListener(this._onChange);
+  },
+
+  _unsavedAlert(){
+    jQuery(window).on('beforeunload', ()=> {
+      if (this.state.isDirty) {
+        return "You haven't saved your changes and by leaving the page they will be lost.";
+      }
+    });
+  },
+
+  _addBuildClassToBody(){
+    jQuery("body").addClass("op-build-active");
+  },
+
+  _setSidebarCollapseClass(collapse){
+    if(collapse){
+      jQuery('body').addClass('op-sidebar-collapsed');
+    } else {
+      jQuery('body').removeClass('op-sidebar-collapsed');
+    }
   },
 
   render() {
