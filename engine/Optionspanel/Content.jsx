@@ -8,6 +8,17 @@ const OptionsPanelActions = require('./OptionActions.js');
 
 let Content = React.createClass({
   mixins: [PureMixin],
+
+  getDefaultProps(){
+    return{
+      whenSettingsDirty: ()=>{}
+    };
+  },
+
+  propTypes: {
+    whenSettingsDirty: React.PropTypes.func
+  },
+
   update(){
     let controls = this.props.panel.get('fields');
 
@@ -29,6 +40,8 @@ let Content = React.createClass({
 
     let panel = this.props.panel.set('fields', controls);
     OptionsPanelActions.update(this.props.index, panel);
+
+    this.props.whenSettingsDirty();
   },
 
   render(){

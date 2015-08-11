@@ -6,9 +6,11 @@ const Immutable     = require('immutable');
 const OptionActions = require('./OptionActions.js');
 const Sync          = require("../shared/lib/OptionsPanelSync.js");
 const notify        = require("../shared/lib/notify.js");
+const ShouldSync    = require('../shared/lib/ShouldSync.js');
 
 const ODataStore = require('../shared/lib/ODataStore.js');
 let options      = ODataStore.options;
+
 let sync         = Sync(ODataStore.ajaxUrl, ODataStore.page);
 
 function transformer(fields, panelId) {
@@ -31,6 +33,7 @@ let _optionPanel = _.map(_.copy(ODataStore.optionPanel), (panel)=> {
 
 let AppState = {
   activeTabIndex: 0,
+  synced : Immutable.fromJS(_optionPanel),
   optionPanel   : Immutable.fromJS(_optionPanel)
 };
 
@@ -43,6 +46,7 @@ AppState.tabs = AppState.optionPanel.map(tab=> {
 let OptionsPanelStore = Reflux.createStore({
   listenables: [OptionActions],
   data       : AppState,
+
   getInitialState(){
     return this.data;
   },
@@ -54,6 +58,12 @@ let OptionsPanelStore = Reflux.createStore({
   onUpdate(index, panel){
     this.data.optionPanel = this.data.optionPanel.set(index, panel);
     this.trigger({optionPanel: this.data.optionPanel});
+  },
+
+
+  onIsDirty(){
+    let dirty = !Immutable.is(this.data.synced, this.data.optionPanel);
+    OptionActions.isDirty.completed(dirty);
   },
 
   onSync(){
@@ -70,6 +80,8 @@ let OptionsPanelStore = Reflux.createStore({
 
     //FIXME: move this to UI
     update.then(()=>{
+      let synced = Immutable.fromJS(this.data.optionPanel.toJS());
+      this.trigger({synced});
       notify.success('Successfully saved settings');
       OptionActions.sync.completed();
     }, ()=>{

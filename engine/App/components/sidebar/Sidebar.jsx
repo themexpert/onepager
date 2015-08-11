@@ -3,7 +3,7 @@ const swal               = require('sweetalert');
 const React              = require('react');
 const Tab                = require('../../../shared/components/Tab.jsx');
 const TabPane            = require('../../../shared/components/TabPane.jsx');
-const AdminActions       = require('../../../Optionspanel/OptionActions.js');
+const OptionActions      = require('../../../Optionspanel/OptionActions.js');
 const SectionTransformer = require('../../../shared/lib/SectionTransformer.js');
 const ODataStore         = require('../../../shared/lib/ODataStore.js');
 const AppActions         = require('../../AppActions.js');
@@ -24,18 +24,15 @@ let Sidebar = React.createClass({
   },
 
   componentDidMount(){
-    let tabContents = React.findDOMNode(this.refs.tabContents);
-
-    $(function () {
-      $(tabContents).niceScroll({cursorcolor: '#2ab0ad', cursorborder: '0'});
-      $('[data-toggle="tooltip"]').tooltip()
-    })
+    this._unsavedAlert();
+    this._initTooltips();
   },
 
   getInitialState(){
     return {
       saving: false,
-      collapse: false
+      collapse: false,
+      isSettingsDirty: false
     };
   },
 
@@ -52,11 +49,11 @@ let Sidebar = React.createClass({
   },
 
   handleGlobalSettingsSave(){
-    let updated = AdminActions.sync.triggerPromise();
+    let updated = OptionActions.sync.triggerPromise();
     this.setState({saving: true});
 
     updated.then(()=> {
-      this.setState({saving: false});
+      this.setState({isSettingsDirty: false, saving: false});
       AppActions.reloadSections();
       AppActions.reloadBlocks();
     }, ()=> {
@@ -65,8 +62,34 @@ let Sidebar = React.createClass({
     });
   },
 
+  whenSettingsDirty(){
+    //FIXME: why the! should I use a promise here?
+    OptionActions
+      .isDirty
+      .triggerPromise()
+      .then(isSettingsDirty=> this.setState({isSettingsDirty}));
+  },
+
+  _unsavedAlert(){
+    jQuery(window).on('beforeunload', ()=> {
+      if (this.state.isSettingsDirty) {
+        return "You haven't saved your settings changes and by leaving the page they will be lost.";
+      }
+    });
+  },
+
+  _initTooltips(){
+    let tabContents = React.findDOMNode(this.refs.tabContents);
+
+    $(function () {
+      $(tabContents).niceScroll({cursorcolor: '#2ab0ad', cursorborder: '0'});
+      $('[data-toggle="tooltip"]').tooltip()
+    });
+  },
+
   render() {
     let {sections, blocks, activeSectionIndex, activeSection, isDirty} = this.props;
+    let isSettingsDirty = this.state.isSettingsDirty;
     let sectionEditable = activeSectionIndex !== null;
     let activeTab       = this.props.sidebarTabState.active;
     let sectionSettings = activeSection ? _.pick(activeSection, ['settings', 'contents', 'styles']) : {};
@@ -91,7 +114,6 @@ let Sidebar = React.createClass({
       "fa fa-chevron-right": this.props.collapseSidebar
     });
 
-
     return (
       <div className="txop-sidebar op-ui clearfix">
         <ul className='tx-nav tx-nav-tabs'>
@@ -103,7 +125,7 @@ let Sidebar = React.createClass({
           <div className="btn-group">
           {
             activeTab === 'op-settings' ?
-              <button onClick={this.handleGlobalSettingsSave} className='btn btn-primary btn--save'>
+              <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave} className='btn btn-primary btn--save'>
                 <span className={saveClasses}></span>
               </button> :
               <button disabled={!isDirty} onClick={this.handleSave} className='btn btn-primary btn--save' data-toggle="tooltip"
@@ -140,7 +162,7 @@ let Sidebar = React.createClass({
           </TabPane>
 
           <TabPane id='op-settings' active={activeTab}>
-            <Settings />
+            <Settings whenSettingsDirty={this.whenSettingsDirty}/>
           </TabPane>
 
         </div>
