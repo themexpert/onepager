@@ -12,27 +12,23 @@
 
 ## Installation
 
-Download the **Onepager** plugin from our website and install it as regual plugin for WordPress.
+Download the **Onepager** plugin from our website and install it as regular plugin for WordPress.
 
 ### Developer 
-
-Make sure you have installed `NodeJs` and `NPM` and availabe system wide. You also need to install `composer`, PHP package management system and availabe system wide. Now run this command
+If you want to build onepager yourself make sure you have installed `node`, `npm`, `gulp` and `composer` and available system wide. Now run this command
 ```
 npm install
-```
-We need bower to get installed
-```
 bower install
-```
-Composer
-```
 composer install
 ```
-Finally run it
+
+Finally run it to compile the assets
 ```
 gulp
 ```
-Gulp will automatically compile your `LESS` and `JS` changes to `dist` folder.
+Gulp will automatically compile your `LESS` and `JS` changes into `dist` folder.
+
+You can run `gulp package` to build a wordpress plugin package with only required files
 
 ## Where to Get Help
 
