@@ -26,6 +26,26 @@ if(!function_exists('array_get')){
   }
 }
 
+
+if(!function_exists('obj_to_array')){
+  /**
+   * @param $obj
+   * @param $oKey
+   * @param $oValue
+   *
+   * @return array
+   */
+  function obj_to_array( $obj, $oKey, $oValue ) {
+    $arr = [ ];
+
+    array_walk( $obj, function ( $v, $k ) use ( &$arr, $oKey, $oValue ) {
+      $arr[ $v->{$oKey} ] = $v->{$oValue};
+    } );
+
+    return $arr;
+  }
+}
+
 if(!function_exists('array_pick')){
   /**
    * Pick a value from every array inside of an array collection

@@ -6,6 +6,8 @@ const SectionViewCollection = require('./components/section-view/SectionViewColl
 const _                     = require('underscore');
 const cx = require('classnames');
 
+require("../../assets/css/bootstrap-select.css");
+
 let App = React.createClass({
   getInitialState() {
     return AppStore.getAll();
@@ -16,6 +18,8 @@ let App = React.createClass({
   },
 
   componentDidUpdate: function(prevProps, prevState) {
+    this._bindPlugins();
+
     if(this.state.collapseSidebar !== prevState.collapseSidebar){
       this._setSidebarCollapseClass(this.state.collapseSidebar);
     }
@@ -25,14 +29,25 @@ let App = React.createClass({
     this._setSidebarCollapseClass(this.state.collapseSidebar);
     this._unsavedAlert();
     this._addBuildClassToBody();
+    this._bindPlugins();
 
     AppStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount() {
+    this._unbindPlugins();
+
     AppStore.removeChangeListener(this._onChange);
   },
 
+  _bindPlugins(){
+    jQuery('select.form-control').selectpicker();
+    jQuery('[data-toggle="tooltip"]').tooltip()
+  },
+  _unbindPlugins(){
+    jQuery('select.form-control').unbind();
+    jQuery('[data-toggle="tooltip"]').unbind()
+  },
   _unsavedAlert(){
     jQuery(window).on('beforeunload', ()=> {
       if (this.state.isDirty) {

@@ -14,7 +14,8 @@
     "bootstrap": "~3.3.5",
     "magnific-popup": "~1.0.0",
     "bootstrap-switch": "~3.3.2",
-    "fullpage.js": "~2.6.7"
+    "fullpage.js": "~2.6.7",
+    "bootstrap-select": "~1.7.3"
   },
   "devDependencies": {}
 }

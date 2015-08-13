@@ -57,15 +57,15 @@ class NavigationMenu implements NavigationMenuInterface {
        WHERE
           ID in (
             SELECT
-	            wp_term_relationships.object_id
+	            {$wpdb->prefix}term_relationships.object_id
             FROM
-              wp_terms
+              {$wpdb->prefix}terms
             JOIN
-              wp_term_relationships
+              {$wpdb->prefix}term_relationships
             WHERE
-              wp_terms.term_id = wp_term_relationships.term_taxonomy_id
+              {$wpdb->prefix}terms.term_id = {$wpdb->prefix}term_relationships.term_taxonomy_id
             AND
-              wp_terms.term_id = %s
+              {$wpdb->prefix}terms.term_id = %s
           )";
 
 		$result = $wpdb->get_results( $wpdb->prepare( $query, $menuId ) );

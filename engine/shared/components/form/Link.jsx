@@ -41,15 +41,15 @@ let Link  = React.createClass({
 
         <div className="form-group" style={{marginBottom: 0}}>
           <div className="input-group">
-            <span className="input-group-addon">label</span>
+            <span className="input-group-addon">Text</span>
             <input defaultValue={this.props.label} className="form-control" onChange={this.onChange} ref="label" type="text" placeholder="label"/>
           </div>
         </div>
         <div className="form-group">
           <div className="input-group">
-            <span className="input-group-addon" style={{width: 55}}>link</span>
+            <span className="input-group-addon" style={{width: 53}}>Url</span>
             <input defaultValue={this.props.link} className="form-control" onChange={this.onChange} ref="link" type="text" placeholder="link"/>
-            <span className="input-group-addon">target</span>
+            <span className="input-group-addon" data-toggle="tooltip" data-placement="top" title="Open link in a new window">Target</span>
             <span className="input-group-addon">
               <input checked={this.props.target} ref="target" onChange={this.onChange} type="checkbox"/>
             </span>

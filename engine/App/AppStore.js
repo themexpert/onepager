@@ -1,28 +1,28 @@
 const $ = jQuery; //jshint ignore: line
-const _                  = require('underscore');
-const assign             = require('object-assign');
-const AppDispatcher      = require('./AppDispatcher.js');
-const Constants          = require('./AppConstants.js');
+const _ = require('underscore');
+const assign = require('object-assign');
+const AppDispatcher = require('./AppDispatcher.js');
+const Constants = require('./AppConstants.js');
 const SectionTransformer = require('../shared/lib/SectionTransformer.js');
-const ShouldSync         = require('../shared/lib/ShouldSync.js');
-const Activity           = require('../shared/lib/Activity.js');
-const ODataStore         = require('../shared/lib/ODataStore.js');
-const BaseStore          = require('./BaseStore.js');
-const SyncService        = require('./AppSyncService.js');
+const ShouldSync = require('../shared/lib/ShouldSync.js');
+const Activity = require('../shared/lib/Activity.js');
+const ODataStore = require('../shared/lib/ODataStore.js');
+const BaseStore = require('./BaseStore.js');
+const SyncService = require('./AppSyncService.js');
 
 require('../shared/lib/_mixins.js');
 
 
 // data storage
-let _collapseSidebar    = false;
-let _blocks             = ODataStore.blocks;
-let _sections           = SectionTransformer.misitifySections(ODataStore.sections, ODataStore.blocks);
-let _blockState         = {open: false};
-let _menuState          = {id: null, index: null, title: null};
-let _sidebarTabState    = {active: 'op-sections'};
+let _collapseSidebar = false;
+let _blocks = ODataStore.blocks;
+let _sections = SectionTransformer.misitifySections(ODataStore.sections, ODataStore.blocks);
+let _blockState = {open: false};
+let _menuState = {id: null, index: null, title: null};
+let _sidebarTabState = {active: 'op-sections'};
 let _activeSectionIndex = null;
-let _savedSections      = _prepareForDirtyCheck(_sections);
-let AUTO_SAVE_DELAY     = 500;
+let _savedSections = _prepareForDirtyCheck(_sections);
+let AUTO_SAVE_DELAY = 500;
 
 let shouldLiveSectionsSync = ShouldSync(_sections, 'sections');
 let shouldSectionsSync = ShouldSync(_sections, 'sections');
@@ -31,11 +31,11 @@ let inactive = Activity(AUTO_SAVE_DELAY);
 let syncService = SyncService(ODataStore.pageId, inactive, shouldSectionsSync);
 let liveService = SyncService(null, inactive, shouldLiveSectionsSync);
 
-function collapseSidebar(collapse){
+function collapseSidebar(collapse) {
   _collapseSidebar = collapse;
 }
 
-function _prepareForDirtyCheck(section){
+function _prepareForDirtyCheck(section) {
   return JSON.stringify(SectionTransformer.simplifySections(section));
 }
 
@@ -93,8 +93,8 @@ function removeSection(index) {
 }
 
 
-function updateTitle(index, previousTitle, newTitle){
-  let section   = _.copy(_sections[index]);
+function updateTitle(index, previousTitle, newTitle) {
+  let section = _.copy(_sections[index]);
   section.title = newTitle;
 
   if ('untitled section' === previousTitle) {
@@ -104,12 +104,14 @@ function updateTitle(index, previousTitle, newTitle){
   updateSection(index, section);
 }
 
-function getUniqueSectionId (sections, index, title) {
+function getUniqueSectionId(sections, index, title) {
   let id = _.dasherize(title); //make es4 compatible
 
-  while (! _.isUniquePropInArray(sections, index, id, 'id')) {
+  while (!_.isUniquePropInArray(sections, index, 'id', id)) {
     id = id + 1;
   }
+
+  console.log(id);
 
   return id;
 }
@@ -118,7 +120,7 @@ function sectionSynced(index, res) {
   let section;
 
   _sections[index] = _.copy(_sections[index]);
-  section          = _sections[index];
+  section = _sections[index];
 
   section.content = SectionTransformer.getLiveModeHTML(section.livemode, res.content);
   SectionTransformer.appendStyleToDOM(section.id, res.style);
@@ -130,14 +132,14 @@ let AppStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
   getAll() {
     return {
-      blocks            : _blocks,
-      isDirty           : this.isDirty(),
-      sections          : _sections,
-      menuState         : _menuState,
-      collapseSidebar   : _collapseSidebar,
-      sidebarTabState   : _sidebarTabState,
-      blockState        : _blockState,
-      activeSection     : _sections[_activeSectionIndex],
+      blocks: _blocks,
+      isDirty: this.isDirty(),
+      sections: _sections,
+      menuState: _menuState,
+      collapseSidebar: _collapseSidebar,
+      sidebarTabState: _sidebarTabState,
+      blockState: _blockState,
+      activeSection: _sections[_activeSectionIndex],
       activeSectionIndex: _activeSectionIndex
     };
   },
@@ -248,7 +250,7 @@ let AppStore = assign({}, BaseStore, {
 
       case actions.RELOAD_BLOCKS:
         //FIXME: its not a place for business logic
-        syncService.reloadBlocks().then((blocks)=>{
+        syncService.reloadBlocks().then((blocks)=> {
           _blocks = blocks;
           AppStore.emitChange();
         });
