@@ -11,6 +11,7 @@ const AppStore           = require('../../AppStore.js');
 const SectionList        = require('../section-list/SectionList.jsx');
 const SectionControls    = require('./SectionControls.jsx');
 const Settings           = require("./Settings.jsx");
+const Menu           = require("./Menu.jsx");
 const $                  = jQuery;
 
 import cx from "classnames";
@@ -25,7 +26,7 @@ let Sidebar = React.createClass({
 
   componentDidMount(){
     this._unsavedAlert();
-    this._initTooltips();
+    this._initNiceScroll();
   },
 
   getInitialState(){
@@ -78,12 +79,11 @@ let Sidebar = React.createClass({
     });
   },
 
-  _initTooltips(){
+  _initNiceScroll(){
     let tabContents = React.findDOMNode(this.refs.tabContents);
 
     $(function () {
       $(tabContents).niceScroll({cursorcolor: '#2ab0ad', cursorborder: '0'});
-      $('[data-toggle="tooltip"]').tooltip()
     });
   },
 
@@ -118,9 +118,9 @@ let Sidebar = React.createClass({
       <div className="txop-sidebar op-ui clearfix">
         <ul className='tx-nav tx-nav-tabs'>
           <Tab onClick={handleTabClick} id='op-sections' icon='cubes' title='Layout' active={activeTab}/>
-          <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab}
-               disabled={!sectionEditable}/>
-             <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab}/>
+          <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab} disabled={!sectionEditable}/>
+          <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab}/>
+          <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab}/>
 
           <div className="btn-group">
           {
@@ -147,6 +147,10 @@ let Sidebar = React.createClass({
               blocks={blocks}
               sections={sections} />
 
+          </TabPane>
+
+          <TabPane id='op-menu' active={activeTab}>
+            <Menu sections={sections} />
           </TabPane>
 
           <TabPane id='op-contents' active={activeTab}>
