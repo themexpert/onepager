@@ -16,7 +16,7 @@ let IconSelector = React.createClass({
     let buttonEl = dom(this.refs.select);
     let inputEl  = dom(this.refs.input);
 
-    $(buttonEl).iconSelector({input: inputEl});
+    $(buttonEl).iconSelector({input: inputEl, size: this.props.size});
     $(inputEl).on("icon:inserted", this.props.onChange);
   },
 

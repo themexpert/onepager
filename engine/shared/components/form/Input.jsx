@@ -50,6 +50,7 @@ let InputControl = React.createClass({
                         className={control.class}
                         defaultValue={control.value}
                         label={control.label}
+                        size={control.size || ""}
                         onChange={this.onChange}/>;
         break;
 
@@ -68,6 +69,7 @@ let InputControl = React.createClass({
                  className={control.class}
                  defaultValue={control.value}
                  label={control.label}
+                 size={control.size || ""}
                  onChange={this.onChange}/>;
         break;
 

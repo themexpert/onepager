@@ -45,8 +45,7 @@ let Media = React.createClass({
     let iconButtonEl = dom(this.refs.iconBtn);
     let imgButtonEl  = dom(this.refs.imgBtn);
     let inputEl      = dom(this.refs.input);
-
-    $(iconButtonEl).iconSelector({input: inputEl});
+    $(iconButtonEl).iconSelector({input: inputEl, size: this.props.size});
 
     this.wpMedia(imgButtonEl, (imageSrc)=> {
       $(inputEl).val(imageSrc);
