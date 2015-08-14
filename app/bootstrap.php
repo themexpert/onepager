@@ -58,8 +58,8 @@ function tx_load_default_onepager_blocks() {
 }
 
 function tx_onepager_load_theme_blocks() {
-  $dir = get_stylesheet_directory() . "/blocks";
-  $url = get_stylesheet_directory_uri() . "/blocks";
+  $dir = ONEPAGER_THEME_PATH . "/blocks";
+  $url = ONEPAGER_THEME_URL . "/blocks";
 
   if (file_exists($dir)) {
     onepager()->blockManager()->loadAllFromPath(
@@ -68,7 +68,6 @@ function tx_onepager_load_theme_blocks() {
       'theme' //default group added to the blocks (optional array)
     );
   }
-
 }
 
 

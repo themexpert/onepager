@@ -11,7 +11,11 @@ class Render {
   protected $view;
   protected $sectionTransformer;
 
-  public function __construct(View $view, BlockManager $blockManager, SectionTransformer $sectionTransformer) {
+  public function __construct(
+    View $view,
+    BlockManager $blockManager,
+    SectionTransformer $sectionTransformer
+  ) {
     $this->blockManager       = $blockManager;
     $this->view               = $view;
     $this->sectionTransformer = $sectionTransformer;
@@ -48,8 +52,8 @@ class Render {
       return $this->noBlockDefined($section['slug']);
     }
 
-    $view_file = array_key_exists('view_file', $block) ? $block['view_file'] : null;
-    $view_file = locate_template('blocks/'.$block['slug'].'/view.php') ? : $view_file;
+
+    $view_file = $this->locateViewFile( $block );
 
     //throw better exceptions
     if (!FileSystem::exists($view_file)) {
@@ -96,8 +100,7 @@ class Render {
       return $this->noBlockDefined($section['slug']);
     }
 
-    $style_file = array_key_exists('style_file', $block) ? $block['style_file'] : null;
-    $style_file = locate_template('blocks/'.$block['slug'].'/style.php') ? : $style_file;
+    $style_file = $this->locateStyleFile( $block );
 
     //throw better exceptions
     if (!FileSystem::exists($style_file)) {
@@ -141,5 +144,29 @@ class Render {
    */
   public function noBlockDefined($sectionSlug) {
     return "<!--No block found for section {$sectionSlug}-->";
+  }
+
+  /**
+   * @param $block
+   *
+   * @return null
+   */
+  public function locateViewFile( $block ) {
+    $view_file = array_key_exists( 'view_file', $block ) ? $block['view_file'] : null;
+    $view_file = locate_template( 'onepager/blocks/' . $block['slug'] . '/view.php' ) ?: $view_file;
+
+    return $view_file;
+  }
+
+  /**
+   * @param $block
+   *
+   * @return null
+   */
+  public function locateStyleFile( $block ) {
+    $style_file = array_key_exists( 'style_file', $block ) ? $block['style_file'] : null;
+    $style_file = locate_template( 'onepager/blocks/' . $block['slug'] . '/style.php' ) ?: $style_file;
+
+    return $style_file;
   }
 }
