@@ -1,5 +1,8 @@
 ## Onepager [![Join the chat at https://gitter.im/themexpert/onepager](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/themexpert/onepager)
 
+##Official Documentation
+Documentation for the plugin can be found on the [here](https://github.com/themexpert/onepager/wiki).
+
 ## Requirements
 * PHP 5.4+
 
@@ -14,7 +17,7 @@
 
 Download the **Onepager** plugin from our website and install it as regular plugin for WordPress.
 
-### Developer 
+### Developer
 If you want to build onepager yourself make sure you have installed `node`, `npm`, `gulp` and `composer` and available system wide. Now run this command
 ```
 npm install
