@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fbef4329fb97f9e219d81851e52028b0",
+    "hash": "a178fe56bf971e43e40a980c38bc83cc",
     "packages": [
         {
             "name": "kriswallsmith/assetic",
