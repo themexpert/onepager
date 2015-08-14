@@ -297,10 +297,12 @@ a {
         background: darken(@bg-secondary, 2%);
         color: lighten(@text-color, 10%);
         border-color: lighten(@bg-primary, 10%);
+        outline: none !important;
       }
     }
     .dropdown-menu{
       background: @bg-secondary;
+      border-color: lighten(@bg-primary, 10%);
       > li > a{ color: @text-color; text-transform: capitalize; outline: none; }
       > li > a:hover,
       > li > a:focus{ background: @bg-primary;}
