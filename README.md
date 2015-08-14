@@ -1,7 +1,7 @@
 ## Onepager [![Join the chat at https://gitter.im/themexpert/onepager](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/themexpert/onepager)
 
 ##Official Documentation
-Documentation for the plugin can be found on the [here](https://github.com/themexpert/onepager/wiki).
+Documentation for the plugin can be found [here](https://github.com/themexpert/onepager/wiki).
 
 ## Requirements
 * PHP 5.4+
