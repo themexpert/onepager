@@ -27,6 +27,8 @@ const Menu = React.createClass({
 
     let {sections} = this.props;
 
+    console.log("current menu id is ", this.state.menu);
+
     return (
       <div className="onepager-menu">
         <Input ref='menu' options={menu} onChange={this.handleMenu}/>
