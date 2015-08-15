@@ -103,7 +103,7 @@ class SectionTransformer {
      */
     $data = array_reduce($blockData, function ($carry, $control) {
       // Return if control type is divider
-      if ($control['type'] == "divider") {
+      if (in_array($control['type'], ["divider", "note"]) ){
         return $carry;
       }
 

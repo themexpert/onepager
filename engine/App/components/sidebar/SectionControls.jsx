@@ -1,6 +1,7 @@
 const React       = require('react');
 const _           = require('underscore');
 const Divider     = require('../../../shared/components/form/Divider.jsx');
+const Note     = require('../../../shared/components/form/Note.jsx');
 const Input       = require('../../../shared/components/form/Input.jsx');
 const RepeatInput = require('../../../shared/components/form/RepeatInput.jsx');
 const Repeater    = require('../../../shared/components/repeater/Repeater.jsx');
@@ -26,6 +27,7 @@ let SectionControls = React.createClass({
 
       switch (type) {
         case "divider":
+        case "note":
           //we do not need to compute anything for a divider
           break;
         case "repeater":
@@ -90,6 +92,8 @@ let SectionControls = React.createClass({
             return <RepeatInput updateControl={this.updateControl.bind(this, tabName, ii)} {...props} />;
           case "divider":
             return <Divider key={sectionIndex+"-"+ii} label={control.label}/>;
+          case "note":
+            return <Note key={sectionIndex+"-"+ii} label={control.label}/>;
           case "repeater":
             let updateControl = this.updateControl.bind(this, tabName, ii);
             return <Repeater updateControl={updateControl} {...props}/>;

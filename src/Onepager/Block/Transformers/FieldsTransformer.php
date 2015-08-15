@@ -37,6 +37,11 @@ class FieldsTransformer {
             'label' => 'divider'
           );
           break;
+        case 'note':
+          $default = array(
+            'text' => 'divider'
+          );
+          break;
 
         case 'repeater':
           $control['fields'] = array_map(function($control){
