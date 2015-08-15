@@ -1,5 +1,5 @@
 ## Onepager [![Join the chat at https://gitter.im/themexpert/onepager](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/themexpert/onepager). 
-[Download latest build](https://www.dropbox.com/s/0b3camvydmstd5v/tx-onepager.zip?dl=0)
+[Download build 1.0.0.1](https://www.dropbox.com/s/zfgwm0qayfw71sg/tx-onepager.1.0.0.1.zip?dl=1)
 
 ##Official Documentation
 Documentation for the plugin can be found [here](https://github.com/themexpert/onepager/wiki).
