@@ -12,7 +12,7 @@
         </div>
 
         <div class="op-btns-group">
-            <a href="<?php echo $editorUrl ?>" style="display: <?php echo !count($sections) ? "none":"" ?>">Load Editor</a>
+            <a href="<?php echo $editorUrl ?>" class="op-btn" style="display: <?php echo !count($sections) ? "none":"" ?>">Load Editor</a>
 
             <div style="display:none">
                 <button type="button" id="onepager-save-layout" class="onepager-button">Save Layout</button>
@@ -32,7 +32,7 @@
             <figure class="thumbnails">
                 <img src="<?php echo plugins_url( '../../assets/images/blank-template.jpg', __FILE__ );?>"/>
                 <figcaption>
-                    <h3>Blank Template</h3>
+                    <h3>Start Blank</h3>
                     <button id="blank-template" data-layout-id="blank-template" class="op-btn" type="button">Create</button>
                 </figcaption>
             </figure>
