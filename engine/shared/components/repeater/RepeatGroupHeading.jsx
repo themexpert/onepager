@@ -1,6 +1,8 @@
 const React     = require("react");
 const PureMixin = require('../../mixins/PureMixin.js');
 
+import "./style.less";
+
 let RepeatGroupHeading = React.createClass({
   mixins: [PureMixin],
 
@@ -20,7 +22,7 @@ let RepeatGroupHeading = React.createClass({
     console.log("rendering repeat group heading");
 
     return (
-      <div className="panel-heading" role="tab">
+      <div className="repeat-group-heading panel-heading" role="tab">
         <h4 className="panel-title">
           <span className="handle fa fa-ellipsis-v pull-left"/>
           <a href={"#"+this.props.id}
