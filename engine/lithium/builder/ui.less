@@ -55,14 +55,9 @@
 }
 
 // General
-body {
+body.op-build-active {
   background: inherit;
   overflow-x: hidden;
-}
-
-a {
-  text-decoration: inherit;
-  color: @brand-primary;
 }
 
 // make all fixed container fluid
@@ -89,6 +84,7 @@ a {
 .op-ui {
   // Backgroudn and colors
   // ----------------------
+  a { text-decoration: inherit; color: @brand-primary; }
 
   // Selection text
   ::selection {
