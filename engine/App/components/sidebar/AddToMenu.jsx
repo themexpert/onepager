@@ -11,7 +11,7 @@ const AppActions = require("../../AppActions.js");
 
 
 let AddToMenu = React.createClass({
-//  mixins: [PureComponent],
+  mixins: [PureComponent],
   propTypes: {
     menu: React.PropTypes.number,
     index: React.PropTypes.number,
