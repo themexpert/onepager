@@ -28,9 +28,6 @@ let SwitchControl = React.createClass({
       onChange      : this.props.onChange
     };
 
-    console.log(this.props.defaultChecked);
-    console.log(this.props.defaultChecked === true);
-
     return (
       <div className="form-group">
         <label className="control-label">{this.props.label}</label>
