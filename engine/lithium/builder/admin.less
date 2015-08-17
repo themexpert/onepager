@@ -75,6 +75,13 @@
   line-height: 1em;
   text-transform: uppercase;
   margin-top: 10px;
+  text-decoration: none;
+
+  &:hover{
+    background: darken(@btn, 12%);
+    border-color: @btn;
+    color: #fff;
+  }
 }
 
 .op-btn-with-logo {
@@ -108,7 +115,8 @@
   .op-btns-group {
     float: right;
     > a {
-      padding: 5px;
+      padding: 7px 10px;
+      margin-top: 0;
       display: inline-block;
     }
   }
