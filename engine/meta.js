@@ -157,7 +157,7 @@
 
   function resetTemplate() {
     var payload = {action: 'onepager_get_sections', pageId: onepager.pageId};
-    var data = {action: 'save_sections', updated: null, pageId: onepager.pageId, sections: []};
+    var data = {action: 'onepager_save_sections', updated: null, pageId: onepager.pageId, sections: []};
 
     $.post(ajaxurl, payload, function(res){
       if(res && res.success && res.sections.length !== 0){

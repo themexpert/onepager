@@ -45,7 +45,7 @@ let AddToMenu = React.createClass({
   handleSubmit(){
     let sectionIndex = this.props.index;
     let data = {
-      action: "onepager_menu_add",
+      action: "onepager_add_menu",
       menuId: this.props.menu,
       itemId: this.refs.itemId.getValue(),
       itemTitle: this.refs.itemTitle.getValue()

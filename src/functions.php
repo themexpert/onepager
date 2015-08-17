@@ -46,25 +46,11 @@ if(!function_exists('obj_to_array')){
   }
 }
 
-if(!function_exists('array_pick')){
-  /**
-   * Pick a value from every array inside of an array collection
-   *
-   * @param array[array]          $arrayCollection
-   * @param string                $pickKey
-   * @return array
-   */
-  function array_pick(array $arrayCollection, $pickKey)
-  {
-    $pickedValues = array();
-
-    foreach ($arrayCollection as $array) {
-      if (is_array($array) && isset($array[$pickKey])) {
-        $pickedValues[] = $array[$pickKey];
-      }
-    }
-
-    return $pickedValues;
+if(!function_exists('array_pluck')){
+  function array_pluck ($toPluck, $arr) {
+    return array_map(function ($item) use ($toPluck) {
+      return $item[$toPluck];
+    }, $arr);
   }
 }
 

@@ -12,7 +12,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
   let updateSection = function (sections, sectionIndex) {
     let payload = {
       pageId  : pageId,
-      action  : 'save_sections',
+      action  : 'onepager_save_sections',
       updated : sectionIndex,
       sections: SectionTransformer.simplifySections(sections),
     };
@@ -46,7 +46,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
       let payload = {
         pageId  : pageId,
-        action  : 'save_sections',
+        action  : 'onepager_save_sections',
         updated : null,
         sections: SectionTransformer.simplifySections(sections)
       };
