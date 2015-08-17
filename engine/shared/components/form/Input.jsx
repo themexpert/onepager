@@ -73,7 +73,7 @@ let InputControl = React.createClass({
                  onChange={this.onChange}/>;
         break;
 
-      case "colorpicker":
+      case "color":
         controlHtml =
           <ColorPicker ref="input"
                        className={control.class}

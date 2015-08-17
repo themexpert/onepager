@@ -28,6 +28,9 @@ class FieldsTransformer {
 
       //optional
       $type = isset( $control['type'] ) ? $control['type'] : "text";
+      if("colorpicker" === $type ){
+        $control['type'] = "color";
+      }
 
       switch ( $type ) {
         case 'divider':
@@ -64,7 +67,6 @@ class FieldsTransformer {
           );
 
           break;
-
         default:
           $default = array(
             "placeholder" => ucfirst( $name ),
