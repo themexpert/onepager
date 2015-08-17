@@ -1,4 +1,4 @@
-## Onepager [![Join the chat at https://gitter.im/themexpert/onepager](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/themexpert/onepager). 
+## Onepager [![Join the chat at https://gitter.im/themexpert/onepager](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/themexpert/onepager)
 [Download build 1.0.0.1 - Sun Aug 16 2015 07:13:06 GMT (BDT)](https://www.dropbox.com/s/zfgwm0qayfw71sg/tx-onepager.1.0.0.1.zip?dl=1)
 
 ##Official Documentation
