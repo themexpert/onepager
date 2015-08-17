@@ -10,7 +10,7 @@ const WpMediaFrame = require('./media/WpMediaFrame.jsx');
 const WpSelect = require('./WpSelect.jsx');
 const Select = require('./Select.jsx');
 const Link = require('./Link.jsx');
-const QuillEditor = require('./editor/QuillEditor.jsx');
+const TinyMCE = require('./editor/TinyMCE.jsx');
 const PureMixin = require('../../mixins/PureMixin.js');
 const Activity = require('../../lib/Activity.js');
 
@@ -130,7 +130,7 @@ let InputControl = React.createClass({
 
       case "editor":
         controlHtml =
-          <QuillEditor ref="input"
+          <TinyMCE ref="input"
                        label={control.label}
                        className={control.class}
                        placeholder={control.placeholder}

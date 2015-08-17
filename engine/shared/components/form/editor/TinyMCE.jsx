@@ -5,34 +5,40 @@ const ReactQuill = require('react-quill');
 const $         = jQuery;
 const dom       = React.findDOMNode;
 
-import ContainedSelectorMixin from '../../../mixins/ContainedSelectorMixin.js';
+import "./style.less";
 
-require("./quill-editor.less");
 
-let QuillControl = React.createClass({
-  mixins: [PureMixin, ContainedSelectorMixin],
+function initializeTinyMCE(id, onChange){
+  tinymce.init({
+    selector: "#"+id,
+    setup: ed=> {
+      ed.on('keyup', e => onChange(ed));
+      ed.on('change', e => onChange(ed));
+    }
+  });
+}
+
+let TinyMCE = React.createClass({
+  mixins: [PureMixin],
+
+  propTypes: {
+    label: React.PropTypes.string,
+    value: React.PropTypes.string,
+    onChange: React.PropTypes.func
+  },
 
   getInitialState(){
-    return { value : this.props.defaultValue, visual: true};
+    return { value : this.props.defaultValue};
   },
 
   componentDidMount() {
-    let id = this.getContainerReactId();
+    let id = _.uniqueId('tiny-mce-');
     $(dom(this)).find('textarea').attr('id', id);
 
-    $(()=>{
-      tinymce.init({
-        selector: "#"+id,
-        setup: ed=> {
-          ed.on('keyup', e => this.tinyMceChange(ed));
-          ed.on('change', e => this.tinyMceChange(ed));
-        }
-      });
-    });
-
+    initializeTinyMCE(id, this.onChange);
   },
 
-  tinyMceChange(ed) {
+  onChange(ed) {
     this.setState({value: ed.getContent()});
     this.props.onChange();
   },
@@ -52,4 +58,4 @@ let QuillControl = React.createClass({
   }
 });
 
-module.exports = QuillControl;
+module.exports = TinyMCE;
