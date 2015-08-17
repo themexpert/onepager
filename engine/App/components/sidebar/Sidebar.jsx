@@ -13,6 +13,8 @@ const SectionControls    = require('./SectionControls.jsx');
 const Settings           = require("./Settings.jsx");
 const Menu           = require("./Menu.jsx");
 const $                  = jQuery;
+const Footer    = require('./../section-list/Footer.jsx');
+
 
 import cx from "classnames";
 
@@ -142,11 +144,10 @@ let Sidebar = React.createClass({
 
         <div className='tab-content' ref='tabContents'>
           <TabPane id='op-sections' active={activeTab}>
-            <SectionList
-              activeSectionIndex={activeSectionIndex}
-              blocks={blocks}
-              sections={sections} />
-
+              <SectionList
+                activeSectionIndex={activeSectionIndex}
+                blocks={blocks}
+                sections={sections} />
           </TabPane>
 
           <TabPane id='op-menu' active={activeTab}>
@@ -168,6 +169,8 @@ let Sidebar = React.createClass({
           <TabPane id='op-settings' active={activeTab}>
             <Settings whenSettingsDirty={this.whenSettingsDirty}/>
           </TabPane>
+
+          {activeTab === "op-sections" ? <Footer /> : null }
 
         </div>
 
