@@ -107,7 +107,7 @@ function tx_cache_onepager_blocks() {
  * Add page Templates
  */
 function tx_load_onepager_page_templates() {
-  $default_onepage_template = locate_template('onepager/onepage.php') ?: onepager()->path("/app/views/onepage.php");
+  $default_onepage_template = locate_template('onepager/onepage.php') ?: onepager()->path("/app/templates/onepage.php");
 
   $pageTemplater = new ThemeXpert\WordPress\PageTemplater();
   $pageTemplater->addTemplate('OnePager', $default_onepage_template);
