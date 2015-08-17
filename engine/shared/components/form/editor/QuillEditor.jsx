@@ -9,15 +9,11 @@ import ContainedSelectorMixin from '../../../mixins/ContainedSelectorMixin.js';
 
 require("./quill-editor.less");
 
-function transformDivIntoP(str){
-  return str;
-}
-
 let QuillControl = React.createClass({
   mixins: [PureMixin, ContainedSelectorMixin],
 
   getInitialState(){
-    return { value : transformDivIntoP(this.props.defaultValue) };
+    return { value : this.props.defaultValue, visual: true};
   },
 
   componentDidMount() {
@@ -48,9 +44,11 @@ let QuillControl = React.createClass({
 
   render() {
     return (
-      <div>
+      <div className="op-editor">
         <label>{this.props.label}</label>
-        <textarea>{this.state.value}</textarea>
+        <button onClick={this._source}>Source</button> <button onClick={this._visual}>Visual</button>
+
+        <textarea className="source" rows="8">{this.state.value}</textarea>
         <br/>
       </div>
     );
