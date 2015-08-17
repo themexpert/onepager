@@ -1,6 +1,5 @@
 const React      = require('react');
 const PureMixin  = require('react/lib/ReactComponentWithPureRenderMixin');
-const ReactQuill = require('react-quill');
 
 const $         = jQuery;
 const dom       = React.findDOMNode;
@@ -51,7 +50,7 @@ let TinyMCE = React.createClass({
     return (
       <div className="op-editor">
         <label>{this.props.label}</label>
-        <textarea className="source" rows="8">{this.state.value}</textarea>
+        <textarea className="source" rows="10">{this.state.value}</textarea>
         <br/>
       </div>
     );
