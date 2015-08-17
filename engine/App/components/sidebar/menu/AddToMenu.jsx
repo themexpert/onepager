@@ -3,11 +3,11 @@ const PureComponent = require("react/lib/ReactComponentWithPureRenderMixin");
 const React = require("react");
 const _ = require("underscore");
 const Button = require("react-bootstrap/lib/Button");
-const Input = require("../../../shared/components/form/Input.jsx");
-const ODataStore = require("../../../shared/lib/ODataStore.js");
-const notify = require("../../../shared/lib/notify.js");
-const AppStore = require("../../AppStore.js");
-const AppActions = require("../../AppActions.js");
+const Input = require("../../../../shared/components/form/Input.jsx");
+const ODataStore = require("../../../../shared/lib/ODataStore.js");
+const notify = require("../../../../shared/lib/notify.js");
+const AppStore = require("../../../AppStore.js");
+const AppActions = require("../../../AppActions.js");
 
 
 let AddToMenu = React.createClass({

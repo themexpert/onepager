@@ -9,9 +9,6 @@ const AppStore        = require('../../AppStore.js');
 const AppActions      = require('../../AppActions.js');
 // const PureMixin           = require('../../../mixins/PureMixin.js');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const Footer    = require('./Footer.jsx');
-const AddToMenu = require('../sidebar/AddToMenu.jsx');
-
 
 function setBodyClass(sections){
   if (sections === 0) {
@@ -20,6 +17,8 @@ function setBodyClass(sections){
     jQuery('body').removeClass('txop-noblock');
   }
 }
+
+import "./style.less";
 
 let SectionList = React.createClass({
   //TODO: need pure mixin
@@ -76,14 +75,9 @@ let SectionList = React.createClass({
     this.setState({screen: "home"});
   },
 
-  showMenuScreen(){
-    this.setState({screen: "menu"});
-  },
-
   render() {
     let sections = this.props.sections;
     let activeSectionIndex = this.props.activeSectionIndex;
-    let activeSection = sections[activeSectionIndex];
     let blocks   = this.props.blocks;
 
     let blocksClass = cx("list-blocks", {
@@ -94,12 +88,8 @@ let SectionList = React.createClass({
       "hidden" : this.state.screen !== "home"
     });
 
-    let menuClasses = cx("add-to-menu-screen", {
-      "hidden" : this.state.screen !== "menu"
-    });
-
     return (
-      <div>
+      <div className="op-section-list">
         <div className={sectionsClass}>
           <Button bsStyle='primary' className="btn-block" onClick={this.showBlocksScreen}>
             <span className="fa fa-plus"></span> Add Block
@@ -118,18 +108,10 @@ let SectionList = React.createClass({
               );
             })}
           </div>
-          <Footer />
         </div>
 
         <div className={blocksClass}>
           <BlockCollection closeBlocks={this.showHomeScreen} blocks={blocks}/>
-        </div>
-
-        <div className={menuClasses}>
-        {
-          activeSectionIndex !== null ?
-            <AddToMenu closeMenuScreen={this.showHomeScreen} section={activeSection} index={activeSectionIndex}/> : <div>:/</div>
-        }
         </div>
 
       </div>

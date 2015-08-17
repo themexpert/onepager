@@ -2,9 +2,9 @@ import React from 'react';
 import PanelGroup from 'react-bootstrap/lib/PanelGroup';
 import Panel from 'react-bootstrap/lib/Panel';
 import Input from '../../../shared/components/form/Input.jsx';
-import AddToMenu from './AddToMenu.jsx';
+import AddToMenu from './menu/AddToMenu.jsx';
 
-import "./menu.less";
+import "./menu/style.less";
 
 const Menu = React.createClass({
   getInitialState(){
@@ -34,8 +34,9 @@ const Menu = React.createClass({
         {this.state.menu ?
           <PanelGroup accordion>
           { sections.map((section, index)=>{
+              let title = <div>{section.title}<span className='fa fa-caret-down pull-right'></span></div>;
               return (
-                <Panel header={section.title} eventKey={index}>
+                <Panel header={title} eventKey={index}>
                   <AddToMenu index={index} menu={this.state.menu} title={section.title} id={section.id}></AddToMenu>
                 </Panel>
               );
