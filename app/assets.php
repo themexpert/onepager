@@ -1,12 +1,26 @@
 <?php
 
-function js_wp_editor() {
+function js_wp_editor( $settings = array() ) {
   if ( ! class_exists( '_WP_Editors' ) ) {
     require( ABSPATH . WPINC . '/class-wp-editor.php' );
   }
-
-  _WP_Editors::parse_settings( 'op', array() );
-  _WP_Editors::editor_settings( 'op', array() );
+  $set = _WP_Editors::parse_settings( 'apid', $settings );
+  if ( ! current_user_can( 'upload_files' ) ) {
+    $set['media_buttons'] = false;
+  }
+  if ( $set['media_buttons'] ) {
+    wp_enqueue_script( 'thickbox' );
+    wp_enqueue_style( 'thickbox' );
+    wp_enqueue_script( 'media-upload' );
+    $post = get_post();
+    if ( ! $post && ! empty( $GLOBALS['post_ID'] ) ) {
+      $post = $GLOBALS['post_ID'];
+    }
+    wp_enqueue_media( array(
+      'post' => $post,
+    ) );
+  }
+  _WP_Editors::editor_settings( 'apid', $set );
 }
 
 function onepager_localize_script_data( $pageId ) {

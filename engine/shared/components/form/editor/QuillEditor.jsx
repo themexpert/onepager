@@ -34,7 +34,6 @@ let QuillControl = React.createClass({
 
   tinyMceChange(ed) {
     this.setState({value: ed.getContent()});
-    console.debug('Editor contents was modified. Contents: ' + ed.getContent());
     this.props.onChange();
   },
 
@@ -46,8 +45,6 @@ let QuillControl = React.createClass({
     return (
       <div className="op-editor">
         <label>{this.props.label}</label>
-        <button onClick={this._source}>Source</button> <button onClick={this._visual}>Visual</button>
-
         <textarea className="source" rows="8">{this.state.value}</textarea>
         <br/>
       </div>
