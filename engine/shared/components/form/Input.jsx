@@ -91,8 +91,9 @@ let InputControl = React.createClass({
           <Link ref="input"
                 onChange={this.onChange}
                 label={control.value.label}
-                link={control.value.link}
-                target={control.value.target} />;
+                text={control.value.text || ""}
+                url={control.value.url || ""}
+                target={control.value.target || false} />;
         break;
 
       case "menu":

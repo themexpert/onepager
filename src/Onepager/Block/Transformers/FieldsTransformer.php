@@ -29,8 +29,6 @@ class FieldsTransformer {
       //optional
       $type = isset( $control['type'] ) ? $control['type'] : "text";
 
-      $default = array();
-
       switch ( $type ) {
         case 'divider':
           $default = array(
@@ -39,7 +37,16 @@ class FieldsTransformer {
           break;
         case 'note':
           $default = array(
-            'text' => 'divider'
+            'text' => 'note'
+          );
+          break;
+        case 'link':
+          $default = array(
+            'value' => array(
+              'url'=> array_get($control, 'url', ''),
+              'text'=> array_get($control, 'url', ''),
+              'target'=> array_get($control, 'url', false),
+            )
           );
           break;
 

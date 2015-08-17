@@ -6,15 +6,16 @@ let Link  = React.createClass({
   mixins: [LinkedStateMixin],
 
   propTypes: {
+    text: React.PropTypes.string,
     label: React.PropTypes.string,
-    link: React.PropTypes.string,
+    url: React.PropTypes.string,
     target: React.PropTypes.string
   },
 
   getInitialState(){
     return {
-      label: this.props.label,
-      link: this.props.link,
+      text: this.props.text,
+      url: this.props.url,
       target: this.props.target
     }
   },
@@ -25,8 +26,8 @@ let Link  = React.createClass({
 
   onChange(){
     let state = {
-      link: React.findDOMNode(this.refs.link).value,
-      label: React.findDOMNode(this.refs.label).value,
+      url: React.findDOMNode(this.refs.url).value,
+      text: React.findDOMNode(this.refs.text).value,
       target: React.findDOMNode(this.refs.target).checked
     };
 
@@ -37,19 +38,36 @@ let Link  = React.createClass({
   render() {
     return (
       <div>
-        <label className="control-label">Link</label>
+        <label className="control-label">{this.props.label}</label>
 
         <div className="form-group" style={{marginBottom: 0}}>
           <div className="input-group">
             <span className="input-group-addon">Text</span>
-            <input defaultValue={this.props.label} className="form-control" onChange={this.onChange} ref="label" type="text" placeholder="label"/>
+            <input defaultValue={this.props.text}
+                   className="form-control"
+                   onChange={this.onChange}
+                   ref="text"
+                   type="text"
+                   placeholder="text"/>
           </div>
         </div>
         <div className="form-group">
           <div className="input-group">
             <span className="input-group-addon" style={{width: 53}}>Url</span>
-            <input defaultValue={this.props.link} className="form-control" onChange={this.onChange} ref="link" type="text" placeholder="link"/>
-            <span className="input-group-addon" data-toggle="tooltip" data-placement="top" title="Open link in a new window">Target</span>
+            <input
+              defaultValue={this.props.url}
+              className="form-control"
+              onChange={this.onChange}
+              ref="url"
+              type="text"
+              placeholder="url"/>
+
+            <span className="input-group-addon"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Open link in a new window">Target
+            </span>
+
             <span className="input-group-addon">
               <input checked={this.props.target} ref="target" onChange={this.onChange} type="checkbox"/>
             </span>
