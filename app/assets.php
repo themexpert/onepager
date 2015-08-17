@@ -138,7 +138,9 @@ function onepager_dequeue_conflicting_scripts() {
   if ( ! onepager()->content()->isOnepage() ) {
     return;
   }
-  
+
+  //2015 script uses bad selectors that override onepager
+  wp_dequeue_script( 'twentyfifteen-script' );
   onepager_support_nextgen_scroll_gallery();
 }
 
