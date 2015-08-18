@@ -135,7 +135,7 @@ let Sidebar = React.createClass({
                   <span className={saveClasses}></span>
               </button>
           }
-          <a href={ODataStore.disable} className="btn btn-primary" data-toggle="tooltip"
+          <a href={ODataStore.disableBuildModeUrl} className="btn btn-primary" data-toggle="tooltip"
              data-placement="bottom" title="Close">
             <span className="fa fa-close"></span>
           </a>

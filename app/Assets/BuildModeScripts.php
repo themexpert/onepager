@@ -5,8 +5,8 @@ use App\Assets\Traits\FormEngineScripts;
 class BuildModeScripts {
   use FormEngineScripts;
 
-  public function __construct(  ) {
-    add_action( 'wp_enqueue_scripts', [$this, 'enqueueScripts']);
+  public function __construct() {
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ] );
   }
 
   public function enqueueScripts() {
@@ -31,10 +31,11 @@ class BuildModeScripts {
   function localizeScriptData( $pageId ) {
     $onepager = onepager();
 
+    $footer     = get_editor_section_list_footer();
     $ajaxUrl    = $onepager->api()->getAjaxUrl();
-    $nav_arr    = $onepager->content()->getMenus();
-    $cat_arr    = $onepager->content()->getCategories();
-    $pages_arr  = $onepager->content()->getPages();
+    $menus      = $onepager->content()->getMenus();
+    $categories = $onepager->content()->getCategories();
+    $pages      = $onepager->content()->getPages();
     $blocks     = array_values( (array) $onepager->blockManager()->all() );
     $groupOrder = $onepager->blockManager()->getGroupOrder();
 
@@ -46,25 +47,31 @@ class BuildModeScripts {
       return $section;
     }, onepager()->section()->getAllValid( $pageId ) );
 
-    $footer_markup = get_editor_section_list_footer();
-    $disableUrl    = getOpBuildModeUrl( getCurrentPageURL(), false );
+    $disableBuildModeUrl = getOpBuildModeUrl( getCurrentPageURL(), false );
 
-    return array(
-      'ajaxUrl'     => $ajaxUrl,
-      'optionPanel' => onepager()->optionsPanel( "onepager" )->getOptions(),
-      'options'     => get_option( 'onepager' ),
-      'page'        => 'onepager',
-      'blocks'      => $blocks,
-      'pageId'      => $pageId,
-      'sections'    => $sections,
-      'menus'       => $nav_arr,
-      'pages'       => $pages_arr,
-      'categories'  => $cat_arr,
-      'groupOrder'  => $groupOrder,
-      'footer'      => $footer_markup,
-      'disable'     => $disableUrl,
-      'presets'     => \Onepager::getPresets(),
-      'basePreset'  => \Onepager::getBasePreset()
+    $optionPanel = onepager()->optionsPanel( "onepager" )->getOptions();
+    $page        = 'onepager';
+    $options     = get_option( 'onepager' );
+
+    $presets    = \Onepager::getPresets();
+    $basePreset = \Onepager::getBasePreset();
+
+    return compact(
+      'ajaxUrl',
+      'optionPanel',
+      'options',
+      'page',
+      'blocks',
+      'pageId',
+      'sections',
+      'menus',
+      'pages',
+      'categories',
+      'groupOrder',
+      'footer',
+      'disableBuildModeUrl',
+      'presets',
+      'basePreset'
     );
   }
 
