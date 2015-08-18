@@ -7,20 +7,18 @@ class SectionsApiController extends ApiController {
     $pageId   = array_get( $_POST, 'pageId', false );
 
     $sections = $this->filterInput( $sections );
-    $section = array_get( $sections, $updated, false );
 
-    $response = $this->prepareSectionWithContentAndStyle( $section );
-
-    //TODO: Improve this
     if ( $pageId ) {
       onepager()->section()->save( $pageId, $sections );
+      $this->responseSuccess();
+    } else {
+      $section = array_get( $sections, $updated, false );
+      $response = $this->prepareSectionWithContentAndStyle( $section );
+      $this->responseSuccess( $response );
     }
-
-    //TODO: pluck content and style
-    $this->responseSuccess( $response );
   }
 
-  function getSections() {
+  public function getSections() {
     $pageId = array_get( $_POST, 'pageId', false );
 
     if ( ! $pageId ) {
