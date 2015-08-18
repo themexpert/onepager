@@ -14,8 +14,8 @@ class PageApiController extends ApiController {
     $pageId   = array_get( $_POST, 'pageId', false );
     $layoutId = array_get( $_POST, 'layoutId', false );
 
-    $onepagerLayouts = onepager()->presetManager()->all();
-    $layout          = array_find_by( $onepagerLayouts, 'id', $layoutId );
+    $layouts = onepager()->presetManager()->all();
+    $layout  = array_find_by( $layouts, 'id', $layoutId );
 
     if ( $layout ) {
       onepager()->section()->save( $pageId, $layout['sections'] );

@@ -8,32 +8,32 @@ class PresetManager {
   protected $paths;
   protected $ignoredGroups = array();
 
-  public function loadAllFromPath($path, $url, $groups = array()) {
-    $this->paths[] = compact("path", "url", "groups");
+  public function loadAllFromPath( $path, $url, $groups = array() ) {
+    $this->paths[] = compact( "path", "url", "groups" );
   }
 
-  public function add($file, $url, $groups = array()) {
-    $config = json_decode(file_get_contents($file), true);
-    if (!is_array($config)) {
+  public function add( $file, $url, $groups = array() ) {
+    $config = json_decode( file_get_contents( $file ), true );
+    if ( ! is_array( $config ) ) {
       return;
     }
 
-    $filename = basename($file);
+    $filename = basename( $file );
 
-    if (!array_key_exists('screenshot', $config)) {
-      $imageName            = str_replace('.json', '.jpg', $filename);
-      $config['screenshot'] = trailingslashit($url) . $imageName;
+    if ( ! array_key_exists( 'screenshot', $config ) ) {
+      $imageName            = str_replace( '.json', '.jpg', $filename );
+      $config['screenshot'] = trailingslashit( $url ) . $imageName;
     }
 
-    if (!array_key_exists('group', $config)) {
-      $config['group'] = [];
+    if ( ! array_key_exists( 'group', $config ) ) {
+      $config['group'] = [ ];
     }
 
-    if (!is_array($config['group'])) {
-      $config['group'] = (array)$config['group'];
+    if ( ! is_array( $config['group'] ) ) {
+      $config['group'] = (array) $config['group'];
     }
 
-    $config['group'] = array_merge($config['group'], (array) $groups);
+    $config['group'] = array_merge( $config['group'], (array) $groups );
 
     $config['id'] = $filename;
 
@@ -41,14 +41,14 @@ class PresetManager {
   }
 
   public function loadAll() {
-    foreach ($this->paths as $path) {
-      $files = array_filter(FS::files($path['path']), function ($file) {
-        return substr($file, -4, strrpos($file, '.json')) === "json";
-      });
+    foreach ( $this->paths as $path ) {
+      $files = array_filter( FS::files( $path['path'] ), function ( $file ) {
+        return substr( $file, - 4, strrpos( $file, '.json' ) ) === "json";
+      } );
 
-      foreach ($files as $file) {
-        $config_file = untrailingslashit($path['path']) . DIRECTORY_SEPARATOR . $file;
-        $this->add($config_file, $path['url'], $path['groups']);
+      foreach ( $files as $file ) {
+        $config_file = untrailingslashit( $path['path'] ) . DIRECTORY_SEPARATOR . $file;
+        $this->add( $config_file, $path['url'], $path['groups'] );
       }
     }
   }
@@ -57,9 +57,9 @@ class PresetManager {
     $this->loadAll();
     $ignoredGroups = $this->getIgnoredGroups();
 
-    return array_filter($this->templates, function ($template) use ($ignoredGroups) {
-      return !count(array_intersect($template['group'], $ignoredGroups));
-    });
+    return array_filter( $this->templates, function ( $template ) use ( $ignoredGroups ) {
+      return ! count( array_intersect( $template['group'], $ignoredGroups ) );
+    } );
   }
 
   /**
@@ -72,7 +72,7 @@ class PresetManager {
   /**
    * @param array $ignoredGroups
    */
-  public function setIgnoredGroups($ignoredGroups) {
-    $this->ignoredGroups = (array)$ignoredGroups;
+  public function setIgnoredGroups( $ignoredGroups ) {
+    $this->ignoredGroups = (array) $ignoredGroups;
   }
 }

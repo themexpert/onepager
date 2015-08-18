@@ -5,21 +5,21 @@ class FieldsTransformer {
   public function transform( $fields ) {
     return array_map( function ( $control ) {
 
-      $value = array_key_exists('value', $control) ? $control['value'] : '';
-      if(is_string($value) && startsWith($value, '@')){
-        $option = str_replace('@', '', $value);
+      $value = array_key_exists( 'value', $control ) ? $control['value'] : '';
+      if ( is_string( $value ) && startsWith( $value, '@' ) ) {
+        $option = str_replace( '@', '', $value );
 
-        $pieces = explode(".", $option);
-        if(count($pieces) == 2){
-          $options = \Onepager::getOption($pieces[0]);
+        $pieces = explode( ".", $option );
+        if ( count( $pieces ) == 2 ) {
+          $options = \Onepager::getOption( $pieces[0] );
 
-          if(is_array($options) && array_key_exists($pieces[1], $options)){
-            $control['value'] = $options[$pieces[1]];
+          if ( is_array( $options ) && array_key_exists( $pieces[1], $options ) ) {
+            $control['value'] = $options[ $pieces[1] ];
           } else {
             $control['value'] = "";
           }
         } else {
-          $control['value'] = \Onepager::getOption($option);
+          $control['value'] = \Onepager::getOption( $option );
         }
       }
 
@@ -28,42 +28,42 @@ class FieldsTransformer {
 
       //optional
       $type = isset( $control['type'] ) ? $control['type'] : "text";
-      if("colorpicker" === $type ){
+      if ( "colorpicker" === $type ) {
         $control['type'] = "color";
       }
 
       switch ( $type ) {
         case 'divider':
           $default = array(
-            'label' => 'divider'
+            'label' => 'divider',
           );
           break;
         case 'note':
           $default = array(
-            'text' => 'note'
+            'text' => 'note',
           );
           break;
         case 'link':
           $default = array(
             'value' => array(
-              'url'=> array_get($control, 'url', ''),
-              'text'=> array_get($control, 'url', ''),
-              'target'=> array_get($control, 'url', false),
-            )
+              'url'    => array_get( $control, 'url', '' ),
+              'text'   => array_get( $control, 'url', '' ),
+              'target' => array_get( $control, 'url', false ),
+            ),
           );
           break;
 
         case 'repeater':
-          $control['fields'] = array_map(function($control){
-            return $this->transform($control);
-          }, $control['fields']);
+          $control['fields'] = array_map( function ( $control ) {
+            return $this->transform( $control );
+          }, $control['fields'] );
 
           $default = array(
             "label"  => ucfirst( $name ),
             "type"   => "repeater",
             "class"  => "{$name}-control",
             "help"   => "",
-            "fields" => array()
+            "fields" => array(),
           );
 
           break;
@@ -74,7 +74,7 @@ class FieldsTransformer {
             "type"        => $type, //default type is text
             "class"       => "{$name}-control",
             "help"        => "",
-            "value"       => ''
+            "value"       => '',
           );
 
 
