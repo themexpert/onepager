@@ -8,10 +8,10 @@ class SectionTransformer {
    *
    * @return array
    */
-  public function partialDataStructureChangeMerge($rGroupDataStructure, $rGroups) {
-    return array_map(function ($rGroup) use ($rGroupDataStructure) {
-      return array_merge($rGroupDataStructure, $rGroup);
-    }, $rGroups);
+  public function partialDataStructureChangeMerge( $rGroupDataStructure, $rGroups ) {
+    return array_map( function ( $rGroup ) use ( $rGroupDataStructure ) {
+      return array_merge( $rGroupDataStructure, $rGroup );
+    }, $rGroups );
   }
 
   /**
@@ -19,12 +19,12 @@ class SectionTransformer {
    *
    * @return mixed
    */
-  public function getRepeatGroupDataStructure($rGroupDataStructure) {
-    return array_reduce($rGroupDataStructure, function ($carry, $control) {
-      $carry[$control['name']] = $control['value'];
+  public function getRepeatGroupDataStructure( $rGroupDataStructure ) {
+    return array_reduce( $rGroupDataStructure, function ( $carry, $control ) {
+      $carry[ $control['name'] ] = $control['value'];
 
       return $carry;
-    }, []);
+    }, [ ] );
   }
 
   /**
@@ -32,14 +32,14 @@ class SectionTransformer {
    *
    * @return mixed
    */
-  public function getDefaultRepeatGroups($controlFields) {
-    return array_map(function ($rGroup) {
-      return array_reduce($rGroup, function ($carry, $control) {
-        $carry[$control['name']] = $control['value'];
+  public function getDefaultRepeatGroups( $controlFields ) {
+    return array_map( function ( $rGroup ) {
+      return array_reduce( $rGroup, function ( $carry, $control ) {
+        $carry[ $control['name'] ] = $control['value'];
 
         return $carry;
-      }, []);
-    }, $controlFields);
+      }, [ ] );
+    }, $controlFields );
   }
 
   /**
@@ -48,13 +48,13 @@ class SectionTransformer {
    *
    * @return array|mixed
    */
-  public function getRepeaterControlValue($tab, $control) {
+  public function getRepeaterControlValue( $tab, $control ) {
     /**
      * if a repeater is added in the config file but not saved yet
      * we will extract the values from the config file
      */
-    if (!array_key_exists($control['name'], $tab)) {
-      return $this->getDefaultRepeatGroups($control['fields']);
+    if ( ! array_key_exists( $control['name'], $tab ) ) {
+      return $this->getDefaultRepeatGroups( $control['fields'] );
     }
 
     /**
@@ -63,14 +63,14 @@ class SectionTransformer {
      * to do this we will need a data structure that we will merge with other
      * repeat groups of this repeater
      */
-    if (!isset($control['fields'][0])) {
+    if ( ! isset( $control['fields'][0] ) ) {
       //FIXME: why empty array ?
       return array();
     }
 
-    $rGroupDataStructure = $this->getRepeatGroupDataStructure($control['fields'][0]);
+    $rGroupDataStructure = $this->getRepeatGroupDataStructure( $control['fields'][0] );
 
-    return $this->partialDataStructureChangeMerge($rGroupDataStructure, $tab[$control['name']]);
+    return $this->partialDataStructureChangeMerge( $rGroupDataStructure, $tab[ $control['name'] ] );
   }
 
   /**
@@ -79,14 +79,14 @@ class SectionTransformer {
    *
    * @return mixed
    */
-  public function getSimpleControlValue($tab, $control) {
+  public function getSimpleControlValue( $tab, $control ) {
     //if this control is just added into the config file and not saved yet
-    if (!array_key_exists($control['name'], $tab)) {
+    if ( ! array_key_exists( $control['name'], $tab ) ) {
       return $control['value'];
     }
 
     //if we are here that means we have this value persisted into database
-    return $tab[$control['name']];
+    return $tab[ $control['name'] ];
   }
 
   /**
@@ -95,31 +95,31 @@ class SectionTransformer {
    *
    * @return mixed
    */
-  public function mergePersistedDataAndBlockData($blockData, $sectionData) {
+  public function mergePersistedDataAndBlockData( $blockData, $sectionData ) {
     /**
      * We will have varying types of controls
      * so we will need varying types of data merging
      * algorithms
      */
-    $data = array_reduce($blockData, function ($carry, $control) {
+    $data = array_reduce( $blockData, function ( $carry, $control ) {
       // Return if control type is divider
-      if (in_array($control['type'], ["divider", "note"]) ){
+      if ( in_array( $control['type'], [ "divider", "note" ] ) ) {
         return $carry;
       }
 
       $name = $control['name'];
 
-      switch ($control['type']) {
+      switch ( $control['type'] ) {
         case 'repeater':
-          $carry[$name] = $this->getRepeaterControlValue($carry, $control);
+          $carry[ $name ] = $this->getRepeaterControlValue( $carry, $control );
           break;
         default:
-          $carry[$name] = $this->getSimpleControlValue($carry, $control);
+          $carry[ $name ] = $this->getSimpleControlValue( $carry, $control );
           break;
       }
 
       return $carry;
-    }, $sectionData);
+    }, $sectionData );
 
     return $data;
   }

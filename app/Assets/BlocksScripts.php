@@ -1,10 +1,8 @@
 <?php namespace App\Assets;
 
 class BlocksScripts {
-  public function __construct( $enqueue = true ) {
-    if ( $enqueue ) {
-      add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
-    }
+  public function __construct() {
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
   }
 
   public function enqueue() {

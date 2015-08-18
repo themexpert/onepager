@@ -9,6 +9,7 @@ use ThemeXpert\Onepager\Block\PresetManager;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
 use ThemeXpert\Onepager\Block\Transformers\SectionTransformer;
+use ThemeXpert\Onepager\Render\Render;
 use ThemeXpert\Providers\WordPress\OptionsPanel;
 use ThemeXpert\Providers\Contracts\ApiInterface;
 use ThemeXpert\Providers\Contracts\AssetInterface;
@@ -20,124 +21,131 @@ use ThemeXpert\View\View;
 
 class Onepager implements OnepagerInterface {
 
-	public function __construct( BaseAdapter $adapter, Container $container ) {
-		$this->adapter   = $adapter;
-		$this->container = $container;
-		$this->setBlockManager();
-		$this->setPresetManager();
-		$this->setRenderer();
-		$this->setViewProvider();
-	}
+  public function __construct( BaseAdapter $adapter, Container $container ) {
+    $this->adapter   = $adapter;
+    $this->container = $container;
+    $this->setBlockManager();
+    $this->setPresetManager();
+    $this->setRenderer();
+    $this->setViewProvider();
+  }
 
-	public function setBlockManager() {
-		$this->container['blockManager'] = function () {
-			$blockCollection   = new Collection;
-			$configTransformer = new ConfigTransformer(new FieldsTransformer);
+  public function setBlockManager() {
+    $this->container['blockManager'] = function () {
+      $blockCollection   = new Collection;
+      $configTransformer = new ConfigTransformer( new FieldsTransformer );
 
-			return new BlockManager( $configTransformer, $blockCollection );
-		};
-	}
-	public function setPresetManager() {
-		$this->container['presetManager'] = function () {
-			return new PresetManager;
-		};
-	}
-
-  private function setRenderer() {
-    $this->container['render'] = function ($container) {
-      return new Render($container['view'], $container['blockManager'], new SectionTransformer());
+      return new BlockManager( $configTransformer, $blockCollection );
     };
   }
 
+  public function setPresetManager() {
+    $this->container['presetManager'] = function () {
+      return new PresetManager;
+    };
+  }
 
-	public function setViewProvider() {
-		$this->container['view'] = function () {
-			return new View( new PhpEngine() );
-		};
-	}
+  private function setRenderer() {
+    $this->container['render'] = function ( $container ) {
+      return new Render( $container['view'], $container['blockManager'], new SectionTransformer() );
+    };
+  }
 
-	/**
-	 * @return NavigationMenuInterface
-	 */
-	public function navigationMenu() {
-		$container = $this->adapter->getContainer();
-		return $container['navigationMenu'];
-	}
+  public function setViewProvider() {
+    $this->container['view'] = function () {
+      return new View( new PhpEngine() );
+    };
+  }
 
-	/**
-	 * @return ToolbarInterface
-	 */
-	public function toolbar() {
-		$container = $this->adapter->getContainer();
-		return $container['toolbar'];
-	}
+  /**
+   * @return NavigationMenuInterface
+   */
+  public function navigationMenu() {
+    $container = $this->adapter->getContainer();
 
-	/**
-	 * @return ContentInterface
-	 */
-	public function content() {
-		$container = $this->adapter->getContainer();
-		return $container['content'];
-	}
+    return $container['navigationMenu'];
+  }
 
-	/**
-	 * @return AssetInterface
-	 */
-	public function asset() {
-		$container = $this->adapter->getContainer();
-		return $container['asset'];
-	}
+  /**
+   * @return ToolbarInterface
+   */
+  public function toolbar() {
+    $container = $this->adapter->getContainer();
 
-	/**
-	 * @return ApiInterface
-	 */
-	public function api() {
-		$container = $this->adapter->getContainer();
-		return $container['api'];
-	}
+    return $container['toolbar'];
+  }
 
+  /**
+   * @return ContentInterface
+   */
+  public function content() {
+    $container = $this->adapter->getContainer();
 
-	public function security() {
-		$container = $this->adapter->getContainer();
-		return $container['security'];
-	}
+    return $container['content'];
+  }
 
-	public function view() {
-		$container = $this->adapter->getContainer();
-		return $container['view'];
-	}
+  /**
+   * @return AssetInterface
+   */
+  public function asset() {
+    $container = $this->adapter->getContainer();
 
-	public function url( $string ) {
-		return trailingslashit($this->adapter->getUrl()) . $string;
-	}
+    return $container['asset'];
+  }
 
-	public function path( $path ) {
-		return $this->adapter->getPath() . DIRECTORY_SEPARATOR . $path;
-	}
+  /**
+   * @return ApiInterface
+   */
+  public function api() {
+    $container = $this->adapter->getContainer();
 
-	public function section() {
-		$container = $this->adapter->getContainer();
-		return $container['section'];
-	}
+    return $container['api'];
+  }
 
-	public function blockManager() {
-		return $this->container['blockManager'];
-	}
+  public function security() {
+    $container = $this->adapter->getContainer();
 
-	public function render() {
-		return $this->container['render'];
-	}
+    return $container['security'];
+  }
 
-	public function optionsPanel($menuSlug){
-		return OptionsPanel::getInstance($menuSlug);
-	}
+  public function view() {
+    $container = $this->adapter->getContainer();
 
-	public function presetManager(){
-		return $this->container['presetManager'];
-	}
+    return $container['view'];
+  }
 
-	public function getOption(){
+  public function url( $string ) {
+    return trailingslashit( $this->adapter->getUrl() ) . $string;
+  }
 
-	}
+  public function path( $path ) {
+    return $this->adapter->getPath() . DIRECTORY_SEPARATOR . $path;
+  }
+
+  public function section() {
+    $container = $this->adapter->getContainer();
+
+    return $container['section'];
+  }
+
+  public function blockManager() {
+    return $this->container['blockManager'];
+  }
+
+  public function render() {
+    return $this->container['render'];
+  }
+
+  public function optionsPanel( $menuSlug ) {
+    return OptionsPanel::getInstance( $menuSlug );
+  }
+
+  public function presetManager() {
+    return $this->container['presetManager'];
+  }
+
+  public function getOption() {
+
+  }
 
 }

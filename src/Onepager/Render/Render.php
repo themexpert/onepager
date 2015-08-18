@@ -1,4 +1,4 @@
-<?php namespace ThemeXpert\Onepager;
+<?php namespace ThemeXpert\Onepager\Render;
 
 
 use ThemeXpert\FileSystem\FileSystem;
@@ -21,9 +21,9 @@ class Render {
     $this->sectionTransformer = $sectionTransformer;
   }
 
-  public function sections($sections) {
-    foreach ($sections as $section) {
-      echo $this->section($section);
+  public function sections( $sections ) {
+    foreach ( $sections as $section ) {
+      echo $this->section( $section );
     }
   }
 
@@ -34,57 +34,60 @@ class Render {
    *
    * @return bool|mixed|null
    */
-  public function isValidSection($section) {
-    $block = $this->blockManager->get($section['slug']);
+  public function isValidSection( $section ) {
+    $block = $this->blockManager->get( $section['slug'] );
 
-    if (!$block) {
+    if ( ! $block ) {
       return false;
     }
 
     return $block;
   }
 
-  public function section($section) {
+  public function section( $section ) {
     /**
      * FIXME: Currently we are not smartly handling non existent blocks exceptions
      */
-    if (!$block = $this->isValidSection($section)) {
-      return $this->noBlockDefined($section['slug']);
+    if ( ! $block = $this->isValidSection( $section ) ) {
+      return $this->noBlockDefined( $section['slug'] );
     }
 
 
     $view_file = $this->locateViewFile( $block );
 
     //throw better exceptions
-    if (!FileSystem::exists($view_file)) {
-      return $this->noViewFile($block['name']);
+    if ( ! FileSystem::exists( $view_file ) ) {
+      return $this->noViewFile( $block['name'] );
     }
 
 
-    $section = $this->sectionBlockDataMerge($section);
+    $section        = $this->sectionBlockDataMerge( $section );
     $section['url'] = $block['url'];
-    return $this->view->make($view_file, $section);
+
+    return $this->view->make( $view_file, $section );
   }
 
-  public function sectionBlockDataMerge($section) {
+  public function sectionBlockDataMerge( $section ) {
     /** FIXME: Currently we are not smartly handling non existent blocks exceptions **/
 
-    if (!$block = $this->isValidSection($section)) {
+    if ( ! $block = $this->isValidSection( $section ) ) {
       return $section;
       // return $this->noBlockDefined($section['slug']);
     }
 
-    foreach (['settings', 'contents', 'styles'] as $tab) {
-      if(!array_key_exists($tab, $section)) $section[$tab] = [];
-      $section[$tab] = $this->sectionTransformer->mergePersistedDataAndBlockData($block[$tab], $section[$tab]);
+    foreach ( [ 'settings', 'contents', 'styles' ] as $tab ) {
+      if ( ! array_key_exists( $tab, $section ) ) {
+        $section[ $tab ] = [ ];
+      }
+      $section[ $tab ] = $this->sectionTransformer->mergePersistedDataAndBlockData( $block[ $tab ], $section[ $tab ] );
     }
 
     return $section;
   }
 
-  public function styles($sections) {
-    foreach ($sections as $section) {
-      echo $this->style($section);
+  public function styles( $sections ) {
+    foreach ( $sections as $section ) {
+      echo $this->style( $section );
     }
   }
 
@@ -93,23 +96,23 @@ class Render {
    *
    * @return null|string
    */
-  public function style($section) {
+  public function style( $section ) {
 
     /** FIXME: Currently we are not smartly handling non existent blocks exceptions **/
-    if (!$block = $this->isValidSection($section)) {
-      return $this->noBlockDefined($section['slug']);
+    if ( ! $block = $this->isValidSection( $section ) ) {
+      return $this->noBlockDefined( $section['slug'] );
     }
 
     $style_file = $this->locateStyleFile( $block );
 
     //throw better exceptions
-    if (!FileSystem::exists($style_file)) {
+    if ( ! FileSystem::exists( $style_file ) ) {
       //throw new \Exception( "Block style Does not exist" );
       return null;
     }
 
     $section['url'] = $block['url'];
-    $style = $this->getStyleHTML($section, $style_file);
+    $style          = $this->getStyleHTML( $section, $style_file );
 
     return $style;
   }
@@ -120,9 +123,9 @@ class Render {
    *
    * @return string
    */
-  public function getStyleHTML($section, $style_file) {
+  public function getStyleHTML( $section, $style_file ) {
     $style = "<style id='style-{$section['id']}'>";
-    $style .= $this->view->make($style_file, $section);
+    $style .= $this->view->make( $style_file, $section );
     $style .= "</style>";
 
     return $style;
@@ -133,7 +136,7 @@ class Render {
    *
    * @return mixed
    */
-  public function noViewFile($blockName) {
+  public function noViewFile( $blockName ) {
     return "<!--No view file found for block {$blockName}-->";
   }
 
@@ -142,7 +145,7 @@ class Render {
    *
    * @return string
    */
-  public function noBlockDefined($sectionSlug) {
+  public function noBlockDefined( $sectionSlug ) {
     return "<!--No block found for section {$sectionSlug}-->";
   }
 

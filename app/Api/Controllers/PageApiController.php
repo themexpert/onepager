@@ -14,7 +14,7 @@ class PageApiController extends ApiController {
     $pageId   = array_get( $_POST, 'pageId', false );
     $layoutId = array_get( $_POST, 'layoutId', false );
 
-    $onepagerLayouts = onepager()->layoutManager()->all();
+    $onepagerLayouts = onepager()->presetManager()->all();
     $layout          = array_find_by( $onepagerLayouts, 'id', $layoutId );
 
     if ( $layout ) {

@@ -1,8 +1,11 @@
 <?php namespace App\Api\Controllers;
 
+use App\Assets\BlocksScripts;
+use App\Assets\OnepageScripts;
+
 class SectionsApiController extends ApiController {
   public function saveSections() {
-    $sections = array_get( $_POST, 'sections', [ ] ) ? : []; //making sure its an array
+    $sections = array_get( $_POST, 'sections', [ ] ) ?: [ ]; //making sure its an array
     $updated  = array_get( $_POST, 'updated', false );
     $pageId   = array_get( $_POST, 'pageId', false );
 
@@ -10,9 +13,11 @@ class SectionsApiController extends ApiController {
 
     if ( $pageId ) {
       onepager()->section()->save( $pageId, $sections );
+      $this->buildOnepageScripts( $sections, $pageId );
+
       $this->responseSuccess();
     } else {
-      $section = array_get( $sections, $updated, false );
+      $section  = array_get( $sections, $updated, false );
       $response = $this->prepareSectionWithContentAndStyle( $section );
       $this->responseSuccess( $response );
     }
@@ -30,7 +35,7 @@ class SectionsApiController extends ApiController {
   }
 
   public function reloadSections() {
-    $sections = array_get( $_POST, 'sections', [ ] ) ? : []; //making sure its an array
+    $sections = array_get( $_POST, 'sections', [ ] ) ?: [ ]; //making sure its an array
 
     $sections = $this->prepareSectionsWithContentAndStyle( $sections );
     $this->responseSuccess( compact( 'sections' ) );
@@ -42,7 +47,7 @@ class SectionsApiController extends ApiController {
    * @return array
    */
   protected function prepareSectionsWithContentAndStyle( $sections ) {
-    $sections = array_map( function ( $section ){
+    $sections = array_map( function ( $section ) {
       return $this->prepareSectionWithContentAndStyle( $section );
     }, $sections );
 
@@ -62,5 +67,19 @@ class SectionsApiController extends ApiController {
     $section['style']   = $render->style( $section );
 
     return $section;
+  }
+
+  /**
+   * @param $sections
+   * @param $pageId
+   */
+  protected function buildOnepageScripts( $sections, $pageId ) {
+    $blockScripts   = new BlocksScripts();
+    $onepageScripts = new OnepageScripts();
+
+    $blockScripts->enqueueSectionBlocks( $sections );
+    $onepageScripts->enqueueScripts();
+
+    onepager()->asset()->compilePageAssets( $pageId );
   }
 }
