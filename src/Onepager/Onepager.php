@@ -5,7 +5,7 @@ use Pimple\Container;
 use ThemeXpert\Onepager\Adapters\BaseAdapter;
 use ThemeXpert\Onepager\Block\Collection;
 use ThemeXpert\Onepager\Block\BlockManager;
-use ThemeXpert\Onepager\Block\TemplateManager;
+use ThemeXpert\Onepager\Block\PresetManager;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
 use ThemeXpert\Onepager\Block\Transformers\SectionTransformer;
@@ -24,7 +24,7 @@ class Onepager implements OnepagerInterface {
 		$this->adapter   = $adapter;
 		$this->container = $container;
 		$this->setBlockManager();
-		$this->setTemplateManager();
+		$this->setPresetManager();
 		$this->setRenderer();
 		$this->setViewProvider();
 	}
@@ -37,9 +37,9 @@ class Onepager implements OnepagerInterface {
 			return new BlockManager( $configTransformer, $blockCollection );
 		};
 	}
-	public function setTemplateManager() {
-		$this->container['layoutManager'] = function () {
-			return new TemplateManager;
+	public function setPresetManager() {
+		$this->container['presetManager'] = function () {
+			return new PresetManager;
 		};
 	}
 
@@ -132,8 +132,8 @@ class Onepager implements OnepagerInterface {
 		return OptionsPanel::getInstance($menuSlug);
 	}
 
-	public function layoutManager(){
-		return $this->container['layoutManager'];
+	public function presetManager(){
+		return $this->container['presetManager'];
 	}
 
 	public function getOption(){

@@ -19,7 +19,7 @@ function tx_add_onepager_metabox(){
         //generate livemode url
         $editorUrl = getOpBuildModeUrl(get_permalink($post->ID), true);
 
-        include __DIR__ . "/views/page-meta.php";
+        include __DIR__ . "/page-meta.php";
     };
 
     add_meta_box(

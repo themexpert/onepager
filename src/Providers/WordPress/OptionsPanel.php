@@ -1,5 +1,6 @@
 <?php namespace ThemeXpert\Providers\Wordpress;
 
+use App\Assets\OptionsPanelScripts;
 use ThemeXpert\Providers\Contracts\OptionsPanelInterface;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
 
@@ -62,7 +63,7 @@ class OptionsPanel implements OptionsPanelInterface{
 	public function localizeScript(){
 		if(!$this->isOptionsPanel()) return;
 
-		enqueueOnepagerAdminAssets();
+    new OptionsPanelScripts();
 
 		$optionPanel 	= $this->getOptions();
 		$savedOptions = get_option($this->menuSlug);

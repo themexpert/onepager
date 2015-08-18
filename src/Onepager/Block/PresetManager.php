@@ -3,7 +3,7 @@
 use ThemeXpert\FileSystem\FileSystem as FS;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 
-class TemplateManager {
+class PresetManager {
   protected $templates;
   protected $paths;
   protected $ignoredGroups = array();
@@ -21,8 +21,8 @@ class TemplateManager {
     $filename = basename($file);
 
     if (!array_key_exists('screenshot', $config)) {
-      $imagename            = str_replace('.json', '.jpg', $filename);
-      $config['screenshot'] = trailingslashit($url) . $imagename;
+      $imageName            = str_replace('.json', '.jpg', $filename);
+      $config['screenshot'] = trailingslashit($url) . $imageName;
     }
 
     if (!array_key_exists('group', $config)) {
