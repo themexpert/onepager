@@ -15,7 +15,7 @@ use ThemeXpert\WordPress\PageTemplater;
 class Application {
   protected $onepager;
 
-  public function __construct($onepager){
+  public function __construct( $onepager ) {
     $this->onepager = $onepager;
 
     $this->enqueue_assets();
@@ -29,28 +29,33 @@ class Application {
     new BlocksScripts();
     new BuildModeScripts();
 
-    add_action('wp_enqueue_scripts', function(){
-      $is_build_mode = $this->isBuildMode();
-      $page_id = $this->getCurrentPageId();
 
-      $this->onepager->asset()->enqueue( ! $is_build_mode, $page_id );
-    });
+    add_action( 'wp_enqueue_scripts', [ $this, 'compile_assets' ] );
   }
 
-  protected function inject_page_contents(){
+  public function compile_assets() {
+    if ( $this->shouldCompileScripts() ) {
+      $page_id = $this->getCurrentPageId();
+      $this->onepager->asset()->compileScriptsAndEnqueue( $page_id );
+    } else {
+      $this->onepager->asset()->enqueue();
+    }
+  }
+
+  protected function inject_page_contents() {
     new OnepageToolbar();
     new OnepageContent();
     new OnepageInternalScripts();
   }
 
   protected function init_loaders() {
-    $blockManager = $this->getBlockManager();
-    $presetManager = $this->getPresetManager();
+    $blockManager        = $this->getBlockManager();
+    $presetManager       = $this->getPresetManager();
     $pageTemplateManager = new PageTemplater();
 
-    new BlocksLoader($blockManager);
-    new PresetsLoader($presetManager);
-    new TemplateLoader($pageTemplateManager);
+    new BlocksLoader( $blockManager );
+    new PresetsLoader( $presetManager );
+    new TemplateLoader( $pageTemplateManager );
   }
 
   /**
@@ -79,5 +84,19 @@ class Application {
    */
   protected function getPresetManager() {
     return $this->onepager->presetManager();
+  }
+
+  /**
+   * @return bool
+   */
+  private function shouldCompileScripts() {
+    return $this->isBuildMode() ? false : ! $this->isDebugMode();
+  }
+
+  /**
+   * @return bool
+   */
+  private function isDebugMode() {
+    return (defined( 'ONEPAGER_DEBUG' ) && ONEPAGER_DEBUG) || \Onepager::getOption('onepager_debug', false);
   }
 }

@@ -1,13 +1,4 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: na
- * Date: 8/18/15
- * Time: 12:35 AM
- */
-
-namespace App\Api\Controllers;
-
+<?php namespace App\Api\Controllers;
 
 class OptionsApiController extends ApiController {
   public function saveOptions() {

@@ -47,24 +47,24 @@ class Asset implements AssetInterface {
     }, $this->localize );
   }
 
-  public function enqueue( $compile = false, $pageId = null ) {
-    if ( $compile && $pageId ) {
-      $js_file  = content_url( 'cache/onepager.build' . $pageId . '.js' );
-      $css_file = content_url( 'cache/onepager.build' . $pageId . '.css' );
-
-      if ( ! file_exists( $js_file ) || ! file_exists( $css_file ) ) {
-        add_action( 'wp_head', function () use ( $pageId ) {
-          $this->compilePageAssets( $pageId );
-        }, 5 );
-      }
-
-      wp_enqueue_script( 'onepager', $js_file, $this->getDependencies( $this->scripts ) );
-      wp_enqueue_style( 'onepager', $css_file, $this->getDependencies( $this->styles ) );
-    } else {
+  public function enqueue() {
       $this->enqueueStyles();
       $this->enqueueScripts();
       $this->enqueueLocalizations();
+  }
+
+  public function compileScriptsAndEnqueue($pageId){
+    $js_file  = content_url( 'cache/onepager.build' . $pageId . '.js' );
+    $css_file = content_url( 'cache/onepager.build' . $pageId . '.css' );
+
+    if ( ! file_exists( $js_file ) || ! file_exists( $css_file ) ) {
+      add_action( 'wp_head', function () use ( $pageId ) {
+        $this->compilePageAssets( $pageId );
+      }, 5 );
     }
+
+    wp_enqueue_script( 'onepager', $js_file, $this->getDependencies( $this->scripts ) );
+    wp_enqueue_style( 'onepager', $css_file, $this->getDependencies( $this->styles ) );
   }
 
   public function getDependencies( $assets ) {

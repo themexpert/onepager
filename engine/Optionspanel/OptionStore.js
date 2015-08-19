@@ -57,7 +57,7 @@ let OptionsPanelStore = Reflux.createStore({
 
   onUpdate(index, panel){
     this.data.optionPanel = this.data.optionPanel.set(index, panel);
-    this.trigger({optionPanel: this.data.optionPanel});
+    this.trigger();
   },
 
 
@@ -80,8 +80,8 @@ let OptionsPanelStore = Reflux.createStore({
 
     //FIXME: move this to UI
     update.then(()=>{
-      let synced = Immutable.fromJS(this.data.optionPanel.toJS());
-      this.trigger({synced});
+      this.data.synced = Immutable.fromJS(this.data.optionPanel.toJS());
+      this.trigger();
       notify.success('Successfully saved settings');
       OptionActions.sync.completed();
     }, ()=>{
