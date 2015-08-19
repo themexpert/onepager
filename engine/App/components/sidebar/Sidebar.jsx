@@ -1,7 +1,7 @@
 const _                  = require('underscore');
 const swal               = require('sweetalert');
 const React              = require('react');
-const Tab                = require('../../../shared/components/Tab.jsx');
+const Tab                = require('./Tab.jsx');
 const TabPane            = require('../../../shared/components/TabPane.jsx');
 const OptionActions      = require('../../../Optionspanel/OptionActions.js');
 const SectionTransformer = require('../../../shared/lib/SectionTransformer.js');
@@ -119,10 +119,10 @@ let Sidebar = React.createClass({
     return (
       <div className="txop-sidebar op-ui clearfix">
         <ul className='tx-nav tx-nav-tabs'>
-          <Tab onClick={handleTabClick} id='op-sections' icon='cubes' title='Layout' active={activeTab}/>
-          <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab} disabled={!sectionEditable}/>
-          <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab}/>
-          <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab}/>
+          <Tab onClick={handleTabClick} id='op-sections' icon="cubes" title='Layout' active={activeTab} icon2="arrow-left" parent={true}/>
+          <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab} />
+          <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab} visibleOn="op-sections" />
+          <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab} visibleOn="op-sections" />
 
           <div className="btn-group">
           {
