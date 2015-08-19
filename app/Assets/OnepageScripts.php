@@ -26,7 +26,7 @@ class OnepageScripts {
     $asset->script( 'lithium', asset( 'assets/lithium.js' ), [ 'jquery' ] );
     $asset->style( 'lithium', asset( 'assets/css/lithium.css' ) );
 
-    if ( is_super_admin() && ! onepager()->content()->isOnepage() ) {
+    if ( is_super_admin() && ! onepager()->content()->isBuildMode() ) {
       $asset->style( 'lithium-ui', asset( 'assets/css/lithium-builder.css' ) );
     }
   }
