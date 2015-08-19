@@ -25,5 +25,9 @@ class OnepageScripts {
     $asset->script( 'nicescroll', asset( 'assets/js/jquery.nicescroll.js' ), [ 'jquery' ] );
     $asset->script( 'lithium', asset( 'assets/lithium.js' ), [ 'jquery' ] );
     $asset->style( 'lithium', asset( 'assets/css/lithium.css' ) );
+
+    if ( is_super_admin() && ! onepager()->content()->isOnepage() ) {
+      $asset->style( 'lithium-ui', asset( 'assets/css/lithium-builder.css' ) );
+    }
   }
 }

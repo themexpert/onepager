@@ -22,6 +22,10 @@ trait FormEngineScripts {
     $asset->style( 'tx-colorpicker', asset( "assets/css/bootstrap-colorpicker.css" ) );
 
     $asset->script( 'tx-toastr', asset( 'assets/js/toastr.js' ), [ 'jquery' ] );
+
+    if ( is_super_admin() ) {
+      $asset->style( 'lithium-ui', asset( 'assets/css/lithium-builder.css' ) );
+    }
   }
 
   protected function jsWpEditor( $settings = array() ) {
