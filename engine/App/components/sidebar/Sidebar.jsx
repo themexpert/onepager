@@ -130,9 +130,8 @@ let Sidebar = React.createClass({
               <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave} className='btn btn-primary btn--save'>
                 <span className={saveClasses}></span>
               </button> :
-              <button disabled={!isDirty} onClick={this.handleSave} className='btn btn-primary btn--save' data-toggle="tooltip"
-                 data-placement="bottom" title="Save">
-                  <span className={saveClasses}></span>
+              <button disabled={!isDirty} onClick={this.handleSave} className='btn btn-primary btn--save'>
+              <span className={saveClasses}></span>
               </button>
           }
           <a href={ODataStore.disableBuildModeUrl} className="btn btn-primary" data-toggle="tooltip"
