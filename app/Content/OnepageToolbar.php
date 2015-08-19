@@ -15,7 +15,7 @@ class OnepageToolbar {
       onepager()->toolbar()->addMenu(
         'op-enable-livemode',
         $url,
-        '<span class="fa fa-circle"></span> Enable Build Mode'
+        '<span class="fa fa-circle"></span> Enable Onepage Editor'
       );
     }
 
