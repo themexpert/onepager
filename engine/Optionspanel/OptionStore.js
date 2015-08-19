@@ -55,8 +55,8 @@ let OptionsPanelStore = Reflux.createStore({
     this.trigger({activeTabIndex: tabIndex});
   },
 
-  onUpdate(index, panel){
-    this.data.optionPanel = this.data.optionPanel.set(index, panel);
+  onUpdate(keyPath, data){
+    this.data.optionPanel = this.data.optionPanel.setIn(keyPath, data);
     this.trigger();
   },
 

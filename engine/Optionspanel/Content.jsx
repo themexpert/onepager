@@ -1,9 +1,9 @@
-const React     = require("react");
+const React = require("react");
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 
-const Input               = require("../shared/components/form/Input.jsx");
-const Divider             = require('../shared/components/form/Divider.jsx');
-const Note             = require('../shared/components/form/Note.jsx');
+const Input = require("../shared/components/form/Input.jsx");
+const Divider = require('../shared/components/form/Divider.jsx');
+const Note = require('../shared/components/form/Note.jsx');
 const OptionsPanelActions = require('./OptionActions.js');
 
 
@@ -11,8 +11,9 @@ let Content = React.createClass({
   mixins: [PureMixin],
 
   getDefaultProps(){
-    return{
-      whenSettingsDirty: ()=>{}
+    return {
+      whenSettingsDirty: ()=> {
+      }
     };
   },
 
@@ -24,7 +25,7 @@ let Content = React.createClass({
     let controls = this.props.panel.get('fields');
 
     controls = controls.map(control=> {
-      let ref  = this.refs[control.get('ref')];
+      let ref = this.refs[control.get('ref')];
       let type = control.get('type');
 
       switch (type) {
@@ -40,8 +41,7 @@ let Content = React.createClass({
       return control;
     });
 
-    let panel = this.props.panel.set('fields', controls);
-    OptionsPanelActions.update(this.props.index, panel);
+    OptionsPanelActions.update([this.props.index, 'fields'], controls);
 
     this.props.whenSettingsDirty();
   },
@@ -54,9 +54,9 @@ let Content = React.createClass({
     let controlsHtml = controls.map((control, ii)=> {
       let props = {
         onChange: this.update,
-        options : control.toJS(),
-        ref     : control.get('ref'),
-        key     : control.get('ref')
+        options: control.toJS(),
+        ref: control.get('ref'),
+        key: control.get('ref')
       };
 
       let type = control.get('type');
