@@ -54,7 +54,8 @@ Onepager::addPresets( "default", array(
 ) );
 
 add_action( 'wp_head', function () { ?>
-  <link rel="icon" href="' . Onepager::getOption( 'favicon' ) . '">
+  <link rel="icon" href="<?php echo Onepager::getOption( 'favicon' ) ?>">
+
   <!--  Google Analytics-->
   <?php echo Onepager::getOption( 'google_analytics' ); ?>
 
