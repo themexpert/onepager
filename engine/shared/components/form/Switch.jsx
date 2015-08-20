@@ -23,8 +23,7 @@ let SwitchControl = React.createClass({
     let props = {
       name          : this.props.name,
       type          : 'checkbox',
-      //FIXME: bad design why should true be turned into 'true'?
-      defaultChecked: this.props.defaultChecked === true || this.props.defaultChecked === 'true',
+      defaultChecked: this.props.defaultChecked === true,
       onChange      : this.props.onChange
     };
 

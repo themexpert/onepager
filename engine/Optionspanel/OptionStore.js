@@ -17,7 +17,7 @@ function transformer(fields, panelId) {
   return fields.map(field=> {
     field.ref = _.uniqueId("ref_");
 
-    if (options && options[panelId] && options[panelId][field.name]) {
+    if (options && options[panelId] && options[panelId][field.name] !== undefined) {
       field.value = options[panelId][field.name];
     }
 
@@ -41,7 +41,6 @@ let AppState = {
 AppState.tabs = AppState.optionPanel.map(tab=> {
   return {id: tab.get('id'), name: tab.get('name')};
 }).toList();
-
 
 let OptionsPanelStore = Reflux.createStore({
   listenables: [OptionActions],
