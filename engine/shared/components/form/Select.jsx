@@ -3,6 +3,8 @@ const Input                             = require('react-bootstrap/lib/Input');
 const _                                 = require("underscore");
 const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 
+require("../../../../assets/css/bootstrap-select.css");
+
 let SelectControl = React.createClass({
   mixins: [ReactComponentWithPureRenderMixin],
 
@@ -12,6 +14,14 @@ let SelectControl = React.createClass({
 
   isEmpty(str) {
     return (!str || 0 === str.length);
+  },
+
+  componentDidMount() {
+    jQuery('select.form-control').selectpicker();
+  },
+
+  componentWillUnmount() {
+    jQuery('select.form-control').unbind();
   },
 
   render() {
