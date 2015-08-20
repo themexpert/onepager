@@ -77,13 +77,12 @@ let Section = React.createClass({
             </span>
             {title}
           </h3>
+          <div className="action-btns">
+            <span className="fa fa-edit" onClick={this.handleEditSection} data-toggle="tooltip" title="Edit"></span>
+            <span className="fa fa-copy" onClick={this.handleDuplicateSection} data-toggle="tooltip" title="Copy"></span>
+            <span className="fa fa-trash-o" onClick={this.handleRemoveSection} data-toggle="tooltip" title="Delete"></span>
+          </div>
         </SectionTitle>
-        <div className="action-btns">
-          <span className="fa fa-edit" onClick={this.handleEditSection} data-toggle="tooltip" title="Edit"></span>
-          {/*<span className="fa fa-link" onClick={this.handleAddToMenu} data-toggle="tooltip" title="Link Menu"></span>*/}
-          <span className="fa fa-copy" onClick={this.handleDuplicateSection} data-toggle="tooltip" title="Copy"></span>
-          <span className="fa fa-trash-o" onClick={this.handleRemoveSection} data-toggle="tooltip" title="Delete"></span>
-        </div>
       </div>
     );
   }
