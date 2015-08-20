@@ -7,18 +7,22 @@
 @import "@{lithium_path}/builder/variables.less";
 
 .op-editor{
-  // remove undo/redo, formate, indent/outdent
+  // remove undo/redo, format, indent/outdent
   #mceu_21,
   #mceu_22,
   #mceu_11,
   #mceu_12{ display: none;}
 
+  .mce-tooltip {
+g    display: none !important;
+  }
+
   .mce-panel{
     background: @bg-secondary;
     border-color: lighten(@bg-primary, 10%);
     border-radius: 4px 4px 0 0;
-    // border: 0;
   }
+
   .mce-menubar{ border: 0; }
   .mce-menubar .mce-menubtn, .mce-statusbar{ display: none;}
 
