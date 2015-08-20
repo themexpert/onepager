@@ -1,5 +1,4 @@
 <?php namespace App\Assets\Traits;
-define('ONEPAGER_BOOTSTRAP', true);
 
 trait CommonAssets {
   public function enqueueCommonScripts() {
