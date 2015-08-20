@@ -21,6 +21,20 @@ class Application {
     $this->enqueue_assets();
     $this->inject_page_contents();
     $this->init_loaders();
+
+//    if(!$this->isCacheDirWritable()){
+//      add_action( 'admin_notices', [$this, 'cache_dir_notice'] );
+//    }
+  }
+
+  public function cache_dir_notice(  ) {
+      ?>
+      <div class="error">
+        <p>'<?php echo ONEPAGER_CACHE_DIR ?>' is used to store compiled assets.
+          But its not writable by server.
+          Making it writable will increase the performance of your website</p>
+      </div>
+      <?php
   }
 
   protected function enqueue_assets() {
@@ -90,7 +104,11 @@ class Application {
    * @return bool
    */
   private function shouldCompileScripts() {
-    return $this->isBuildMode() ? false : ! $this->isDebugMode();
+    return $this->isBuildMode() ? false : ! $this->isDebugMode() && $this->isCacheDirWritable();
+  }
+
+  private function isCacheDirWritable(){
+    return wp_is_writable(ONEPAGER_CACHE_DIR);
   }
 
   /**

@@ -54,8 +54,8 @@ class Asset implements AssetInterface {
   }
 
   public function compileScriptsAndEnqueue($pageId){
-    $js_file  = content_url( 'cache/onepager.build' . $pageId . '.js' );
-    $css_file = content_url( 'cache/onepager.build' . $pageId . '.css' );
+    $js_file  = ONEPAGER_CACHE_URL.'/onepager.build' . $pageId . '.js';
+    $css_file = ONEPAGER_CACHE_URL.'/onepager.build' . $pageId . '.css';
 
     if ( ! file_exists( $js_file ) || ! file_exists( $css_file ) ) {
       add_action( 'wp_head', function () use ( $pageId ) {
@@ -83,7 +83,7 @@ class Asset implements AssetInterface {
 
   public function compilePageAssets( $pageId ) {
     $compiler = new AssetsCompiler();
-    $compiler->addCollection( WP_CONTENT_DIR . '/cache/onepager.build' . $pageId . '.css', $this->styles );
-    $compiler->addCollection( WP_CONTENT_DIR . '/cache/onepager.build' . $pageId . '.js', $this->scripts );
+    $compiler->addCollection( ONEPAGER_CACHE_DIR.'/onepager.build' . $pageId . '.css', $this->styles );
+    $compiler->addCollection( ONEPAGER_CACHE_DIR.'/onepager.build' . $pageId . '.js', $this->scripts );
   }
 }
