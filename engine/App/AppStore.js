@@ -83,6 +83,8 @@ function duplicateSection(index) {
 
 // function to remove section
 function removeSection(index) {
+  $(`#style-${_sections[index].id}`).remove();
+
   //immutable please
   _sections.splice(index, 1);
 
