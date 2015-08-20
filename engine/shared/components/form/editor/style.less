@@ -7,11 +7,9 @@
 @import "@{lithium_path}/builder/variables.less";
 
 .op-editor{
-  // remove undo/redo, format, indent/outdent
-  #mceu_21,
-  #mceu_22,
-  #mceu_11,
-  #mceu_12{ display: none;}
+  .mce-container.mce-flow-layout-item.mce-first.mce-btn-group{
+    display: none;
+  }
 
   .mce-tooltip {
     display: none !important;
@@ -45,15 +43,16 @@
     color: lighten(@text-color, 5%);
     &:hover{ color: #fff; }
   }
-}
-.mce-menu{
-  background: darken(@bg-primary, 5%) !important;
-}
 
-.mce-menu-item:hover, .mce-menu-item.mce-selected, .mce-menu-item:focus{
-  background: @bg-primary !important;
-  color: lighten(@text-color, 10%) !important;
-}
-.mce-menu-item .mce-ico, .mce-menu-item .mce-text{
-  color: @text-color !important;
+  .mce-menu{
+    background: darken(@bg-primary, 5%) !important;
+  }
+
+  .mce-menu-item:hover, .mce-menu-item.mce-selected, .mce-menu-item:focus{
+    background: @bg-primary !important;
+    color: lighten(@text-color, 10%) !important;
+  }
+  .mce-menu-item .mce-ico, .mce-menu-item .mce-text{
+    color: @text-color !important;
+  }
 }
