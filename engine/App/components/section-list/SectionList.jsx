@@ -4,7 +4,6 @@ const cx              = require('classnames');
 const SortableMixin   = require('sortablejs/react-sortable-mixin');
 const Button          = require('react-bootstrap/lib/Button');
 const SectionLi       = require('./Section.jsx');
-const BlockCollection = require('../blocks/BlockCollection.jsx');
 const AppStore        = require('../../AppStore.js');
 const AppActions      = require('../../AppActions.js');
 // const PureMixin           = require('../../../mixins/PureMixin.js');
@@ -25,15 +24,10 @@ let SectionList = React.createClass({
   mixins: [SortableMixin],
 
   propTypes: {
+    openBlocks: React.PropTypes.func,
     activeSectionIndex: React.PropTypes.number,
     blocks: React.PropTypes.array,
     sections: React.PropTypes.array
-  },
-
-  getInitialState(){
-    return {
-      screen: "home"
-    };
   },
 
   componentDidMount(){
@@ -67,31 +61,16 @@ let SectionList = React.createClass({
     AppActions.updateSection(index, section);
   },
 
-  showBlocksScreen(){
-    this.setState({screen: "blocks"});
-  },
-
-  showHomeScreen(){
-    this.setState({screen: "home"});
-  },
-
   render() {
     let sections = this.props.sections;
     let activeSectionIndex = this.props.activeSectionIndex;
-    let blocks   = this.props.blocks;
 
-    let blocksClass = cx("list-blocks", {
-      "hidden" : this.state.screen !== "blocks"
-    });
-
-    let sectionsClass = cx("list-sections", {
-      "hidden" : this.state.screen !== "home"
-    });
+    let sectionsClass = cx("list-sections");
 
     return (
       <div className="op-section-list">
         <div className={sectionsClass}>
-          <Button bsStyle='primary' className="btn-block" onClick={this.showBlocksScreen}>
+          <Button bsStyle='primary' className="btn-block" onClick={this.props.openBlocks}>
             <span className="fa fa-plus"></span> Add Block
           </Button>
 
@@ -109,11 +88,6 @@ let SectionList = React.createClass({
             })}
           </div>
         </div>
-
-        <div className={blocksClass}>
-          <BlockCollection closeBlocks={this.showHomeScreen} blocks={blocks}/>
-        </div>
-
       </div>
     ); //end jsx
   } //end render

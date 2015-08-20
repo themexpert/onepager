@@ -74,16 +74,11 @@ let BlockCollection = React.createClass({
 
     return (
       <div>
-        <div className="blocks-nav">
-          <Select type="select" ref="group"
-                  defaultValue={this.state.group}
-                  options={arrayKeyMirror(groups)}
-                  onChange={this.handleChange}/>
+        <Select type="select" ref="group"
+                defaultValue={this.state.group}
+                options={arrayKeyMirror(groups)}
+                onChange={this.handleChange}/>
 
-          <Button bsStyle='primary' className="btn--back" onClick={this.props.closeBlocks}>
-            <span className="fa fa-arrow-left"></span> Back
-          </Button>
-        </div>
 
         <div>
           {blocks.map((block) => {

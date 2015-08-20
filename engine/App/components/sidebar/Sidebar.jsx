@@ -14,6 +14,7 @@ const Settings           = require("./Settings.jsx");
 const Menu           = require("./Menu.jsx");
 const $                  = jQuery;
 const Footer    = require('./../section-list/Footer.jsx');
+const BlockCollection = require('../blocks/BlockCollection.jsx');
 
 
 import cx from "classnames";
@@ -121,6 +122,7 @@ let Sidebar = React.createClass({
         <ul className='tx-nav tx-nav-tabs'>
           <Tab onClick={handleTabClick} id='op-sections' icon="cubes" title='Layout' active={activeTab} icon2="arrow-left" parent={true}/>
           <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab} />
+          <Tab onClick={handleTabClick} id='op-blocks' icon='cube' title='Blocks' active={activeTab} />
           <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab} visibleOn="op-sections" />
           <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab} visibleOn="op-sections" />
 
@@ -144,9 +146,14 @@ let Sidebar = React.createClass({
         <div className='tab-content' ref='tabContents'>
           <TabPane id='op-sections' active={activeTab}>
               <SectionList
+                openBlocks={handleTabClick.bind(this, 'op-blocks')}
                 activeSectionIndex={activeSectionIndex}
                 blocks={blocks}
                 sections={sections} />
+          </TabPane>
+
+          <TabPane id="op-blocks" active={activeTab}>
+            <BlockCollection blocks={blocks}/>
           </TabPane>
 
           <TabPane id='op-menu' active={activeTab}>
