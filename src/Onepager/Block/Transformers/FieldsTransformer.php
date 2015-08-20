@@ -47,8 +47,8 @@ class FieldsTransformer {
           $default = array(
             'value' => array(
               'url'    => array_get( $control, 'url', '' ),
-              'text'   => array_get( $control, 'url', '' ),
-              'target' => array_get( $control, 'url', false ),
+              'text'   => array_get( $control, 'text', '' ),
+              'target' => array_get( $control, 'target', false ),
             ),
           );
           break;
