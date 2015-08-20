@@ -7,6 +7,14 @@
 @import "@{lithium_path}/builder/variables.less";
 
 .op-editor{
+  .mce-btn-group:not(:first-child) {
+    padding-left: 0px;
+  }
+
+  .mce-btn-group .mce-btn {
+    margin-left: 1px;
+  }
+
   .mce-container.mce-flow-layout-item.mce-first.mce-btn-group,
   .mce-container.mce-flow-layout-item.mce-btn-group:nth-child(2){
     display: none;
@@ -56,4 +64,17 @@
   .mce-menu-item .mce-ico, .mce-menu-item .mce-text{
     color: @text-color !important;
   }
+}
+
+.repeatable-control .op-editor{
+  .mce-btn-group .mce-btn{
+    margin: 1px;
+
+    .mce-ico{
+      font-size: 10px;
+      height: 10px;
+      width: 10px;
+    }
+  }
+
 }
