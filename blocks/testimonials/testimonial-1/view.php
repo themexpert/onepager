@@ -10,13 +10,13 @@
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
-			
+
 			<?php foreach($contents['testimonials'] as $item): ?>
 			<div class="item <?php echo ($slide_num === 0) ? 'active' : ''?>">
-				<div class="text-center">
+				<div class="ml-big mr-big text-center">
 					<?php if($item['image']):?>
 					<figure>
-						<img src="<?php echo $item['image']?>" alt="<?php echo $item['name']?>">	
+						<img src="<?php echo $item['image']?>" alt="<?php echo $item['name']?>">
 					</figure>
 					<?php endif; ?>
 
@@ -32,7 +32,7 @@
 						<p class="designation"><?php echo $item['designation']?></p>
 					<?php endif; ?>
 
-				</div>	
+				</div>
 			</div>
 			<?php $slide_num++; endforeach; ?>
 		</div>

@@ -35,6 +35,12 @@ return array(
   // Settings - $settings available on view file to access the option
   'settings' => array(
     array(
+      'name' => 'title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => '@section_title_size'
+    ),
+    array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
