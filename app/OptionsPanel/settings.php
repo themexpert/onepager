@@ -20,8 +20,7 @@ Onepager::getOptionPanel()
   ->tab( 'styles', 'Styles' )
   ->tab( 'advanced')
   ->add(
-    array('name'=>'onepager_debug', 'label'=>'Development Mode', 'type'=>'switch', 'value'=>false),
-    array('name'=>'onepager_bootstrap', 'label'=>'Twitter Bootstrap', 'type'=>'switch', 'value'=>true)
+    array('name'=>'onepager_debug', 'label'=>'Development Mode', 'type'=>'switch', 'value'=>false)
   )
 //  ->tab( 'styles', 'Styles' )
 //  ->add(
