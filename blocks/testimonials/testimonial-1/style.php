@@ -10,3 +10,6 @@
 	background-color : <?php echo $styles['bg_color'] ?>;
 	color : <?php echo $styles['text_color']?>;
 }
+#<?php echo $id; ?> .section-title{
+	font-size : <?php echo $settings['title_size']?>px;
+}

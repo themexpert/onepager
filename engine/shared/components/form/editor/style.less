@@ -1,11 +1,55 @@
-.op-editor{
-  .mce-menubar .mce-menubtn, .mce-statusbar{
-    display: none;
-  }
+@bower_path : '../../../../../bower_components';
+@lithium_path : '../../../../lithium';
 
-  .mce-container-body .mce-flow-layout{
-    .mce-btn button {
-      padding: 4px 6px;
+// Lesshat
+@import "@{bower_path}/lesshat/build/lesshat.less";
+// Lithium
+@import "@{lithium_path}/builder/variables.less";
+
+.op-editor{
+  // remove undo/redo, formate, indent/outdent
+  #mceu_21,
+  #mceu_22,
+  #mceu_11,
+  #mceu_12{ display: none;}
+
+  .mce-panel{
+    background: @bg-secondary;
+    border-color: lighten(@bg-primary, 10%);
+    border-radius: 4px 4px 0 0;
+    // border: 0;
+  }
+  .mce-menubar{ border: 0; }
+  .mce-menubar .mce-menubtn, .mce-statusbar{ display: none;}
+
+  .mce-btn {
+    background: @bg-primary;
+    border-color: darken(@bg-secondary, 3%);
+    &:hover{
+      background: darken(@bg-primary, 5%);
+      border-color: darken(@bg-secondary, 5%);
+    }
+    button { padding: 2px 4px; color: @text-color; }
+    &.mce-active,
+    &.mce-active:hover{
+      background: darken(@bg-primary, 5%);
+      border-color: darken(@bg-secondary, 5%);
     }
   }
+  .mce-btn-group:not(:first-child){ border: 0; }
+  .mce-ico{
+    color: lighten(@text-color, 5%);
+    &:hover{ color: #fff; }
+  }
+}
+.mce-menu{
+  background: darken(@bg-primary, 5%) !important;
+}
+
+.mce-menu-item:hover, .mce-menu-item.mce-selected, .mce-menu-item:focus{
+  background: @bg-primary !important;
+  color: lighten(@text-color, 10%) !important;
+}
+.mce-menu-item .mce-ico, .mce-menu-item .mce-text{
+  color: @text-color !important;
 }
