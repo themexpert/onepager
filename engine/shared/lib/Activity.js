@@ -1,4 +1,4 @@
-function Activity(AUTO_CALL_DELAY = 1000) {
+function Activity(AUTO_CALL_DELAY = 1000, msg='user is editing') {
   let _lastCallTime = new Date();
 
   return function () {
@@ -7,7 +7,7 @@ function Activity(AUTO_CALL_DELAY = 1000) {
 
       setTimeout(()=> {
         let elapsedTime = new Date() - _lastCallTime;
-        return ( elapsedTime < AUTO_CALL_DELAY) ? reject('user is editing') : resolve();
+        return ( elapsedTime < AUTO_CALL_DELAY) ? reject(msg) : resolve();
       }, AUTO_CALL_DELAY); //end timeout
 
     });
