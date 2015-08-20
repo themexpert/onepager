@@ -3,6 +3,7 @@
 .tx-nav {
   margin: 0;
   padding: 0;
+
   > li {
     position: relative;
     display: block;
@@ -26,6 +27,7 @@
 }
 
 .tx-nav-tabs {
+  .box-shadow(0 -3px 3px #1C232B inset);
   .transition(all 0.3s linear);
   > li {
     display: inline-block;
@@ -34,6 +36,7 @@
   > li > a {
     padding: 12px 15px
   }
+  > li.active{ .box-shadow(0 -6px 5px #1C232B); }
 }
 
 .nav-pills {
