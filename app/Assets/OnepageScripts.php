@@ -6,7 +6,7 @@ class OnepageScripts {
   use CommonAssets;
 
   public function __construct() {
-    add_action( 'wp_enqueue_scripts', [$this, 'enqueueScripts']);
+    add_action( 'wp_enqueue_scripts', [$this, 'enqueueScripts'], 100);
   }
 
   public function enqueueScripts() {
