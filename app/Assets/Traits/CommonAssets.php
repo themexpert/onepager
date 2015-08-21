@@ -14,6 +14,6 @@ trait CommonAssets {
   }
 
   protected function shouldLoadTwitterBootstrap() {
-    return ( defined( 'ONEPAGER_BOOTSTRAP' ) && ONEPAGER_BOOTSTRAP ) || \Onepager::getOption( 'onepager_bootstrap', true );
+    return ( defined( 'ONEPAGER_BOOTSTRAP' ) && ONEPAGER_BOOTSTRAP );
   }
 }
