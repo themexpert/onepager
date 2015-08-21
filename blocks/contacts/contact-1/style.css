@@ -1,0 +1,17 @@
+.contact-1{ padding-top: 80px; padding-bottom: 80px; }
+.contact-1 .contact-row{ padding-left: 30px; position: relative; margin-top: 20px; }
+.contact-1 .contact-row .fa{ position: absolute; left: 0; }
+.contact-1 .social-links{ margin-top: 20px; }
+
+.contact-1 input[type="text"],
+.contact-1 input[type="email"],
+.contact-1 textarea{
+  border: 1px solid #eee;
+  padding: 4px 10px;
+  margin-top: 5px;
+  color: #757373;
+}
+.contact-1 input[type="submit"]{
+  padding: 6px 20px;
+  border: 0;
+}
