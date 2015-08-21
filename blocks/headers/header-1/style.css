@@ -7,24 +7,24 @@
   Navbar Sticky
 */
 .header-1 .navbar.affix{ border: 0; top: 0; }
-/* 
+/*
   Navbar Button
 */
 
 .header-1 .navbar-btn{ margin-left: 10px;}
 
-/* 
+/*
   Carousel Elements
 */
-.header-1 .carousel-caption { color: #fff; text-shadow: 0px 1px 2px #222; padding-bottom: 0; }
+.header-1 .carousel-caption { padding-bottom: 0; }
 
-.header-1 .carousel .title { font-size: 1.2em; font-weight: bold; }
-.header-1 .carousel .desc { font-size: 1em; }
+.header-1 .carousel .section-title { font-size: 1.2em; font-weight: bold; }
+.header-1 .carousel .section-desc { font-size: 1em; }
 
-.header-1 .carousel .title,
-.header-1 .carousel .desc { margin: 0.67em 2em 0; }
+.header-1 .carousel .section-title,
+.header-1 .carousel .section-desc { margin: 0.67em 2em 0; }
 
-.header-1 .carousel .btn { 
+.header-1 .carousel .btn {
 	margin-top: 2em; margin-bottom: 2em;
 	border : 0; border-radius: 0;
 }
@@ -33,10 +33,10 @@
 /*
   Carousel Indicator
 */
-.header-1 .carousel-indicators {   
+.header-1 .carousel-indicators {
   width: 20px;
   right: 15px; left: auto; top: 40%; bottom: 0;
-  margin: 0; 
+  margin: 0;
 }
 .header-1 .carousel-indicators li{ border: 1px solid rgba(255,255,255,0.3) }
 .header-1 .carousel-indicators li.active { background-color: #ee534f; }
@@ -49,14 +49,14 @@
   .header-1 { padding-top: 20px; }
 }
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
 
-  .header-1 .carousel .title { font-size: 3em; }
-  .header-1 .carousel .desc { font-size: 1.143em; }
+  .header-1 .carousel .section-title { font-size: 3em; }
+  .header-1 .carousel .section-desc { font-size: 1.143em; }
 
-  .header-1 .carousel .title{ margin-top: 2em; margin-bottom: 1em; }
-  .header-1 .carousel .title,
-  .header-1 .carousel .desc{ margin-left: 2em; margin-right: 2em; }
+  .header-1 .carousel .section-title{ margin-top: 2em; margin-bottom: 0.5em; }
+  .header-1 .carousel .section-title,
+  .header-1 .carousel .section-desc{ margin-left: 2em; margin-right: 2em; }
 
   .header-1 .carousel img{ max-width: 100%; }
 }
@@ -72,13 +72,13 @@
           transform   : none !important;
 }
 
-.header-1 .carousel .item .title,
-.header-1 .carousel .item .desc,
+.header-1 .carousel .item .section-title,
+.header-1 .carousel .item .section-desc,
 .header-1 .carousel .item .btn,
 .header-1 .carousel .item img { opacity: 0; }
 
-.header-1 .carousel .item.active .title,
-.header-1 .carousel .item.active .desc,
+.header-1 .carousel .item.active .section-title,
+.header-1 .carousel .item.active .section-desc,
 .header-1 .carousel .item.active .btn,
 .header-1 .carousel .item.active img {
   -webkit-animation-duration: 1s;
@@ -87,8 +87,8 @@
   animation-fill-mode: both;
 }
 
-.header-1 .carousel .item.active .title,
-.header-1 .carousel .item.active .desc,
+.header-1 .carousel .item.active .section-title,
+.header-1 .carousel .item.active .section-desc,
 .header-1 .carousel .item.active .btn {
     -webkit-animation-name: fadeInDown;
             animation-name: fadeInDown;
@@ -96,14 +96,14 @@
 
 .header-1 .carousel .item.active img {
     -webkit-animation-name: fadeInUp;
-            animation-name: fadeInUp; 
+            animation-name: fadeInUp;
 }
 
 
-.header-1 .carousel .item.active.right .title,
-.header-1 .carousel .item.active.left .title,
-.header-1 .carousel .item.active.right .desc,
-.header-1 .carousel .item.active.left .desc,
+.header-1 .carousel .item.active.right .section-title,
+.header-1 .carousel .item.active.left .section-title,
+.header-1 .carousel .item.active.right .section-desc,
+.header-1 .carousel .item.active.left .section-desc,
 .header-1 .carousel .item.active.right .btn,
 .header-1 .carousel .item.active.left .btn{
   -webkit-animation-name: fadeOutUp;

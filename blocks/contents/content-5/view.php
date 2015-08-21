@@ -19,9 +19,7 @@
 						<div class="section-desc wow <?php echo $animation;?>"><?php echo $contents['description']?></div>
 					<?php endif; ?>
 					<!-- Link -->
-					<?php if( $contents['link']): ?>
-						<a class="btn btn-primary btn-lg wow <?php echo $animation;?>" href="<?php echo $contents['link']?>"><?php echo $contents['link_text']; ?></a>
-					<?php endif; ?>
+					<?php echo op_link($contents['link'], 'btn btn-primary btn-lg wow' . $animation);?>
 				</div>
 			</div>
 		</div>

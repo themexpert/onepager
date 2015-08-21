@@ -9,6 +9,8 @@ return array(
   'contents' => array(
     array('name'=>'logo', 'type'=> 'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/logo-white.png'),
     array('name'=>'menu','type'=>'menu'),
+    array('name'=>'link', 'type' => 'link', 'label'=> 'Navbar Link', 'url' => 'http://getonepager.com'),
+
     array(
       'name'=>'sliders',
       'type'=>'repeater',
@@ -16,16 +18,14 @@ return array(
         array(
           array('name'=>'title', 'value' => 'Onepage Website Builder for WordPress'),
           array('name'=>'description', 'type'=> 'editor', 'value' => 'Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.'),
-          array('name'=>'link', 'value' => '#'),
-          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Button Text', 'value'=> 'Download Now'),
+          array('name'=>'link', 'type' => 'link', 'url' => 'http://getonepager.com'),
           array('name'=>'image','type'=>'image', 'value' => 'https://s3.amazonaws.com/quantum-assets/video-thumb.jpg'),
           array('name'=> 'video_url', 'label' => 'Video URL', 'value' => 'https://www.youtube.com/watch?v=SSrvuFgYc-g')
         ),
         array(
           array('name'=>'title', 'value' => 'First Page Builder for WordPress & Joomla'),
           array('name'=>'description', 'type'=> 'editor', 'value' => 'Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.'),
-          array('name'=>'link', 'value' => '#'),
-          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Button Text', 'value'=> 'Download Now'),
+          array('name'=>'link', 'type' => 'link', 'url' => 'http://getonepager.com'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/video-thumb-2.jpg'),
           array('name'=> 'video_url', 'label' => 'Video URL', 'value' => 'https://vimeo.com/channels/staffpicks/128807157')
         )
@@ -47,6 +47,12 @@ return array(
       )
     ),
     array(
+      'name' => 'title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => '@section_title_size'
+    ),
+    array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
@@ -63,17 +69,7 @@ return array(
       'append' => 'px',
       'value' => '450'
     ),
-    array(
-      'name'=>'cta',
-      'label'=> 'Call To Action Link',
-      'placeholder' => 'http://doamin.com'
-    ),
-    array(
-      'name'=>'cta_text',
-      'label'=> 'Call To Action Text',
-      'value'=> 'Call To Action',
-      'placeholder'=> 'Call To Action'
-    ),
+
   ),
   'styles' => array(
     array('label'=> 'Nav Style' , 'type'=> 'divider'),

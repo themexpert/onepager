@@ -19,9 +19,7 @@
 				</div>
 				<!-- Link -->
 				<div class="col-sm-3">
-					<?php if( $contents['link']): ?>
-						<a class="btn btn-primary btn-lg pull-right wow <?php echo $animation;?>" href="<?php echo $contents['link']?>"><?php echo $contents['link_text']; ?></a>
-					<?php endif; ?>
+					<?php echo op_link($contents['link'], 'btn btn-primary btn-lg pull-right wow' . $animation);?>
 				</div>
 			</article>
 		</div>

@@ -22,14 +22,11 @@
 		      </a>
 		    </div>
 
-
 		    <!-- Menu -->
 		    <nav class="collapse navbar-collapse" id="nav-<?php echo $id; ?>">
 
-			    <?php if( $settings['cta']): ?>
-			    	<!-- Navbar button -->
-	            	<a href="<?php echo $settings['cta']?>" class="btn navbar-btn navbar-right"><?php echo $settings['cta_text']?></a>
-		    	<?php endif; ?>
+		    	<!-- Navbar button -->
+					<?php echo op_link($contents['link'], 'btn navbar-btn navbar-right');?>
 
 		    	<?php wp_nav_menu(array(
 	                'menu' =>$contents['menu'] ,
@@ -62,16 +59,15 @@
 				<div class="container">
 					<div class="carousel-caption">
 						<?php if($slide['title']):?>
-						<h2 class="title <?php echo $settings['title_transformation']?> "><?php echo $slide['title']?></h2>
+						<h2 class="section-title <?php echo $settings['title_transformation']?> "><?php echo $slide['title']?></h2>
 						<?php endif; ?>
 
 						<?php if($slide['description']):?>
-						<p class="desc"><?php echo $slide['description']?></p>
+						<div class="section-desc"><?php echo $slide['description']?></div>
 						<?php endif; ?>
 
-						<?php if($slide['link']): ?>
-						<p><a class="btn btn-lg btn-primary" href="<?php echo $slide['link']?>"><?php echo $slide['link_text']?></a></p>
-						<?php endif; ?>
+						<!-- Link -->
+						<p><?php echo op_link($slide['link'], 'btn btn-lg btn-primary');?></p>
 
 						<?php if($slide['image']):?>
 							<img src="<?php echo $slide['image']?>" alt="<?php echo $slide['title']?>">

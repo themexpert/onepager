@@ -31,10 +31,8 @@
 						<?php if($contents['description']): ?>
 							<div class="section-desc"><?php echo $contents['description']?></div>
 						<?php endif; ?>
-
-						<?php if( $contents['link']): ?>
-							<a class="btn btn-primary btn-lg" href="<?php echo $contents['link']?>"><?php echo $contents['link_text']; ?></a>
-						<?php endif; ?>
+						<!-- Link -->
+						<?php echo op_link($contents['link'], 'btn btn-primary btn-lg');?>
 					</div>
 				</div>
 

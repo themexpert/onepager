@@ -25,11 +25,8 @@
 
 		    <!-- Menu -->
 		    <nav class="collapse navbar-collapse" id="nav-<?php echo $id; ?>">
-
-			    <?php if( $settings['cta']): ?>
-			    	<!-- Navbar button -->
-	            	<a href="<?php echo $settings['cta']?>" class="btn navbar-btn navbar-right"><?php echo $settings['cta_text']?></a>
-		    	<?php endif; ?>
+		    	<!-- Navbar button -->
+					<?php echo op_link($contents['link'], 'btn navbar-btn navbar-right');?>
 
 		    	<?php wp_nav_menu(array(
 	                'menu' =>$contents['menu'] ,
@@ -71,10 +68,8 @@
 									<?php if($slide['description']):?>
 									<p class="desc"><?php echo $slide['description']?></p>
 									<?php endif; ?>
-
-									<?php if($slide['link']): ?>
-									<p><a class="btn btn-lg btn-primary" href="<?php echo $slide['link']?>"><?php echo $slide['link_text']?></a></p>
-									<?php endif; ?>
+									<!-- Link -->
+									<p><?php echo op_link($slide['link'], 'btn btn-lg btn-primary');?></p>
 								</div>
 							</div>
 							<div class="col-sm-5">
