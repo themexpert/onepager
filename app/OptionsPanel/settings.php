@@ -17,11 +17,6 @@ Onepager::getOptionPanel()
       'placeholder' => 'Paste your code here',
     )
   )
-  ->tab( 'styles', 'Styles' )
-  ->tab( 'advanced')
-  ->add(
-    array('name'=>'onepager_debug', 'label'=>'Development Mode', 'type'=>'switch', 'value'=>false)
-  )
  ->tab( 'styles', 'Styles' )
  ->add(
    array(
@@ -34,6 +29,10 @@ Onepager::getOptionPanel()
        'accent'    => '#E64A19',
      ),
    )
+ )
+ ->tab( 'advanced')
+ ->add(
+   array('name'=>'onepager_debug', 'label'=>'Development Mode', 'type'=>'switch', 'value'=>false)
  )
 ;
 
