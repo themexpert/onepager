@@ -22,36 +22,31 @@ Onepager::getOptionPanel()
   ->add(
     array('name'=>'onepager_debug', 'label'=>'Development Mode', 'type'=>'switch', 'value'=>false)
   )
-//  ->tab( 'styles', 'Styles' )
-//  ->add(
-//    array(
-//      'name'    => 'color',
-//      'type'    => 'colorpalette',
-//      'presets' => 'default',
-//      'value'   => array(
-//        'primary'   => "#1565c0",
-//        'secondary' => '#0a3d78',
-//        'accent'    => '#E64A19',
-//      ),
-//    )
-//  )
+ ->tab( 'styles', 'Styles' )
+ ->add(
+   array(
+     'name'    => 'color',
+     'type'    => 'colorpalette',
+     'presets' => 'default',
+     'value'   => array(
+       'primary'   => "#1565c0",
+       'secondary' => '#0a3d78',
+       'accent'    => '#E64A19',
+     ),
+   )
+ )
 ;
 
-Onepager::basePreset( array(
-  'primary'   => "#1565c0",
-  'secondary' => '#0a3d78',
-  'accent'    => '#E64A19',
-) );
-
-Onepager::addPresets( "default", array(
-  [ 'primary' => 'red', 'secondary' => 'yellow' ],
-  [ 'primary' => 'green', 'secondary' => 'yellow' ],
-) );
-
-Onepager::addPresets( "default", array(
-  [ 'primary' => 'blue', 'secondary' => 'yellow' ],
-  [ 'primary' => 'green', 'secondary' => 'yellow', 'a1' => 'pink', 'a2' => 'red' ],
-) );
+// Onepager::basePreset( array(
+//   'primary'   => "#1565c0",
+//   'secondary' => '#0a3d78',
+//   'accent'    => '#E64A19',
+// ) );
+//
+// Onepager::addPresets( "default", array(
+//   [ 'primary' => 'red', 'secondary' => 'yellow' ],
+//   [ 'primary' => 'green', 'secondary' => 'yellow' ],
+// ) );
 
 add_action( 'wp_head', function () { ?>
   <link rel="icon" href="<?php echo Onepager::getOption( 'favicon' ) ?>">

@@ -117,13 +117,14 @@ const ColorPalette = React.createClass({
 
         <label className="control-label">{this.props.label}</label>
 
+        {{ /*
         <Button bsStyle='primary' className="btn-block" onClick={this.openPresetsDrawer}>
           <span className="fa fa-search"></span> Select Preset
         </Button>
 
         <div style={{display: this.state.showPresets ? "block": "none"}}>
           <PalettePresets activate={this.handleSelectPreset} palettes={presets} />
-        </div>
+        </div> **/}}
 
         <div style={{display: !this.state.showPresets ? "block": "none"}}>
         { colors.map((color, ii)=> {
