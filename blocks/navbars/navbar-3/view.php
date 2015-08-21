@@ -25,9 +25,9 @@
                 'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
                 'walker'            => new wp_bootstrap_navwalker()
             )) ?>
-            <?php if( $contents['cta']): ?>
-            <a href="<?php echo $contents['cta']?>" class="btn navbar-btn navbar-right"><?php echo $contents['cta_text']?></a>
-	    	<?php endif; ?>
+
+				<!-- Link -->
+				<?php echo op_link($contents['link'], 'btn navbar-btn navbar-right');?>
 	    </nav>
 	</div>
 </header>

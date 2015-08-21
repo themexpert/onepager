@@ -26,16 +26,15 @@
     'walker'            => new wp_bootstrap_navwalker()
 		)) ?>
 	</div>
+	<script type="text/javascript">
+	jQuery(document).ready(function(){
+		// Offcanvas menu
+		jQuery('[data-toggle="offcanvas"]').click(function () {
+			jQuery('body').toggleClass('offcanvas-active');
+		});
+		jQuery('.offcanvas-close').on('click', function(){
+			jQuery('body').removeClass('offcanvas-active');
+		});
+	});
+	</script>
 </header>
-
-<script type="text/javascript">
-jQuery(document).ready(function(){
-	// Offcanvas menu
-	jQuery('[data-toggle="offcanvas"]').click(function () {
-		jQuery('body').toggleClass('offcanvas-active');
-	});
-	jQuery('.offcanvas-close').on('click', function(){
-		jQuery('body').removeClass('offcanvas-active');
-	});
-});
-</script>

@@ -18,9 +18,9 @@
 	    </div>
 	    <!-- Menu -->
 	    <nav class="collapse navbar-collapse" id="nav-<?php echo $id; ?>">
-            <?php if( $contents['cta']): ?>
-            <a href="<?php echo $contents['cta']?>" class="btn navbar-btn navbar-right"><?php echo $contents['cta_text']?></a>
-	    	<?php endif; ?>
+				<!-- Link -->
+				<?php echo op_link($contents['link'], 'btn navbar-btn navbar-right');?>
+				
 	    	<?php wp_nav_menu(array(
                 'menu' =>$contents['menu'] ,
                 'menu_class'=>'nav navbar-nav navbar-right',

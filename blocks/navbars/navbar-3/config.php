@@ -9,17 +9,7 @@ return array(
   'contents' => array(
     array('name'=>'logo', 'type'=> 'image', 'value'=> 'http://s3.amazonaws.com/quantum-assets/logo-dark.png'),
     array('name'=>'menu','type'=>'menu'),
-    array(
-      'name'=>'cta',
-      'label'=> 'Call To Action Link',
-      'placeholder' => 'http://doamin.com'
-    ),
-    array(
-      'name'=>'cta_text',
-      'label'=> 'Call To Action Text',
-      'value'=> 'Call To Action',
-      'placeholder'=> 'Call To Action'
-    ),
+    array( 'name'=>'link', 'type' => 'link', 'label'=> 'Call To Action Link')
   ),
 
   // Settings
