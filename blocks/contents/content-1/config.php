@@ -21,27 +21,7 @@ return array(
       'type'=>'image',
       'value'=> 'http://s3.amazonaws.com/quantum-assets/img-1.png'
     ),
-    array(
-      'name'=>'link',
-      'label'=> 'Button Link',
-      'placeholder'=> 'http://example.com',
-      'value' => '#'
-    ),
-    array(
-      'name'  => 'link_text',
-      'label' => 'Button Text',
-      'value' => 'Readmore',
-    ),
-    array(
-      'name'  => 'mlink',
-      'label' => 'My link',
-      'type'  => 'link',
-      'value' => [
-        "link" => "http://google.com",
-        "label" => 'my label',
-        "target" => false
-      ],
-    ),
+    array( 'name'=>'link', 'type' => 'link')
   ),
 
   // Settings - $settings available on view file to access the option

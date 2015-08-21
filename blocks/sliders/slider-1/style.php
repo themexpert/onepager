@@ -12,6 +12,9 @@
 #<?php echo $id?> .section-title{
 	font-size : <?php echo $settings['title_size']?>px;
 }
+#slide-<?php echo $id ?> .carousel-caption{
+	color : <?php echo $styles['title_color']?>;
+}
 #slide-<?php echo $id; ?> .btn{
 	background : <?php echo $styles['button_bg']; ?>;
 	color : <?php echo $styles['button_color']; ?>;

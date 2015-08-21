@@ -47,8 +47,7 @@ let Link  = React.createClass({
                    className="form-control"
                    onChange={this.onChange}
                    ref="text"
-                   type="text"
-                   placeholder="text"/>
+                   type="text"/>
           </div>
         </div>
         <div className="form-group">
@@ -59,8 +58,7 @@ let Link  = React.createClass({
               className="form-control"
               onChange={this.onChange}
               ref="url"
-              type="text"
-              placeholder="url"/>
+              type="text"/>
 
             <span className="input-group-addon"
                   data-toggle="tooltip"

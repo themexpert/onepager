@@ -35,7 +35,25 @@ return array(
 
   // Settings - $settings available on view file to access the option
   'settings' => array(
-
+    array('label'=>'Section', 'type'=>'divider'),
+    array(
+      'name' => 'section_title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => '@section_title_size'
+    ),
+    array(
+      'name'     => 'section_title_transformation',
+      'label'    => 'Title Transformation',
+      'type'     => 'select',
+      'value'    => 'text-uppercase',
+      'options'  => array(
+        'text-lowercase'   => 'Lowercase',
+        'text-uppercase'   => 'Uppercase',
+        'text-capitalize'  => 'Capitalized'
+      ),
+    ),
+    array('label'=>'Item', 'type'=>'divider'),
     array(
       'name'     => 'media_grid',
       'label'    => 'Media Grid',
@@ -47,9 +65,13 @@ return array(
         '5'   => '5',
       ),
     ),
-
     array(
-      'name'     => 'title_transformation',
+      'name' => 'item_title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+    ),
+    array(
+      'name'     => 'item_title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
       'value'    => 'text-uppercase',
@@ -59,7 +81,6 @@ return array(
         'text-capitalize'  => 'Capitalized'
       ),
     ),
-
     array(
       'name'  => 'readmore_text',
       'label' => 'Readmore Text',
@@ -91,6 +112,12 @@ return array(
       'value'   => '#fff'
     ),
     array(
+      'name'  => 'section_title_color',
+      'label' => 'Title Color',
+      'type'  => 'colorpicker',
+      'value' => '#323232'
+    ),
+    array(
       'name'  => 'title_color',
       'label' => 'Title Color',
       'type'  => 'colorpicker',
@@ -109,7 +136,7 @@ return array(
       'value'   => '#4cb257'
     ),
   ),
-  // 'assets' => function( $path ){
-  //   onepager()->asset()->style( 'content-1', $path . '/style.css' );
-  // }
+  'assets' => function( $path ){
+    Onepager::addStyle('blog-1', $path . '/style.css');
+  }
 );

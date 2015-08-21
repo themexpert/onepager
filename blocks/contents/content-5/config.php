@@ -17,12 +17,7 @@ return array(
       'value'=> 'I dream my painting and I paint my dream'
     ),
     array('name'=>'image', 'type' => 'image', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icons/download.png'),
-    array('name'=>'link', 'value'=> '#'),
-    array(
-      'name'  => 'link_text',
-      'label' => 'Link Text',
-      'value' => 'Download Now',
-    ),
+    array('name'=>'link', 'type' => 'link'),
   ),
 
   // Settings - $settings available on view file to access the option

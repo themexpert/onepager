@@ -9,6 +9,11 @@ return array(
   'contents' => array(
     array('name'=>'logo', 'type'=> 'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/logo-white.png'),
     array('name'=>'menu','type'=>'menu'),
+    array(
+      'name'=>'link',
+      'type' => 'link',
+      'label' => 'Navbar Link'
+    ),
 
     array(
       'name'=>'sliders',
@@ -18,15 +23,13 @@ return array(
           array('name'=>'title', 'value' => 'Onepage Website Builder for WordPress'),
           array('name'=>'description', 'type'=> 'editor', 'value' => 'Build website quickly and efficiently with simple easy to use page builder'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/browser-1.png'),
-          array('name'=>'link', 'value' => 'http://getonepager.com'),
-          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
+          array('name'=>'link', 'type' => 'link'),
         ),
         array(
           array('name'=>'title', 'value' => 'Revolutionary Way of Building OnePage Website'),
           array('name'=>'description', 'type'=> 'editor', 'value' => 'Ridiculously easy and built for tomorrows internet in mind'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/browser-1.png'),
-          array('name'=>'link', 'value' => 'http://getonepager.com'),
-          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
+          array('name'=>'link', 'type' => 'link'),
         )
       )
     )
@@ -68,17 +71,6 @@ return array(
       'append' => 'px',
       'value' => '550'
     ),
-    array(
-      'name'=>'cta',
-      'label'=> 'Navbar Button Link',
-      'placeholder' => 'http://doamin.com'
-    ),
-    array(
-      'name'=>'cta_text',
-      'label'=> 'Navbar Button Text',
-      'value'=> 'Join Now',
-      'placeholder'=> 'Call To Action'
-    ),
   ),
   'styles' => array(
     array('label'=> 'Nav Style' , 'type'=> 'divider'),
@@ -98,13 +90,13 @@ return array(
       'name'  => 'link_hover_color',
       'label' => 'Link Hover Color',
       'type'  => 'colorpicker',
-      'value' => '#232323'
+      'value' => '@color.primary'
     ),
     array(
       'name'    => 'cta_bg',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'value'   => '#ee534f'
+      'value'   => '@color.primary'
     ),
     array(
       'name'    => 'cta_color',
@@ -113,6 +105,12 @@ return array(
       'value'   => '#fff'
     ),
     array('label'=> 'Slider Style' , 'type'=> 'divider'),
+    array(
+      'name'    => 'text_color',
+      'label'   => 'Text Color',
+      'type'    => 'colorpicker',
+      'value'   => '#fff'
+    ),
     array(
       'name'=>'slider_bg',
       'label' => 'Slider Background',

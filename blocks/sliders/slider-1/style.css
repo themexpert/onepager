@@ -1,7 +1,7 @@
 /*
   Carousel
 */
-.slider-1 .carousel-caption { color: #323232; text-shadow: none; }
+.slider-1 .carousel-caption { text-shadow: none; }
 .slider-1 .carousel-caption img{ max-width: 70px; }
 
 /*.slider-1 .title { font-size: 1.2em; font-weight: bold; }*/

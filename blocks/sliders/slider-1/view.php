@@ -1,8 +1,4 @@
-<?php
-$slide_num = 0;
-?>
 <section id="<?php echo $id; ?>" class="op-section sliders slider-1 full-screen">
-
 	<div id="slide-<?php echo $id ?>" class="carousel slide" data-ride="carousel">
 
 		<?php if(count($contents['sliders']) > 1): // Indicator will only show when more then one item publish?>
@@ -16,30 +12,27 @@ $slide_num = 0;
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
-
-			<?php foreach($contents['sliders'] as $slide): ?>
-			<div class="item <?php echo ($slide_num === 0) ? 'active' : ''?>">
+			<?php foreach($contents['sliders'] as $index => $slide): ?>
+			<div class="item <?php echo ($index === 0) ? 'active' : ''?>">
 				<div class="container">
 					<div class="carousel-caption flex flex-column flex-center flex-middle">
 						<?php if($slide['image']):?>
 							<img class="op-meida img-responsive" src="<?php echo $slide['image']?>" alt="<?php echo $slide['title']?>">
 						<?php endif; ?>
+						<!-- Title -->
 						<?php if($slide['title']):?>
 						<h2 class="section-title <?php echo $settings['title_transformation']?> "><?php echo $slide['title']?></h2>
 						<?php endif; ?>
-
+						<!-- Description -->
 						<?php if($slide['description']):?>
 						<p class="section-desc"><?php echo $slide['description']?></p>
 						<?php endif; ?>
-
-						<?php if($slide['link']): ?>
-						<p><a class="btn btn-lg btn-primary" href="<?php echo $slide['link']?>"><?php echo $slide['link_text']?></a></p>
-						<?php endif; ?>
+						<!-- Link -->
+						<?php echo op_link($slide['link'], 'btn btn-primary btn-lg');?>
 					</div>
 				</div>
 			</div>
-			<?php $slide_num++; endforeach; ?>
+			<?php endforeach; ?>
 		</div>
-
 	</div>
 </section>

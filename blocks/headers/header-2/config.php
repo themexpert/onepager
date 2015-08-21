@@ -9,6 +9,8 @@ return array(
   'contents' => array(
     array('name'=>'logo', 'type'=> 'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/logo-white.png'),
     array('name'=>'menu','type'=>'menu'),
+    array('name'=>'link', 'type' => 'link', 'label'=> 'Navbar Link'),
+
     array(
       'name'=>'sliders',
       'type'=>'repeater',
@@ -16,16 +18,14 @@ return array(
         array(
           array('name'=>'title', 'value' => 'Onepage Website Builder for WordPress'),
           array('name'=>'description', 'type'=> 'editor', 'value' => 'Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.'),
-          array('name'=>'link', 'value' => '#'),
-          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Button Text', 'value'=> 'Download Now'),
+          array('name'=>'link', 'type' => 'link', 'text' => 'Download Now', 'url' => 'http://getonepager.com'),
           array('name'=>'image','type'=>'image', 'value' => 'https://s3.amazonaws.com/quantum-assets/video-thumb.jpg'),
           array('name'=> 'video_url', 'label' => 'Video URL', 'value' => 'https://www.youtube.com/watch?v=SSrvuFgYc-g')
         ),
         array(
           array('name'=>'title', 'value' => 'First Page Builder for WordPress & Joomla'),
           array('name'=>'description', 'type'=> 'editor', 'value' => 'Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.'),
-          array('name'=>'link', 'value' => '#'),
-          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Button Text', 'value'=> 'Download Now'),
+          array('name'=>'link', 'type' => 'link', 'text' => 'Download Now', 'url' => 'http://getonepager.com'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/video-thumb-2.jpg'),
           array('name'=> 'video_url', 'label' => 'Video URL', 'value' => 'https://vimeo.com/channels/staffpicks/128807157')
         )
@@ -47,6 +47,18 @@ return array(
       )
     ),
     array(
+      'name' => 'title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => '@section_title_size'
+    ),
+    array(
+      'name' => 'text_size',
+      'label' => 'Text Size',
+      'append' => 'px',
+      'value' => '18'
+    ),
+    array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
@@ -58,22 +70,26 @@ return array(
       ),
     ),
     array(
+      'name'     => 'media_grid',
+      'label'    => 'Meida Grid',
+      'type'     => 'select',
+      'value'    => '5',
+      'options'  => array(
+        '3'   => '3',
+        '4'   => '4',
+        '5'   => '5',
+        '6'   => '6',
+        '7'   => '7',
+        '8'   => '8'
+      ),
+    ),
+    array(
       'name' => 'slider_height',
       'label' => 'Slider Height',
       'append' => 'px',
       'value' => '450'
     ),
-    array(
-      'name'=>'cta',
-      'label'=> 'Call To Action Link',
-      'placeholder' => 'http://doamin.com'
-    ),
-    array(
-      'name'=>'cta_text',
-      'label'=> 'Call To Action Text',
-      'value'=> 'Call To Action',
-      'placeholder'=> 'Call To Action'
-    ),
+
   ),
   'styles' => array(
     array('label'=> 'Nav Style' , 'type'=> 'divider'),
@@ -93,13 +109,13 @@ return array(
       'name'  => 'link_hover_color',
       'label' => 'Link Hover Color',
       'type'  => 'colorpicker',
-      'value' => '#232323'
+      'value' => '@color.primary'
     ),
     array(
       'name'    => 'cta_bg',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'value'   => '#ee534f'
+      'value'   => '@color.primary'
     ),
     array(
       'name'    => 'cta_color',
@@ -109,10 +125,33 @@ return array(
     ),
     array('label'=> 'Slider Style' , 'type'=> 'divider'),
     array(
-      'name'=>'slider_bg',
-      'label' => 'Slider Background',
+      'name'  => 'bg_image',
+      'label' => 'Image',
       'type'  => 'image',
       'value' => 'http://s3.amazonaws.com/quantum-assets/bg/bg4.jpg'
+    ),
+    array(
+      'name'     => 'bg_repeat',
+      'label'    => 'Repeat',
+      'type'     => 'select',
+      'value'    => 'no-repeat',
+      'options'  => array(
+        'no-repeat'     => 'No Repeat',
+        'repeat-x'      => 'Repeat X',
+        'repeat-y'      => 'Repeat Y',
+      )
+    ),
+    array(
+      'name'    => 'bg_color',
+      'label'   => 'Color',
+      'type'    => 'colorpicker',
+      'value'   => '#ebeff2'
+    ),
+    array(
+      'name'  => 'text_color',
+      'label' => 'Text Color',
+      'type'  => 'colorpicker',
+      'value' => '#fff'
     ),
 
   ),

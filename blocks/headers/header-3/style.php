@@ -11,7 +11,11 @@
 	color : <?php echo $styles['text_color']?>;
 }
 #<?php echo $id ?> .section-title{
+	font-size : <?php echo $settings['title_size']?>px;
 	color : <?php echo $styles['title_color']?>;
+}
+#<?php echo $id ?> .section-desc{
+	font-size : <?php echo $settings['text_size']?>px;
 }
 #<?php echo $id ?> .btn{
 	background: transparent;

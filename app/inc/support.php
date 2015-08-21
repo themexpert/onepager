@@ -14,6 +14,11 @@ function get_editor_section_list_footer() {
     <span class="fa fa-video-camera"></span> Video Tutorial
   </a>';
 
+  $footer .= '<a href="https://docs.getonepager.com" target="_blank">
+    <span class="fa fa-book"></span> Documentation
+  </a>';
+
+
   return apply_filters('editor_section_list_footer', $footer);
 }
 
