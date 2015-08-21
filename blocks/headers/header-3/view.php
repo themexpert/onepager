@@ -33,7 +33,7 @@
 					<?php endif; ?>
 					<!-- Description -->
 					<?php if($contents['description']): ?>
-						<p class="section-desc wow <?php echo $animation_content ?>"><?php echo $contents['description']?></p>
+						<div class="section-desc wow <?php echo $animation_content ?>"><?php echo $contents['description']?></div>
 					<?php endif; ?>
 
 					<?php if( $contents['link']['url'] AND $contents['link']['text']): ?>

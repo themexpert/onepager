@@ -1,8 +1,8 @@
 <?php
-	$slide_num = 0;
+$image_cols = $settings['media_grid'];
+$content_cols = 12 - $image_cols; // Default 12 grid
 ?>
-<header id="<?php echo $id; ?>" class="op-section header header-2">
-
+<header id="<?php echo $id; ?>" class="op-section headers header-2 full-screen">
 	<div class="navbar navbar-static-top" <?php echo ($settings['sticky_nav']) ? 'data-spy="affix"' : '';?> data-offset-top="80">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -21,7 +21,6 @@
 				<?php endif; ?>
 		      </a>
 		    </div>
-
 
 		    <!-- Menu -->
 		    <nav class="collapse navbar-collapse" id="nav-<?php echo $id; ?>">
@@ -54,25 +53,25 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
 
-			<?php foreach($contents['sliders'] as $slide): ?>
-			<div class="item <?php echo ($slide_num === 0) ? 'active' : ''?>">
+			<?php foreach($contents['sliders'] as $index => $slide): ?>
+			<div class="item <?php echo ($index == 0) ? 'active' : ''?>">
 				<div class="container">
 					<div class="carousel-caption">
 						<div class="row">
-							<div class="col-sm-7">
+							<div class="col-md-<?php echo $content_cols?>">
 								<div class="pad-right-big">
 									<?php if($slide['title']):?>
-									<h2 class="title <?php echo $settings['title_transformation']?> "><?php echo $slide['title']?></h2>
+									<h2 class="section-title <?php echo $settings['title_transformation']?> "><?php echo $slide['title']?></h2>
 									<?php endif; ?>
 
 									<?php if($slide['description']):?>
-									<p class="desc"><?php echo $slide['description']?></p>
+									<p class="section-desc"><?php echo $slide['description']?></p>
 									<?php endif; ?>
 									<!-- Link -->
 									<p><?php echo op_link($slide['link'], 'btn btn-lg btn-primary');?></p>
 								</div>
 							</div>
-							<div class="col-sm-5">
+							<div class="col-md-<?php echo $image_cols?>">
 								<?php if($slide['image']):?>
 									<a class="popup-video" href="<?php echo $slide['video_url']?>">
 										<img class="img-responsive" src="<?php echo $slide['image']?>" alt="<?php echo $slide['title']?>">
@@ -83,7 +82,7 @@
 					</div>
 				</div>
 			</div>
-			<?php $slide_num++; endforeach; ?>
+			<?php endforeach; ?>
 		</div>
 
 	</div>

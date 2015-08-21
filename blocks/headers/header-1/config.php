@@ -90,13 +90,13 @@ return array(
       'name'  => 'link_hover_color',
       'label' => 'Link Hover Color',
       'type'  => 'colorpicker',
-      'value' => '#232323'
+      'value' => '@color.primary'
     ),
     array(
       'name'    => 'cta_bg',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
-      'value'   => '#ee534f'
+      'value'   => '@color.primary'
     ),
     array(
       'name'    => 'cta_color',

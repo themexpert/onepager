@@ -1,8 +1,4 @@
-<?php
-	$slide_num = 0;
-?>
 <header id="<?php echo $id; ?>" class="op-section header header-1">
-
 	<div class="navbar navbar-static-top" <?php echo ($settings['sticky_nav']) ? 'data-spy="affix"' : '';?> data-offset-top="80">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -54,8 +50,8 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
 
-			<?php foreach($contents['sliders'] as $slide): ?>
-			<div class="item <?php echo ($slide_num === 0) ? 'active' : ''?>">
+			<?php foreach($contents['sliders'] as $index => $slide): ?>
+			<div class="item <?php echo ($index == 0) ? 'active' : ''?>">
 				<div class="container">
 					<div class="carousel-caption">
 						<?php if($slide['title']):?>
@@ -75,7 +71,7 @@
 					</div>
 				</div>
 			</div>
-			<?php $slide_num++; endforeach; ?>
+			<?php endforeach; ?>
 		</div>
 
 	</div>

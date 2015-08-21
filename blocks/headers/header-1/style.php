@@ -45,6 +45,10 @@
 	background : <?php echo $styles['cta_bg']; ?>;
 	color : <?php echo $styles['cta_color']; ?>;
 }
+#slide-<?php echo $id; ?> .btn:hover{
+	background : <?php echo $styles['cta_color']; ?>;
+	color : <?php echo $styles['cta_bg']; ?>;
+}
 #slide-<?php echo $id ?> .section-title{
 	font-size : <?php echo $settings['title_size']?>px;
 }

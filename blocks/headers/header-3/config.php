@@ -65,6 +65,12 @@ return array(
       'value' => '@section_title_size'
     ),
     array(
+      'name' => 'text_size',
+      'label' => 'Text Size',
+      'append' => 'px',
+      'value' => '18'
+    ),
+    array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
