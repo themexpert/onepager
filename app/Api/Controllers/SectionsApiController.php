@@ -37,6 +37,8 @@ class SectionsApiController extends ApiController {
   public function reloadSections() {
     $sections = array_get( $_POST, 'sections', [ ] ) ?: [ ]; //making sure its an array
 
+    $sections = $this->filterInput( $sections );
+
     $sections = $this->prepareSectionsWithContentAndStyle( $sections );
     $this->responseSuccess( compact( 'sections' ) );
   }
