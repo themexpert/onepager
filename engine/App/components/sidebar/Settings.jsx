@@ -12,7 +12,27 @@ let Admin = React.createClass({
   propTypes: {
     whenSettingsDirty: React.PropTypes.func
   },
+  componentDidMount: function() {
+    this._bindPlugins();
+  },
 
+  componentDidUpdate: function(prevProps, prevState) {
+    this._bindPlugins();
+  },
+
+  componentWillUnmount: function() {
+    this._unbindPlugins();
+  },
+
+  _bindPlugins(){
+    jQuery('select.form-control').selectpicker();
+    jQuery('[data-toggle="tooltip"]').tooltip()
+  },
+
+  _unbindPlugins(){
+    jQuery('select.form-control').unbind();
+    jQuery('[data-toggle="tooltip"]').unbind()
+  },
   render(){
     console.log("rendering Admin");
 

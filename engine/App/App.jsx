@@ -39,11 +39,15 @@ let App = React.createClass({
   },
 
   _bindPlugins(){
+    jQuery('select.form-control').selectpicker();
     jQuery('[data-toggle="tooltip"]').tooltip()
   },
+
   _unbindPlugins(){
+    jQuery('select.form-control').unbind();
     jQuery('[data-toggle="tooltip"]').unbind()
   },
+
   _unsavedAlert(){
     jQuery(window).on('beforeunload', ()=> {
       if (this.state.isDirty) {

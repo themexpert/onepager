@@ -16,13 +16,17 @@ let SelectControl = React.createClass({
     return (!str || 0 === str.length);
   },
 
-  componentDidMount() {
-    jQuery('select.form-control').selectpicker();
-  },
-
-  componentWillUnmount() {
-    jQuery('select.form-control').unbind();
-  },
+  // componentDidMount() {
+  //   jQuery('select.form-control').selectpicker();
+  // },
+  //
+  // componentDidUpdate(){
+  //   jQuery('select.form-control').selectpicker();
+  // },
+  //
+  // componentWillUnmount() {
+  //   jQuery('select.form-control').unbind();
+  // },
 
   render() {
     let options = this.props.options;
