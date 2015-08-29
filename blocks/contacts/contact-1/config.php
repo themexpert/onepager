@@ -33,7 +33,7 @@ return array(
     ),
     array(
       'name' => 'form',
-      'label' => 'Contact Form Id',
+      'label' => 'Contact Form Shortcode',
       'type' => 'textarea'
     )
   ),
