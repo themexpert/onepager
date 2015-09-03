@@ -10,7 +10,7 @@ class OnepageToolbar {
     $isLiveMode = onepager()->content()->isBuildMode();
 
     if ($isOnepage && !$isLiveMode) {
-      $url = getOpBuildModeUrl(getCurrentPageURL(), true);
+      $url = onepager_get_edit_mode_url(get_current_page_url(), true);
 
       onepager()->toolbar()->addMenu(
         'op-enable-livemode',

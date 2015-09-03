@@ -47,7 +47,7 @@ class BuildModeScripts {
       return $section;
     }, onepager()->section()->getAllValid( $pageId ) );
 
-    $disableBuildModeUrl = getOpBuildModeUrl( getCurrentPageURL(), false );
+    $disableBuildModeUrl = onepager_get_edit_mode_url( get_current_page_url(), false );
 
     $optionPanel = onepager()->optionsPanel( "onepager" )->getOptions();
     $page        = 'onepager';

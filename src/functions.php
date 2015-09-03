@@ -55,22 +55,12 @@ if ( ! function_exists( 'array_pluck' ) ) {
   }
 }
 
-function getOpBuildModeUrl( $url, $mode ) {
+function onepager_get_edit_mode_url( $url, $mode ) {
   $url   = League\Url\Url::createFromUrl( $url );
   $query = $url->getQuery();
   $query->modify( array( 'onepager' => $mode ) );
 
   return $url->__toString();
-}
-
-function op_send_json_success() {
-  //TODO: replace this in future release
-  wp_send_json_success();
-}
-
-function op_send_json( $response ) {
-  //TODO: replace this in future release
-  wp_send_json( $response );
 }
 
 
@@ -93,9 +83,9 @@ if ( ! function_exists( 'untrailingslashit' ) ) {
   }
 }
 
-if ( ! function_exists( 'getCurrentPageURL' ) ) {
+if ( ! function_exists( 'get_current_page_url' ) ) {
 
-  function getCurrentPageURL() {
+  function get_current_page_url() {
     $pageURL = 'http';
 
     if ( array_key_exists( 'HTTPS', $_SERVER ) && $_SERVER["HTTPS"] == "on" ) {

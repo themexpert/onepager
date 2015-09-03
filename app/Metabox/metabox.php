@@ -19,7 +19,7 @@ function tx_add_onepager_metabox() {
     }, [ ] ) );
 
     $sections = onepager()->section()->getAllValid( $post->ID );
-    $editorUrl = getOpBuildModeUrl( get_permalink( $post->ID ), true );
+    $editorUrl = onepager_get_edit_mode_url( get_permalink( $post->ID ), true );
 
     echo View::getInstance()->make(__DIR__ . "/page-meta.php",
       compact('onepagerLayouts','post', 'groups', 'sections', 'editorUrl'));
@@ -47,7 +47,7 @@ function tx_onepager_metabox_scripts( $hook ) {
 
   $data = array(
     'pageId'       => $post->ID,
-    'buildModeUrl' => getOpBuildModeUrl( get_permalink( $post->ID ), true ),
+    'buildModeUrl' => onepager_get_edit_mode_url( get_permalink( $post->ID ), true ),
   );
 
   wp_enqueue_script( 'tx-onepager-page-meta', asset( 'assets/meta.js' ), true );
