@@ -1,13 +1,13 @@
-const React       = require('react');
-const _           = require('underscore');
-const Divider     = require('../../../shared/components/form/Divider.jsx');
-const Note     = require('../../../shared/components/form/Note.jsx');
-const Input       = require('../../../shared/components/form/Input.jsx');
+const React = require('react');
+const _ = require('underscore');
+const Divider = require('../../../shared/components/form/Divider.jsx');
+const Note = require('../../../shared/components/form/Note.jsx');
+const Input = require('../../../shared/components/form/Input.jsx');
 const RepeatInput = require('../../../shared/components/form/RepeatInput.jsx');
-const Repeater    = require('../../../shared/components/repeater/Repeater.jsx');
-const PureMixin   = require('../../../shared/mixins/PureMixin.js');
-const Tab         = require('../../../shared/components/Tab.jsx');
-const TabPane     = require('../../../shared/components/TabPane.jsx');
+const Repeater = require('../../../shared/components/repeater/Repeater.jsx');
+const PureMixin = require('../../../shared/mixins/PureMixin.js');
+const Tab = require('../../../shared/components/Tab.jsx');
+const TabPane = require('../../../shared/components/TabPane.jsx');
 const SectionTitle = require("../section-list/SectionTitle.jsx");
 
 let SectionControls = React.createClass({
@@ -22,7 +22,7 @@ let SectionControls = React.createClass({
     let controls = _.copy(this.props.sectionSettings[tabName]);
 
     controls = controls.map(control=> {
-      let ref  = this.refs[control.ref];
+      let ref = this.refs[control.ref];
       let type = control.type;
 
       switch (type) {
@@ -70,9 +70,9 @@ let SectionControls = React.createClass({
           type = 'repeat-input';
         }
 
-        if(control.depends){
+        if (control.depends) {
           let depends = _.find(sectionSettings[tabName], {name: control.depends});
-          if(!depends || depends.value !== true) {
+          if (!depends || depends.value !== true) {
             hidden = true;
           }
         }
@@ -80,11 +80,11 @@ let SectionControls = React.createClass({
         let props = {
           hidden,
           sectionIndex,
-          onChange : this.update.bind(this, tabName),
-          options  : control,
-          id       : control.ref,
-          ref      : control.ref,
-          key      : control.ref
+          onChange: this.update.bind(this, tabName),
+          options: control,
+          id: control.ref,
+          ref: control.ref,
+          key: control.ref
         };
 
         switch (type) {
@@ -104,7 +104,7 @@ let SectionControls = React.createClass({
     };
 
     let handleTabClick = (id)=> this.setState({activeTab: id});
-    let activeTab      = this.state.activeTab;
+    let activeTab = this.state.activeTab;
 
     if (!sectionSettings[activeTab].length) {
       let tabs = ['contents', 'settings', 'styles'];
