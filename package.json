@@ -39,6 +39,7 @@
     "wrench": "^1.5.8"
   },
   "scripts": {
+    "start": "gulp",
     "dev": "TARGET=dev webpack --watch --devtool eval --progress --colors --hot",
     "build": "TARGET=build webpack -p"
   },
