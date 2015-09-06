@@ -6,6 +6,18 @@ require("../../../../../assets/css/icon-selector.bootstrap.min.css");
 
 let WpMediaFrame = React.createClass({
   mixins: [PureMixin],
+  getInitialState() {
+    return {
+      focus: false
+    };
+  },
+  onFocus(){
+    this.setState({focus: true});
+  },
+
+  onBlur(){
+    this.setState({focus: false});
+  },
 
   getValue(){
     return React.findDOMNode(this.refs.input).value;
@@ -61,25 +73,40 @@ let WpMediaFrame = React.createClass({
     this.props.onChange();
   },
 
+  _renderInputGroup(){
+    let classes = this.props.className + " form-control image-input";
+
+    return (
+      <div className="input-group">
+        <input onMouseEnter={this.onFocus} {...this.props} type="text" className={classes} ref="input"/>
+          <span className="input-group-btn">
+            <button className="btn btn-primary" ref="select" type="button">
+              <span className="fa fa-picture-o"></span> image
+            </button>
+            <button onClick={this.handleReset} className="btn btn-primary" ref="refresh" type="button">
+              <span className="fa fa-undo"></span>
+            </button>
+          </span>
+      </div>
+    );
+  },
+
+  _renderInput(){
+    let classes = this.props.className + " form-control image-input";
+
+    return (
+      <input onMouseLeave={this.onBlur} {...this.props} type="text" className={classes} ref="input"/>
+    );
+  },
 
   render() {
-    let classes = this.props.className + " form-control image-input";
+    let {focus} = this.state;
 
     return (
       <div className="form-group">
         {this.props.label ? <label>{this.props.label}</label> : null }
 
-        <div className="input-group">
-          <input {...this.props} type="text" className={classes} ref="input"/>
-            <span className="input-group-btn">
-              <button className="btn btn-primary" ref="select" type="button">
-                <span className="fa fa-picture-o"></span> image
-              </button>
-              <button onClick={this.handleReset} className="btn btn-primary" ref="refresh" type="button">
-                <span className="fa fa-undo"></span>
-              </button>
-            </span>
-        </div>
+        { focus ? this._renderInput() : this._renderInputGroup() }
 
         <div className="media-preview"></div>
       </div>

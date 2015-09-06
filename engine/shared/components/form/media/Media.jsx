@@ -1,10 +1,22 @@
-const React     = require('react');
+const React = require('react');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const $         = jQuery;
-const dom       = React.findDOMNode;
+const $ = jQuery;
+const dom = React.findDOMNode;
 
 let Media = React.createClass({
   mixins: [PureMixin],
+  getInitialState() {
+    return {
+      focus: false
+    };
+  },
+  onFocus(){
+    this.setState({focus: true});
+  },
+
+  onBlur(){
+    this.setState({focus: false});
+  },
 
   getValue(){
     return dom(this.refs.input).value;
@@ -43,8 +55,8 @@ let Media = React.createClass({
 
   componentDidMount() {
     let iconButtonEl = dom(this.refs.iconBtn);
-    let imgButtonEl  = dom(this.refs.imgBtn);
-    let inputEl      = dom(this.refs.input);
+    let imgButtonEl = dom(this.refs.imgBtn);
+    let inputEl = dom(this.refs.input);
     $(iconButtonEl).iconSelector({input: inputEl, size: this.props.size});
 
     this.wpMedia(imgButtonEl, (imageSrc)=> {
@@ -61,24 +73,42 @@ let Media = React.createClass({
     $(dom(this.refs.input)).unbind();
   },
 
+  _renderInputGroup(){
+    let classes = "form-control " + this.props.className;
+
+    return (
+      <div className="input-group">
+        <input onMouseEnter={this.onFocus} {...this.props} type="text" className={classes} ref="input"/>
+        <span className="input-group-btn">
+          <button className="btn btn-primary" ref="imgBtn" type="button">
+            <span className="fa fa-picture-o"></span>
+          </button>
+          <button className="btn btn-primary" ref="iconBtn" type="button">
+            <span className="fa fa-flag-o"></span>
+          </button>
+        </span>
+      </div>
+    );
+  },
+
+  _renderInput(){
+    let classes = "form-control " + this.props.className;
+
+    return (
+      <input onMouseLeave={this.onBlur} {...this.props} type="text" className={classes} ref="input"/>
+    );
+  },
+
+
 
   render() {
-    let classes = "form-control " + this.props.className;
+    let {focus} = this.state;
 
     return (
       <div ref="container" className="icon-selector">
         <div className="form-group">
           <label>{this.props.label}</label>
-
-          <div className="input-group">
-            <input {...this.props} type="text" className={classes} ref="input"/>
-            <span className="input-group-btn">
-              <button className="btn btn-primary" ref="imgBtn" type="button"><span className="fa fa-picture-o"></span>
-              </button>
-              <button className="btn btn-primary" ref="iconBtn" type="button"><span className="fa fa-flag-o"></span>
-              </button>
-            </span>
-          </div>
+          { focus ? this._renderInput() : this._renderInputGroup() }
           <div className="media-preview"></div>
         </div>
       </div>
