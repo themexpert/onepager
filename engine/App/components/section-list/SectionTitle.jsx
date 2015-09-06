@@ -1,7 +1,7 @@
 const React      = require('react');
 const Input      = require('react-bootstrap/lib/Input');
 const PureMixin  = require('../../../shared/mixins/PureMixin.js');
-const scrollIntoView  = require('../../../shared/lib/scrollview.js');
+const scrollIntoView  = require('../../../shared/plugins/scrollview.js');
 const AppActions = require('../../AppActions.js');
 
 let Title = React.createClass({

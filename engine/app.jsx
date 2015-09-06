@@ -6,7 +6,7 @@ require("../assets/css/sweetalert.css");
 //require("./lithium/lithium-builder.less");
 
 
-require("./shared/lib/_mixins");
+require("./shared/onepager/lib/_mixins");
 
 
 React.render(<App />, document.getElementById('onepager-mount'));

@@ -3,20 +3,21 @@ const _ = require('underscore');
 const assign = require('object-assign');
 const AppDispatcher = require('./AppDispatcher.js');
 const Constants = require('./AppConstants.js');
-const SectionTransformer = require('../shared/lib/SectionTransformer.js');
+const SectionTransformer = require('./../shared/onepager/sectionTransformer.js');
 const ShouldSync = require('../shared/lib/ShouldSync.js');
 const Activity = require('../shared/lib/Activity.js');
-const ODataStore = require('../shared/lib/ODataStore.js');
+const ODataStore = require('./../shared/onepager/ODataStore.js');
 const BaseStore = require('./BaseStore.js');
 const SyncService = require('./AppSyncService.js');
 
-require('../shared/lib/_mixins.js');
+require('./../shared/onepager/lib/_mixins.js');
 
+import toolbelt from '../shared/lib/toolbelt.js';
 
 // data storage
 let _collapseSidebar = false;
 let _blocks = ODataStore.blocks;
-let _sections = SectionTransformer.misitifySections(ODataStore.sections, ODataStore.blocks);
+let _sections = SectionTransformer.unserializeSections(ODataStore.sections, _blocks);
 let _blockState = {open: false};
 let _menuState = {id: null, index: null, title: null};
 let _sidebarTabState = {active: 'op-sections'};
@@ -36,7 +37,11 @@ function collapseSidebar(collapse) {
 }
 
 function _prepareForDirtyCheck(section) {
-  return JSON.stringify(SectionTransformer.simplifySections(section));
+  return JSON.stringify(SectionTransformer.serializeSections(section));
+}
+
+function getBlockBySlug(slug){
+  return _.find(_blocks, {slug});
 }
 
 // function to activate a section
@@ -46,7 +51,7 @@ function setActiveSection(index) {
 
 // function to add a section
 function addSection(section) {
-  let sectionIndex = _sections.length; //isnt it :p
+  let sectionIndex = _sections.length; //isn't it :p
 
   //its a row section to need to uni(quei)fy
   section = SectionTransformer.unifySection(section);
@@ -73,7 +78,7 @@ function duplicateSection(index) {
   //its a row section to need to uni(quei)fy
   let section = SectionTransformer.unifySection(_sections[index], true);
 
-  _sections = _.pushAt(_.copy(_sections), index + 1, section);
+  _sections = toolbelt.pushAt(toolbelt.copy(_sections), index + 1, section);
 
   liveService.updateSection(_sections, sectionIndex);
 
@@ -96,7 +101,7 @@ function removeSection(index) {
 
 
 function updateTitle(index, previousTitle, newTitle) {
-  let section = _.copy(_sections[index]);
+  let section = toolbelt.copy(_sections[index]);
   section.title = newTitle;
 
   if ('untitled section' === previousTitle) {
@@ -107,13 +112,11 @@ function updateTitle(index, previousTitle, newTitle) {
 }
 
 function getUniqueSectionId(sections, index, title) {
-  let id = _.dasherize(title); //make es4 compatible
+  let id = toolbelt.dasherize(title); //make es4 compatible
 
-  while (!_.isUniquePropInArray(sections, index, 'id', id)) {
+  while (!toolbelt.isUniquePropInArray(sections, index, 'id', id)) {
     id = id + 1;
   }
-
-  console.log(id);
 
   return id;
 }
@@ -121,12 +124,85 @@ function getUniqueSectionId(sections, index, title) {
 function sectionSynced(index, res) {
   let section;
 
-  _sections[index] = _.copy(_sections[index]);
+  _sections[index] = toolbelt.copy(_sections[index]);
   section = _sections[index];
 
-  section.content = SectionTransformer.getLiveModeHTML(section.livemode, res.content);
-  SectionTransformer.appendStyleToDOM(section.id, res.style);
+  section.content = SectionTransformer.stripClassesFromHTML(section.livemode, res.content);
+  SectionTransformer.replaceSectionStyleInDOM(section.id, res.style);
 }
+
+let dispatcherIndex = AppDispatcher.register(function (payload) {
+  const actions = Constants.ActionTypes;
+  const action = payload.action;
+
+  switch (action.type) {
+    case actions.ADD_SECTION:
+      addSection(action.section);
+      AppStore.emitChange();
+      break;
+
+    case actions.EDIT_SECTION:
+      //FIXME: its not a place for business logic
+      setActiveSection(action.index);
+      AppStore.setTabState({active: 'op-contents'});
+      AppStore.emitChange();
+      break;
+
+    case actions.COLLAPSE_SIDEBAR:
+      collapseSidebar(action.collapse);
+      AppStore.emitChange();
+      break;
+
+    case actions.ACTIVATE_SECTION:
+      setActiveSection(action.index);
+      AppStore.emitChange();
+      break;
+
+    case actions.UPDATE_SECTION:
+      updateSection(action.index, action.section);
+      AppStore.emitChange();
+      break;
+
+    case actions.REMOVE_SECTION:
+      removeSection(action.index);
+      AppStore.emitChange();
+      break;
+
+    case actions.DUPLICATE_SECTION:
+      duplicateSection(action.index);
+      AppStore.emitChange();
+      break;
+
+    case actions.SECTIONS_SYNCED:
+      sectionSynced(action.index, action.res);
+      AppStore.emitChange();
+      break;
+
+    case actions.RELOAD_SECTIONS:
+      liveService.reloadSections(_sections);
+      break;
+
+    case actions.RELOAD_BLOCKS:
+      //FIXME: its not a place for business logic
+      syncService.reloadBlocks().then((blocks)=> {
+        _blocks = blocks;
+        AppStore.emitChange();
+      });
+      break;
+
+    case actions.UPDATE_SECTIONS:
+      //FIXME: its not a place for business logic
+      _sections = SectionTransformer.unserializeSections(action.sections, ODataStore.blocks);
+      AppStore.emitChange();
+      break;
+
+    case actions.UPDATE_TITLE:
+      updateTitle(action.index, action.previousTitle, action.newTitle);
+      AppStore.emitChange();
+      break;
+    // add more cases for other actionTypes...
+  }
+});
 
 // Facebook style store creation.
 let AppStore = assign({}, BaseStore, {
@@ -166,7 +242,7 @@ let AppStore = assign({}, BaseStore, {
   },
 
   getBlock(slug){
-    return _.find(_blocks, {slug});
+    return getBlockBySlug(slug);
   },
 
   setTabState(state){
@@ -195,83 +271,7 @@ let AppStore = assign({}, BaseStore, {
   },
 
   // register store with dispatcher, allowing actions to flow through
-  dispatcherIndex: AppDispatcher.register(function (payload) {
-    const actions = Constants.ActionTypes;
-    const action = payload.action;
-
-    switch (action.type) {
-      case actions.ADD_SECTION:
-        // NOTE: if this action needs to wait on another store:
-        // AppDispatcher.waitFor([OtherStore.dispatchToken]);
-        // For details, see:
-        // http://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html#why-we-need-a-dispatcher
-        addSection(action.section);
-        AppStore.emitChange();
-        break;
-
-      case actions.EDIT_SECTION:
-        //FIXME: its not a place for business logic
-        setActiveSection(action.index);
-        AppStore.setTabState({active: 'op-contents'});
-        AppStore.emitChange();
-        break;
-
-      case actions.COLLAPSE_SIDEBAR:
-        collapseSidebar(action.collapse);
-        AppStore.emitChange();
-        break;
-
-      case actions.ACTIVATE_SECTION:
-        setActiveSection(action.index);
-        AppStore.emitChange();
-        break;
-
-      case actions.UPDATE_SECTION:
-        updateSection(action.index, action.section);
-        AppStore.emitChange();
-        break;
-
-      case actions.REMOVE_SECTION:
-        removeSection(action.index);
-        AppStore.emitChange();
-        break;
-
-      case actions.DUPLICATE_SECTION:
-        duplicateSection(action.index);
-        AppStore.emitChange();
-        break;
-
-      case actions.SECTIONS_SYNCED:
-        sectionSynced(action.index, action.res);
-        AppStore.emitChange();
-        break;
-
-      case actions.RELOAD_SECTIONS:
-        liveService.reloadSections(_sections);
-        break;
-
-      case actions.RELOAD_BLOCKS:
-        //FIXME: its not a place for business logic
-        syncService.reloadBlocks().then((blocks)=> {
-          _blocks = blocks;
-          AppStore.emitChange();
-        });
-        break;
-
-      case actions.UPDATE_SECTIONS:
-        //FIXME: its not a place for business logic
-        _sections = SectionTransformer.misitifySections(action.sections, ODataStore.blocks);
-        AppStore.emitChange();
-        break;
-
-      case actions.UPDATE_TITLE:
-        updateTitle(action.index, action.previousTitle, action.newTitle);
-        AppStore.emitChange();
-        break;
-      // add more cases for other actionTypes...
-    }
-  })
-
+  dispatcherIndex
 });
 
 module.exports = AppStore;

@@ -1,4 +1,4 @@
-require("../../../assets/css/toastr.css");
+import "../../../assets/css/toastr.css";
 
 toastr.options = {
   "closeButton"      : true,
@@ -12,13 +12,4 @@ toastr.options = {
   "extendedTimeOut"  : "1000"
 };
 
-// let toastr = {
-// 	success: function(msg){
-// 		console.log(msg);
-// 	},
-// 	warning: function(msg){
-// 		console.log(msg);
-// 	}
-// };
-
-module.exports = toastr;
+export default toastr;

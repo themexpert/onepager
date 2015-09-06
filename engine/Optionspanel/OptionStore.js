@@ -1,16 +1,15 @@
-const _ = require('underscore');
-require('../shared/lib/_mixins.js');
+import _ from 'underscore';
+import Reflux from 'reflux';
+import Immutable, {fromJS} from 'immutable';
+import notify from './../shared/plugins/notify.js';
+import ShouldSync from '../shared/lib/ShouldSync.js';
+import toolbelt from './../shared/lib/toolbelt.js';
 
-const Reflux = require('reflux');
-const Immutable = require('immutable');
-const OptionActions = require('./OptionActions.js');
-const Sync = require("../shared/lib/OptionsPanelSync.js");
-const notify = require("../shared/lib/notify.js");
-const ShouldSync = require('../shared/lib/ShouldSync.js');
+import ODataStore from './../shared/onepager/ODataStore.js';
+import OptionActions from './OptionActions.js';
+import Sync from './OptionsPanelSync.js';
 
-const ODataStore = require('../shared/lib/ODataStore.js');
 let options = ODataStore.options;
-
 let sync = Sync(ODataStore.ajaxUrl, ODataStore.page);
 
 function transformer(fields, panelId) {
@@ -26,15 +25,15 @@ function transformer(fields, panelId) {
 }
 
 //add refs to control
-let _optionPanel = _.map(_.copy(ODataStore.optionPanel), (panel)=> {
+let _optionPanel = _.map(toolbelt.copy(ODataStore.optionPanel), (panel)=> {
   panel.fields = transformer(panel.fields, panel.id);
   return panel;
 });
 
 let AppState = {
   activeTabIndex: 0,
-  synced: Immutable.fromJS(_optionPanel),
-  optionPanel: Immutable.fromJS(_optionPanel)
+  synced: fromJS(_optionPanel),
+  optionPanel: fromJS(_optionPanel)
 };
 
 //get tabs
@@ -79,7 +78,7 @@ let OptionsPanelStore = Reflux.createStore({
 
     //FIXME: move this to UI
     update.then(()=> {
-      this.data.synced = Immutable.fromJS(this.data.optionPanel.toJS());
+      this.data.synced = fromJS(this.data.optionPanel.toJS());
       this.trigger();
       notify.success('Successfully saved settings');
       OptionActions.sync.completed();

@@ -4,7 +4,7 @@ const Input      = require('react-bootstrap/lib/Input');
 const cx         = require('classnames');
 const PureMixin  = require('../../../shared/mixins/PureMixin.js');
 const AppActions = require('../../AppActions.js');
-const scrollIntoView  = require('../../../shared/lib/scrollview.js');
+const scrollIntoView  = require('../../../shared/plugins/scrollview.js');
 const SectionTitle = require("./SectionTitle.jsx");
 
 function confirmDelete(proceed) {

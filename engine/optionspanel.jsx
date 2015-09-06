@@ -1,6 +1,6 @@
 const React = require('react');
 const Admin = require('./Optionspanel/OptionsPanel.jsx');
-require("./shared/lib/_mixins");
+require("./shared/onepager/lib/_mixins");
 
 
 require("../assets/css/sweetalert.css");

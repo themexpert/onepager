@@ -1,7 +1,7 @@
 const React      = require('react');
 const PureMixin  = require('react/lib/ReactComponentWithPureRenderMixin');
 const Tab        = require('../../../shared/components/Tab.jsx');
-const ODataStore = require('../../../shared/lib/ODataStore.js');
+const ODataStore = require('../../../shared/onepager/ODataStore.js');
 
 
 let Footer = React.createClass({

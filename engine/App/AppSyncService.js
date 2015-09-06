@@ -1,11 +1,9 @@
 const async = require('async');
 const $     = jQuery; //jshint ignore: line
-const notify             = require('./../shared/lib/notify');
-const ODataStore         = require('./../shared/lib/ODataStore');
-const SectionTransformer = require('./../shared/lib/SectionTransformer');
+const notify             = require('./../shared/plugins/notify');
+const ODataStore         = require('./../shared/onepager/ODataStore');
+const SectionTransformer = require('./../shared/onepager/sectionTransformer');
 const AppActions         = require('./AppActions');
-
-require('./../shared/lib/_mixins');
 
 function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
@@ -14,7 +12,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
       pageId  : pageId,
       action  : 'onepager_save_sections',
       updated : sectionIndex,
-      sections: SectionTransformer.simplifySections(sections),
+      sections: SectionTransformer.serializeSections(sections)
     };
 
     let sync = function () {
@@ -48,7 +46,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
         pageId  : pageId,
         action  : 'onepager_save_sections',
         updated : null,
-        sections: SectionTransformer.simplifySections(sections)
+        sections: SectionTransformer.serializeSections(sections)
       };
 
       let sync = function () {
@@ -80,7 +78,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     return new Promise((resolve, reject)=>{
       let payload = {
         action: "onepager_reload_sections",
-        sections: SectionTransformer.simplifySections(sections)
+        sections: SectionTransformer.serializeSections(sections)
       };
 
       $.post(ODataStore.ajaxUrl, payload, (res)=> {

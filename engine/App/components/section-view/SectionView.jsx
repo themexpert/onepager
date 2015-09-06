@@ -3,7 +3,7 @@ const React      = require('react');
 const cx         = require('classnames');
 const AppActions = require('../../AppActions.js');
 const PureMixin  = require('../../../shared/mixins/PureMixin.js');
-const scrollIntoView  = require('../../../shared/lib/scrollview.js');
+const scrollIntoView  = require('../../../shared/plugins/scrollview.js');
 
 let Section = React.createClass({
   mixins: [PureMixin],

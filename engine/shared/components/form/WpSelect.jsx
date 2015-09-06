@@ -1,6 +1,6 @@
 const React                             = require('react');
 const Select                            = require("./Select.jsx");
-const ODataStore                        = require("../../lib/ODataStore.js");
+const ODataStore                        = require("../../onepager/ODataStore.js");
 const ContainedSelectorMixin            = require("../../mixins/ContainedSelectorMixin.js");
 const ReactComponentWithPureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 
