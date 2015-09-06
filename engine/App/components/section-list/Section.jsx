@@ -26,7 +26,8 @@ let Section = React.createClass({
     active: React.PropTypes.bool,
     id: React.PropTypes.number,
     index: React.PropTypes.number,
-    title: React.PropTypes.string
+    title: React.PropTypes.string,
+    slug: React.PropTypes.string,
   },
 
   getInitialState(){
@@ -62,7 +63,7 @@ let Section = React.createClass({
   },
 
   render() {
-    let {title, index} = this.props;
+    let {title, index, slug} = this.props;
 
     let classes = cx('section', {
       'active'    : this.props.active
@@ -71,9 +72,11 @@ let Section = React.createClass({
     return (
       <div className={classes}>
         <SectionTitle title={title} index={index} >
-          <h3 onClick={this.handleScrollIntoView}>
+          <h3 title={slug} onClick={this.handleScrollIntoView}>
             <span className="section-handle">
-              <span className="fa fa-ellipsis-v"></span><span className="fa fa-ellipsis-v"></span>
+              <span className="fa fa-ellipsis-v"></span>
+              <span className="fa fa-ellipsis-v"></span>
+              <span className="fa fa-ellipsis-v"></span>
             </span>
             {title}
           </h3>

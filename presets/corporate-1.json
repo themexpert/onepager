@@ -7,11 +7,14 @@
       "contents": {
         "logo": "http://s3.amazonaws.com/quantum-assets/logo-dark.png",
         "menu": "6",
-        "cta": "#",
-        "cta_text": "Contact us"
+        "link": {
+          "url": "",
+          "text": "",
+          "target": false
+        }
       },
       "settings": {
-        "sticky_nav": "0"
+        "sticky_nav": "1"
       },
       "styles": {
         "bg_color": "#ffffff",
@@ -24,33 +27,44 @@
     {
       "id": "slider",
       "slug": "slider-1",
-      "title": "Slider",
+      "title": "slider",
       "contents": {
         "sliders": [
           {
             "title": "Onepage Builder for WordPress",
             "description": "Building onepage website has never been easier before",
             "image": "http://s3.amazonaws.com/quantum-assets/icons/headphone-big.png",
-            "link": "http://getonepager.com",
-            "link_text": "Our Works"
+            "link": {
+              "url": "http://getonepager.com",
+              "text": "Download Now",
+              "target": false
+            },
+            "link_text": "Download Now"
           },
           {
             "title": "Revolutionary Website Builder",
             "description": "Ridiculously easy and built for tomorrows internet in mind",
             "image": "http://s3.amazonaws.com/quantum-assets/icons/responsive-big.png",
-            "link": "http://getonepager.com",
-            "link_text": "More Works"
+            "link": {
+              "url": "http://getonepager.com",
+              "text": "Download Now",
+              "target": false
+            },
+            "link_text": "Download Now"
           }
         ]
       },
       "settings": {
+        "title_size": "44",
         "title_transformation": "text-uppercase",
         "slider_height": "600"
       },
       "styles": {
+        "title_color": "#323232",
         "slider_bg": "http://s3.amazonaws.com/quantum-assets/bg/bg2.jpg",
-        "button_color": "#323232",
-        "button_hover_color": "#2196F3"
+        "button_bg": "#b8c9dc",
+        "button_color": "#fff",
+        "button_hover_color": "#E64A19"
       }
     },
     {
@@ -79,6 +93,7 @@
         ]
       },
       "settings": {
+        "title_size": "56",
         "title_transformation": "text-uppercase",
         "columns": "4",
         "animation_title": "fadeInDown",
@@ -97,23 +112,26 @@
       "title": "Call to action",
       "contents": {
         "title": "Modern and ridiculusly easy page builder for all",
-        "description": "<div>We are a nimble team of passionate developer and designer.</div>",
-        "image": "",
-        "link": "#",
-        "link_text": "Hire Us Today"
+        "description": "I dream my painting and I paint my dream",
+        "image": "http://s3.amazonaws.com/quantum-assets/icons/download.png",
+        "link": {
+          "url": "",
+          "text": "",
+          "target": false
+        }
       },
       "settings": {
-        "title_size": "title-sm",
+        "title_size": "56",
         "title_transformation": "text-uppercase",
         "animation": "fadeInUp"
       },
       "styles": {
         "bg_image": "http://s3.amazonaws.com/quantum-assets/bg/bg6.jpg",
-        "bg_parallax": "false",
-        "title_color": "#ffffff",
-        "text_color": "#dddddd",
-        "button_border_color": "#ffffff",
-        "button_text_color": "#ffffff"
+        "bg_parallax": "",
+        "title_color": "#fff",
+        "text_color": "#ddd",
+        "button_border_color": "#b8c9dc",
+        "button_text_color": "#fff"
       }
     },
     {
@@ -155,6 +173,7 @@
         ]
       },
       "settings": {
+        "title_size": "56",
         "title_transformation": "text-uppercase",
         "animation": "zoomIn",
         "overlay_animation": "scale"
@@ -186,6 +205,7 @@
         ]
       },
       "settings": {
+        "title_size": "56",
         "title_transformation": "text-uppercase"
       },
       "styles": {

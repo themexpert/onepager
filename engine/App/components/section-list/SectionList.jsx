@@ -1,20 +1,24 @@
-const _               = require('underscore');
-const React           = require('react');
-const cx              = require('classnames');
-const SortableMixin   = require('sortablejs/react-sortable-mixin');
-const Button          = require('react-bootstrap/lib/Button');
-const SectionLi       = require('./Section.jsx');
-const AppStore        = require('../../AppStore.js');
-const AppActions      = require('../../AppActions.js');
-// const PureMixin           = require('../../../mixins/PureMixin.js');
-const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const React = require('react');
+const cx = require('classnames');
+const SortableMixin = require('sortablejs/react-sortable-mixin');
+const Button = require('react-bootstrap/lib/Button');
+const SectionLi = require('./Section.jsx');
+const AppStore = require('../../AppStore.js');
+const AppActions = require('../../AppActions.js');
+//const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 
-function setBodyClass(sections){
+import toolbelt from '../../../shared/lib/toolbelt.js';
+
+function setBodyClass(sections) {
   if (sections === 0) {
     jQuery('body').addClass('txop-noblock');
   } else {
     jQuery('body').removeClass('txop-noblock');
   }
+}
+
+function getKey() {
+  return toolbelt.randomId('k_');
 }
 
 import "./style.less";
@@ -35,7 +39,7 @@ let SectionList = React.createClass({
   },
 
   componentDidUpdate(){
-    setBodyClass(this.props.sections.length)
+    setBodyClass(this.props.sections.length);
   },
 
   sortableOptions: {
@@ -48,11 +52,11 @@ let SectionList = React.createClass({
       return;
     }
 
-    let sections = _.copy(this.props.sections);
-    sections     = _.move(sections, e.oldIndex, e.newIndex);
+    let sections = toolbelt.copy(this.props.sections);
+    sections = toolbelt.move(sections, e.oldIndex, e.newIndex);
 
-    sections[e.oldIndex].key = _.randomId('s_');
-    sections[e.newIndex].key = _.randomId('s_');
+    sections[e.oldIndex].key = getKey();
+    sections[e.newIndex].key = getKey();
 
     AppStore.reorder(sections, e.newIndex);
   },
@@ -61,32 +65,31 @@ let SectionList = React.createClass({
     AppActions.updateSection(index, section);
   },
 
-  render() {
-    let sections = this.props.sections;
-    let activeSectionIndex = this.props.activeSectionIndex;
-
-    let sectionsClass = cx("list-sections");
+  _renderSectionList(section, index){
+    let active = this.props.activeSectionIndex === index;
 
     return (
-      <div className="op-section-list">
-        <div className={sectionsClass}>
-          <Button bsStyle='primary' className="btn-block" onClick={this.props.openBlocks}>
-            <span className="fa fa-plus"></span> Add Block
-          </Button>
+      <SectionLi
+        active={active}
+        slug={section.slug}
+        title={section.title}
+        key={section.key}
+        id={section.id}
+        index={index}/>
+    );
+  },
 
-          <div ref="sections">
-            {sections.map((section, index)=> {
-              return (
-                <SectionLi
-                  openMenuScreen={this.showMenuScreen}
-                  active={activeSectionIndex === index}
-                  id={section.id}
-                  title={section.title}
-                  key={section.key}
-                  index={index}/>
-              );
-            })}
-          </div>
+  render() {
+    let {sections, openBlocks} = this.props;
+
+    return (
+      <div className="list-sections">
+        <Button bsStyle='primary' className="btn-block" onClick={openBlocks}>
+          <span className="fa fa-plus"></span> Add Block
+        </Button>
+
+        <div ref="sections">
+          {sections.map(this._renderSectionList)}
         </div>
       </div>
     ); //end jsx

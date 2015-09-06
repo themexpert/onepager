@@ -1,19 +1,19 @@
-const _                  = require('underscore');
-const swal               = require('sweetalert');
-const React              = require('react');
-const Tab                = require('./Tab.jsx');
-const TabPane            = require('../../../shared/components/TabPane.jsx');
-const OptionActions      = require('../../../Optionspanel/OptionActions.js');
-const SectionTransformer = require('../../../shared/lib/SectionTransformer.js');
-const ODataStore         = require('../../../shared/lib/ODataStore.js');
-const AppActions         = require('../../AppActions.js');
-const AppStore           = require('../../AppStore.js');
-const SectionList        = require('../section-list/SectionList.jsx');
-const SectionControls    = require('./SectionControls.jsx');
-const Settings           = require("./Settings.jsx");
-const Menu           = require("./Menu.jsx");
-const $                  = jQuery;
-const Footer    = require('./../section-list/Footer.jsx');
+const _ = require('underscore');
+const swal = require('sweetalert');
+const React = require('react');
+const Tab = require('./Tab.jsx');
+const TabPane = require('../../../shared/components/TabPane.jsx');
+const OptionActions = require('../../../Optionspanel/OptionActions.js');
+const SectionTransformer = require('../../../shared/onepager/sectionTransformer.js');
+const ODataStore = require('../../../shared/onepager/ODataStore.js');
+const AppActions = require('../../AppActions.js');
+const AppStore = require('../../AppStore.js');
+const SectionList = require('../section-list/SectionList.jsx');
+const SectionControls = require('./SectionControls.jsx');
+const Settings = require("./Settings.jsx");
+const Menu = require("./Menu.jsx");
+const $ = jQuery;
+const Footer = require('./../section-list/Footer.jsx');
 const BlockCollection = require('../blocks/BlockCollection.jsx');
 
 
@@ -90,24 +90,63 @@ let Sidebar = React.createClass({
     });
   },
 
-  render() {
-    let {sections, blocks, activeSectionIndex, activeSection, isDirty} = this.props;
+  handleTabClick(id){
+    AppStore.setTabState({active: id});
+  },
+
+  _renderTabs(){
+    let handleTabClick = this.handleTabClick;
     let isSettingsDirty = this.state.isSettingsDirty;
-    let sectionEditable = activeSectionIndex !== null;
-    let activeTab       = this.props.sidebarTabState.active;
-    let sectionSettings = activeSection ? _.pick(activeSection, ['settings', 'contents', 'styles']) : {};
+    let activeTab = this.props.sidebarTabState.active;
+    let {isDirty} = this.props;
+    let buildModeUrl = ODataStore.disableBuildModeUrl;
 
     let saveClasses = cx({
       "fa fa-refresh fa-spin": this.state.saving,
       "fa fa-check": !this.state.saving
     });
 
-    let handleTabClick = function (id) {
-      AppStore.setTabState({active: id});
-    };
+    return (
+      <ul className='tx-nav tx-nav-tabs'>
+        <Tab onClick={handleTabClick} id='op-sections' icon="cubes" title='Layout' active={activeTab}
+             icon2="arrow-left" parent={true}/>
+        <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab}/>
+        <Tab onClick={handleTabClick} id='op-blocks' icon='cube' title='Blocks' active={activeTab}/>
+        <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab}
+             visibleOn="op-sections"/>
+        <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab}
+             visibleOn="op-sections"/>
+
+        <div className="btn-group">
+          {
+            activeTab === 'op-settings' ?
+              <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave}
+                      className='btn btn-primary btn--save'>
+                <span className={saveClasses}></span>
+              </button> :
+              <button disabled={!isDirty} onClick={this.handleSave} className='btn btn-primary btn--save'>
+                <span className={saveClasses}></span>
+              </button>
+          }
+          <a href={buildModeUrl} className="btn btn-primary" data-toggle="tooltip"
+             data-placement="bottom" title="Close">
+            <span className="fa fa-close"></span>
+          </a>
+        </div>
+      </ul>
+    );
+  },
+
+  render() {
+    let {sections, blocks, activeSectionIndex, activeSection} = this.props;
+    let sectionEditable = activeSectionIndex !== null;
+    let activeTab = this.props.sidebarTabState.active;
+    let sectionSettings = activeSection ? _.pick(activeSection, ['settings', 'contents', 'styles']) : {};
+
+    let handleTabClick = this.handleTabClick;
 
     let update = (key, fields)=> {
-      let section  = _.copy(sections[activeSectionIndex]);
+      let section = _.copy(sections[activeSectionIndex]);
       section[key] = fields;
       AppActions.updateSection(activeSectionIndex, section);
     };
@@ -119,37 +158,15 @@ let Sidebar = React.createClass({
 
     return (
       <div className="txop-sidebar op-ui clearfix">
-        <ul className='tx-nav tx-nav-tabs'>
-          <Tab onClick={handleTabClick} id='op-sections' icon="cubes" title='Layout' active={activeTab} icon2="arrow-left" parent={true}/>
-          <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab} />
-          <Tab onClick={handleTabClick} id='op-blocks' icon='cube' title='Blocks' active={activeTab} />
-          <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab} visibleOn="op-sections" />
-          <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab} visibleOn="op-sections" />
-
-          <div className="btn-group">
-          {
-            activeTab === 'op-settings' ?
-              <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave} className='btn btn-primary btn--save'>
-                <span className={saveClasses}></span>
-              </button> :
-              <button disabled={!isDirty} onClick={this.handleSave} className='btn btn-primary btn--save'>
-              <span className={saveClasses}></span>
-              </button>
-          }
-          <a href={ODataStore.disableBuildModeUrl} className="btn btn-primary" data-toggle="tooltip"
-             data-placement="bottom" title="Close">
-            <span className="fa fa-close"></span>
-          </a>
-        </div>
-        </ul>
+        {this._renderTabs()}
 
         <div className='tab-content' ref='tabContents'>
           <TabPane id='op-sections' active={activeTab}>
-              <SectionList
-                openBlocks={handleTabClick.bind(this, 'op-blocks')}
-                activeSectionIndex={activeSectionIndex}
-                blocks={blocks}
-                sections={sections} />
+            <SectionList
+              openBlocks={handleTabClick.bind(this, 'op-blocks')}
+              activeSectionIndex={activeSectionIndex}
+              blocks={blocks}
+              sections={sections}/>
           </TabPane>
 
           <TabPane id="op-blocks" active={activeTab}>
@@ -157,7 +174,7 @@ let Sidebar = React.createClass({
           </TabPane>
 
           <TabPane id='op-menu' active={activeTab}>
-            <Menu sections={sections} />
+            <Menu sections={sections}/>
           </TabPane>
 
           <TabPane id='op-contents' active={activeTab}>
