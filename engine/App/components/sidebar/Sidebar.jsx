@@ -18,6 +18,7 @@ const BlockCollection = require('../blocks/BlockCollection.jsx');
 
 
 import cx from "classnames";
+import './assets/overlay.less';
 
 let Sidebar = React.createClass({
   // we need to optimize this with immutability
@@ -106,6 +107,8 @@ let Sidebar = React.createClass({
       "fa fa-check": !this.state.saving
     });
 
+    console.log(saveClasses);
+
     return (
       <ul className='tx-nav tx-nav-tabs'>
         <Tab onClick={handleTabClick} id='op-sections' icon="cubes" title='Layout' active={activeTab}
@@ -156,11 +159,17 @@ let Sidebar = React.createClass({
       "fa fa-chevron-right": this.props.collapseSidebar
     });
 
+    let overlayClasses = cx({
+      "saving-overlay": this.state.saving
+    });
+
     return (
       <div className="txop-sidebar op-ui clearfix">
         {this._renderTabs()}
 
         <div className='tab-content' ref='tabContents'>
+          <div className={overlayClasses} />
+
           <TabPane id='op-sections' active={activeTab}>
             <SectionList
               openBlocks={handleTabClick.bind(this, 'op-blocks')}

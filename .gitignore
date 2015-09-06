@@ -22,9 +22,9 @@ tx-onepager.zip
 
 
 # Node + Composer
-assets
-dist
-vendor
-node_modules
-bower_components
+/assets
+/dist
+/vendor
+/node_modules
+/bower_components
 npm-debug.log
