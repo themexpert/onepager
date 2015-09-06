@@ -1,3 +1,3 @@
-import getLocalState from '../../shared/lib/getLocalState.js';
+import localState from '../lib/localState.js';
 
-export default getLocalState('onepager_ui_state')();
+export default localState('onepager_ui_state')();
