@@ -17,6 +17,16 @@ const Menu = React.createClass({
     this.setState({menu: this.refs.menu.getValue()});
   },
 
+  _renderMenuPanel(section, index){
+    let title = <div>{section.title}<span className='fa fa-caret-down pull-right'></span></div>;
+
+    return (
+      <Panel header={title} eventKey={index}>
+        <AddToMenu index={index} menu={this.state.menu} title={section.title} id={section.id} />
+      </Panel>
+    );
+  },
+
   render() {
     let menu = {
       type    : 'menu',
@@ -33,14 +43,7 @@ const Menu = React.createClass({
 
         {this.state.menu ?
           <PanelGroup accordion>
-          { sections.map((section, index)=>{
-              let title = <div>{section.title}<span className='fa fa-caret-down pull-right'></span></div>;
-              return (
-                <Panel header={title} eventKey={index}>
-                  <AddToMenu index={index} menu={this.state.menu} title={section.title} id={section.id}></AddToMenu>
-                </Panel>
-              );
-            }) }
+            { sections.map(this._renderMenuPanel) }
           </PanelGroup> :
           <p>Please select a Menu</p>
         }

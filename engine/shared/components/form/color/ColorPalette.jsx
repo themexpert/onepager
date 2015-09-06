@@ -7,7 +7,7 @@ const PalettePicker = require("./palette/Picker.jsx");
 const Activity = require('../../../lib/Activity.js');
 const Button = require('react-bootstrap/lib/Button');
 const PalettePresets = require('./palette/Presets.jsx');
-window.assign       = require('object-assign');
+const assign       = require('object-assign');
 
 let inactive = Activity(4000);
 let completedUpdating = Activity(1000);

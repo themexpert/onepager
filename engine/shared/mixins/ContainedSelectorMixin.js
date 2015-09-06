@@ -1,16 +1,11 @@
-/**
- * Created by na on 5/13/15.
- */
-const React = require('react');
+import {findDOMNode} from 'react';
 
 module.exports = {
   getContainerReactId(){
-    let el = React.findDOMNode(this.refs.container);
+    let el = findDOMNode(this.refs.container);
     if (!el) return false;
 
-    let reactId = el.getAttribute('data-reactid');
-
-    return reactId;
+    return el.getAttribute('data-reactid');
   },
 
   getSelector(selector){
