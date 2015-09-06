@@ -10,12 +10,20 @@ const Tab = require('../../../shared/components/Tab.jsx');
 const TabPane = require('../../../shared/components/TabPane.jsx');
 const SectionTitle = require("../section-list/SectionTitle.jsx");
 
+import LocalState from '../../../shared/lib/localState.js';
+
+let componentLocalState = LocalState('onepager_section_editor_ui_state')();
+
 let SectionControls = React.createClass({
   //  mixins: [PureMixin],
   getInitialState(){
     return {
-      activeTab: 'contents'
+      activeTab: componentLocalState.get('activeTab', 'contents')
     };
+  },
+
+  componentDidUpdate() {
+    componentLocalState.set(this.state);
   },
 
   update(tabName){
