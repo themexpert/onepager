@@ -8,12 +8,14 @@ import "./style.less";
 
 
 function initializeTinyMCE(id, onChange){
-  tinymce.init({
-    selector: "#"+id,
-    setup: ed=> {
-      ed.on('keyup', e => onChange(ed));
-      ed.on('change', e => onChange(ed));
-    }
+  $(function(){
+    tinymce.init({
+      selector: "#"+id,
+      setup: ed=> {
+        ed.on('keyup', e => onChange(ed));
+        ed.on('change', e => onChange(ed));
+      }
+    });
   });
 }
 

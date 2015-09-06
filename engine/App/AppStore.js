@@ -13,17 +13,19 @@ const SyncService = require('./AppSyncService.js');
 require('./../shared/onepager/lib/_mixins.js');
 
 import toolbelt from '../shared/lib/toolbelt.js';
+import storage from '../shared/lib/storage.js';
+import localState from './../shared/onepager/localState.js';
 
 // data storage
-let _collapseSidebar = false;
 let _blocks = ODataStore.blocks;
 let _sections = SectionTransformer.unserializeSections(ODataStore.sections, _blocks);
-let _blockState = {open: false};
 let _menuState = {id: null, index: null, title: null};
-let _sidebarTabState = {active: 'op-sections'};
-let _activeSectionIndex = null;
 let _savedSections = _prepareForDirtyCheck(_sections);
 let AUTO_SAVE_DELAY = 500;
+
+let _sidebarTabState = localState.get('sidebarTabState', {active: 'op-sections'});
+let _collapseSidebar = localState.get('collapseSidebar', false);
+let _activeSectionIndex = _sections[localState.get('activeSectionIndex')] ? localState.get('activeSectionIndex') : null;
 
 let shouldLiveSectionsSync = ShouldSync(_sections, 'sections');
 let shouldSectionsSync = ShouldSync(_sections, 'sections');
@@ -210,14 +212,13 @@ let AppStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
   getAll() {
     return {
-      blocks: _blocks,
       isDirty: this.isDirty(),
+      blocks: _blocks,
       sections: _sections,
       menuState: _menuState,
+      activeSection: _sections[_activeSectionIndex],
       collapseSidebar: _collapseSidebar,
       sidebarTabState: _sidebarTabState,
-      blockState: _blockState,
-      activeSection: _sections[_activeSectionIndex],
       activeSectionIndex: _activeSectionIndex
     };
   },

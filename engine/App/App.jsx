@@ -5,6 +5,7 @@ const Sidebar               = require('./components/sidebar/Sidebar.jsx');
 const SectionViewCollection = require('./components/section-view/SectionViewCollection.jsx');
 const _                     = require('underscore');
 const cx = require('classnames');
+import localState from './../shared/onepager/localState.js';
 
 let App = React.createClass({
   getInitialState() {
@@ -16,11 +17,17 @@ let App = React.createClass({
   },
 
   componentDidUpdate: function(prevProps, prevState) {
+    this._saveStateInLocalStorage();
     this._bindPlugins();
 
     if(this.state.collapseSidebar !== prevState.collapseSidebar){
       this._setSidebarCollapseClass(this.state.collapseSidebar);
     }
+  },
+
+  _saveStateInLocalStorage(){
+    let state = _.pick(this.state, 'activeSectionIndex', 'collapseSidebar', 'sidebarTabState');
+    localState.set(state);
   },
 
   componentDidMount() {
