@@ -16,14 +16,12 @@ return array(
           array('name'=>'description', 'type'=> 'textarea', 'value' => 'Building onepage website has never been easier before'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/icons/headphone-big.png'),
           array('name'=>'link', 'type' => 'link', 'text' => 'Download Now', 'url' => 'http://getonepager.com'),
-          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
         ),
         array(
           array('name'=>'title', 'value' => 'Revolutionary Website Builder'),
           array('name'=>'description', 'type'=> 'textarea', 'value' => 'Ridiculously easy and built for tomorrows internet in mind'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/icons/responsive-big.png'),
           array('name'=>'link', 'type' => 'link', 'text' => 'Download Now', 'url' => 'http://getonepager.com'),
-          array('name'=>'link_text', 'label'=> 'Link Text', 'placeholder'=> 'Download Now', 'value'=> 'Download Now'),
         )
       )
     )
