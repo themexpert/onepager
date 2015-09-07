@@ -100,7 +100,7 @@ class OptionsPanel implements OptionsPanelInterface {
       if ( ! $options || ! is_array( $options ) ) {
         $this->flatOptions = array();
       } else {
-        $this->flatOptions = call_user_func_array( 'array_merge', $options );
+        $this->flatOptions = flatten_array( $options );
       }
     }
   }

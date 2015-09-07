@@ -13,6 +13,12 @@ if ( ! function_exists( 'array_find_by' ) ) {
   }
 }
 
+if(!function_exists('flatten_array')){
+  function flatten_array($array){
+    return call_user_func_array( 'array_merge', $array );
+  }
+}
+
 if ( ! function_exists( 'array_get' ) ) {
   /**
    *
@@ -22,7 +28,7 @@ if ( ! function_exists( 'array_get' ) ) {
    *
    * @return mixed
    */
-  function array_get( $array, $key, $default ) {
+  function array_get( $array, $key, $default=null ) {
     return array_key_exists( $key, $array ) ? $array[ $key ] : $default;
   }
 }
