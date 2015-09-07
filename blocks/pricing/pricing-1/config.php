@@ -7,7 +7,6 @@ return array(
   'contents'=> array(
     array('name'=>'title', 'value'=>'Price'),
     array('name'=>'description', 'value'=>'Our pricing is awesome', 'type'=>'editor'),
-    array('name'=>'featured', 'type'=>'switch'),
     array(
       'name'=>'packages',
       'type'=>'repeater',
