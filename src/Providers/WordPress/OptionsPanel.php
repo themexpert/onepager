@@ -1,15 +1,17 @@
 <?php namespace ThemeXpert\Providers\Wordpress;
 
 use App\Assets\OptionsPanelScripts;
+use ThemeXpert\Onepager\Block\Transformers\ControlsValueTransformer;
 use ThemeXpert\Providers\Contracts\OptionsPanelInterface;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
 
 class OptionsPanel implements OptionsPanelInterface {
-  protected $options = array();
   protected static $panels = [ ];
+  protected $options = array();
   protected $flatOptions;
   protected $tabId;
   protected $tabName;
+  protected $merger;
 
   public static function getInstance( $menuSlug ) {
     if ( ! array_key_exists( $menuSlug, self::$panels ) ) {
@@ -67,8 +69,8 @@ class OptionsPanel implements OptionsPanelInterface {
 
     new OptionsPanelScripts();
 
-    $optionPanel  = $this->getOptions();
-    $savedOptions = get_option( $this->menuSlug );
+    $optionPanel  = $this->getOptionsControls();
+    $savedOptions = $this->getAllSavedOptions();
     $onepager     = onepager();
 
     $data = array(
@@ -84,15 +86,16 @@ class OptionsPanel implements OptionsPanelInterface {
     wp_localize_script( "admin-bundle", "onepager", $data );
   }
 
-  public function get( $menuSlug, $index ) {
-    $options = $this->all( $menuSlug );
+  public function getOption( $name, $default = "" ) {
+    $this->flattenOptions();
 
-    return ( array_key_exists( $index, $options ) ) ? $options[ $index ] : null;
+    //get default value
+    return array_key_exists( $name, $this->flatOptions ) ? $this->flatOptions[ $name ] : $default;
   }
 
-  public function getOption( $name, $default = "" ) {
+  protected function flattenOptions() {
     if ( ! $this->flatOptions ) {
-      $options = get_option( $this->menuSlug, true );
+      $options = $this->getAllSavedOptions();
 
       if ( ! $options || ! is_array( $options ) ) {
         $this->flatOptions = array();
@@ -100,25 +103,43 @@ class OptionsPanel implements OptionsPanelInterface {
         $this->flatOptions = call_user_func_array( 'array_merge', $options );
       }
     }
-
-    //get default value
-    return ( array_key_exists( $name, $this->flatOptions ) ) ? $this->flatOptions[ $name ] : $default;
   }
 
-  public function all( $menuSlug ) {
-    if ( ! $this->options ) {
-      $this->options = get_option( $this->menuSlug, true );
+  protected function mergeOptions($data, $tabs) {
+    $merger = new ControlsValueTransformer();
+
+    foreach ( $tabs as $tab ) {
+      $data[$tab['id']] = $merger->mergePersistedDataAndConfigData(
+        array_get($tab, 'fields', []),
+        array_get($data, $tab['id'], [])
+      );
     }
 
-    return ! empty( $this->options ) ? $this->options : [ ];
+    return $data;
   }
 
-  public function set( $menuSlug, $index, $option ) {
-    return false;
+  public function getAllSavedOptions() {
+    $data = [];
+
+    if ( $this->options ) {
+      $data = get_option( $this->menuSlug, true );
+
+      $data = $this->mergeOptions($data, $this->getOptionsControls());
+    }
+
+    return ! empty( $data ) ? $data : [ ];
   }
 
-  public function save( $slug, $options ) {
-    return update_option( $slug, $options );
+
+
+  public function getOptionsControls() {
+    $options = array_map( function ( $options ) {
+      $options['fields'] = array_values( $this->transformOptions( $options['fields'] ) );
+
+      return $options;
+    }, $this->options );
+
+    return $options;
   }
 
   public function transformOptions( $options ) {
@@ -126,6 +147,9 @@ class OptionsPanel implements OptionsPanelInterface {
 
     return $transformer->transform( $options );
   }
+
+
+
 
   public function tab( $id, $name = null ) {
     $this->tabId   = $id;
@@ -153,16 +177,6 @@ class OptionsPanel implements OptionsPanelInterface {
     }
 
     return $this;
-  }
-
-  public function getOptions() {
-    $options = array_map( function ( $options ) {
-      $options['fields'] = array_values( $this->transformOptions( $options['fields'] ) );
-
-      return $options;
-    }, $this->options );
-
-    return $options;
   }
 
 }

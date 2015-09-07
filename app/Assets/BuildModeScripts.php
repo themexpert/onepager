@@ -49,9 +49,9 @@ class BuildModeScripts {
 
     $disableBuildModeUrl = onepager_get_edit_mode_url( get_current_page_url(), false );
 
-    $optionPanel = onepager()->optionsPanel( "onepager" )->getOptions();
+    $optionPanel = onepager()->optionsPanel( "onepager" )->getOptionsControls();
+    $options     = onepager()->optionsPanel( "onepager" )->getAllSavedOptions();
     $page        = 'onepager';
-    $options     = get_option( 'onepager' );
 
     $presets    = \Onepager::getPresets();
     $basePreset = \Onepager::getBasePreset();

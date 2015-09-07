@@ -7,17 +7,17 @@ interface OptionsPanelInterface {
 
   public function printMountNode();
 
-  public function get( $page, $index );
+//  public function get( $page, $index );
 
-  public function all( $page );
+//  public function all();
 
-  public function set( $page, $index, $option );
+//  public function set( $page, $index, $option );
 
-  public function save( $slug, $options );
+//  public function save( $slug, $options );
 
   public function tab( $id, $name = null );
 
   public function add();
 
-  public function getOptions();
+  public function getOptionsControls();
 }
