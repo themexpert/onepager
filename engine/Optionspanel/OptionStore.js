@@ -9,6 +9,10 @@ import ODataStore from './../shared/onepager/ODataStore.js';
 import OptionActions from './OptionActions.js';
 import Sync from './OptionsPanelSync.js';
 
+import LocalState from '../shared/lib/localState.js';
+
+let componentLocalState = LocalState('onepager_settings_ui_state')();
+
 let options = ODataStore.options;
 let sync = Sync(ODataStore.ajaxUrl, ODataStore.page);
 
@@ -31,7 +35,7 @@ let _optionPanel = _.map(toolbelt.copy(ODataStore.optionPanel), (panel)=> {
 });
 
 let AppState = {
-  activeTabIndex: 0,
+  activeTabIndex: componentLocalState.get('activeTabIndex', 0),
   synced: fromJS(_optionPanel),
   optionPanel: fromJS(_optionPanel)
 };
@@ -50,6 +54,7 @@ let OptionsPanelStore = Reflux.createStore({
   },
 
   onChangeTab(tabIndex){
+    componentLocalState.set({'activeTabIndex':tabIndex});
     this.trigger({activeTabIndex: tabIndex});
   },
 
