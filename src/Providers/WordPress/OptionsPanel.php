@@ -114,14 +114,6 @@ class OptionsPanel implements OptionsPanelInterface {
   }
 
   public function set( $menuSlug, $index, $option ) {
-    $options           = $this->all( $menuSlug );
-    $options[ $index ] = $option;
-
-
-    if ( $option ) {
-      return $this->save( $slug, $options );
-    }
-
     return false;
   }
 

@@ -3,7 +3,7 @@
 
 use ThemeXpert\FileSystem\FileSystem;
 use ThemeXpert\Onepager\Block\BlockManager;
-use ThemeXpert\Onepager\Block\Transformers\SectionTransformer;
+use ThemeXpert\Onepager\Block\Transformers\ControlsValueTransformer;
 use ThemeXpert\View\View;
 
 class Render {
@@ -14,7 +14,7 @@ class Render {
   public function __construct(
     View $view,
     BlockManager $blockManager,
-    SectionTransformer $sectionTransformer
+    ControlsValueTransformer $sectionTransformer
   ) {
     $this->blockManager       = $blockManager;
     $this->view               = $view;
@@ -79,7 +79,7 @@ class Render {
       if ( ! array_key_exists( $tab, $section ) ) {
         $section[ $tab ] = [ ];
       }
-      $section[ $tab ] = $this->sectionTransformer->mergePersistedDataAndBlockData( $block[ $tab ], $section[ $tab ] );
+      $section[ $tab ] = $this->sectionTransformer->mergePersistedDataAndConfigData( $block[ $tab ], $section[ $tab ] );
     }
 
     return $section;

@@ -1,7 +1,7 @@
 <?php namespace ThemeXpert\Onepager\Block\Transformers;
 
 
-class SectionTransformer {
+class ControlsValueTransformer {
   /**
    * @param $rGroupDataStructure
    * @param $rGroups
@@ -90,18 +90,18 @@ class SectionTransformer {
   }
 
   /**
-   * @param $blockData
-   * @param $sectionData
+   * @param $configData
+   * @param $serializedData
    *
    * @return mixed
    */
-  public function mergePersistedDataAndBlockData( $blockData, $sectionData ) {
+  public function mergePersistedDataAndConfigData( $configData, $serializedData ) {
     /**
      * We will have varying types of controls
      * so we will need varying types of data merging
      * algorithms
      */
-    $data = array_reduce( $blockData, function ( $carry, $control ) {
+    $data = array_reduce( $configData, function ( $carry, $control ) {
       // Return if control type is divider
       if ( in_array( $control['type'], [ "divider", "note" ] ) ) {
         return $carry;
@@ -119,7 +119,7 @@ class SectionTransformer {
       }
 
       return $carry;
-    }, $sectionData );
+    }, $serializedData );
 
     return $data;
   }
