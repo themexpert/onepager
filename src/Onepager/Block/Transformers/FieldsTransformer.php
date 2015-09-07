@@ -31,6 +31,9 @@ class FieldsTransformer {
       if ( "colorpicker" === $type ) {
         $control['type'] = "color";
       }
+      if ( "switch" === $type ) {
+        $control['value'] = array_key_exists('value', $control) ? (bool) $control['value'] : false;
+      }
 
       switch ( $type ) {
         case 'divider':
