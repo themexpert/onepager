@@ -14,7 +14,6 @@ let Link  = React.createClass({
 
   getInitialState(){
     return {
-      focus: false,
       text: this.props.text,
       url: this.props.url,
       target: this.props.target
@@ -37,8 +36,6 @@ let Link  = React.createClass({
   },
 
   render() {
-    let {focus} = this.state;
-
     return (
       <div>
         <label className="control-label">{this.props.label}</label>
@@ -54,7 +51,6 @@ let Link  = React.createClass({
           </div>
         </div>
         <div className="form-group">
-          { !focus ?
           <div className="input-group">
             <span className="input-group-addon" style={{width: 53}}>Url</span>
             <input
@@ -74,16 +70,7 @@ let Link  = React.createClass({
             <span className="input-group-addon">
               <input checked={this.props.target} ref="target" onChange={this.onChange} type="checkbox"/>
             </span>
-          </div> :
-
-            <input
-              onMouseLeave={()=>this.setState({focus: false})}
-              defaultValue={this.props.url}
-              className="form-control"
-              onChange={this.onChange}
-              ref="url"
-              type="text"/>
-          }
+          </div>
 
         </div>
       </div>

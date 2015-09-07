@@ -10,13 +10,6 @@ let Media = React.createClass({
       focus: false
     };
   },
-  onFocus(){
-    this.setState({focus: true});
-  },
-
-  onBlur(){
-    this.setState({focus: false});
-  },
 
   getValue(){
     return dom(this.refs.input).value;
@@ -73,42 +66,30 @@ let Media = React.createClass({
     $(dom(this.refs.input)).unbind();
   },
 
-  _renderInputGroup(){
-    let classes = "form-control " + this.props.className;
-
-    return (
-      <div className="input-group">
-        <input onMouseEnter={this.onFocus} {...this.props} type="text" className={classes} ref="input"/>
-        <span className="input-group-btn">
-          <button className="btn btn-primary" ref="imgBtn" type="button">
-            <span className="fa fa-picture-o"></span>
-          </button>
-          <button className="btn btn-primary" ref="iconBtn" type="button">
-            <span className="fa fa-flag-o"></span>
-          </button>
-        </span>
-      </div>
-    );
-  },
-
-  _renderInput(){
-    let classes = "form-control " + this.props.className;
-
-    return (
-      <input onMouseLeave={this.onBlur} {...this.props} type="text" className={classes} ref="input"/>
-    );
-  },
-
-
 
   render() {
+    let classes = "form-control " + this.props.className;
     let {focus} = this.state;
 
     return (
       <div ref="container" className="icon-selector">
         <div className="form-group">
           <label>{this.props.label}</label>
-          { focus ? this._renderInput() : this._renderInputGroup() }
+          {
+            focus ?
+              <input onMouseLeave={setFocus} {...this.props} type="text" className={classes} ref="input"/>
+              :
+
+              <div className="input-group">
+                <input {...this.props} type="text" className={classes} ref="input"/>
+              <span className="input-group-btn">
+                <button className="btn btn-primary" ref="imgBtn" type="button"><span className="fa fa-picture-o"></span>
+                </button>
+                <button className="btn btn-primary" ref="iconBtn" type="button"><span className="fa fa-flag-o"></span>
+                </button>
+              </span>
+              </div>
+          }
           <div className="media-preview"></div>
         </div>
       </div>

@@ -1,22 +1,21 @@
-const React     = require('react');
-const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+import React, {findDOMNode, ReactComponentWithPureRenderMixin}  from 'react';
 require("../../../../assets/css/bootstrap-switch.css");
 
 let SwitchControl = React.createClass({
-  mixins: [PureMixin],
+  mixins: [ReactComponentWithPureRenderMixin],
 
   getValue(){
-    return React.findDOMNode(this.refs.input).checked;
+    return findDOMNode(this.refs.input).checked;
   },
 
   componentDidMount(){
-    let el = React.findDOMNode(this.refs.input);
+    let el = findDOMNode(this.refs.input);
     jQuery(el).bootstrapSwitch();
     jQuery(el).on("switchChange.bootstrapSwitch", this.props.onChange);
   },
 
   componentWillUnmount(){
-    jQuery(React.findDOMNode(this.refs.input)).unbind();
+    jQuery(findDOMNode(this.refs.input)).unbind();
   },
 
   render() {

@@ -107,8 +107,6 @@ let Sidebar = React.createClass({
       "fa fa-check": !this.state.saving
     });
 
-    console.log(saveClasses);
-
     return (
       <ul className='tx-nav tx-nav-tabs'>
         <Tab onClick={handleTabClick} id='op-sections' icon="cubes" title='Layout' active={activeTab}
