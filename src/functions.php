@@ -29,7 +29,7 @@ if ( ! function_exists( 'array_get' ) ) {
    * @return mixed
    */
   function array_get( $array, $key, $default=null ) {
-    return array_key_exists( $key, $array ) ? $array[ $key ] : $default;
+    return $key && array_key_exists( $key, $array ) ? $array[ $key ] : $default;
   }
 }
 

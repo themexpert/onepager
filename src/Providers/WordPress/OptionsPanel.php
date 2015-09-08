@@ -113,15 +113,16 @@ class OptionsPanel implements OptionsPanelInterface {
 
   protected function mergeOptions($data, $tabs) {
     $merger = new SerializedControlsConfigTransformer();
+    $result = [];
 
     foreach ( $tabs as $tab ) {
-      $data[$tab['id']] = $merger->mergePersistedDataAndConfigData(
+      $result[$tab['id']] = $merger->mergePersistedDataAndConfigData(
         array_get($tab, 'fields', []),
         array_get($data, $tab['id'], [])
       );
     }
 
-    return $data;
+    return $result;
   }
 
   public function getAllSavedOptions() {
