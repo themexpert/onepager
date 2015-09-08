@@ -54,13 +54,18 @@ let Sidebar = React.createClass({
   },
 
   handleGlobalSettingsSave(){
-    let updated = OptionActions.sync.triggerPromise();
+    let serializedSections = SectionTransformer.serializeSections(this.props.sections);
+
+    let updated = OptionActions.syncWithSections
+      .triggerPromise(serializedSections, (sections)=> {
+        AppActions.reloadBlocks();
+        AppActions.refreshSections(sections);
+      });
+
     this.setState({saving: true});
 
     updated.then(()=> {
       this.setState({isSettingsDirty: false, saving: false});
-      AppActions.reloadSections();
-      AppActions.reloadBlocks();
     }, ()=> {
       this.setState({saving: false});
       swal('could not save');
@@ -166,7 +171,7 @@ let Sidebar = React.createClass({
         {this._renderTabs()}
 
         <div className='tab-content' ref='tabContents'>
-          <div className={overlayClasses} />
+          <div className={overlayClasses}/>
 
           <TabPane id='op-sections' active={activeTab}>
             <SectionList

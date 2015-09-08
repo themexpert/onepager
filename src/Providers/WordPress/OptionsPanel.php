@@ -1,7 +1,7 @@
 <?php namespace ThemeXpert\Providers\Wordpress;
 
 use App\Assets\OptionsPanelScripts;
-use ThemeXpert\Onepager\Block\Transformers\ControlsValueTransformer;
+use ThemeXpert\Onepager\Block\Transformers\SerializedControlsConfigTransformer;
 use ThemeXpert\Providers\Contracts\OptionsPanelInterface;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
 
@@ -87,26 +87,32 @@ class OptionsPanel implements OptionsPanelInterface {
   }
 
   public function getOption( $name, $default = "" ) {
-    $this->flattenOptions();
+    if ( ! $this->flatOptions ) {
+      $this->flattenOptions();
+    }
 
     //get default value
     return array_key_exists( $name, $this->flatOptions ) ? $this->flatOptions[ $name ] : $default;
   }
 
-  protected function flattenOptions() {
-    if ( ! $this->flatOptions ) {
-      $options = $this->getAllSavedOptions();
+  public function update($options) {
+    update_option( $this->menuSlug, $options );
+    $this->flattenOptions();
+  }
 
-      if ( ! $options || ! is_array( $options ) ) {
-        $this->flatOptions = array();
-      } else {
-        $this->flatOptions = flatten_array( $options );
-      }
+  protected function flattenOptions() {
+    $options = $this->getAllSavedOptions();
+
+    if ( ! $options || ! is_array( $options ) ) {
+      $this->flatOptions = array();
+    } else {
+      $this->flatOptions = flatten_array( $options );
     }
+
   }
 
   protected function mergeOptions($data, $tabs) {
-    $merger = new ControlsValueTransformer();
+    $merger = new SerializedControlsConfigTransformer();
 
     foreach ( $tabs as $tab ) {
       $data[$tab['id']] = $merger->mergePersistedDataAndConfigData(

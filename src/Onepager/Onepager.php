@@ -8,7 +8,7 @@ use ThemeXpert\Onepager\Block\BlockManager;
 use ThemeXpert\Onepager\Block\PresetManager;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
-use ThemeXpert\Onepager\Block\Transformers\ControlsValueTransformer;
+use ThemeXpert\Onepager\Block\Transformers\SerializedControlsConfigTransformer;
 use ThemeXpert\Onepager\Render\Render;
 use ThemeXpert\Providers\WordPress\OptionsPanel;
 use ThemeXpert\Providers\Contracts\ApiInterface;
@@ -47,7 +47,7 @@ class Onepager implements OnepagerInterface {
 
   private function setRenderer() {
     $this->container['render'] = function ( $container ) {
-      return new Render( $container['view'], $container['blockManager'], new ControlsValueTransformer() );
+      return new Render( $container['view'], $container['blockManager'], new SerializedControlsConfigTransformer() );
     };
   }
 

@@ -3,7 +3,8 @@
 
 use ThemeXpert\FileSystem\FileSystem;
 use ThemeXpert\Onepager\Block\BlockManager;
-use ThemeXpert\Onepager\Block\Transformers\ControlsValueTransformer;
+use ThemeXpert\Onepager\Block\Transformers\SerializedControlsConfigTransformer;
+use ThemeXpert\Onepager\Block\Transformers\SerializedControlsOptionsTransformer;
 use ThemeXpert\View\View;
 
 class Render {
@@ -14,7 +15,7 @@ class Render {
   public function __construct(
     View $view,
     BlockManager $blockManager,
-    ControlsValueTransformer $sectionTransformer
+    SerializedControlsConfigTransformer $sectionTransformer
   ) {
     $this->blockManager       = $blockManager;
     $this->view               = $view;
@@ -171,5 +172,45 @@ class Render {
     $style_file = locate_template( 'onepager/blocks/' . $block['slug'] . '/style.php' ) ?: $style_file;
 
     return $style_file;
+  }
+
+  public function mergeSectionsBlocksSettings( $sections ) {
+    $transformer = new SerializedControlsOptionsTransformer();
+
+    return array_filter(array_map( function ( $section ) use ( $transformer ) {
+      $block = onepager()->blockManager()->get( $section['slug'] );
+      if(!$block) return false;
+
+      foreach ( [ 'settings', 'contents', 'styles' ] as $tab ) {
+        if ( ! array_key_exists( $tab, $section ) ) {
+          $section[ $tab ] = [ ];
+        }
+
+        $section[ $tab ] = $transformer
+          ->mergePersistedDataAndConfigData( $block[ $tab ], $section[ $tab ]?:[] );
+      }
+
+      return $section;
+    }, $sections ));
+  }
+
+  public function mergeSectionsAndSettings() {
+    global $wpdb;
+    $sql   = "SELECT post_id, meta_value FROM $wpdb->postmeta where meta_key='onepager_sections'";
+    $pages = $wpdb->get_results( $sql );
+
+    return array_map(function($page){
+      try {
+        $sections = unserialize( $page->meta_value );
+      } catch ( \Exception $e ) {
+        $sections = [ ];
+      }
+
+      $sections = onepager()->section()->getAllValidFromSection( $sections );
+      $sections = $this->mergeSectionsBlocksSettings( $sections );
+      update_post_meta( $page->post_id, 'onepager_sections', $sections );
+
+      return $sections;
+    }, $pages);
   }
 }

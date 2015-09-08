@@ -42,7 +42,7 @@ function _prepareForDirtyCheck(section) {
   return JSON.stringify(SectionTransformer.serializeSections(section));
 }
 
-function getBlockBySlug(slug){
+function getBlockBySlug(slug) {
   return _.find(_blocks, {slug});
 }
 
@@ -180,8 +180,13 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
       AppStore.emitChange();
       break;
 
+    ///maybe do not need it
     case actions.RELOAD_SECTIONS:
-      liveService.reloadSections(_sections);
+      liveService.reloadSections(SectionTransformer.serializeSections(_sections));
+      break;
+
+    case actions.REFRESH_SECTIONS:
+      liveService.reloadSections(action.sections);
       break;
 
     case actions.RELOAD_BLOCKS:
@@ -195,6 +200,9 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
     case actions.UPDATE_SECTIONS:
       //FIXME: its not a place for business logic
       _sections = SectionTransformer.unserializeSections(action.sections, ODataStore.blocks);
+      _sections.map(function(section){
+        SectionTransformer.replaceSectionStyleInDOM(section.id, section.style);
+      });
       AppStore.emitChange();
       break;
 

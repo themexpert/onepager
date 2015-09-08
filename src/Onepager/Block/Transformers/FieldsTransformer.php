@@ -4,24 +4,7 @@ class FieldsTransformer {
 
   public function transform( $fields ) {
     return array_map( function ( $control ) {
-
-      $value = array_key_exists( 'value', $control ) ? $control['value'] : '';
-      if ( is_string( $value ) && startsWith( $value, '@' ) ) {
-        $option = str_replace( '@', '', $value );
-
-        $pieces = explode( ".", $option );
-        if ( count( $pieces ) == 2 ) {
-          $options = \Onepager::getOption( $pieces[0] );
-
-          if ( is_array( $options ) && array_key_exists( $pieces[1], $options ) ) {
-            $control['value'] = $options[ $pieces[1] ];
-          } else {
-            $control['value'] = "";
-          }
-        } else {
-          $control['value'] = \Onepager::getOption( $option );
-        }
-      }
+      $control = $this->mergeOptionsData( $control);
 
       //obligatory name
       $name = array_key_exists( 'name', $control ) ? $control['name'] : "";
@@ -101,4 +84,42 @@ class FieldsTransformer {
     }, $fields );
   }
 
+  /**
+   * @param $control
+   *
+   * @return mixed
+   */
+  public function mergeOptionsData( $control ) {
+    $value = array_key_exists( 'value', $control ) ? $control['value'] : '';
+
+    if ( is_string( $value ) && startsWith( $value, '@' ) ) {
+      //for complex use I do not know yet
+      $control['global'] = $value;
+      $control['value'] = $this->getOptionData($value );
+    }
+
+    return $control;
+  }
+
+  /**
+   * @param $value
+   *
+   * @return mixed
+   */
+  public function getOptionData($value ) {
+    $option = str_replace( '@', '', $value );
+
+    $pieces = explode( ".", $option );
+    if ( count( $pieces ) == 2 ) {
+      $options = \Onepager::getOption( $pieces[0] );
+
+      if ( is_array( $options ) && array_key_exists( $pieces[1], $options ) ) {
+        return $options[ $pieces[1] ];
+      } else {
+        return "";
+      }
+    } else {
+      return \Onepager::getOption( $option );
+    }
+  }
 }

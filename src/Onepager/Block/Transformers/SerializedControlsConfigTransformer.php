@@ -1,7 +1,7 @@
 <?php namespace ThemeXpert\Onepager\Block\Transformers;
 
 
-class ControlsValueTransformer {
+class SerializedControlsConfigTransformer {
   /**
    * @param $rGroupDataStructure
    * @param $rGroups

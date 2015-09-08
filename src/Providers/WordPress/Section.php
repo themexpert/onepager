@@ -22,15 +22,20 @@ class Section implements SectionInterface {
   }
 
   public function getAllValid( $pageId ) {
-    return array_filter( $this->all( $pageId ), function ( $section ) {
-      return array_key_exists( 'slug', $section ) && array_key_exists( 'id', $section ) && array_key_exists( 'title', $section );
+    return $this->getAllValidFromSection($this->all($pageId));
+  }
+
+  public function getAllValidFromSection($sections){
+    return array_filter( $sections, function ( $section ) {
+      return array_key_exists( 'slug', $section )
+             && array_key_exists( 'id', $section )
+             && array_key_exists( 'title', $section );
     } );
   }
 
   public function set( $pageId, $index, $section ) {
     $sections           = $this->all( $pageId );
     $sections[ $index ] = $section;
-
 
     if ( $section ) {
       $this->save( $pageId, $sections );

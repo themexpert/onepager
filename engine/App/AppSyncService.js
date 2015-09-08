@@ -78,7 +78,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     return new Promise((resolve, reject)=>{
       let payload = {
         action: "onepager_reload_sections",
-        sections: SectionTransformer.serializeSections(sections)
+        sections: sections
       };
 
       $.post(ODataStore.ajaxUrl, payload, (res)=> {

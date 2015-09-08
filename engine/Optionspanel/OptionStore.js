@@ -8,6 +8,7 @@ import toolbelt from './../shared/lib/toolbelt.js';
 import ODataStore from './../shared/onepager/ODataStore.js';
 import OptionActions from './OptionActions.js';
 import Sync from './OptionsPanelSync.js';
+const SectionTransformer = require('./../shared/onepager/sectionTransformer');
 
 import LocalState from '../shared/lib/localState.js';
 
@@ -35,6 +36,7 @@ let _optionPanel = _.map(toolbelt.copy(ODataStore.optionPanel), (panel)=> {
 });
 
 let AppState = {
+  //FIXME: this is source of potential bug
   activeTabIndex: componentLocalState.get('activeTabIndex', 0),
   synced: fromJS(_optionPanel),
   optionPanel: fromJS(_optionPanel)
@@ -69,7 +71,38 @@ let OptionsPanelStore = Reflux.createStore({
     OptionActions.isDirty.completed(dirty);
   },
 
+  onSyncWithSections(sections, callback){
+    let options = this._prepareOptionsForSync();
+    let update = sync(options, sections);
+
+    //FIXME: move this to UI
+    update.then((res)=> {
+      callback(res.sections);
+      notify.success('Successfully saved settings');
+      this.data.synced = fromJS(this.data.optionPanel.toJS());
+      this.trigger();
+      OptionActions.syncWithSections.completed();
+    }, ()=> {
+      OptionActions.syncWithSections.failed();
+    });
+  },
+
   onSync(){
+    let options = this._prepareOptionsForSync();
+    let update = sync(options);
+
+    //FIXME: move this to UI
+    update.then(()=> {
+      notify.success('Successfully saved settings');
+      this.data.synced = fromJS(this.data.optionPanel.toJS());
+      this.trigger();
+      OptionActions.sync.completed();
+    }, ()=> {
+      OptionActions.sync.failed();
+    });
+  },
+
+  _prepareOptionsForSync(){
     let options = {}, panels = this.data.optionPanel.toJS();
 
     panels.map(function (panel) {
@@ -79,17 +112,7 @@ let OptionsPanelStore = Reflux.createStore({
       }, {});
     });
 
-    let update = sync(options);
-
-    //FIXME: move this to UI
-    update.then(()=> {
-      this.data.synced = fromJS(this.data.optionPanel.toJS());
-      this.trigger();
-      notify.success('Successfully saved settings');
-      OptionActions.sync.completed();
-    }, ()=> {
-      OptionActions.sync.failed();
-    });
+    return options;
   }
 
 });

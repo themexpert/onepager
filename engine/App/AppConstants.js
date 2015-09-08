@@ -13,6 +13,7 @@ module.exports = {
     OPEN_MENU_SCREEN : null,
     SECTIONS_SYNCED  : null,
     RELOAD_SECTIONS  : null,
+    REFRESH_SECTIONS : null,
     RELOAD_BLOCKS    : null,
     UPDATE_SECTIONS  : null,
     UPDATE_TITLE     : null,
