@@ -14,7 +14,7 @@
           <div class="value">
             <span><?php echo $package['money']?></span>
             <span><?php echo $package['price']?></span><br>
-            <span>month</span>
+            <span><?php echo $package['period']?></span>
           </div>
           <ul>
             <?php foreach($package['features'] as $feature): ?>
