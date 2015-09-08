@@ -1,9 +1,29 @@
 # Change Log
 
+## [1.1](https://github.com/themexpert/onepager/tree/1.1) (2015-09-08)
+[Full Changelog](https://github.com/themexpert/onepager/compare/1.0.0...1.1)
+
+**Implemented enhancements:**
+
+- Navbar fixed top not working properly when collapse the builder [\#21](https://github.com/themexpert/onepager/issues/21)
+- State management after reloading [\#59](https://github.com/themexpert/onepager/issues/59)
+- Implement new icon size attribute to all blocks that implements icon or media [\#10](https://github.com/themexpert/onepager/issues/10)
+
+**Fixed bugs:**
+
+- Corporate preset bug [\#60](https://github.com/themexpert/onepager/issues/60)
+- The update animation goes forever if typed and saved simultaneously [\#58](https://github.com/themexpert/onepager/issues/58)
+- Settings not overriding block config value [\#45](https://github.com/themexpert/onepager/issues/45)
+- Settings default value not coming  [\#44](https://github.com/themexpert/onepager/issues/44)
+
+**Closed issues:**
+
+- Need pricing Table / HTML & css input Block [\#46](https://github.com/themexpert/onepager/issues/46)
+
 ## [1.0.0](https://github.com/themexpert/onepager/tree/1.0.0) (2015-08-24)
 [Full Changelog](https://github.com/themexpert/onepager/compare/1.0.0-beta...1.0.0)
 
-**Enhancements:**
+**Implemented enhancements:**
 
 - Need a way to disable loading bootstrap. [\#56](https://github.com/themexpert/onepager/issues/56)
 - WP editor style not match with OnePager style [\#55](https://github.com/themexpert/onepager/issues/55)
@@ -30,12 +50,16 @@
 - Utilize cache in onepage asset build [\#5](https://github.com/themexpert/onepager/issues/5)
 - Sidebar footer and sections list conflict when there are lots of sections [\#4](https://github.com/themexpert/onepager/issues/4)
 - Wordpress default menu system not working properly with onepager [\#2](https://github.com/themexpert/onepager/issues/2)
+
+**Closed issues:**
+
 - Switch field bug [\#57](https://github.com/themexpert/onepager/issues/57)
 - Need asset build button [\#51](https://github.com/themexpert/onepager/issues/51)
 - Add documentation on field depends feature [\#24](https://github.com/themexpert/onepager/issues/24)
 - Need a new field type note [\#11](https://github.com/themexpert/onepager/issues/11)
+
+**Merged pull requests:**
+
 - improvements on menu, link and minor bugfixes [\#1](https://github.com/themexpert/onepager/pull/1) ([nadimtuhin](https://github.com/nadimtuhin))
 
 ## [1.0.0-beta](https://github.com/themexpert/onepager/tree/1.0.0-beta) (2015-07-15)
-
-- First beta release
