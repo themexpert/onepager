@@ -129,7 +129,7 @@ class OptionsPanel implements OptionsPanelInterface {
     $data = [];
 
     if ( $this->options ) {
-      $data = get_option( $this->menuSlug, [] g);
+      $data = get_option( $this->menuSlug, [] );
 
       $data = $this->mergeOptions($data, $this->getOptionsControls());
     }
