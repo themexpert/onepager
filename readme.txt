@@ -44,7 +44,7 @@ Installing the plugins is just like installing other WordPress plugins.
 
 
 == Changelog ==
-== 1.1.1=
+= 1.1.1 =
 * PHP error fixed introduced on 1.1
 * Sidebar overlay color fix.
 = 1.1 =
