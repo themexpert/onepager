@@ -41,7 +41,7 @@ abstract class Onepager {
 	// Register Preset Paths
 	public static function registerPresets( $folder = 'presets')
 	{
-		onepager()->layoutManager()->loadAllFromPath(
+		onepager()->presetManager()->loadAllFromPath(
 			get_template_directory() . '/' . $folder,
 			get_template_directory_uri() . '/' . $folder,
 			"onepager"
@@ -51,7 +51,7 @@ abstract class Onepager {
 	// Disable Any Presets Group
   public static function disablePresets($groups)
 	{
-    onepager()->layoutManager()->setIgnoredGroups($groups);
+    onepager()->presetManager()->setIgnoredGroups($groups);
   }
 
 	// Disable core presets
