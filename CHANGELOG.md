@@ -1,5 +1,8 @@
 # Change Log
 
+## [v1.1.2](https://github.com/themexpert/onepager/tree/v1.1.2) (2015-09-11)
+[Full Changelog](https://github.com/themexpert/onepager/compare/v1.1.1...v1.1.2)
+
 ## [v1.1.1](https://github.com/themexpert/onepager/tree/v1.1.1) (2015-09-11)
 [Full Changelog](https://github.com/themexpert/onepager/compare/v1.1...v1.1.1)
 
