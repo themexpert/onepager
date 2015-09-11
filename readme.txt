@@ -1,28 +1,30 @@
 === Tx OnePager ===
-Contributors: themexpert,
+Contributors: themexpert
 Donate link: http://www.themexpert.com
 Tags: page builder, onepage builder, drag&drop builder, reactjs, bootstrap, fontAwesome, gulp, less
-Requires at least: 3.6
-Tested up to: 4.3 or higher
-Stable tag: 1.1
+Stable tag: 1.1.0
+Requires at least: 4.2
+Tested up to: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Next Generation Page Builder built with speed
+Modern, Powerful & Easy onepage Builder For next generation theming.
 
 == Description ==
 
 [youtube https://www.youtube.com/watch?v=pwKcmckBZD4]
 
-[OnePager](http://www.getonepager.com) is a next generation page builder allows you to develop your theme and website with minimal footsteps. Its block base architecture gives your ability to add/edit and distributable blocks with every theme.
+[OnePager](http://www.getonepager.com) is a Modern, Powerful & Easy onepage Builder For WordPress. OnePager allow you to quickly edit everything on the fly. No overwhelming options and everything happens on frontend even your grandma build her website in peace.
 
-[Live Demo](http://getonepager.com)
+[Contribute on Github](https://github.com/themexpert/onepager)
 
- **Requirements**
+[Chat with developer](https://gitter.im/themexpert/onepager)
+
+**Requirements**
 
  * PHP 5.4+
 
- **Features**
+**Features**
 
 * Everything in front-end
 * Block Based Architecture
@@ -38,7 +40,7 @@ Next Generation Page Builder built with speed
 
  == Installation ==
 
-Installing the plugins is just like installing other WordPress plugins. Have on the installation processes.
+Installing the plugins is just like installing other WordPress plugins.
 
 
 == Changelog ==
@@ -50,5 +52,11 @@ Installing the plugins is just like installing other WordPress plugins. Have on 
 
 
 == Screenshots ==
+
+1. Enable Onepage from your page with presets
+2. Onepager Builder
+3. Colorpicker input type
+4. Developer friendly codebase
+
 
 == Upgrade Notice ==
