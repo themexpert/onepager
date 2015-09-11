@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       TX OnePager
  * Plugin URI:        http://themexpert.com/wordpress-plugins/xpert-wponepager
- * Description:       Onepage Builder that helps you to make one page website seamlessly. Beautifully
+ * Description:       Modern, Powerful & Easy onepage Builder For next generation theming.
  * Version:           1.1.1
  * Author:            ThemeXpert
  * Author URI:        http://www.themexpert.com
