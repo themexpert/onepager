@@ -23,9 +23,12 @@ let _menuState = {id: null, index: null, title: null};
 let _savedSections = _prepareForDirtyCheck(_sections);
 let AUTO_SAVE_DELAY = 500;
 
-let _sidebarTabState = localState.get('sidebarTabState', {active: 'op-sections'});
 let _collapseSidebar = localState.get('collapseSidebar', false);
 let _activeSectionIndex = _sections[localState.get('activeSectionIndex')] ? localState.get('activeSectionIndex') : null;
+let _sidebarTabState = _activeSectionIndex !== null ?
+  localState.get('sidebarTabState', {active: 'op-sections'}) :
+  {active: 'op-sections'};
+
 
 let shouldLiveSectionsSync = ShouldSync(_sections, 'sections');
 let shouldSectionsSync = ShouldSync(_sections, 'sections');
