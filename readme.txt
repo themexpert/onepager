@@ -44,6 +44,11 @@ Installing the plugins is just like installing other WordPress plugins.
 
 
 == Changelog ==
+= 1.1.3 =
+* Do not open section editor after section creation
+* Fixed default value bug
+* Fixed undefined layoutManager bug
+
 = 1.1.2 =
 * Fix undefined layout manager error
 = 1.1.1 =

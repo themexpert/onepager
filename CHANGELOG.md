@@ -10,6 +10,7 @@
 **Fixed bugs:**
 
 - default value bug [\#62](https://github.com/themexpert/onepager/issues/62)
+- undefined layoutManager error [\#61](https://github.com/themexpert/onepager/issues/61)
 
 ## [v1.1.2](https://github.com/themexpert/onepager/tree/v1.1.2) (2015-09-11)
 [Full Changelog](https://github.com/themexpert/onepager/compare/v1.1.1...v1.1.2)
