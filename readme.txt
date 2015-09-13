@@ -1,14 +1,14 @@
-=== Tx OnePager ===
-Contributors: themexpert
-Donate link: http://www.themexpert.com
-Tags: page builder, onepage builder, drag&drop builder, reactjs, bootstrap, fontAwesome, gulp, less
-Stable tag: 1.1.1
+=== Onepager - One Page Builder ===
+Contributors: themexpert, nadimtuhin
+Donate link: http://getonepager.com
+Tags: page builder, builder, onepage builder, drag and drop, reactjs, bootstrap, fontAwesome, gulp, less, layout, grid, composer, webpack, bower, ui
+Stable tag: 1.1.2
 Requires at least: 4.2
 Tested up to: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Modern, Powerful & Easy onepage Builder For next generation theming.
+Modern, Powerful & Crazy Fast one page builder. Built with modern tools such ReactJS for next generation theming.
 
 == Description ==
 
@@ -44,6 +44,8 @@ Installing the plugins is just like installing other WordPress plugins.
 
 
 == Changelog ==
+= 1.1.2 =
+* Fix undefined layout manager error
 = 1.1.1 =
 * PHP error fixed introduced on 1.1
 * Sidebar overlay color fix.
