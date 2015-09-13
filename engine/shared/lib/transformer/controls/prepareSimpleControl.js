@@ -17,7 +17,7 @@ function prepareSimpleControl(control, value) {
    * then we will not replace the text value inside single repeater
    * we will use the default value
    */
-  if (value && typeof control.get('value') === typeof value) {
+  if (typeof control.get('value') === typeof value) {
     return control.set('value', value);
   }
 
