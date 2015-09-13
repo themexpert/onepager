@@ -1,5 +1,16 @@
 # Change Log
 
+## [v1.1.3](https://github.com/themexpert/onepager/tree/v1.1.3) (2015-09-13)
+[Full Changelog](https://github.com/themexpert/onepager/compare/v1.1.2...v1.1.3)
+
+**Implemented enhancements:**
+
+- Do not open section editor after section creation [\#63](https://github.com/themexpert/onepager/issues/63)
+
+**Fixed bugs:**
+
+- default value bug [\#62](https://github.com/themexpert/onepager/issues/62)
+
 ## [v1.1.2](https://github.com/themexpert/onepager/tree/v1.1.2) (2015-09-11)
 [Full Changelog](https://github.com/themexpert/onepager/compare/v1.1.1...v1.1.2)
 
