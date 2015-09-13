@@ -3,8 +3,6 @@ const PureMixin  = require('react/lib/ReactComponentWithPureRenderMixin');
 const AppActions = require('../../AppActions.js');
 const AppStore   = require('../../AppStore.js');
 
-import "./assets/block.less";
-
 let Block = React.createClass({
   mixins: [PureMixin],
 
@@ -22,11 +20,8 @@ let Block = React.createClass({
     let block = this.props.block;
 
     return (
-      <div className="thumbnail">
-        <div className="flex flex-center flex-middle">
-          <button className="btn btn-primary btn-add-block" onClick={this.handleCreateSection}>add</button>
-        </div>
-        <img src={block.image} alt={block.name} style={{width: "100%"}}/>
+      <div className="thumbnail" onClick={this.handleCreateSection}>
+        <img src={block.image} alt={block.name} style={{width: "100%"}} data-toggle="tooltip" title="+ Click to add block" data-placement="top"/>
         <span className="label label-default">{block.name}</span>
       </div>
     );
