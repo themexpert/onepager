@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       TX OnePager
- * Plugin URI:        http://themexpert.com/wordpress-plugins/xpert-wponepager
- * Description:       Modern, Powerful & Easy onepage Builder For next generation theming.
- * Version:           1.1.1
+ * Plugin Name:       Onepager - One Page Builder
+ * Plugin URI:        http://getonepager.com
+ * Description:       Modern, Powerful & Crazy Fast one page builder. Built with modern tools such ReactJS for next generation theming.
+ * Version:           1.1.2
  * Author:            ThemeXpert
  * Author URI:        http://www.themexpert.com
  * License:           GPL-2.0+
@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
   die;
 }
 
-define( 'ONEPAGER_VERSION', '1.1.1' );
+define( 'ONEPAGER_VERSION', '1.1.2' );
 define( 'ONEPAGER_PHP_VERSION', '5.4' );
 
 define( 'ONEPAGER_URL', plugins_url( '', __FILE__ ) );
