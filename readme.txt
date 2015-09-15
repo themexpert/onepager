@@ -2,7 +2,7 @@
 Contributors: themexpert, nadimtuhin
 Donate link: http://getonepager.com
 Tags: page builder, builder, onepage builder, drag and drop, reactjs, bootstrap, fontAwesome, gulp, less, layout, grid, composer, webpack, bower, ui
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 Requires at least: 4.2
 Tested up to: 4.3
 License: GPLv2 or later
