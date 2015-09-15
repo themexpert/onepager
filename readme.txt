@@ -44,11 +44,14 @@ Installing the plugins is just like installing other WordPress plugins.
 
 
 == Changelog ==
+= 1.1.4 =
+- Preserve app state after reload feature
+- Fix after editor edit, save icon spins forever
+- Fix last section is not seen if there are lots of sections
 = 1.1.3 =
 * Do not open section editor after section creation
 * Fixed default value bug
 * Fixed undefined layoutManager bug
-
 = 1.1.2 =
 * Fix undefined layout manager error
 = 1.1.1 =
