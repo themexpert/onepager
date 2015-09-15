@@ -32,10 +32,9 @@ let _sidebarTabState = _activeSectionIndex !== null ?
 
 let shouldLiveSectionsSync = ShouldSync(_sections, 'sections');
 let shouldSectionsSync = ShouldSync(_sections, 'sections');
-let inactive = Activity(AUTO_SAVE_DELAY);
 
-let syncService = SyncService(ODataStore.pageId, inactive, shouldSectionsSync);
-let liveService = SyncService(null, inactive, shouldLiveSectionsSync);
+let syncService = SyncService(ODataStore.pageId, Activity(AUTO_SAVE_DELAY), shouldSectionsSync);
+let liveService = SyncService(null, Activity(AUTO_SAVE_DELAY), shouldLiveSectionsSync);
 
 function collapseSidebar(collapse) {
   _collapseSidebar = collapse;
