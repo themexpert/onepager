@@ -1,25 +1,27 @@
 ;
 (function ($) {
   $(function ($) {
-    var pageId              = onepager.pageId;
-    var $onepagerEnableBtn  = $('<button type="button" id="enable-onepager" class="op-btn op-btn-with-logo">Enable Onepager</button>');
+    var pageId = onepager.pageId;
+    var $onepagerEnableBtn = $('<button type="button" id="enable-onepager" class="op-btn op-btn-with-logo">Enable Onepager</button>');
     var $onepagerDisableBtn = $('<button type="button" id="disable-onepager" class="op-btn op-btn-with-logo">Disable Onepager</button>');
 
     //var $editorTabs = $(".wp-editor-tabs");
     var $selectLayoutBtn = $(".op-select-preset");
-    var $postArea        = $("#postdivrich");
-    var $pageTemplate    = $("#page_template");
-    var $export          = $("#onepager-export-layout");
+    var $postArea = $("#postdivrich");
+    var $pageTemplate = $("#page_template");
+    var $export = $("#onepager-export-layout");
     var $onepagerMetabox = $("#onepager_meta");
-    var $blankTemplate   = $("#blank-template");
-    var $filter          = $("#op-group-filter select");
-    var $presets         = $("#op-presets>.media");
-    var $publish         = $("#publish");
-    window.exportSections = function () {
-      $export.click();
+    var $blankTemplate = $("#blank-template");
+    var $filter = $("#op-group-filter select");
+    var $presets = $("#op-presets>.media");
+    var $publish = $("#publish");
+
+    window.exportSections = function (name, id) {
+      id = id || pageId;
+      exportOnepagerSections(id, name);
     };
 
-    $filter.on('change', function(){
+    $filter.on('change', function () {
       var group = $(this).val();
       $presets.hide();
       $(group).show();
@@ -54,11 +56,11 @@
     function layoutSelectHandler() {
       //FIXME: $.data ?
       var confirmationMsg =
-            "Are you sure you want to insert this layout?" +
-            "This layout will replace your current layout!";
+        "Are you sure you want to insert this layout?" +
+        "This layout will replace your current layout!";
 
       var layoutId = $(this).attr("data-layout-id");
-      var proceed  = confirm(confirmationMsg);
+      var proceed = confirm(confirmationMsg);
 
       if (proceed) {
         insertOnepagerLayout(pageId, layoutId);
@@ -70,7 +72,7 @@
      * @param e
      */
     function exportHandler(e) {
-      exportOnepagerSections(pageId);
+      exportOnepagerSections(pageId, 'template');
       e.preventDefault();
     }
 
@@ -111,18 +113,23 @@
   /**
    * Given sections array it downloads them
    * @param pageId
+   * @param name
    */
-  function exportOnepagerSections(pageId) {
+  function exportOnepagerSections(pageId, name) {
     var payload = {
       action: 'onepager_get_sections',
       pageId: pageId
     };
 
+    name = name || 'template-' + pageId;
+    var screenshot = name + ".jpg";
+
     $.post(ajaxurl, payload, function (res) {
       if (res.success) {
         downloadAsJson({
-          sections: res.sections,
-          name    : "template.json"
+          name: name,
+          screenshot: screenshot,
+          sections: res.sections
         });
       } else {
         alert("oops!! onepager could not export this page");
@@ -132,19 +139,19 @@
   }
 
   function downloadAsJson(data) {
-    var dataStr      = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
     var dlAnchorElem = document.getElementById('downloadAnchorElem');
 
     dlAnchorElem.setAttribute("href", dataStr);
-    dlAnchorElem.setAttribute("download", "template.json");
+    dlAnchorElem.setAttribute("download", data.name + ".json");
     dlAnchorElem.click();
   }
 
   function insertOnepagerLayout(pageId, layoutId) {
     var data = {
-      action  : 'onepager_select_layout',
+      action: 'onepager_select_layout',
       layoutId: layoutId,
-      pageId  : pageId
+      pageId: pageId
     };
 
     loadEditor(data);
@@ -154,16 +161,18 @@
     var payload = {action: 'onepager_get_sections', pageId: onepager.pageId};
     var data = {action: 'onepager_save_sections', updated: null, pageId: onepager.pageId, sections: []};
 
-    $.post(ajaxurl, payload, function(res){
-      if(res && res.success && res.sections.length !== 0){
+    $.post(ajaxurl, payload, function (res) {
+      if (res && res.success && res.sections.length !== 0) {
         var confirmationMsg =
           "Are you sure you want to insert this layout?" +
           "This layout will replace your current layout!";
 
-        var proceed  = confirm(confirmationMsg);
+        var proceed = confirm(confirmationMsg);
 
         //FIXME: give sweetalert :/
-        if(!proceed) return;
+        if (!proceed) {
+          return;
+        }
 
         loadEditor(data);
       } else {
@@ -173,9 +182,9 @@
     })
   }
 
-  function loadEditor(data){
-    $.post(ajaxurl, data, function(res){
-      if(res && res.success) {
+  function loadEditor(data) {
+    $.post(ajaxurl, data, function (res) {
+      if (res && res.success) {
         location.href = onepager.buildModeUrl;
       } else {
         alert("failed to insert layout ");
