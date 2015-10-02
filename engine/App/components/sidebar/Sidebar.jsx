@@ -16,7 +16,7 @@ const $ = jQuery;
 const Footer = require('./../section-list/Footer.jsx');
 const BlockCollection = require('../blocks/BlockCollection.jsx');
 
-
+import notify from '../../../shared/plugins/notify.js';
 import cx from "classnames";
 import './assets/overlay.less';
 
@@ -55,10 +55,15 @@ let Sidebar = React.createClass({
 
   handleGlobalSettingsSave(){
     let serializedSections = SectionTransformer.serializeSections(this.props.sections);
+    let isSectionsDirty = AppStore.isDirty();
 
     let updated = OptionActions.syncWithSections
       .triggerPromise(serializedSections, (sections)=> {
-        AppActions.reloadBlocks();
+        AppStore.reloadBlocks().then(function(){
+          if(isSectionsDirty === AppStore.isDirty()){
+            AppStore.setSectionsAsSavedSections();
+          }
+        });
         AppActions.refreshSections(sections);
       });
 

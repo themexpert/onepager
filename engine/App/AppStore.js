@@ -194,14 +194,6 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
       liveService.reloadSections(action.sections);
       break;
 
-    case actions.RELOAD_BLOCKS:
-      //FIXME: its not a place for business logic
-      syncService.reloadBlocks().then((blocks)=> {
-        _blocks = blocks;
-        AppStore.emitChange();
-      });
-      break;
-
     case actions.UPDATE_SECTIONS:
       //FIXME: its not a place for business logic
       _sections = SectionTransformer.unserializeSections(action.sections, ODataStore.blocks);
@@ -251,6 +243,10 @@ let AppStore = assign({}, BaseStore, {
     return _prepareForDirtyCheck(_sections) !== _savedSections;
   },
 
+  setSectionsAsSavedSections(){
+    _savedSections = _sections;
+  },
+
   get(index){
     return _sections[index];
   },
@@ -278,6 +274,17 @@ let AppStore = assign({}, BaseStore, {
     setActiveSection(index);
     this.setSections(sections);
     liveService.rawUpdate(_sections);
+  },
+
+  reloadBlocks(){
+    //FIXME: its not a place for business logic
+    let reloadBlocksPromise = syncService.reloadBlocks();
+    reloadBlocksPromise.then((blocks)=> {
+      _blocks = blocks;
+      AppStore.emitChange();
+    });
+
+    return reloadBlocksPromise;
   },
 
   rawUpdate(){

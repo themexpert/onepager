@@ -41,14 +41,10 @@ module.exports = {
     let type = actions.RELOAD_SECTIONS;
     dispatcher.handleViewAction({type});
   },
+
   refreshSections(sections){
     let type = actions.REFRESH_SECTIONS;
     dispatcher.handleViewAction({type, sections});
-  },
-
-  reloadBlocks(){
-    let type = actions.RELOAD_BLOCKS;
-    dispatcher.handleViewAction({type});
   },
 
   updateSections(sections){
