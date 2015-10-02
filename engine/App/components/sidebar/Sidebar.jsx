@@ -85,9 +85,12 @@ let Sidebar = React.createClass({
       .then(isSettingsDirty=> this.setState({isSettingsDirty}));
   },
 
+
   _unsavedAlert(){
     jQuery(window).on('beforeunload', ()=> {
       if (this.state.isSettingsDirty) {
+        AppStore.setTabState({active: 'op-settings'});
+
         return "You haven't saved your settings changes and by leaving the page they will be lost.";
       }
     });

@@ -60,6 +60,7 @@ let App = React.createClass({
   _unsavedAlert(){
     jQuery(window).on('beforeunload', ()=> {
       if (this.state.isDirty) {
+        AppStore.setTabState({active: 'op-sections'});
         return "You haven't saved your changes and by leaving the page they will be lost.";
       }
     });
