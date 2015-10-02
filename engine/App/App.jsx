@@ -1,10 +1,12 @@
-const React                 = require('react');
-const AppStore              = require('./AppStore');
-const AppActions            = require('./AppActions');
-const Sidebar               = require('./components/sidebar/Sidebar.jsx');
-const SectionViewCollection = require('./components/section-view/SectionViewCollection.jsx');
-const _                     = require('underscore');
-const cx = require('classnames');
+import React from 'react';
+import _ from 'underscore';
+import cx from 'classnames';
+
+import AppStore from './AppStore';
+import AppActions from './AppActions';
+import Sidebar from './components/sidebar/Sidebar.jsx';
+import SectionViewCollection from './components/section-view/SectionViewCollection.jsx';
+
 import localState from './../shared/onepager/localState.js';
 
 let App = React.createClass({
@@ -16,11 +18,11 @@ let App = React.createClass({
     this.setState(AppStore.getAll());
   },
 
-  componentDidUpdate: function(prevProps, prevState) {
+  componentDidUpdate: function (prevProps, prevState) {
     this._saveStateInLocalStorage();
     this._bindPlugins();
 
-    if(this.state.collapseSidebar !== prevState.collapseSidebar){
+    if (this.state.collapseSidebar !== prevState.collapseSidebar) {
       this._setSidebarCollapseClass(this.state.collapseSidebar);
     }
   },
@@ -68,7 +70,7 @@ let App = React.createClass({
   },
 
   _setSidebarCollapseClass(collapse){
-    if(collapse){
+    if (collapse) {
       jQuery('body').addClass('op-sidebar-collapsed');
     } else {
       jQuery('body').removeClass('op-sidebar-collapsed');
