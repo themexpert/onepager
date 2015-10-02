@@ -71,6 +71,6 @@ class PresetManager {
    * @param array $ignoredGroups
    */
   public function setIgnoredGroups( $ignoredGroups ) {
-    $this->ignoredGroups = (array) $ignoredGroups;
+    $this->ignoredGroups = array_unique(array_merge((array) $ignoredGroups, $this->ignoredGroups));
   }
 }

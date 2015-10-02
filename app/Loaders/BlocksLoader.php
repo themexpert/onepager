@@ -14,7 +14,7 @@ class BlocksLoader {
 
   public function loadOnepagerBlocks() {
     //default group added to the blocks (optional array)
-    $groups = "onepager";
+    $groups = "Onepager (plugin)";
 
     $this->blockManager->loadAllFromPath(
       ONEPAGER_BLOCKS_PATH, ONEPAGER_BLOCKS_URL, $groups );

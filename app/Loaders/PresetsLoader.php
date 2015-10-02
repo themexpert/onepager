@@ -12,7 +12,7 @@ class PresetsLoader {
   }
 
   public function onepagerPresetsLoader() {
-    $groups = "Onepager";
+    $groups = "Onepager (plugin)";
 
     $this->presetManager->loadAllFromPath(
       ONEPAGER_PRESETS_PATH, ONEPAGER_PRESETS_URL, $groups );

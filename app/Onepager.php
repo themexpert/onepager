@@ -34,7 +34,7 @@ abstract class Onepager {
 
   // Disable all core blocks group = onepager
   public static function disableCoreBlocks() {
-    self::disableBlocks( 'onepager' );
+    self::disableBlocks( 'Onepager (plugin)' );
   }
 
   /**
@@ -53,7 +53,7 @@ abstract class Onepager {
 
   // Disable core presets
   public static function disableCorePresets() {
-    self::disablePresets( 'onepager' );
+    self::disablePresets( 'Onepager (plugin)' );
   }
 
   public static function addPresets( $name, $presets ) {
