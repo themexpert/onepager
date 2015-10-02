@@ -21,20 +21,36 @@ function orderGroups(blocks, groupOrder) {
 }
 
 function orderBlocks(blocks, groups) {
-  return _.unique(groups.map(function (group) {
-    return blocks.filter(function (block) {
-      return block.groups.indexOf(group) !== -1;
-    });
-  }).reduce(function (carry, blocks) {
-    return carry.concat(blocks);
-  }, []));
-}
+  function getBlocksByGroup(blocks, group) {
+    let blocksTop = blocks.filter( block => block.groups.indexOf(group) !== -1);
 
-function arrayKeyMirror(groups) {
-  return groups.reduce(function (o, v) {
-    o[v] = v;
-    return o;
-  }, {});
+    let remGroups = _.without(groups, group);
+
+    let blocksBottom = remGroups.map(function(remGroup){
+      return blocksTop.filter( block => block.groups.indexOf(remGroup) !== -1);
+    });
+
+    blocksBottom = [].concat.apply([], blocksBottom);
+    blocks = _.unique(blocksBottom.concat(blocksTop));
+
+    return blocks;
+  }
+
+  /** get blocks by groups order */
+  blocks = groups.map(getBlocksByGroup.bind(null, blocks));
+
+  /** blocks are like [[1,3,2], [2,3], [1,3]] */
+  blocks =  _.flatten(blocks, true);
+
+  /**
+   * blocks are like [1,3,2, 2,3, 1,3]
+   * We have duplicate blocks now so take the unique blocks
+   */
+  blocks = _.unique(blocks);
+
+  console.log(blocks.length);
+
+  return blocks;
 }
 
 let BlockCollection = React.createClass({
@@ -60,8 +76,26 @@ let BlockCollection = React.createClass({
     console.log("rendering blocks");
 
     let groups = orderGroups(this.props.blocks, onepager.groupOrder);
-    let blocks = orderBlocks(this.props.blocks, groups);
 
+    /** remove the currently selected group from groups */
+    let blocks = orderBlocks(
+      this.props.blocks,
+      _.without(groups, this.state.group)
+    );
+
+    /**
+     * get the active blocks
+     */
+    blocks = blocks.filter(block => {
+      /**
+       * if group is all then is active
+       * else if block belongs to this group its active
+       * @type {boolean}
+       */
+      let active = (this.state.group === "all") || block.groups.indexOf(this.state.group) !== -1;
+
+      return active ? block : false;
+    });
 
     if (blocks.length === 0) {
       return (
@@ -76,15 +110,12 @@ let BlockCollection = React.createClass({
       <div>
         <Select type="select" ref="group"
                 defaultValue={this.state.group}
-                options={arrayKeyMirror(groups)}
+                options={_.object(groups, groups)}
                 onChange={this.handleChange}/>
 
 
         <div>
-          {blocks.map((block) => {
-            let active = (this.state.group === "all") || block.groups.indexOf(this.state.group) !== -1;
-            return active ? <Block key={block.slug} block={block}/> : null;
-          })}
+          {blocks.map(block => <Block key={block.slug} block={block}/>)}
         </div>
       </div>
     );
