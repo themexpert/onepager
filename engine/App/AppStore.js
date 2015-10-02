@@ -17,7 +17,10 @@ import storage from '../shared/lib/storage.js';
 import localState from './../shared/onepager/localState.js';
 
 // data storage
-let _blocks = ODataStore.blocks;
+let _blocks = ODataStore.blocks.sort(function(a, b){
+  return +(a.slug > b.slug) || +(a.slug === b.slug) - 1;
+});
+
 let _sections = SectionTransformer.unserializeSections(ODataStore.sections, _blocks);
 let _menuState = {id: null, index: null, title: null};
 let _savedSections = _prepareForDirtyCheck(_sections);
@@ -60,10 +63,10 @@ function addSection(section) {
   //its a row section to need to uni(quei)fy
   section = SectionTransformer.unifySection(section);
   _sections.push(section);
+  setActiveSection(sectionIndex);
 
   liveService.updateSection(_sections, sectionIndex);
 
-  setActiveSection(sectionIndex);
 }
 
 
