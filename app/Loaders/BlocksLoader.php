@@ -22,7 +22,7 @@ class BlocksLoader {
 
   public function loadThemeBlocks() {
     //default group added to the blocks (optional array)
-    $groups = "theme";
+    $groups = [$this->getCurrentThemeBlocksGroup()];
 
     $dir = ONEPAGER_THEME_PATH . "/blocks";
     $url = ONEPAGER_THEME_URL . "/blocks";
@@ -36,6 +36,7 @@ class BlocksLoader {
 
   public function setGroupOrder() {
     $order = array(
+      $this->getCurrentThemeBlocksGroup(),
       "navbars",
       "headers",
       "contents",
@@ -45,11 +46,18 @@ class BlocksLoader {
       "blogs",
       "sliders",
       "pricings",
-      "footers",
-      "theme",
+      "footers"
     );
 
     //FIXME: need a way to filter it
     $this->blockManager->setGroupOrder( $order );
+  }
+
+  /**
+   * @return string
+   */
+  private function getCurrentThemeBlocksGroup() {
+    $currentTheme = wp_get_theme();
+    return $currentTheme->get( 'Name' ) . " (theme)";
   }
 }
