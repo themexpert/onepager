@@ -36,14 +36,16 @@ let Link  = React.createClass({
   },
 
   render() {
+    let {label, text, url, target} = this.props;
+
     return (
-      <div>
-        <label className="control-label">{this.props.label}</label>
+      <div className="link-control">
+        <label className="control-label">{label}</label>
 
         <div className="form-group" style={{marginBottom: 0}}>
           <div className="input-group">
             <span className="input-group-addon">Text</span>
-            <input defaultValue={this.props.text}
+            <input defaultValue={text}
                    className="form-control"
                    onChange={this.onChange}
                    ref="text"
@@ -55,7 +57,7 @@ let Link  = React.createClass({
             <span className="input-group-addon" style={{width: 53}}>Url</span>
             <input
               onMouseEnter={()=>this.setState({focus: true})}
-              defaultValue={this.props.url}
+              defaultValue={url}
               className="form-control"
               onChange={this.onChange}
               ref="url"
@@ -68,7 +70,7 @@ let Link  = React.createClass({
             </span>
 
             <span className="input-group-addon">
-              <input checked={this.props.target} ref="target" onChange={this.onChange} type="checkbox"/>
+              <input checked={target} ref="target" onChange={this.onChange} type="checkbox"/>
             </span>
           </div>
 

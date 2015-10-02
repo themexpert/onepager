@@ -31,6 +31,8 @@ class FieldsTransformer {
           break;
         case 'link':
           $default = array(
+            "label"       => ucfirst( $name ),
+            "class"       => "{$name}-control",
             'value' => array(
               'url'    => array_get( $control, 'url', '' ),
               'text'   => array_get( $control, 'text', '' ),
@@ -57,8 +59,8 @@ class FieldsTransformer {
           $default = array(
             "placeholder" => ucfirst( $name ),
             "label"       => ucfirst( $name ),
-            "type"        => $type, //default type is text
             "class"       => "{$name}-control",
+            "type"        => $type, //default type is text
             "help"        => "",
             "value"       => '',
           );
