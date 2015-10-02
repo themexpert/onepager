@@ -8,7 +8,7 @@ class ConfigTransformer {
   public function transform( $config, $file, $url ) {
     //default file names
     //users can set different names though
-    //this keeps boilerplates away
+    //this keeps boilerplate away
     $default_image = "block.jpg";
     $default_view  = "view.php";
     $default_style = "style.php";
