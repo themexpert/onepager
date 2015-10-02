@@ -42,9 +42,7 @@ class PresetManager {
 
   public function loadAll() {
     foreach ( $this->paths as $path ) {
-      $files = array_filter( FS::files( $path['path'] ), function ( $file ) {
-        return substr( $file, - 4, strrpos( $file, '.json' ) ) === "json";
-      } );
+      $files = FS::files($path['path'], 'json');
 
       foreach ( $files as $file ) {
         $config_file = untrailingslashit( $path['path'] ) . DIRECTORY_SEPARATOR . $file;
