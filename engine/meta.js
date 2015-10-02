@@ -21,11 +21,6 @@
 
     $filter.on('change', function(){
       var group = $(this).val();
-      if(group === 'all'){
-        $presets.show();
-        return;
-      }
-
       $presets.hide();
       $(group).show();
     });

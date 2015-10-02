@@ -4,7 +4,7 @@
         <div id="op-group-filter">
             <label>Filter :</label>
             <select>
-              <option value="all">All</option>
+              <option value=".og-all">All</option>
               <?php foreach($groups as $group): ?>
               <option value=".<?php echo tx_get_preset_group_class($group)?>"><?php echo $group ?></option>
               <?php endforeach; ?>
@@ -28,7 +28,7 @@
 
     <div id="op-presets">
         <!-- Blank Template -->
-        <div class="media">
+        <div class="media og-all">
             <figure class="thumbnails">
                 <img src="<?php echo plugins_url( '../../assets/images/blank-template.jpg', __FILE__ );?>"/>
                 <figcaption>
@@ -38,7 +38,7 @@
             </figure>
         </div>
         <?php foreach($onepagerLayouts as $layout): ?>
-            <div class="media <?php echo tx_get_preset_groups_class($layout['group'])?>">
+            <div class="media og-all <?php echo tx_get_preset_groups_class($layout['group'])?>">
                 <figure class="thumbnails">
                     <img src="<?php echo $layout['screenshot']?>"/>
                     <figcaption>
