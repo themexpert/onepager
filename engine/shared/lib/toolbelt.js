@@ -50,7 +50,13 @@ function isUniquePropInArray(list, index, propName, id){
   return isUniqueInArrayExcept(props, id, index);
 }
 
+function prettyPrint(obj){
+  console.log(JSON.stringify(obj, null, 2));
+}
+
 export default {
+  log: prettyPrint,
+  prettyPrint,
   copy,
   rand,
   randomId,

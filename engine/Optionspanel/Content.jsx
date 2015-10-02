@@ -1,4 +1,5 @@
 const React = require("react");
+const _ = require('underscore');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 
 const Input = require("../shared/components/form/Input.jsx");
@@ -8,12 +9,12 @@ const OptionsPanelActions = require('./OptionActions.js');
 
 
 let Content = React.createClass({
-  mixins: [PureMixin],
+  //FIXME: puremixin causing problem
+//  mixins: [PureMixin],
 
   getDefaultProps(){
     return {
-      whenSettingsDirty: ()=> {
-      }
+      whenSettingsDirty: _.noop
     };
   },
 

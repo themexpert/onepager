@@ -14,7 +14,6 @@ const TinyMCE = require('./editor/TinyMCE.jsx');
 const PureMixin = require('../../mixins/PureMixin.js');
 const Activity = require('../../lib/Activity.js');
 
-
 let inactive = Activity(100); //jshint ignore:line
 
 let InputControl = React.createClass({
@@ -140,13 +139,13 @@ let InputControl = React.createClass({
 
       case "text":
       case "textarea":
-        let addons = _.pick(control, ['addonBefore', 'addonAfter']);
+        let addon = _.pick(control, ['addonBefore', 'addonAfter']);
         if (control.type === "textarea") {
-          addons.rows = 5;
+          addon.rows = 5;
         }
         controlHtml =
           <Input ref="input"
-            {...addons}
+            {...addon}
                  type={control.type}
                  label={control.label}
                  className={control.class}
