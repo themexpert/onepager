@@ -12,14 +12,14 @@ class PresetsLoader {
   }
 
   public function onepagerPresetsLoader() {
-    $groups = "onepager";
+    $groups = "Onepager";
 
     $this->presetManager->loadAllFromPath(
       ONEPAGER_PRESETS_PATH, ONEPAGER_PRESETS_URL, $groups );
   }
 
   public function themePresetsLoader() {
-    $groups = [$this->getCurrentThemeBlocksGroup()];
+    $groups = [$this->getCurrentThemePresetsGroup()];
 
     $dir = ONEPAGER_THEME_PATH . "/presets";
     $url = ONEPAGER_THEME_URL . "/presets";
@@ -34,7 +34,7 @@ class PresetsLoader {
   /**
    * @return string
    */
-  private function getCurrentThemeBlocksGroup() {
+  private function getCurrentThemePresetsGroup() {
     $currentTheme = wp_get_theme();
     return $currentTheme->get( 'Name' ) . " (theme)";
   }

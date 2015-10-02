@@ -27,7 +27,7 @@
       }
 
       $presets.hide();
-      $(".og-"+group).show();
+      $(group).show();
     });
 
     $export.on('click', exportHandler);

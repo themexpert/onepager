@@ -6,7 +6,7 @@
             <select>
               <option value="all">All</option>
               <?php foreach($groups as $group): ?>
-              <option><?php echo $group ?></option>
+              <option value=".<?php echo tx_get_preset_group_class($group)?>"><?php echo $group ?></option>
               <?php endforeach; ?>
             </select>
         </div>
@@ -38,7 +38,7 @@
             </figure>
         </div>
         <?php foreach($onepagerLayouts as $layout): ?>
-            <div class="media <?php echo tx_get_groups($layout['group'])?>">
+            <div class="media <?php echo tx_get_preset_groups_class($layout['group'])?>">
                 <figure class="thumbnails">
                     <img src="<?php echo $layout['screenshot']?>"/>
                     <figcaption>

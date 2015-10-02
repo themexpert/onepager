@@ -5,10 +5,14 @@ use ThemeXpert\View\View;
 add_action( 'add_meta_boxes', 'tx_add_onepager_metabox', 1 );
 add_action( 'admin_enqueue_scripts', 'tx_onepager_metabox_scripts' );
 
-function tx_get_groups( $groups ) {
+function tx_get_preset_groups_class( $groups ) {
   return implode( "", array_map( function ( $group ) {
-    return "og-" . $group;
+    return tx_get_preset_group_class($group);
   }, $groups ) );
+}
+
+function tx_get_preset_group_class($group){
+  return "og-" . sanitize_title($group);
 }
 
 function tx_add_onepager_metabox() {
