@@ -48,8 +48,6 @@ function orderBlocks(blocks, groups) {
    */
   blocks = _.unique(blocks);
 
-  console.log(blocks.length);
-
   return blocks;
 }
 
