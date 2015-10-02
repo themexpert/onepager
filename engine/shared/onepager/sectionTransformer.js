@@ -12,7 +12,7 @@ function findBlockBySectionSlug(blocks, slug) {
 }
 
 function unserializeSections(sections, blocks) {
-  return sections.map(function (section) {
+  return _.map(sections, function (section) {
     let block = findBlockBySectionSlug(blocks, section.slug);
 
     return unserializeSection(section, block);
