@@ -65,7 +65,7 @@ class Render {
     $section        = $this->sectionBlockDataMerge( $section );
     $section['url'] = $block['url'];
 
-    return $this->view->make( $view_file, $section );
+    return do_shortcode($this->view->make( $view_file, $section ));
   }
 
   public function sectionBlockDataMerge( $section ) {
