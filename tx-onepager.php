@@ -52,3 +52,7 @@ require( ONEPAGER_PATH . '/app/Api/routes.php' );
 require( ONEPAGER_PATH . '/app/OptionsPanel/settings.php' );
 require( ONEPAGER_PATH . '/app/Metabox/metabox.php' );
 require( ONEPAGER_PATH . '/app/Dashboard/dashboard.php' );
+
+add_action('wp_head', function(){
+  echo "<meta type='page-builder' content='tx-onepager'>";
+});
