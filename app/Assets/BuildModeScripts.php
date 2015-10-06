@@ -6,7 +6,7 @@ class BuildModeScripts {
   use FormEngineScripts;
 
   public function __construct() {
-    add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ], 99999 );
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ], 999 );
   }
 
   public function enqueueScripts() {

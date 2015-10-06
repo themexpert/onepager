@@ -45,7 +45,7 @@ class Application {
     new BuildModeScripts();
     new PreviewScripts();
 
-    add_action( 'wp_enqueue_scripts', [ $this, 'compile_assets' ], 100000);
+    add_action( 'wp_enqueue_scripts', [ $this, 'compile_assets' ], 1000);
   }
 
   public function compile_assets() {

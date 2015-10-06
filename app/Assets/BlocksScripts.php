@@ -8,6 +8,8 @@ class BlocksScripts {
   public function enqueue() {
     if ( $this->isPreview() ) {
       $this->enqueueAllBlocksScripts();
+    } elseif($this->isBuildMode()){
+
     } else {
       $pageId   = $this->getCurrentPageId();
       $sections = $this->getAllValidSections( $pageId );
@@ -76,6 +78,10 @@ class BlocksScripts {
    */
   protected function getAllValidSections( $pageId ) {
     return onepager()->section()->getAllValid( $pageId );
+  }
+
+  private function isBuildMode() {
+    return onepager()->content()->isBuildMode();
   }
 
 }
