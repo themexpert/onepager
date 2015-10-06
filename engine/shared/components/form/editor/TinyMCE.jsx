@@ -1,14 +1,12 @@
-const React      = require('react');
-const PureMixin  = require('react/lib/ReactComponentWithPureRenderMixin');
-
-const $         = jQuery;
-const dom       = React.findDOMNode;
+import PureMixin  from 'react/lib/ReactComponentWithPureRenderMixin';
+import React, {findDOMNode} from 'react';
+const $ = jQuery;
 
 import "./style.less";
 
 
-function initializeTinyMCE(id, onChange){
-  $(function(){
+function initializeTinyMCE(id, onChange) {
+  $(function () {
     tinymce.init({
       selector: `#${id}`,
       setup: ed=> {
@@ -29,12 +27,12 @@ let TinyMCE = React.createClass({
   },
 
   getInitialState(){
-    return { value : this.props.defaultValue};
+    return {value: this.props.defaultValue};
   },
 
   componentDidMount() {
     let id = _.uniqueId('tiny-mce-');
-    $(dom(this)).find('textarea').attr('id', id);
+    $(findDOMNode(this)).find('textarea').attr('id', id);
 
     initializeTinyMCE(id, this.onChange);
   },
