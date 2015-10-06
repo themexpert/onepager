@@ -24,10 +24,10 @@ let Section = React.createClass({
 
   propTypes: {
     active: React.PropTypes.bool,
-    id: React.PropTypes.number,
+    id: React.PropTypes.string,
     index: React.PropTypes.number,
     title: React.PropTypes.string,
-    slug: React.PropTypes.string,
+    slug: React.PropTypes.string
   },
 
   getInitialState(){
