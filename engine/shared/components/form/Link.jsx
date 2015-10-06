@@ -9,7 +9,7 @@ let Link  = React.createClass({
     text: React.PropTypes.string,
     label: React.PropTypes.string,
     url: React.PropTypes.string,
-    target: React.PropTypes.string
+    target: React.PropTypes.bool
   },
 
   getInitialState(){
