@@ -16,6 +16,11 @@ class BuildModeScripts {
 
     $this->resetWpScriptQueue();
 
+    /**
+     * Improve this
+     */
+    $this->enqueueDependency();
+
     $this->enqueueFormEngineScripts();
     $this->enqueueInitializerScript();
   }
@@ -24,12 +29,6 @@ class BuildModeScripts {
     $asset  = onepager()->asset();
     $pageId = $this->getCurrentPageId();
     $data   = $this->localizeScriptData( $pageId );
-
-    $asset->style( 'tx-bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
-    $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
-
-    $asset->style( 'tx-animate', op_asset( 'assets/css/animate.css' ) );
-    $asset->style( 'tx-fontawesome', op_asset( 'assets/css/font-awesome.css' ) );
 
     $asset->script( 'onepager', op_asset( 'assets/onepager-builder.bundle.js' ), [ 'jquery' ] );
     $asset->localizeScript( 'onepager', $data, 'onepager' );
@@ -99,5 +98,12 @@ class BuildModeScripts {
   private function resetWpScriptQueue() {
     wp_scripts()->queue = [ ];
     wp_styles()->queue  = [ ];
+  }
+
+  private function enqueueDependency() {
+    $asset = onepager()->asset();
+    $asset->style( 'tx-bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
+    $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
+    $asset->style( 'tx-fontawesome', op_asset( 'assets/css/font-awesome.css' ) );
   }
 }
