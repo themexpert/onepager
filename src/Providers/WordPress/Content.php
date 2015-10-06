@@ -44,7 +44,14 @@ class Content implements ContentInterface {
   }
 
   public function isBuildMode() {
-    return is_super_admin() && $this->isOnepage() && ( array_key_exists( 'onepager', $_GET ) ? (int) $_GET['onepager'] : 0 );
+    $build = array_key_exists( 'onepager', $_GET ) ? (int) $_GET['onepager'] : 0;
+    return is_super_admin() && $this->isOnepage() && $build;
+  }
+
+  public function isPreview() {
+    $preview = array_key_exists( 'onepager_preview', $_GET ) ? (int) $_GET['onepager_preview'] : 0;
+
+    return is_super_admin() && $this->isOnepage() && $preview;
   }
 
   public function isOnepagerByTemplate( $pageId = null ) {

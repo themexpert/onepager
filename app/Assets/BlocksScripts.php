@@ -6,7 +6,7 @@ class BlocksScripts {
   }
 
   public function enqueue() {
-    if ( $this->isBuildMode() ) {
+    if ( $this->isPreview() ) {
       $this->enqueueAllBlocksScripts();
     } else {
       $pageId   = $this->getCurrentPageId();
@@ -58,8 +58,8 @@ class BlocksScripts {
   /**
    * @return mixed
    */
-  protected function isBuildMode() {
-    return onepager()->content()->isBuildMode();
+  protected function isPreview() {
+    return onepager()->content()->isPreview();
   }
 
   /**

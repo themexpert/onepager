@@ -10,6 +10,15 @@ class TemplateLoader {
     $this->pageTemplateManager = $pageTemplateManager;
 
     add_action( 'wp_loaded', [ $this, 'loadOnepagerPageTemplates' ] );
+    add_filter( 'template_include', [$this, 'loadBuildModeTemplate'] );
+  }
+
+  public function loadBuildModeTemplate($template) {
+    if ( $this->isBuildMode() ) {
+      return onepager()->path( "/app/templates/builder.php" );
+    } else {
+      return $template;
+    }
   }
 
   /**
@@ -23,4 +32,12 @@ class TemplateLoader {
 
     $this->pageTemplateManager->addTemplate( 'OnePager', $default_onepage_template );
   }
+
+  /**
+   * @return mixed
+   */
+  protected function isBuildMode() {
+    return onepager()->content()->isBuildMode();
+  }
+
 }

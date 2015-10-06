@@ -1,5 +1,5 @@
 const React = require('react');
-const App   = require('./App/App.jsx');
+const App   = require('./App/Preview.jsx');
 
 
 require("../assets/css/sweetalert.css");
@@ -8,5 +8,6 @@ require("../assets/css/sweetalert.css");
 
 require("./shared/onepager/lib/_mixins");
 
-
-React.render(<App />, document.getElementById('onepager-mount'));
+jQuery(function(){
+  React.render(<App />, document.getElementById('onepager-preview'));
+});

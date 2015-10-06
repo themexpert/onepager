@@ -1,9 +1,11 @@
 const $ = jQuery; //jshint ignore:line
 const React      = require('react');
 const cx         = require('classnames');
-const AppActions = require('../../AppActions.js');
+//const AppActions = require('../../AppActions.js');
 const PureMixin  = require('../../../shared/mixins/PureMixin.js');
 const scrollIntoView  = require('../../../shared/plugins/scrollview.js');
+
+let AppActions  = parent.AppActions;
 
 let Section = React.createClass({
   mixins: [PureMixin],

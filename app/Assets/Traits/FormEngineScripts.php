@@ -14,17 +14,17 @@ trait FormEngineScripts {
     $asset = onepager()->asset();
 
     // tx namespaced assets to avoid multiple assets loading from other ThemeXpert product
-    $asset->script( 'tx-bootstrap-switch', asset( 'assets/js/bootstrap-switch.js' ), [ 'jquery' ] );
-    $asset->script( 'tx-bootstrap-select', asset( 'assets/js/bootstrap-select.js' ), [ 'jquery' ] );
-    $asset->script( 'tx-iconselector', asset( 'assets/js/icon-selector-bootstrap.js' ), [ 'jquery' ] );
+    $asset->script( 'tx-bootstrap-switch', op_asset( 'assets/js/bootstrap-switch.js' ), [ 'jquery' ] );
+    $asset->script( 'tx-bootstrap-select', op_asset( 'assets/js/bootstrap-select.js' ), [ 'jquery' ] );
+    $asset->script( 'tx-iconselector', op_asset( 'assets/js/icon-selector-bootstrap.js' ), [ 'jquery' ] );
 
-    $asset->script( 'tx-colorpicker', asset( 'assets/js/bootstrap-colorpicker.js' ), [ 'jquery' ] );
-    $asset->style( 'tx-colorpicker', asset( "assets/css/bootstrap-colorpicker.css" ) );
+    $asset->script( 'tx-colorpicker', op_asset( 'assets/js/bootstrap-colorpicker.js' ), [ 'jquery' ] );
+    $asset->style( 'tx-colorpicker', op_asset( "assets/css/bootstrap-colorpicker.css" ) );
 
-    $asset->script( 'tx-toastr', asset( 'assets/js/toastr.js' ), [ 'jquery' ] );
+    $asset->script( 'tx-toastr', op_asset( 'assets/js/toastr.js' ), [ 'jquery' ] );
 
     if ( is_super_admin() ) {
-      $asset->style( 'lithium-ui', asset( 'assets/css/lithium-builder.css' ) );
+      $asset->style( 'lithium-ui', op_asset( 'assets/css/lithium-builder.css' ) );
     }
   }
 

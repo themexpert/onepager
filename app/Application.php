@@ -3,6 +3,7 @@
 use App\Assets\BlocksScripts;
 use App\Assets\BuildModeScripts;
 use App\Assets\OnepageScripts;
+use App\Assets\PreviewScripts;
 use App\Assets\WpConflictResolver;
 use App\Content\OnepageContent;
 use App\Content\OnepageInternalScripts;
@@ -42,9 +43,9 @@ class Application {
     new OnepageScripts();
     new BlocksScripts();
     new BuildModeScripts();
+    new PreviewScripts();
 
-
-    add_action( 'wp_enqueue_scripts', [ $this, 'compile_assets' ], 1000);
+    add_action( 'wp_enqueue_scripts', [ $this, 'compile_assets' ], 100000);
   }
 
   public function compile_assets() {
