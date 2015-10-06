@@ -24,13 +24,16 @@ export default function (block, duplicate = false) {
 
   if (isNew) {
     section = section.set('id', getId());
-    section = section.set('key', getKey());
     section = section.set('title', getSectionTitle(section));
   } else if (duplicate) {
     section = section.set('id', getId());
-    section = section.set('key', getKey());
     section = section.set('title', getDuplicateTitle());
   }
+
+  /**
+   *TODO: rethink about key
+   */
+  section = section.set('key', getKey());
 
   section = sectionRefer(section);
 
