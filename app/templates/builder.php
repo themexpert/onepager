@@ -9,6 +9,10 @@
 
   <?php wp_head(); ?>
   <style>
+    body{
+      overflow: hidden;
+    }
+
     #onepager-builder{
       width: 23%;
       float: left;

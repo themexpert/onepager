@@ -9,13 +9,7 @@ const AppActions = require('../../AppActions.js');
 
 import toolbelt from '../../../shared/lib/toolbelt.js';
 
-function setBodyClass(sections) {
-  if (sections === 0) {
-    jQuery('body').addClass('txop-noblock');
-  } else {
-    jQuery('body').removeClass('txop-noblock');
-  }
-}
+
 
 function getKey() {
   return toolbelt.randomId('k_');
@@ -32,14 +26,6 @@ let SectionList = React.createClass({
     activeSectionIndex: React.PropTypes.number,
     blocks: React.PropTypes.array,
     sections: React.PropTypes.array
-  },
-
-  componentDidMount(){
-    setBodyClass(this.props.sections.length);
-  },
-
-  componentDidUpdate(){
-    setBodyClass(this.props.sections.length);
   },
 
   sortableOptions: {
