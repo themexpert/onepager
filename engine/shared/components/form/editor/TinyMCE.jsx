@@ -10,7 +10,7 @@ import "./style.less";
 function initializeTinyMCE(id, onChange){
   $(function(){
     tinymce.init({
-      selector: "#"+id,
+      selector: `#${id}`,
       setup: ed=> {
         ed.on('keyup', e => onChange(ed));
         ed.on('change', e => onChange(ed));
@@ -40,7 +40,8 @@ let TinyMCE = React.createClass({
   },
 
   onChange(ed) {
-    this.setState({value: ed.getContent()});
+    let value = ed.getContent();
+    this.setState({value});
     this.props.onChange();
   },
 
@@ -52,7 +53,7 @@ let TinyMCE = React.createClass({
     return (
       <div className="op-editor">
         <label>{this.props.label}</label>
-        <textarea className="source" rows="10">{this.state.value}</textarea>
+        <textarea className="source" rows="10" defaultValue={this.state.value}></textarea>
         <br/>
       </div>
     );
