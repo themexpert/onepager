@@ -3,7 +3,7 @@ import Color from './Color.jsx';
 
 let Preset = React.createClass({
   propTypes: {
-    colors: React.PropTypes.obj,
+    colors: React.PropTypes.object,
     activate: React.PropTypes.func
   },
 
