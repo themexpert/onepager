@@ -135,7 +135,7 @@ function sectionSynced(index, res) {
   section = _sections[index];
 
   section.content = SectionTransformer.stripClassesFromHTML(section.livemode, res.content);
-  SectionTransformer.replaceSectionStyleInDOM(section.id, res.style);
+  replaceSectionStyle(section.id, res.style);
 }
 
 let dispatcherIndex = AppDispatcher.register(function (payload) {

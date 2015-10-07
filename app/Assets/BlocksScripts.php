@@ -57,10 +57,7 @@ class BlocksScripts {
 
     $blockUrl = $block['url'];
 
-    $blockCssFile = $block['dir'].'block.css';
-    if(FileSystem::exists($blockCssFile)){
-      onepager()->asset()->style($block['slug']."-block", $blockUrl."/block.css");
-    }
+    $this->enqueueBlockCss( $block, $blockUrl );
 
     $enqueueCb( $blockUrl );
   }
@@ -90,6 +87,29 @@ class BlocksScripts {
 
   private function isBuildMode() {
     return onepager()->content()->isBuildMode();
+  }
+
+  /**
+   * @param $block
+   * @param $blockUrl
+   */
+  protected function enqueueBlockCss( $block, $blockUrl ) {
+    $blockCssFileOverride = locate_template('onepager/overrides/' . $block['slug'] . '/block.css');
+    $blockCssFileCore     = $block['dir'] . 'block.css';
+
+    if ( FileSystem::exists( $blockCssFileOverride ) ) {
+      $name = $block['slug'] . "-block";
+      $url  = get_template_directory_uri() . "/onepager/overrides/" . $block['slug'] . "/block.css";
+
+      onepager()->asset()->style( $name, $url );
+    } else {
+      if ( FileSystem::exists( $blockCssFileCore ) ) {
+        $name = $block['slug'] . "-block";
+        $url  = $blockUrl . "/block.css";
+
+        onepager()->asset()->style( $name, $url );
+      }
+    }
   }
 
 }
