@@ -76,13 +76,6 @@ class Application {
   /**
    * @return mixed
    */
-  protected function isBuildMode() {
-    return $this->onepager->content()->isBuildMode();
-  }
-
-  /**
-   * @return mixed
-   */
   protected function getCurrentPageId() {
     return $this->onepager->content()->getCurrentPageId();
   }
@@ -105,7 +98,8 @@ class Application {
    * @return bool
    */
   private function shouldCompileScripts() {
-    return $this->isBuildMode() ? false : ! $this->isDebugMode() && $this->isCacheDirWritable();
+    return $this->onepager->content()->isBuildMode() || $this->onepager->content()->isPreview() ?
+      false : ! $this->isDebugMode() && $this->isCacheDirWritable();
   }
 
   private function isCacheDirWritable(){
