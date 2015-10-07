@@ -94,9 +94,19 @@ function duplicateSection(index) {
 
 
 // function to remove section
-function removeSection(index) {
-  $(`#style-${_sections[index].id}`).remove();
+function removeSectionStyle(id) {
+  jQuery("#onepager-preview iframe").contents().find(`#style-${id}`).remove();
+}
 
+function replaceSectionStyle(id, style) {
+  let $preview = jQuery("#onepager-preview iframe").contents();
+  $preview.find(`#style-${id}`).remove();
+  $preview.find("head").append(style);
+}
+
+
+function removeSection(index) {
+  removeSectionStyle(_sections[index].id);
   //immutable please
   _sections.splice(index, 1);
 
