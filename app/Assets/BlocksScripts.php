@@ -1,5 +1,7 @@
 <?php namespace App\Assets;
 
+use ThemeXpert\FileSystem\FileSystem;
+
 class BlocksScripts {
   public function __construct() {
     add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
@@ -8,7 +10,7 @@ class BlocksScripts {
   public function enqueue() {
     if ( $this->isPreview() ) {
       $this->enqueueAllBlocksScripts();
-    } elseif($this->isBuildMode()){
+    } else if($this->isBuildMode()){
 
     } else {
       $pageId   = $this->getCurrentPageId();
@@ -54,6 +56,12 @@ class BlocksScripts {
     }
 
     $blockUrl = $block['url'];
+
+    $blockCssFile = $block['dir'].'block.css';
+    if(FileSystem::exists($blockCssFile)){
+      onepager()->asset()->style($block['slug']."-block", $blockUrl."/block.css");
+    }
+
     $enqueueCb( $blockUrl );
   }
 

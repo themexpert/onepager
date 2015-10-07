@@ -6,7 +6,7 @@ class OnepageInternalScripts {
   }
 
   public function injectInternalScripts() {
-    if ( $this->onepagerAndNotPreview() ) {
+    if(!$this->isOnepage() || $this->isBuildMode()){
       return;
     }
 
@@ -18,8 +18,15 @@ class OnepageInternalScripts {
   /**
    * @return mixed
    */
-  protected function onepagerAndNotPreview() {
-    return onepager()->content()->isOnepage() && !onepager()->content()->isPreview();
+  protected function isBuildMode() {
+    return onepager()->content()->isBuildMode();
+  }
+
+  /**
+   * @return mixed
+   */
+  protected function isOnepage() {
+    return onepager()->content()->isOnepage();
   }
 
   /**
