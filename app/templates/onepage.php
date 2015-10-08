@@ -1,4 +1,4 @@
-<?php /* Template Name: Onepage */ ?>
+<?php /* Template Name: OnePager */ ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -14,9 +14,7 @@
 <body <?php body_class(); ?> >
 
 	<div class="op-sections">
-		<?php while(have_posts()): the_post(); ?>
 			<?php the_content(); ?>
-		<?php endwhile; ?>
 	</div>
 
 	<?php wp_footer(); ?>

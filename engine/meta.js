@@ -107,7 +107,7 @@
    */
   function isOnepageTemplate(template) {
     //if template is null return false
-    return template && ("onepage.php" === template || template.indexOf("op-") === 0);
+    return template && ("onepage.php" === template || template.indexOf("onepager-") === 0);
   }
 
   /**
