@@ -6,7 +6,7 @@ class OnepageScripts {
   }
 
   public function enqueueScripts() {
-    if ( ! onepager()->content()->isOnepage() ) {
+    if ( ! onepager()->content()->isOnepage() || onepager()->content()->isBuildMode()) {
       return;
     }
 
@@ -18,7 +18,6 @@ class OnepageScripts {
     $asset = onepager()->asset();
 
     $asset->script( 'wow', op_asset( 'assets/js/wow.js' ), [ 'jquery' ] );
-    $asset->script( 'nicescroll', op_asset( 'assets/js/jquery.nicescroll.js' ), [ 'jquery' ] );
     $asset->script( 'lithium', op_asset( 'assets/lithium.js' ), [ 'jquery' ] );
     $asset->style( 'lithium', op_asset( 'assets/css/lithium.css' ) );
 

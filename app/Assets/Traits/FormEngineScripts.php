@@ -21,6 +21,7 @@ trait FormEngineScripts {
     $asset->script( 'tx-colorpicker', op_asset( 'assets/js/bootstrap-colorpicker.js' ), [ 'jquery' ] );
     $asset->style( 'tx-colorpicker', op_asset( "assets/css/bootstrap-colorpicker.css" ) );
 
+    $asset->script( 'nicescroll', op_asset( 'assets/js/jquery.nicescroll.js' ), [ 'jquery' ] );
     $asset->script( 'tx-toastr', op_asset( 'assets/js/toastr.js' ), [ 'jquery' ] );
 
     if ( is_super_admin() ) {
