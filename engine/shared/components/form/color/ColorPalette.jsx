@@ -40,7 +40,7 @@ const ColorPalette = React.createClass({
 
   propTypes: {
     "label": React.PropTypes.string,
-    "colors": React.PropTypes.array,
+    "colors": React.PropTypes.object,
     "onChange": React.PropTypes.func
   },
 
