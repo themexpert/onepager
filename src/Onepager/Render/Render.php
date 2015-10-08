@@ -157,7 +157,7 @@ class Render {
    */
   public function locateViewFile( $block ) {
     $view_file = array_key_exists( 'view_file', $block ) ? $block['view_file'] : null;
-    $view_file = locate_template( 'onepager/blocks/' . $block['slug'] . '/view.php' ) ?: $view_file;
+    $view_file = locate_template( 'onepager/overrides/' . $block['slug'] . '/view.php' ) ?: $view_file;
 
     return $view_file;
   }
@@ -169,7 +169,7 @@ class Render {
    */
   public function locateStyleFile( $block ) {
     $style_file = array_key_exists( 'style_file', $block ) ? $block['style_file'] : null;
-    $style_file = locate_template( 'onepager/blocks/' . $block['slug'] . '/style.php' ) ?: $style_file;
+    $style_file = locate_template( 'onepager/overrides/' . $block['slug'] . '/style.php' ) ?: $style_file;
 
     return $style_file;
   }

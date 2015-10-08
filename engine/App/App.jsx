@@ -81,20 +81,8 @@ let App = React.createClass({
   },
 
   render() {
-    let {sections, activeSectionIndex} = this.state;
-
-    let viewSections = _.map(sections, function (section) {
-      return _.pick(section, ['content', 'key']);
-    });
-
     return (
-      <div className="one-pager-app">
-        <SectionViewCollection
-          activeSectionIndex={activeSectionIndex}
-          sections={viewSections}/>
-
         <Sidebar {...this.state}/>
-      </div>
     );
   }
 });

@@ -158,8 +158,8 @@ return array(
 
   'assets' => function( $path ){
     // Magnefic popup load from onepager assets
-    Onepager::addScript( 'tx-magnific-popup', asset('assets/js/jquery.magnific-popup.js'), array( 'jquery' ) );
-    Onepager::addStyle('tx-magnific-popup', asset( 'assets/css/magnific-popup.css' ) );
+    Onepager::addScript( 'tx-magnific-popup', op_asset('assets/js/jquery.magnific-popup.js'), array( 'jquery' ) );
+    Onepager::addStyle('tx-magnific-popup', op_asset( 'assets/css/magnific-popup.css' ) );
     // Local assets
     Onepager::addStyle('header-2', $path . '/style.css');
   }

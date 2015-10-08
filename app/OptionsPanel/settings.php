@@ -72,9 +72,9 @@ add_action( 'wp_head', function () { ?>
 if ( Onepager::getOption( 'full_screen' ) ) {
   add_action( 'wp_enqueue_scripts', function () {
     $q = onepager()->asset();
-    $q->script( 'op-slimscroll', asset( 'assets/js/jquery.slimscroll.min.js' ) );
-    $q->script( 'op-fullpage', asset( 'assets/js/jquery.fullPage.js' ) );
+    $q->script( 'op-slimscroll', op_asset( 'assets/js/jquery.slimscroll.min.js' ) );
+    $q->script( 'op-fullpage', op_asset( 'assets/js/jquery.fullPage.js' ) );
 
-    $q->style( 'op-fullpage', asset( 'assets/css/jquery.fullPage.css' ) );
+    $q->style( 'op-fullpage', op_asset( 'assets/css/jquery.fullPage.css' ) );
   } );
 }

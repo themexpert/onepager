@@ -7,9 +7,10 @@ class OnepageToolbar {
 
   function addToolbar() {
     $isOnepage  = onepager()->content()->isOnepage();
-    $isLiveMode = onepager()->content()->isBuildMode();
+    $isPreview = onepager()->content()->isPreview();
+    $isBuildMode = onepager()->content()->isBuildMode();
 
-    if ($isOnepage && !$isLiveMode) {
+    if ($isOnepage && !$isPreview) {
       $url = onepager_get_edit_mode_url(get_current_page_url(), true);
 
       onepager()->toolbar()->addMenu(
@@ -20,7 +21,7 @@ class OnepageToolbar {
     }
 
     //hide the navbar when livemode
-    if ($isLiveMode) {
+    if ($isPreview || $isBuildMode) {
       show_admin_bar(false);
     }
   }

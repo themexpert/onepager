@@ -8,7 +8,8 @@ var ROOT_PATH = path.resolve(__dirname);
 var common = {
   entry: {
     optionspanel: ['./engine/optionspanel.jsx'],
-    app: ['./engine/app.jsx'],
+    'onepager-builder': ['./engine/onepager-builder.jsx'],
+    'onepager-preview': ['./engine/onepager-preview.jsx'],
     generator: ['./engine/generator.jsx']
   },
   output: {
@@ -37,7 +38,7 @@ var common = {
     new webpack.DefinePlugin({
       'process.env': {
         // This has effect on the react lib size
-        'NODE_ENV': JSON.stringify('production'),
+        // 'NODE_ENV': JSON.stringify('production'),
       }
     }),
     new webpack.NoErrorsPlugin()

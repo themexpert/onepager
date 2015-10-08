@@ -12,7 +12,7 @@
 		<div class="carousel-inner" role="listbox">
 
 			<?php foreach($contents['testimonials'] as $item): ?>
-			<div class="item text-center <?php echo ($slide_num === 0) ? 'active' : ''?>">
+			<div data-interval=<?php echo (int) $settings['interval'] * 1000; ?> class="item text-center <?php echo ($slide_num === 0) ? 'active' : ''?>">
 					<?php if($item['image']):?>
 					<figure>
 						<img src="<?php echo $item['image']?>" alt="<?php echo $item['name']?>">

@@ -48,23 +48,34 @@ class Asset implements AssetInterface {
   }
 
   public function enqueue() {
-      $this->enqueueStyles();
-      $this->enqueueScripts();
-      $this->enqueueLocalizations();
+    $this->enqueueStyles();
+    $this->enqueueScripts();
+    $this->enqueueLocalizations();
   }
 
   public function compileScriptsAndEnqueue($pageId){
     $js_file  = ONEPAGER_CACHE_URL.'/onepager.build' . $pageId . '.js';
     $css_file = ONEPAGER_CACHE_URL.'/onepager.build' . $pageId . '.css';
+    $js_path  = ONEPAGER_CACHE_DIR.'/onepager.build' . $pageId . '.js';
+    $css_path = ONEPAGER_CACHE_DIR.'/onepager.build' . $pageId . '.css';
 
-    if ( ! file_exists( $js_file ) || ! file_exists( $css_file ) ) {
+    $time = get_post_meta($pageId, 'onepager_asset_compile_time', true);
+
+    if(!$time){
+      update_post_meta($pageId, 'onepager_asset_compile_time', $time);
+    }
+
+
+    if ( ! file_exists( $js_path ) || ! file_exists( $css_path ) ) {
+      $time = time();
+      update_post_meta($pageId, 'onepager_asset_compile_time', $time);
+
       add_action( 'wp_head', function () use ( $pageId ) {
         $this->compilePageAssets( $pageId );
       }, 5 );
     }
-
-    wp_enqueue_script( 'onepager', $js_file, $this->getDependencies( $this->scripts ) );
-    wp_enqueue_style( 'onepager', $css_file, $this->getDependencies( $this->styles ) );
+    wp_enqueue_script( 'onepager', $js_file, $this->getDependencies( $this->scripts ), $time );
+    wp_enqueue_style( 'onepager', $css_file, $this->getDependencies( $this->styles ), $time );
   }
 
   public function getDependencies( $assets ) {
@@ -82,6 +93,7 @@ class Asset implements AssetInterface {
   }
 
   public function compilePageAssets( $pageId ) {
+    update_post_meta($pageId, 'onepager_asset_compile_time', time());
     $compiler = new AssetsCompiler();
     $compiler->addCollection( ONEPAGER_CACHE_DIR.'/onepager.build' . $pageId . '.css', $this->styles );
     $compiler->addCollection( ONEPAGER_CACHE_DIR.'/onepager.build' . $pageId . '.js', $this->scripts );

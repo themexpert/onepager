@@ -63,6 +63,6 @@ function tx_rename_onepager_dashboard_submenu_name(){
 function tx_add_onepager_dashboard_scripts()
 {
   //add builder.css so icons and other stuff styles
-  wp_enqueue_style("lithium-builder", asset("assets/css/lithium-builder.css"));
+  wp_enqueue_style("lithium-builder", op_asset("assets/css/lithium-builder.css"));
 
 }

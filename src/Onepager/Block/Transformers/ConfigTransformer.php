@@ -61,6 +61,7 @@ class ConfigTransformer {
 
     return compact(
       'url',
+      'dir',
       'slug',
       'livemode',
       'enqueue',

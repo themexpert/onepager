@@ -24,6 +24,10 @@ class PageTemplater {
   /**
    * Adds our template to the pages cache in order to trick WordPress
    * into thinking the template file exists where it doens't really exist.
+   *
+   * @param $atts
+   *
+   * @return
    */
   public function register_project_templates( $atts ) {
     // Create the key used for the themes cache
@@ -56,7 +60,11 @@ class PageTemplater {
     return $atts;
   }
 
-  /** * Checks if the template is assigned to the page */
+  /**
+   * Checks if the template is assigned to the page
+   * @param $template
+   * @return
+   */
   public function view_project_template( $template ) {
     global $post;
 

@@ -1,16 +1,14 @@
-const React      = require('react');
-const PureMixin  = require('react/lib/ReactComponentWithPureRenderMixin');
-
-const $         = jQuery;
-const dom       = React.findDOMNode;
+import PureMixin  from 'react/lib/ReactComponentWithPureRenderMixin';
+import React, {findDOMNode} from 'react';
+const $ = jQuery;
 
 import "./style.less";
 
 
-function initializeTinyMCE(id, onChange){
-  $(function(){
+function initializeTinyMCE(id, onChange) {
+  $(function () {
     tinymce.init({
-      selector: "#"+id,
+      selector: `#${id}`,
       setup: ed=> {
         ed.on('keyup', e => onChange(ed));
         ed.on('change', e => onChange(ed));
@@ -29,18 +27,19 @@ let TinyMCE = React.createClass({
   },
 
   getInitialState(){
-    return { value : this.props.defaultValue};
+    return {value: this.props.defaultValue};
   },
 
   componentDidMount() {
     let id = _.uniqueId('tiny-mce-');
-    $(dom(this)).find('textarea').attr('id', id);
+    $(findDOMNode(this)).find('textarea').attr('id', id);
 
     initializeTinyMCE(id, this.onChange);
   },
 
   onChange(ed) {
-    this.setState({value: ed.getContent()});
+    let value = ed.getContent();
+    this.setState({value});
     this.props.onChange();
   },
 
@@ -52,7 +51,7 @@ let TinyMCE = React.createClass({
     return (
       <div className="op-editor">
         <label>{this.props.label}</label>
-        <textarea className="source" rows="10">{this.state.value}</textarea>
+        <textarea className="source" rows="10" defaultValue={this.state.value}></textarea>
         <br/>
       </div>
     );

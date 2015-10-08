@@ -69,11 +69,25 @@ function onepager_get_edit_mode_url( $url, $mode ) {
   return $url->__toString();
 }
 
+function onepager_get_preview_url($url){
+  $url   = League\Url\Url::createFromUrl( $url );
+  $query = $url->getQuery();
+  $query->modify( array( 'onepager_preview' => 1, 'onepager'=>0 ) );
+
+  return $url->__toString();
+}
+
+
+if ( ! function_exists( 'op_asset' ) ) {
+  function op_asset( $path ) {
+    //TODO: replace this in future release
+    return onepager()->url( $path );
+  }
+}
 
 if ( ! function_exists( 'asset' ) ) {
   function asset( $path ) {
-    //TODO: replace this in future release
-    return onepager()->url( $path );
+    return op_asset( $path );
   }
 }
 

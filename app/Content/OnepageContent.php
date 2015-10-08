@@ -19,7 +19,7 @@ class OnepageContent {
 
     $this->setOnepageContentLoaded();
 
-    if($this->isBuildMode()){
+    if($this->isPreview()){
       return $this->getBuildModeContent();
     }
 
@@ -30,7 +30,7 @@ class OnepageContent {
 
 
   protected function getBuildModeContent() {
-    return '<div class="wrap"> <div id="onepager-mount"></div> </div>';
+    return '<div class="wrap"> <div id="onepager-preview"></div> </div>';
   }
 
   protected function getPageContent( $pageId ) {
@@ -50,8 +50,8 @@ class OnepageContent {
   /**
    * @return boolean
    */
-  protected function isBuildMode() {
-    return onepager()->content()->isBuildMode();
+  protected function isPreview() {
+    return onepager()->content()->isPreview();
   }
 
   /**

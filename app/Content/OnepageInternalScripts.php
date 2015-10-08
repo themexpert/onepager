@@ -6,13 +6,20 @@ class OnepageInternalScripts {
   }
 
   public function injectInternalScripts() {
-    if ( ! $this->isOnepage() ) {
+    if(!$this->isOnepage() || $this->isBuildMode()){
       return;
     }
 
     $pageId   = $this->getCurrentPageId();
     $sections = $this->getAllValidSectionsFromPageId( $pageId );
     $this->renderStylesFromSections( $sections );
+  }
+
+  /**
+   * @return mixed
+   */
+  protected function isBuildMode() {
+    return onepager()->content()->isBuildMode();
   }
 
   /**

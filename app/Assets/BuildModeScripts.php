@@ -6,25 +6,31 @@ class BuildModeScripts {
   use FormEngineScripts;
 
   public function __construct() {
-    add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ],  100 );
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ], 999 );
   }
 
   public function enqueueScripts() {
     if ( ! $this->isBuildMode() ) {
-      return false;
+      return;
     }
+
+    $this->resetWpScriptQueue();
+
+    /**
+     * Improve this
+     */
+    $this->enqueueDependency();
 
     $this->enqueueFormEngineScripts();
     $this->enqueueInitializerScript();
   }
 
   protected function enqueueInitializerScript() {
-    $pageId = $this->getCurrentPageId();
     $asset  = onepager()->asset();
+    $pageId = $this->getCurrentPageId();
     $data   = $this->localizeScriptData( $pageId );
 
-
-    $asset->script( 'onepager', asset( 'assets/app.bundle.js' ), [ 'jquery' ] );
+    $asset->script( 'onepager', op_asset( 'assets/onepager-builder.bundle.js' ), [ 'jquery' ] );
     $asset->localizeScript( 'onepager', $data, 'onepager' );
   }
 
@@ -87,5 +93,17 @@ class BuildModeScripts {
    */
   protected function getCurrentPageId() {
     return onepager()->content()->getCurrentPageId();
+  }
+
+  private function resetWpScriptQueue() {
+    wp_scripts()->queue = [ ];
+    wp_styles()->queue  = [ ];
+  }
+
+  private function enqueueDependency() {
+    $asset = onepager()->asset();
+    $asset->style( 'tx-bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
+    $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
+    $asset->style( 'tx-fontawesome', op_asset( 'assets/css/font-awesome.css' ) );
   }
 }

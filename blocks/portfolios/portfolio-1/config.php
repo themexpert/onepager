@@ -109,8 +109,8 @@ return array(
 
   'assets' => function( $path ){
      // Magnefic popup from Onepager assets dir
-    Onepager::addScript('magnific-popup', asset('assets/js/jquery.magnific-popup.js'), array( 'jquery' ));
-    Onepager::addStyle('magnific-popup', asset( 'assets/css/magnific-popup.css' ));
+    Onepager::addScript('magnific-popup', op_asset('assets/js/jquery.magnific-popup.js'), array( 'jquery' ));
+    Onepager::addStyle('magnific-popup', op_asset( 'assets/css/magnific-popup.css' ));
     // Local file
     Onepager::addStyle('portfolio-1', $path . '/style.css');
   }

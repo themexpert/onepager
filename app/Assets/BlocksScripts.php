@@ -1,13 +1,17 @@
 <?php namespace App\Assets;
 
+use ThemeXpert\FileSystem\FileSystem;
+
 class BlocksScripts {
   public function __construct() {
     add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
   }
 
   public function enqueue() {
-    if ( $this->isBuildMode() ) {
+    if ( $this->isPreview() ) {
       $this->enqueueAllBlocksScripts();
+    } else if($this->isBuildMode()){
+
     } else {
       $pageId   = $this->getCurrentPageId();
       $sections = $this->getAllValidSections( $pageId );
@@ -52,14 +56,17 @@ class BlocksScripts {
     }
 
     $blockUrl = $block['url'];
+
+    $this->enqueueBlockCss( $block, $blockUrl );
+
     $enqueueCb( $blockUrl );
   }
 
   /**
    * @return mixed
    */
-  protected function isBuildMode() {
-    return onepager()->content()->isBuildMode();
+  protected function isPreview() {
+    return onepager()->content()->isPreview();
   }
 
   /**
@@ -76,6 +83,33 @@ class BlocksScripts {
    */
   protected function getAllValidSections( $pageId ) {
     return onepager()->section()->getAllValid( $pageId );
+  }
+
+  private function isBuildMode() {
+    return onepager()->content()->isBuildMode();
+  }
+
+  /**
+   * @param $block
+   * @param $blockUrl
+   */
+  protected function enqueueBlockCss( $block, $blockUrl ) {
+    $blockCssFileOverride = locate_template('onepager/overrides/' . $block['slug'] . '/block.css');
+    $blockCssFileCore     = $block['dir'] . 'block.css';
+
+    if ( FileSystem::exists( $blockCssFileOverride ) ) {
+      $name = $block['slug'] . "-block";
+      $url  = get_template_directory_uri() . "/onepager/overrides/" . $block['slug'] . "/block.css";
+
+      onepager()->asset()->style( $name, $url );
+    } else {
+      if ( FileSystem::exists( $blockCssFileCore ) ) {
+        $name = $block['slug'] . "-block";
+        $url  = $blockUrl . "/block.css";
+
+        onepager()->asset()->style( $name, $url );
+      }
+    }
   }
 
 }
