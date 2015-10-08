@@ -39,7 +39,7 @@ class Application {
   }
 
   protected function enqueue_assets() {
-    new WpConflictResolver();
+//    new WpConflictResolver();
     new OnepageScripts();
     new BlocksScripts();
     new BuildModeScripts();
