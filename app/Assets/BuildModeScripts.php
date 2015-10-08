@@ -6,7 +6,10 @@ class BuildModeScripts {
   use FormEngineScripts;
 
   public function __construct() {
-    add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ], 999 );
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ], 999999);
+    add_action( 'wp_enqueue_scripts', function(){
+      onepager()->asset()->enqueue();
+    }, 1000000);
   }
 
   public function enqueueScripts() {
@@ -15,11 +18,6 @@ class BuildModeScripts {
     }
 
     $this->resetWpScriptQueue();
-
-    /**
-     * Improve this
-     */
-    $this->enqueueDependency();
 
     $this->enqueueFormEngineScripts();
     $this->enqueueInitializerScript();
@@ -64,6 +62,7 @@ class BuildModeScripts {
 
     return compact(
       'ajaxUrl',
+      'disableBuildModeUrl',
       'optionPanel',
       'options',
       'page',
@@ -75,7 +74,6 @@ class BuildModeScripts {
       'categories',
       'groupOrder',
       'footer',
-      'disableBuildModeUrl',
       'presets',
       'basePreset'
     );
@@ -100,10 +98,4 @@ class BuildModeScripts {
     wp_styles()->queue  = [ ];
   }
 
-  private function enqueueDependency() {
-    $asset = onepager()->asset();
-    $asset->style( 'tx-bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
-    $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
-    $asset->style( 'tx-fontawesome', op_asset( 'assets/css/font-awesome.css' ) );
-  }
 }

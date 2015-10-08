@@ -23,19 +23,19 @@ class Application {
     $this->inject_page_contents();
     $this->init_loaders();
 
-//    if(!$this->isCacheDirWritable()){
-//      add_action( 'admin_notices', [$this, 'cache_dir_notice'] );
-//    }
+    //    if(!$this->isCacheDirWritable()){
+    //      add_action( 'admin_notices', [$this, 'cache_dir_notice'] );
+    //    }
   }
 
-  public function cache_dir_notice(  ) {
-      ?>
-      <div class="error">
-        <p>'<?php echo ONEPAGER_CACHE_DIR ?>' is used to store compiled assets.
-          But its not writable by server.
-          Making it writable will increase the performance of your website</p>
-      </div>
-      <?php
+  public function cache_dir_notice() {
+    ?>
+    <div class="error">
+      <p>'<?php echo ONEPAGER_CACHE_DIR ?>' is used to store compiled assets.
+        But its not writable by server.
+        Making it writable will increase the performance of your website</p>
+    </div>
+    <?php
   }
 
   protected function enqueue_assets() {
@@ -45,7 +45,7 @@ class Application {
     new BuildModeScripts();
     new PreviewScripts();
 
-    add_action( 'wp_enqueue_scripts', [ $this, 'compile_assets' ], 1000);
+    add_action( 'wp_enqueue_scripts', [ $this, 'compile_assets' ], 1000 );
   }
 
   public function compile_assets() {
@@ -102,14 +102,14 @@ class Application {
       false : ! $this->isDebugMode() && $this->isCacheDirWritable();
   }
 
-  private function isCacheDirWritable(){
-    return wp_is_writable(ONEPAGER_CACHE_DIR);
+  private function isCacheDirWritable() {
+    return wp_is_writable( ONEPAGER_CACHE_DIR );
   }
 
   /**
    * @return bool
    */
   private function isDebugMode() {
-    return (defined( 'ONEPAGER_DEBUG' ) && ONEPAGER_DEBUG) || \Onepager::getOption('onepager_debug', false);
+    return ( defined( 'ONEPAGER_DEBUG' ) && ONEPAGER_DEBUG ) || \Onepager::getOption( 'onepager_debug', false );
   }
 }

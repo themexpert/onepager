@@ -6,7 +6,7 @@ class OnepageInternalScripts {
   }
 
   public function injectInternalScripts() {
-    if(!$this->isOnepage() || $this->isBuildMode()){
+    if ( ! $this->isOnepage() || $this->isBuildMode() ) {
       return;
     }
 

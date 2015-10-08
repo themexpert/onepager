@@ -5,7 +5,7 @@ use App\Assets\Traits\FormEngineScripts;
 class OptionsPanelScripts {
   use FormEngineScripts;
 
-  public function enqueue(  ) {
+  public function enqueue() {
     $this->enqueueFormEngineScripts();
 
     $asset = onepager()->asset();

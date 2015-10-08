@@ -1,40 +1,39 @@
 <?php
 // this file should be in the theme
 Onepager::getOptionPanel()
-  ->tab( 'general', 'Generals' )
-  ->add(
-    array(
-      'name'   => 'section_title_size',
-      'label'  => 'Section Title Size',
-      'append' => 'px',
-      'value'  => '44',
-    ),
-    array( 'name' => 'favicon', 'type' => 'image' ),
-    array(
-      'name'        => 'google_analytics',
-      'type'        => 'textarea',
-      'label'       => 'Google Analytics',
-      'placeholder' => 'Paste your code here',
-    )
-  )
- ->tab( 'styles', 'Styles' )
- ->add(
-   array(
-     'name'    => 'color',
-     'type'    => 'colorpalette',
-     'presets' => 'default',
-     'value'   => array(
-       'primary'   => "#1565c0",
-       'secondary' => '#0a3d78',
-       'accent'    => '#E64A19',
-     ),
-   )
- )
- ->tab( 'advanced')
- ->add(
-   array('name'=>'onepager_debug', 'label'=>'Development Mode', 'type'=>'switch', 'value'=>false)
- )
-;
+        ->tab( 'general', 'Generals' )
+        ->add(
+          array(
+            'name'   => 'section_title_size',
+            'label'  => 'Section Title Size',
+            'append' => 'px',
+            'value'  => '44',
+          ),
+          array( 'name' => 'favicon', 'type' => 'image' ),
+          array(
+            'name'        => 'google_analytics',
+            'type'        => 'textarea',
+            'label'       => 'Google Analytics',
+            'placeholder' => 'Paste your code here',
+          )
+        )
+        ->tab( 'styles', 'Styles' )
+        ->add(
+          array(
+            'name'    => 'color',
+            'type'    => 'colorpalette',
+            'presets' => 'default',
+            'value'   => array(
+              'primary'   => "#1565c0",
+              'secondary' => '#0a3d78',
+              'accent'    => '#E64A19',
+            ),
+          )
+        )
+        ->tab( 'advanced' )
+        ->add(
+          array( 'name' => 'onepager_debug', 'label' => 'Development Mode', 'type' => 'switch', 'value' => false )
+        );
 
 // Onepager::basePreset( array(
 //   'primary'   => "#1565c0",
@@ -66,7 +65,7 @@ add_action( 'wp_head', function () { ?>
       });
     </script>
   <?php endif; ?>
-<?php }, 100);
+<?php }, 100 );
 
 
 if ( Onepager::getOption( 'full_screen' ) ) {

@@ -7,12 +7,12 @@ add_action( 'admin_enqueue_scripts', 'tx_onepager_metabox_scripts' );
 
 function tx_get_preset_groups_class( $groups ) {
   return implode( "", array_map( function ( $group ) {
-    return tx_get_preset_group_class($group);
+    return tx_get_preset_group_class( $group );
   }, $groups ) );
 }
 
-function tx_get_preset_group_class($group){
-  return "og-" . sanitize_title($group);
+function tx_get_preset_group_class( $group ) {
+  return "og-" . sanitize_title( $group );
 }
 
 function tx_add_onepager_metabox() {
@@ -22,11 +22,11 @@ function tx_add_onepager_metabox() {
       return array_merge( $carry, $layout['group'] );
     }, [ ] ) );
 
-    $sections = onepager()->section()->getAllValid( $post->ID );
+    $sections  = onepager()->section()->getAllValid( $post->ID );
     $editorUrl = onepager_get_edit_mode_url( get_permalink( $post->ID ), true );
 
-    echo View::getInstance()->make(__DIR__ . "/page-meta.php",
-      compact('onepagerLayouts','post', 'groups', 'sections', 'editorUrl'));
+    echo View::getInstance()->make( __DIR__ . "/page-meta.php",
+      compact( 'onepagerLayouts', 'post', 'groups', 'sections', 'editorUrl' ) );
   };
 
   add_meta_box(

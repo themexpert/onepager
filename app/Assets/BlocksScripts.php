@@ -10,7 +10,7 @@ class BlocksScripts {
   public function enqueue() {
     if ( $this->isPreview() ) {
       $this->enqueueAllBlocksScripts();
-    } else if($this->isBuildMode()){
+    } else if ( $this->isBuildMode() ) {
 
     } else {
       $pageId   = $this->getCurrentPageId();
@@ -94,7 +94,7 @@ class BlocksScripts {
    * @param $blockUrl
    */
   protected function enqueueBlockCss( $block, $blockUrl ) {
-    $blockCssFileOverride = locate_template('onepager/overrides/' . $block['slug'] . '/block.css');
+    $blockCssFileOverride = locate_template( 'onepager/overrides/' . $block['slug'] . '/block.css' );
     $blockCssFileCore     = $block['dir'] . 'block.css';
 
     if ( FileSystem::exists( $blockCssFileOverride ) ) {
