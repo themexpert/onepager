@@ -21,8 +21,8 @@ const Menu = React.createClass({
     let title = <div>{section.title}<span className='fa fa-caret-down pull-right'></span></div>;
 
     return (
-      <Panel header={title} eventKey={index}>
-        <AddToMenu index={index} menu={this.state.menu} title={section.title} id={section.id} />
+      <Panel key={section.key} header={title} eventKey={index}>
+        <AddToMenu index={index} menu={parseInt(this.state.menu)} title={section.title} id={section.id} />
       </Panel>
     );
   },
