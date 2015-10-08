@@ -48,9 +48,9 @@ class Asset implements AssetInterface {
   }
 
   public function enqueue() {
-      $this->enqueueStyles();
-      $this->enqueueScripts();
-      $this->enqueueLocalizations();
+    $this->enqueueStyles();
+    $this->enqueueScripts();
+    $this->enqueueLocalizations();
   }
 
   public function compileScriptsAndEnqueue($pageId){
