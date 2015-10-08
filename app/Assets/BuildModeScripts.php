@@ -6,7 +6,10 @@ class BuildModeScripts {
   use FormEngineScripts;
 
   public function __construct() {
-    add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ], 999 );
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ], 999999);
+    add_action( 'wp_enqueue_scripts', function(){
+      onepager()->asset()->enqueue();
+    }, 1000000);
   }
 
   public function enqueueScripts() {
