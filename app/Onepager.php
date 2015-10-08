@@ -21,6 +21,7 @@ abstract class Onepager {
   /**
    * Deprecated from 1.1.4
    * Will be removed in 1.2
+   *
    * @param string $folder
    */
   public static function registerBlocks( $folder = 'blocks' ) {
@@ -40,6 +41,7 @@ abstract class Onepager {
   /**
    * Deprecated from 1.1.4
    * Will be removed in 1.2
+   *
    * @param string $folder
    */
   public static function registerPresets( $folder = 'presets' ) {

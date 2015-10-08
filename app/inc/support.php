@@ -19,11 +19,11 @@ function get_editor_section_list_footer() {
   </a>';
 
 
-  return apply_filters('editor_section_list_footer', $footer);
+  return apply_filters( 'editor_section_list_footer', $footer );
 }
 
-add_filter('upload_mimes', function($mimes) {
+add_filter( 'upload_mimes', function ( $mimes ) {
   $mimes['svg'] = 'image/svg+xml';
 
   return $mimes;
-});
+} );

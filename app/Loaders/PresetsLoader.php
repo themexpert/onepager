@@ -19,7 +19,7 @@ class PresetsLoader {
   }
 
   public function themePresetsLoader() {
-    $groups = [$this->getCurrentThemePresetsGroup()];
+    $groups = [ $this->getCurrentThemePresetsGroup() ];
 
     $dir = ONEPAGER_THEME_PATH . "/presets";
     $url = ONEPAGER_THEME_URL . "/presets";
@@ -36,6 +36,7 @@ class PresetsLoader {
    */
   private function getCurrentThemePresetsGroup() {
     $currentTheme = wp_get_theme();
+
     return $currentTheme->get( 'Name' ) . " (theme)";
   }
 }

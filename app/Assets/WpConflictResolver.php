@@ -2,8 +2,8 @@
 
 class WpConflictResolver {
   public function __construct() {
-    add_action( 'wp_enqueue_scripts', [$this, 'dequeue_default_template_stylesheet'], 999 );
-    add_action( 'wp_print_scripts', [$this, 'dequeue_conflicting_scripts'], 100 );
+    add_action( 'wp_enqueue_scripts', [ $this, 'dequeue_default_template_stylesheet' ], 999 );
+    add_action( 'wp_print_scripts', [ $this, 'dequeue_conflicting_scripts' ], 100 );
   }
 
   public function dequeue_default_template_stylesheet() {

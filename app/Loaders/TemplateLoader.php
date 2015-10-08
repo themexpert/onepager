@@ -10,10 +10,10 @@ class TemplateLoader {
     $this->pageTemplateManager = $pageTemplateManager;
 
     add_action( 'wp_loaded', [ $this, 'loadOnepagerPageTemplates' ] );
-    add_filter( 'template_include', [$this, 'loadBuildModeTemplate'] );
+    add_filter( 'template_include', [ $this, 'loadBuildModeTemplate' ] );
   }
 
-  public function loadBuildModeTemplate($template) {
+  public function loadBuildModeTemplate( $template ) {
     if ( $this->isBuildMode() ) {
       return onepager()->path( "/app/templates/builder.php" );
     } else {

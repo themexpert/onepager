@@ -6,9 +6,9 @@ class PreviewScripts {
   }
 
   public function enqueue() {
-    $asset  = onepager()->asset();
+    $asset = onepager()->asset();
 
-    if ( !$this->isPreview() ) {
+    if ( ! $this->isPreview() ) {
       return;
     }
 

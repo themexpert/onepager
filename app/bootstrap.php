@@ -7,9 +7,9 @@ use ThemeXpert\Onepager\Onepager;
 function onepager() {
   static $onepager;
 
-  if (!$onepager) {
+  if ( ! $onepager ) {
     $onepager = new Onepager(
-      new WordPress(new Container, ONEPAGER_PATH, ONEPAGER_URL),
+      new WordPress( new Container, ONEPAGER_PATH, ONEPAGER_URL ),
       new Container
     );
   }
@@ -17,4 +17,4 @@ function onepager() {
   return $onepager;
 }
 
-new Application(onepager());
+new Application( onepager() );

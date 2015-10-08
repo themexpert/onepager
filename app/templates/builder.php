@@ -9,19 +9,21 @@
 
   <?php wp_head(); ?>
   <style>
-    body{
+    body {
       overflow: hidden;
     }
 
-    #onepager-builder{
+    #onepager-builder {
       width: 23%;
       float: left;
     }
-    #onepager-preview{
+
+    #onepager-preview {
       width: 77%;
       margin-left: 23%;
     }
-    #onepager-preview iframe{
+
+    #onepager-preview iframe {
       width: 100%;
       height: 100%;
     }
@@ -30,14 +32,14 @@
 
 <body>
 
-  <div id="onepager-builder"></div>
-  <div id="onepager-preview">
-    <iframe src="<?php echo onepager_get_preview_url(get_current_page_url()) ?>" frameborder="0"></iframe>
-  </div>
+<div id="onepager-builder"></div>
+<div id="onepager-preview">
+  <iframe src="<?php echo onepager_get_preview_url( get_current_page_url() ) ?>" frameborder="0"></iframe>
+</div>
 
-  <?php wp_footer(); ?>
-  <script>
-    jQuery("#onepager-preview").css("height", jQuery(window).height());
-  </script>
+<?php wp_footer(); ?>
+<script>
+  jQuery("#onepager-preview").css("height", jQuery(window).height());
+</script>
 </body>
 </html>

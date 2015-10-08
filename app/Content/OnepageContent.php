@@ -19,15 +19,14 @@ class OnepageContent {
 
     $this->setOnepageContentLoaded();
 
-    if($this->isPreview()){
+    if ( $this->isPreview() ) {
       return $this->getBuildModeContent();
     }
 
     $pageId = $this->getCurrentPageId();
 
-    return  $this->getPageContent( $pageId );
+    return $this->getPageContent( $pageId );
   }
-
 
   protected function getBuildModeContent() {
     return '<div class="wrap"> <div id="onepager-preview"></div> </div>';

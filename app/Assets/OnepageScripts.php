@@ -2,11 +2,11 @@
 
 class OnepageScripts {
   public function __construct() {
-    add_action( 'wp_enqueue_scripts', [$this, 'enqueueScripts']);
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ] );
   }
 
   public function enqueueScripts() {
-    if ( ! onepager()->content()->isOnepage() || onepager()->content()->isBuildMode()) {
+    if ( ! onepager()->content()->isOnepage() || onepager()->content()->isBuildMode() ) {
       return;
     }
 
@@ -14,7 +14,7 @@ class OnepageScripts {
     $this->enqueuePageScripts();
   }
 
-  protected function enqueuePageScripts(){
+  protected function enqueuePageScripts() {
     $asset = onepager()->asset();
 
     $asset->script( 'wow', op_asset( 'assets/js/wow.js' ), [ 'jquery' ] );
@@ -39,6 +39,6 @@ class OnepageScripts {
   }
 
   protected function shouldLoadTwitterBootstrap() {
-    return !defined( 'ONEPAGER_BOOTSTRAP' ) ? true : ONEPAGER_BOOTSTRAP;
+    return ! defined( 'ONEPAGER_BOOTSTRAP' ) ? true : ONEPAGER_BOOTSTRAP;
   }
 }

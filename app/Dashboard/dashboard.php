@@ -3,12 +3,11 @@
 //add_action('admin_menu', 'tx_add_dashboard_page');
 //add_action('admin_menu', 'tx_add_tutorials_page');
 //add_action('admin_menu', 'tx_rename_onepager_dashboard_submenu_name');
-add_action('admin_enqueue_scripts', 'tx_add_onepager_dashboard_scripts');
+add_action( 'admin_enqueue_scripts', 'tx_add_onepager_dashboard_scripts' );
 tx_add_onepager_options_page();
 
-function tx_add_dashboard_page()
-{
-  $icon = onepager()->url('assets/images/logo-white.png');
+function tx_add_dashboard_page() {
+  $icon = onepager()->url( 'assets/images/logo-white.png' );
 
   $template = function () {
     include __DIR__ . "/views/dashboard-page.php";
@@ -25,8 +24,7 @@ function tx_add_dashboard_page()
   );
 }
 
-function tx_add_tutorials_page()
-{
+function tx_add_tutorials_page() {
   $template = function () {
     include __DIR__ . "/views/tutorial-page.php";
   };
@@ -41,11 +39,10 @@ function tx_add_tutorials_page()
   );
 }
 
-function tx_add_onepager_options_page()
-{
-  $icon = onepager()->url('assets/images/logo-white.png');
+function tx_add_onepager_options_page() {
+  $icon = onepager()->url( 'assets/images/logo-white.png' );
 
-  onepager()->optionsPanel("onepager")->addMenuPage(
+  onepager()->optionsPanel( "onepager" )->addMenuPage(
     "Onepager Global Options",
     "Global Options",
     $icon,
@@ -53,16 +50,15 @@ function tx_add_onepager_options_page()
   );
 }
 
-function tx_rename_onepager_dashboard_submenu_name(){
-    global $submenu;
+function tx_rename_onepager_dashboard_submenu_name() {
+  global $submenu;
 
-    //rename onepager to dashboard in menu
-    $submenu['onepager-dashboard'][0][0] = __('Dashboard', 'onepager');
+  //rename onepager to dashboard in menu
+  $submenu['onepager-dashboard'][0][0] = __( 'Dashboard', 'onepager' );
 }
 
-function tx_add_onepager_dashboard_scripts()
-{
+function tx_add_onepager_dashboard_scripts() {
   //add builder.css so icons and other stuff styles
-  wp_enqueue_style("lithium-builder", op_asset("assets/css/lithium-builder.css"));
+  wp_enqueue_style( "lithium-builder", op_asset( "assets/css/lithium-builder.css" ) );
 
 }
