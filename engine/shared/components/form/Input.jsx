@@ -14,6 +14,8 @@ const TinyMCE = require('./editor/TinyMCE.jsx');
 const PureMixin = require('../../mixins/PureMixin.js');
 const Activity = require('../../lib/Activity.js');
 
+import './input.less';
+
 let inactive = Activity(100); //jshint ignore:line
 
 let InputControl = React.createClass({
@@ -154,7 +156,7 @@ let InputControl = React.createClass({
                  onChange={this.onChange}/>;
     }
 
-    let classes = this.props.hidden ? "hidden" : "";
+    let classes = this.props.hidden ? "hidden" : control.type+'-control';
     return (
       <div className={classes}>{controlHtml}</div>
     );
