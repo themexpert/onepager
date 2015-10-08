@@ -1,8 +1,13 @@
 ## Onepager [![Join the chat at https://gitter.im/themexpert/onepager](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/themexpert/onepager)
 Download - (http://getonepager.com/#download)
 
-##Official Documentation
-Documentation for the plugin can be found [here](https://github.com/themexpert/onepager/wiki).
+
+## Where to Get Help
+
+A chat room has been set up using [Gitter](https://gitter.im/themexpert/onepager) where you can go to talk about the project with developers, contributors, and other members of the community. This is the best place to go to get quick tips and discuss features with others.
+
+[Documentation](https://github.com/themexpert/onepager/wiki) is also available, and being continually added to as development progresses.
+
 
 ## Requirements
 * PHP 5.4+
@@ -33,12 +38,6 @@ gulp
 Gulp will automatically compile your `LESS` and `JS` changes into `dist` folder.
 
 You can run `gulp package` to build a wordpress plugin package with only required files
-
-## Where to Get Help
-
-A chat room has been set up using [Gitter](https://gitter.im/themexpert/onepager) where you can go to talk about the project with developers, contributors, and other members of the community. This is the best place to go to get quick tips and discuss features with others.
-
-[Documentation](http://docs.getonepager.com) is also available, and being continually added to as development progresses.
 
 ## How to Contribute
 
