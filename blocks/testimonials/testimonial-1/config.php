@@ -41,6 +41,11 @@ return array(
       'value' => '@section_title_size'
     ),
     array(
+      'name' => 'interval',
+      'label' => 'Slider Interval',
+      'value' => 3
+    ),
+    array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
