@@ -82,6 +82,8 @@ class SectionsApiController extends ApiController {
     $blockScripts->enqueueSectionBlocks( $sections );
     $onepageScripts->enqueueScripts();
 
-    onepager()->asset()->compilePageAssets( $pageId );
+    if(wp_is_writable( ONEPAGER_CACHE_DIR )){
+      onepager()->asset()->compilePageAssets( $pageId );
+    }
   }
 }
