@@ -40,6 +40,10 @@
 <?php wp_footer(); ?>
 <script>
   jQuery("#onepager-preview").css("height", jQuery(window).height());
+
+  jQuery(window).on("resize", function(){
+    jQuery("#onepager-preview").css("height", jQuery(window).height());
+  });
 </script>
 </body>
 </html>
