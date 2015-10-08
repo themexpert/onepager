@@ -8,7 +8,7 @@
 */
 .header-2 .navbar.affix{ border: 0; top: 0; }
 
-/* 
+/*
   Navbar Button
 */
 
@@ -18,12 +18,17 @@
 .header-2 .carousel{ padding: 4em 0; }
 .header-2 .carousel-caption { position: relative; text-align: center; }
 
+/*logo*/
+.header-2 .navbar-brand > img {
+  max-height: 50px;
+}
+
 /*Title + Desc*/
 .header-2 .title { font-size: 1.8em; font-weight: bold; text-shadow: 0px 1px 2px #222; color: #fff; }
 .header-2 .desc { font-size: 1em; margin: 1em 0; color: #C8C8C8; }
 
 /*Button*/
-.header-2 .btn { 
+.header-2 .btn {
 	margin : 1em 0;
 	border : 0; border-radius: 0;
 }
@@ -39,7 +44,7 @@
 
 @media (min-width: 768px){
 	.pad-right-big{ padding-right: 60px; }
-	
+
 	.header-2 { padding-top: 20px; }
 
 	.header-2 .carousel-caption { text-align: left; }
