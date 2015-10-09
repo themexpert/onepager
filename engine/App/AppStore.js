@@ -16,6 +16,11 @@ import toolbelt from '../shared/lib/toolbelt.js';
 import storage from '../shared/lib/storage.js';
 import localState from './../shared/onepager/localState.js';
 
+let serializeSections = SectionTransformer.serializeSections;
+let unserializeSections = SectionTransformer.unserializeSections;
+let stripClassesFromHTML = SectionTransformer.stripClassesFromHTML;
+let replaceSectionStyleInDOM = SectionTransformer.replaceSectionStyleInDOM;
+
 // data storage
 let _blocks = ODataStore.blocks.sort(function(a, b){
   return +(a.slug > b.slug) || +(a.slug === b.slug) - 1;
@@ -95,11 +100,11 @@ function duplicateSection(index) {
 
 // function to remove section
 function removeSectionStyle(id) {
-  jQuery("#onepager-preview iframe").contents().find(`#style-${id}`).remove();
+  $("#onepager-preview iframe").contents().find(`#style-${id}`).remove();
 }
 
 function replaceSectionStyle(id, style) {
-  let $preview = jQuery("#onepager-preview iframe").contents();
+  let $preview = $("#onepager-preview iframe").contents();
   $preview.find(`#style-${id}`).remove();
   $preview.find("head").append(style);
 }
@@ -144,8 +149,31 @@ function sectionSynced(index, res) {
   _sections[index] = toolbelt.copy(_sections[index]);
   section = _sections[index];
 
-  section.content = SectionTransformer.stripClassesFromHTML(section.livemode, res.content);
+  section.content = stripClassesFromHTML(section.livemode, res.content);
   replaceSectionStyle(section.id, res.style);
+}
+
+
+function updateSections(sections){
+  let blocks = ODataStore.blocks;
+
+  _sections = unserializeSections(sections, blocks);
+  _sections.map(function(section){
+    replaceSectionStyleInDOM(section.id, section.style);
+  });
+}
+
+function editSection(index){
+  setActiveSection(index);
+  AppStore.setTabState({active: 'op-contents'});
+}
+
+function reloadSections(){
+  liveService.reloadSections(serializeSections(_sections));
+}
+
+function refreshSections(){
+  liveService.reloadSections(action.sections);
 }
 
 let dispatcherIndex = AppDispatcher.register(function (payload) {
@@ -159,9 +187,7 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
       break;
 
     case actions.EDIT_SECTION:
-      //FIXME: its not a place for business logic
-      setActiveSection(action.index);
-      AppStore.setTabState({active: 'op-contents'});
+      editSection(action.index);
       AppStore.emitChange();
       break;
 
@@ -197,19 +223,15 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
 
     ///maybe do not need it
     case actions.RELOAD_SECTIONS:
-      liveService.reloadSections(SectionTransformer.serializeSections(_sections));
+      reloadSections();
       break;
 
     case actions.REFRESH_SECTIONS:
-      liveService.reloadSections(action.sections);
+      refreshSections();
       break;
 
     case actions.UPDATE_SECTIONS:
-      //FIXME: its not a place for business logic
-      _sections = SectionTransformer.unserializeSections(action.sections, ODataStore.blocks);
-      _sections.map(function(section){
-        SectionTransformer.replaceSectionStyleInDOM(section.id, section.style);
-      });
+      updateSections(action.sections);
       AppStore.emitChange();
       break;
 
@@ -217,7 +239,6 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
       updateTitle(action.index, action.previousTitle, action.newTitle);
       AppStore.emitChange();
       break;
-    // add more cases for other actionTypes...
   }
 });
 
