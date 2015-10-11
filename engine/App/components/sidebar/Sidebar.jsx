@@ -6,7 +6,7 @@ const TabPane = require('../../../shared/components/TabPane.jsx');
 const OptionActions = require('../../../Optionspanel/OptionActions.js');
 const SectionTransformer = require('../../../shared/onepager/sectionTransformer.js');
 const ODataStore = require('../../../shared/onepager/ODataStore.js');
-const AppActions = require('../../AppActions.js');
+const AppActions = require('../../flux/AppActions.js');
 const AppStore = require('../../AppStore.js');
 const SectionList = require('../section-list/SectionList.jsx');
 const SectionControls = require('./SectionControls.jsx');
@@ -61,6 +61,7 @@ let Sidebar = React.createClass({
       .triggerPromise(serializedSections, (sections)=> {
         AppStore.reloadBlocks().then(function(){
           if(isSectionsDirty === AppStore.isDirty()){
+            console.debug('==========i am called');
             AppStore.setSectionsAsSavedSections();
           }
         });

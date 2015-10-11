@@ -4,7 +4,7 @@ const SortableMixin = require('sortablejs/react-sortable-mixin');
 const Button = require('react-bootstrap/lib/Button');
 const SectionLi = require('./Section.jsx');
 const AppStore = require('../../AppStore.js');
-const AppActions = require('../../AppActions.js');
+const AppActions = require('../../flux/AppActions.js');
 //const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 
 import toolbelt from '../../../shared/lib/toolbelt.js';

@@ -1,6 +1,6 @@
 const React = require('react');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
-const AppActions = require('../../AppActions.js');
+const AppActions = require('../../flux/AppActions.js');
 const AppStore = require('../../AppStore.js');
 
 import notify from '../../../shared/plugins/notify';

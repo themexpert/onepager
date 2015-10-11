@@ -10,7 +10,7 @@ const OptionsPanelActions = require('./OptionActions.js');
 
 let Content = React.createClass({
   //FIXME: puremixin causing problem
-//  mixins: [PureMixin],
+  mixins: [PureMixin],
 
   getDefaultProps(){
     return {
@@ -19,7 +19,8 @@ let Content = React.createClass({
   },
 
   propTypes: {
-    whenSettingsDirty: React.PropTypes.func
+    whenSettingsDirty: React.PropTypes.func,
+    panel: React.PropTypes.object //Immutable
   },
 
   update(){
@@ -43,13 +44,11 @@ let Content = React.createClass({
     });
 
     OptionsPanelActions.update([this.props.index, 'fields'], controls);
-
     this.props.whenSettingsDirty();
   },
 
   render(){
     console.log("rendering Content");
-
     let controls = this.props.panel.get('fields');
 
     let controlsHtml = controls.map((control, ii)=> {

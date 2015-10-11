@@ -12,4 +12,4 @@ require("./shared/onepager/lib/_mixins");
 React.render(<App />, document.getElementById('onepager-builder'));
 
 window.AppStore = require('./App/AppStore');
-window.AppActions = require('./App/AppActions');
+window.AppActions = require('./App/flux/AppActions');
