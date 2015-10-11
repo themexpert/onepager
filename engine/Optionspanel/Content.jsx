@@ -9,7 +9,6 @@ const OptionsPanelActions = require('./OptionActions.js');
 
 
 let Content = React.createClass({
-  //FIXME: puremixin causing problem
   mixins: [PureMixin],
 
   getDefaultProps(){
