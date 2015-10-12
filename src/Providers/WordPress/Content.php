@@ -79,7 +79,11 @@ class Content implements ContentInterface {
       $pageId = $this->getCurrentPageId();
     }
 
-    return $this->isOnepagerByTemplate( $pageId ) || $this->isOnepagerByMeta();
+    if(array_key_exists('s', $_GET)) return false;
+
+    $isOnepage = $this->isOnepagerByTemplate( $pageId ) || $this->isOnepagerByMeta();
+
+    return $isOnepage;
   }
 
   public function getCurrentPageId() {
