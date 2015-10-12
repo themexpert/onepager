@@ -44,6 +44,31 @@ Installing the plugins is just like installing other WordPress plugins.
 
 
 == Changelog ==
+
+= 1.2.0 =
+- Lots of documentation added.
+- Instagram icon for social profiles
+- Portfolio slider timeout
+- Page Preview UX improvement
+- Block List UX improvement
+- Notification when added a new block
+- Header block logo responsive
+- Onepager conflict with themes plugins
+- Block css override feature
+- Shortcode support in every block
+- Sections save ux improved
+- Global settings save ux improved
+- Assets cache improved
+- Increased notification Time
+- Colorpicker bugfix
+- Onepager breaking search results page
+- Drop-down lists within the builder
+- Preset is not loading if the name is less than 4 chars
+- Register new preset not working when disable preset code is on
+- Color presets : color change not saving
+- Radio changes not saved
+- setState bug on settings
+
 = 1.1.4 =
 - Preserve app state after reload feature
 - Fix after editor edit, save icon spins forever
