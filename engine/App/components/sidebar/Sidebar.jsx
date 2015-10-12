@@ -61,7 +61,6 @@ let Sidebar = React.createClass({
       .triggerPromise(serializedSections, (sections)=> {
         AppStore.reloadBlocks().then(function(){
           if(isSectionsDirty === AppStore.isDirty()){
-            console.debug('==========i am called');
             AppStore.setSectionsAsSavedSections();
           }
         });
