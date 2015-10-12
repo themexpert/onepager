@@ -55,3 +55,5 @@ require( ONEPAGER_PATH . '/app/Metabox/metabox.php' );
 add_action('wp_head', function(){
   echo "<meta type='page-builder' content='tx-onepager'>";
 });
+
+do_action('onepager_loaded');

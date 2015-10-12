@@ -45,13 +45,13 @@ class Content implements ContentInterface {
 
   public function isBuildMode() {
     $build = array_key_exists( 'onepager', $_GET ) ? (int) $_GET['onepager'] : 0;
-    return is_super_admin() && $this->isOnepage() && $build;
+    return $this->isPermitted() && $this->isOnepage() && $build;
   }
 
   public function isPreview() {
     $preview = array_key_exists( 'onepager_preview', $_GET ) ? (int) $_GET['onepager_preview'] : 0;
 
-    return is_super_admin() && $this->isOnepage() && $preview;
+    return $this->isPermitted() && $this->isOnepage() && $preview;
   }
 
   public function isOnepagerByTemplate( $pageId = null ) {
@@ -86,5 +86,9 @@ class Content implements ContentInterface {
     global $post;
 
     return $post && $post->ID ? $post->ID : null;
+  }
+
+  protected function isPermitted() {
+    return is_super_admin();
   }
 }

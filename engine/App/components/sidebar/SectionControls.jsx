@@ -130,7 +130,7 @@ let SectionControls = React.createClass({
     return (
       <div>
         <ul className="nav nav-pills">
-          {sectionSettings.contents.length ?
+          {sectionSettings.contents.length && (sectionSettings.settings.length !== 0 || sectionSettings.styles.length!== 0) ?
             <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab}/> : null}
           {sectionSettings.settings.length ?
             <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab}/> : null}
