@@ -14,10 +14,9 @@ class OnepageScripts {
     $this->enqueuePageScripts();
   }
 
-  protected function enqueuePageScripts() {
+  public function enqueuePageScripts() {
     $asset = onepager()->asset();
 
-    $asset->script( 'wow', op_asset( 'assets/js/wow.js' ), [ 'jquery' ] );
     $asset->script( 'lithium', op_asset( 'assets/lithium.js' ), [ 'jquery' ] );
     $asset->style( 'lithium', op_asset( 'assets/css/lithium.css' ) );
 
@@ -29,13 +28,15 @@ class OnepageScripts {
   public function enqueueCommonScripts() {
     $asset = onepager()->asset();
 
+    $asset->script( 'tx-wow', op_asset( 'assets/js/wow.js' ), [ 'jquery' ] );
+
     if ( $this->shouldLoadTwitterBootstrap() ) {
-      $asset->style( 'bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
-      $asset->script( 'bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
+      $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
+      $asset->style( 'tx-bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
     }
 
-    $asset->style( 'animatecss', op_asset( 'assets/css/animate.css' ) );
-    $asset->style( 'fontawesome', op_asset( 'assets/css/font-awesome.css' ) );
+    $asset->style( 'tx-animate', op_asset( 'assets/css/animate.css' ) );
+    $asset->style( 'tx-fontawesome', op_asset( 'assets/css/font-awesome.css' ) );
   }
 
   protected function shouldLoadTwitterBootstrap() {

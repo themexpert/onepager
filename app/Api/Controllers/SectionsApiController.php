@@ -12,10 +12,11 @@ class SectionsApiController extends ApiController {
     $sections = $this->filterInput( $sections );
 
     if ( $pageId ) {
+
       onepager()->section()->save( $pageId, $sections );
       $this->buildOnepageScripts( $sections, $pageId );
 
-      $this->responseSuccess();
+      $this->responseSuccess(['message'=>'compiled assets']);
     } else {
       $section  = array_get( $sections, $updated, false );
       $response = $this->prepareSectionWithContentAndStyle( $section );
@@ -79,8 +80,9 @@ class SectionsApiController extends ApiController {
     $blockScripts   = new BlocksScripts();
     $onepageScripts = new OnepageScripts();
 
+    $onepageScripts->enqueueCommonScripts();
+    $onepageScripts->enqueuePageScripts();
     $blockScripts->enqueueSectionBlocks( $sections );
-    $onepageScripts->enqueueScripts();
 
     if(wp_is_writable( ONEPAGER_CACHE_DIR )){
       onepager()->asset()->compilePageAssets( $pageId );

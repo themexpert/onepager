@@ -6,6 +6,7 @@ class WpConflictResolver {
   }
 
   public function dequeue_default_template_stylesheet() {
+
     if ( get_theme_support( 'onepager' ) ) {
       return;
     }
@@ -15,6 +16,7 @@ class WpConflictResolver {
     }
 
     global $wp_styles;
+
 
     $wp_styles->remove( get_default_template_stylesheet_handle() );
   }
