@@ -82,7 +82,14 @@ let App = React.createClass({
 
   render() {
     let { previewFrameLoaded } = this.state;
-    return previewFrameLoaded ? <Sidebar {...this.state}/> : <div className="app-loading">Loading</div>;
+    return previewFrameLoaded ?
+      <Sidebar {...this.state}/> :
+      <div className="app-loading">
+        <div className="loading-container">
+          <span className="fa fa-spinner fa-spin"></span><br />
+          <span className="title">Initializing Onepager</span>
+        </div>
+      </div>;
   }
 });
 
