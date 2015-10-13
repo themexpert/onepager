@@ -38,14 +38,6 @@ let App = React.createClass({
     this._addBuildClassToBody();
     this._bindPlugins();
 
-
-    setTimeout(()=>{
-      if(!this.state.previewFrameLoaded){
-        swal("Onepager will reload");
-        location.reload();
-      }
-    }, 2*60*1000); //2 minutes
-
     AppStore.addChangeListener(this._onChange);
   },
 
