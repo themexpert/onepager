@@ -57,9 +57,8 @@ class BlocksScripts {
 
     $blockUrl = $block['url'];
 
-    $this->enqueueBlockCss( $block, $blockUrl );
-
     $enqueueCb( $blockUrl );
+    $this->enqueueBlockCss( $block, $blockUrl );
   }
 
   /**

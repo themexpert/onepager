@@ -1,4 +1,5 @@
 import prepareSimpleControl from './prepareSimpleControl.js';
+import _ from 'underscore';
 
 function prepareMergedRepeatGroups(groups, serializedGroups) {
   return groups.map(function (group, index) {

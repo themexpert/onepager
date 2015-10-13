@@ -27,7 +27,6 @@ trait FormEngineScripts {
 
     $asset->style( 'tx-colorpicker', op_asset( "assets/css/bootstrap-colorpicker.css" ) );
 
-
     if ( is_super_admin() ) {
       $asset->style( 'tx-lithium-ui', op_asset( 'assets/css/lithium-builder.css' ) );
     }
