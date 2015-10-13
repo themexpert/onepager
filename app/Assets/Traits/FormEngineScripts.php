@@ -15,18 +15,18 @@ trait FormEngineScripts {
 
     // tx namespaced assets to avoid multiple assets loading from other ThemeXpert product
     $asset->style( 'tx-bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
-    $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
     $asset->style( 'tx-fontawesome', op_asset( 'assets/css/font-awesome.css' ) );
 
-    $asset->script( 'tx-bootstrap-switch', op_asset( 'assets/js/bootstrap-switch.js' ), [ 'jquery' ] );
-    $asset->script( 'tx-bootstrap-select', op_asset( 'assets/js/bootstrap-select.js' ), [ 'jquery' ] );
-    $asset->script( 'tx-iconselector', op_asset( 'assets/js/icon-selector-bootstrap.js' ), [ 'jquery' ] );
+    $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
+    $asset->script( 'tx-bootstrap-switch', op_asset( 'assets/js/bootstrap-switch.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
+    $asset->script( 'tx-bootstrap-select', op_asset( 'assets/js/bootstrap-select.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
+    $asset->script( 'tx-iconselector', op_asset( 'assets/js/icon-selector-bootstrap.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
+    $asset->script( 'tx-colorpicker', op_asset( 'assets/js/bootstrap-colorpicker.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
+    $asset->script( 'tx-nicescroll', op_asset( 'assets/js/jquery.nicescroll.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
+    $asset->script( 'tx-toastr', op_asset( 'assets/js/toastr.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
 
-    $asset->script( 'tx-colorpicker', op_asset( 'assets/js/bootstrap-colorpicker.js' ), [ 'jquery' ] );
     $asset->style( 'tx-colorpicker', op_asset( "assets/css/bootstrap-colorpicker.css" ) );
 
-    $asset->script( 'tx-nicescroll', op_asset( 'assets/js/jquery.nicescroll.js' ), [ 'jquery' ] );
-    $asset->script( 'tx-toastr', op_asset( 'assets/js/toastr.js' ), [ 'jquery' ] );
 
     if ( is_super_admin() ) {
       $asset->style( 'tx-lithium-ui', op_asset( 'assets/css/lithium-builder.css' ) );
