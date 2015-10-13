@@ -2,7 +2,7 @@
 Contributors: themexpert, nadimtuhin
 Donate link: http://getonepager.com
 Tags: page builder, builder, onepage builder, drag and drop, reactjs, bootstrap, fontAwesome, gulp, less, layout, grid, composer, webpack, bower, ui
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Requires at least: 4.2
 Tested up to: 4.3
 License: GPLv2 or later
@@ -45,8 +45,11 @@ Installing the plugins is just like installing other WordPress plugins.
 
 == Changelog ==
 
+= 1.2.2 =
+- Javascript Bugfix
+
 = 1.2.1 =
-- Composer autload load fix
+- Composer autoload load fix
 
 = 1.2.0 =
 - Lots of documentation added.
