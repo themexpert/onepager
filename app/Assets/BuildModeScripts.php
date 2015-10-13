@@ -31,7 +31,7 @@ class BuildModeScripts {
     $pageId = $this->getCurrentPageId();
     $data   = $this->localizeScriptData( $pageId );
 
-    $asset->script( 'onepager', op_asset( 'assets/onepager-builder.bundle.js' ), [ 'jquery' ], false );
+    $asset->script( 'onepager', op_asset( 'assets/onepager-builder.bundle.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
     $asset->localizeScript( 'onepager', $data, 'onepager' );
   }
 
