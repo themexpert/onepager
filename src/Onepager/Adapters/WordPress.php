@@ -1,7 +1,6 @@
 <?php
 namespace ThemeXpert\Onepager\Adapters;
 
-use ThemeXpert\Providers\WordPress\OptionsPanel;
 use ThemeXpert\Providers\WordPress\Api;
 use ThemeXpert\Providers\WordPress\Asset;
 use ThemeXpert\Providers\WordPress\Content;

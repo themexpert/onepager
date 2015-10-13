@@ -1,13 +1,13 @@
 const $ = jQuery; //jshint ignore: line
 const _ = require('underscore');
 const assign = require('object-assign');
-const AppDispatcher = require('./AppDispatcher.js');
-const Constants = require('./AppConstants.js');
+const AppDispatcher = require('./flux/AppDispatcher.js');
+const Constants = require('./flux/AppConstants.js');
 const SectionTransformer = require('./../shared/onepager/sectionTransformer.js');
 const ShouldSync = require('../shared/lib/ShouldSync.js');
 const Activity = require('../shared/lib/Activity.js');
 const ODataStore = require('./../shared/onepager/ODataStore.js');
-const BaseStore = require('./BaseStore.js');
+const BaseStore = require('./flux/BaseStore.js');
 const SyncService = require('./AppSyncService.js');
 
 require('./../shared/onepager/lib/_mixins.js');
@@ -16,21 +16,27 @@ import toolbelt from '../shared/lib/toolbelt.js';
 import storage from '../shared/lib/storage.js';
 import localState from './../shared/onepager/localState.js';
 
+let serializeSections = SectionTransformer.serializeSections;
+let unserializeSections = SectionTransformer.unserializeSections;
+let stripClassesFromHTML = SectionTransformer.stripClassesFromHTML;
+let replaceSectionStyleInDOM = SectionTransformer.replaceSectionStyleInDOM;
+
 // data storage
-let _blocks = ODataStore.blocks.sort(function(a, b){
+let _blocks = ODataStore.blocks.sort(function (a, b) {
   return +(a.slug > b.slug) || +(a.slug === b.slug) - 1;
 });
 
 let _sections = SectionTransformer.unserializeSections(ODataStore.sections, _blocks);
 let _menuState = {id: null, index: null, title: null};
-let _savedSections = _prepareForDirtyCheck(_sections);
+let _savedSections = getSerializedSectionsAsJSON(_sections);
 let AUTO_SAVE_DELAY = 500;
+let _previewFrameLoaded = false;
 
 let _collapseSidebar = localState.get('collapseSidebar', false);
 let _activeSectionIndex = _sections[localState.get('activeSectionIndex')] ? localState.get('activeSectionIndex') : null;
 let _sidebarTabState = _activeSectionIndex !== null ?
   localState.get('sidebarTabState', {active: 'op-sections'}) :
-  {active: 'op-sections'};
+{active: 'op-sections'};
 
 
 let shouldLiveSectionsSync = ShouldSync(_sections, 'sections');
@@ -43,7 +49,7 @@ function collapseSidebar(collapse) {
   _collapseSidebar = collapse;
 }
 
-function _prepareForDirtyCheck(section) {
+function getSerializedSectionsAsJSON(section) {
   return JSON.stringify(SectionTransformer.serializeSections(section));
 }
 
@@ -95,11 +101,11 @@ function duplicateSection(index) {
 
 // function to remove section
 function removeSectionStyle(id) {
-  jQuery("#onepager-preview iframe").contents().find(`#style-${id}`).remove();
+  $("#onepager-preview iframe").contents().find(`#style-${id}`).remove();
 }
 
 function replaceSectionStyle(id, style) {
-  let $preview = jQuery("#onepager-preview iframe").contents();
+  let $preview = $("#onepager-preview iframe").contents();
   $preview.find(`#style-${id}`).remove();
   $preview.find("head").append(style);
 }
@@ -107,6 +113,7 @@ function replaceSectionStyle(id, style) {
 
 function removeSection(index) {
   removeSectionStyle(_sections[index].id);
+
   //immutable please
   _sections.splice(index, 1);
 
@@ -144,9 +151,41 @@ function sectionSynced(index, res) {
   _sections[index] = toolbelt.copy(_sections[index]);
   section = _sections[index];
 
-  section.content = SectionTransformer.stripClassesFromHTML(section.livemode, res.content);
+  section.content = stripClassesFromHTML(section.livemode, res.content);
   replaceSectionStyle(section.id, res.style);
 }
+
+
+function updateSections(sections) {
+  let blocks = ODataStore.blocks;
+
+  _sections = unserializeSections(sections, blocks);
+  _sections.map(function (section) {
+    replaceSectionStyleInDOM(section.id, section.style);
+  });
+}
+
+function emitChange(){
+  AppStore.emitChange();
+}
+
+function editSection(index) {
+  setActiveSection(index);
+  AppStore.setTabState({active: 'op-contents'});
+}
+
+function reloadSections() {
+  liveService.reloadSections(serializeSections(_sections));
+}
+
+function refreshSections(sections) {
+  liveService.reloadSections(sections);
+}
+
+function setPreviewFrameLoaded(){
+  _previewFrameLoaded = true;
+}
+
 
 let dispatcherIndex = AppDispatcher.register(function (payload) {
   const actions = Constants.ActionTypes;
@@ -155,69 +194,67 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
   switch (action.type) {
     case actions.ADD_SECTION:
       addSection(action.section);
-      AppStore.emitChange();
+      emitChange();
       break;
 
     case actions.EDIT_SECTION:
-      //FIXME: its not a place for business logic
-      setActiveSection(action.index);
-      AppStore.setTabState({active: 'op-contents'});
-      AppStore.emitChange();
+      editSection(action.index);
+      emitChange();
       break;
 
     case actions.COLLAPSE_SIDEBAR:
       collapseSidebar(action.collapse);
-      AppStore.emitChange();
+      emitChange();
       break;
 
     case actions.ACTIVATE_SECTION:
       setActiveSection(action.index);
-      AppStore.emitChange();
+      emitChange();
       break;
 
     case actions.UPDATE_SECTION:
       updateSection(action.index, action.section);
-      AppStore.emitChange();
+      emitChange();
       break;
 
     case actions.REMOVE_SECTION:
       removeSection(action.index);
-      AppStore.emitChange();
+      emitChange();
       break;
 
     case actions.DUPLICATE_SECTION:
       duplicateSection(action.index);
-      AppStore.emitChange();
+      emitChange();
       break;
 
     case actions.SECTIONS_SYNCED:
       sectionSynced(action.index, action.res);
-      AppStore.emitChange();
+      emitChange();
       break;
 
     ///maybe do not need it
     case actions.RELOAD_SECTIONS:
-      liveService.reloadSections(SectionTransformer.serializeSections(_sections));
+      reloadSections();
       break;
 
     case actions.REFRESH_SECTIONS:
-      liveService.reloadSections(action.sections);
+      refreshSections(action.sections);
       break;
 
     case actions.UPDATE_SECTIONS:
-      //FIXME: its not a place for business logic
-      _sections = SectionTransformer.unserializeSections(action.sections, ODataStore.blocks);
-      _sections.map(function(section){
-        SectionTransformer.replaceSectionStyleInDOM(section.id, section.style);
-      });
-      AppStore.emitChange();
+      updateSections(action.sections);
+      emitChange();
       break;
 
     case actions.UPDATE_TITLE:
       updateTitle(action.index, action.previousTitle, action.newTitle);
-      AppStore.emitChange();
+      emitChange();
       break;
-    // add more cases for other actionTypes...
+
+    case actions.PREVIEW_FRAME_LOADED:
+      setPreviewFrameLoaded();
+      emitChange();
+      break;
   }
 });
 
@@ -234,27 +271,26 @@ let AppStore = assign({}, BaseStore, {
       activeSection: _sections[_activeSectionIndex],
       collapseSidebar: _collapseSidebar,
       sidebarTabState: _sidebarTabState,
-      activeSectionIndex: _activeSectionIndex
+      activeSectionIndex: _activeSectionIndex,
+      previewFrameLoaded: _previewFrameLoaded
     };
   },
 
   save(){
     let updated = syncService.rawUpdate(_sections);
 
-    updated.then(()=> {
-      _savedSections = _prepareForDirtyCheck(_sections);
-      AppStore.emitChange();
-    });
+    updated.then(this.setSectionsAsSavedSections);
 
     return updated;
   },
 
   isDirty(){
-    return _prepareForDirtyCheck(_sections) !== _savedSections;
+    return getSerializedSectionsAsJSON(_sections) !== _savedSections;
   },
 
   setSectionsAsSavedSections(){
-    _savedSections = _sections;
+    _savedSections = getSerializedSectionsAsJSON(_sections);
+    emitChange();
   },
 
   get(index){
@@ -267,17 +303,17 @@ let AppStore = assign({}, BaseStore, {
 
   setTabState(state){
     _sidebarTabState = state;
-    this.emitChange();
+    emitChange();
   },
 
   setSections(sections){
     _sections = sections;
-    this.emitChange();
+    emitChange();
   },
 
   setMenuState(id, title, index){
     _menuState = {id, title, index};
-    this.emitChange();
+    emitChange();
   },
 
   reorder(sections, index){
@@ -291,7 +327,7 @@ let AppStore = assign({}, BaseStore, {
     let reloadBlocksPromise = syncService.reloadBlocks();
     reloadBlocksPromise.then((blocks)=> {
       _blocks = blocks;
-      AppStore.emitChange();
+      emitChange();
     });
 
     return reloadBlocksPromise;

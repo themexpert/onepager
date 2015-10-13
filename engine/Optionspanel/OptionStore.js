@@ -62,13 +62,19 @@ let OptionsPanelStore = Reflux.createStore({
 
   onUpdate(keyPath, data){
     this.data.optionPanel = this.data.optionPanel.setIn(keyPath, data);
-    this.trigger();
+    this.trigger({optionPanel: this.data.optionPanel});
   },
 
 
   onIsDirty(){
     let dirty = !Immutable.is(this.data.synced, this.data.optionPanel);
     OptionActions.isDirty.completed(dirty);
+  },
+
+  setSyncedOptions() {
+    this.data.synced = fromJS(this.data.optionPanel.toJS());
+    this.trigger({synced: this.data.synced});
+    notify.success('Successfully saved settings');
   },
 
   onSyncWithSections(sections, callback){
@@ -78,13 +84,9 @@ let OptionsPanelStore = Reflux.createStore({
     //FIXME: move this to UI
     update.then((res)=> {
       callback(res.sections);
-      notify.success('Successfully saved settings');
-      this.data.synced = fromJS(this.data.optionPanel.toJS());
-      this.trigger();
+      this.setSyncedOptions();
       OptionActions.syncWithSections.completed();
-    }, ()=> {
-      OptionActions.syncWithSections.failed();
-    });
+    }, OptionActions.syncWithSections.failed);
   },
 
   onSync(){
@@ -93,13 +95,9 @@ let OptionsPanelStore = Reflux.createStore({
 
     //FIXME: move this to UI
     update.then(()=> {
-      notify.success('Successfully saved settings');
-      this.data.synced = fromJS(this.data.optionPanel.toJS());
-      this.trigger();
+      this.setSyncedOptions();
       OptionActions.sync.completed();
-    }, ()=> {
-      OptionActions.sync.failed();
-    });
+    }, OptionActions.sync.failed);
   },
 
   _prepareOptionsForSync(){

@@ -7,7 +7,7 @@ const Input = require("../../../../shared/components/form/Input.jsx");
 const ODataStore = require("../../../../shared/onepager/ODataStore.js");
 const notify = require("../../../../shared/plugins/notify.js");
 const AppStore = require("../../../AppStore.js");
-const AppActions = require("../../../AppActions.js");
+const AppActions = require("../../../flux/AppActions.js");
 
 
 let AddToMenu = React.createClass({

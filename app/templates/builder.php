@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="profile" href="http://gmpg.org/xfn/11">
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-  <title><?php wp_title(); ?></title>
+  <title>Onepage builder - <?php wp_title(); ?></title>
 
   <?php wp_head(); ?>
   <style>
@@ -40,6 +40,10 @@
 <?php wp_footer(); ?>
 <script>
   jQuery("#onepager-preview").css("height", jQuery(window).height());
+
+  jQuery(window).on("resize", function(){
+    jQuery("#onepager-preview").css("height", jQuery(window).height());
+  });
 </script>
 </body>
 </html>

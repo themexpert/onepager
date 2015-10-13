@@ -3,7 +3,7 @@ import _ from 'underscore';
 import cx from 'classnames';
 
 import AppStore from './AppStore';
-import AppActions from './AppActions';
+import AppActions from './flux/AppActions';
 import Sidebar from './components/sidebar/Sidebar.jsx';
 import SectionViewCollection from './components/section-view/SectionViewCollection.jsx';
 
@@ -81,9 +81,15 @@ let App = React.createClass({
   },
 
   render() {
-    return (
-        <Sidebar {...this.state}/>
-    );
+    let { previewFrameLoaded } = this.state;
+    return previewFrameLoaded ?
+      <Sidebar {...this.state}/> :
+      <div className="app-loading">
+        <div className="loading-container">
+          <span className="fa fa-spinner fa-spin"></span><br />
+          <span className="title">Initializing Onepager</span>
+        </div>
+      </div>;
   }
 });
 

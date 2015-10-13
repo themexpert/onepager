@@ -3,6 +3,7 @@ import _ from 'underscore';
 import SectionViewCollection from './components/section-view/SectionViewCollection.jsx';
 
 let AppStore  = parent.AppStore;
+let AppActions  = parent.AppActions;
 
 let Preview = React.createClass({
   getInitialState() {
@@ -14,13 +15,13 @@ let Preview = React.createClass({
   },
 
   componentDidMount() {
+    AppActions.previewFrameLoaded();
     AppStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount() {
     AppStore.removeChangeListener(this._onChange);
   },
-
 
   render() {
     let {sections, activeSectionIndex} = this.state;

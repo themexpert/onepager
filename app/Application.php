@@ -49,6 +49,8 @@ class Application {
   }
 
   public function compile_assets() {
+    if(is_search()) return;
+    
     if ( $this->shouldCompileScripts() ) {
       $page_id = $this->getCurrentPageId();
       $this->onepager->asset()->compileScriptsAndEnqueue( $page_id );

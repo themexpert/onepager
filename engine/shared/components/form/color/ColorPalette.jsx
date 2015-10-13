@@ -40,7 +40,7 @@ const ColorPalette = React.createClass({
 
   propTypes: {
     "label": React.PropTypes.string,
-    "colors": React.PropTypes.array,
+    "colors": React.PropTypes.object,
     "onChange": React.PropTypes.func
   },
 
@@ -62,7 +62,11 @@ const ColorPalette = React.createClass({
     let active = null;
     //automatically hide the picker after inactivity
     inactive().then(
-      this.setState.bind(this, {active}),
+      ()=>{
+        if(this.isMounted()){
+          this.setState({active});
+        }
+      },
       (msg) => console.log(msg)
     );
   },

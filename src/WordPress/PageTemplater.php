@@ -69,7 +69,7 @@ class PageTemplater {
     global $post;
 
     //if its a 404 page then return default template
-    if ( is_404() ) {
+    if ( is_404() || is_search() ) {
       return $template;
     }
 

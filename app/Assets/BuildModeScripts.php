@@ -8,6 +8,9 @@ class BuildModeScripts {
   public function __construct() {
     add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ], 999999);
     add_action( 'wp_enqueue_scripts', function(){
+      if(!$this->isBuildMode()){
+        return;
+      }
       onepager()->asset()->enqueue();
     }, 1000000);
   }
@@ -28,7 +31,7 @@ class BuildModeScripts {
     $pageId = $this->getCurrentPageId();
     $data   = $this->localizeScriptData( $pageId );
 
-    $asset->script( 'onepager', op_asset( 'assets/onepager-builder.bundle.js' ), [ 'jquery' ] );
+    $asset->script( 'onepager', op_asset( 'assets/onepager-builder.bundle.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
     $asset->localizeScript( 'onepager', $data, 'onepager' );
   }
 

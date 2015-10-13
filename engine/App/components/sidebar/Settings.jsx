@@ -7,11 +7,12 @@ const Content           = require('../../../Optionspanel/Content.jsx');
 const Tabs              = require('../../../Optionspanel/Tabs.jsx');
 
 let Admin = React.createClass({
-  mixins: [PureMixin, Reflux.connect(OptionsPanelStore)],
+  mixins: [Reflux.connect(OptionsPanelStore)],
 
   propTypes: {
     whenSettingsDirty: React.PropTypes.func
   },
+
   componentDidMount: function() {
     this._bindPlugins();
   },
@@ -35,6 +36,7 @@ let Admin = React.createClass({
   },
   render(){
     console.log("rendering Admin");
+    let panel = this.state.optionPanel.get(this.state.activeTabIndex);
 
     return (
       <div>
@@ -42,10 +44,12 @@ let Admin = React.createClass({
           active={this.state.activeTabIndex}
           tabs={this.state.tabs}/>
 
-        <Content
-          whenSettingsDirty={this.props.whenSettingsDirty}
-          index={this.state.activeTabIndex}
-          panel={this.state.optionPanel.get(this.state.activeTabIndex)}/>
+        {!panel? null:
+          <Content
+            whenSettingsDirty={this.props.whenSettingsDirty}
+            index={this.state.activeTabIndex}
+            panel={panel}/>
+        }
       </div>
     );
   }

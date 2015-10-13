@@ -3,7 +3,7 @@ const $     = jQuery; //jshint ignore: line
 const notify             = require('./../shared/plugins/notify');
 const ODataStore         = require('./../shared/onepager/ODataStore');
 const SectionTransformer = require('./../shared/onepager/sectionTransformer');
-const AppActions         = require('./AppActions');
+const AppActions         = require('./flux/AppActions');
 
 function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
