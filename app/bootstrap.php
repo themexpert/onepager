@@ -18,3 +18,4 @@ function onepager() {
 }
 
 new Application( onepager() );
+do_action('onepager_init');
