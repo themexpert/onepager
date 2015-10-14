@@ -21,10 +21,13 @@ let {serializeSections, unserializeSections} = SectionTransformer;
 let {stripClassesFromHTML} = SectionTransformer;
 
 // data storage
-let _blocks = ODataStore.blocks.sort(function (a, b) {
-  return +(a.slug > b.slug) || +(a.slug === b.slug) - 1;
-});
+function sortBlocks(blocks){
+  return blocks.sort(function (a, b) {
+    return +(a.slug > b.slug) || +(a.slug === b.slug) - 1;
+  })
+}
 
+let _blocks = sortBlocks(ODataStore.blocks);
 let _sections = SectionTransformer.unserializeSections(ODataStore.sections, _blocks);
 let _menuState = {id: null, index: null, title: null};
 let _savedSections = getSerializedSectionsAsJSON(_sections);
@@ -35,7 +38,7 @@ let _collapseSidebar = localState.get('collapseSidebar', false);
 let _activeSectionIndex = _sections[localState.get('activeSectionIndex')] ? localState.get('activeSectionIndex') : null;
 let _sidebarTabState = _activeSectionIndex !== null ?
   localState.get('sidebarTabState', {active: 'op-sections'}) :
-{active: 'op-sections'};
+  {active: 'op-sections'};
 
 
 let shouldLiveSectionsSync = ShouldSync(_sections, 'sections');
@@ -61,6 +64,10 @@ function setActiveSection(index) {
   _activeSectionIndex = index;
 }
 
+function setPreviewFrameLoaded(){
+  _previewFrameLoaded = true;
+}
+
 // function to add a section
 function addSection(section) {
   let sectionIndex = _sections.length; //isn't it :p
@@ -71,15 +78,12 @@ function addSection(section) {
   setActiveSection(sectionIndex);
 
   liveService.updateSection(_sections, sectionIndex);
-
 }
 
 
 // function to update a section
 function updateSection(sectionIndex, section) {
-  //immutable please?
   _sections[sectionIndex] = section;
-
   liveService.updateSection(_sections, sectionIndex);
 }
 
@@ -100,27 +104,21 @@ function duplicateSection(index) {
 
 // function to remove section
 function removeSectionStyle(id) {
-  $("#onepager-preview iframe").contents().find(`#style-${id}`).remove();
+  let $preview = $("#onepager-preview iframe").contents();
+  $preview.find(`#style-${id}`).remove();
 }
 
 function replaceSectionStyle(id, style) {
   let $preview = $("#onepager-preview iframe").contents();
   $preview.find(`#style-${id}`).remove();
   $preview.find("head").append(style);
-
-  console.log(`section style of ${id} is replaced`);
 }
 
 
 function removeSection(index) {
   removeSectionStyle(_sections[index].id);
-
-  //immutable please
   _sections.splice(index, 1);
-
-  //bad pattern
-  liveService.rawUpdate(_sections);
-
+  liveService.rawUpdate(_sections); //bad pattern
   setActiveSection(null);
 }
 
@@ -156,16 +154,6 @@ function sectionSynced(index, res) {
   replaceSectionStyle(section.id, res.style);
 }
 
-
-function updateSections(sections) {
-  let blocks = ODataStore.blocks;
-
-  _sections = unserializeSections(sections, blocks);
-  _sections.map(function (section) {
-    replaceSectionStyle(section.id, section.style);
-  });
-}
-
 function emitChange(){
   AppStore.emitChange();
 }
@@ -175,22 +163,25 @@ function editSection(index) {
   AppStore.setTabState({active: 'op-contents'});
 }
 
-function reloadSections() {
-  liveService
-    .reloadSections(serializeSections(_sections))
-    .then(function(sections){
-      AppActions.updateSections(sections);
-    });
-}
-
-function refreshSections(sections) {
-  liveService.reloadSections(sections).then(function(updatedSections){
-    AppActions.updateSections(updatedSections);
+function updateSections(sections) {
+  _sections = unserializeSections(sections, _blocks);
+  _sections.map(function (section) {
+    replaceSectionStyle(section.id, section.style);
   });
 }
 
-function setPreviewFrameLoaded(){
-  _previewFrameLoaded = true;
+function reloadSections(sections) {
+  return liveService.reloadSections(sections).then(updateSections);
+}
+
+function reloadBlocks(){
+  //FIXME: its not a place for business logic
+  let reloadBlocksPromise = syncService.reloadBlocks();
+  reloadBlocksPromise.then((blocks)=> {
+    _blocks = sortBlocks(blocks);
+  });
+
+  return reloadBlocksPromise;
 }
 
 
@@ -241,11 +232,11 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
 
     ///maybe do not need it
     case actions.RELOAD_SECTIONS:
-      reloadSections();
+      reloadSections(serializeSections(_sections));
       break;
 
     case actions.REFRESH_SECTIONS:
-      refreshSections(action.sections);
+      reloadSections(action.sections);
       break;
 
     case actions.UPDATE_SECTIONS:
@@ -329,15 +320,15 @@ let AppStore = assign({}, BaseStore, {
     liveService.rawUpdate(_sections);
   },
 
-  reloadBlocks(){
-    //FIXME: its not a place for business logic
-    let reloadBlocksPromise = syncService.reloadBlocks();
-    reloadBlocksPromise.then((blocks)=> {
-      _blocks = blocks;
-      emitChange();
+  settingsChanged(sections, isSectionsDirty){
+    /** Horrible codes*/
+    reloadBlocks().then(function(){
+      reloadSections(sections).then(function(){
+        if(!isSectionsDirty){
+          AppStore.setSectionsAsSavedSections();
+        }
+      });
     });
-
-    return reloadBlocksPromise;
   },
 
   rawUpdate(){

@@ -59,12 +59,7 @@ let Sidebar = React.createClass({
 
     let updated = OptionActions.syncWithSections
       .triggerPromise(serializedSections, (sections)=> {
-        AppStore.reloadBlocks().then(function(){
-          if(isSectionsDirty === AppStore.isDirty()){
-            AppStore.setSectionsAsSavedSections();
-          }
-        });
-        AppActions.refreshSections(sections);
+        AppStore.settingsChanged(sections, isSectionsDirty);
       });
 
     this.setState({saving: true});
