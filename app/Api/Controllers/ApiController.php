@@ -36,6 +36,7 @@ class ApiController {
    * @return $this
    */
   protected function response( $data ) {
+    @header( 'Content-Type: application/json; charset=' . get_option( 'blog_charset' ) );
     $this->response->setContent( json_encode( $data ) );
     $this->response->headers->set( 'Content-Type', 'application/json' );
 
