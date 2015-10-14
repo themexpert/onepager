@@ -1,18 +1,17 @@
-<?php
-	$slide_num = 0;
-?>
+<?php $slide_num = 0; ?>
+
 <section id="<?php echo $id; ?>" class="op-section testimonials testimonial-1">
 	<?php if( $contents['title'] ): ?>
 		<h2 class="section-title text-center <?php echo $settings['title_transformation']?>"><?php echo $contents['title']?></h2>
 	<?php endif; ?>
 
-	<div id="slide-<?php echo $id ?>" class="carousel slide" data-ride="carousel">
+	<div id="slide-<?php echo $id ?>" data-interval=<?php echo (int) $settings['interval'] * 1000; ?> class="carousel slide" data-ride="carousel">
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
 
 			<?php foreach($contents['testimonials'] as $item): ?>
-			<div data-interval=<?php echo (int) $settings['interval'] * 1000; ?> class="item text-center <?php echo ($slide_num === 0) ? 'active' : ''?>">
+			<div class="item text-center <?php echo ($slide_num === 0) ? 'active' : ''?>">
 					<?php if($item['image']):?>
 					<figure>
 						<img src="<?php echo $item['image']?>" alt="<?php echo $item['name']?>">
