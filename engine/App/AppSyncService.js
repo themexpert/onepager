@@ -1,9 +1,10 @@
+const $     = jQuery;
 const async = require('async');
-const $     = jQuery; //jshint ignore: line
 const notify             = require('./../shared/plugins/notify');
 const ODataStore         = require('./../shared/onepager/ODataStore');
-const SectionTransformer = require('./../shared/onepager/sectionTransformer');
 const AppActions         = require('./flux/AppActions');
+
+import {serializeSections}  from './../shared/onepager/sectionTransformer';
 
 function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
@@ -12,7 +13,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
       pageId  : pageId,
       action  : 'onepager_save_sections',
       updated : sectionIndex,
-      sections: SectionTransformer.serializeSections(sections)
+      sections: serializeSections(sections)
     };
 
     let sync = function () {
@@ -46,7 +47,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
         pageId  : pageId,
         action  : 'onepager_save_sections',
         updated : null,
-        sections: SectionTransformer.serializeSections(sections)
+        sections: serializeSections(sections)
       };
 
       let sync = function () {
@@ -88,13 +89,11 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
           return reject('Unable to save. Make sure you are logged in'); //bad message
         }
 
-        AppActions.updateSections(res.sections);
-
         if (pageId) {
           notify.success('Page reloaded');
         }
 
-        return resolve();
+        return resolve(res.sections);
       });
 
     });

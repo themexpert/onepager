@@ -8,6 +8,7 @@ const ShouldSync = require('../shared/lib/ShouldSync.js');
 const Activity = require('../shared/lib/Activity.js');
 const ODataStore = require('./../shared/onepager/ODataStore.js');
 const BaseStore = require('./flux/BaseStore.js');
+const AppActions = require('./flux/AppActions.js');
 const SyncService = require('./AppSyncService.js');
 
 require('./../shared/onepager/lib/_mixins.js');
@@ -16,10 +17,8 @@ import toolbelt from '../shared/lib/toolbelt.js';
 import storage from '../shared/lib/storage.js';
 import localState from './../shared/onepager/localState.js';
 
-let serializeSections = SectionTransformer.serializeSections;
-let unserializeSections = SectionTransformer.unserializeSections;
-let stripClassesFromHTML = SectionTransformer.stripClassesFromHTML;
-let replaceSectionStyleInDOM = SectionTransformer.replaceSectionStyleInDOM;
+let {serializeSections, unserializeSections} = SectionTransformer;
+let {stripClassesFromHTML} = SectionTransformer;
 
 // data storage
 let _blocks = ODataStore.blocks.sort(function (a, b) {
@@ -50,7 +49,7 @@ function collapseSidebar(collapse) {
 }
 
 function getSerializedSectionsAsJSON(section) {
-  return JSON.stringify(SectionTransformer.serializeSections(section));
+  return JSON.stringify(serializeSections(section));
 }
 
 function getBlockBySlug(slug) {
@@ -108,6 +107,8 @@ function replaceSectionStyle(id, style) {
   let $preview = $("#onepager-preview iframe").contents();
   $preview.find(`#style-${id}`).remove();
   $preview.find("head").append(style);
+
+  console.log(`section style of ${id} is replaced`);
 }
 
 
@@ -161,7 +162,7 @@ function updateSections(sections) {
 
   _sections = unserializeSections(sections, blocks);
   _sections.map(function (section) {
-    replaceSectionStyleInDOM(section.id, section.style);
+    replaceSectionStyle(section.id, section.style);
   });
 }
 
@@ -175,11 +176,17 @@ function editSection(index) {
 }
 
 function reloadSections() {
-  liveService.reloadSections(serializeSections(_sections));
+  liveService
+    .reloadSections(serializeSections(_sections))
+    .then(function(sections){
+      AppActions.updateSections(sections);
+    });
 }
 
 function refreshSections(sections) {
-  liveService.reloadSections(sections);
+  liveService.reloadSections(sections).then(function(updatedSections){
+    AppActions.updateSections(updatedSections);
+  });
 }
 
 function setPreviewFrameLoaded(){
