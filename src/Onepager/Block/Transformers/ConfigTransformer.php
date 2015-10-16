@@ -47,7 +47,11 @@ class ConfigTransformer {
     $style_file = $dir . $this->get( $config, 'style', $default_style );
 
     //get the block image path
-    $image = trailingslashit( $url ) . $this->get( $config, 'image', $default_image );
+    if(file_exists(ONEPAGER_THEME_PATH."/overrides/".$slug."/block.jpg")){
+      $image = trailingslashit( ONEPAGER_THEME_URL ) ."/overrides/".$slug."/block.jpg";
+    } else {
+      $image = trailingslashit( $url ) . $this->get( $config, 'image', $default_image );
+    }
 
 
     //assets is a function
