@@ -4,7 +4,7 @@ use ThemeXpert\FileSystem\FileSystem as FS;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 
 class PresetManager {
-  protected $templates;
+  protected $templates = [];
   protected $paths = [];
   protected $ignoredGroups = array();
 
@@ -44,6 +44,8 @@ class PresetManager {
   }
 
   public function loadAll() {
+    $this->templates = [];
+
     foreach ( $this->paths as $path ) {
       $files = FS::files($path['path'], 'json');
 
