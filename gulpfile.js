@@ -136,6 +136,7 @@ gulp.task('build', function (cb) {
  * webpack section
  */
 gulp.task('webpack-production', gulpShell.task(['webpack  -p --color --progress']));
+gulp.task('webpack-development', gulpShell.task(['webpack --color --progress']));
 gulp.task('webpack-watch', gulpShell.task(['webpack  --watch --color --progress']));
 
 
@@ -143,7 +144,8 @@ gulp.task('webpack-watch', gulpShell.task(['webpack  --watch --color --progress'
  * Package build section
  */
 gulp.task('package-build', function (cb) {
-  return runSequence('build', 'webpack-production', cb);
+  var task = process.argv.indexOf('-dev') ? 'webpack-development':'webpack-production';
+  return runSequence('build', task, cb);
 });
 
 /**
@@ -168,12 +170,25 @@ function packager(name, files, root) {
   shell.exec('sudo find ' + tmpPath + ' -type d -exec chmod 755 {} \\;');
   shell.exec('sudo find ' + tmpPath + ' -type f -exec chmod 644 {} \\;');
 
+  var version = getOnepagerVersion();
+  replaceVersion(`${tmpPath}/readme.txt`, version);
+
   zipper(archiveName, tmpPath, name)
     .then(function () {
       wrench.rmdirSyncRecursive(tmpPath, true);
     });
 }
 
+function getOnepagerVersion(){
+  var p = fs.readFileSync('tx-onepager.php', 'utf-8');
+  return p.split("\n")[5].split(":")[1].trim();
+}
+
+function replaceVersion(file, version){
+  var readme = fs.readFileSync(file, `utf-8`);
+  readme = readme.replace("%version%", version);
+  fs.writeFileSync(file, readme);
+}
 
 function copier(root, dest, src) {
   function includePattern(f, p) {
