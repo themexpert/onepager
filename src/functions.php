@@ -8,8 +8,8 @@
 if ( ! function_exists( 'array_find_by' ) ) {
   function array_find_by( $collection, $key, $value ) {
     $foundKey = array_search( $value, array_column( $collection, $key ) );
-
-    return array_key_exists( $foundKey, $collection ) ? $collection[ $foundKey ] : null;
+    if(is_bool($foundKey)) return false;
+    return array_key_exists( $foundKey, $collection ) ? $collection[ $foundKey ] : false;
   }
 }
 
@@ -29,6 +29,7 @@ if ( ! function_exists( 'array_get' ) ) {
    * @return mixed
    */
   function array_get( $array, $key, $default=null ) {
+    if(!is_array($array)) return $default;
     return !is_bool($key) && array_key_exists( $key, $array ) ? $array[ $key ] : $default;
   }
 }

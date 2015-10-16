@@ -24,11 +24,15 @@ let {stripClassesFromHTML} = SectionTransformer;
 function sortBlocks(blocks){
   return blocks.sort(function (a, b) {
     return +(a.slug > b.slug) || +(a.slug === b.slug) - 1;
-  })
+  });
+}
+
+function transformSections(sections){
+  return SectionTransformer.unserializeSections(sections, _blocks);
 }
 
 let _blocks = sortBlocks(ODataStore.blocks);
-let _sections = SectionTransformer.unserializeSections(ODataStore.sections, _blocks);
+let _sections = transformSections(ODataStore.sections);
 let _menuState = {id: null, index: null, title: null};
 let _savedSections = getSerializedSectionsAsJSON(_sections);
 let AUTO_SAVE_DELAY = 500;
@@ -101,22 +105,7 @@ function duplicateSection(index) {
   setActiveSection(sectionIndex);
 }
 
-
-// function to remove section
-function removeSectionStyle(id) {
-  let $preview = $("#onepager-preview iframe").contents();
-  $preview.find(`#style-${id}`).remove();
-}
-
-function replaceSectionStyle(id, style) {
-  let $preview = $("#onepager-preview iframe").contents();
-  $preview.find(`#style-${id}`).remove();
-  $preview.find("head").append(style);
-}
-
-
 function removeSection(index) {
-  removeSectionStyle(_sections[index].id);
   _sections.splice(index, 1);
   liveService.rawUpdate(_sections); //bad pattern
   setActiveSection(null);
@@ -151,7 +140,7 @@ function sectionSynced(index, res) {
   section = _sections[index];
 
   section.content = stripClassesFromHTML(section.livemode, res.content);
-  replaceSectionStyle(section.id, res.style);
+  section.style = res.style;
 }
 
 function emitChange(){
@@ -165,9 +154,6 @@ function editSection(index) {
 
 function updateSections(sections) {
   _sections = unserializeSections(sections, _blocks);
-  _sections.map(function (section) {
-    replaceSectionStyle(section.id, section.style);
-  });
 }
 
 function reloadSections(sections) {
@@ -329,6 +315,11 @@ let AppStore = assign({}, BaseStore, {
         }
       });
     });
+  },
+
+  loadPreset(sections){
+    sections = transformSections(sections);
+    this.setSections(sections);
   },
 
   rawUpdate(){

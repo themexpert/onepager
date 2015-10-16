@@ -4,8 +4,8 @@ use ThemeXpert\FileSystem\FileSystem as FS;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 
 class PresetManager {
-  protected $templates;
-  protected $paths;
+  protected $templates = [];
+  protected $paths = [];
   protected $ignoredGroups = array();
 
   public function loadAllFromPath( $path, $url, $groups = array() ) {
@@ -29,18 +29,23 @@ class PresetManager {
       $config['group'] = [ ];
     }
 
+    if ( ! array_key_exists( 'id', $config ) ) {
+      $config['id'] = $filename;
+    }
+
     if ( ! is_array( $config['group'] ) ) {
       $config['group'] = (array) $config['group'];
     }
 
     $config['group'] = array_merge( $config['group'], (array) $groups );
 
-    $config['id'] = $filename;
 
     $this->templates[] = $config;
   }
 
   public function loadAll() {
+    $this->templates = [];
+
     foreach ( $this->paths as $path ) {
       $files = FS::files($path['path'], 'json');
 

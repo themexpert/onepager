@@ -5,6 +5,8 @@ var webpack = require('webpack');
 var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
 
+var isProduction = process.argv.indexOf('-p') !== -1;
+
 var common = {
   entry: {
     optionspanel: ['./engine/optionspanel.jsx'],
@@ -18,8 +20,6 @@ var common = {
   },
   module: {
     loaders: [
-      // { test: /\.jsx?$/, loader: "strip-loader?strip[]=console.log" },
-
       // The module to load. "babel" is short for "babel-loader"
       {test: /\.jsx?$/, loaders: ['babel?stage=1'], include: path.resolve(ROOT_PATH, 'engine')},
       // use ! to chain loaders
@@ -28,22 +28,26 @@ var common = {
       // inline base64 URLs for <=8k images, direct URLs for the rest
       {test: /\.(png|jpg)$/, loader: 'url?limit=10240'}
     ]
-  },
-  plugins: [
-//    new webpack.optimize.UglifyJsPlugin({
-//      compress: {
-//        warnings: false
-//      }
-//    }),
+  }
+};
+
+if(isProduction){
+  common.module.loaders.push({ test: /\.jsx?$/, loader: "strip-loader?strip[]=console.log" });
+  common.plugins = [
+   new webpack.optimize.UglifyJsPlugin({
+     compress: {
+       warnings: false
+     }
+   }),
     new webpack.DefinePlugin({
       'process.env': {
         // This has effect on the react lib size
-        // 'NODE_ENV': JSON.stringify('production'),
+        'NODE_ENV': JSON.stringify('production'),
       }
     }),
     new webpack.NoErrorsPlugin()
-  ]
-};
+  ];
+}
 
 module.exports = merge(common, {
 

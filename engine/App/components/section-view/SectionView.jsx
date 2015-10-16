@@ -2,40 +2,63 @@ const $ = jQuery; //jshint ignore:line
 const React      = require('react');
 const cx         = require('classnames');
 //const AppActions = require('../../AppActions.js');
-const PureMixin  = require('../../../shared/mixins/PureMixin.js');
 const scrollIntoView  = require('../../../shared/plugins/scrollview.js');
 
 let AppActions  = parent.AppActions;
 
+function removeSectionStyle(id) {
+  $(`#style-${id}`).remove();
+}
+
+function replaceSectionStyle(id, style) {
+  $(`#style-${id}`).remove();
+  $("head").append(style);
+}
+
 let Section = React.createClass({
-  mixins: [PureMixin],
+  shouldComponentUpdate(nextProps){
+    let equalProps = JSON.stringify(nextProps) === JSON.stringify(this.props);
+
+    return !equalProps;
+  },
 
   componentDidMount(){
     this.setSectionContent();
+    this.setSectionStyle();
   },
 
   componentDidUpdate(){
+    this.scrollIntoView();
+    this.setSectionContent();
+    this.setSectionStyle();
+  },
+
+  componentWillUnmount(){
+    let {id} = this.props.section;
+    removeSectionStyle(id);
+  },
+
+  setSectionContent(){
+    let {content} = this.props.section;
+    $(React.findDOMNode(this)).html(content);
+  },
+
+  setSectionStyle(){
+    let {id, style} = this.props.section;
+    replaceSectionStyle(id, style);
+  },
+
+  scrollIntoView(){
     if (!this.props.active) {
       return false;
     }
 
-    this.scrollIntoView();
-    this.setSectionContent();
-  },
-
-  setSectionContent(){
-    let content = this.props.section.content;
-
-    $(React.findDOMNode(this)).html(content);
-  },
-
-  scrollIntoView(){
     //TODO: find a way to scroll natively with animation
     // React.findDOMNode(this).scrollIntoView();
     // jQuery animation is costly cpu calculation
     // also need to optimize it at a later time when speed is crucial
     // TODO: SPEED
-    scrollIntoView(React.findDOMNode(this))
+    scrollIntoView(React.findDOMNode(this));
   },
 
   handleClick(){
