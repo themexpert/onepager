@@ -29,13 +29,16 @@ class PresetManager {
       $config['group'] = [ ];
     }
 
+    if ( ! array_key_exists( 'id', $config ) ) {
+      $config['id'] = $filename;
+    }
+
     if ( ! is_array( $config['group'] ) ) {
       $config['group'] = (array) $config['group'];
     }
 
     $config['group'] = array_merge( $config['group'], (array) $groups );
 
-    $config['id'] = $filename;
 
     $this->templates[] = $config;
   }
