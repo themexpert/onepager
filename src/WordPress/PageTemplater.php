@@ -18,7 +18,7 @@ class PageTemplater {
 
     // Add a filter to the template include to determine if the page has our
     // template assigned and return it's path
-    add_filter( 'template_include', array( $this, 'view_project_template' ) );
+    add_filter( 'template_include', array( $this, 'view_project_template' ), 999999 );
   }
 
   /**
