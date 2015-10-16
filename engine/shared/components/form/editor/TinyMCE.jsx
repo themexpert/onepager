@@ -1,5 +1,7 @@
 import PureMixin  from 'react/lib/ReactComponentWithPureRenderMixin';
 import React, {findDOMNode} from 'react';
+import _ from 'underscore';
+
 const $ = jQuery;
 
 import "./style.less";
