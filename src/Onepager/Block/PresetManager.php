@@ -5,7 +5,7 @@ use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 
 class PresetManager {
   protected $templates;
-  protected $paths;
+  protected $paths = [];
   protected $ignoredGroups = array();
 
   public function loadAllFromPath( $path, $url, $groups = array() ) {
