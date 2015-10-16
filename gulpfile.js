@@ -144,7 +144,7 @@ gulp.task('webpack-watch', gulpShell.task(['webpack  --watch --color --progress'
  * Package build section
  */
 gulp.task('package-build', function (cb) {
-  var task = process.argv.indexOf('-dev') ? 'webpack-development':'webpack-production';
+  var task = process.argv.indexOf('-dev') !== -1 ? 'webpack-development':'webpack-production';
   return runSequence('build', task, cb);
 });
 

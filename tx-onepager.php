@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
   die;
 }
 
-define( 'ONEPAGER_VERSION', '1.2.3' );
+define( 'ONEPAGER_VERSION', '1.2.3.3' );
 define( 'ONEPAGER_PHP_VERSION', '5.4' );
 
 define( 'ONEPAGER_URL', plugins_url( '', __FILE__ ) );
@@ -52,8 +52,10 @@ require( ONEPAGER_PATH . '/app/Api/routes.php' );
 require( ONEPAGER_PATH . '/app/OptionsPanel/settings.php' );
 require( ONEPAGER_PATH . '/app/Metabox/metabox.php' );
 
-add_action('wp_head', function(){
+
+add_action('wp_head', 'print_onepager_meta');
+function print_onepager_meta() {
   echo "<meta type='page-builder' content='tx-onepager'>";
-});
+}
 
 do_action('onepager_loaded');
