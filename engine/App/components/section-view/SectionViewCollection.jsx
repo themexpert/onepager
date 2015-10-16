@@ -33,10 +33,8 @@ let SectionViewCollection = React.createClass({
       <div>
         {
           sections.map((section, index)=> {
-            let active        = this.props.activeSectionIndex === index;
-            let simpleSection = _.pick(section, ['content', 'key']);
-
-            return <SectionView active={active} section={simpleSection} key={section.key} index={index}/>;
+            let active = this.props.activeSectionIndex === index;
+            return <SectionView active={active} section={section} key={section.key} index={index}/>;
           })
         }
       </div>
