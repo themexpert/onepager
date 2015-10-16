@@ -8,6 +8,4 @@ require("./shared/onepager/lib/_mixins");
 window.AppStore = require('./App/AppStore');
 window.AppActions = require('./App/flux/AppActions');
 
-jQuery(function(){
-  React.render(<App />, document.getElementById('onepager-builder'));
-});
+React.render(<App />, document.getElementById('onepager-builder'));
