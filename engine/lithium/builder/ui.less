@@ -745,26 +745,17 @@ body.op-sidebar-collapsed{
 
 
 .app-loading{
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  color: black;
-  background-color: rgba(255, 246, 246, 0.94);
+  position: fixed; z-index: 10;
+  width: 100%;height: 100%;
+  color: #fff;
+  #gradient > .directional(#7229A9, #D360E6, 135deg);
+  opacity: 0.94;
 
-  .loading-container{
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    top: 30%;
-
-    span.fa{
-      font-size: 15rem;
-    }
-
-    span.title{
-      font-size: 5rem;
-    }
+  .loader{
+    background: url(../images/loader.gif) no-repeat 0 0;
+    display: block;
+    width: 110px; height: 110px;
   }
+  .title{ font-size: 4rem; margin-top: 10px; }
 
 }
