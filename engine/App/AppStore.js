@@ -35,7 +35,7 @@ let _blocks = sortBlocks(ODataStore.blocks);
 let _sections = transformSections(ODataStore.sections);
 let _menuState = {id: null, index: null, title: null};
 let _savedSections = getSerializedSectionsAsJSON(_sections);
-let AUTO_SAVE_DELAY = 500;
+let AUTO_SAVE_DELAY = 150;
 let _previewFrameLoaded = false;
 
 let _collapseSidebar = localState.get('collapseSidebar', false);
