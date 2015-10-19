@@ -32,7 +32,12 @@
 
 <body>
 
-<div id="onepager-builder"></div>
+<div id="onepager-builder">
+  <div class="app-loading flex flex-middle flex-center flex-column">
+    <span class="loader"></span>
+    <span class="title">Initializing Onepager</span>
+  </div>;
+</div>
 <div id="onepager-preview">
   <iframe src="<?php echo onepager_get_preview_url( get_current_page_url() ) ?>" frameborder="0"></iframe>
 </div>
