@@ -174,8 +174,8 @@ function packager(name, files, root) {
   shell.exec('sudo find ' + tmpPath + ' -type d -exec chmod 755 {} \\;');
   shell.exec('sudo find ' + tmpPath + ' -type f -exec chmod 644 {} \\;');
 
-  //var version = getOnepagerVersion();
-  //replaceVersion(`${tmpPath}/readme.txt`, version);
+  var version = getOnepagerVersion();
+  replaceVersion(`${tmpPath}/readme.txt`, version);
 
   zipper(archiveName, tmpPath, name)
     .then(function () {
