@@ -7,9 +7,9 @@ class BlocksLoader {
 
   public function __construct( BlockManager $blockManager ) {
     $this->blockManager = $blockManager;
-    add_action( 'plugins_loaded', [ $this, 'loadOnepagerBlocks' ] );
-    add_action( 'after_setup_theme', [ $this, 'loadThemeBlocks' ] );
-    add_action( 'plugins_loaded', [ $this, 'setGroupOrder' ] );
+    add_action( 'init', [ $this, 'loadOnepagerBlocks' ] );
+    add_action( 'init', [ $this, 'loadThemeBlocks' ] );
+    add_action( 'init', [ $this, 'setGroupOrder' ] );
   }
 
   public function loadOnepagerBlocks() {
