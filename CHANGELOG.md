@@ -1,35 +1,67 @@
 # Change Log
 
-## [v1.2.0](https://github.com/themexpert/onepager/tree/v1.2.0) (2015-10-12)
-[Full Changelog](https://github.com/themexpert/onepager/compare/v1.1.4...v1.2.0)
+## [v1.2.3](https://github.com/themexpert/onepager/tree/v1.2.3) (2015-10-20)
+[Full Changelog](https://github.com/themexpert/onepager/compare/v1.2.2...v1.2.3)
 
-**Implemented enhancements and feature requests:**
+**Implemented enhancements:**
+- Sumome plugin support
+- Roots Sage Theme support
+- HTML5 starter Theme support
+- Builder loader improvement
+- Testimonial slider goes very fast [\#81](https://github.com/themexpert/onepager/issues/81)
+- Blocks image override feature from theme
+- Live update delay 150 milliseconds
+- Improved plugin developers experience paving the way of community contribution
+- Onepager can be loaded standalone from a theme now
 
-- Lots of documentation added.
-- Instagram icon for social profiles [\#82](https://github.com/themexpert/onepager/issues/82)
-- Portfolio slider timeout [\#81](https://github.com/themexpert/onepager/issues/81)
-- Page Preview UX improvement [\#79](https://github.com/themexpert/onepager/issues/79)
-- Block List UX improvement [\#74](https://github.com/themexpert/onepager/issues/74)
-- Notification when added a new block [\#72](https://github.com/themexpert/onepager/issues/72)
-- Header block logo responsive  [\#68](https://github.com/themexpert/onepager/issues/68)
-- Onepager conflict with themes plugins [\#20](https://github.com/themexpert/onepager/issues/20)
-- Block css override feature [\#87](https://github.com/themexpert/onepager/issues/87)
-- Shortcode support in every block [\#77](https://github.com/themexpert/onepager/issues/77)
-- Sections save ux improved
-- Global settings save ux improved
-- Assets cache improved [\#88](https://github.com/themexpert/onepager/issues/88)
-- Increased notification Time
 
 **Fixed bugs:**
 
-- Colorpicker bugfix [\#43](https://github.com/themexpert/onepager/issues/43)
+- Asks to save sections sometimes when settings is saved [\#100](https://github.com/themexpert/onepager/issues/100)
+- Editor doesn't open [\#95](https://github.com/themexpert/onepager/issues/95)
+- Preset manager bugfix
+
+**Closed issues:**
+
+- CONTACT FORM SHORTCODE [\#102](https://github.com/themexpert/onepager/issues/102)
+- Request for include a option to use with theme via functions php [\#101](https://github.com/themexpert/onepager/issues/101)
+- On global settings color preset change it does not effect on the preview [\#99](https://github.com/themexpert/onepager/issues/99)
+- Unable to log in [\#97](https://github.com/themexpert/onepager/issues/97)
+- OnePager support for Roots.io [\#96](https://github.com/themexpert/onepager/issues/96)
+
+
+## [v1.2.2](https://github.com/themexpert/onepager/tree/v1.2.2) (2015-10-13)
+[Full Changelog](https://github.com/themexpert/onepager/compare/v1.2.0...v1.2.2)
+
+## [v1.2.0](https://github.com/themexpert/onepager/tree/v1.2.0) (2015-10-13)
+[Full Changelog](https://github.com/themexpert/onepager/compare/v1.1.4...v1.2.0)
+
+**Implemented enhancements:**
+
+- add instagram icon for social profiles [\#82](https://github.com/themexpert/onepager/issues/82)
+- Do not open sidebar if its hidden if clicked on section view [\#79](https://github.com/themexpert/onepager/issues/79)
+- Block List name 'Theme' is confusing [\#74](https://github.com/themexpert/onepager/issues/74)
+- Give a notification when added a new block. [\#72](https://github.com/themexpert/onepager/issues/72)
+- Uploaded logo should be responsive  [\#68](https://github.com/themexpert/onepager/issues/68)
+- Colorpicker causing problem when the last item is colorpicker [\#43](https://github.com/themexpert/onepager/issues/43)
+- Builder style override by theme [\#20](https://github.com/themexpert/onepager/issues/20)
+
+**Fixed bugs:**
+
+- setState bug on settings if switch is pressed [\#89](https://github.com/themexpert/onepager/issues/89)
+- Assets cache problem [\#88](https://github.com/themexpert/onepager/issues/88)
 - Onepager breaking search results page [\#86](https://github.com/themexpert/onepager/issues/86)
 - Drop-down lists within the builder [\#83](https://github.com/themexpert/onepager/issues/83)
 - Preset is not loading if the name is less than 4 chars [\#80](https://github.com/themexpert/onepager/issues/80)
 - Register new preset not working when disable preset code is on [\#73](https://github.com/themexpert/onepager/issues/73)
 - Color presets : color change not saving [\#71](https://github.com/themexpert/onepager/issues/71)
+
+**Closed issues:**
+
+- style.css over write feature. [\#87](https://github.com/themexpert/onepager/issues/87)
 - Radio changes not saved [\#84](https://github.com/themexpert/onepager/issues/84)
-- setState bug on settings [\#89](https://github.com/themexpert/onepager/issues/89)
+- how can I post youtube video [\#77](https://github.com/themexpert/onepager/issues/77)
+- Testing Jira Integration [\#76](https://github.com/themexpert/onepager/issues/76)
 
 ## [v1.1.4](https://github.com/themexpert/onepager/tree/v1.1.4) (2015-09-15)
 [Full Changelog](https://github.com/themexpert/onepager/compare/v1.1.3...v1.1.4)

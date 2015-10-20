@@ -45,6 +45,22 @@ Installing the plugins is just like installing other WordPress plugins.
 
 == Changelog ==
 
+= 1.2.3 =
+- Sumome plugin support
+- Roots Sage Theme support
+- HTML5 starter Theme support
+- Builder loader improvement
+- Testimonial slider goes very fast
+- Blocks image override feature from theme
+- Live update delay 150 milliseconds
+- Improved plugin developers experience paving the way of community contribution
+- Onepager can be loaded standalone from a theme now
+- Asks to save sections sometimes when settings is saved [bugfix]
+- Editor not opening [bugfix]
+- Preset manager [bugfix]
+- Color preset [bugfix]
+- Unable to log in for some hosts [patch]
+
 = 1.2.2 =
 - Javascript Bugfix
 
