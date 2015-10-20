@@ -165,6 +165,31 @@ gulp.task('package', ['package-build'], function () {
   packager("tx-onepager", files, ROOT_PATH);
 });
 
+gulp.task('svn',
+// ['package'],
+function(){
+  var version = getOnepagerVersion().replace("v", "");
+  var svnDir = "~/Documents/wordpress.org/tx-onepager";
+  var init = [
+    `cp tx-onepager.zip ${svnDir}`,
+    `cd ${svnDir}`,
+    `unzip tx-onepager.zip`,
+    `rm -rf trunk/*`,
+    `mv tx-onepager/* trunk`,
+    `rm -rf tx-onepager.zip tx-onepager`,
+    `svn add * --force`,
+    `svn rm $( svn status | sed -e '/^!/!d' -e 's/^!//' )`
+  ]
+  var tag = [ `cd ${svnDir}`, `svn cp trunk tags/${version}`, `svn ci -m '${version} released'` ];
+
+  // console.log(commands);
+  // console.log(commands.join(" && "));
+  // return;
+
+  shell.exec(init.join(" && "));
+  shell.exec(tag.join(" && "));
+});
+
 function packager(name, files, root) {
   var tmpPath = ".op" + Math.ceil(Math.random() * 100).toString();
   var archiveName = name + ".zip";
