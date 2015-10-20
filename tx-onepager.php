@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if(!defined('ONEPAGER_VERSION')){
-  define( 'ONEPAGER_VERSION', '1.2.3.3' );
+  define( 'ONEPAGER_VERSION', '1.2.3.0' );
 }
 
 if(!defined('ONEPAGER_PHP_VERSION')) {
