@@ -31,7 +31,7 @@
     <!-- Blank Template -->
     <div class="media og-all">
       <figure class="thumbnails">
-        <img src="<?php echo plugins_url( '../../assets/images/blank-template.jpg', __FILE__ ); ?>"/>
+        <img src="<?php echo op_asset( 'assets/images/blank-template.jpg'); ?>"/>
         <figcaption>
           <h3>Start Blank</h3>
           <button id="blank-template" data-layout-id="blank-template" class="op-btn" type="button">Create</button>
