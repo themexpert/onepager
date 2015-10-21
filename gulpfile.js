@@ -192,14 +192,14 @@ function(){
 
 function packager(name, files, root) {
   var tmpPath = ".op" + Math.ceil(Math.random() * 100).toString();
-  var archiveName = name + ".zip";
+  var version = getOnepagerVersion();
+  var archiveName = `${name}-${version}.zip`;
 
   copier(root, tmpPath, files);
 
   shell.exec('sudo find ' + tmpPath + ' -type d -exec chmod 755 {} \\;');
   shell.exec('sudo find ' + tmpPath + ' -type f -exec chmod 644 {} \\;');
 
-  var version = getOnepagerVersion();
   replaceVersion(`${tmpPath}/readme.txt`, version);
 
   zipper(archiveName, tmpPath, name)
