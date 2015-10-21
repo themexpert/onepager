@@ -25,13 +25,13 @@ class PageTemplater {
    * Adds our template to the pages cache in order to trick WordPress
    * into thinking the template file exists where it doens't really exist.
    *
-   * @param $atts
+   * @param $attrs
    *
    * @return
    */
-  public function register_project_templates( $atts ) {
+  public function register_project_templates( $attrs ) {
     // Create the key used for the themes cache
-    $cache_key = 'page_templates-' . md5( get_theme_root() . '/' . get_stylesheet() );
+    $cache_key = $this->get_cache_key();
 
     // Retrieve the cache list.
     // If it doesn't exist, or it's empty prepare an array
@@ -57,7 +57,7 @@ class PageTemplater {
     // available templates
     wp_cache_add( $cache_key, $templates, 'themes', 1800 );
 
-    return $atts;
+    return $attrs;
   }
 
   /**
@@ -90,5 +90,13 @@ class PageTemplater {
     }
 
     return $template;
+  }
+
+  /**
+   * get_raw_theme_root because wordpress can have multiple theme directories
+   * @return string
+   */
+  protected function get_cache_key() {
+    return 'page_templates-' . md5( get_raw_theme_root( get_stylesheet() ) . '/' . get_stylesheet() );
   }
 }
