@@ -97,6 +97,9 @@ class PageTemplater {
    * @return string
    */
   protected function get_cache_key() {
-    return 'page_templates-' . md5( get_raw_theme_root( get_stylesheet() ) . '/' . get_stylesheet() );
+    $dir = get_theme_root( get_stylesheet() ) . '/' . get_stylesheet();
+    if(!startsWith($dir, "/")) $dir = WP_CONTENT_DIR . "/".$dir;
+
+    return 'page_templates-' . md5( $dir );
   }
 }
