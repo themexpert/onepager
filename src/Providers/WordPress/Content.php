@@ -61,10 +61,10 @@ class Content implements ContentInterface {
 
     $template = get_post_meta( $pageId, '_wp_page_template', true );
 
-    //template name is onepage.php or op-*.php
+    //template name is onepage.php or onepager-*.php
     return (
              $template == "onepage.php" ||
-             substr( $template, 0, 8 ) == "onepager-"
+             substr( $template, 0, 9 ) == "onepager-"
           ) ? true : false;
   }
 
