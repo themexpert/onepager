@@ -16,10 +16,7 @@ blocks/blocks.cache
 blocks/test
 
 # package
-onepager.zip
-tx-onepager.zip
-
-
+*.zip
 
 # Node + Composer
 /assets
