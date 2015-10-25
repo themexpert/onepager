@@ -18,7 +18,13 @@
 						<img src="<?php echo $team['image']?>" alt="<?php echo $team['title']?>" />
 						<figcaption class="overlay-panel overlay-background overlay-<?php echo $settings['overlay_animation']?> flex flex-center flex-middle text-center">
 							<div>
-								<h3 class="title"><?php echo $team['title']?></h3>
+								<h3 class="title">
+                  <?php if(trim($team['link'])): ?>
+                    <a href="<?php echo $team['link'] ?>" target="<?php echo $team['target'] ? '_blank' : ''?>"><?php echo $team['title']?></a>
+                  <?php else: ?>
+                    <?php echo $team['title']?>
+                  <?php endif; ?>
+                </h3>
 								<p class="designation"><?php echo $team['designation']?></p>
 								<div class="social-links">
 								<?php foreach($team['social'] as $social):?>
