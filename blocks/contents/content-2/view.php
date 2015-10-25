@@ -34,7 +34,14 @@
 							<span class="op-media <?php echo $feature['media'] ?>"></span>
 						<?php endif;?>
 
-						<h3 class="title <?php echo $settings['title_transformation']?>"><?php echo $feature['title']?></h3>
+						<h3 class="title <?php echo $settings['title_transformation']?>">
+              <?php if(trim($feature['link'])): ?>
+                <a href="<?php echo $feature['link'] ?>" target="<?php echo $feature['target'] ? '_blank' : ''?>"><?php echo $feature['title']?></a>
+              <?php else: ?>
+                <?php echo $feature['title']?>
+              <?php endif; ?>
+            </h3>
+
 						<p class="desc text-muted"><?php echo $feature['description']?></p>
 					</div>
 				</div>
