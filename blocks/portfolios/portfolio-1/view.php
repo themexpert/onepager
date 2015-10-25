@@ -20,9 +20,15 @@
 							<img class="overlay-spin" src="<?php echo $item['thumb']?>" alt="<?php echo $item['title']?>" />
 							<figcaption class="overlay-panel overlay-background overlay-<?php echo $settings['overlay_animation']?> flex flex-center flex-middle text-center">
 								<div>
-									<span class="icon fa fa-search-plus"></span>
-									<h3 class="title"><?php echo $item['title']?></h3>
-									<p class="desc"><?php echo $item['description']?></p>
+                  <?php if(trim($item['link'])): ?>
+                    <a href="<?php echo $item['link'] ?>" target="<?php echo $item['target'] ? '_blank' : ''?>">
+                      <span class="icon fa fa-search-plus"></span>
+                    </a>
+                  <?php else: ?>
+                    <span class="icon fa fa-search-plus"></span>
+                  <?php endif; ?>
+									<h3 class="title"> <?php echo $item['title']?> </h3>
+                  <p class="desc"><?php echo $item['description']?></p>
 								</div>
 							</figcaption>
 						</figure>

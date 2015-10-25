@@ -18,18 +18,24 @@ return array(
           array('name'=>'description', 'type'=> 'textarea', 'value' => 'Onepage Joomla Template'),
           array('name'=>'thumb','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/1-thumb.jpg'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/1.jpg'),
+          array('name'=>'link', 'placeholder'=> home_url()),
+          array('name'=>'target', 'label'=>'open in new window', 'type'=>'switch'),
         ),
         array(
           array('name'=>'title', 'value' => 'BizCorp'),
           array('name'=>'description', 'type'=> 'textarea', 'value' => 'Onepage Joomla Template'),
           array('name'=>'thumb','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/2-thumb.jpg'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/2.jpg'),
+          array('name'=>'link', 'placeholder'=> home_url()),
+          array('name'=>'target', 'label'=>'open in new window', 'type'=>'switch'),
         ),
         array(
           array('name'=>'title', 'value' => 'Eventx'),
           array('name'=>'description', 'type'=> 'textarea', 'value' => 'Event Template for Joomla'),
           array('name'=>'thumb','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/3-thumb.jpg'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/3.jpg'),
+          array('name'=>'link', 'placeholder'=> home_url()),
+          array('name'=>'target', 'label'=>'open in new window', 'type'=>'switch'),
         )
       )
     )
