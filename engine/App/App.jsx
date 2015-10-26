@@ -84,10 +84,10 @@ let App = React.createClass({
     let { previewFrameLoaded } = this.state;
     return previewFrameLoaded ?
       <Sidebar {...this.state}/> :
-        <div className="app-loading flex flex-middle flex-center flex-column">
-            <span className="loader"></span>
-            <span className="title">Initializing Onepager</span>
-        </div>;
+      <div className="app-loading flex flex-middle flex-center flex-column">
+          <span className="loader"></span>
+          <span className="title">Initializing Onepager</span>
+      </div>;
   }
 });
 
