@@ -38,12 +38,23 @@ Modern, Powerful & Crazy Fast one page builder. Built with modern tools such Rea
 * Gulp for instant workflow
 * Highly customized for User Experience
 
+**Addons**
+
+1. [Storefront theme support plugin](https://github.com/nadimtuhin/onepager-storefront-support)
+2. [Onepager advanced block pack](https://github.com/nadimtuhin/onepager-advanced-blocks-pack)
+
  == Installation ==
 
 Installing the plugins is just like installing other WordPress plugins.
 
 
 == Changelog ==
+
+= 1.2.4 =
+- Bedrock wordpress environment support
+- URL link in content-2, content-3, team-1, portfolio-1
+- [Storefront theme support plugin](https://github.com/nadimtuhin/onepager-storefront-support)
+- Lots of internal security improvements and bugfixes
 
 = 1.2.3 =
 - Sumome plugin support

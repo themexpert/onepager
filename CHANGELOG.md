@@ -1,34 +1,43 @@
 # Change Log
 
+## [v1.2.4](https://github.com/themexpert/onepager/tree/v1.2.4) (2015-10-26)
+[Full Changelog](https://github.com/themexpert/onepager/compare/v1.2.3...v1.2.4)
+
+
+**Implemented enhancements:**
+
+- Bedrock wordpress environment support
+- [Storefront theme support](https://github.com/nadimtuhin/onepager-storefront-support)
+- URL link in content-2, content-3, team-1, portfolio-1
+
+**Fixed bugs:**
+
+- Can't access to a Onepager page [\#85](https://github.com/themexpert/onepager/issues/85)
+
+**Closed issues:**
+
+- Add Clickable Links [\#98](https://github.com/themexpert/onepager/issues/98)
+- Adding redirect link options to certain blocks? [\#70](https://github.com/themexpert/onepager/issues/70)
+
 ## [v1.2.3](https://github.com/themexpert/onepager/tree/v1.2.3) (2015-10-20)
 [Full Changelog](https://github.com/themexpert/onepager/compare/v1.2.2...v1.2.3)
 
 **Implemented enhancements:**
-- Sumome plugin support
-- Roots Sage Theme support
-- HTML5 starter Theme support
-- Builder loader improvement
-- Testimonial slider goes very fast [\#81](https://github.com/themexpert/onepager/issues/81)
-- Blocks image override feature from theme
-- Live update delay 150 milliseconds
-- Improved plugin developers experience paving the way of community contribution
-- Onepager can be loaded standalone from a theme now
 
+- Testimonial slider goes very fast [\#81](https://github.com/themexpert/onepager/issues/81)
 
 **Fixed bugs:**
 
 - Asks to save sections sometimes when settings is saved [\#100](https://github.com/themexpert/onepager/issues/100)
 - Editor doesn't open [\#95](https://github.com/themexpert/onepager/issues/95)
-- Preset manager bugfix
 
 **Closed issues:**
 
 - CONTACT FORM SHORTCODE [\#102](https://github.com/themexpert/onepager/issues/102)
 - Request for include a option to use with theme via functions php [\#101](https://github.com/themexpert/onepager/issues/101)
 - On global settings color preset change it does not effect on the preview [\#99](https://github.com/themexpert/onepager/issues/99)
-- Unable to log in [\#97](https://github.com/themexpert/onepager/issues/97)
+- unable to log in [\#97](https://github.com/themexpert/onepager/issues/97)
 - OnePager support for Roots.io [\#96](https://github.com/themexpert/onepager/issues/96)
-
 
 ## [v1.2.2](https://github.com/themexpert/onepager/tree/v1.2.2) (2015-10-13)
 [Full Changelog](https://github.com/themexpert/onepager/compare/v1.2.0...v1.2.2)
