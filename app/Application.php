@@ -19,9 +19,15 @@ class Application {
   public function __construct( $onepager ) {
     $this->onepager = $onepager;
 
+    $this->init_loaders();
+
+    if(is_admin()) return;
+
+    /**
+     * We do not want them to be loaded when in dashboard
+     */
     $this->enqueue_assets();
     $this->inject_page_contents();
-    $this->init_loaders();
 
     //    if(!$this->isCacheDirWritable()){
     //      add_action( 'admin_notices', [$this, 'cache_dir_notice'] );
@@ -50,7 +56,7 @@ class Application {
 
   public function compile_assets() {
     if(is_search()) return;
-    
+
     if ( $this->shouldCompileScripts() ) {
       $page_id = $this->getCurrentPageId();
       $this->onepager->asset()->compileScriptsAndEnqueue( $page_id );
@@ -66,13 +72,16 @@ class Application {
   }
 
   protected function init_loaders() {
-    $blockManager        = $this->getBlockManager();
     $presetManager       = $this->getPresetManager();
-    $pageTemplateManager = new PageTemplater();
-
-    new BlocksLoader( $blockManager );
     new PresetsLoader( $presetManager );
+
+    $pageTemplateManager = new PageTemplater();
     new TemplateLoader( $pageTemplateManager );
+
+    /** No need to load them in dashboard */
+    if(is_admin()) return;
+    $blockManager        = $this->getBlockManager();
+    new BlocksLoader( $blockManager );
   }
 
   /**
