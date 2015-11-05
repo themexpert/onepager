@@ -181,10 +181,6 @@ gulp.task('svn', ['package'], function(){
 
   var tag = [ `cd ${svnDir}`, `svn cp trunk tags/${version}`, `svn ci -m '${version} released'` ];
 
-  // console.log(commands);
-  // console.log(commands.join(" && "));
-  // return;
-
   shell.exec(init.join(" && "));
   shell.exec(tag.join(" && "));
 });
