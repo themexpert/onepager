@@ -165,16 +165,16 @@ gulp.task('package', ['package-build'], function () {
   packager("tx-onepager", files, ROOT_PATH);
 });
 
-gulp.task('svn', ['package'], function(){
+gulp.task('svn', function(){
   var version = getOnepagerVersion().replace("v", "");
   var svnDir = "~/Documents/wordpress.org/tx-onepager";
   var init = [
-    `cp tx-onepager-${version}.zip ${svnDir}`,
+    `cp tx-onepager.zip ${svnDir}`,
     `cd ${svnDir}`,
-    `unzip tx-onepager-${version}.zip`,
+    `unzip tx-onepager.zip`,
     `rm -rf trunk/*`,
     `mv tx-onepager/* trunk`,
-    `rm -rf tx-onepager-${version}.zip tx-onepager`,
+    `rm -rf tx-onepager.zip tx-onepager`,
     `svn add * --force`,
     `svn rm $( svn status | sed -e '/^!/!d' -e 's/^!//' )`
   ];
@@ -188,7 +188,7 @@ gulp.task('svn', ['package'], function(){
 function packager(name, files, root) {
   var tmpPath = ".op" + Math.ceil(Math.random() * 100).toString();
   var version = getOnepagerVersion();
-  var archiveName = `${name}-${version}.zip`;
+  var archiveName = `${name}.zip`;
 
   copier(root, tmpPath, files);
 
