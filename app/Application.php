@@ -79,7 +79,7 @@ class Application {
     new TemplateLoader( $pageTemplateManager );
 
     /** No need to load them in dashboard */
-    if(is_admin()) return;
+    if(is_admin() && !(defined( 'DOING_AJAX' ) && DOING_AJAX)) return;
     $blockManager        = $this->getBlockManager();
     new BlocksLoader( $blockManager );
   }
