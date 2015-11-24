@@ -156,6 +156,8 @@ gulp.task('default', function () {
 });
 
 gulp.task('package', ['package-build'], function () {
+  shell.exec("composer dump-autoload -o");
+  
   var files = [
     'app', 'assets', 'blocks', 'src', 'vendor', 'presets',
     'tx-onepager.php', 'constants.php', 'theme.php', 'uninstall.php',
