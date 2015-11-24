@@ -49,6 +49,8 @@ Installing the plugins is just like installing other WordPress plugins.
 
 
 == Changelog ==
+= 1.2.5 =
+- WP conflict resolver bug fix
 
 = 1.2.4 =
 - Bedrock wordpress environment support
