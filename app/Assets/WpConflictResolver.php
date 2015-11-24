@@ -18,8 +18,10 @@ class WpConflictResolver {
 
     global $wp_styles;
 
-
-    $wp_styles->remove( get_default_template_stylesheet_handle() );
+    if( method_exists($wp_styles, 'remove') )
+    {
+      $wp_styles->remove( get_default_template_stylesheet_handle() );
+    }
   }
 
   public function remove_sumome(){
