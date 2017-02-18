@@ -10,6 +10,11 @@ class PageTemplater {
   }
 
   public function __construct() {
+    // Add a filter to the attributes metabox to inject template into the cache.
+    add_filter( 'page_attributes_dropdown_pages_args', array( $this, 'register_project_templates' ) );
+
+    // Add a filter to the save post to inject out template into the page cache
+    add_filter( 'wp_insert_post_data', array( $this, 'register_project_templates' ) );
     add_filter('theme_page_templates', array($this, 'add_page_template'));
 
     // Add a filter to the template include to determine if the page has our
@@ -22,6 +27,48 @@ class PageTemplater {
 	return array_merge(array_map(function($template) {
 		return $template['name'];
 	}, $this->templates), $templates);
+  }
+
+  /**
+   * Adds our template to the pages cache in order to trick WordPress
+   * into thinking the template file exists where it doens't really exist.
+   *
+   * @param $attrs
+   *
+   * @return
+   */
+  public function register_project_templates( $attrs ) {
+    // Create the key used for the themes cache
+    $cache_key = $this->get_cache_key();
+
+    // Retrieve the cache list.
+    // If it doesn't exist, or it's empty prepare an array
+    $templates = wp_get_theme()->get_page_templates();
+
+	if ( empty( $templates ) ) {
+      $templates = array();
+    }
+
+    // New cache, therefore remove the old one
+    wp_cache_delete( $cache_key, 'themes' );
+
+    // Now add our template to the list of templates by merging our templates
+    // with the existing templates array from the cache.
+    $ourTemplates = array_reduce( $this->templates, function ( $carry, $template ) {
+      $carry[ $template['key'] ] = $template['name'];
+
+      return $carry;
+    }, array() );
+
+
+
+	  $templates = array_merge( $templates, $ourTemplates );
+
+    // Add the modified cache to allow WordPress to pick it up for listing
+    // available templates
+    wp_cache_add( $cache_key, $templates, 'themes', 1800 );
+
+    return $attrs;
   }
 
   /**
