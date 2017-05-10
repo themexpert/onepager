@@ -17,5 +17,16 @@
     "toastr": "~2.1.1",
     "wow": "~1.1.2"
   },
-  "devDependencies": {}
+  "overrides": {
+    "jquery.nicescroll": {
+        "main": [
+            "./jquery.nicescroll.min.js",
+            "./zoomico.png"
+        ]
+    }
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "jquery": "~1.9.0"
+  }
 }
