@@ -1,13 +1,8 @@
 <?php namespace App\Api\Controllers;
 
-use Symfony\Component\HttpFoundation\Response;
 
 class ApiController {
-  protected $response;
-
-  public function __construct() {
-    $this->response = new Response();
-  }
+  protected $data;
 
   /**
    * @param $input
@@ -35,16 +30,15 @@ class ApiController {
    *
    * @return $this
    */
-  protected function response( $data ) {
-    @header( 'Content-Type: application/json; charset=' . get_option( 'blog_charset' ) );
-    $this->response->setContent( json_encode( $data ) );
-    $this->response->headers->set( 'Content-Type', 'application/json' );
+  private function response( $data ) {
+    $this->data = $data;
 
     return $this;
   }
 
-  protected function send() {
-    $this->response->send();
+  private function send() {
+    wp_send_json($this->data);
+
     die();
   }
 
