@@ -1,7 +1,7 @@
 === Onepager - One Page Builder ===
-Contributors: themexpert, nadimtuhin
+Contributors: themexpert, nadimtuhin,themesgrove
 Donate link: http://getonepager.com
-Tags: page builder, builder, onepage builder, drag and drop, reactjs, bootstrap, fontAwesome, gulp, less, layout, grid, composer, webpack, bower, ui
+Tags: page builder, builder, onepage builder, drag and drop, reactjs, bootstrap, fontAwesome, layout, composer, wysiwyg, editor
 Stable tag: %version%
 Requires at least: 4.2
 Tested up to: 4.7
