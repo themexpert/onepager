@@ -3,7 +3,7 @@
  * Plugin Name:       Onepager - One Page Builder
  * Plugin URI:        http://getonepager.com
  * Description:       Modern, Powerful & Crazy Fast one page builder. Built with modern tools such ReactJS for next generation theming.
- * Version:           1.2.8
+ * Version:           1.2.8.1
  * Author:            ThemeXpert
  * Author URI:        http://www.themexpert.com
  * License:           GPL-2.0+
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if(!defined('ONEPAGER_VERSION')){
-  define( 'ONEPAGER_VERSION', '1.2.8' );
+  define( 'ONEPAGER_VERSION', '1.2.8.1' );
 }
 
 if(!defined('ONEPAGER_PHP_VERSION')) {
