@@ -1,8 +1,13 @@
-## Onepager [![Join the chat at https://gitter.im/themexpert/onepager](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/themexpert/onepager)
-Download - (http://getonepager.com/#download)
+# Onepager 
+
+[![License](https://poser.pugx.org/automattic/jetpack/license.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
+
+[Onepager](https://themesgrove.com/product/onepager/) is a FREE WordPress plugin that supercharges your website development with drag & drop page builder. You can build awesome landing pages, one page website, sales page, webinar registration page without any coding.
+
+For more information, check out [themesgrove.com](https://themesgrove.com/product/onepager/).
 
 
-## Where to Get Help
+## Get Help
 
 A chat room has been set up using [Gitter](https://gitter.im/themexpert/onepager) where you can go to talk about the project with developers, contributors, and other members of the community. This is the best place to go to get quick tips and discuss features with others.
 
