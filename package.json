@@ -34,9 +34,10 @@
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.9.11",
-    "webpack-dev-server": "^1.9.0",
+    "webpack-dev-server": ">=3.1.11",
     "webpack-merge": "^0.1.2",
-    "wrench": "^1.5.8"
+    "wrench": "^1.5.8",
+    "lodash": ">=4.17.5"
   },
   "scripts": {
     "start": "gulp",
@@ -61,7 +62,7 @@
     "classnames": "^2.1.1",
     "flux": "^2.0.3",
     "immutable": "^3.7.4",
-    "lodash": "^3.9.3",
+    "npm": "^6.5.0",
     "object-assign": "^2.0.0",
     "react": "^0.13.2",
     "react-bootstrap": "^0.21.2",
