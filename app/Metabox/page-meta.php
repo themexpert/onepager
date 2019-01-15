@@ -15,7 +15,7 @@
         <a href="<?php echo $editorUrl ?>" class="op-btn"
            style="display: <?php echo ! count( $sections ) ? "none" : "" ?>">Load Editor</a>
 
-        <div style="display:none">
+        <div>
           <button type="button" id="onepager-save-layout" class="onepager-button">Save Layout</button>
           <button type="button" id="onepager-export-layout" class="onepager-button">Export Layout</button>
           <button type="button" id="onepager-import-layout" class="onepager-button">Import Layout</button>
