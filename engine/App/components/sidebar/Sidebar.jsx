@@ -95,7 +95,7 @@ let Sidebar = React.createClass({
     let tabContents = React.findDOMNode(this.refs.tabContents);
 
     $(function () {
-      $(tabContents).niceScroll({cursorcolor: '#2ab0ad', cursorborder: '0'});
+      $(tabContents).niceScroll({cursorcolor: '#2196F3', cursorborder: '0'});
     });
   },
 
@@ -130,14 +130,14 @@ let Sidebar = React.createClass({
           {
             activeTab === 'op-settings' ?
               <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave}
-                      className='btn btn-primary btn--save'>
+                      className='btn btn--save'>
                 <span className={saveClasses}></span>
               </button> :
               <button disabled={!isDirty} onClick={this.handleSave} className='btn btn-primary btn--save'>
                 <span className={saveClasses}></span>
               </button>
           }
-          <a href={buildModeUrl} className="btn btn-primary" data-toggle="tooltip"
+          <a href={buildModeUrl} className="btn btn--close" data-toggle="tooltip"
              data-placement="bottom" title="Close">
             <span className="fa fa-close"></span>
           </a>

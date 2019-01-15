@@ -3,6 +3,7 @@
 .tx-nav {
   margin: 0;
   padding: 0;
+  border-bottom: 1px solid @border-color;
 
   > li {
     position: relative;
@@ -15,7 +16,6 @@
     font-size: 1.5em;
   }
   > li > a:not(.btn) {
-    .box-shadow(none);
   }
   > li.active > a {
     color: @brand-primary;
@@ -27,7 +27,6 @@
 }
 
 .tx-nav-tabs {
-  .box-shadow(0 -3px 3px #1C232B inset);
   .transition(all 0.3s linear);
   > li {
     display: inline-block;
@@ -36,20 +35,20 @@
   > li > a {
     padding: 12px 10px
   }
-  > li.active{ .box-shadow(0 -6px 5px #1C232B); }
+  > li.active{ }
 }
 
 .nav-pills {
-  margin: 0;
+  margin: 0 0 15px;
   > li > a {
+    border: 0;
     outline: 0;
     padding: 0 6px;
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 0.5px;
     line-height: 25px;
-    color: #666;
-    .box-shadow(none);
+    color: @text-color;
   }
 }
 
@@ -59,7 +58,7 @@
 
 // General
 body.op-build-active {
-  background: inherit;
+  background: @bg-primary;
   overflow-x: hidden;
 }
 
@@ -117,14 +116,13 @@ body.op-build-active {
   .tx-nav-tabs {
     background: @bg-secondary;
     > li.active > a {
-      background: @bg-primary;
-      color: @brand-primary;
+      color: @text-color;
+      font-size: 16px;
     }
   }
   // Pills
   .nav-pills {
     > li > a {
-      border: 1px solid transparent;
       color: @text-color;
     }
     > li:hover a,
@@ -132,7 +130,7 @@ body.op-build-active {
     > li.active > a:hover,
     > li.active > a:focus {
       background: transparent;
-      border: 1px solid @brand-primary;
+      color: darken(@text-color, 20%);
     }
   }
 
@@ -163,22 +161,23 @@ body.op-build-active {
 
   // Form
   .form-control {
-    background: @bg-secondary;
+    background: @white;
     color: @text-color;
-    border-color: lighten(@bg-primary, 10%);
+    border-color: @border-color;
     font-size: 12px;
+    .box-shadow(none);
     &:focus {
       .box-shadow(none);
       border-color: lighten(@brand-primary, 15%)
     }
   }
   .input-group .btn-primary {
-    border-color: lighten(@bg-primary, 10%);
+    border-color: @border-color;
     color: @text-color;
   }
   .input-group-addon {
     background: darken(@bg-secondary, 2%);
-    border-color: lighten(@bg-primary, 10%);
+    border-color: @border-color;
   }
   .input-group-btn > .btn:not(:last-child) {
     margin-right: 1px;
@@ -287,21 +286,19 @@ body.op-build-active {
   // Bootstrap Select
   .bootstrap-select{
     >.dropdown-toggle{
-      background: @bg-secondary;
+      background: @white;
       color: @text-color;
-      border-color: lighten(@bg-primary, 10%);
+      border-color: @border-color;
       text-transform: capitalize;
       &:hover,
       &:focus{
-        background: darken(@bg-secondary, 2%);
-        color: lighten(@text-color, 10%);
-        border-color: lighten(@bg-primary, 10%);
+        border-color: @border-color;
         outline: none !important;
       }
     }
     .dropdown-menu{
-      background: @bg-secondary;
-      border-color: lighten(@bg-primary, 10%);
+      background: @white;
+      border-color: @border-color;
       > li > a{ color: @text-color; text-transform: capitalize; outline: none; }
       > li > a:hover,
       > li > a:focus{ background: @bg-primary;}
@@ -326,6 +323,7 @@ h3.form-divider {
     padding: 13px 10px 10px 8px;
     margin: 10px 0;
     position: relative;
+    border: 1px solid transparent;
     //cursor: move;
 
     h3 {
@@ -341,7 +339,6 @@ h3.form-divider {
       display: none;
       position: absolute; top: 0; right: 4px;
       line-height: 36px;
-      background: darken(@bg-secondary, 1%);
       span{
         padding:  0;
         margin: 0 3px;
@@ -351,6 +348,8 @@ h3.form-divider {
     .form-group { margin: 0; position: relative; z-index: 9; }
 
     &:hover{
+      background: darken(@bg-primary, 1%);
+      border: 1px solid @border-color;
       .action-btns{
         display: block;
       }
@@ -383,11 +382,12 @@ h3.form-divider {
     }
   }
   .btn--save {
-    // float: right;
-    // margin: 12px 6px 0 0;
-    // padding: 5px 10px;
-    // font-size: 13px;
-    outline: 0 !important;
+    background: @brand-primary;
+    color: @white;
+  }
+  .btn--close{
+    background: @border-color;
+    color: darken(@border-color, 10%);
   }
   .btn--add-repeater {
     margin-bottom: 10px;
