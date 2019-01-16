@@ -58,7 +58,7 @@ require( ONEPAGER_PATH . '/app/Metabox/metabox.php' );
 
 add_action('wp_head', 'print_onepager_meta');
 function print_onepager_meta() {
-  echo "<meta type='page-builder' content='tx-onepager'>";
+  echo "<meta name='generator' content='WP OnePager ". ONEPAGER_VERSION ."'>";
 }
 
 do_action('onepager_loaded');
