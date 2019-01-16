@@ -9,6 +9,11 @@ Onepager::getOptionPanel()
             'append' => 'px',
             'value'  => '44',
           ),
+          // array(
+          //   'name'   => 'full_screen',
+          //   'label'  => 'Full Screen',
+          //   'type'   => 'switch'
+          // ),
           array( 'name' => 'favicon', 'type' => 'image' ),
           array(
             'name'        => 'google_analytics',
@@ -54,26 +59,25 @@ add_action( 'wp_head', function () { ?>
 
   <!--  Full pager-->
   <?php if ( Onepager::getOption( 'full_screen' ) ): ?>
-    <script>
+  <!--  <script>
       jQuery(document).ready(function ($) {
         $(".op-sections").fullpage({
-          sectionSelector: ".op-section",
+          sectionSelector: ".op-section:not(.navbar)",
           css3: true,
-          scrollingSpeed: 100,
           scrollBar: true
         });
       });
-    </script>
+    </script> -->
   <?php endif; ?>
 <?php }, 100 );
 
+// Enabled Fullpage slide
+// if ( Onepager::getOption( 'full_screen' ) ) {
+//   add_action( 'wp_enqueue_scripts', function () {
+//     $q = onepager()->asset();
+//     // $q->script( 'op-slimscroll', op_asset( 'assets/js/jquery.slimscroll.min.js' ) );
+//     $q->script( 'op-fullpage', op_asset( 'assets/js/fullPage.js' ) );
 
-if ( Onepager::getOption( 'full_screen' ) ) {
-  add_action( 'wp_enqueue_scripts', function () {
-    $q = onepager()->asset();
-    $q->script( 'op-slimscroll', op_asset( 'assets/js/jquery.slimscroll.min.js' ) );
-    $q->script( 'op-fullpage', op_asset( 'assets/js/jquery.fullPage.js' ) );
-
-    $q->style( 'op-fullpage', op_asset( 'assets/css/jquery.fullPage.css' ) );
-  } );
-}
+//     $q->style( 'op-fullpage', op_asset( 'assets/css/fullPage.css' ) );
+//   } );
+// }
