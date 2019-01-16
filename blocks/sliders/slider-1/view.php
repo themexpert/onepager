@@ -1,38 +1,38 @@
-<section id="<?php echo $id; ?>" class="op-section sliders slider-1 full-screen">
-	<div id="slide-<?php echo $id ?>" class="carousel slide" data-ride="carousel">
+<?php
+$slideshow_options[] = 'animation: ' . $settings['animation'] ;
+$slideshow_options[] = ($settings['autoplay']) ? 'autoplay: true' : '';
+$slideshow_options[] = ($settings['slider_height']) ? 'max-height:' . $settings['slider_height'] : '';
+$slideshow = implode('; ', $slideshow_options);
+$heading_class = ($settings['title_transformation']) ? 'uk-text-' . $settings['title_transformation'] : '';
+?>
 
-		<?php if(count($contents['sliders']) > 1): // Indicator will only show when more then one item publish?>
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<?php for($i = 0; $i < count($contents['sliders']); $i++): ?>
-			<li data-target="#slide-<?php echo $id ?>" data-slide-to="<?php echo $i;?>" class="<?php echo ($i === 0) ? 'active' : ''?>"></li>
-			<?php endfor;?>
-		</ol>
-		<?php endif; ?>
+<div id="<?php echo $id; ?>" class="uk-position-relative uk-visible-toggle" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>">
 
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox">
+    <ul class="uk-slideshow-items">
 			<?php foreach($contents['sliders'] as $index => $slide): ?>
-			<div class="item <?php echo ($index === 0) ? 'active' : ''?>">
-				<div class="container">
-					<div class="carousel-caption flex flex-column flex-center flex-middle">
-						<?php if($slide['image']):?>
-							<img class="op-meida img-responsive" src="<?php echo $slide['image']?>" alt="<?php echo $slide['title']?>">
-						<?php endif; ?>
-						<!-- Title -->
-						<?php if($slide['title']):?>
-						<h2 class="section-title <?php echo $settings['title_transformation']?> "><?php echo $slide['title']?></h2>
-						<?php endif; ?>
-						<!-- Description -->
-						<?php if($slide['description']):?>
-						<p class="section-desc"><?php echo $slide['description']?></p>
-						<?php endif; ?>
-						<!-- Link -->
-						<?php echo op_link($slide['link'], 'btn btn-primary btn-lg');?>
-					</div>
-				</div>
-			</div>
+        <li>
+						<img src="<?php echo $slide['image']?>" alt="" uk-cover>
+						<div class="uk-overlay-primary uk-position-cover"></div>
+            <div class="uk-position-center uk-position-small uk-text-center uk-light">
+								<h2 
+									class="uk-heading-primary <?php echo $heading_class ?>" 
+									uk-slideshow-parallax="x: 200,0,-100">
+									<?php echo $slide['title']?>
+								</h2>
+								<p 
+									class="uk-text-lead" 
+									uk-slideshow-parallax="x: 200,-200">
+									<?php echo $slide['description']?>
+								</p>
+								<?php echo op_link($slide['link'], 'uk-button uk-button-primary');?>
+            </div>
+        </li>
 			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
+    </ul>
+
+    <div class="uk-light">
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+    </div>
+
+</div>
