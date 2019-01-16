@@ -27,7 +27,6 @@
     "fontawesome": {
         "main": [
           "css/font-awesome.css",
-          "css/font-awesome.min.css",
           "fonts/fontawesome-webfont.eot",
           "fonts/fontawesome-webfont.svg",
           "fonts/fontawesome-webfont.ttf",

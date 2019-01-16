@@ -28,18 +28,22 @@ class OnepageScripts {
   public function enqueueCommonScripts() {
     $asset = onepager()->asset();
 
-    $asset->script( 'tx-wow', op_asset( 'assets/js/wow.js' ), [ 'jquery' ] );
+    // $asset->script( 'tx-wow', op_asset( 'assets/js/wow.js' ), [ 'jquery' ] );
 
-    if ( $this->shouldLoadTwitterBootstrap() ) {
-      $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
-      $asset->style( 'tx-bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
-    }
+    // if ( $this->shouldLoadTwitterBootstrap() ) {
+    //   $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
+    //   $asset->style( 'tx-bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
+    // }
 
-    $asset->style( 'tx-animate', op_asset( 'assets/css/animate.css' ) );
+    // $asset->style( 'tx-animate', op_asset( 'assets/css/animate.css' ) );
     $asset->style( 'tx-fontawesome', op_asset( 'assets/css/font-awesome.css' ) );
+
+    // Load UIKit
+    $asset->script( 'op-uikit', op_asset( 'assets/js/uikit.js' ) );
+    $asset->style( 'op-uikit', op_asset( 'assets/css/uikit.css' ) );
   }
 
-  protected function shouldLoadTwitterBootstrap() {
-    return ! defined( 'ONEPAGER_BOOTSTRAP' ) ? true : ONEPAGER_BOOTSTRAP;
-  }
+  // protected function shouldLoadTwitterBootstrap() {
+  //   return ! defined( 'ONEPAGER_BOOTSTRAP' ) ? true : ONEPAGER_BOOTSTRAP;
+  // }
 }
