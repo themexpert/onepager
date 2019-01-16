@@ -395,10 +395,16 @@ h3.form-divider {
   .btn--save {
     background: @brand-primary;
     color: @white;
+    &:hover{
+      background: darken(@brand-primary, 5%);
+    }
   }
   .btn--close{
     background: @border-color;
     color: darken(@border-color, 10%);
+    &:hover{
+      background: darken(@border-color, 5%);
+    }
   }
   .btn--add-repeater {
     margin-bottom: 10px;
@@ -754,7 +760,7 @@ h3.form-divider {
 body.op-sidebar-collapsed{
   #onepager-preview{ width: 100%; margin-left: 0; }
   .txop-sidebar,
-  .tx-nav-tabs{ left: -23%; }
+  .tx-nav-tabs{ left: -@sidebar-width; }
 }
 
 
