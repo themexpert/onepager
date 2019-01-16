@@ -12,13 +12,10 @@
       </div>
 
       <div class="op-btns-group">
-        <a href="<?php echo $editorUrl ?>" class="op-btn"
-           style="display: <?php echo ! count( $sections ) ? "none" : "" ?>">Load Editor</a>
-
         <div>
-          <button type="button" id="onepager-save-layout" class="onepager-button">Save Layout</button>
-          <button type="button" id="onepager-export-layout" class="onepager-button">Export Layout</button>
-          <button type="button" id="onepager-import-layout" class="onepager-button">Import Layout</button>
+          <button type="button" id="onepager-export-layout" class="op-btn op-btn-secondary--small onepager-button">Export</button>
+          <!--<button type="button" id="onepager-save-layout" class="onepager-button">Save Layout</button>
+          <button type="button" id="onepager-import-layout" class="onepager-button">Import Layout</button> -->
 
           <!--needed for downloading with ajax-->
           <a id="downloadAnchorElem"></a>
@@ -28,6 +25,10 @@
   <?php endif; ?>
 
   <div id="op-presets">
+    <div class="op-editpage-link" style="<?php echo ! count( $sections ) ? "display:none" : "" ?>">
+        <a href="<?php echo $editorUrl ?>" class="op-btn op-btn-with-logo">Edit with OnePager</a>
+        <p>This page is made with OnePager</p>
+    </div>
     <!-- Blank Template -->
     <div class="media og-all">
       <figure class="thumbnails">

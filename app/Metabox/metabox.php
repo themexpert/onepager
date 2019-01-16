@@ -31,7 +31,7 @@ function tx_add_onepager_metabox() {
 
   add_meta_box(
     'onepager_meta',
-    __( 'Preset Templates', 'onepager' ),
+    __( 'OnePager', 'onepager' ),
     $template,
     'page',
     'normal', apply_filters( 'onepager_metabox_prio', 'high' )

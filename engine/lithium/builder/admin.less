@@ -1,4 +1,4 @@
-@btn : #673AB7;
+@btn : @brand-primary;
 
 // ------------------------------------------
 // Wordpress Admin override + Style
@@ -83,6 +83,12 @@
     color: #fff;
   }
 }
+.op-btn-secondary--small{
+  padding: 4px 8px; font-weight: normal;
+  margin-top: 5px;
+  background: @text-color;
+  border-color: darken(@text-color, 10%);
+}
 
 .op-btn-with-logo {
   padding: 14px 15px 14px 50px;
@@ -127,9 +133,23 @@
 
 #op-presets {
   .clearfix();
+
+  .op-editpage-link{
+    padding: 100px;
+    margin-bottom: 30px;
+    background: @bg-primary;
+    border-radius: 4px;
+    text-align: center;
+
+    p{ color: @text-color; }
+    
+    .op-btn{
+      display: inline-block;
+    }
+  }
   .media {
     float: left;
-    width: 33.33333333%;
+    width: 25%;
     .box-sizing(border-box);
   }
   .thumbnails {
@@ -145,6 +165,11 @@
 
     img {
       max-width: 100%; height: 243px;
+    }
+    figcaption h3{
+      font-size: 12px;
+      margin: 6px 0 0;
+      color: @text-color;
     }
 
     .op-btn {
