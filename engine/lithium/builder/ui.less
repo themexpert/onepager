@@ -35,7 +35,9 @@
   > li > a {
     padding: 12px 10px
   }
-  > li.active{ }
+  > li.active{ 
+    border-bottom: 2px solid @brand-primary;
+  }
 }
 
 .nav-pills {
@@ -534,9 +536,11 @@ h3.form-divider {
 // ****************************************************
 //  Sections
 // ****************************************************
+.op-build-active > #onepager-preview{
+  width: (100 - @sidebar-width);
+  margin-left: @sidebar-width;
+}
 #onepager-preview {
-  //width: (100 - @sidebar-width);
-  //margin-left: @sidebar-width;
   position: relative;
   .transition(all 0.3s linear);
 }

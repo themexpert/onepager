@@ -13,16 +13,6 @@
       overflow: hidden;
     }
 
-    #onepager-builder {
-      width: 23%;
-      float: left;
-    }
-
-    #onepager-preview {
-      width: 77%;
-      margin-left: 23%;
-    }
-
     #onepager-preview iframe {
       width: 100%;
       height: 100%;
