@@ -36,7 +36,7 @@ let IconSelector = React.createClass({
           <input {...this.props} type="text" className={classes} ref="input"/>
 
           <span className="input-group-btn">
-            <button className="btn btn-primary" ref="select" type="button">
+            <button className="btn btn-default" ref="select" type="button">
               <span className="fa fa-diamond"></span> Icon
             </button>
           </span>

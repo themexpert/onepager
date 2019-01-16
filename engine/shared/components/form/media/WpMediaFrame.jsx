@@ -72,10 +72,10 @@ let WpMediaFrame = React.createClass({
         <div className="input-group">
           <input {...this.props} type="text" className={classes} ref="input"/>
             <span className="input-group-btn">
-              <button className="btn btn-primary" ref="select" type="button">
+              <button className="btn btn-default" ref="select" type="button">
                 <span className="fa fa-picture-o"></span> image
               </button>
-              <button onClick={this.handleReset} className="btn btn-primary" ref="refresh" type="button">
+              <button onClick={this.handleReset} className="btn btn-default" ref="refresh" type="button">
                 <span className="fa fa-undo"></span>
               </button>
             </span>

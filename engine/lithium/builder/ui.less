@@ -209,13 +209,13 @@ body.op-build-active {
   }
 
   .btn-primary {
-    background: transparent;
-    color: lighten(@brand-primary, 5%);
+    background: @brand-primary;
+    color: @white;
     border-color: lighten(@brand-primary, 5%);
     &:hover,
     &:active {
-      color: lighten(@brand-primary, 15%);
-      border-color: lighten(@brand-primary, 15%);
+      background: darken(@brand-primary, 5%);
+      color: @white;
     }
   }
   .btn-info {
@@ -227,7 +227,7 @@ body.op-build-active {
     background: darken(@bg-primary, 2%);
   }
   .panel-heading {
-    background: darken(@bg-secondary, 1%);
+    background: #fff;
     color: @text-color;
   }
   .panel,
@@ -402,13 +402,14 @@ h3.form-divider {
     .panel-title {
       width: 84%;
       overflow: hidden;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: normal;
-      text-transform: uppercase;
+      color: @text-color;
       > a {
         width: 500px;
         display: block;
         text-decoration: none;
+        color: @text-color;
       }
     }
     .handle {

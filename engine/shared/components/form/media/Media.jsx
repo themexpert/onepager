@@ -83,9 +83,9 @@ let Media = React.createClass({
               <div className="input-group">
                 <input {...this.props} type="text" className={classes} ref="input"/>
               <span className="input-group-btn">
-                <button className="btn btn-primary" ref="imgBtn" type="button"><span className="fa fa-picture-o"></span>
+                <button className="btn btn-default" ref="imgBtn" type="button"><span className="fa fa-picture-o"></span>
                 </button>
-                <button className="btn btn-primary" ref="iconBtn" type="button"><span className="fa fa-flag-o"></span>
+                <button className="btn btn-default" ref="iconBtn" type="button"><span className="fa fa-flag-o"></span>
                 </button>
               </span>
               </div>
