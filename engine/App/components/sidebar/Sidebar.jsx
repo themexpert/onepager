@@ -226,12 +226,11 @@ let Sidebar = React.createClass({
               }
             </div>
           </nav>
-          
-          <div className="op-sidebar-control" onClick={this.collapseSidebar}>
-            <span className={classes}></span>
-          </div>
         </footer>
-
+        
+        <div className="op-sidebar-control" onClick={this.collapseSidebar}>
+          <span className={classes}></span>
+        </div>
       </div>
     );
   }
