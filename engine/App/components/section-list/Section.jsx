@@ -74,9 +74,7 @@ let Section = React.createClass({
         <SectionTitle title={title} index={index} >
           <h3 title={slug} onClick={this.handleScrollIntoView}>
             <span className="section-handle">
-              <span className="fa fa-ellipsis-v"></span>
-              <span className="fa fa-ellipsis-v"></span>
-              <span className="fa fa-ellipsis-v"></span>
+              <span className="fa fa-arrows"></span>
             </span>
             {title}
           </h3>

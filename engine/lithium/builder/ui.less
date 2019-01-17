@@ -41,7 +41,7 @@
 }
 
 .nav-pills {
-  margin: -9px -10px 15px;
+  margin: -10px -10px 15px;
   display: flex;
   background: @nav-pills-bg; 
   > li{
@@ -97,7 +97,7 @@ body.op-build-active {
 .op-ui {
   // Backgroudn and colors
   // ----------------------
-  a { text-decoration: inherit; color: @brand-primary; }
+  // a { text-decoration: inherit; color: @brand-primary; }
 
   // Selection text
   ::selection {
@@ -149,12 +149,14 @@ body.op-build-active {
   .list-sections{
     .section {
       // Active card
-      &.active {
-        background : darken(@bg-secondary, 3%);
-        border : 1px solid lighten(@brand-primary, 5%);
+      &.active,
+      &:hover {
+        background : lighten(@brand-primary, 47%);
+        border-color : lighten(@brand-primary, 40%);
         // margin : -1px;
       }
-      background: @bg-secondary;
+      background: darken(@bg-primary, 1%);
+      border: 1px solid @border-color;
       color: @text-color;
       .border-radius(2px);
 
@@ -219,7 +221,8 @@ body.op-build-active {
     }
   }
 
-  .btn-primary {
+  .btn-primary,
+  .uk-button-primary:not(:disabled) {
     background: @brand-primary;
     color: @white;
     border-color: lighten(@brand-primary, 5%);
@@ -359,8 +362,6 @@ h3.form-divider {
     .form-group { margin: 0; position: relative; z-index: 9; }
 
     &:hover{
-      background: darken(@bg-primary, 1%);
-      border: 1px solid @border-color;
       .action-btns{
         display: block;
       }
@@ -372,19 +373,42 @@ h3.form-divider {
 // ****************************************************
 //  Sidebar / Configure
 // ****************************************************
-.txop-sidebar {
-  // Turn off underline
-  a {
-    text-decoration: none;
-  }
-
+.op-sidebar {
   position: fixed;
   left: 0; top: 0; bottom: 0; z-index: 9999;
-  width: @sidebar-width;
-  padding-top: 54px;
+  width: @sidebar-width; height: 100%;
+  // padding-top: 54px;
   // overflow-x: hidden;
   .transition(all 0.3s linear);
 
+  // Panel header
+  .op-header-wrapper{
+    .uk-navbar-container{
+      background: @panel-header;
+      height: 40px;
+      .uk-logo{
+        font-size: 16px;
+        &:hover{ color: @white; }
+      }
+    }
+  }
+  // Panel Main area
+  .op-content-wrapper{
+    position: absolute; top: 40px; bottom: 40px; left: 0;
+    width: 100%;
+    overflow: auto;
+  }
+  // Panel Footer
+  .op-footer-wrapper{
+    .uk-navbar-container{
+      background: @panel-footer;
+      height: 40px;
+      padding: 10px;
+    }
+    .uk-button-primary{
+      border-radius: 2px;
+    }
+  }
   // Buttons
   .tx-nav{
     .btn-group{
@@ -458,41 +482,41 @@ h3.form-divider {
 
   // Navigation Tabs
   .tx-nav-tabs {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    width: @sidebar-width - 0.1;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // z-index: 9999;
+    // width: @sidebar-width - 0.1;
   }
   // Tab content
-  > .tab-content {
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 100%;
-  }
+  // > .tab-content {
+  //   overflow-y: auto;
+  //   overflow-x: hidden;
+  //   height: 100%;
+  // }
 
   #op-contents .tab-pane { padding: 10px 3px;}
   #op-sections { height: 100%;}
 
   // Footer
   // -----------------------------------------------
-  .footer {
-    background: @bg-secondary;
-    padding: 10px 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 99999;
-    > a {
-      color: @text-color;
-      width: 50%;
-      padding: 5px 10px;
-      &:hover {
-        color: lighten(@brand-primary, 5%);
-      }
-    }
-  }
+  // .footer {
+  //   background: @bg-secondary;
+  //   padding: 10px 0;
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   z-index: 99999;
+  //   > a {
+  //     color: @text-color;
+  //     width: 50%;
+  //     padding: 5px 10px;
+  //     &:hover {
+  //       color: lighten(@brand-primary, 5%);
+  //     }
+  //   }
+  // }
 }
 
 // ****************************************************
@@ -768,7 +792,7 @@ body.op-sidebar-collapsed{
   position: fixed; z-index: 10;
   width: 100%;height: 100%;
   color: #fff;
-  #gradient > .directional(#7229A9, #D360E6, 135deg);
+  #gradient > .directional(@brand-primary, darken(@brand-primary,10%), 135deg);
   opacity: 0.94;
 
   .loader{

@@ -13,7 +13,7 @@ const SectionControls = require('./SectionControls.jsx');
 const Settings = require("./Settings.jsx");
 const Menu = require("./Menu.jsx");
 const $ = jQuery;
-const Footer = require('./../section-list/Footer.jsx');
+// const Footer = require('./../section-list/Footer.jsx');
 const BlockCollection = require('../blocks/BlockCollection.jsx');
 
 import notify from '../../../shared/plugins/notify.js';
@@ -95,7 +95,7 @@ let Sidebar = React.createClass({
     let tabContents = React.findDOMNode(this.refs.tabContents);
 
     $(function () {
-      $(tabContents).niceScroll({cursorcolor: '#2196F3', cursorborder: '0'});
+      $(tabContents).niceScroll({cursorcolor: '#ddd', cursorborder: '0'});
     });
   },
 
@@ -105,15 +105,7 @@ let Sidebar = React.createClass({
 
   _renderTabs(){
     let handleTabClick = this.handleTabClick;
-    let isSettingsDirty = this.state.isSettingsDirty;
     let activeTab = this.props.sidebarTabState.active;
-    let {isDirty} = this.props;
-    let buildModeUrl = ODataStore.disableBuildModeUrl;
-
-    let saveClasses = cx({
-      "fa fa-refresh fa-spin": this.state.saving,
-      "fa fa-check": !this.state.saving
-    });
 
     return (
       <ul className='tx-nav tx-nav-tabs'>
@@ -125,23 +117,6 @@ let Sidebar = React.createClass({
              visibleOn="op-sections"/>
         <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab}
              visibleOn="op-sections"/>
-
-        <div className="btn-group">
-          {
-            activeTab === 'op-settings' ?
-              <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave}
-                      className='btn btn--save'>
-                <span className={saveClasses}></span>
-              </button> :
-              <button disabled={!isDirty} onClick={this.handleSave} className='btn btn-primary btn--save'>
-                <span className={saveClasses}></span>
-              </button>
-          }
-          <a href={buildModeUrl} className="btn btn--close" data-toggle="tooltip"
-             data-placement="bottom" title="Close">
-            <span className="fa fa-close"></span>
-          </a>
-        </div>
       </ul>
     );
   },
@@ -159,6 +134,15 @@ let Sidebar = React.createClass({
       section[key] = fields;
       AppActions.updateSection(activeSectionIndex, section);
     };
+    
+    let isSettingsDirty = this.state.isSettingsDirty;
+    let {isDirty} = this.props;
+    let buildModeUrl = ODataStore.disableBuildModeUrl;
+    
+    let saveButtonIcon = cx({
+      "fa fa-refresh fa-spin": this.state.saving,
+      "fa fa-check": !this.state.saving
+    });
 
     let classes = cx({
       "fa fa-chevron-left": !this.props.collapseSidebar,
@@ -170,51 +154,83 @@ let Sidebar = React.createClass({
     });
 
     return (
-      <div className="txop-sidebar op-ui clearfix">
-        {this._renderTabs()}
+      <div className="op-sidebar op-ui clearfix">
+        <header className="op-header-wrapper">
+          <nav className="uk-navbar uk-navbar-container">
+            <div className="uk-navbar-left"><a className="uk-logo op-btn-with-logo uk-light" href="#">OnePager</a></div>
+            
+            <div className="uk-navbar-right">
+              <a href={buildModeUrl} className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
+                <span className="fa fa-close"></span>
+              </a>
+            </div>
+          </nav>
+        </header>
+        
+        <main className="op-content-wrapper" ref='tabContents'>
+          {this._renderTabs()}
 
-        <div className='tab-content' ref='tabContents'>
-          <div className={overlayClasses}/>
+          <div className='tab-content'>
+            <div className={overlayClasses}/>
 
-          <TabPane id='op-sections' active={activeTab}>
-            <SectionList
-              openBlocks={handleTabClick.bind(this, 'op-blocks')}
-              activeSectionIndex={activeSectionIndex}
-              blocks={blocks}
-              sections={sections}/>
-          </TabPane>
+            <TabPane id='op-sections' active={activeTab}>
+              <SectionList
+                openBlocks={handleTabClick.bind(this, 'op-blocks')}
+                activeSectionIndex={activeSectionIndex}
+                blocks={blocks}
+                sections={sections}/>
+            </TabPane>
 
-          <TabPane id="op-blocks" active={activeTab}>
-            <BlockCollection blocks={blocks}/>
-          </TabPane>
+            <TabPane id="op-blocks" active={activeTab}>
+              <BlockCollection blocks={blocks}/>
+            </TabPane>
 
-          <TabPane id='op-menu' active={activeTab}>
-            <Menu sections={sections}/>
-          </TabPane>
+            <TabPane id='op-menu' active={activeTab}>
+              <Menu sections={sections}/>
+            </TabPane>
 
-          <TabPane id='op-contents' active={activeTab}>
-            {sectionEditable ?
-              <SectionControls
-                update={update}
-                title={sections[activeSectionIndex].title}
-                sectionSettings={sectionSettings}
-                sectionIndex={activeSectionIndex}/> :
+            <TabPane id='op-contents' active={activeTab}>
+              {sectionEditable ?
+                <SectionControls
+                  update={update}
+                  title={sections[activeSectionIndex].title}
+                  sectionSettings={sectionSettings}
+                  sectionIndex={activeSectionIndex}/> :
 
-              <h2>please select a section</h2>
-            }
-          </TabPane>
+                <h2>please select a section</h2>
+              }
+            </TabPane>
 
-          <TabPane id='op-settings' active={activeTab}>
-            <Settings whenSettingsDirty={this.whenSettingsDirty}/>
-          </TabPane>
+            <TabPane id='op-settings' active={activeTab}>
+              <Settings whenSettingsDirty={this.whenSettingsDirty}/>
+            </TabPane>
 
-          {activeTab === "op-sections" ? <Footer /> : null }
+            {/* {activeTab === "op-sections" ? <Footer /> : null } */}
 
-        </div>
-
-        <div className="op-sidebar-control" onClick={this.collapseSidebar}>
-          <span className={classes}></span>
-        </div>
+          </div>
+        </main>
+        
+        <footer className="op-footer-wrapper uk-position-bottom">
+          <nav className="uk-navbar uk-navbar-container">
+            <div className="uk-navbar-left"></div>
+            <div className="uk-navbar-right">
+              {
+                activeTab === 'op-settings' ?
+                  <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave}
+                          className='uk-button uk-button-primary uk-button-small'>
+                    <span className={saveButtonIcon}></span> Update
+                  </button> :
+                  <button disabled={!isDirty} onClick={this.handleSave} className='uk-button uk-button-primary uk-button-small'>
+                    <span className={saveButtonIcon}></span> Update
+                  </button>
+              }
+            </div>
+          </nav>
+          
+          <div className="op-sidebar-control" onClick={this.collapseSidebar}>
+            <span className={classes}></span>
+          </div>
+        </footer>
 
       </div>
     );

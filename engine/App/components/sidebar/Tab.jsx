@@ -59,8 +59,7 @@ let Tab = React.createClass({
     return (
       <li className={classes.li}>
         <a href="javascript:void(0)" onClick={this.handleClick}>
-          <span className={icon} data-toggle="tooltip" data-placement="bottom" title={title}></span>
-          <span className={classes.title} style={{fontSize: 15, padding: 10}}>{this.props.title}</span>
+          <span className={icon}> <span className={classes.title}>{title}</span></span>
         </a>
       </li>
     );
