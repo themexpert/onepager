@@ -24,7 +24,9 @@ $heading_class = ($settings['title_transformation']) ? 'uk-text-' . $settings['t
 									uk-slideshow-parallax="x: 200,-200">
 									<?php echo $slide['description']?>
 								</p>
-								<?php echo op_link($slide['link'], 'uk-button uk-button-primary');?>
+								<div uk-slideshow-parallax="x: 100,-100">
+									<?php echo op_link($slide['link'], 'uk-button uk-button-primary');?>
+								</div>
             </div>
         </li>
 			<?php endforeach; ?>
