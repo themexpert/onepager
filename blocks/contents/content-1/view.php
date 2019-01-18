@@ -1,49 +1,45 @@
 <?php
-	$image_cols = $settings['media_grid'];
-	$content_cols = 12 - $image_cols; // Default 12 grid
+	$media_grid = 'uk-'. $settings['media_grid'] . '@m';
 	// Animation
-	$animation_media = ($settings['animation_media']) ? $settings['animation_media'] : '';
-	$animation_content = ($settings['animation_content']) ? $settings['animation_content'] : '';
-
-	// Padding alignment map
-	$padding_class = ( $settings['media_alignment'] == 'left' ) ? 'pl-big' : 'pr-big';
+	$animation_media = ($settings['animation_media']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['animation_media'].'"' : '';
+	$animation_content = ($settings['animation_content']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['animation_content'].'"' : '';
+	// Alignment
+	$content_position = ($settings['media_alignment'] == 'right' ) ? 'uk-flex-first@m uk-first-column' : '';
+	// Text transformation class
+	$heading_class = ($settings['title_transformation']) ? 'uk-text-' . $settings['title_transformation'] : '';
 ?>
-
-<section id="<?php echo $id;?>" class="op-section contents content-1 full-screen">
-	<div class="container">
-		<div class="row">
-			<article class="flex flex-<?php echo $settings['content_alignment']?> flex-center">
-
-				<?php // Image Left
-				if ('left' == $settings['media_alignment']) : ?>
-					<div class="col-md-<?php echo $image_cols?> col-sm-<?php echo $image_cols?>">
-						<img src="<?php echo $contents['image']?>" alt="<?php echo $contents['title']?>" class="img-responsive wow <?php echo $animation_media ?>">
-					</div>
-				<?php endif; ?>
-
-				<div class="col-md-<?php echo $content_cols ?> col-sm-<?php echo $content_cols ?> wow <?php echo $animation_content ?>">
-					<div class="<?php echo $padding_class ;?>">
-						<!-- Title -->
-						<?php if($contents['title']): ?>
-							<h1 class="section-title <?php echo $settings['title_transformation']?>"><?php echo $contents['title']?></h1>
-						<?php endif; ?>
-						<!-- Description -->
-						<?php if($contents['description']): ?>
-							<div class="section-desc"><?php echo $contents['description']?></div>
-						<?php endif; ?>
-						<!-- Link -->
-						<?php echo op_link($contents['link'], 'btn btn-primary btn-lg');?>
-					</div>
+<section id="<?php echo $id; ?>" class="op-section contents content-1">
+	<div class="uk-container">
+		<article class="uk-grid-large" uk-grid>
+			
+			<div class="<?php echo $media_grid?> uk-grid-item-match uk-flex-middle">
+				<div class="uk-panel" <?php echo $animation_media?>>
+					<img src="<?php echo $contents['image']?>" alt="<?php echo $contents['title']?>" class="img-responsive wow <?php echo $animation_media ?>">
 				</div>
+			</div>
+			
+			<div class="uk-width-expand@m uk-grid-item-match uk-flex-middle <?php echo $content_position?>">
 
-				<?php // Image right
-				if ('right' == $settings['media_alignment']) : ?>
-					<div class="col-md-<?php echo $image_cols?> col-sm-<?php echo $image_cols?>">
-						<img src="<?php echo $contents['image']?>" alt="<?php echo $contents['title']?>" class="op-media img-responsive wow <?php echo $animation_media ?>">
-					</div>
-				<?php endif; ?>
+				<div class="uk-panel" <?php echo $animation_content?>>
+					<!-- Title -->
+					<?php if($contents['title']): ?>
+					<h1 class="uk-heading-primary <?php echo $heading_class ?>">
+						<?php echo $contents['title']?>
+					</h1>
+					<?php endif;?>
 
-			</article>
-		</div>
+					<!-- Description -->
+					<?php if($contents['description']): ?>
+						<div class="uk-text-lead"><?php echo $contents['description']?></div>
+					<?php endif; ?>
+					
+					<!-- Link -->
+					<?php echo op_link($contents['link'], 'uk-button uk-button-primary');?>
+
+				</div>
+				
+			</div>
+
+		</article>
 	</div>
 </section>
