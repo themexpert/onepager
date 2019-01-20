@@ -17,7 +17,7 @@ class BlocksLoader {
     $groups = "Onepager (plugin)";
 
     $this->blockManager->loadAllFromPath(
-      ONEPAGER_BLOCKS_PATH, ONEPAGER_BLOCKS_URL, $groups );
+      ONEPAGER_BLOCKS_PATH, ONEPAGER_BLOCKS_URL );
   }
 
   public function loadThemeBlocks() {
