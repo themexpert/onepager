@@ -50,6 +50,57 @@ return array(
   ),
 
   'settings' => array(
+
+    array(
+      'name'     => 'media_alignment',
+      'label'    => 'Media Alignment',
+      'type'     => 'select',
+      'value'    => 'right',
+      'options'  => array(
+        'left'    => 'Left',
+        'right'   => 'Right'
+      ),
+    ),
+
+    array(
+      'name'     => 'media_grid',
+      'label'    => 'Media Grid',
+      'type'     => 'select',
+      'value'    => 'width-1-3',
+      'options'  => array(
+        'width-1-2'   => 'Half',
+        'width-1-3'   => 'One Thrids',
+        'width-1-4'   => 'One Fourth',
+        'width-2-3'   => 'Two Thirds',
+      ),
+    ),
+
+    array(
+    'name'     => 'animation_media',
+    'label'    => 'Media Animation',
+    'type'     => 'select',
+    'value'    => '0',
+    'options'  => array(
+      '0'                     =>  'None',
+      'fade'                  =>  'Fade',
+      'scale-up'              =>  'Scale Up',
+      'scale-down'            =>  'Scale Down',
+      'slide-top-small'       =>  'Slide Top Small',
+      'slide-bottom-small'    =>  'Slide Bottom Small',
+      'slide-left-small'      =>  'Slide Left Small',
+      'slide-right-small'     =>  'Slide Right Small',
+      'slide-top-medium'      =>  'Slide Top Medium',
+      'slide-bottom-medium'   =>  'Slide Bottom Medium',
+      'slide-left-medium'     =>  'Slide Left Medium',
+      'slide-right-medium'    =>  'Slide Right Medium',
+      'slide-top'             =>  'Slide Top 100%',
+      'slide-bottom'          =>  'Slide Bottom 100%',
+      'slide-left'            =>  'Slide Left 100%',
+      'slide-right'           =>  'Slide Right 100%'
+      ),
+    ),
+
+
     array(
       'name' => 'title_size',
       'label' => 'Title Size',
@@ -60,57 +111,41 @@ return array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
-      'value'    => 'text-uppercase',
+      'value'    => '0',
       'options'  => array(
-        'text-lowercase'   => 'Lowercase',
-        'text-uppercase'   => 'Uppercase',
-        'text-capitalize'  => 'Capitalized'
+        '0'   => 'Default',
+        'lowercase'   => 'Lowercase',
+        'uppercase'   => 'Uppercase',
+        'capitalize'  => 'Capitalized'
       ),
     ),
 
     array(
-      'name'     => 'animation_media',
-      'label'    => 'Animation Media',
+      'name'     => 'animation_content',
+      'label'    => 'Content Animation',
       'type'     => 'select',
-      'value'    => 'fadeInRight',
-      'options'  => array(
-        '0'           => 'None',
-        'fadeIn'      => 'Fade',
-        'fadeInLeft'  => 'Slide Left',
-        'fadeInRight' => 'Slide Right',
-        'fadeInUp'    => 'Slide Up',
-        'fadeInDown'  => 'Slide Down',
-      )
-    ), array(
-      'name'     => 'animation_title',
-      'label'    => 'Animation Title',
-      'type'     => 'select',
-      'value'    => 'fadeInDown',
-      'options'  => array(
-        '0'           => 'None',
-        'fadeIn'      => 'Fade',
-        'fadeInLeft'  => 'Slide Left',
-        'fadeInRight' => 'Slide Right',
-        'fadeInUp'    => 'Slide Up',
-        'fadeInDown'  => 'Slide Down',
-      )
+      'value'    => '0',
+      'options'  => array(        
+        '0'                     =>  'None',
+        'fade'                  =>  'Fade',
+        'scale-up'              =>  'Scale Up',
+        'scale-down'            =>  'Scale Down',
+        'slide-top-small'       =>  'Slide Top Small',
+        'slide-bottom-small'    =>  'Slide Bottom Small',
+        'slide-left-small'      =>  'Slide Left Small',
+        'slide-right-small'     =>  'Slide Right Small',
+        'slide-top-medium'      =>  'Slide Top Medium',
+        'slide-bottom-medium'   =>  'Slide Bottom Medium',
+        'slide-left-medium'     =>  'Slide Left Medium',
+        'slide-right-medium'    =>  'Slide Right Medium',
+        'slide-top'             =>  'Slide Top 100%',
+        'slide-bottom'          =>  'Slide Bottom 100%',
+        'slide-left'            =>  'Slide Left 100%',
+        'slide-right'           =>  'Slide Right 100%'
+
+      ),
     ),
 
-     array(
-      'name'     => 'animation_item',
-      'label'    => 'Animation Items',
-      'type'     => 'select',
-      'value'    => 'fadeInLeft',
-      'options'  => array(
-        '0'             => 'None',
-        'fadeIn'        => 'Fade',
-        'zoomIn'        => 'Zoom In',
-        'fadeInLeft'    => 'Slide Left',
-        'fadeInRight'   => 'Slide Right',
-        'fadeInUp'      => 'Slide Up',
-        'fadeInDown'    => 'Slide Down',
-      )
-    ),
   ),
 
   'styles' => array(

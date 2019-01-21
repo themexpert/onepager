@@ -40,7 +40,7 @@ return array(
       'name'     => 'media_grid',
       'label'    => 'Meida Grid',
       'type'     => 'select',
-      'value'    => 'half',
+      'value'    => 'width-1-3',
       'options'  => array(
         'width-1-2'   => 'Half',
         'width-1-3'   => 'One Thrids',
