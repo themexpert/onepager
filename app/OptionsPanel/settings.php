@@ -8,13 +8,6 @@ Onepager::getOptionPanel()
             'label'  => 'Section Title Size',
             'append' => 'px',
             'value'  => '44',
-          ),
-          array( 'name' => 'favicon', 'type' => 'image' ),
-          array(
-            'name'        => 'google_analytics',
-            'type'        => 'textarea',
-            'label'       => 'Google Analytics',
-            'placeholder' => 'Paste your code here',
           )
         )
         ->tab( 'styles', 'Styles' )
@@ -32,7 +25,13 @@ Onepager::getOptionPanel()
         )
         ->tab( 'advanced' )
         ->add(
-          array( 'name' => 'onepager_debug', 'label' => 'Development Mode', 'type' => 'switch', 'value' => false )
+          array( 'name' => 'onepager_debug', 'label' => 'Development Mode', 'type' => 'switch', 'value' => false ),
+          array(
+            'name'        => 'google_analytics',
+            'type'        => 'textarea',
+            'label'       => 'Google Analytics',
+            'placeholder' => 'Paste your code here',
+          )
         );
 
 // Onepager::basePreset( array(
@@ -51,29 +50,4 @@ add_action( 'wp_head', function () { ?>
 
   <!--  Google Analytics-->
   <?php echo Onepager::getOption( 'google_analytics' ); ?>
-
-  <!--  Full pager-->
-  <?php if ( Onepager::getOption( 'full_screen' ) ): ?>
-    <script>
-      jQuery(document).ready(function ($) {
-        $(".op-sections").fullpage({
-          sectionSelector: ".op-section",
-          css3: true,
-          scrollingSpeed: 100,
-          scrollBar: true
-        });
-      });
-    </script>
-  <?php endif; ?>
 <?php }, 100 );
-
-
-if ( Onepager::getOption( 'full_screen' ) ) {
-  add_action( 'wp_enqueue_scripts', function () {
-    $q = onepager()->asset();
-    $q->script( 'op-slimscroll', op_asset( 'assets/js/jquery.slimscroll.min.js' ) );
-    $q->script( 'op-fullpage', op_asset( 'assets/js/jquery.fullPage.js' ) );
-
-    $q->style( 'op-fullpage', op_asset( 'assets/css/jquery.fullPage.css' ) );
-  } );
-}

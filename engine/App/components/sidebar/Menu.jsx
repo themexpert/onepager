@@ -45,7 +45,7 @@ const Menu = React.createClass({
           <PanelGroup accordion>
             { sections.map(this._renderMenuPanel) }
           </PanelGroup> :
-          <p>Please select a Menu</p>
+          <p className="alert alert-info"><i className="fa fa-info-circle"></i> Select any menu from the list.</p>
         }
       </div>
     );

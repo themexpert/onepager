@@ -74,7 +74,7 @@ let OptionsPanelStore = Reflux.createStore({
   setSyncedOptions() {
     this.data.synced = fromJS(this.data.optionPanel.toJS());
     this.trigger({synced: this.data.synced});
-    notify.success('Successfully saved settings');
+    notify.success('Settings updated');
   },
 
   onSyncWithSections(sections, callback){

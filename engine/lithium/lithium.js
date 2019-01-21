@@ -15,6 +15,3 @@ jQuery(function() {
     }
   });
 });
-
-// Init wowjs
-(new WOW).init();

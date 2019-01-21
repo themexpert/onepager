@@ -16,7 +16,7 @@ trait FormEngineScripts {
     // tx namespaced assets to avoid multiple assets loading from other ThemeXpert product
     $asset->style( 'tx-bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
     $asset->style( 'tx-fontawesome', op_asset( 'assets/css/font-awesome.css' ) );
-
+    
     $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
     $asset->script( 'tx-bootstrap-switch', op_asset( 'assets/js/bootstrap-switch.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
     $asset->script( 'tx-bootstrap-select', op_asset( 'assets/js/bootstrap-select.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
@@ -26,6 +26,11 @@ trait FormEngineScripts {
     $asset->script( 'tx-toastr', op_asset( 'assets/js/toastr.js' ), [ 'jquery' ], ONEPAGER_VERSION, false );
 
     $asset->style( 'tx-colorpicker', op_asset( "assets/css/bootstrap-colorpicker.css" ) );
+    
+    // UIKit
+    $asset->style( 'op-uikit', op_asset( 'assets/css/uikit.css' ) );
+    $asset->script( 'op-uikit', op_asset( 'assets/js/uikit.js' ), '', ONEPAGER_VERSION, false );
+
     $asset->style( 'tx-lithium-ui', op_asset( 'assets/css/lithium-builder.css' ) );
   }
 

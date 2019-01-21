@@ -48,6 +48,10 @@ var config = {
     images: dest + '/images',
     fonts: dest + '/fonts'
   },
+  uikit: {
+    js: dest + '/js',
+    css: dest + '/css'
+  },
   watch: {
     src: src + '/**/*.*',
     less: src + '/lithium/**/*.less',
@@ -83,7 +87,7 @@ gulp.task('images', function () {
 var jsFilter = gulpFilter('**/*.js'),
 cssFilter = gulpFilter('**/*.css'),
 lessFilter = gulpFilter('**/*.less'),
-fontFilter = gulpFilter(['**/*.svg', '**/*.eot', '**/*.woff', '**/*.ttf']),
+fontFilter = gulpFilter(['**/*.svg', '**/*.eot', '**/*.woff', '**/*.woff2', '**/*.ttf']),
 imgFilter = gulpFilter(['**/*.png', '**/*.gif', '**/*.jpg']);
 
 gulp.task('bower', function () {
@@ -114,6 +118,18 @@ gulp.task('bower', function () {
     .pipe(fontFilter.restore());
 });
 
+
+gulp.task('uikit-js', function () {
+  return gulp.src('./node_modules/uikit/dist/js/uikit.js')
+        .pipe(uglify())
+        .pipe(gulp.dest(config.uikit.js))
+});
+gulp.task('uikit-css', function () {
+  return gulp.src('./node_modules/uikit/dist/css/uikit.css')
+        .pipe(minify())
+        .pipe(gulp.dest(config.uikit.css))
+});
+
 gulp.task('watch', function () {
   gulp.watch(config.watch.less, ['less']);
   gulp.watch(config.watch.js, ['js']);
@@ -128,7 +144,7 @@ gulp.task('build-clean', function () {
 });
 
 gulp.task('build', function (cb) {
-  return runSequence('build-clean', ['js', 'fonts', 'bower', 'images', 'less'], cb);
+  return runSequence('build-clean', ['js', 'fonts', 'bower', 'images', 'less', 'uikit-js','uikit-css'], cb);
 });
 
 

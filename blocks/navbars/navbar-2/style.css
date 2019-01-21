@@ -1,8 +1,0 @@
-body{ right: 0; }
-/* OFF CANVAS Trigger
--------------------------------------------------- */
-.offcanvas-trigger {
-  padding: 0 20px; margin: 0 -15px 0 0;
-  line-height: 50px;
-}
-.offcanvas-trigger > span{ margin-right: 2px; }

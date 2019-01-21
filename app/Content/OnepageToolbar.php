@@ -16,7 +16,7 @@ class OnepageToolbar {
       onepager()->toolbar()->addMenu(
         'op-enable-livemode',
         $url,
-        '<span class="fa fa-circle"></span> Enable Onepage Editor'
+        '<span class="fa fa-circle"></span> Edit with OnePager'
       );
     }
 

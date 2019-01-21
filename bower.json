@@ -2,18 +2,18 @@
   "name": "onepager",
   "version": "1.1.4",
   "dependencies": {
-    "animate.css": "~3.2.5",
-    "bootstrap": "~3.3.5",
+    "animate.css": ">=3.0",
+    "bootstrap": "~3.4",
     "bootstrap-select": "~1.7.3",
     "bootstrap-switch": "~3.3.2",
-    "fontawesome": "latest",
+    "fontawesome": "~4.7",
     "fontawesome-selector": "https://github.com/themexpert/fontawesome-selector.git",
-    "fullpage.js": "~2.6.7",
+    "fullpage.js": ">=3.0",
     "jquery.nicescroll": "~3.6.0",
-    "lesshat": "~3.0.2",
-    "magnific-popup": "~1.0.0",
+    "lesshat": "~3.0",
+    "magnific-popup": ">=1.1",
     "mjolnic-bootstrap-colorpicker": "~2.1.2",
-    "sweetalert": "~1.0.1",
+    "sweetalert": "~1.1",
     "toastr": "~2.1.1",
     "wow": "~1.1.2"
   },
@@ -27,7 +27,6 @@
     "fontawesome": {
         "main": [
           "css/font-awesome.css",
-          "css/font-awesome.min.css",
           "fonts/fontawesome-webfont.eot",
           "fonts/fontawesome-webfont.svg",
           "fonts/fontawesome-webfont.ttf",
@@ -38,6 +37,6 @@
   },
   "devDependencies": {},
   "resolutions": {
-    "jquery": "~1.9.0"
+    "jquery": "~1.12"
   }
 }

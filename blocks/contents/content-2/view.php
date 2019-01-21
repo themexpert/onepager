@@ -1,53 +1,65 @@
 <?php
-	$items = array_chunk($contents['items'], (12/$settings['columns']) );
-	$animation_title = ($settings['animation_title']) ? $settings['animation_title'] : '';
-	$animation_item = ($settings['animation_item']) ? $settings['animation_item'] : '';
-	// WOW JS Animation delay for repeater
-	$animation_delay = 0.2;
+	//$items = $settings['columns'];
+
+	// title alignment
+	$title_alignment = ($settings['title_alignment']) ? $settings['title_alignment'] : '';
+	// title animation
+	$title_animation = ($settings['title_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['title_animation'].'"' : '';
+	// items alignment
+	$items_alignment = ($settings['items_alignment']) ? $settings['items_alignment'] : '';
+	// items animation
+	$items_animation = ($settings['items_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['items_animation'].'"' : '';
 ?>
-<section id="<?php echo $id?>" class="op-section contents content-2 full-screen">
-	<div class="container">
-		<article class="mr-big ml-big">
-			<?php if($contents['title']):?>
-				<!-- Section Title -->
-				<h1 class="section-title text-center <?php echo $settings['title_transformation']?> wow <?php echo $animation_title?>">
-					<?php echo $contents['title']?>
-				</h1>
-			<?php endif; ?>
 
-			<?php if($contents['description']):?>
-				<!-- Section Sub Title -->
-				<p class="section-desc text-center wow <?php echo $animation_title?>">
-					<?php echo $contents['description']?>
-				</p>
-			<?php endif; ?>
 
-			<?php foreach( $items as $item ): ?>
-			<div class="row">
-			<?php foreach($item as $feature): ?>
-				<div class="col-md-<?php echo $settings['columns']?>">
-					<div class="blurb text-center wow <?php echo $animation_item?>" data-wow-delay="<?php echo $animation_delay += 0.2 ?>s">
+<section id="<?php echo $id;?>" class="op-section contents content-2">
+	<div class="uk-container">
+		<article class="uk-article">
+			<div class="section-heading uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
+				<?php if($contents['title']):?>
+					<!-- Section Title -->
+					<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>">
+						<?php echo $contents['title'];?>
+					</h1>
+				<?php endif; ?>
 
-						<?php if( op_is_image($feature['media'])):?>
-							<img class="op-media" src="<?php echo $feature['media'] ?>" alt="<?php echo $feature['title']?>" />
-						<?php else :?>
-							<span class="op-media <?php echo $feature['media'] ?>"></span>
-						<?php endif;?>
-
-						<h3 class="title <?php echo $settings['title_transformation']?>">
-              <?php if(trim($feature['link'])): ?>
-                <a href="<?php echo $feature['link'] ?>" target="<?php echo $feature['target'] ? '_blank' : ''?>"><?php echo $feature['title']?></a>
-              <?php else: ?>
-                <?php echo $feature['title']?>
-              <?php endif; ?>
-            </h3>
-
-						<p class="desc text-muted"><?php echo $feature['description']?></p>
-					</div>
-				</div>
-			<?php endforeach; ?>
+				<?php if($contents['description']):?>
+					<!-- Section Sub Title -->
+					<p class="uk-text-lead">
+						<?php echo $contents['description'];?>
+					</p>
+				<?php endif; ?>
 			</div>
-			<?php endforeach; ?>
-		</article>
-	</div>
-</section>
+
+			<div class="uk-grid-medium" uk-grid >
+				<?php foreach($contents['items'] as $feature): ?>
+
+					<div class="uk-width-1-<?php echo $settings['items_columns'];?>@m">
+						<div class="blurb uk-text-<?php echo $items_alignment;?>" <?php echo $items_animation;?>>
+
+							<!-- Item image -->
+							<?php if( op_is_image($feature['media'])):?>
+								<img class="op-media" src="<?php echo $feature['media']; ?>" alt="<?php echo $feature['title'];?>" />
+							<?php else :?>
+								<span class="op-media <?php echo $feature['media']; ?>"></span>
+							<?php endif;?>
+
+							<!-- Item title -->
+							<h3 class="item-title uk-text-<?php echo $settings['title_transformation'];?>">
+				              <?php if(trim($feature['link'])): ?>
+				                <a href="<?php echo $feature['link']; ?>" target="<?php echo $feature['target'] ? '_blank' : ''?>"><?php echo $feature['title'];?></a>
+				              <?php else: ?>
+				                <?php echo $feature['title'];?>
+				              <?php endif; ?>
+				            </h3>
+
+				            <!-- Item desc -->
+							<p class="uk-text-medium"><?php echo $feature['description'];?></p>
+						</div><!-- blurb -->
+					</div><!-- uk-columns -->
+
+				<?php endforeach; ?>
+			</div> <!-- uk grid medium -->
+		</article> <!-- uk-article -->
+	</div> <!-- uk-container -->
+</section> <!-- op-section -->

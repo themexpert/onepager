@@ -60,7 +60,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
 
           if (pageId) {
-            notify.success('Database Update Successful');
+            notify.success('Page updated successfully');
           }
           return resolve();
         });

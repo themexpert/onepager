@@ -17,6 +17,7 @@ blocks/test
 
 # package
 *.zip
+*.bowerrc
 
 # Node + Composer
 /assets

@@ -52,58 +52,125 @@ return array(
       'append' => 'px',
       'value' => '@section_title_size'
     ),
+
+    array(
+      'name' => 'desc_size',
+      'label' => 'Desc Size',
+      'append' => 'px',
+      'value' => '18'
+    ),
+
+
     array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
-      'value'    => 'text-uppercase',
+      'value'    => '0',
       'options'  => array(
-        'text-lowercase'   => 'Lowercase',
-        'text-uppercase'   => 'Uppercase',
-        'text-capitalize'  => 'Capitalized'
+        '0'   => 'Default',
+        'lowercase'   => 'Lowercase',
+        'uppercase'   => 'Uppercase',
+        'capitalize'  => 'Capitalized'
       ),
     ),
     array(
-      'name'     => 'columns',
-      'label'    => 'Columns',
+      'name'     => 'title_alignment',
+      'label'    => 'Title Alignment',
       'type'     => 'select',
-      'value'    => '4',
+      'value'    => 'center',
       'options'  => array(
-        '4'   => '3',
-        '3'   => '4'
-      ),
-    ),
-    array(
-      'name'     => 'animation_title',
-      'label'    => 'Animation Title',
-      'type'     => 'select',
-      'value'    => 'fadeInDown',
-      'options'  => array(
-        '0'           => 'None',
-        'fadeIn'      => 'Fade',
-        'fadeInLeft'  => 'Slide Left',
-        'fadeInRight' => 'Slide Right',
-        'fadeInUp'    => 'Slide Up',
-        'fadeInDown'  => 'Slide Down',
+        'left'      => 'Left',
+        'center'    => 'Center',
+        'right'     => 'Right',
+        'justify'   => 'Justify',
       )
     ),
 
-     array(
-      'name'     => 'animation_item',
-      'label'    => 'Animation Items',
+    array(
+      'name'     => 'title_animation',
+      'label'    => 'Title Animation ',
       'type'     => 'select',
-      'value'    => 'zoomIn',
+      'value'    => '0',
+      'options'  => array(        
+        '0'                     =>  'None',
+        'fade'                  =>  'Fade',
+        'scale-up'              =>  'Scale Up',
+        'scale-down'            =>  'Scale Down',
+        'slide-top-small'       =>  'Slide Top Small',
+        'slide-bottom-small'    =>  'Slide Bottom Small',
+        'slide-left-small'      =>  'Slide Left Small',
+        'slide-right-small'     =>  'Slide Right Small',
+        'slide-top-medium'      =>  'Slide Top Medium',
+        'slide-bottom-medium'   =>  'Slide Bottom Medium',
+        'slide-left-medium'     =>  'Slide Left Medium',
+        'slide-right-medium'    =>  'Slide Right Medium',
+        'slide-top'             =>  'Slide Top 100%',
+        'slide-bottom'          =>  'Slide Bottom 100%',
+        'slide-left'            =>  'Slide Left 100%',
+        'slide-right'           =>  'Slide Right 100%'
+
+      ),
+    ),
+
+
+    array(
+      'name'     => 'items_columns',
+      'label'    => 'Items Columns',
+      'type'     => 'select',
+      'value'    => '3',
       'options'  => array(
-        '0'             => 'None',
-        'fadeIn'        => 'Fade',
-        'zoomIn'        => 'Zoom In',
-        'fadeInLeft'    => 'Slide Left',
-        'fadeInRight'   => 'Slide Right',
-        'fadeInUp'      => 'Slide Up',
-        'fadeInDown'    => 'Slide Down',
+        '2'   => '2',
+        '3'   => '3',
+        '4'   => '4',
+
+      ),
+    ),
+
+
+
+
+    array(
+      'name'     => 'items_animation',
+      'label'    => 'Items Animation ',
+      'type'     => 'select',
+      'value'    => '0',
+      'options'  => array(        
+        '0'                     =>  'None',
+        'fade'                  =>  'Fade',
+        'scale-up'              =>  'Scale Up',
+        'scale-down'            =>  'Scale Down',
+        'slide-top-small'       =>  'Slide Top Small',
+        'slide-bottom-small'    =>  'Slide Bottom Small',
+        'slide-left-small'      =>  'Slide Left Small',
+        'slide-right-small'     =>  'Slide Right Small',
+        'slide-top-medium'      =>  'Slide Top Medium',
+        'slide-bottom-medium'   =>  'Slide Bottom Medium',
+        'slide-left-medium'     =>  'Slide Left Medium',
+        'slide-right-medium'    =>  'Slide Right Medium',
+        'slide-top'             =>  'Slide Top 100%',
+        'slide-bottom'          =>  'Slide Bottom 100%',
+        'slide-left'            =>  'Slide Left 100%',
+        'slide-right'           =>  'Slide Right 100%'
+
+      ),
+    ),
+
+    array(
+      'name'     => 'items_alignment',
+      'label'    => 'Items Alignment',
+      'type'     => 'select',
+      'value'    => 'center',
+      'options'  => array(
+        'left'      => 'Left',
+        'center'    => 'Center',
+        'right'     => 'Right',
+        'justify'   => 'Justify',
       )
     ),
   ),
+
+
+
 
   'styles' => array(
     array(
@@ -119,12 +186,30 @@ return array(
       'value' => '#323232'
 
     ),
+
     array(
-      'name' => 'text_color',
-      'label' => 'Text Color',
+      'name' => 'desc_color',
+      'label' => 'Desc Color',
+      'type' => 'colorpicker',
+      'value' => '#323232'
+
+    ),
+
+
+    array(
+      'name' => 'item_title_color',
+      'label' => 'Item Title Color',
       'type' => 'colorpicker',
       'value' => '#727272'
     ),
+
+    array(
+      'name' => 'item_desc_color',
+      'label' => 'Item Desc Color',
+      'type' => 'colorpicker',
+      'value' => '#727272'
+    ),
+
     array(
       'name' => 'icon_color',
       'label' => 'Icon Color',

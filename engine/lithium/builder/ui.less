@@ -3,6 +3,7 @@
 .tx-nav {
   margin: 0;
   padding: 0;
+  border-bottom: 1px solid @border-color;
 
   > li {
     position: relative;
@@ -15,7 +16,6 @@
     font-size: 1.5em;
   }
   > li > a:not(.btn) {
-    .box-shadow(none);
   }
   > li.active > a {
     color: @brand-primary;
@@ -27,7 +27,6 @@
 }
 
 .tx-nav-tabs {
-  .box-shadow(0 -3px 3px #1C232B inset);
   .transition(all 0.3s linear);
   > li {
     display: inline-block;
@@ -36,20 +35,31 @@
   > li > a {
     padding: 12px 10px
   }
-  > li.active{ .box-shadow(0 -6px 5px #1C232B); }
+  > li.active{ 
+    border-bottom: 2px solid @brand-primary;
+  }
 }
 
 .nav-pills {
-  margin: 0;
+  margin: -10px -10px 15px;
+  display: flex;
+  background: @nav-pills-bg; 
+  > li{
+    display: flex; 
+    flex: 1;
+    justify-content: center;
+
+    &.active{ background: @bg-primary; }
+  }
   > li > a {
+    border: 0;
     outline: 0;
-    padding: 0 6px;
+    padding: 0;
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 0.5px;
-    line-height: 25px;
-    color: #666;
-    .box-shadow(none);
+    line-height: 40px;
+    color: @text-color;
   }
 }
 
@@ -59,7 +69,7 @@
 
 // General
 body.op-build-active {
-  background: inherit;
+  background: @bg-primary;
   overflow-x: hidden;
 }
 
@@ -69,16 +79,16 @@ body.op-build-active {
 }
 
 .form-control::-moz-placeholder {
-  color: #545454;
+  color: #ddd;
   opacity: 1
 }
 
 .form-control:-ms-input-placeholder {
-  color: #545454
+  color: #ddd
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #545454
+  color: #ddd
 }
 
 // ****************************************************
@@ -87,7 +97,7 @@ body.op-build-active {
 .op-ui {
   // Backgroudn and colors
   // ----------------------
-  a { text-decoration: inherit; color: @brand-primary; }
+  // a { text-decoration: inherit; color: @brand-primary; }
 
   // Selection text
   ::selection {
@@ -117,14 +127,13 @@ body.op-build-active {
   .tx-nav-tabs {
     background: @bg-secondary;
     > li.active > a {
-      background: @bg-primary;
-      color: @brand-primary;
+      color: @text-color;
+      font-size: 16px;
     }
   }
   // Pills
   .nav-pills {
     > li > a {
-      border: 1px solid transparent;
       color: @text-color;
     }
     > li:hover a,
@@ -132,7 +141,7 @@ body.op-build-active {
     > li.active > a:hover,
     > li.active > a:focus {
       background: transparent;
-      border: 1px solid @brand-primary;
+      color: darken(@text-color, 20%);
     }
   }
 
@@ -140,12 +149,14 @@ body.op-build-active {
   .list-sections{
     .section {
       // Active card
-      &.active {
-        background : darken(@bg-secondary, 3%);
-        border : 1px solid lighten(@brand-primary, 5%);
+      &.active,
+      &:hover {
+        background : lighten(@brand-primary, 47%);
+        border-color : lighten(@brand-primary, 40%);
         // margin : -1px;
       }
-      background: @bg-secondary;
+      background: darken(@bg-primary, 1%);
+      border: 1px solid @border-color;
       color: @text-color;
       .border-radius(2px);
 
@@ -163,22 +174,23 @@ body.op-build-active {
 
   // Form
   .form-control {
-    background: @bg-secondary;
+    background: @white;
     color: @text-color;
-    border-color: lighten(@bg-primary, 10%);
+    border-color: @border-color;
     font-size: 12px;
+    .box-shadow(none);
     &:focus {
       .box-shadow(none);
       border-color: lighten(@brand-primary, 15%)
     }
   }
   .input-group .btn-primary {
-    border-color: lighten(@bg-primary, 10%);
+    border-color: @border-color;
     color: @text-color;
   }
   .input-group-addon {
     background: darken(@bg-secondary, 2%);
-    border-color: lighten(@bg-primary, 10%);
+    border-color: @border-color;
   }
   .input-group-btn > .btn:not(:last-child) {
     margin-right: 1px;
@@ -209,14 +221,15 @@ body.op-build-active {
     }
   }
 
-  .btn-primary {
-    background: transparent;
-    color: lighten(@brand-primary, 5%);
+  .btn-primary,
+  .uk-button-primary:not(:disabled) {
+    background: @brand-primary;
+    color: @white;
     border-color: lighten(@brand-primary, 5%);
     &:hover,
     &:active {
-      color: lighten(@brand-primary, 15%);
-      border-color: lighten(@brand-primary, 15%);
+      background: darken(@brand-primary, 5%);
+      color: @white;
     }
   }
   .btn-info {
@@ -228,7 +241,7 @@ body.op-build-active {
     background: darken(@bg-primary, 2%);
   }
   .panel-heading {
-    background: darken(@bg-secondary, 1%);
+    background: #fff;
     color: @text-color;
   }
   .panel,
@@ -287,21 +300,19 @@ body.op-build-active {
   // Bootstrap Select
   .bootstrap-select{
     >.dropdown-toggle{
-      background: @bg-secondary;
+      background: @white;
       color: @text-color;
-      border-color: lighten(@bg-primary, 10%);
+      border-color: @border-color;
       text-transform: capitalize;
       &:hover,
       &:focus{
-        background: darken(@bg-secondary, 2%);
-        color: lighten(@text-color, 10%);
-        border-color: lighten(@bg-primary, 10%);
+        border-color: @border-color;
         outline: none !important;
       }
     }
     .dropdown-menu{
-      background: @bg-secondary;
-      border-color: lighten(@bg-primary, 10%);
+      background: @white;
+      border-color: @border-color;
       > li > a{ color: @text-color; text-transform: capitalize; outline: none; }
       > li > a:hover,
       > li > a:focus{ background: @bg-primary;}
@@ -326,6 +337,7 @@ h3.form-divider {
     padding: 13px 10px 10px 8px;
     margin: 10px 0;
     position: relative;
+    border: 1px solid transparent;
     //cursor: move;
 
     h3 {
@@ -341,7 +353,6 @@ h3.form-divider {
       display: none;
       position: absolute; top: 0; right: 4px;
       line-height: 36px;
-      background: darken(@bg-secondary, 1%);
       span{
         padding:  0;
         margin: 0 3px;
@@ -362,19 +373,42 @@ h3.form-divider {
 // ****************************************************
 //  Sidebar / Configure
 // ****************************************************
-.txop-sidebar {
-  // Turn off underline
-  a {
-    text-decoration: none;
-  }
-
+.op-sidebar {
   position: fixed;
   left: 0; top: 0; bottom: 0; z-index: 9999;
-  width: @sidebar-width;
-  padding-top: 54px;
+  width: @sidebar-width; height: 100%;
+  // padding-top: 54px;
   // overflow-x: hidden;
   .transition(all 0.3s linear);
 
+  // Panel header
+  .op-header-wrapper{
+    .uk-navbar-container{
+      background: @panel-header;
+      height: 40px;
+      .uk-logo{
+        font-size: 16px;
+        &:hover{ color: @white; }
+      }
+    }
+  }
+  // Panel Main area
+  .op-content-wrapper{
+    position: absolute; top: 40px; bottom: 40px; left: 0;
+    width: 100%;
+    overflow: auto;
+  }
+  // Panel Footer
+  .op-footer-wrapper{
+    .uk-navbar-container{
+      background: @panel-footer;
+      height: 40px;
+      padding: 10px;
+    }
+    .uk-button-primary{
+      border-radius: 2px;
+    }
+  }
   // Buttons
   .tx-nav{
     .btn-group{
@@ -383,11 +417,18 @@ h3.form-divider {
     }
   }
   .btn--save {
-    // float: right;
-    // margin: 12px 6px 0 0;
-    // padding: 5px 10px;
-    // font-size: 13px;
-    outline: 0 !important;
+    background: @brand-primary;
+    color: @white;
+    &:hover{
+      background: darken(@brand-primary, 5%);
+    }
+  }
+  .btn--close{
+    background: @border-color;
+    color: darken(@border-color, 10%);
+    &:hover{
+      background: darken(@border-color, 5%);
+    }
   }
   .btn--add-repeater {
     margin-bottom: 10px;
@@ -402,13 +443,14 @@ h3.form-divider {
     .panel-title {
       width: 84%;
       overflow: hidden;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: normal;
-      text-transform: uppercase;
+      color: @text-color;
       > a {
         width: 500px;
         display: block;
         text-decoration: none;
+        color: @text-color;
       }
     }
     .handle {
@@ -440,41 +482,41 @@ h3.form-divider {
 
   // Navigation Tabs
   .tx-nav-tabs {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    width: @sidebar-width - 0.1;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // z-index: 9999;
+    // width: @sidebar-width - 0.1;
   }
   // Tab content
-  > .tab-content {
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 100%;
-  }
+  // > .tab-content {
+  //   overflow-y: auto;
+  //   overflow-x: hidden;
+  //   height: 100%;
+  // }
 
   #op-contents .tab-pane { padding: 10px 3px;}
   #op-sections { height: 100%;}
 
   // Footer
   // -----------------------------------------------
-  .footer {
-    background: @bg-secondary;
-    padding: 10px 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 99999;
-    > a {
-      color: @text-color;
-      width: 50%;
-      padding: 5px 10px;
-      &:hover {
-        color: lighten(@brand-primary, 5%);
-      }
-    }
-  }
+  // .footer {
+  //   background: @bg-secondary;
+  //   padding: 10px 0;
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   z-index: 99999;
+  //   > a {
+  //     color: @text-color;
+  //     width: 50%;
+  //     padding: 5px 10px;
+  //     &:hover {
+  //       color: lighten(@brand-primary, 5%);
+  //     }
+  //   }
+  // }
 }
 
 // ****************************************************
@@ -533,9 +575,11 @@ h3.form-divider {
 // ****************************************************
 //  Sections
 // ****************************************************
+.op-build-active > #onepager-preview{
+  width: (100 - @sidebar-width);
+  margin-left: @sidebar-width;
+}
 #onepager-preview {
-  //width: (100 - @sidebar-width);
-  //margin-left: @sidebar-width;
   position: relative;
   .transition(all 0.3s linear);
 }
@@ -548,7 +592,7 @@ h3.form-divider {
     width: 170px;
     height: 76px;
     position: absolute;
-    top: 75px;
+    top: 110px;
     left: 1%;
   }
 }
@@ -739,8 +783,8 @@ h3.form-divider {
 }
 body.op-sidebar-collapsed{
   #onepager-preview{ width: 100%; margin-left: 0; }
-  .txop-sidebar,
-  .tx-nav-tabs{ left: -23%; }
+  .op-sidebar,
+  .tx-nav-tabs{ left: -@sidebar-width; }
 }
 
 
@@ -748,7 +792,7 @@ body.op-sidebar-collapsed{
   position: fixed; z-index: 10;
   width: 100%;height: 100%;
   color: #fff;
-  #gradient > .directional(#7229A9, #D360E6, 135deg);
+  #gradient > .directional(@brand-primary, darken(@brand-primary,10%), 135deg);
   opacity: 0.94;
 
   .loader{

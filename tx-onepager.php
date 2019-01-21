@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:       Onepager - One Page Builder
- * Plugin URI:        http://getonepager.com
+ * Plugin Name:       OnePager
+ * Plugin URI:        https://themesgrove.com/onepager
  * Description:       Modern, Powerful & Crazy Fast one page builder. Built with modern tools such ReactJS for next generation theming.
- * Version:           1.2.8.1
- * Author:            ThemeXpert
- * Author URI:        http://www.themexpert.com
+ * Version:           2.0.0
+ * Author:            ThemeXpert, Themesgrove
+ * Author URI:        https://themesgrove.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       tx-onepager
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if(!defined('ONEPAGER_VERSION')){
-  define( 'ONEPAGER_VERSION', '1.2.8.1' );
+  define( 'ONEPAGER_VERSION', '2.0.0' );
 }
 
 if(!defined('ONEPAGER_PHP_VERSION')) {
@@ -58,7 +58,7 @@ require( ONEPAGER_PATH . '/app/Metabox/metabox.php' );
 
 add_action('wp_head', 'print_onepager_meta');
 function print_onepager_meta() {
-  echo "<meta type='page-builder' content='tx-onepager'>";
+  echo "<meta name='generator' content='WP OnePager ". ONEPAGER_VERSION ."'>";
 }
 
 do_action('onepager_loaded');
