@@ -46,14 +46,14 @@
 
 							<!-- Item title -->
 							<h3 class="item-title uk-text-<?php echo $settings['title_transformation'];?>">
-				              <?php if(trim($feature['link'])): ?>
-				                <a href="<?php echo $feature['link']; ?>" target="<?php echo $feature['target'] ? '_blank' : ''?>"><?php echo $feature['title'];?></a>
-				              <?php else: ?>
-				                <?php echo $feature['title'];?>
-				              <?php endif; ?>
-				            </h3>
+								<?php if(trim($feature['link'])): ?>
+									<a href="<?php echo $feature['link']; ?>" target="<?php echo $feature['target'] ? '_blank' : ''?>"><?php echo $feature['title'];?></a>
+								<?php else: ?>
+									<?php echo $feature['title'];?>
+								<?php endif; ?>
+							</h3>
 
-				            <!-- Item desc -->
+							<!-- Item desc -->
 							<p class="uk-text-medium"><?php echo $feature['description'];?></p>
 						</div><!-- blurb -->
 					</div><!-- uk-columns -->

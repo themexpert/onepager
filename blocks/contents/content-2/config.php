@@ -53,6 +53,11 @@ return array(
 
   'settings' => array(
     array(
+      'name'=>'note_title',
+      'type'=>'note',
+      'label' => 'Title Settings'
+    ),
+    array(
       'name' => 'title_size',
       'label' => 'Title Size',
       'append' => 'px',
@@ -118,6 +123,11 @@ return array(
       ),
     ),
 
+    array(
+      'name'=>'note_items',
+      'type'=>'note',
+      'label' => 'Items Settings'
+    ),
 
     array(
       'name'     => 'items_columns',
