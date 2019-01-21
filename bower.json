@@ -6,7 +6,7 @@
     "bootstrap": "~3.4",
     "bootstrap-select": "~1.7.3",
     "bootstrap-switch": "~3.3.2",
-    "fontawesome": "~4.7",
+    "fontawesome": "4.7",
     "fontawesome-selector": "https://github.com/themexpert/fontawesome-selector.git",
     "fullpage.js": ">=3.0",
     "jquery.nicescroll": "~3.6.0",
