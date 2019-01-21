@@ -14,6 +14,12 @@ return array(
       'type'=>'textarea',
       'value' => 'A fool thinks himself to be wise, but a wise man knows himself to be a fool.'
     ),
+    array(
+      'name'=>'note_items',
+      'type'=>'note',
+      'label' => 'Items'
+    ),
+
 
     array(
       'name'=>'items',
