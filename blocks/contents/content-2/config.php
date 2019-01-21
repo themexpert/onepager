@@ -186,12 +186,30 @@ return array(
       'value' => '#323232'
 
     ),
+
     array(
-      'name' => 'text_color',
-      'label' => 'Text Color',
+      'name' => 'desc_color',
+      'label' => 'Desc Color',
+      'type' => 'colorpicker',
+      'value' => '#323232'
+
+    ),
+
+
+    array(
+      'name' => 'item_title_color',
+      'label' => 'Item Title Color',
       'type' => 'colorpicker',
       'value' => '#727272'
     ),
+
+    array(
+      'name' => 'item_desc_color',
+      'label' => 'Item Desc Color',
+      'type' => 'colorpicker',
+      'value' => '#727272'
+    ),
+
     array(
       'name' => 'icon_color',
       'label' => 'Icon Color',
