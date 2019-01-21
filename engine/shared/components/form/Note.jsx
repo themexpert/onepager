@@ -8,7 +8,7 @@ const Note = React.createClass({
   },
   render() {
     return (
-      <p className="field_note">{this.props.label}</p>
+      <h6 className="uk-heading-line uk-text-center uk-text-uppercase uk-text-muted"><span>{this.props.label}</span></h6>
     );
   }
 });
