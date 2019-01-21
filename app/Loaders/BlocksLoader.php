@@ -14,10 +14,10 @@ class BlocksLoader {
 
   public function loadOnepagerBlocks() {
     //default group added to the blocks (optional array)
-    $groups = "Onepager (plugin)";
+    $groups = "Core Blocks";
 
     $this->blockManager->loadAllFromPath(
-      ONEPAGER_BLOCKS_PATH, ONEPAGER_BLOCKS_URL );
+      ONEPAGER_BLOCKS_PATH, ONEPAGER_BLOCKS_URL , $groups);
   }
 
   public function loadThemeBlocks() {
@@ -36,17 +36,7 @@ class BlocksLoader {
 
   public function setGroupOrder() {
     $order = array(
-      $this->getCurrentThemeBlocksGroup(),
-      "navbars",
-      "headers",
-      "contents",
-      "portfolios",
-      "teams",
-      "testimonials",
-      "blogs",
-      "sliders",
-      "pricings",
-      "footers",
+      $this->getCurrentThemeBlocksGroup()
     );
 
     //FIXME: need a way to filter it
