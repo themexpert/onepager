@@ -14,11 +14,7 @@ return array(
       'type'=>'textarea',
       'value' => 'A fool thinks himself to be wise, but a wise man knows himself to be a fool.'
     ),
-    array(
-      'name'=>'note_items',
-      'type'=>'note',
-      'label' => 'Items'
-    ),
+    array('label'=>'Items', 'type'=>'divider'), // Divider - Text
 
 
     array(
@@ -52,11 +48,8 @@ return array(
   ),
 
   'settings' => array(
-    array(
-      'name'=>'note_title',
-      'type'=>'note',
-      'label' => 'Title Settings'
-    ),
+    array('label'=>'Title Settings', 'type'=>'divider'), // Divider - Text
+
     array(
       'name' => 'title_size',
       'label' => 'Title Size',
@@ -76,9 +69,9 @@ return array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
-      'value'    => '0',
+      'value'    => 0,
       'options'  => array(
-        '0'   => 'Default',
+        0   => 'Default',
         'lowercase'   => 'Lowercase',
         'uppercase'   => 'Uppercase',
         'capitalize'  => 'Capitalized'
@@ -123,11 +116,7 @@ return array(
       ),
     ),
 
-    array(
-      'name'=>'note_items',
-      'type'=>'note',
-      'label' => 'Items Settings'
-    ),
+    array('label'=>'Items Settings', 'type'=>'divider'), // Divider - Text
 
     array(
       'name'     => 'items_columns',
@@ -211,6 +200,7 @@ return array(
 
     ),
 
+    array('label'=>'Items Style', 'type'=>'divider'), // Divider - Text
 
     array(
       'name' => 'item_title_color',

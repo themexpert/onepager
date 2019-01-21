@@ -12,7 +12,7 @@
 ?>
 
 
-<section id="<?php echo $id;?>" class="op-section contents content-2">
+<section id="<?php echo $id;?>" class="uk-section contents content-2">
 	<div class="uk-container">
 		<article class="uk-article">
 			<div class="section-heading uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
