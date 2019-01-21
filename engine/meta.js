@@ -153,12 +153,12 @@
       //10 ms - just after every other plugin has done their stuff
       setTimeout(function () {
         if (isOnepageTemplate(template)) {
-          $('.edit-post-text-editor, .edit-post-visual-editor').hide();
+          // $('.edit-post-text-editor, .edit-post-visual-editor').hide();
           $onepagerEnableBtn.hide();
           $onepagerDisableBtn.show();
           $onepagerMetabox.show();
         } else {
-          $('.edit-post-text-editor, .edit-post-visual-editor').show();
+          // $('.edit-post-text-editor, .edit-post-visual-editor').show();
           $onepagerEnableBtn.show();
           $onepagerDisableBtn.hide();
           $onepagerMetabox.hide();
