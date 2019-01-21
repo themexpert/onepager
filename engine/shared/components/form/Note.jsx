@@ -8,7 +8,7 @@ const Note = React.createClass({
   },
   render() {
     return (
-      <p style={{color: "white"}}>{this.props.label}</p>
+      <p className="field_note">{this.props.label}</p>
     );
   }
 });
