@@ -125,11 +125,6 @@ let Repeater = React.createClass({
     return (
       <div ref="container" className="repeatable-control">
 
-        <Button bsStyle="primary" className="btn--add-repeater btn-block"
-                onClick={this.addRepeatGroup.bind(this, false, 0)}>
-          <span className="fa fa-plus"/> Add New
-        </Button>
-
         <div ref="repeat-groups" className="panel-group" id={id} role="tablist" aria-multiselectable="true">
           { rGroups.map((rGroup, ii)=> {
             let active = (ii === (rGroups.length - 1) ? 1 : 0);
@@ -150,6 +145,10 @@ let Repeater = React.createClass({
             );
           }) }
         </div>
+        <Button bsStyle="primary" className="btn--add-repeater btn-block"
+                onClick={this.addRepeatGroup.bind(this, false, 0)}>
+          <span className="fa fa-plus"/> Add New
+        </Button>
         { /*panel-group*/ }
 
       </div>
