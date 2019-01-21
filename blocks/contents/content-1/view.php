@@ -14,7 +14,7 @@
 			
 			<div class="<?php echo $media_grid?> uk-grid-item-match uk-flex-middle">
 				<div class="uk-panel" <?php echo $animation_media?>>
-					<img src="<?php echo $contents['image']?>" alt="<?php echo $contents['title']?>" class="img-responsive wow <?php echo $animation_media ?>">
+					<img src="<?php echo $contents['image']?>" alt="<?php echo $contents['title']?>" uk-image>
 				</div>
 			</div>
 			
