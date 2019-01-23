@@ -35,7 +35,7 @@
 				<?php foreach($contents['items'] as $feature): ?>
 
 					<div class="uk-width-1-<?php echo $settings['items_columns'];?>@m">
-						<div class="blurb uk-text-<?php echo $items_alignment;?>" <?php echo $items_animation;?>>
+						<div class="uk-text-<?php echo $items_alignment;?>" <?php echo $items_animation;?>>
 
 							<!-- Item image -->
 							<?php if( op_is_image($feature['media'])):?>
