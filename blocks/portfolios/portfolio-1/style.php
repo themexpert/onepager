@@ -1,12 +1,29 @@
 #<?php echo $id; ?>{
 	background : <?php echo $styles['bg_color'];?>;
 }
-#<?php echo $id; ?> .section-title{
-	font-size : <?php echo $settings['title_size']?>px;
+#<?php echo $id; ?> .section-heading .uk-heading-primary{
+	font-size : <?php echo $settings['title_size'];?>px;
 	color : <?php echo $styles['title_color'];?>;
 }
+
+#<?php echo $id; ?> .section-heading .uk-text-lead{
+	font-size : <?php echo $settings['desc_size'];?>px;
+	color : <?php echo $styles['desc_color'];?>;
+}
+
+<?php if ($styles['overlay_color']): ?>
+	#<?php echo $id; ?>.portfolio-1 .overlay-background{
+		background:<?php echo $styles['overlay_color'];?>;
+	}
+<?php endif ?>
+
+#<?php echo $id; ?> .uk-text-medium,
+#<?php echo $id; ?> .uk-text-small{
+	color : <?php echo $styles['icon_color'];?>;
+}
+
 #<?php echo $id; ?> .icon{
 	background : <?php echo $styles['icon_bg'];?>;
-	color : #fff;
+	color : <?php echo $styles['icon_color'];?>;
 	border-radius: 50%;
 }

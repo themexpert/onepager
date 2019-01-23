@@ -8,9 +8,14 @@ return array(
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array('name'=>'title', 'value'=> 'Our Works'),
+    array(
+      'name'=>'description',
+      'type'=>'textarea',
+      'value' => 'A fool thinks himself to be wise, but a wise man knows himself to be a fool.'
+    ),
 
     array(
-      'name'=>'items',
+      'name'=>'portfolios',
       'type'=>'repeater',
       'fields' => array(
         array(
@@ -43,6 +48,7 @@ return array(
 
   // Settings - $settings available on view file to access the option
   'settings' => array(
+    array('label'=>'Heading', 'type'=>'divider'), // Divider - Text
     array(
       'name' => 'title_size',
       'label' => 'Title Size',
@@ -53,28 +59,63 @@ return array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
-      'value'    => 'text-uppercase',
+      'value'    => 'inherit',
       'options'  => array(
-        'text-lowercase'   => 'Lowercase',
-        'text-uppercase'   => 'Uppercase',
-        'text-capitalize'  => 'Capitalized'
+        'inherit' => 'Default',
+        'lowercase'   => 'Lowercase',
+        'uppercase'   => 'Uppercase',
+        'capitalize'  => 'Capitalized'
       )
     ),
+
     array(
-      'name'     => 'animation',
-      'label'    => 'Animation Title',
+      'name'     => 'title_alignment',
+      'label'    => 'Title Alignment',
       'type'     => 'select',
-      'value'    => 'zoomIn',
+      'value'    => 'center',
       'options'  => array(
-        '0'           => 'None',
-        'fadeIn'      => 'Fade',
-        'zoomIn'        => 'Zoom In',
-        'fadeInLeft'  => 'Slide Left',
-        'fadeInRight' => 'Slide Right',
-        'fadeInUp'    => 'Slide Up',
-        'fadeInDown'  => 'Slide Down',
+        'left'      => 'Left',
+        'center'    => 'Center',
+        'right'     => 'Right',
+        'justify'   => 'Justify',
       )
     ),
+
+    array(
+      'name' => 'desc_size',
+      'label' => 'Desc Size',
+      'append' => 'px',
+      'value' => '18'
+    ),
+
+    array(
+      'name'     => 'title_animation',
+      'label'    => 'Animation',
+      'type'     => 'select',
+      'value'    => '0',
+      'options'  => array(        
+        '0'                     =>  'None',
+        'fade'                  =>  'Fade',
+        'scale-up'              =>  'Scale Up',
+        'scale-down'            =>  'Scale Down',
+        'slide-top-small'       =>  'Slide Top Small',
+        'slide-bottom-small'    =>  'Slide Bottom Small',
+        'slide-left-small'      =>  'Slide Left Small',
+        'slide-right-small'     =>  'Slide Right Small',
+        'slide-top-medium'      =>  'Slide Top Medium',
+        'slide-bottom-medium'   =>  'Slide Bottom Medium',
+        'slide-left-medium'     =>  'Slide Left Medium',
+        'slide-right-medium'    =>  'Slide Right Medium',
+        'slide-top'             =>  'Slide Top 100%',
+        'slide-bottom'          =>  'Slide Bottom 100%',
+        'slide-left'            =>  'Slide Left 100%',
+        'slide-right'           =>  'Slide Right 100%'
+
+      ),
+    ),
+
+    array('label'=>'Items', 'type'=>'divider'), // Divider - Text
+
     array(
       'name'     => 'overlay_animation',
       'label'    => 'Overlay Animation',
@@ -89,7 +130,31 @@ return array(
         'scale'         => 'Scale',
         'spin'          => 'Spin',
       )
-    )
+    ),
+    array(
+      'name'     => 'items_columns',
+      'label'    => 'Columns',
+      'type'     => 'select',
+      'value'    => '3',
+      'options'  => array(
+        '2'   => '2',
+        '3'   => '3',
+        '4'   => '4',
+
+      ),
+    ),
+
+    array(
+      'name'     => 'lightbox_animation',
+      'label'    => 'LightBox Animation',
+      'type'     => 'select',
+      'value'    => 'scale',
+      'options'  => array(
+        'fade'          => 'Fade',
+        'scale'         => 'Scale',
+        'slide'          => 'Slide',
+      )
+    ),
   ),
 
   'styles' => array(
@@ -99,11 +164,36 @@ return array(
       'type'  => 'colorpicker',
       'value' => '#fff'
     ),
+
+    array('label'=>'Heading', 'type'=>'divider'), // Divider - Text
     array(
       'name'=>'title_color',
       'label' => 'Title Color',
       'type'  => 'colorpicker',
       'value' => '#323232'
+    ),
+
+    array(
+      'name'=>'desc_color',
+      'label' => 'Desc Color',
+      'type'  => 'colorpicker',
+      'value' => '#323232'
+    ),
+
+    array('label'=>'Items', 'type'=>'divider'), // Divider - Text
+
+      array(
+      'name'=>'overlay_color',
+      'label' => 'Overlay Color',
+      'type'  => 'colorpicker',
+      'value' => 'rgba(0, 0, 0, 0.5)'
+    ),
+
+    array(
+      'name'=>'icon_color',
+      'label' => 'Icon Color',
+      'type'  => 'colorpicker',
+      'value' => '#fff'
     ),
     array(
       'name'=>'icon_bg',
@@ -114,9 +204,6 @@ return array(
   ),
 
   'assets' => function( $path ){
-     // Magnefic popup from Onepager assets dir
-    Onepager::addScript('magnific-popup', op_asset('assets/js/jquery.magnific-popup.js'), array( 'jquery' ));
-    Onepager::addStyle('magnific-popup', op_asset( 'assets/css/magnific-popup.css' ));
     // Local file
     Onepager::addStyle('portfolio-1', $path . '/style.css');
   }
