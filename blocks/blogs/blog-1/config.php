@@ -29,78 +29,159 @@ return array(
       'name' => 'text_limit',
       'label' => 'Excerpt Length',
       'value' => 20
-    )
+    ),
+    array('name'=> 'thumbnail_enable', 
+      'label'=>'Thumbnail', 
+      'type'=>'switch',
+      'value' => 'yes'
+    ),
+
+    array(
+      'name'  => 'readmore_text',
+      'label' => 'Read More',
+      'value' => 'Read More',
+    ),
+
 
   ),
 
   // Settings - $settings available on view file to access the option
   'settings' => array(
-    array('label'=>'Section', 'type'=>'divider'),
+    array('label'=>'Heading', 'type'=>'divider'),
     array(
-      'name' => 'section_title_size',
-      'label' => 'Title Size',
+      'name'   => 'section_title_size',
+      'label'  => 'Title Size',
       'append' => 'px',
-      'value' => '@section_title_size'
+      'value'  => '@section_title_size'
     ),
     array(
-      'name'     => 'section_title_transformation',
+      'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
-      'value'    => 'text-uppercase',
+      'value'    => 'inherit',
       'options'  => array(
-        'text-lowercase'   => 'Lowercase',
-        'text-uppercase'   => 'Uppercase',
-        'text-capitalize'  => 'Capitalized'
+        'inherit' => 'Default',
+        'lowercase'   => 'Lowercase',
+        'uppercase'   => 'Uppercase',
+        'capitalize'  => 'Capitalized'
       ),
     ),
-    array('label'=>'Item', 'type'=>'divider'),
+
     array(
-      'name'     => 'media_grid',
-      'label'    => 'Media Grid',
+      'name'     => 'title_alignment',
+      'label'    => 'Title Alignment',
       'type'     => 'select',
-      'value'    => '3',
+      'value'    => 'center',
       'options'  => array(
-        '3'   => '3',
-        '4'   => '4',
-        '5'   => '5',
+        'left'      => 'Left',
+        'center'    => 'Center',
+        'right'     => 'Right',
+        'justify'   => 'Justify',
+      )
+    ),
+
+    array(
+      'name' => 'desc_size',
+      'label' => 'Desc Size',
+      'append' => 'px',
+      'value' => '18'
+    ),
+
+
+    array(
+      'name'     => 'title_animation',
+      'label'    => 'Animation',
+      'type'     => 'select',
+      'value'    => '0',
+      'options'  => array(        
+        '0'                     =>  'None',
+        'fade'                  =>  'Fade',
+        'scale-up'              =>  'Scale Up',
+        'scale-down'            =>  'Scale Down',
+        'slide-top-small'       =>  'Slide Top Small',
+        'slide-bottom-small'    =>  'Slide Bottom Small',
+        'slide-left-small'      =>  'Slide Left Small',
+        'slide-right-small'     =>  'Slide Right Small',
+        'slide-top-medium'      =>  'Slide Top Medium',
+        'slide-bottom-medium'   =>  'Slide Bottom Medium',
+        'slide-left-medium'     =>  'Slide Left Medium',
+        'slide-right-medium'    =>  'Slide Right Medium',
+        'slide-top'             =>  'Slide Top 100%',
+        'slide-bottom'          =>  'Slide Bottom 100%',
+        'slide-left'            =>  'Slide Left 100%',
+        'slide-right'           =>  'Slide Right 100%'
+
+      ),
+    ),
+
+    array('label'=>'Items', 'type'=>'divider'),
+
+    array(
+      'name'     => 'media_alignment',
+      'label'    => 'Media Alignment',
+      'type'     => 'select',
+      'value'    => 'left',
+      'options'  => array(
+        'left'    => 'Left',
+        'right'   => 'Right'
       ),
     ),
     array(
       'name' => 'item_title_size',
       'label' => 'Title Size',
       'append' => 'px',
+       'value' => '32'
     ),
+
+
+
     array(
       'name'     => 'item_title_transformation',
-      'label'    => 'Title Transformation',
+      'label'    => 'Transformation',
       'type'     => 'select',
-      'value'    => 'text-uppercase',
+      'value'    => 'inherit',
       'options'  => array(
-        'text-lowercase'   => 'Lowercase',
-        'text-uppercase'   => 'Uppercase',
-        'text-capitalize'  => 'Capitalized'
+        'inherit' => 'Default',
+        'lowercase'   => 'Lowercase',
+        'uppercase'   => 'Uppercase',
+        'capitalize'  => 'Capitalized'
       ),
     ),
+
+
     array(
-      'name'  => 'readmore_text',
-      'label' => 'Readmore Text',
-      'value' => 'Readmore',
+      'name' => 'item_desc_size',
+      'label' => 'Item Desc Size',
+      'append' => 'px',
+      'value' => '16'
     ),
 
    array(
-    'name'     => 'animation_item',
+    'name'     => 'item_animation',
     'label'    => 'Animation Item',
     'type'     => 'select',
     'value'    => 'fadeInUp',
-    'options'  => array(
-        '0'             => 'None',
-        'fadeIn'        => 'Fade',
-        'fadeInLeft'    => 'Slide Left',
-        'fadeInRight'   => 'Slide Right',
-        'fadeInUp'      => 'Slide Up',
-        'fadeInDown'    => 'Slide Down',
+      'options'  => array(        
+        '0'                     =>  'None',
+        'fade'                  =>  'Fade',
+        'scale-up'              =>  'Scale Up',
+        'scale-down'            =>  'Scale Down',
+        'slide-top-small'       =>  'Slide Top Small',
+        'slide-bottom-small'    =>  'Slide Bottom Small',
+        'slide-left-small'      =>  'Slide Left Small',
+        'slide-right-small'     =>  'Slide Right Small',
+        'slide-top-medium'      =>  'Slide Top Medium',
+        'slide-bottom-medium'   =>  'Slide Bottom Medium',
+        'slide-left-medium'     =>  'Slide Left Medium',
+        'slide-right-medium'    =>  'Slide Right Medium',
+        'slide-top'             =>  'Slide Top 100%',
+        'slide-bottom'          =>  'Slide Bottom 100%',
+        'slide-left'            =>  'Slide Left 100%',
+        'slide-right'           =>  'Slide Right 100%'
+
       ),
     ),
+
   ),
 
   // Fields - $styles available on view file to access the option
@@ -111,21 +192,32 @@ return array(
       'type'    => 'colorpicker',
       'value'   => '#fff'
     ),
+
+    array('label'=>'Heading', 'type'=>'divider'),
     array(
       'name'  => 'section_title_color',
       'label' => 'Title Color',
       'type'  => 'colorpicker',
       'value' => '#323232'
     ),
+
     array(
-      'name'  => 'title_color',
-      'label' => 'Title Color',
+      'name'  => 'desc_color',
+      'label' => 'Desc Color',
       'type'  => 'colorpicker',
-      'value' => '@palette.primary'
+      'value' => '#323232'
+    ),
+
+    array('label'=>'Items', 'type'=>'divider'),
+    array(
+      'name'  => 'item_title_color',
+      'label' => 'Item Title Color',
+      'type'  => 'colorpicker',
+      'value' => '#323232'
     ),
     array(
-      'name'  => 'text_color',
-      'label' => 'Text Color',
+      'name'  => 'item_desc_color',
+      'label' => 'Item Desc Color',
       'type'  => 'colorpicker',
       'value' => '#323232'
     ),
