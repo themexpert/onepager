@@ -7,14 +7,22 @@ return array(
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
+    array('label'=>'Contact Info', 'type'=>'divider'), // Divider - Background
+      array(
+      'name'  =>  'hotline_title',
+      'label' => 'Hotline Title',
+      'type'  =>  'text',
+      'value' =>  'Hotline'
+    ),
     array(
-      'name'  =>  'hotline',
+      'name'  =>  'hotline_number',
+      'label' => 'Hotline Number',
       'type'  =>  'text',
       'value' =>  '+1 222 333 2132'
     ),
     array(
       'name'=>'address',
-      'type' => 'editor',
+      'type' => 'textarea',
       'value' => '23 Salient Road, London, United Kingdom, PO-LDN 123'
     ),
     array(
@@ -29,7 +37,14 @@ return array(
     array(
       'name'=> 'social',
       'label' => 'Social Links',
-      'value' => array('http://facebook.com/ThemeXpert', 'http://twitter.com/themexpert', 'http://linkedin.com/themexpert')
+      'value' => array('http://facebook.com/themexpert', 'http://twitter.com/themexpert', 'http://linkedin.com/themexpert')
+    ),
+    array('label'=>'Contact Form', 'type'=>'divider'), // Divider - Background
+      array(
+      'name'  =>  'contact_title',
+      'label' =>  'Contact Title',
+      'type'  =>  'text',
+      'value' =>  'Send Feedback'
     ),
     array(
       'name' => 'form',
@@ -60,35 +75,58 @@ return array(
     ),
 
     array(
-      'name'     => 'animation_info',
-      'label'    => 'Animation Info',
+      'name'     => 'info_animation',
+      'label'    => 'Info Animation',
       'type'     => 'select',
-      'value'    => 'fadeInLeft',
-      'options'  => array(
-        '0'           => 'None',
-        'fadeIn'      => 'Fade',
-        'fadeInLeft'  => 'Slide Left',
-        'fadeInRight' => 'Slide Right',
-        'fadeInUp'    => 'Slide Up',
-        'fadeInDown'  => 'Slide Down',
+      'value'    => '0',
+      'options'  => array(        
+        '0'                     =>  'None',
+        'fade'                  =>  'Fade',
+        'scale-up'              =>  'Scale Up',
+        'scale-down'            =>  'Scale Down',
+        'slide-top-small'       =>  'Slide Top Small',
+        'slide-bottom-small'    =>  'Slide Bottom Small',
+        'slide-left-small'      =>  'Slide Left Small',
+        'slide-right-small'     =>  'Slide Right Small',
+        'slide-top-medium'      =>  'Slide Top Medium',
+        'slide-bottom-medium'   =>  'Slide Bottom Medium',
+        'slide-left-medium'     =>  'Slide Left Medium',
+        'slide-right-medium'    =>  'Slide Right Medium',
+        'slide-top'             =>  'Slide Top 100%',
+        'slide-bottom'          =>  'Slide Bottom 100%',
+        'slide-left'            =>  'Slide Left 100%',
+        'slide-right'           =>  'Slide Right 100%'
+
       ),
     ),
 
-   array(
-    'name'     => 'animation_form',
-    'label'    => 'Animation Form',
-    'type'     => 'select',
-    'value'    => 'fadeInRight',
-    'options'  => array(
-        '0'             => 'None',
-        'fadeIn'        => 'Fade',
-        'fadeInLeft'    => 'Slide Left',
-        'fadeInRight'   => 'Slide Right',
-        'fadeInUp'      => 'Slide Up',
-        'fadeInDown'    => 'Slide Down',
+    array(
+      'name'     => 'form_animation',
+      'label'    => 'Form Animation',
+      'type'     => 'select',
+      'value'    => '0',
+      'options'  => array(        
+        '0'                     =>  'None',
+        'fade'                  =>  'Fade',
+        'scale-up'              =>  'Scale Up',
+        'scale-down'            =>  'Scale Down',
+        'slide-top-small'       =>  'Slide Top Small',
+        'slide-bottom-small'    =>  'Slide Bottom Small',
+        'slide-left-small'      =>  'Slide Left Small',
+        'slide-right-small'     =>  'Slide Right Small',
+        'slide-top-medium'      =>  'Slide Top Medium',
+        'slide-bottom-medium'   =>  'Slide Bottom Medium',
+        'slide-left-medium'     =>  'Slide Left Medium',
+        'slide-right-medium'    =>  'Slide Right Medium',
+        'slide-top'             =>  'Slide Top 100%',
+        'slide-bottom'          =>  'Slide Bottom 100%',
+        'slide-left'            =>  'Slide Left 100%',
+        'slide-right'           =>  'Slide Right 100%'
+
       ),
     ),
-  ),
+    ),
+
 
   // Fields - $styles available on view file to access the option
   'styles' => array(
@@ -98,6 +136,13 @@ return array(
       'label' => 'Image',
       'type'  => 'image'
     ),
+
+    // array(
+    //   'name'=>'bg_parallax',
+    //   'type'=> 'switch',
+    //   'label'=>'Parallax Background'
+    // ),
+
     array(
       'name'     => 'bg_repeat',
       'label'    => 'Repeat',
@@ -110,11 +155,11 @@ return array(
     ),
     array(
       'name'    => 'bg_color',
-      'label'   => 'Color',
+      'label'   => 'Bg Color',
       'type'    => 'colorpicker',
       'value'   => '#fff'
     ),
-    array('label'=>'Text', 'type'=>'divider'), // Divider - Text
+    array('label'=>'Items', 'type'=>'divider'), // Divider - Text
     array(
       'name'  => 'title_color',
       'label' => 'Title Color',
@@ -135,7 +180,7 @@ return array(
     ),
     array(
       'name'    => 'button_text_color',
-      'label'   => 'Button Text Color',
+      'label'   => 'Button Color',
       'type'    => 'colorpicker',
       'value'   => '#fff'
     ),
