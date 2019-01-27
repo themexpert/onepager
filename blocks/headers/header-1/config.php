@@ -7,14 +7,7 @@ return array(
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
-    array('name'=>'logo', 'type'=> 'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/logo-white.png'),
-    array('name'=>'menu','type'=>'menu'),
-    array(
-      'name'=>'link',
-      'type' => 'link',
-      'label' => 'Navbar Link'
-    ),
-
+  array('label'=> 'Slider Content' , 'type'=> 'divider'),
     array(
       'name'=>'sliders',
       'type'=>'repeater',
@@ -38,16 +31,32 @@ return array(
 
   // Settings - $settings available on view file to access the option
   'settings' => array(
+   array('label'=> 'Slider Settings' , 'type'=> 'divider'),
     array(
-      'name' => 'sticky_nav',
-      'label' => 'Sticky Nav',
-      'type' => 'select',
-      'value' => 1,
-      'options' => array(
-        1 => 'Enabled',
-        0 => 'Disabled'
-      )
+      'name'     => 'animation',
+      'label'    => 'Animation',
+      'type'     => 'select',
+      'value'    => 'slide',
+      'options'  => array(
+        'slide'   => 'Slide',
+        'fade'   => 'Fade',
+        'scale'  => 'Scale',
+        'pull'  => 'Pull',
+        'push'  => 'Push'
+      ),
     ),
+    array(
+      'name' => 'autoplay',
+      'label' => 'Autoplay',
+      'type' => 'switch',
+      'value' => true
+    ),
+    array(
+      'name' => 'slider_height',
+      'label' => 'Slider Height',
+      'append' => 'px',
+    ),
+
     array(
       'name' => 'title_size',
       'label' => 'Title Size',
@@ -65,32 +74,23 @@ return array(
         'text-capitalize'  => 'Capitalized'
       ),
     ),
-    array(
-      'name' => 'slider_height',
-      'label' => 'Slider Height',
-      'append' => 'px',
-      'value' => '550'
-    ),
   ),
+
+
   'styles' => array(
-    array('label'=> 'Nav Style' , 'type'=> 'divider'),
+    array('label'=> 'Slider Style' , 'type'=> 'divider'),
     array(
-      'name'  => 'nav_bg',
-      'label' => 'Sticky Background',
-      'type'  => 'colorpicker',
-      'value' => 'rgba(0,0,0,0.5)'
+      'name'=>'slider_bg',
+      'label' => 'Slider Background',
+      'type'  => 'image',
+      'value' => 'http://s3.amazonaws.com/quantum-assets/bg/bg3.jpg'
     ),
-    array(
-      'name'  => 'link_color',
-      'label' => 'Link Color',
-      'type'  => 'colorpicker',
-      'value' => '#fff'
-    ),
-    array(
-      'name'  => 'link_hover_color',
-      'label' => 'Link Hover Color',
-      'type'  => 'colorpicker',
-      'value' => '@color.primary'
+
+  array(
+      'name'    => 'bg_color',
+      'label'   => 'Background Color',
+      'type'    => 'colorpicker',
+      'value'   => '#ebeff2'
     ),
     array(
       'name'    => 'cta_bg',
@@ -111,12 +111,7 @@ return array(
       'type'    => 'colorpicker',
       'value'   => '#fff'
     ),
-    array(
-      'name'=>'slider_bg',
-      'label' => 'Slider Background',
-      'type'  => 'image',
-      'value' => 'http://s3.amazonaws.com/quantum-assets/bg/bg3.jpg'
-    ),
+
   ),
 
   'assets' => function( $path ){

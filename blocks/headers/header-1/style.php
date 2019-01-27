@@ -1,7 +1,10 @@
 #<?php echo $id; ?>{
-	background-image : url(<?php echo $styles['slider_bg']?>);
+	<?php if($styles['slider_bg']):?>
+	background-image: url(<?php echo $styles['slider_bg']?>);
+	background-repeat: no-repeat;
 	background-size : cover;
-	background-repeat : no-repeat;
+	<?php endif;?>
+	background-color : <?php echo $styles['bg_color'] ?>;
 }
 
 
@@ -33,11 +36,6 @@
 	box-shadow: 0 0 4px #444;
 }
 
-
-#slide-<?php echo $id; ?>,
-#slide-<?php echo $id; ?> .item{
-	height : <?php echo $settings['slider_height'] - 200 ?>px;
-}
 #slide-<?php echo $id; ?> .carousel-caption{
 	color : <?php echo $styles['text_color']?>;
 }
