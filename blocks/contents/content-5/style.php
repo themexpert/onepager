@@ -1,24 +1,26 @@
-#<?php echo $id ?>{
-	background : url(<?php echo $styles['bg_image'] ?>);
-	<?php if($styles['bg_parallax']):?>
-	background-attachment : fixed;
-	<?php endif;?>
+#<?php echo $id; ?>{
+	background : url(<?php echo $styles['bg_image']; ?>);
 	background-size : cover;
-	color : <?php echo $styles['text_color']?>;
 }
-#<?php echo $id ?> .section-title{
-	font-size : <?php echo $settings['title_size']?>px;
+#<?php echo $id; ?> .uk-heading-primary{
+	font-size : <?php echo $settings['title_size'];?>px;
 	color : <?php echo $styles['title_color']?>;
 }
-#<?php echo $id ?> .desc{
-	color : <?php echo $styles['text_color']?>;
-}
-#<?php echo $id ?> .btn{
-	background: transparent;
-	border: 3px solid <?php echo $styles['button_border_color']?>;
-	color : <?php echo $styles['button_text_color']?>;
+#<?php echo $id; ?> .uk-text-lead{
+	color : <?php echo $styles['desc_color'];?>;
+	font-size : <?php echo $settings['desc_size'];?>px;
 }
 
-#<?php echo $id ?> .btn:hover{
-	background: <?php echo $styles['button_border_color']?>;
+#<?php echo $id; ?> .uk-button-primary{
+	font-size : <?php echo $settings['button_font_size'];?>px;
+	background: <?php echo $styles['button_bg_color'];?>;
+	border: 1px solid <?php echo $styles['button_border_color'];?>;
+	color : <?php echo $styles['button_text_color'];?>;
+	text-transform:<?php echo $settings['button_transformation'];?>
 }
+#<?php echo $id; ?> .uk-button-primary:hover{
+	background : <?php echo $styles['button_text_color'];?>;
+	color : <?php echo $styles['button_bg_color'];?>;
+	border-color : <?php echo $styles['button_text_color'];?>;
+}
+

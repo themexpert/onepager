@@ -3,14 +3,17 @@
 	Media
 */
 
+.uk-link:hover, a:hover{
+	text-decoration: none;
+}
+
 .content-3 .uk-panel .uk-card{
 	margin:40px 0;
 }
 .content-3 .uk-panel .uk-card-body{
 	padding: 20px 0;
 }
-.content-3 .uk-panel .item-media,
-.content-3 .media .icon{  margin: 0 0 1rem; }
-
 .content-3 .uk-panel { margin: 3.5rem 0 0; }
-.content-3 .uk-panel .item-title{ margin: 0 0 1rem; font-weight: bold; font-size: 1.286em; }
+
+.content-3 .uk-panel .op-media{  margin: 0 0 1rem; }
+

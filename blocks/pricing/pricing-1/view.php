@@ -1,31 +1,47 @@
-<section id="<?php echo $id?>">
-  <div class="container">
-    <div class="row">
+<?php 
 
-      <div class="sec-title text-center wow animated fadeInDown animated">
-        <h2><?php echo $contents['title']?></h2>
-        <p><?php echo $contents['description']?></p>
-      </div>
+  // title alignment
+  $title_alignment = ($settings['title_alignment']) ? $settings['title_alignment'] : '';
+  // title animation
+  $title_animation = ($settings['title_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['title_animation'].'"' : '';
 
-      <?php foreach($contents['packages'] as $k=>$package): ?>
-      <div class="col-md-4 wow animated fadeInUp animated" data-wow-delay="<?php echo 0.3+$k*0.1?>s">
-        <div class="price-table text-center <?php echo $package['featured'] ? 'featured': ''?>">
-          <span><?php echo $package['title']?></span>
-          <div class="value">
-            <span><?php echo $package['money']?></span>
-            <span><?php echo $package['price']?></span><br>
-            <span><?php echo $package['period']?></span>
-          </div>
-          <ul>
-            <?php foreach($package['features'] as $feature): ?>
-            <li><?php echo $feature?></li>
+ ?>
+
+<section id="<?php echo $id;?>" class="uk-section pricing pricing-1">
+    <div class="uk-container">
+        <div class="section-heading uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>
+            <?php if($contents['title']):?>
+              <!-- Section Title -->
+              <h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>">
+                <?php echo $contents['title'];?>
+              </h1>
+            <?php endif; ?>
+
+            <?php if($contents['description']):?>
+                <div class="uk-text-lead"><?php echo $contents['description']?></div>
+            <?php endif; ?>
+        </div> <!-- Section heading -->
+
+
+        <div class="uk-grid-medium" uk-grid>
+            <?php foreach($contents['pricings'] as $k=>$pricing): ?>
+            <div class="uk-width-1-<?php echo $settings['items_columns'];?>@m">
+                <div class="price-table uk-text-center <?php echo $pricing['featured'] ? 'featured': ''?>">
+                    <span class="pricing-title"><?php echo $pricing['title'];?></span>
+                    <div class="value">
+                          <span><?php echo $pricing['money'];?></span>
+                          <span><?php echo $pricing['price'];?></span><br>
+                          <span><?php echo $pricing['period'];?></span>
+                    </div>
+                    <ul>
+                        <?php foreach($pricing['features'] as $feature): ?>
+                        <li><?php echo $feature;?></li>
+                        <?php endforeach; ?>
+                        <li><?php echo op_link($pricing['link'], 'uk-width-1-1');?></li>
+                    </ul>
+                </div>
+            </div>
             <?php endforeach; ?>
-            <li><?php echo op_link($package['link'])?></li>
-          </ul>
         </div>
-      </div>
-      <?php endforeach; ?>
-
-    </div>
-  </div>
-</section>
+    </div> <!-- uk-grid -->
+</section> <!-- end-section -->

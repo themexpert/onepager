@@ -1,15 +1,30 @@
-#<?php echo $id ?>{
+#<?php echo $id; ?>{
 	<?php if($styles['bg_image']):?>
-	background-image: url(<?php echo $styles['bg_image']?>);
-	background-repeat: <?php echo $styles['bg_repeat']?>;
-	background-size : cover;
+		background-image: url(<?php echo $styles['bg_image'];?>);
 	<?php endif;?>
-	<?php if($styles['bg_parallax']):?>
-	background-attachment : fixed;
-	<?php endif;?>
-	background-color : <?php echo $styles['bg_color'] ?>;
-	color : <?php echo $styles['text_color']?>;
 }
-#<?php echo $id; ?> .section-title{
-	font-size : <?php echo $settings['title_size']?>px;
+
+#<?php echo $id;?> .uk-heading-primary{
+	font-size : <?php echo $settings['name_size'];?>px;
+	color : <?php echo $styles['name_color'];?>;
+}
+#<?php echo $id?> .testimony{
+	color : <?php echo $styles['testimoni_color'];?>;
+}
+#<?php echo $id;?> .uk-text-lead{
+	font-size : <?php echo $settings['designation_size'];?>px;
+	color : <?php echo $styles['designation_color'];?>;
+}
+
+#<?php echo $id; ?>.testimonial-1 .uk-dotnav>*>*{ 
+	border-color:<?php echo $styles['dot_color']; ?>;
+}
+#<?php echo $id; ?>.testimonial-1 .uk-dotnav>.uk-active>*{
+	border-color:<?php echo $styles['dot_color']; ?>;
+	background-color : <?php echo $styles['dot_color']; ?>;
+
+}
+
+.testimonial-1:before{
+	background: <?php echo $styles['overlay_color']?>;
 }

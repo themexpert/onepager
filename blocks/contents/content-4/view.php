@@ -1,27 +1,34 @@
 <?php
-	$animation = ($settings['animation']) ? $settings['animation'] : '';
+	// Content Animation 
+	$content_animation = ($settings['content_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['content_animation'].'"' : '';
+
+	// Button Animation
+	$button_animation = ($settings['button_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['button_animation'].'"' : '';
 ?>
-<section id="<?php echo $id;?>" class="op-section contents content-4 full-screen">
-	<div class="container">
-		<div class="row">
-			<article class="flex flex-middle flex-center">
-				<div class="col-sm-9">
-					<div class="pr-big">
-						<!-- Title -->
-						<?php if($contents['title']): ?>
-							<h1 class="section-title <?php echo $settings['title_transformation']?> <?php echo $settings['title_size']?> wow <?php echo $animation;?>"><?php echo $contents['title']?></h1>
-						<?php endif; ?>
-						<!-- Description -->
-						<?php if($contents['description']): ?>
-							<p class="section-desc wow <?php echo $animation;?>"><?php echo $contents['description']?></p>
-						<?php endif; ?>
-					</div>
+<section id="<?php echo $id;?>" class="uk-section contents content-4">
+	<div class="uk-container">
+		<div class="uk-grid-large" uk-grid>
+			<div class="uk-width-expand@m">
+				<div class="" <?php echo $content_animation;?>>
+					<!-- Title -->
+					<?php if($contents['title']): ?>
+						<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>"><?php echo $contents['title'];?>
+						</h1>
+					<?php endif; ?>
+
+					<!-- Description -->
+					<?php if($contents['description']): ?>
+						<p class="uk-text-lead">
+							<?php echo $contents['description'];?>	
+						</p>
+					<?php endif; ?>
 				</div>
-				<!-- Link -->
-				<div class="col-sm-3">
-					<?php echo op_link($contents['link'], 'btn btn-primary btn-lg pull-right wow' . $animation);?>
-				</div>
-			</article>
-		</div>
-	</div>
-</section>
+
+			</div> <!-- width-expand -->
+			<!-- Link -->
+			<div class="uk-width-1-4@m uk-flex uk-flex-middle" <?php echo $button_animation;?>>
+				<?php echo op_link($contents['link'], 'uk-button uk-button-primary uk-button-large');?>
+			</div> <!-- end-link -->
+		</div> <!-- uk-grid-large -->
+	</div> <!-- uk-container -->
+</section> <!-- end-section -->

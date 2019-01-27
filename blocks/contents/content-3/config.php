@@ -50,6 +50,7 @@ return array(
   ),
 
   'settings' => array(
+    array('label'=>'Media', 'type'=>'divider'), // Divider - Text
 
     array(
       'name'     => 'media_alignment',
@@ -100,6 +101,7 @@ return array(
       ),
     ),
 
+    array('label'=>'Content', 'type'=>'divider'), // Divider - Text
 
     array(
       'name' => 'title_size',
@@ -118,6 +120,13 @@ return array(
         'uppercase'   => 'Uppercase',
         'capitalize'  => 'Capitalized'
       ),
+    ),
+
+    array(
+      'name' => 'desc_size',
+      'label' => 'Desc Size',
+      'append' => 'px',
+      'value' => '18'
     ),
 
     array(
@@ -146,6 +155,34 @@ return array(
       ),
     ),
 
+    array('label'=>'Items', 'type'=>'divider'), // Divider - Text
+
+    array(
+      'name' => 'item_title_size',
+      'label' => 'Item Title Size',
+      'append' => 'px',
+      'value' => '24'
+    ),
+    array(
+      'name'     => 'item_title_transformation',
+      'label'    => 'Item Title Transformation',
+      'type'     => 'select',
+      'value'    => 'inherit',
+      'options'  => array(
+        'inherit'   => 'Default',
+        'lowercase'   => 'Lowercase',
+        'uppercase'   => 'Uppercase',
+        'capitalize'  => 'Capitalized'
+      ),
+    ),
+
+    array(
+      'name' => 'item_desc_size',
+      'label' => 'Item Desc Size',
+      'append' => 'px',
+      'value' => '16'
+    ),
+
   ),
 
   'styles' => array(
@@ -155,6 +192,9 @@ return array(
       'type' => 'colorpicker',
       'value' => '#fff'
     ),
+
+    array('label'=>'Title', 'type'=>'divider'), // Divider - Text
+
     array(
       'name' => 'title_color',
       'label' => 'Title Color',
@@ -164,15 +204,34 @@ return array(
     ),
     array(
       'name' => 'text_color',
-      'label' => 'Text Color',
+      'label' => 'Desc Color',
       'type' => 'colorpicker',
       'value' => '#727272'
     ),
+
+    array('label'=>'Items', 'type'=>'divider'), // Divider - Text
+
     array(
       'name' => 'icon_color',
       'label' => 'Icon Color',
       'type' => 'colorpicker'
     ),
+
+    array(
+      'name' => 'item_title_color',
+      'label' => 'Title Color',
+      'type' => 'colorpicker',
+      'value' => '#323232'
+
+    ),
+    array(
+      'name' => 'item_desc_color',
+      'label' => 'Desc Color',
+      'type' => 'colorpicker',
+      'value' => '#727272'
+    ),
+
+
   ),
 
   'assets' => function( $path ){

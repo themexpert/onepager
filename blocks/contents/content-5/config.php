@@ -22,6 +22,47 @@ return array(
 
   // Settings - $settings available on view file to access the option
   'settings' => array(
+
+    array('label'=>'Content', 'type'=>'divider'), // Divider - Text
+    array(
+      'name'     => 'content_alignment',
+      'label'    => 'Alignment',
+      'type'     => 'select',
+      'value'    => 'center',
+      'options'  => array(
+        'left'      => 'Left',
+        'center'    => 'Center',
+        'right'     => 'Right',
+        'justify'   => 'Justify',
+      )
+    ),
+
+    array(
+      'name'     => 'content_animation',
+      'label'    => 'Animation ',
+      'type'     => 'select',
+      'value'    => '0',
+      'options'  => array(        
+        '0'                     =>  'None',
+        'fade'                  =>  'Fade',
+        'scale-up'              =>  'Scale Up',
+        'scale-down'            =>  'Scale Down',
+        'slide-top-small'       =>  'Slide Top Small',
+        'slide-bottom-small'    =>  'Slide Bottom Small',
+        'slide-left-small'      =>  'Slide Left Small',
+        'slide-right-small'     =>  'Slide Right Small',
+        'slide-top-medium'      =>  'Slide Top Medium',
+        'slide-bottom-medium'   =>  'Slide Bottom Medium',
+        'slide-left-medium'     =>  'Slide Left Medium',
+        'slide-right-medium'    =>  'Slide Right Medium',
+        'slide-top'             =>  'Slide Top 100%',
+        'slide-bottom'          =>  'Slide Bottom 100%',
+        'slide-left'            =>  'Slide Left 100%',
+        'slide-right'           =>  'Slide Right 100%'
+
+      ),
+    ),
+
     array(
       'name' => 'title_size',
       'label' => 'Title Size',
@@ -32,28 +73,43 @@ return array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
-      'value'    => 'text-uppercase',
+      'value'    => '0',
       'options'  => array(
-        'text-lowercase'   => 'Lowercase',
-        'text-uppercase'   => 'Uppercase',
-        'text-capitalize'  => 'Capitalized'
+        '0'   => 'Default',
+        'lowercase'   => 'Lowercase',
+        'uppercase'   => 'Uppercase',
+        'capitalize'  => 'Capitalized'
       ),
     ),
 
     array(
-      'name'     => 'animation',
-      'label'    => 'Animation',
+      'name' => 'desc_size',
+      'label' => 'Desc Size',
+      'append' => 'px',
+      'value' => '18'
+    ),
+
+    array('label'=>'Button', 'type'=>'divider'), // Divider - Text
+
+    array(
+      'name' => 'button_font_size',
+      'label' => 'Font Size',
+      'append' => 'px',
+      'value' => '16'
+    ),
+    array(
+      'name'     => 'button_transformation',
+      'label'    => 'Text Transformation',
       'type'     => 'select',
-      'value'    => 'fadeInUp',
+      'value'    => 'inherit',
       'options'  => array(
-        '0'           => 'None',
-        'fadeIn'      => 'Fade',
-        'fadeInLeft'  => 'Slide Left',
-        'fadeInRight' => 'Slide Right',
-        'fadeInUp'    => 'Slide Up',
-        'fadeInDown'  => 'Slide Down',
+        'inherit'   => 'Default',
+        'lowercase'   => 'Lowercase',
+        'uppercase'   => 'Uppercase',
+        'capitalize'  => 'Capitalized'
       ),
     ),
+
   ),
 
   // Fields - $styles available on view file to access the option
@@ -69,6 +125,18 @@ return array(
       'type'=> 'switch',
       'label'=>'Parallax Background'
     ),
+
+    array(
+      'name'     => 'bg_repeat',
+      'label'    => 'Repeat',
+      'type'     => 'select',
+      'options'  => array(
+        'no-repeat'     => 'No Repeat',
+        'repeat-x'      => 'Repeat X',
+        'repeat-y'      => 'Repeat Y',
+      )
+    ),
+
     array(
       'name'  => 'title_color',
       'label' => 'Title Color',
@@ -76,22 +144,33 @@ return array(
       'value' => '#fff'
     ),
     array(
-      'name'  => 'text_color',
-      'label' => 'Text Color',
+      'name'  => 'desc_color',
+      'label' => 'Desc Color',
       'type'  => 'colorpicker',
       'value' => '#ddd'
     ),
-    array(
-      'name'    => 'button_border_color',
-      'label'   => 'Button Border Color',
-      'type'    => 'colorpicker',
-      'value'   => '@color.primary'
-    ),
+
+
+    array('label'=>'Button', 'type'=>'divider'), // Divider - Text
+
     array(
       'name'    => 'button_text_color',
       'label'   => 'Button Text',
       'type'    => 'colorpicker',
       'value'   => '#fff'
+    ),
+    array(
+      'name'    => 'button_bg_color',
+      'label'   => 'Bg Color',
+      'type'    => 'colorpicker',
+      'value'   => '@color.primary'
+    ),
+
+    array(
+      'name'    => 'button_border_color',
+      'label'   => 'Border Color',
+      'type'    => 'colorpicker',
+      'value'   => '@color.primary'
     ),
   ),
 
