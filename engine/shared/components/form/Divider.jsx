@@ -6,7 +6,7 @@ let Divider = React.createClass({
 
   render(){
     return (
-      <h3 className="form-divider">{this.props.label}</h3>
+      <p className="uk-heading-line uk-text-center uk-text-uppercase uk-text-muted"><span>{this.props.label}</span></p>
     );
   }
 });
