@@ -1,6 +1,5 @@
 #<?php echo $id;?>{
 	background-color : <?php echo $styles['bg_color'];?>;
-	color : <?php echo $styles['text_color'];?>;
 }
 
 #<?php echo $id;?> .uk-article .uk-heading-primary{
@@ -23,7 +22,8 @@
 	color:<?php echo $styles['item_desc_color'];?>;
 }
 
-
-#<?php echo $id;?> .op-media{
-	color : <?php echo $styles['icon_color'];?>;
-}
+<?php if ($styles['icon_color']): ?>	
+	#<?php echo $id;?> .op-media{
+		color : <?php echo $styles['icon_color'];?>;
+	}
+<?php endif; ?>

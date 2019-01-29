@@ -52,16 +52,16 @@ return array(
   'settings' => array(
     array('label'=>'Media', 'type'=>'divider'), // Divider - Text
 
-    array(
-      'name'     => 'media_alignment',
-      'label'    => 'Media Alignment',
-      'type'     => 'select',
-      'value'    => 'right',
-      'options'  => array(
-        'left'    => 'Left',
-        'right'   => 'Right'
-      ),
-    ),
+    // array(
+    //   'name'     => 'media_alignment',
+    //   'label'    => 'Media Alignment',
+    //   'type'     => 'select',
+    //   'value'    => 'right',
+    //   'options'  => array(
+    //     'left'    => 'Left',
+    //     'right'   => 'Right'
+    //   ),
+    // ),
 
     array(
       'name'     => 'media_grid',
@@ -72,7 +72,6 @@ return array(
         'width-1-2'   => 'Half',
         'width-1-3'   => 'One Thrids',
         'width-1-4'   => 'One Fourth',
-        'width-2-3'   => 'Two Thirds',
       ),
     ),
 
@@ -203,7 +202,7 @@ return array(
 
     ),
     array(
-      'name' => 'text_color',
+      'name' => 'desc_color',
       'label' => 'Desc Color',
       'type' => 'colorpicker',
       'value' => '#727272'
