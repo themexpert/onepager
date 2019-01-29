@@ -9,7 +9,7 @@
 
 <section id="<?php echo $id;?>" class="uk-section pricing pricing-1">
     <div class="uk-container">
-        <div class="section-heading uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>
+        <div class="section-heading uk-margin-large-bottom uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>
             <?php if($contents['title']):?>
               <!-- Section Title -->
               <h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>">

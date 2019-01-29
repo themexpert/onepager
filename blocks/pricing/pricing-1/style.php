@@ -24,6 +24,7 @@
 
 
 #<?php echo $id; ?> .price-table ul li a:hover{
-     background-color: <?php echo $styles['feature_bg_color'];?>;
+    background-color: <?php echo $styles['feature_bg_color'];?>;
     color: <?php echo $styles['feature_text_color'];?>;
+    text-decoration: none;
 }
