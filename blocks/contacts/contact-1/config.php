@@ -174,7 +174,7 @@ return array(
     ),
     array(
       'name'    => 'accent_color',
-      'label'   => 'Accent Color',
+      'label'   => 'Icon Color',
       'type'    => 'colorpicker',
       'value'   => '@color.accent'
     ),

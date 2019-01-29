@@ -7,10 +7,6 @@
 	font-size: 32px;
 }
 
-.contact-1 .heading-info{
-	margin-bottom: 50px;
-}
-
 .contact-1 .heading-info .uk-text-lead{
 	margin: 10px 0;
 	font-size: 20px;
@@ -30,7 +26,7 @@
 .contact-1 textarea{
   border: 1px solid #eee;
   padding: 4px 10px;
-  margin-top: 5px
+  margin-top: 5px;
   color: #757373;
 }
 .contact-1 input[type="submit"]{

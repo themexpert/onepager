@@ -13,7 +13,7 @@
 		<div class="uk-child-width-1-2@s uk-margin" uk-grid>
 			<div class="uk-card" <?php echo $info_animation;?>>
 
-				<div class="heading-info uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
+				<div class="heading-info uk-margin-medium-bottom uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
 
 					<?php if($contents['hotline_title']):?>
 						<!-- Section Title -->
@@ -88,7 +88,7 @@
 					<div class="contact-info uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
 
 							<!-- Section Title -->
-							<h3 class="uk-heading-primary">
+							<h3 class="uk-heading-primary uk-margin-medium-bottom">
 								<?php echo $contents['contact_title'];?>
 							</h3>
 					</div>

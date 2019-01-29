@@ -11,7 +11,9 @@
 }
 #<?php echo $id; ?>.contact-1 .uk-heading-primary{
 	font-size : <?php echo $settings['title_size'];?>px;
-	color : <?php echo $styles['title_color'];?>;
+	<?php if ($styles['title_color']): ?>	
+		color : <?php echo $styles['title_color'];?>;
+	<?php endif; ?>
 }
 #<?php echo $id; ?>.contact-1 .uk-text-meta,
 #<?php echo $id; ?>.contact-1 .uk-text-lead{
@@ -29,7 +31,8 @@
 	border: 1px solid <?php echo $styles['accent_color'];?>;
 }
 
-#<?php echo $id; ?> .social-links a{
+#<?php echo $id; ?> .social-links a,
+#<?php echo $id; ?>.contact-1 .uk-card .uk-card-header .fa{
 	color: <?php echo $styles['accent_color'];?>;
 }
 #<?php echo $id; ?> input[type="text"]:focus,
