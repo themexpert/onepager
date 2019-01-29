@@ -4,7 +4,7 @@
 	// Content Alignment
 	$content_alignment = ($settings['content_alignment']) ? $settings['content_alignment'] : '';
 ?>
-<section id="<?php echo $id;?>" class="uk-section contents content-5" <?php echo ($styles['bg_parallax']) ? 'uk-parallax="bgy: -200' : '' ?>>
+<section id="<?php echo $id;?>" class="uk-section contents content-5 " <?php echo ($styles['bg_parallax']) ? 'uk-parallax="bgy: -200' : '' ?>>
 
 	<div class="uk-container">
 		<div class="uk-grid-large" <?php echo $content_animation;?> uk-grid>

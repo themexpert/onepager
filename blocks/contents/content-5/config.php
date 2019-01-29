@@ -155,7 +155,7 @@ return array(
 
     array(
       'name'    => 'button_text_color',
-      'label'   => 'Button Text',
+      'label'   => 'Text Color',
       'type'    => 'colorpicker',
       'value'   => '#fff'
     ),
