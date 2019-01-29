@@ -50,7 +50,7 @@
 								</div> <!-- blog-thumb -->
 							<?php endif; ?>
 
-						    <div class="uk-grid-item-match uk-flex-middle uk-grid-small">
+						    <div class="uk-grid-item-match uk-flex-middle uk-padding-remove">
 						        <div class="uk-card-body">
 							        <h2 class="uk-card-title uk-text-<?php echo $settings['item_title_transformation']?>">
 										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
@@ -61,7 +61,7 @@
 								</p>
 
 								<?php if ($contents['readmore_text']): ?>	
-									<a href="<?php the_permalink();?>"><?php echo $contents['readmore_text'];?></a>
+									<a class="uk-button-text" href="<?php the_permalink();?>"><?php echo $contents['readmore_text'];?></a>
 								<?php endif; ?>
 						        </div>
 						    </div>

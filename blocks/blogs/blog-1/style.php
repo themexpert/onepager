@@ -39,3 +39,8 @@
 	color : <?php echo $styles['link_color'];?>;
 }
 
+#<?php echo $id;?> .uk-button-text::before{
+    bottom: -5px;
+	border-bottom : 1px solid <?php echo $styles['link_color'];?>;
+}
+
