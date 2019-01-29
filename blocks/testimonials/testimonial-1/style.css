@@ -19,7 +19,7 @@
 	z-index: 99;
 }
 .testimonial-1 .uk-slideshow-items{
-	min-height: 400px !important;
+	min-height: 400px;
 }
 .testimonial-1 .testionial-img img{
 	border-radius: 100%;

@@ -1,7 +1,7 @@
 <?php
 $slideshow_options[] = 'animation: ' . $settings['animation'] ;
 $slideshow_options[] = ($settings['autoplay']) ? 'autoplay: true' : '';
-$slideshow_options[] = ($settings['slider_height']) ? 'max-height:' . $settings['slider_height'] : '';
+$slideshow_options[] = ($settings['testimonial_height']) ? 'max-height:' . $settings['testimonial_height'] : '';
 $slideshow = implode('; ', $slideshow_options);
 $heading_class = ($settings['name_transformation']) ? 'uk-text-' . $settings['name_transformation'] : '';
 ?>

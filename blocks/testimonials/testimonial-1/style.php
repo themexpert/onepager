@@ -1,6 +1,8 @@
 #<?php echo $id; ?>{
 	<?php if($styles['bg_image']):?>
 		background-image: url(<?php echo $styles['bg_image'];?>);
+		background-size:cover;
+		background-repeat:no-repeat;
 	<?php endif;?>
 }
 
@@ -9,6 +11,7 @@
 	color : <?php echo $styles['name_color'];?>;
 }
 #<?php echo $id?> .testimony{
+	font-size : <?php echo $settings['text_size'];?>px;
 	color : <?php echo $styles['testimoni_color'];?>;
 }
 #<?php echo $id;?> .uk-text-lead{
@@ -23,6 +26,10 @@
 	border-color:<?php echo $styles['dot_color']; ?>;
 	background-color : <?php echo $styles['dot_color']; ?>;
 
+}
+
+#<?php echo $id; ?>.testimonial-1 .uk-light .uk-slidenav{
+	color:<?php echo $styles['dot_color']; ?>;
 }
 
 .testimonial-1:before{

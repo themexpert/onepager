@@ -56,6 +56,7 @@ return array(
       'name'    => 'overlay_color',
       'label'   => 'Overlay Color',
       'type'    => 'colorpicker',
+      'value' => '@color.primary'
     ),
 
     array(
@@ -107,9 +108,17 @@ return array(
       'value' => true
     ),
     array(
-      'name' => 'slider_height',
-      'label' => 'Slider Height',
+      'name' => 'testimonial_height',
+      'label' => 'Height',
       'append' => 'px',
+      'value' => 400,
+    ),
+
+    array(
+      'name' => 'text_size',
+      'label' => 'Text Size',
+      'append' => 'px',
+      'value' => '18'
     ),
     array(
       'name' => 'name_size',
@@ -134,7 +143,7 @@ return array(
         'name' => 'designation_size',
         'label' => 'Designation Size',
         'append' => 'px',
-        'value' => '20'
+        'value' => '16'
       ),
     
   ),
