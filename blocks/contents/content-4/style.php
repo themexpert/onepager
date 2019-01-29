@@ -13,8 +13,7 @@
 }
 
 #<?php echo $id; ?> .uk-button-primary{
-	font-size : <?php echo $settings['button_font_size
-'];?>px;
+	font-size : <?php echo $settings['button_font_size'];?>px;
 	background: <?php echo $styles['button_bg_color'];?>;
 	border: 1px solid <?php echo $styles['button_border_color'];?>;
 	color : <?php echo $styles['button_text_color'];?>;

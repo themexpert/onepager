@@ -87,7 +87,7 @@ return array(
 
     array(
       'name'     => 'button_transformation',
-      'label'    => 'Button Transformation',
+      'label'    => 'Transformation',
       'type'     => 'select',
       'value'    => 'inherit',
       'options'  => array(
@@ -100,7 +100,7 @@ return array(
 
     array(
       'name'     => 'button_animation',
-      'label'    => 'Button Animation',
+      'label'    => 'Animation',
       'type'     => 'select',
       'value'    => '0',
       'options'  => array(        
