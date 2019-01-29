@@ -21,7 +21,8 @@
 }
 
 
-#<?php echo $id;?> .item-title{
+#<?php echo $id;?> .item-title,
+#<?php echo $id;?> .item-title a{
 	color : <?php echo $styles['item_title_color']?>;
 }
 
