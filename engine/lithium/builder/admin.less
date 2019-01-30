@@ -105,8 +105,11 @@
 }
 
 #disable-onepager {
-  background: @brand-info;
-  border-color: darken(@brand-info, 2%);
+  background: @text-color;
+  border-color: darken(@text-color, 2%);
+  &:hover{
+    background: darken(@text-color, 10%);
+  }
 }
 
 // Toolbar
