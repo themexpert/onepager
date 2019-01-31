@@ -75,7 +75,7 @@
 				    </div> <!-- uk-card-header -->
 			    <?php endif; ?>
 
-				<div class="social-links">
+				<div class="social-links uk-margin">
 					<?php foreach ( $contents['social'] as $social ): ?>
 						<a class="icon" href="<?php echo $social ?>" target="_blank"></a>
 					<?php endforeach; ?>

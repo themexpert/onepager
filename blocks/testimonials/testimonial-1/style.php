@@ -32,6 +32,14 @@
 	color:<?php echo $styles['dot_color']; ?>;
 }
 
-.testimonial-1:before{
+#<?php echo $id; ?>:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
 	background: <?php echo $styles['overlay_color']?>;
 }

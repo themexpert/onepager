@@ -12,7 +12,8 @@
 	color : <?php echo $styles['desc_color'];?>;
 }
 
-#<?php echo $id;?> .uk-article .uk-panel .uk-card-title{
+#<?php echo $id;?> .uk-article .uk-panel .uk-card-title,
+#<?php echo $id;?> .uk-article .uk-panel .uk-card-title a{
 	font-size : <?php echo $settings['item_title_size'];?>px;
 	color:<?php echo $styles['item_title_color'];?>;
 }

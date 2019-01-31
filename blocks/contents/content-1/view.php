@@ -34,7 +34,7 @@
 					<?php endif; ?>
 					
 					<!-- Link -->
-					<?php echo op_link($contents['link'], 'uk-button uk-button-primary');?>
+					<?php echo op_link($contents['link'], 'uk-margin-top uk-button uk-button-primary');?>
 
 				</div>
 				
