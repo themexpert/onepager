@@ -2,8 +2,8 @@
 
 return array(
 
-  'slug'      => 'content-4', // Must be unique and singular
-  'groups'    => array('contents'), // Blocks group for filter and plural
+  'slug'      => 'cta-1', // Must be unique and singular
+  'groups'    => array('Call To Actions'), // Blocks group for filter and plural
 
   // Fields - $contents available on view file to access the option
   'contents' => array(

@@ -1,8 +1,8 @@
 <?php
 
 return array(
-  'slug'    => 'content-2',
-  'groups'    => array('contents'),
+  'slug'    => 'feature-2',
+  'groups'    => array('features'),
 
   'contents' => array(
     array(
