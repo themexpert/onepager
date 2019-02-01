@@ -14,13 +14,13 @@ return array(
         array(
           array('name'=>'title', 'value' => 'Onepage Builder for WordPress'),
           array('name'=>'description', 'type'=> 'textarea', 'value' => 'Building onepage website has never been easier before'),
-          array('name'=>'image','type'=>'image'),
+          array('name'=>'image','type'=>'image', 'value' => "https://image.freepik.com/free-photo/abstract-background-blue-yellow-texture-paper-backdrop_23-2147981611.jpg"),
           array('name'=>'link', 'type' => 'link', 'text' => 'Download Now', 'url' => 'http://getonepager.com'),
         ),
         array(
           array('name'=>'title', 'value' => 'Revolutionary Website Builder'),
           array('name'=>'description', 'type'=> 'textarea', 'value' => 'Ridiculously easy and built for tomorrows internet in mind'),
-          array('name'=>'image','type'=>'image'),
+          array('name'=>'image','type'=>'image', 'value' => 'https://image.freepik.com/free-vector/abstract-background-with-geometric-style_23-2147823364.jpg'),
           array('name'=>'link', 'type' => 'link', 'text' => 'Download Now', 'url' => 'http://getonepager.com'),
         )
       )
@@ -32,6 +32,7 @@ return array(
       'name'    => 'overlay_color',
       'label'   => 'Overlay Color',
       'type'    => 'colorpicker',
+      'value'   => 'rgba(4,4,4,0.54)'
     ),
     array(
       'name'    => 'title_color',
@@ -69,7 +70,7 @@ return array(
       'name'     => 'animation',
       'label'    => 'Animation',
       'type'     => 'select',
-      'value'    => 'slide',
+      'value'    => 'scale',
       'options'  => array(
         'slide'   => 'Slide',
         'fade'   => 'Fade',
@@ -111,7 +112,7 @@ return array(
         'name' => 'desc_size',
         'label' => 'Desc Size',
         'append' => 'px',
-        'value' => '20'
+        'value' => '26'
       ),
     
   ),
