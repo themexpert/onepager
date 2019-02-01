@@ -127,14 +127,10 @@ return array(
     ),
 
     array(
-      'name'     => 'bg_repeat',
-      'label'    => 'Repeat',
-      'type'     => 'select',
-      'options'  => array(
-        'no-repeat'     => 'No Repeat',
-        'repeat-x'      => 'Repeat X',
-        'repeat-y'      => 'Repeat Y',
-      )
+      'name'    => 'overlay_color',
+      'label'   => 'Overlay Color',
+      'type'    => 'colorpicker',
+      'value' => 'rgba(34,34,34,.8)'
     ),
 
     array(
@@ -174,7 +170,7 @@ return array(
     ),
   ),
 
-  'assets' => function( $path ){
-    Onepager::addStyle('content-5', $path . '/style.css');
-  }
+  // 'assets' => function( $path ){
+  //   Onepager::addStyle('content-5', $path . '/style.css');
+  // }
 );

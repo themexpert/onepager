@@ -66,11 +66,12 @@ return array(
       'name'     => 'title_transformation',
       'label'    => 'Title Transformation',
       'type'     => 'select',
-      'value'    => 'text-capitalize',
+      'value'    => 'inherit',
       'options'  => array(
-        'text-lowercase'   => 'Lowercase',
-        'text-uppercase'   => 'Uppercase',
-        'text-capitalize'  => 'Capitalized'
+        'inherit' => 'Default',
+        'lowercase'   => 'Lowercase',
+        'uppercase'   => 'Uppercase',
+        'capitalize'  => 'Capitalized'
       ),
     ),
 
@@ -186,7 +187,7 @@ return array(
     ),
   ),
 
-  'assets' => function( $path ){
-    Onepager::addStyle('contact-1', $path . '/style.css');
-  }
+  // 'assets' => function( $path ){
+  //   Onepager::addStyle('contact-1', $path . '/style.css');
+  // }
 );

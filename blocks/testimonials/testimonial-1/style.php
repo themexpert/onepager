@@ -1,10 +1,3 @@
-#<?php echo $id; ?>{
-	<?php if($styles['bg_image']):?>
-		background-image: url(<?php echo $styles['bg_image'];?>);
-		background-size:cover;
-		background-repeat:no-repeat;
-	<?php endif;?>
-}
 
 #<?php echo $id;?> .uk-heading-primary{
 	font-size : <?php echo $settings['name_size'];?>px;
@@ -32,14 +25,6 @@
 	color:<?php echo $styles['dot_color']; ?>;
 }
 
-#<?php echo $id; ?>:before{
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    bottom: 0;
+#<?php echo $id; ?> .uk-overlay-primary{
 	background: <?php echo $styles['overlay_color']?>;
 }

@@ -12,7 +12,7 @@
 ?>
 
 
-<section id="<?php echo $id;?>" class="uk-section contents content-2">
+<section id="<?php echo $id;?>" class="uk-section features feature-2">
 	<div class="uk-container">
 		<article class="uk-article">
 			<div class="section-heading uk-margin-large-bottom uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
@@ -45,7 +45,7 @@
 							<?php endif;?>
 
 							<!-- Item title -->
-							<h3 class="item-title uk-text-<?php echo $settings['title_transformation'];?>">
+							<h3 class="item-title uk-margin-remove-bottom uk-text-<?php echo $settings['title_transformation'];?>">
 								<?php if(trim($feature['link'])): ?>
 									<a href="<?php echo $feature['link']; ?>" target="<?php echo $feature['target'] ? '_blank' : ''?>"><?php echo $feature['title'];?></a>
 								<?php else: ?>
@@ -54,7 +54,7 @@
 							</h3>
 
 							<!-- Item desc -->
-							<p class="uk-text-medium"><?php echo $feature['description'];?></p>
+							<p class="uk-text-medium uk-margin-small"><?php echo $feature['description'];?></p>
 						</div><!-- blurb -->
 					</div><!-- uk-columns -->
 

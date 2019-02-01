@@ -153,7 +153,12 @@ return array(
 
     array('label'=>'Items', 'type'=>'divider'), // Divider - Text
 
-
+    array(
+      'name'=>'text_color',
+      'label' => 'Text Color',
+      'type'  => 'colorpicker',
+      'value' => '#323232'
+    ),
     array(
       'name'=>'feature_text_color',
       'label' => 'Featured Text Color',
@@ -168,10 +173,17 @@ return array(
       'type'  => 'colorpicker',
       'value' => '@color.primary'
     ),
+
+    array(
+      'name'=>'value_bg_color',
+      'label' => 'Value Bg Color',
+      'type'  => 'colorpicker',
+      'value' => '#ddd'
+    ),
   ),
 
-    'assets' => function( $path ){
-    // Local file
-    Onepager::addStyle('pricing-1', $path . '/style.css');
-  }
+  //   'assets' => function( $path ){
+  //   // Local file
+  //   Onepager::addStyle('pricing-1', $path . '/style.css');
+  // }
 );

@@ -10,7 +10,7 @@
 ?>
 
 
-<section id="<?php echo $id;?>" class="uk-section contents content-3">
+<section id="<?php echo $id;?>" class="uk-section features feature-3">
 	<div class="uk-container">
 		<div class="uk-grid-large" uk-grid>
 			<div class="uk-width-expand@m <?php echo $content_position;?>">

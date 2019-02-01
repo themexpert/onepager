@@ -203,8 +203,8 @@ return array(
     ),
   ),
 
-  'assets' => function( $path ){
-    // Local file
-    Onepager::addStyle('portfolio-1', $path . '/style.css');
-  }
+  // 'assets' => function( $path ){
+  //   // Local file
+  //   Onepager::addStyle('portfolio-1', $path . '/style.css');
+  // }
 );

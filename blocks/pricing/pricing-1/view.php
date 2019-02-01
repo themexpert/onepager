@@ -27,21 +27,21 @@
             <?php foreach($contents['pricings'] as $k=>$pricing): ?>
             <div class="uk-width-1-<?php echo $settings['items_columns'];?>@m">
                 <div class="price-table uk-text-center <?php echo $pricing['featured'] ? 'featured': ''?>">
-                    <span class="pricing-title"><?php echo $pricing['title'];?></span>
-                    <div class="value">
+                    <h2 class="pricing-title uk-padding-small uk-margin-remove-top"><?php echo $pricing['title'];?></h2>
+                    <div class="value uk-padding">
                           <span><?php echo $pricing['money'];?></span>
                           <span><?php echo $pricing['price'];?></span><br>
                           <span><?php echo $pricing['period'];?></span>
                     </div>
-                    <ul>
+                    <ul class="uk-list uk-list-large uk-list-divider uk-margin-remove">
                         <?php foreach($pricing['features'] as $feature): ?>
                         <li><?php echo $feature;?></li>
                         <?php endforeach; ?>
-                        <li><?php echo op_link($pricing['link'], 'uk-width-1-1');?></li>
-                    </ul>
-                </div>
-            </div>
+                        <li><?php echo op_link($pricing['link'], 'uk-display-block uk-text-uppercase uk-padding-small uk-width-1-1');?></li>
+                    </ul> <!-- uk-list -->
+                </div> <!-- pricing-table -->
+            </div> <!-- uk-width -->
             <?php endforeach; ?>
-        </div>
+        </div> <!-- uk-grid-medium -->
     </div> <!-- uk-grid -->
 </section> <!-- end-section -->

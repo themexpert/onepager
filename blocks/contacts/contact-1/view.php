@@ -13,11 +13,11 @@
 		<div class="uk-child-width-1-2@s uk-margin" uk-grid>
 			<div class="uk-card" <?php echo $info_animation;?>>
 
-				<div class="heading-info uk-margin-medium-bottom uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
+				<div class="heading-info uk-margin-medium-bottom" <?php echo $title_animation;?>>	
 
 					<?php if($contents['hotline_title']):?>
 						<!-- Section Title -->
-						<h3 class="uk-heading-primary">
+						<h3 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>">
 							<?php echo $contents['hotline_title'];?>
 						</h3>
 					<?php endif; ?>
@@ -30,7 +30,7 @@
 				</div>
 
 			   	<?php if($contents['address']):?>
-				    <div class="uk-card-header">
+				    <div class="uk-card-header uk-padding-remove uk-margin">
 				        <div class="uk-grid-small uk-flex-middle" uk-grid>
 				            <div class="uk-width-auto">
 				               <span class="fa fa-home"></span>
@@ -45,7 +45,7 @@
 			    <?php endif; ?>
 
 			    <?php if($contents['phone']):?>
-				    <div class="uk-card-header">
+				    <div class="uk-card-header uk-padding-remove uk-margin">
 				        <div class="uk-grid-small uk-flex-middle" uk-grid>
 				            <div class="uk-width-auto">
 				               <span class="fa fa-phone"></span>
@@ -61,7 +61,7 @@
 
 
 			    <?php if($contents['email']):?>
-				    <div class="uk-card-header">
+				    <div class="uk-card-header uk-padding-remove uk-margin">
 				        <div class="uk-grid-small uk-flex-middle" uk-grid>
 				            <div class="uk-width-auto">
 				               <span class="fa fa-envelope-o"></span>
@@ -88,7 +88,7 @@
 					<div class="contact-info uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
 
 							<!-- Section Title -->
-							<h3 class="uk-heading-primary uk-margin-medium-bottom">
+							<h3 class="uk-heading-primary uk-margin-medium-bottom uk-text-<?php echo $settings['title_transformation'];?>">
 								<?php echo $contents['contact_title'];?>
 							</h3>
 					</div>

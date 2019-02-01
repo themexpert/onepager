@@ -148,7 +148,7 @@ return array(
     
   ),
 
-  'assets' => function( $path ){
-    Onepager::addStyle('testimonial-1', $path . '/style.css');
-  }
+  // 'assets' => function( $path ){
+  //   Onepager::addStyle('testimonial-1', $path . '/style.css');
+  // }
 );

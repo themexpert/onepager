@@ -11,27 +11,33 @@
 	color: <?php echo $styles['desc_color'];?>;
 }
 
-#<?php echo $id; ?> .uk-card .uk-card-body{
+#<?php echo $id; ?> .uk-card .uk-overlay-default{
 background:<?php echo $styles['item_overlay_color'];?>;
 	
 }
 
 
-#<?php echo $id; ?> .uk-card .uk-card-body .uk-card-title{
+#<?php echo $id; ?> .uk-card .uk-visible-toggle .uk-card-title,
+#<?php echo $id; ?> .uk-card .uk-visible-toggle .uk-card-title a{
 	font-size : <?php echo $settings['item_name_size']?>px;
 	color : <?php echo $styles['item_name_color'];?>;
 }
 
-#<?php echo $id; ?> .uk-card .uk-card-body .uk-text-medium{
+#<?php echo $id; ?> .uk-card .uk-visible-toggle .uk-text-medium{
 	font-size : <?php echo $settings['item_designation_size']?>px;
 	color : <?php echo $styles['item_designation_color'];?>;
 }
 
-#<?php echo $id; ?> .uk-card .uk-card-body .social-links a{
+#<?php echo $id; ?> .uk-card .uk-visible-toggle .social-links a{
 	font-size : <?php echo $settings['item_icon_size']?>px;
 	color : <?php echo $styles['item_icon_color'];?>;
 }
-#<?php echo $id; ?> .uk-card .uk-card-body .social-links a:hover{
+#<?php echo $id; ?> .uk-card .uk-visible-toggle .social-links a:hover{
 	color : <?php echo $styles['item_icon_hover_color'];?>;
 }
 
+#<?php echo $id; ?> .uk-card:hover .uk-visible-toggle .uk-overlay-default{
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition:all 0.3s ease;
+}

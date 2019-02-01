@@ -14,13 +14,13 @@ return array(
       'fields' => array(
         array(
           array('name'=>'title', 'value' => 'Onepage Website Builder for WordPress'),
-          array('name'=>'description', 'type'=> 'editor', 'value' => 'Build website quickly and efficiently with simple easy to use page builder'),
+          array('name'=>'description', 'type'=> 'textarea', 'value' => 'Build website quickly and efficiently with simple easy to use page builder'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/browser-1.png'),
           array('name'=>'link', 'type' => 'link'),
         ),
         array(
           array('name'=>'title', 'value' => 'Revolutionary Way of Building OnePage Website'),
-          array('name'=>'description', 'type'=> 'editor', 'value' => 'Ridiculously easy and built for tomorrows internet in mind'),
+          array('name'=>'description', 'type'=> 'textarea', 'value' => 'Ridiculously easy and built for tomorrows internet in mind'),
           array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/browser-1.png'),
           array('name'=>'link', 'type' => 'link'),
         )
@@ -56,6 +56,13 @@ return array(
       'label' => 'Slider Height',
       'append' => 'px',
       'value' => 900,
+    ),
+
+    array(
+      'name' => 'media_size',
+      'label' => 'Image Size',
+      'append' => 'px',
+      'value' => '500'
     ),
 
     array(
@@ -112,7 +119,7 @@ return array(
 
   array(
       'name'    => 'bg_color_2',
-      'label'   => 'Bg Color',
+      'label'   => 'Overlay Color',
       'type'    => 'colorpicker',
     ),
     array(
@@ -141,7 +148,7 @@ return array(
 
   ),
 
-  'assets' => function( $path ){
-    Onepager::addStyle('slider-2', $path . '/style.css');
-  }
+  // 'assets' => function( $path ){
+  //   Onepager::addStyle('slider-2', $path . '/style.css');
+  // }
 );

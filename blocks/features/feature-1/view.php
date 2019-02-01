@@ -8,7 +8,7 @@
 	// Text transformation class
 	$heading_class = ($settings['title_transformation']) ? 'uk-text-' . $settings['title_transformation'] : '';
 ?>
-<section id="<?php echo $id; ?>" class="op-section contents content-1">
+<section id="<?php echo $id; ?>" class="uk-section features feature-1">
 	<div class="uk-container">
 		<article class="uk-grid-large" uk-grid>
 			
@@ -34,7 +34,7 @@
 					<?php endif; ?>
 					
 					<!-- Link -->
-					<?php echo op_link($contents['link'], 'uk-margin-top uk-button uk-button-primary');?>
+					<?php echo op_link($contents['link'], 'uk-button-large uk-margin-medium-top uk-button uk-button-primary');?>
 
 				</div>
 				

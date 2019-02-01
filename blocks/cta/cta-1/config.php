@@ -173,7 +173,7 @@ return array(
     ),
   ),
 
-  'assets' => function( $path ){
-    Onepager::addStyle('content-4', $path . '/style.css');
-  }
+  // 'assets' => function( $path ){
+  //   Onepager::addStyle('content-4', $path . '/style.css');
+  // }
 );

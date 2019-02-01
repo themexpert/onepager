@@ -36,13 +36,13 @@
 							<div>
 				                <?php if(trim($portfolio['link'])): ?>
 				                    <a href="<?php echo $portfolio['link'] ?>" target="<?php echo $portfolio['target'] ? '_blank' : ''?>">
-				                      <span class="icon fa fa-search-plus"></span>
+				                      <span class="uk-padding-small icon fa fa-search-plus"></span>
 				                    </a>
 				                 <?php else: ?>
-					                <span class="icon fa fa-search-plus"></span>
+					                <span class="uk-padding-small icon fa fa-search-plus"></span>
 				                <?php endif; ?>
-								<h3 class="uk-text-medium"> <?php echo $portfolio['title'];?> </h3>
-				                <p class="uk-text-small"><?php echo $portfolio['description'];?></p>
+								<h3 class="uk-text-medium uk-margin-small"> <?php echo $portfolio['title'];?> </h3>
+				                <p class="uk-text-small uk-margin-remove"><?php echo $portfolio['description'];?></p>
 							</div>
 						</figcaption><!-- overlay panel -->
 					</figure> <!-- overlay -->

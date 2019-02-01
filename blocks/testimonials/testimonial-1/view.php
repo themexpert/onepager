@@ -6,24 +6,25 @@ $slideshow = implode('; ', $slideshow_options);
 $heading_class = ($settings['name_transformation']) ? 'uk-text-' . $settings['name_transformation'] : '';
 ?>
 
-<div id="<?php echo $id; ?>" class="uk-position-relative testimonial-1 uk-visible-toggle" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>">
+<div id="<?php echo $id; ?>" class="uk-position-relative testimonials testimonial-1" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>"  
+<?php echo ($styles['bg_parallax']) ? 'uk-parallax="bgy: -200"' : '' ?>
+data-src="<?php echo $styles['bg_image'];?>" uk-img>
+	<div class="uk-overlay-primary uk-position-cover"></div>
 	<div class="uk-container">
 
 	    <ul class="uk-slideshow-items">
 			<?php foreach($contents['testimonials'] as $index => $testimonial): ?>
 		        <li>
-
-					<!-- <div class="uk-overlay-primary uk-position-cover"></div> -->
 		            <div class="uk-position-center uk-position-small uk-text-center uk-light">
 
 			            <?php if($testimonial['image']):?>
-							<div class="testionial-img">
-								<img src="<?php echo $testimonial['image']?>" alt="<?php echo $testimonial['name']?>">
+							<div class="testionial-img uk-margin-medium-top">
+								<img class="uk-border-circle" src="<?php echo $testimonial['image']?>" alt="<?php echo $testimonial['name']?>">
 							</div>
 						<?php endif; ?>
 
 						<?php if($testimonial['testimony']):?>
-							<p class="testimony" 
+							<p class="testimony uk-width-3-4 uk-margin-auto" 
 								uk-slideshow-parallax="x: 200,-200">
 								<?php echo $testimonial['testimony'];?>
 							</p>

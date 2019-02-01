@@ -4,10 +4,10 @@
 	// Content Alignment
 	$content_alignment = ($settings['content_alignment']) ? $settings['content_alignment'] : '';
 ?>
-<section id="<?php echo $id;?>" class="uk-section contents content-5 " <?php echo ($styles['bg_parallax']) ? 'uk-parallax="bgy: -200' : '' ?>>
-
+<section id="<?php echo $id;?>" class="uk-section uk-position-relative cta cta-2 " <?php echo ($styles['bg_parallax']) ? 'uk-parallax="bgy: -200"' : '' ?> tabindex="-1" data-src="<?php echo $styles['bg_image']; ?>" uk-img>
+	<div class="uk-overlay-primary uk-position-cover"></div>
 	<div class="uk-container">
-		<div class="uk-grid-large" <?php echo $content_animation;?> uk-grid>
+		<div class="uk-grid-large uk-position-relative" <?php echo $content_animation;?> uk-grid>
 			<div class="uk-width-1-1">
 				<div class="uk-text-<?php echo $content_alignment;?>">
 					<!-- Image -->
@@ -25,7 +25,7 @@
 						<div class="uk-text-lead"><?php echo $contents['description'];?></div>
 					<?php endif; ?>
 					<!-- Link -->
-					<?php echo op_link($contents['link'], 'uk-button uk-button-primary uk-button-large');?>
+					<?php echo op_link($contents['link'], 'uk-margin-medium-top uk-button uk-button-primary uk-button-large');?>
 				</div> <!-- text-alignment -->
 
 			</div> <!-- uk-grid-1 -->

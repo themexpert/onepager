@@ -1,22 +1,2 @@
-.testimonial-1{
-	position: relative;
-	padding: 80px 0 0;
-}
-
-.testimonial-1 .testimony{ width: auto; margin: 30px 20%;  }
-
-.testimonial-1 .uk-dotnav>*{
-	z-index: 99;
-}
-.testimonial-1 .uk-slideshow-items{
-	min-height: 400px;
-}
-.testimonial-1 .testionial-img img{
-	border-radius: 100%;
-}
-
-.testimonial-1 .uk-text-lead{
-	 margin: -10px 0;
-}
 
    

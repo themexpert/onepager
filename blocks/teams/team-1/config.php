@@ -255,7 +255,7 @@ return array(
     ),
   ),
 
-  'assets' => function( $path ){
-      Onepager::addStyle('team-1', $path . '/style.css');
-  }
+  // 'assets' => function( $path ){
+  //     Onepager::addStyle('team-1', $path . '/style.css');
+  // }
 );

@@ -38,21 +38,29 @@ return array(
       'label'   => 'Title Color',
       'type'    => 'colorpicker',
     ),
+
     array(
-      'name'    => 'button_bg',
-      'label'   => 'Button Background',
+      'name'    => 'desc_color',
+      'label'   => 'Desc Color',
       'type'    => 'colorpicker',
     ),
+
+    array('label'=> 'Button' , 'type'=> 'divider'),
     array(
       'name'    => 'button_color',
       'label'   => 'Button Color',
       'type'    => 'colorpicker',
     ),
     array(
-      'name'    => 'button_hover_color',
-      'label'   => 'Button Hover Color',
+      'name'    => 'button_bg',
+      'label'   => 'Button Background',
       'type'    => 'colorpicker',
     ),
+    // array(
+    //   'name'    => 'button_hover_color',
+    //   'label'   => 'Button Hover Color',
+    //   'type'    => 'colorpicker',
+    // ),
   ),
 
   // Settings - $settings available on view file to access the option
@@ -98,13 +106,13 @@ return array(
         'uppercase'   => 'Uppercase',
         'capitalize'  => 'Capitalized'
       ),
+    ),
       array(
         'name' => 'desc_size',
-        'label' => 'Description Font Size',
+        'label' => 'Desc Size',
         'append' => 'px',
         'value' => '20'
       ),
-    ),
     
   ),
 

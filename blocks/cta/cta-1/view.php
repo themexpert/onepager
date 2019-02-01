@@ -5,7 +5,7 @@
 	// Button Animation
 	$button_animation = ($settings['button_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['button_animation'].'"' : '';
 ?>
-<section id="<?php echo $id;?>" class="uk-section contents content-4">
+<section id="<?php echo $id;?>" class="uk-section cta cta-1">
 	<div class="uk-container">
 		<div class="uk-grid-large" uk-grid>
 			<div class="uk-width-expand@m">

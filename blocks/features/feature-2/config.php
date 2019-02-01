@@ -57,13 +57,6 @@ return array(
       'value' => '@section_title_size'
     ),
 
-    array(
-      'name' => 'desc_size',
-      'label' => 'Desc Size',
-      'append' => 'px',
-      'value' => '18'
-    ),
-
 
     array(
       'name'     => 'title_transformation',
@@ -77,6 +70,7 @@ return array(
         'capitalize'  => 'Capitalized'
       ),
     ),
+
     array(
       'name'     => 'title_alignment',
       'label'    => 'Title Alignment',
@@ -88,6 +82,12 @@ return array(
         'right'     => 'Right',
         'justify'   => 'Justify',
       )
+    ),
+    array(
+      'name' => 'desc_size',
+      'label' => 'Desc Size',
+      'append' => 'px',
+      'value' => '18'
     ),
 
     array(
@@ -131,7 +131,32 @@ return array(
       ),
     ),
 
+    array(
+      'name' => 'item_title_size',
+      'label' => 'Title Size',
+      'append' => 'px',
+      'value' => '22'
+    ),
 
+    array(
+      'name' => 'item_desc_size',
+      'label' => 'Desc Size',
+      'append' => 'px',
+      'value' => '16'
+    ),
+
+    array(
+      'name'     => 'items_alignment',
+      'label'    => 'Items Alignment',
+      'type'     => 'select',
+      'value'    => 'center',
+      'options'  => array(
+        'left'      => 'Left',
+        'center'    => 'Center',
+        'right'     => 'Right',
+        'justify'   => 'Justify',
+      )
+    ),
 
 
     array(
@@ -160,18 +185,6 @@ return array(
       ),
     ),
 
-    array(
-      'name'     => 'items_alignment',
-      'label'    => 'Items Alignment',
-      'type'     => 'select',
-      'value'    => 'center',
-      'options'  => array(
-        'left'      => 'Left',
-        'center'    => 'Center',
-        'right'     => 'Right',
-        'justify'   => 'Justify',
-      )
-    ),
   ),
 
 
@@ -223,7 +236,7 @@ return array(
     ),
   ),
 
-  'assets' => function( $path ){
-    Onepager::addStyle('content-2', $path . '/style.css');
-  }
+  // 'assets' => function( $path ){
+  //   Onepager::addStyle('content-2', $path . '/style.css');
+  // }
 );

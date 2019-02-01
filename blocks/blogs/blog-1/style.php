@@ -30,6 +30,7 @@
 
 #<?php echo $id;?> .uk-card .uk-card-body .uk-card-title a:hover{
 	color : <?php echo $styles['link_color'];?>;
+	text-decoration:none;
 }
 
 
@@ -37,6 +38,7 @@
 #<?php echo $id;?> .uk-card .uk-card-body a,
 #<?php echo $id;?> .uk-card .uk-card-body a:hover{
 	color : <?php echo $styles['link_color'];?>;
+	text-decoration:none;
 }
 
 #<?php echo $id;?> .uk-button-text::before{

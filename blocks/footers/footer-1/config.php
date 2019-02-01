@@ -89,7 +89,7 @@ return array(
 	    ),
 	),
 
-	'assets' => function( $path ){
-    	onepager()->asset()->style( 'footer-1', $path . '/style.css' );
-  	}
+	// 'assets' => function( $path ){
+ //    	onepager()->asset()->style( 'footer-1', $path . '/style.css' );
+ //  	}
 );

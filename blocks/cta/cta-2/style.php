@@ -1,7 +1,3 @@
-#<?php echo $id; ?>{
-	background : url(<?php echo $styles['bg_image']; ?>);
-	background-size : cover;
-}
 #<?php echo $id; ?> .uk-heading-primary{
 	font-size : <?php echo $settings['title_size'];?>px;
 	color : <?php echo $styles['title_color']?>;
@@ -22,5 +18,9 @@
 	background : <?php echo $styles['button_text_color'];?>;
 	color : <?php echo $styles['button_bg_color'];?>;
 	border-color : <?php echo $styles['button_text_color'];?>;
+}
+
+#<?php echo $id; ?> .uk-overlay-primary{
+	background: <?php echo $styles['overlay_color']?>;
 }
 

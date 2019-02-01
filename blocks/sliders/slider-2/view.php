@@ -30,7 +30,7 @@
 	    		</div>
 					<?php if ($slide['image']): ?>	
 						<div class="uk-text-center uk-position-bottom uk-transition-slide-bottom">
-		              		<img src="<?php echo $slide['image']?>" alt="<?php echo $slide['title'];?>">
+		              		<img width="<?php echo $settings['media_size']?>" src="<?php echo $slide['image']?>" alt="<?php echo $slide['title'];?>">
 		                </div>
 					<?php endif; ?>
 	        </li>

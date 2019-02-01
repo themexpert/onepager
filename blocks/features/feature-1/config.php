@@ -66,6 +66,13 @@ return array(
         'capitalize'  => 'Capitalized'
       ),
     ),
+
+    array(
+      'name' => 'desc_size',
+      'label' => 'Desc Size',
+      'append' => 'px',
+      'value' => '18'
+    ),
     array(
       'name'     => 'animation_content',
       'label'    => 'Animation Content',
@@ -138,7 +145,7 @@ return array(
     ),
     array(
       'name'    => 'bg_color',
-      'label'   => 'Color',
+      'label'   => 'Bg Color',
       'type'    => 'colorpicker',
       'value'   => '#ebeff2'
     ),
@@ -169,7 +176,7 @@ return array(
     ),
   ),
 
-  'assets' => function( $path ){
-    Onepager::addStyle('content-1', $path . '/style.css');
-  }
+  // 'assets' => function( $path ){
+  //   Onepager::addStyle('content-1', $path . '/style.css');
+  // }
 );

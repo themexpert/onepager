@@ -15,18 +15,22 @@
 }
 
 
-
-#<?php echo $id;?> .op-media{
-	color : <?php echo $styles['icon_color']?>;
-}
+<?php if ($styles['icon_color']): ?>
+	
+	#<?php echo $id;?> .op-media{
+		color : <?php echo $styles['icon_color']?>;
+	}
+<?php endif; ?>
 
 
 #<?php echo $id;?> .item-title,
 #<?php echo $id;?> .item-title a{
+	font-size : <?php echo $settings['item_title_size']?>px;
 	color : <?php echo $styles['item_title_color']?>;
 }
 
 
 #<?php echo $id;?> .uk-text-medium{
+	font-size : <?php echo $settings['item_desc_size']?>px;
 	color : <?php echo $styles['item_desc_color']?>;
 }

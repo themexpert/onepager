@@ -228,7 +228,9 @@ return array(
       'value'   => '#4cb257'
     ),
   ),
-  'assets' => function( $path ){
-    Onepager::addStyle('blog-1', $path . '/style.css');
-  }
+
+  
+  // 'assets' => function( $path ){
+  //   Onepager::addStyle('blog-1', $path . '/style.css');
+  // }
 );
