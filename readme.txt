@@ -1,54 +1,46 @@
 === Onepager - One Page Builder ===
-Contributors: themexpert, nadimtuhin,themesgrove
-Donate link: http://getonepager.com
-Tags: page builder, builder, onepage builder, drag and drop, reactjs, bootstrap, fontAwesome, layout, composer, wysiwyg, editor
+Contributors: themexpert, nadimtuhin, themesgrove, parvezvai
+Donate link: https://themesgrove.com/onepager
+Tags: onepager, page builder, onepage builder, drag and drop, landing page
 Stable tag: %version%
-Requires at least: 4.2
-Tested up to: 4.7
+Requires at least: 4.8
+Tested up to: 5.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Modern, Powerful & Crazy Fast one page builder. Built with modern tools such ReactJS for next generation theming.
+Modern, Powerful & Crazy Fast landing page builder. Create one page website faster than ever.
 
 == Description ==
 
 [youtube https://www.youtube.com/watch?v=pwKcmckBZD4]
 
-[OnePager](http://www.getonepager.com) is a Modern, Powerful & Easy onepage Builder For WordPress. OnePager allow you to quickly edit everything on the fly. No overwhelming options and everything happens on frontend even your grandma build her website in peace.
-
-[Contribute on Github](https://github.com/themexpert/onepager)
-
-[Chat with developer](https://gitter.im/themexpert/onepager)
-
-**Requirements**
-
- * PHP 5.4+
-
-**Features**
+OnePager is modern, powerful & crazy fast [onepage website builder](https://themesgrove.com/onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) for WordPress. No overwhelming options and everything happens on frontend even your grandma build her website in peace.
 
 * Everything in front-end
-* Block Based Architecture
+* Array of beautiful Blocka
 * In-built option framework
 * Drag and Drop
-* ReactJS based
-* Pre-built blocks
 * Various input types
-* Bootstrap framework.
+* jQuery Free
 * Less for quick customization
 * Gulp for instant workflow
 * Highly customized for User Experience
 
-**Addons**
+Upgrade to [OnePager Pro](https://themesgrove.com/onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) for more awesome features and support.
 
-1. [Storefront theme support plugin](https://github.com/nadimtuhin/onepager-storefront-support)
-2. [Onepager advanced block pack](https://github.com/nadimtuhin/onepager-advanced-blocks-pack)
-
- == Installation ==
+== Installation ==
 
 Installing the plugins is just like installing other WordPress plugins.
 
 
 == Changelog ==
+= 2.0.0 =
+- [New] Brand new UI 
+- [New] All blcoks re-writen from scratch with new framework
+- [New] Gutenberg support
+- [New] Removed wowjs library
+- [New] All JS stack updated. No jQuery dependency
+
 = 1.2.6 =
 - WordPress 4.7 compatibility fix
 

@@ -4,7 +4,7 @@
  * Plugin URI:        https://themesgrove.com/onepager
  * Description:       Modern, Powerful & Crazy Fast one page builder. Built with modern tools such ReactJS for next generation theming.
  * Version:           2.0.0
- * Author:            ThemeXpert, Themesgrove
+ * Author:            Themesgrove
  * Author URI:        https://themesgrove.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
