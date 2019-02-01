@@ -21,7 +21,7 @@ return array(
         array(
           array('name'=>'title', 'label' => 'Name', 'value' => 'Steve Jobs'),
           array('name'=>'designation', 'value' => 'CEO, Apple Inc'),
-          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/4-thumb.jpg'),
+          array('name'=>'image','type'=>'image', 'value' => 'https://images.unsplash.com/photo-1500048993953-d23a436266cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=649&q=80'),
           array('name'=> 'social', 'label' => 'Social Profiles', 'value' => array('http://facebook.com/ThemeXpert', 'http://twitter.com/themexpert', 'http://linkedin.com/themexpert')),
           array('name'=>'link', 'placeholder'=> home_url()),
           array('name'=>'target', 'label'=>'open in new window', 'type'=>'switch'),
@@ -29,7 +29,7 @@ return array(
         array(
           array('name'=>'title', 'label' => 'Name', 'value' => 'Nikola Tesla'),
           array('name'=>'designation', 'value' => 'Scientist'),
-          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/5-thumb.jpg'),
+          array('name'=>'image','type'=>'image', 'value' => 'https://images.unsplash.com/photo-1519838255388-73be30bda0e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=650&q=80'),
           array('name'=> 'social', 'label' => 'Social Profiles', 'value' => array('http://behance.net/ThemeXpert', 'http://dribbble.com/themexpert', 'http://twitter.com/themexpert.com')),
           array('name'=>'link', 'placeholder'=> home_url()),
           array('name'=>'target', 'label'=>'open in new window', 'type'=>'switch'),
@@ -37,7 +37,7 @@ return array(
         array(
           array('name'=>'title', 'label' => 'Name', 'value' => 'Elon Musk'),
           array('name'=>'designation', 'value' => 'CEO, Tesla Motors'),
-          array('name'=>'image','type'=>'image', 'value' => 'http://s3.amazonaws.com/quantum-assets/images/6-thumb.jpg'),
+          array('name'=>'image','type'=>'image', 'value' => 'https://images.unsplash.com/photo-1504593811423-6dd665756598?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=650&q=80'),
           array('name'=> 'social', 'label' => 'Social Profiles', 'value' => array('http://github.com/ThemeXpert', 'http://codepen.io/themexpert')),
           array('name'=>'link', 'placeholder'=> home_url()),
           array('name'=>'target', 'label'=>'open in new window', 'type'=>'switch'),
