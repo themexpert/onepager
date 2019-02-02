@@ -101,7 +101,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
       $item_output = $args->before;
 
-      $attributes .= 'uk-scroll="offset: 80"';
+      // $attributes .= 'uk-scroll="offset: 80"';
 
       /*
        * Glyphicons

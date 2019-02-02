@@ -15,7 +15,7 @@
 					<?php wp_nav_menu(array(
 						'menu' =>$contents['menu'] ,
 						'menu_class'=>'uk-navbar-nav uk-visible@m',
-						'items_wrap' => '<ul id="%1$s" class="%2$s" uk-scrollspy-nav="closest: li; scroll: true">%3$s</ul>',
+						'items_wrap' => '<ul id="%1$s" class="%2$s" uk-scrollspy-nav="closest: li; scroll: true; overflow:false; offset:80">%3$s</ul>',
 						'container' =>false,
 						'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
 						'walker'            => new wp_bootstrap_navwalker()
