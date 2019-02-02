@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       OnePager
  * Plugin URI:        https://themesgrove.com/onepager
- * Description:       Modern, Powerful & Crazy Fast one page builder. Built with modern tools such ReactJS for next generation theming.
+ * Description:       The best and most easiest, beginner friendly landing page builder. Create one page website faster than ever.
  * Version:           2.0.1
  * Author:            Themesgrove
  * Author URI:        https://themesgrove.com/
