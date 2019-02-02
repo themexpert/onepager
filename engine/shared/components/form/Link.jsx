@@ -39,42 +39,36 @@ let Link  = React.createClass({
     let {label, text, url, target} = this.props;
 
     return (
-      <div className="link-control">
-        <label className="control-label">{label}</label>
+      <div className="uk-form-stacked">
+        <label className="uk-form-label">{label}</label>
 
-        <div className="form-group" style={{marginBottom: 0}}>
-          <div className="input-group">
-            <span className="input-group-addon">Text</span>
+        <div className="uk-margin-small-top">
+          <div className="uk-inline">
+            <span className="uk-form-icon" data-uk-icon="icon: pencil"></span>
             <input defaultValue={text}
-                   className="form-control"
+                   className="uk-input uk-form-width-large"
                    onChange={this.onChange}
                    ref="text"
                    type="text"/>
           </div>
         </div>
-        <div className="form-group">
-          <div className="input-group">
-            <span className="input-group-addon" style={{width: 53}}>Url</span>
+
+        <div className="uk-margin-small-top">
+          <div className="uk-inline">
+            <span className="uk-form-icon" data-uk-icon="icon: link"></span>
             <input
               onMouseEnter={()=>this.setState({focus: true})}
               defaultValue={url}
-              className="form-control"
+              className="uk-input uk-form-width-large"
               onChange={this.onChange}
               ref="url"
               type="text"/>
-
-            <span className="input-group-addon"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Open link in a new window">Target
-            </span>
-
-            <span className="input-group-addon">
-              <input checked={target} ref="target" onChange={this.onChange} type="checkbox"/>
-            </span>
           </div>
-
+          <div className="uk-margin-small-top">
+            <label><input className="uk-checkbox" checked={target} ref="target" onChange={this.onChange} type="checkbox"/> Open in a new window</label>
+          </div>
         </div>
+        
       </div>
     );
   }

@@ -121,7 +121,7 @@ gulp.task('bower', function () {
 
 
 gulp.task('uikit-js', function () {
-  return gulp.src('./node_modules/uikit/dist/js/uikit.js')
+  return gulp.src(['./node_modules/uikit/dist/js/uikit.js', './node_modules/uikit/dist/js/uikit-icons.js'])
         .pipe(uglify())
         .pipe(gulp.dest(config.uikit.js))
 });

@@ -30,6 +30,7 @@ trait FormEngineScripts {
     // UIKit
     $asset->style( 'op-uikit', op_asset( 'assets/css/uikit.css' ) );
     $asset->script( 'op-uikit', op_asset( 'assets/js/uikit.js' ), '', ONEPAGER_VERSION, false );
+    $asset->script( 'op-uikit-icons', op_asset( 'assets/js/uikit-icons.js' ),'', ONEPAGER_VERSION, false );
 
     $asset->style( 'tx-lithium-ui', op_asset( 'assets/css/lithium-builder.css' ) );
   }

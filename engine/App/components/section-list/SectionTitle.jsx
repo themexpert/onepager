@@ -55,7 +55,7 @@ let Title = React.createClass({
             </div>
           ) :
           (
-            <div data-uk-tooltip="title: Double click to rename;pos: bottom-left">
+            <div data-uk-tooltip="title: Double click to rename; pos: right">
               {this.props.children}
             </div>
           )
