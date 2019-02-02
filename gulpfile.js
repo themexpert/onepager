@@ -20,6 +20,7 @@ var ROOT_PATH = path.resolve(__dirname);
 
 var dest = './assets';
 var src = './engine';
+var svnDir = "~/Documents/wordpress.org/tx-onepager";
 
 var config = {
   less: {
@@ -185,7 +186,6 @@ gulp.task('package', ['package-build'], function () {
 
 gulp.task('svn', function(){
   var version = getOnepagerVersion().replace("v", "");
-  var svnDir = "~/Documents/wordpress.org/tx-onepager";
   var init = [
     `cp tx-onepager.zip ${svnDir}`,
     `cd ${svnDir}`,
