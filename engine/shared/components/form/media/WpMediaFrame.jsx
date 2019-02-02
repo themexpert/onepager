@@ -63,25 +63,20 @@ let WpMediaFrame = React.createClass({
 
 
   render() {
-    let classes = this.props.className + " form-control image-input";
+    let classes = this.props.className + " uk-input uk-form-width-large image-input";
 
     return (
-      <div className="form-group">
-        {this.props.label ? <label>{this.props.label}</label> : null }
+      <div className="uk-form-stacked uk-margin">
+        {this.props.label ? <label className="uk-form-label">{this.props.label}</label> : null }
 
-        <div className="input-group">
-          <input {...this.props} type="text" className={classes} ref="input"/>
-            <span className="input-group-btn">
-              <button className="btn btn-default" ref="select" type="button">
-                <span className="fa fa-picture-o"></span> image
-              </button>
-              <button onClick={this.handleReset} className="btn btn-default" ref="refresh" type="button">
-                <span className="fa fa-undo"></span>
-              </button>
-            </span>
+        <div className="uk-grid uk-grid-collapse uk-margin-small-top">
+          <div className="uk-width-2-3@m">
+            <input {...this.props} type="text" className={classes} ref="input"/>
+          </div>
+          <div className="uk-width-1-3@m">
+            <button className="uk-button uk-button-primary" data-uk-icon="icon: image" ref="select"></button>
+          </div>
         </div>
-
-        <div className="media-preview"></div>
       </div>
     );
   }
