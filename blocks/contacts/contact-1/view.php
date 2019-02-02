@@ -85,12 +85,11 @@
 
 			<div class="uk-grid-item-match uk-flex-middle" <?php echo $form_animation;?>>
 				<?php if($contents['contact_title']):?>
-					<div class="contact-info uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
-
-							<!-- Section Title -->
-							<h3 class="uk-heading-primary uk-margin-medium-bottom uk-text-<?php echo $settings['title_transformation'];?>">
-								<?php echo $contents['contact_title'];?>
-							</h3>
+					<div class="contact-info">	
+						<!-- Section Title -->
+						<h3 class="uk-heading-primary uk-margin-medium-bottom uk-text-<?php echo $settings['title_transformation'];?>">
+							<?php echo $contents['contact_title'];?>
+						</h3>
 					</div>
 				<?php endif; ?>
 				<?php echo do_shortcode($contents['form']);?>
