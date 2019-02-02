@@ -154,12 +154,12 @@ let InputControl = React.createClass({
         controlHtml =
           <Input ref="input"
             {...addon}
-                 type={control.type}
-                 label={control.label}
-                 className={control.class}
-                 placeholder={control.placeholder}
-                 defaultValue={control.value}
-                 onChange={this.onChange}/>;
+            type={control.type}
+            label={control.label}
+            className="uk-input"
+            placeholder={control.placeholder}
+            defaultValue={control.value}
+            onChange={this.onChange}/>;
     }
 
     let classes = this.props.hidden ? "hidden" : control.type+'-control';
