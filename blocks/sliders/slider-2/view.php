@@ -1,5 +1,4 @@
 <?php 
-	$sticky = ($settings['sticky_nav']) ? 'uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"' : '';
 	$slideshow_options[] = 'animation: ' . $settings['animation'] ;
 	$slideshow_options[] = ($settings['autoplay']) ? 'autoplay: true' : '';
 	$slideshow_options[] = ($settings['slider_height']) ? 'max-height:' . $settings['slider_height'] : '';
