@@ -10,9 +10,11 @@
 	fill : <?php echo $styles['link_color']; ?>;
 }
 
-#<?php echo $id ?> .uk-navbar-nav > li:hover > a,
-#<?php echo $id ?> .uk-navbar-nav > li.active > a{
+#<?php echo $id ?> .uk-navbar-nav > li:hover > a{
 	color : <?php echo $styles['link_hover_color']; ?>;
+}
+#<?php echo $id ?> .uk-navbar-nav > li.uk-active > a{
+	color : <?php echo $styles['link_active_color']; ?>;
 }
 
 #<?php echo $id ?> .uk-button{

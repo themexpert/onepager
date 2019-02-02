@@ -47,6 +47,12 @@ return array(
       'value' => '#222',
     ),
     array(
+      'name'  => 'link_active_color',
+      'label' => 'Link Active Color',
+      'type'  => 'colorpicker',
+      'value' => '@color.primary',
+    ),
+    array(
       'name'    => 'cta_bg',
       'label'   => 'Button Background',
       'type'    => 'colorpicker',
