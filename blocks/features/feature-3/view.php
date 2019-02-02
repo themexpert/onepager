@@ -13,7 +13,7 @@
 <section id="<?php echo $id;?>" class="uk-section features feature-3">
 	<div class="uk-container">
 		<div class="uk-grid-large" uk-grid>
-			<div class="uk-width-expand@m <?php echo $content_position;?>">
+			<div class="uk-width-expand@m">
 				<article class="uk-article" <?php echo $animation_content;?>>
 					<?php if($contents['title']):?>
 						<!-- Section Title -->
@@ -59,7 +59,7 @@
 		</div> <!-- uk-width -->
 
 
-		<div class="<?php echo $media_grid;?>" <?php echo $animation_media;?>>
+		<div class="uk-visible@m <?php echo $media_grid;?>" <?php echo $animation_media;?>>
 			<img class="op-media" src="<?php echo $contents['image'];?>" alt="<?php echo $contents['title'];?>">
 		</div><!-- uk-grid-match -->
 
