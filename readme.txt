@@ -101,6 +101,14 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 
 == Changelog ==
+= 2.0.1 =
+- New: Nav Scrollspy added with active nav when section apear on viewport
+- New: Corporate landing page 1
+- New: Link picker
+- New: Media picker
+- Update : Text input style update
+- Fix: Contact, Slider and other blcoks PHP error
+
 = 2.0.0 =
 - [New] Brand new UI 
 - [New] All blcoks re-writen from scratch with new framework
