@@ -3,9 +3,9 @@
 // ------------------------------------------
 // Wordpress Admin override + Style
 // ------------------------------------------
-#toplevel_page_onepager{
-  display: none;
-}
+// #toplevel_page_onepager{
+//   display: none;
+// }
 // Admin Toolbar
 // #wp-admin-bar-op-add-block {
 //   background: @brand-primary !important;
@@ -18,9 +18,11 @@
 
 // }
 // Logo - Sidebar menu
-//#adminmenu .toplevel_page_onepager-dashboard .wp-menu-image img {
-  #adminmenu .toplevel_page_onepager .wp-menu-image img {
+#adminmenu .toplevel_page_onepager .wp-menu-image img {
   width: 22px;
+}
+#adminmenu #toplevel_page_onepager a[href*="go_onepager-pro"]{
+  color: #f44336;
 }
 
 // Font awesome for top menu
