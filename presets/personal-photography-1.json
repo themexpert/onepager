@@ -1,0 +1,308 @@
+{
+  "name": "Personal Photograph 1",
+  "sections": [
+    {
+      "id": "slider",
+      "slug": "slider-1",
+      "title": "Slider",
+      "contents": {
+        "sliders": [
+          {
+            "title": "Hire Me To Capture Your Moment",
+            "description": "Coordinates for abs po oordinates for abs potioning the closest potioned Coor tiom lorem dinates.",
+            "image": "https://images.unsplash.com/photo-1543348695-684929babfce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80",
+            "link": {
+              "text": "Hire Me Now",
+              "url": "http://getonepager.com",
+              "target": false,
+              "focus": true
+            }
+          },
+          {
+            "title": "Make Your Bad Foods Looks Tasty",
+            "description": "Coordinates for abs po oordinates for abs potioning the closest potioned Coor tiom lorem dinates.",
+            "image": "https://images.unsplash.com/photo-1547637205-fde0c9011f9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "link": {
+              "text": "Hire Me",
+              "url": "http://getonepager.com",
+              "target": false,
+              "focus": true
+            }
+          }
+        ]
+      },
+      "settings": {
+        "animation": "scale",
+        "autoplay": true,
+        "slider_height": "",
+        "title_size": "62",
+        "title_transformation": "0",
+        "desc_size": "26"
+      },
+      "styles": {
+        "overlay_color": "rgba(4,4,4,0.3)",
+        "title_color": "",
+        "desc_color": "",
+        "button_color": "",
+        "button_bg": ""
+      }
+    },
+    {
+      "id": "features",
+      "slug": "feature-2",
+      "title": "Features",
+      "contents": {
+        "title": "Why Me ?",
+        "description": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
+        "items": [
+          {
+            "title": "Responsive Design",
+            "description": "Coordinates for abs po oordinates for abs potioning the closes.",
+            "media": "http://demo.themexpert.com/joomla/finance/images/themexpert/home/services/icon/1.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "WYSIWYG Editor",
+            "description": "Coordinates for abs po oordinates for abs potioning the closes.",
+            "media": "http://demo.themexpert.com/joomla/finance/images/themexpert/home/services/icon/2.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Intuitive Configuration",
+            "description": "Coordinates for abs po oordinates for abs potioning the closes.",
+            "media": "http://demo.themexpert.com/joomla/finance/images/themexpert/home/services/icon/3.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Premium Layouts",
+            "description": "Coordinates for abs po oordinates for abs potioning the closes.",
+            "media": "http://demo.themexpert.com/joomla/finance/images/themexpert/home/services/icon/4.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Expert Support",
+            "description": "Coordinates for abs po oordinates for abs potioning the closes.",
+            "media": "http://demo.themexpert.com/joomla/finance/images/themexpert/home/core-services/icon/2.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Open Source",
+            "description": "Coordinates for abs po oordinates for abs potioning the closes.",
+            "media": "http://demo.themexpert.com/joomla/finance/images/themexpert/home/core-services/icon/6.png",
+            "link": "",
+            "target": false
+          }
+        ]
+      },
+      "settings": {
+        "title_size": "62",
+        "title_transformation": "0",
+        "title_alignment": "center",
+        "desc_size": "18",
+        "title_animation": "0",
+        "items_columns": "3",
+        "item_title_size": "22",
+        "item_desc_size": "16",
+        "items_alignment": "center",
+        "items_animation": "0"
+      },
+      "styles": {
+        "bg_color": "#fff",
+        "title_color": "#323232",
+        "desc_color": "#323232",
+        "item_title_color": "#727272",
+        "item_desc_color": "#727272",
+        "icon_color": ""
+      }
+    },
+    {
+      "id": "s_928463432",
+      "slug": "cta-2",
+      "title": "untitled section",
+      "contents": {
+        "title": "What are you waiting for?",
+        "description": "I dream my painting and I paint my dream",
+        "image": "http://s3.amazonaws.com/quantum-assets/icons/download.png",
+        "link": {
+          "text": "Hire Me Today",
+          "url": "#",
+          "target": false
+        }
+      },
+      "settings": {
+        "content_alignment": "center",
+        "content_animation": "0",
+        "title_size": "62",
+        "title_transformation": "0",
+        "desc_size": "18",
+        "button_font_size": "16",
+        "button_transformation": "inherit"
+      },
+      "styles": {
+        "bg_image": "https://images.unsplash.com/photo-1546624206-4f74d06601a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80",
+        "bg_parallax": true,
+        "overlay_color": "rgba(0,0,0,0.3)",
+        "title_color": "#ffffff",
+        "desc_color": "#dddddd",
+        "button_text_color": "#ffffff",
+        "button_bg_color": "#1565c0",
+        "button_border_color": "#1565c0"
+      }
+    },
+    {
+      "id": "s_508929482",
+      "slug": "portfolio-1",
+      "title": "untitled section",
+      "contents": {
+        "title": "Some Of My Works",
+        "description": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
+        "portfolios": [
+          {
+            "title": "Nature",
+            "description": "Landscape Photography",
+            "thumb": "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Mountain",
+            "description": "Landscape Photography",
+            "thumb": "https://images.unsplash.com/photo-1548506923-99f6e89852fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1654&q=80",
+            "image": "https://images.unsplash.com/photo-1548506923-99f6e89852fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1654&q=80",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Tree",
+            "description": "Event Template for Joomla",
+            "thumb": "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "image": "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Food",
+            "description": "Food Photography",
+            "thumb": "https://images.unsplash.com/photo-1547332184-070705bccbd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "image": "https://images.unsplash.com/photo-1547332184-070705bccbd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Food",
+            "description": "",
+            "thumb": "https://images.unsplash.com/photo-1547385203-cfe7977b9fd0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80",
+            "image": "https://images.unsplash.com/photo-1547385203-cfe7977b9fd0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Travel",
+            "description": "Travel Photography",
+            "thumb": "https://images.unsplash.com/photo-1547191516-45e9e58822db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "image": "https://images.unsplash.com/photo-1547191516-45e9e58822db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "link": "",
+            "target": false
+          }
+        ]
+      },
+      "settings": {
+        "title_size": "62",
+        "title_transformation": "inherit",
+        "title_alignment": "center",
+        "desc_size": "18",
+        "title_animation": "0",
+        "overlay_animation": "scale",
+        "items_columns": "3",
+        "lightbox_animation": "scale"
+      },
+      "styles": {
+        "bg_color": "#fff",
+        "title_color": "#323232",
+        "desc_color": "#323232",
+        "overlay_color": "rgba(0, 0, 0, 0.5)",
+        "icon_color": "#fff",
+        "icon_bg": "#1565c0"
+      }
+    },
+    {
+      "id": "s_985320564",
+      "slug": "testimonial-1",
+      "title": "untitled section",
+      "contents": {
+        "testimonials": [
+          {
+            "image": "http://s3.amazonaws.com/quantum-assets/images/8-thumb.jpg",
+            "testimony": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis ex risus. Vivamus hendrerit nec ex vitae varius. Aliquam sollicitudin dapibus dapibus. Duis lacus diam, lacinia a fringilla semper, laoreet eget tellus. Vestibulum sed nisi rutrum, efficitur odio et, varius mi.",
+            "name": "John Resig",
+            "designation": "Creator of jQuery"
+          },
+          {
+            "image": "http://s3.amazonaws.com/quantum-assets/images/7-thumb.jpg",
+            "testimony": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis ex risus. Vivamus hendrerit nec ex vitae varius. Aliquam sollicitudin dapibus dapibus. Duis lacus diam, lacinia a fringilla semper, laoreet eget tellus. Vestibulum sed nisi rutrum, efficitur odio et, varius mi.",
+            "name": "Elon Musk",
+            "designation": "CEO and CTO of SpaceX"
+          }
+        ]
+      },
+      "settings": {
+        "animation": "slide",
+        "autoplay": true,
+        "testimonial_height": "400",
+        "text_size": "18",
+        "name_size": "32",
+        "name_transformation": "0",
+        "designation_size": "16"
+      },
+      "styles": {
+        "bg_image": "https://images.unsplash.com/photo-1527664557558-a2b352fcf203?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80",
+        "bg_parallax": true,
+        "overlay_color": "rgba(5,5,5,0.32)",
+        "testimoni_color": "#ffffff",
+        "name_color": "#ffffff",
+        "designation_color": "#ffffff",
+        "dot_color": "#ffffff"
+      }
+    },
+    {
+      "id": "s_517334603",
+      "slug": "contact-1",
+      "title": "untitled section",
+      "contents": {
+        "hotline_title": "Contact Me",
+        "hotline_number": "+1 222 333 2132",
+        "address": "23 Salient Road, London, United Kingdom, PO-LDN 123",
+        "phone": "+1(555)666.777.8888",
+        "email": "example@demo.com",
+        "social": [
+          "http://facebook.com/themexpert",
+          "http://twitter.com/themexpert",
+          "http://linkedin.com/themexpert"
+        ],
+        "contact_title": "Send Feedback",
+        "form": "[contact-form-7 id=\"52\" title=\"Contact form 1\"]"
+      },
+      "settings": {
+        "title_size": "22",
+        "title_transformation": "inherit",
+        "info_animation": "0",
+        "form_animation": "0"
+      },
+      "styles": {
+        "bg_image": "",
+        "bg_repeat": "",
+        "bg_color": "#fff",
+        "title_color": "#222",
+        "text_color": "#323232",
+        "accent_color": "#E64A19",
+        "button_text_color": "#fff"
+      }
+    }
+  ]
+}
