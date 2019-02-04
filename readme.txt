@@ -33,7 +33,7 @@ https://www.youtube.com/watch?v=gJKIwp21dXs
 
 
 * Everything in front-end
-* Array of beautiful Blocka
+* Array of beautiful Blocks
 * In-built option framework
 * Drag and Drop
 * Various input types
