@@ -121,7 +121,8 @@ let Repeater = React.createClass({
     console.log('rendering repeater');
     let rGroups = this.props.options.fields;
     let id      = this.props.id;
-
+    let rGroupsMaxLimit = this.props.options.limit || 0;
+    
     return (
       <div ref="container" className="repeatable-control">
 
@@ -145,10 +146,14 @@ let Repeater = React.createClass({
             );
           }) }
         </div>
-        <Button bsStyle="primary" className="btn--add-repeater btn-block"
-                onClick={this.addRepeatGroup.bind(this, false, 0)}>
-          <span className="fa fa-plus"/> Add New
-        </Button>
+        {
+          rGroups.length != rGroupsMaxLimit
+            ? <Button bsStyle="primary" className="btn--add-repeater btn-block"
+                  onClick={this.addRepeatGroup.bind(this, false, 0)}>
+                  <span className="fa fa-plus" /> Add New
+            </Button>
+            : null
+        }
         { /*panel-group*/ }
 
       </div>
