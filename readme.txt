@@ -101,6 +101,12 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 
 == Changelog ==
+= 2.0.2 =
+- New: Personal Photography template added
+- New: Admin menu and getting started video
+- New: Plugin activation redirection and review notice added
+- Fix: PHP error fix for all reported blocks 
+
 = 2.0.1 =
 - New: Nav Scrollspy added with active nav when section apear on viewport
 - New: Corporate landing page 1

@@ -3,7 +3,7 @@
  * Plugin Name:       OnePager
  * Plugin URI:        https://themesgrove.com/onepager
  * Description:       The best and most easiest, beginner friendly landing page builder. Create one page website faster than ever.
- * Version:           2.0.1
+ * Version:           2.0.2
  * Author:            Themesgrove
  * Author URI:        https://themesgrove.com/
  * License:           GPL-2.0+
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if(!defined('ONEPAGER_VERSION')){
-  define( 'ONEPAGER_VERSION', '2.0.1' );
+  define( 'ONEPAGER_VERSION', '2.0.2' );
 }
 
 if(!defined('ONEPAGER_PHP_VERSION')) {
