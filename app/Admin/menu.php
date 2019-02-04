@@ -60,11 +60,11 @@ function handle_external_redirects() {
     return;
   }
   if ( 'go_onepager-pro' === $_GET['page'] ) {
-    wp_redirect( 'https://themesgrove.com/onepager/?utm_source=wp-menu&utm_campaign=gopro&utm_medium=wp-dash' );
+    wp_redirect( 'https://themesgrove.com/wp-onepager/?utm_source=wp-menu&utm_campaign=wponepager_gopro&utm_medium=wp-dash' );
     exit;
   }
   if ( 'go_knowledge_base_site' === $_GET['page'] ) {
-    wp_redirect( 'https://go.elementor.com/docs-admin-menu/' );
+    wp_redirect( '' );
     die;
   }
 }

@@ -1,6 +1,6 @@
 === Onepage Builder - Easiest Landing Page Builder For WordPress ===
 Contributors: themexpert, nadimtuhin, themesgrove, parvezvai
-Donate link: https://themesgrove.com/onepager
+Donate link: https://themesgrove.com/wp-onepager
 Tags: onepager, page builder, onepage builder, drag and drop, landing page, sales page, business landing page, lead generation page, consulting landing page, service landing page, book launch page, webinar page, case study page, portfolio page, responsive page, coming soon page, app landing page, startup landing page, information product page, event landing page, seminar landing page
 Stable tag: %version%
 Requires at least: 4.8
@@ -14,18 +14,18 @@ The best and most easiest, beginner friendly landing page builder. Create one pa
 
 = WordPress Landing Page Builder Plugin =
 
-We believe that you shouldn't have to hire a developer to create a landing page. That's why we built <a href="https://themesgrove.com/onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=onepager" rel="friend" title="OnePager">OnePager</a>, a drag & drop WordPress onepage builder that's EASY, POWERFUL and FAST.
+We believe that you shouldn't have to hire a developer to create a landing page. That's why we built <a href="https://themesgrove.com/wp-onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=wponepager" rel="friend" title="WPOnepager">WPOnepager</a>, a drag & drop WordPress onepage builder that's EASY, POWERFUL and FAST.
 
-OnePager allow you to create beautiful landing page, sales page, webinar & event signup pages, lead generation page, and other type of pages in minutes, not hours!
+WPOnepager allow you to create beautiful landing page, sales page, webinar & event signup pages, lead generation page, and other type of pages in minutes, not hours!
 
-At OnePager, user experience is our #1 priority. Our pre-built page templates and blocks make OnePager the most beginner friendly landing page builder plugin in the market.
+At WPOnepager, user experience is our #1 priority. Our pre-built page templates and blocks make OnePager the most beginner friendly landing page builder plugin in the market.
 
-OnePager is a 100% mobile responsive, so all your langing pages will always look great on all devices (mobile, tablet, laptop, and desktop).
+WPOnepager is a 100% mobile responsive, so all your langing pages will always look great on all devices (mobile, tablet, laptop, and desktop).
 
-OnePager' landing pages are also highly optimized for web and built using the web standards because we understand the importance of speed when it comes to SEO and conversion. We can honestly say that landing page you are going to make will be faster than your competitor.
+WPOnepager' landing pages are also highly optimized for web and built using the web standards because we understand the importance of speed when it comes to SEO and conversion. We can honestly say that landing page you are going to make will be faster than your competitor.
 
-> <strong>OnePager Pro</strong><br />
-> This plugin is the core version of the OnePager Pro plugin that comes with all the premium landing pages, blocks and features you will ever need including full screen sections, multiple scroll animation, more animation for element, huge blocks collection, pre-made premium templates, form templates, and tons more. <a href="https://themesgrove.com/onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=onepager" rel="friend" title="OnePagr">Click here to purchase the best premium WordPress onepage builder now!</a>
+> <strong>WPOnepager Pro</strong><br />
+> This plugin is the core version of the WPOnepager Pro plugin that comes with all the premium landing pages, blocks and features you will ever need including full screen sections, multiple scroll animation, more animation for element, huge blocks collection, pre-made premium templates, form templates, and tons more. <a href="https://themesgrove.com/wp-onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=wponepager" rel="friend" title="OnePagr">Click here to purchase the best premium WordPress onepage builder now!</a>
 
 We took the pain out of creating landing page and made it easy. Here's why smart business owners, designers, and developers love OnePagr, and you will too!
 
@@ -78,7 +78,7 @@ If you like this plugin, then consider checking out our other projects:
 1. Install OnePager either via the WordPress.org plugin repository or by uploading the files to your server.
 2. Activate OnePager.
 3. Navigate to the Pages tab from your admin menu and click the "Add New" button to begin creating your new WordPress landing page.
-4. Want more features? <a href="https://themesgrove.com/onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=onepager" rel="friend" title="OnePager">Purchase the OnePager Pro</a>!
+4. Want more features? <a href="https://themesgrove.com/wp-onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=wponepager" rel="friend" title="OnePager">Purchase the OnePager Pro</a>!
 
 
 == Screenshots ==
