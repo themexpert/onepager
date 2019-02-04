@@ -1,4 +1,8 @@
 <?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
 // Register admin menu
 add_action('admin_menu', 'register_admin_menu',20);
 

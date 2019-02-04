@@ -55,6 +55,7 @@ require( ONEPAGER_PATH . '/app/Api/routes.php' );
 require( ONEPAGER_PATH . '/app/OptionsPanel/settings.php' );
 require( ONEPAGER_PATH . '/app/Metabox/metabox.php' );
 require( ONEPAGER_PATH . '/app/Admin/menu.php' );
+require( ONEPAGER_PATH . '/app/Admin/notice.php' );
 
 
 add_action('wp_head', 'print_onepager_meta');
