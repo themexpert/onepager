@@ -26,7 +26,7 @@ let Block = React.createClass({
     let block = this.props.block;
 
     return (
-      <div className="uk-card uk-card-default uk-margin-bottom" onClick={this.handleCreateSection}>
+      <div className="uk-card uk-card-default uk-card-hover uk-margin-bottom" onClick={this.handleCreateSection}>
         <img src={block.image} alt={block.name} style={{width: "100%"}} data-toggle="tooltip"
              title="+ Click to insert block" data-placement="top"/>
         <span className="uk-text-meta uk-hidden">{block.name} {block.groups}</span>
