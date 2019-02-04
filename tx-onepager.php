@@ -64,3 +64,21 @@ function print_onepager_meta() {
 }
 
 do_action('onepager_loaded');
+
+// Activation hook
+register_activation_hook(__FILE__, 'onepager_activation_hook');
+
+/**
+ * redirect to the installation page
+ * after active the plugin
+ */
+add_action('admin_init', 'onepager_redirect');
+function onepager_activation_hook() {
+    add_option('onepager_activated', true);
+}
+function onepager_redirect() {
+    if (get_option('onepager_activated', false)) {
+        delete_option('onepager_activated');
+        wp_redirect(admin_url( 'admin.php?page=onepager-getting-started' ));
+    }
+}

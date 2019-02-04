@@ -7,7 +7,7 @@
           <h2>Welcome to OnePager</h2>
           <p class="uk-text-emphasis">We recommend you watch this getting started video, and then try to build page yourself.</p>
           <div>
-            <iframe src="https://www.youtube-nocookie.com/embed/pwKcmckBZD4?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="620" height="350" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube-nocookie.com/embed/gJKIwp21dXs?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="620" height="350" frameborder="0" allowfullscreen></iframe>
           </div>
       </div>
       <div class="uk-card-footer uk-text-center">

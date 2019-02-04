@@ -29,7 +29,7 @@ WPOnepager' landing pages are also highly optimized for web and built using the 
 
 We took the pain out of creating landing page and made it easy. Here's why smart business owners, designers, and developers love OnePagr, and you will too!
 
-https://www.youtube.com/watch?v=pwKcmckBZD4
+https://www.youtube.com/watch?v=gJKIwp21dXs
 
 
 * Everything in front-end

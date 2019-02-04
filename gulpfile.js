@@ -172,7 +172,7 @@ gulp.task('default', function () {
   runSequence('build', ['webpack-watch', 'watch']);
 });
 
-gulp.task('package', ['package-build'], function () {
+gulp.task('release', ['package-build'], function () {
   shell.exec("composer dump-autoload -o");
   
   var files = [
