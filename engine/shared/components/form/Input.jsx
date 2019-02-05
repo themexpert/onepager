@@ -10,6 +10,7 @@ const WpMediaFrame = require('./media/WpMediaFrame.jsx');
 const WpSelect = require('./WpSelect.jsx');
 const Select = require('./Select.jsx');
 const Link = require('./Link.jsx');
+const Typography = require('./typography/index.jsx');
 const TinyMCE = require('./editor/TinyMCE.jsx');
 const PureMixin = require('../../mixins/PureMixin.js');
 const Activity = require('../../lib/Activity.js');
@@ -43,6 +44,7 @@ let InputControl = React.createClass({
 
   render() {
     let controlHtml, control = this.props.options;
+    
 
     switch (control.type) {
       case "icon":
@@ -52,6 +54,16 @@ let InputControl = React.createClass({
                         defaultValue={control.value}
                         label={control.label}
                         size={control.size || ""}
+                        onChange={this.onChange}/>;
+        break;
+
+      case "typography":
+        controlHtml =
+          <Typography ref="input"
+                        label={control.label}
+                        className={control.class}
+                        defaultValue={control.value}
+                        label={control.label}
                         onChange={this.onChange}/>;
         break;
 
