@@ -1,7 +1,7 @@
 <?php
 	$sticky = ($settings['sticky_nav']) ? 'uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"' : '';
 ?>
-<div id="<?php echo $id; ?>" class="navbar-1" <?php echo $sticky; ?>>
+<div id="<?php echo $id; ?>" class="navbar navbar-1 fp-section fp-auto-height" <?php echo $sticky; ?>>
 	<div class="uk-container">
 		<nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
 				<div class="uk-navbar-left">
