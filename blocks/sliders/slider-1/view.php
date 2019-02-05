@@ -6,7 +6,7 @@ $slideshow = implode('; ', $slideshow_options);
 $heading_class = ($settings['title_transformation']) ? 'uk-text-' . $settings['title_transformation'] : '';
 ?>
 
-<div id="<?php echo $id; ?>" class="uk-position-relative uk-visible-toggle" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>">
+<div id="<?php echo $id; ?>" class="uk-position-relative uk-visible-toggle slider-1" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>">
 
     <ul class="uk-slideshow-items">
 		<?php foreach($contents['sliders'] as $index => $slide): ?>

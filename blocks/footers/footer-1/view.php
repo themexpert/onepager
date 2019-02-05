@@ -8,7 +8,7 @@
 
 ?>
 
-<footer id="<?php echo $id; ?>" class="uk-section uk-text-<?php echo $alignment;?> footers footer-1">
+<footer id="<?php echo $id; ?>" class="fp-auto-height uk-text-<?php echo $alignment;?> footers footer-1">
     <div class="uk-container" <?php echo $section_animation;?>>
         <div class="social-links">
             <?php foreach ( $contents['social'] as $social ): ?>
