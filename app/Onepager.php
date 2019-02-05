@@ -88,4 +88,8 @@ abstract class Onepager {
     return static::$basePreset;
   }
 
+  public static function isBuilderMode(){
+    return onepager()->content()->isBuildMode();
+  }
+
 }

@@ -50,7 +50,7 @@ function register_submenu(){
     '',
     '<span class="dashicons dashicons-star-filled" style="font-size: 17px"></span> ' . __( 'Go Pro', 'onepager' ),
     'manage_options',
-    'go_onepager-pro',
+    'onepager-gopro',
     'handle_external_redirects' 
   );
 }
@@ -63,7 +63,7 @@ function handle_external_redirects() {
   if ( empty( $_GET['page'] ) ) {
     return;
   }
-  if ( 'go_onepager-pro' === $_GET['page'] ) {
+  if ( 'onepager-gopro' === $_GET['page'] ) {
     wp_redirect( 'https://themesgrove.com/wp-onepager/?utm_source=wp-menu&utm_campaign=wponepager_gopro&utm_medium=wp-dash' );
     exit;
   }
