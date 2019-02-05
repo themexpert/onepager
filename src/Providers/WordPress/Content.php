@@ -75,11 +75,12 @@ class Content implements ContentInterface {
   }
 
   public function isOnepage( $pageId = null ) {
+
     if ( ! $pageId ) {
       $pageId = $this->getCurrentPageId();
     }
 
-    if(is_search()) return false;
+    // if($wp_query->is_search()) return false;
 
     $isOnepage = $this->isOnepagerByTemplate( $pageId ) || $this->isOnepagerByMeta();
 
