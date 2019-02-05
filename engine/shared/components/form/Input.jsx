@@ -10,7 +10,7 @@ const WpMediaFrame = require('./media/WpMediaFrame.jsx');
 const WpSelect = require('./WpSelect.jsx');
 const Select = require('./Select.jsx');
 const Link = require('./Link.jsx');
-const Typography = require('./typography/index.jsx');
+const Font = require('./font/index.jsx');
 const TinyMCE = require('./editor/TinyMCE.jsx');
 const PureMixin = require('../../mixins/PureMixin.js');
 const Activity = require('../../lib/Activity.js');
@@ -57,9 +57,9 @@ let InputControl = React.createClass({
                         onChange={this.onChange}/>;
         break;
 
-      case "typography":
+      case "font":
         controlHtml =
-          <Typography ref="input"
+          <Font ref="input"
                         label={control.label}
                         className={control.class}
                         defaultValue={control.value}

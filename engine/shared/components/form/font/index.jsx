@@ -5,7 +5,7 @@ const fontFamilies = require('./font-family');
 // const Option = Sele ct.Option;
 const DEFAULT_FONT_WEIGHTS = ["100", "200", "300", "400", "500", "600", "700", "800", "900"];
 
-let Typography = React.createClass({
+let Font = React.createClass({
   propTypes: {
    //
   },
@@ -31,9 +31,9 @@ let Typography = React.createClass({
       <div className="uk-form-stacked">
         <Select
           ref="input"
-          type="typography"
+          type="font"
           defaultValue={this.props.defaultValue}
-          label={this.props.label || 'Typography'}
+          label={this.props.label || 'Font'}
           options={this.state.fontFamilies}
           onChange={this.props.onChange} />
       </div>
@@ -41,4 +41,4 @@ let Typography = React.createClass({
   }
 });
 
-export default Typography;
+export default Font;
