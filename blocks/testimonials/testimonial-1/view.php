@@ -6,7 +6,7 @@ $slideshow = implode('; ', $slideshow_options);
 $heading_class = ($settings['name_transformation']) ? 'uk-text-' . $settings['name_transformation'] : '';
 ?>
 
-<div id="<?php echo $id; ?>" class="uk-position-relative testimonials testimonial-1" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>"  
+<div id="<?php echo $id; ?>" class="uk-position-relative testimonials testimonial-1 fp-section" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>"  
 <?php echo ($styles['bg_parallax']) ? 'uk-parallax="bgy: -200"' : '' ?>
 data-src="<?php echo $styles['bg_image'];?>" uk-img>
 	<div class="uk-overlay-primary uk-position-cover"></div>
@@ -56,5 +56,4 @@ data-src="<?php echo $styles['bg_image'];?>" uk-img>
         <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
         <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
     </div>
-
 </div>

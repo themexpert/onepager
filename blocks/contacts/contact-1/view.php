@@ -7,94 +7,95 @@
 	$form_animation = ($settings['form_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['form_animation'].'"' : '';
  ?>
 
-<section id="<?php echo $id;?>" class="uk-section contacts contact-1">
-	<div class="uk-container">
+<section id="<?php echo $id;?>" class="fp-section contacts contact-1">
+	<div class="uk-section">
+		<div class="uk-container">
+			<div class="uk-child-width-1-2@s uk-margin" uk-grid>
+				<div class="uk-card" <?php echo $info_animation;?>>
 
-		<div class="uk-child-width-1-2@s uk-margin" uk-grid>
-			<div class="uk-card" <?php echo $info_animation;?>>
+					<div class="heading-info uk-margin-medium-bottom" <?php echo $info_animation;?>>	
 
-				<div class="heading-info uk-margin-medium-bottom" <?php echo $info_animation;?>>	
+						<?php if($contents['hotline_title']):?>
+							<!-- Section Title -->
+							<h3 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>">
+								<?php echo $contents['hotline_title'];?>
+							</h3>
+						<?php endif; ?>
 
-					<?php if($contents['hotline_title']):?>
-						<!-- Section Title -->
-						<h3 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>">
-							<?php echo $contents['hotline_title'];?>
-						</h3>
-					<?php endif; ?>
-
-					<?php if($contents['hotline_number']):?>
-						<h4 class="uk-text-lead">
-						    <?php echo $contents['hotline_number']; ?> 	
-						</h4>
-					<?php endif; ?>
-				</div>
-
-			   	<?php if($contents['address']):?>
-				    <div class="uk-card-header uk-padding-remove uk-margin">
-				        <div class="uk-grid-small uk-flex-middle" uk-grid>
-				            <div class="uk-width-auto">
-				               <span class="fa fa-home"></span>
-				            </div>
-				            <div class="uk-width-expand">
-					            <p class="uk-text-meta uk-margin-remove-top">
-				                	<?php echo $contents['address']; ?>
-				                </p>
-				            </div>
-				        </div>
-				    </div> <!-- uk-card-header -->
-			    <?php endif; ?>
-
-			    <?php if($contents['phone']):?>
-				    <div class="uk-card-header uk-padding-remove uk-margin">
-				        <div class="uk-grid-small uk-flex-middle" uk-grid>
-				            <div class="uk-width-auto">
-				               <span class="fa fa-phone"></span>
-				            </div>
-				            <div class="uk-width-expand">
-					            <p class="uk-text-meta uk-margin-remove-top">
-				                	<?php echo $contents['phone']; ?>
-				                </p>
-				            </div>
-				        </div>
-				    </div> <!-- uk-card-header -->
-			    <?php endif; ?>
-
-
-			    <?php if($contents['email']):?>
-				    <div class="uk-card-header uk-padding-remove uk-margin">
-				        <div class="uk-grid-small uk-flex-middle" uk-grid>
-				            <div class="uk-width-auto">
-				               <span class="fa fa-envelope-o"></span>
-				            </div>
-				            <div class="uk-width-expand">
-					            <p class="uk-text-meta uk-margin-remove-top">
-				                	<?php echo $contents['email']; ?>
-				                </p>
-				            </div>
-				        </div>
-				    </div> <!-- uk-card-header -->
-			    <?php endif; ?>
-
-				<div class="social-links uk-margin">
-					<?php foreach ( $contents['social'] as $social ): ?>
-						<a class="icon" href="<?php echo $social ?>" target="_blank"></a>
-					<?php endforeach; ?>
-				</div><!-- social-links -->
-
-			</div><!-- uk-card -->
-
-			<div class="uk-grid-item-match uk-flex-middle" <?php echo $form_animation;?>>
-				<?php if($contents['contact_title']):?>
-					<div class="contact-info">	
-						<!-- Section Title -->
-						<h3 class="uk-heading-primary uk-margin-medium-bottom uk-text-<?php echo $settings['title_transformation'];?>">
-							<?php echo $contents['contact_title'];?>
-						</h3>
+						<?php if($contents['hotline_number']):?>
+							<h4 class="uk-text-lead">
+								<?php echo $contents['hotline_number']; ?> 	
+							</h4>
+						<?php endif; ?>
 					</div>
-				<?php endif; ?>
-				<?php echo do_shortcode($contents['form']);?>
-			</div><!-- uk-grid-item-match -->
 
-		</div><!-- uk-child-width -->
-	</div> <!-- uk-container -->
+					<?php if($contents['address']):?>
+						<div class="uk-card-header uk-padding-remove uk-margin">
+							<div class="uk-grid-small uk-flex-middle" uk-grid>
+								<div class="uk-width-auto">
+									<span class="fa fa-home"></span>
+								</div>
+								<div class="uk-width-expand">
+									<p class="uk-text-meta uk-margin-remove-top">
+										<?php echo $contents['address']; ?>
+									</p>
+								</div>
+							</div>
+						</div> <!-- uk-card-header -->
+					<?php endif; ?>
+
+					<?php if($contents['phone']):?>
+						<div class="uk-card-header uk-padding-remove uk-margin">
+							<div class="uk-grid-small uk-flex-middle" uk-grid>
+								<div class="uk-width-auto">
+									<span class="fa fa-phone"></span>
+								</div>
+								<div class="uk-width-expand">
+									<p class="uk-text-meta uk-margin-remove-top">
+										<?php echo $contents['phone']; ?>
+									</p>
+								</div>
+							</div>
+						</div> <!-- uk-card-header -->
+					<?php endif; ?>
+
+
+					<?php if($contents['email']):?>
+						<div class="uk-card-header uk-padding-remove uk-margin">
+							<div class="uk-grid-small uk-flex-middle" uk-grid>
+								<div class="uk-width-auto">
+									<span class="fa fa-envelope-o"></span>
+								</div>
+								<div class="uk-width-expand">
+									<p class="uk-text-meta uk-margin-remove-top">
+										<?php echo $contents['email']; ?>
+									</p>
+								</div>
+							</div>
+						</div> <!-- uk-card-header -->
+					<?php endif; ?>
+
+					<div class="social-links uk-margin">
+						<?php foreach ( $contents['social'] as $social ): ?>
+							<a class="icon" href="<?php echo $social ?>" target="_blank"></a>
+						<?php endforeach; ?>
+					</div><!-- social-links -->
+
+				</div><!-- uk-card -->
+
+				<div class="uk-grid-item-match uk-flex-middle" <?php echo $form_animation;?>>
+					<?php if($contents['contact_title']):?>
+						<div class="contact-info">	
+							<!-- Section Title -->
+							<h3 class="uk-heading-primary uk-margin-medium-bottom uk-text-<?php echo $settings['title_transformation'];?>">
+								<?php echo $contents['contact_title'];?>
+							</h3>
+						</div>
+					<?php endif; ?>
+					<?php echo do_shortcode($contents['form']);?>
+				</div><!-- uk-grid-item-match -->
+
+			</div><!-- uk-child-width -->
+		</div> <!-- uk-container -->
+	</div>
 </section> <!-- end-section -->

@@ -45,6 +45,7 @@ class Content implements ContentInterface {
 
   public function isBuildMode() {
     $build = array_key_exists( 'onepager', $_GET ) ? (int) $_GET['onepager'] : 0;
+
     return $this->isPermitted() && $this->isOnepage() && $build;
   }
 
@@ -75,11 +76,12 @@ class Content implements ContentInterface {
   }
 
   public function isOnepage( $pageId = null ) {
+
     if ( ! $pageId ) {
       $pageId = $this->getCurrentPageId();
     }
 
-    if(is_search()) return false;
+    // if(is_search()) return false;
 
     $isOnepage = $this->isOnepagerByTemplate( $pageId ) || $this->isOnepagerByMeta();
 
