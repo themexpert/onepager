@@ -30,7 +30,7 @@
 					<?php endif; ?>
 
 					<div class="uk-panel uk-margin-large">
-					<?php foreach($contents['items'] as $feature): ?>
+						<?php foreach($contents['items'] as $feature): ?>
 						<div class="uk-card uk-margin-large" uk-grid>
 						    <div class=" uk-card-media-left uk-width-auto">
 					            <?php if( op_is_image($feature['media'])):?>
@@ -40,29 +40,27 @@
 								<?php endif;?>
 						    </div>
 						    <div class="uk-width-expand">
-					        <div class="uk-card-body uk-padding-remove">
-					            <h3 class="uk-card-title uk-text-<?php echo $settings['item_title_transformation'];?>">
-					               	<?php if(trim($feature['link'])): ?>
-					                	<a href="<?php echo $feature['link']; ?>" target="<?php echo $feature['target'] ? '_blank' : ''?>"><?php echo $feature['title'];?></a>
-					                <?php else: ?>
-					                    <?php echo $feature['title'];?>
-					                <?php endif; ?>
-					            </h3>
-					            <p class="uk-text-medium"><?php echo $feature['description'];?></p>
-					        </div><!-- uk-card-body -->
-						    </div>
+						        <div class="uk-card-body uk-padding-remove">
+						            <h3 class="uk-card-title uk-text-<?php echo $settings['item_title_transformation'];?>">
+						               	<?php if(trim($feature['link'])): ?>
+						                	<a href="<?php echo $feature['link']; ?>" target="<?php echo $feature['target'] ? '_blank' : ''?>"><?php echo $feature['title'];?></a>
+						                <?php else: ?>
+						                    <?php echo $feature['title'];?>
+						                <?php endif; ?>
+						            </h3>
+						            <p class="uk-text-medium"><?php echo $feature['description'];?></p>
+						        </div><!-- uk-card-body -->
+						    </div> <!-- uk-width-expand -->
+						</div> <!-- uk-card -->
+						<?php endforeach; ?>
+					</div><!-- uk-panel -->
+				</article><!-- uk-article -->
+			</div> <!-- uk-width-expand -->
 
-						</div>
-					<?php endforeach; ?>
-				</div><!-- uk-panel -->
-			</article><!-- uk-article -->
-		</div> <!-- uk-width -->
 
-
-		<div class="uk-visible@m <?php echo $media_grid;?>" <?php echo $animation_media;?>>
-			<img class="op-media" src="<?php echo $contents['image'];?>" alt="<?php echo $contents['title'];?>">
-		</div><!-- uk-grid-match -->
-
+			<div class="uk-visible@m <?php echo $media_grid;?>" <?php echo $animation_media;?>>
+				<img class="op-media" src="<?php echo $contents['image'];?>" alt="<?php echo $contents['title'];?>">
+			</div><!-- uk-grid-match -->
 		</div> <!-- uk-grid -->
 	</div> <!-- uk-container -->
 </section> <!-- section id -->
