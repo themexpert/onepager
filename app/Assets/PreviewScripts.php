@@ -1,24 +1,30 @@
-<?php namespace App\Assets;
+<?php
 
-class PreviewScripts {
-  public function __construct() {
-    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue' ] );
-  }
+namespace App\Assets;
 
-  public function enqueue() {
-    $asset = onepager()->asset();
-
-    if ( ! $this->isPreview() ) {
-      return;
+class PreviewScripts
+{
+    public function __construct()
+    {
+        add_action('wp_enqueue_scripts', [$this, 'enqueue']);
     }
 
-    $asset->script( 'onepager-preview', op_asset( 'assets/onepager-preview.bundle.js' ), [ 'jquery' ] );
-  }
+    public function enqueue()
+    {
+        $asset = onepager()->asset();
 
-  /**
-   * @return mixed
-   */
-  protected function isPreview() {
-    return onepager()->content()->isPreview();
-  }
+        if (!$this->isPreview()) {
+            return;
+        }
+
+        $asset->script('onepager-preview', op_asset('assets/onepager-preview.bundle.js'), ['jquery']);
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function isPreview()
+    {
+        return onepager()->content()->isPreview();
+    }
 }
