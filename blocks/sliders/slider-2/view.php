@@ -7,7 +7,7 @@
 ?>
 
 
-	<div id="<?php echo $id; ?>" class="uk-position-relative uk-visible-toggle slider-2" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>">
+	<div id="<?php echo $id; ?>" class="uk-section uk-position-relative uk-visible-toggle slider-2" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>">
 
 	    <ul class="uk-slideshow-items">
 			<?php foreach($contents['sliders'] as $index => $slide): ?>

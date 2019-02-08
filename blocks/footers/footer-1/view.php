@@ -8,7 +8,8 @@
 
 ?>
 
-<footer id="<?php echo $id; ?>" class="uk-section uk-text-<?php echo $alignment;?> footers footer-1">
+<footer id="<?php echo $id; ?>" class="fp-section fp-auto-height uk-text-<?php echo $alignment;?> footers footer-1">
+<div class="uk-section">
     <div class="uk-container" <?php echo $section_animation;?>>
         <div class="social-links">
             <?php foreach ( $contents['social'] as $social ): ?>
@@ -31,5 +32,6 @@
           <?php if ($contents['copyright']): ?>
               <p class="copyright"><?php echo $contents['copyright']; ?></p>
           <?php endif; ?>
-     </div> <!-- uk-container -->
+    </div> <!-- uk-container -->
+</div>
 </footer> <!-- end-footer -->
