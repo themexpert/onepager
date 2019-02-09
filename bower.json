@@ -19,23 +19,23 @@
   },
   "overrides": {
     "jquery.nicescroll": {
-        "main": [
-            "./jquery.nicescroll.min.js",
-            "./zoomico.png"
-        ]
+      "main": [
+        "./jquery.nicescroll.min.js",
+        "./zoomico.png"
+      ]
     },
     "fontawesome": {
-        "main": [
-          "css/font-awesome.css",
-          "fonts/fontawesome-webfont.eot",
-          "fonts/fontawesome-webfont.svg",
-          "fonts/fontawesome-webfont.ttf",
-          "fonts/fontawesome-webfont.woff",
-          "fonts/fontawesome-webfont.woff2"
-        ]
+      "main": [
+        "css/font-awesome.css",
+        "fonts/fontawesome-webfont.eot",
+        "fonts/fontawesome-webfont.svg",
+        "fonts/fontawesome-webfont.ttf",
+        "fonts/fontawesome-webfont.woff",
+        "fonts/fontawesome-webfont.woff2"
+      ]
     },
-    "fullpage.js":{
-      "main":[
+    "fullpage.js": {
+      "main": [
         "dist/fullpage.css",
         "dist/fullpage.extensions.min.js",
         "dist/fullpage.js",

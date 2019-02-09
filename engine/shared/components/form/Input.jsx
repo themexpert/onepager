@@ -11,6 +11,7 @@ const WpSelect = require('./WpSelect.jsx');
 const Select = require('./Select.jsx');
 const Link = require('./Link.jsx');
 const Font = require('./font/index.jsx');
+const Date = require('./date/index.jsx');
 const TinyMCE = require('./editor/TinyMCE.jsx');
 const PureMixin = require('../../mixins/PureMixin.js');
 const Activity = require('../../lib/Activity.js');
@@ -60,6 +61,16 @@ let InputControl = React.createClass({
       case "font":
         controlHtml =
           <Font ref="input"
+                        label={control.label}
+                        className={control.class}
+                        defaultValue={control.value}
+                        label={control.label}
+                        onChange={this.onChange}/>;
+        break;
+
+      case "date":
+        controlHtml =
+          <Date ref="input"
                         label={control.label}
                         className={control.class}
                         defaultValue={control.value}

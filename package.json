@@ -25,6 +25,7 @@
     "gulp-util": "^3.0.4",
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
+    "lodash": ">=4.17.5",
     "main-bower-files": "^2.7.0",
     "node-libs-browser": "^0.5.2",
     "react-hot-loader": "^1.2.7",
@@ -36,8 +37,7 @@
     "webpack": "^1.9.11",
     "webpack-dev-server": ">=3.1.11",
     "webpack-merge": "^0.1.2",
-    "wrench": "^1.5.8",
-    "lodash": ">=4.17.5"
+    "wrench": "^1.5.8"
   },
   "scripts": {
     "start": "gulp",
@@ -59,13 +59,16 @@
   "dependencies": {
     "alt": "^0.17.1",
     "async": "^1.2.1",
+    "bootstrap-datepicker": "^1.8.0",
     "classnames": "^2.1.1",
     "flux": "^2.0.3",
     "immutable": "^3.7.4",
-    "npm": "^6.5.0",
+    "install": "^0.12.2",
+    "npm": "^6.7.0",
     "object-assign": "^2.0.0",
     "react": "^0.13.2",
     "react-bootstrap": "^0.21.2",
+    "react-dom": "^0.14.0",
     "react-router": "^0.13.3",
     "reflux": "^0.2.8",
     "sortablejs": "git+https://github.com/nadimtuhin/Sortable.git",

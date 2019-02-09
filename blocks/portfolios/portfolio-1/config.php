@@ -8,6 +8,7 @@ return [
     'contents' => [
         ['name' => 'title', 'value' => 'Our Works'],
         ['name' => 'My Font', 'type' => 'font', 'value' => '696'],
+        ['name' => 'My Date', 'type' => 'date', 'value' => '696'],
         [
             'name' => 'description',
             'type' => 'textarea',

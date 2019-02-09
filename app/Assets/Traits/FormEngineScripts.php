@@ -35,6 +35,10 @@ trait FormEngineScripts
         // UIKit
         $asset->style('op-uikit', op_asset('assets/css/uikit.css'));
         $asset->script('op-uikit', op_asset('assets/js/uikit.js'), '', ONEPAGER_VERSION, false);
+
+        // bootstrap datepicker
+        $asset->style('op-bootstrap-datepicker', op_asset('assets/css/bootstrap-datepicker.css'));
+        $asset->script('op-bootstrap-datepicker', op_asset('assets/js/bootstrap-datepicker.js'), '', ONEPAGER_VERSION, false);
         $asset->script('op-uikit-icons', op_asset('assets/js/uikit-icons.js'), '', ONEPAGER_VERSION, false);
         $asset->script('op-google-fonts', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', '', ONEPAGER_VERSION, false);
 

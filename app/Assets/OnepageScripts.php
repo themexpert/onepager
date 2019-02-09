@@ -49,6 +49,10 @@ class OnepageScripts
         $asset->script('op-uikit', op_asset('assets/js/uikit.js'));
         $asset->style('op-uikit', op_asset('assets/css/uikit.css'));
 
+        // Load bootstrap datepicker
+        $asset->script('op-bootstrap-datepicker', op_asset('assets/js/bootstrap-datepicker.js'));
+        $asset->style('op-bootstrap-datepicker', op_asset('assets/css/bootstrap-datepicker.css'));
+
         $asset->script('op-google-fonts', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
     }
 
