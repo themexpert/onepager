@@ -12,6 +12,7 @@ const Select = require('./Select.jsx');
 const Link = require('./Link.jsx');
 const Font = require('./font/index.jsx');
 const Date = require('./date/index.jsx');
+const Time = require('./time/index.jsx');
 const TinyMCE = require('./editor/TinyMCE.jsx');
 const PureMixin = require('../../mixins/PureMixin.js');
 const Activity = require('../../lib/Activity.js');
@@ -71,6 +72,16 @@ let InputControl = React.createClass({
       case "date":
         controlHtml =
           <Date ref="input"
+                        label={control.label}
+                        className={control.class}
+                        defaultValue={control.value}
+                        label={control.label}
+                        onChange={this.onChange}/>;
+        break;
+
+      case "time":
+        controlHtml =
+          <Time ref="input"
                         label={control.label}
                         className={control.class}
                         defaultValue={control.value}

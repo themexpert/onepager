@@ -57,6 +57,10 @@ var config = {
     js: dest + '/js',
     css: dest + '/css'
   },
+  'bootstrap-timepicker': {
+    js: dest + '/js',
+    css: dest + '/css'
+  },
   watch: {
     src: src + '/**/*.*',
     less: src + '/lithium/**/*.less',
@@ -146,6 +150,17 @@ gulp.task('bootstrap-datepicker-css', function () {
     .pipe(gulp.dest(config['bootstrap-datepicker'].css))
 });
 
+gulp.task('bootstrap-timepicker-js', function () {
+  return gulp.src(['./node_modules/bootstrap-timepicker/js/bootstrap-timepicker.js'])
+    .pipe(uglify())
+    .pipe(gulp.dest(config['bootstrap-timepicker'].js))
+});
+gulp.task('bootstrap-timepicker-css', function () {
+  return gulp.src(['./node_modules/bootstrap-timepicker/css/bootstrap-timepicker.css'])
+    .pipe(minify())
+    .pipe(gulp.dest(config['bootstrap-timepicker'].css))
+});
+
 gulp.task('watch', function () {
   gulp.watch(config.watch.less, ['less']);
   gulp.watch(config.watch.js, ['js']);
@@ -160,7 +175,7 @@ gulp.task('build-clean', function () {
 });
 
 gulp.task('build', function (cb) {
-  return runSequence('build-clean', ['js', 'fonts', 'bower', 'images', 'less', 'uikit-js', 'uikit-css', 'bootstrap-datepicker-css', 'bootstrap-datepicker-js'], cb);
+  return runSequence('build-clean', ['js', 'fonts', 'bower', 'images', 'less', 'uikit-js', 'uikit-css', 'bootstrap-datepicker-css', 'bootstrap-datepicker-js', 'bootstrap-timepicker-css', 'bootstrap-timepicker-js'], cb);
 });
 
 

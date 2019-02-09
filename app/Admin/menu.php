@@ -83,6 +83,7 @@ function onepager_load_admin_scripts()
 {
     //add builder.css so icons and other stuff styles
     wp_enqueue_style('bootstrap-datepicker', op_asset('assets/css/bootstrap-datepicker.css'));
+    wp_enqueue_style('bootstrap-datepicker', op_asset('assets/css/bootstrap-timepicker.css'));
     wp_enqueue_style('uikit', op_asset('assets/css/uikit.css'));
     wp_enqueue_style('lithium-builder', op_asset('assets/css/lithium-builder.css'));
 }
