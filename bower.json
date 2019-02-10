@@ -37,7 +37,6 @@
     "fullpage.js": {
       "main": [
         "dist/fullpage.css",
-        "dist/fullpage.extensions.min.js",
         "dist/fullpage.js",
         "vendors/easings.js",
         "vendors/scrolloverflow.js"

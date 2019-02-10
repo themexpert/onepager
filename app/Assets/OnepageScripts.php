@@ -57,7 +57,8 @@ class OnepageScripts
         $asset->script('op-bootstrap-timepicker', op_asset('assets/js/bootstrap-timepicker.js'));
         $asset->style('op-bootstrap-timepicker', op_asset('assets/css/bootstrap-timepicker.css'));
 
-        $asset->script('op-google-fonts', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+        // $asset->script('op-google-fonts', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+        wp_enqueue_script('op-gfonts','//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
     }
 
     // protected function shouldLoadTwitterBootstrap() {
