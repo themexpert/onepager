@@ -20,7 +20,7 @@ WPOnepager allow you to create beautiful landing page, sales page, webinar & eve
 
 At WPOnepager, user experience is our #1 priority. Our pre-built page templates and blocks make OnePager the most beginner friendly landing page builder plugin in the market.
 
-WPOnepager is a 100% mobile responsive, so all your langing pages will always look great on all devices (mobile, tablet, laptop, and desktop).
+WPOnepager is a 100% mobile responsive, so all your landing pages will always look great on all devices (mobile, tablet, laptop, and desktop).
 
 WPOnepager' landing pages are also highly optimized for web and built using the web standards because we understand the importance of speed when it comes to SEO and conversion. We can honestly say that landing page you are going to make will be faster than your competitor.
 
@@ -63,30 +63,29 @@ https://www.youtube.com/watch?v=gJKIwp21dXs
 * HTML5 & CSS3 which degrades gracefully for older browsers
 * [Upgrade to the Pro Version Now!&raquo;](https://themesgrove.com/wp-onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=wponepager)
 
-= Type of WordPress langing page you can build with OnePager =
+= Type of WordPress landing page you can build with OnePager =
 
 OnePager drag & drop page builder combined with our blocks is the most easiest WordPress landing page builder plugin in the market. Here are some types of WordPress landing page you can create:
 
-* Business Langing Page
+* Business Landing Page
 * Under Construction Page 
 * Maintenance Page
 * Coming Soon Page
 * Services & Consulting Landing Page
-* Non-Profits Langing Page
+* Non-Profits Landing Page
 * Product Brochure Landing page 
-* Seminar & Event Langing Pages
+* Seminar & Event Landing Pages
 * Book Launches Landing Page
-* Information Product Langing Page
+* Information Product Landing Page
 * App Landing Page 
-* Personal Langing Page
-* Startup Langing Page 
+* Personal Landing Page
+* Startup Landing Page 
 * Case Study Page 
 * Photography Landing Page 
-* Restaurant Langing Page 
-* Wedding Langing Page 
-* Coming Soon page 
+* Restaurant Landing Page 
+* Wedding Landing Page 
 * Portfolio Landing Page
-* Résumé Langing Page
+* Résumé Landing Page
 * More...
 
 = What's Next =
@@ -117,7 +116,7 @@ If you like this plugin, then consider checking out our other projects:
 
 = Who should use OnePager? =
 
-OnePager is perfect for business owners, agency, bloggers, marketer, developers, and basically everyone else. If you want to create a beautiful WordPress langing page, then you need to use the OnePager drag & drop onepage builder.
+OnePager is perfect for business owners, agency, bloggers, marketer, developers, and basically everyone else. If you want to create a beautiful WordPress landing page, then you need to use the OnePager drag & drop onepage builder.
 
 = Do I need to have coding skills to use OnePager? =
 

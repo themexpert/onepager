@@ -7,9 +7,6 @@ return [
     // Fields - $contents available on view file to access the option
     'contents' => [
         ['name' => 'title', 'value' => 'Our Works'],
-        ['name' => 'My Font', 'type' => 'font', 'value' => '696'],
-        ['name' => 'My Date', 'type' => 'date'],
-        ['name' => 'My Time', 'type' => 'time'],
         [
             'name' => 'description',
             'type' => 'textarea',

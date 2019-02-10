@@ -6,22 +6,30 @@ if (!defined('ABSPATH')) {
 // Register admin menu
 add_action('admin_menu', 'register_admin_menu', 20);
 
-function register_admin_menu()
-{
-    //Icon
-    $icon = onepager()->url('assets/images/logo-white.png');
-    // Getting Started page
-    $template = function () {
-        include __DIR__ . '/views/getting-started.php';
-    };
-    add_menu_page(
-    __('OnePager', 'onepager'),
-    __('OnePager', 'onepager'),
+function register_admin_menu(){
+  //Icon
+  $icon = onepager()->url( 'assets/images/logo-white.png' );
+  // Getting Started page
+  $template = function () {
+    include __DIR__ . "/views/settings.php";
+  };
+
+  add_menu_page(
+    __( 'OnePager', 'onepager' ),
+    __( 'OnePager', 'onepager' ),
     'manage_options',
     'onepager',
     $template,
     $icon,
     '58.5'
+  );
+  add_submenu_page(
+    'onepager', 
+    __( 'Dashboard', 'onepager' ),
+    __( 'Dashboard', 'onepager' ),
+    'manage_options', 
+    'onepager',
+    $template
   );
 }
 

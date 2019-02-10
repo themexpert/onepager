@@ -4,7 +4,6 @@
 #<?php echo $id; ?> .section-heading .uk-heading-primary{
 	font-size : <?php echo $settings['title_size'];?>px;
 	color : <?php echo $styles['title_color'];?>;
-	font-family: <?php echo Onepager::fonts($contents['My Font']) ?>
 }
 
 #<?php echo $id; ?> .section-heading .uk-text-lead{
