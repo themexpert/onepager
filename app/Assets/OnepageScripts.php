@@ -45,19 +45,21 @@ class OnepageScripts
         // $asset->style( 'tx-animate', op_asset( 'assets/css/animate.css' ) );
         $asset->style('tx-fontawesome', op_asset('assets/css/font-awesome.css'));
 
-        // Load UIKit
-        $asset->script('op-uikit', op_asset('assets/js/uikit.js'));
-        $asset->style('op-uikit', op_asset('assets/css/uikit.css'));
-
-        // Load bootstrap datepicker
+          // Load bootstrap datepicker
         $asset->script('op-bootstrap-datepicker', op_asset('assets/js/bootstrap-datepicker.js'));
         $asset->style('op-bootstrap-datepicker', op_asset('assets/css/bootstrap-datepicker.css'));
 
-        // Load bootstrap timepicker
+        // // Load bootstrap timepicker
         $asset->script('op-bootstrap-timepicker', op_asset('assets/js/bootstrap-timepicker.js'));
         $asset->style('op-bootstrap-timepicker', op_asset('assets/css/bootstrap-timepicker.css'));
 
-        $asset->script('op-google-fonts', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+        // wp_enqueue_scripts('op-google-fonts', '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+        // $asset->script('op-google-fonts', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array());
+        wp_enqueue_script('op-gfonts','//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+
+        // Load UIKit
+        $asset->script('op-uikit', op_asset('assets/js/uikit.js'));
+        $asset->style('op-uikit', op_asset('assets/css/uikit.css'));
     }
 
     // protected function shouldLoadTwitterBootstrap() {
