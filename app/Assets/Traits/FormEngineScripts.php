@@ -45,8 +45,9 @@ trait FormEngineScripts
         $asset->script('op-bootstrap-timepicker', op_asset('assets/js/bootstrap-timepicker.js'), '', ONEPAGER_VERSION, false);
 
         $asset->script('op-uikit-icons', op_asset('assets/js/uikit-icons.js'), '', ONEPAGER_VERSION, false);
-        wp_enqueue_script('op-gfonts','//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+        // $asset->script('op-google-fonts', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', '', ONEPAGER_VERSION, false);
 
+        wp_enqueue_script('op-gfonts','//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
         $asset->style('tx-lithium-ui', op_asset('assets/css/lithium-builder.css'));
     }
 
