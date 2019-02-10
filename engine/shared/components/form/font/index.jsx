@@ -12,7 +12,7 @@ let Font = React.createClass({
 
   getInitialState() {
     const families = fontFamilies().map(function(font) {
-      return { label: font.family, val: font.family };
+      return { label: font.family };
     });
 
     return {
@@ -23,7 +23,26 @@ let Font = React.createClass({
   },
 
   getValue() {
-    return this.refs.input.getValue();
+    // dynamically google fonts loading.
+    let value = this.refs.input.getValue();
+
+    let font = this.state.fontFamilies[value].label;
+
+    let fontNotLoaded = !jQuery('link[href="http://fonts.googleapis.com/css?family=' + font.replace(" ", "+") + '"]').length;
+    
+    if (fontNotLoaded) {
+      try {
+        document.querySelector('iframe').contentWindow.WebFont.load({
+          google: {
+            families: [`${font}`]
+          }
+        });
+      } catch (e) {
+        console.log('WebFont not loaded!', e);
+      }
+    }
+
+    return value;
   },
 
   render() {

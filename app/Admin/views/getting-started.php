@@ -7,11 +7,11 @@
           <h2>Welcome to OnePager</h2>
           <p class="uk-text-emphasis">We recommend you watch this getting started video, and then try to build page yourself.</p>
           <div>
-            <iframe src="https://www.youtube-nocookie.com/embed/gJKIwp21dXs?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="620" height="350" frameborder="0" allowfullscreen></iframe>
+            <iframe id="onepager-iframe" src="https://www.youtube-nocookie.com/embed/gJKIwp21dXs?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="620" height="350" frameborder="0" allowfullscreen></iframe>
           </div>
       </div>
       <div class="uk-card-footer uk-text-center">
-          <a href="<?php echo admin_url( 'post-new.php?post_type=page' );?>" class="uk-button uk-button-primary"><?php echo __('Create Your First Page', 'onepager')?></a>
+          <a href="<?php echo admin_url('post-new.php?post_type=page');?>" class="uk-button uk-button-primary"><?php echo __('Create Your First Page', 'onepager')?></a>
       </div>
   </div>
 </div>

@@ -1,49 +1,66 @@
-<?php namespace App\Assets;
+<?php
 
-class OnepageScripts {
-  public function __construct() {
-    add_action( 'wp_enqueue_scripts', [ $this, 'enqueueScripts' ] );
-  }
+namespace App\Assets;
 
-  public function enqueueScripts() {
-    if ( ! onepager()->content()->isOnepage() || onepager()->content()->isBuildMode() ) {
-      return;
+class OnepageScripts
+{
+    public function __construct()
+    {
+        add_action('wp_enqueue_scripts', [$this, 'enqueueScripts']);
     }
 
-    $this->enqueueCommonScripts();
-    $this->enqueuePageScripts();
-  }
+    public function enqueueScripts()
+    {
+        if (!onepager()->content()->isOnepage() || onepager()->content()->isBuildMode()) {
+            return;
+        }
 
-  public function enqueuePageScripts() {
-    $asset = onepager()->asset();
-
-    $asset->script( 'lithium', op_asset( 'assets/lithium.js' ), [ 'jquery' ] );
-    $asset->style( 'lithium', op_asset( 'assets/css/lithium.css' ) );
-
-    if ( is_super_admin() && ! onepager()->content()->isBuildMode() ) {
-      $asset->style( 'lithium-ui', op_asset( 'assets/css/lithium-builder.css' ) );
+        $this->enqueueCommonScripts();
+        $this->enqueuePageScripts();
     }
-  }
 
-  public function enqueueCommonScripts() {
-    $asset = onepager()->asset();
+    public function enqueuePageScripts()
+    {
+        $asset = onepager()->asset();
 
-    // $asset->script( 'tx-wow', op_asset( 'assets/js/wow.js' ), [ 'jquery' ] );
+        $asset->script('lithium', op_asset('assets/lithium.js'), ['jquery']);
+        $asset->style('lithium', op_asset('assets/css/lithium.css'));
 
-    // if ( $this->shouldLoadTwitterBootstrap() ) {
-    //   $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
-    //   $asset->style( 'tx-bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
-    // }
+        if (is_super_admin() && !onepager()->content()->isBuildMode()) {
+            $asset->style('lithium-ui', op_asset('assets/css/lithium-builder.css'));
+        }
+    }
 
-    // $asset->style( 'tx-animate', op_asset( 'assets/css/animate.css' ) );
-    $asset->style( 'tx-fontawesome', op_asset( 'assets/css/font-awesome.css' ) );
+    public function enqueueCommonScripts()
+    {
+        $asset = onepager()->asset();
 
-    // Load UIKit
-    $asset->script( 'op-uikit', op_asset( 'assets/js/uikit.js' ) );
-    $asset->style( 'op-uikit', op_asset( 'assets/css/uikit.css' ) );
-  }
+        // $asset->script( 'tx-wow', op_asset( 'assets/js/wow.js' ), [ 'jquery' ] );
 
-  // protected function shouldLoadTwitterBootstrap() {
+        // if ( $this->shouldLoadTwitterBootstrap() ) {
+        //   $asset->script( 'tx-bootstrap', op_asset( 'assets/js/bootstrap.js' ), [ 'jquery' ] );
+        //   $asset->style( 'tx-bootstrap', op_asset( 'assets/css/bootstrap.css' ) );
+        // }
+
+        // $asset->style( 'tx-animate', op_asset( 'assets/css/animate.css' ) );
+        $asset->style('tx-fontawesome', op_asset('assets/css/font-awesome.css'));
+
+        // Load UIKit
+        $asset->script('op-uikit', op_asset('assets/js/uikit.js'));
+        $asset->style('op-uikit', op_asset('assets/css/uikit.css'));
+
+        // Load bootstrap datepicker
+        $asset->script('op-bootstrap-datepicker', op_asset('assets/js/bootstrap-datepicker.js'));
+        $asset->style('op-bootstrap-datepicker', op_asset('assets/css/bootstrap-datepicker.css'));
+
+        // Load bootstrap timepicker
+        $asset->script('op-bootstrap-timepicker', op_asset('assets/js/bootstrap-timepicker.js'));
+        $asset->style('op-bootstrap-timepicker', op_asset('assets/css/bootstrap-timepicker.css'));
+
+        $asset->script('op-google-fonts', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+    }
+
+    // protected function shouldLoadTwitterBootstrap() {
   //   return ! defined( 'ONEPAGER_BOOTSTRAP' ) ? true : ONEPAGER_BOOTSTRAP;
   // }
 }

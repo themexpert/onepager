@@ -1,4 +1,4 @@
-export default function() {
+function fonts() {
   return [
   {
     "family": "ABeeZee",
@@ -12991,3 +12991,8 @@ export default function() {
   }
 ];
 }
+
+
+window.onepage_font_families = fonts();
+
+export default fonts;
