@@ -38,7 +38,6 @@
     $onepagerEnableBtn.on('click', enableOnepagerHandler);
     $onepagerDisableBtn.on('click', disableOnepagerHandler);
 
-
     //initialize
     $(window).load(function() {
       setTimeout(function(){
@@ -58,7 +57,9 @@
           $onepagerDisableBtn.show();
           $onepagerMetabox.show();
           $('.editor-block-list__layout').hide();
-          $('.editor-block-list__layout').after($('.onepager-meta-container').html());
+          $('#onepager_meta').removeClass('closed');
+          $('#onepager_meta .op-editpage-link').show();
+          // $('.editor-block-list__layout').after($('.onepager-meta-container').html());
         }
         else
         {
@@ -95,7 +96,9 @@
           })
           
           $(".editor-post-save-draft").click();
-          $('.editor-block-list__layout').after($('.onepager-meta-container').html());
+          // $('.editor-block-list__layout').after($('.onepager-meta-container').html());
+          $('#onepager_meta').removeClass('closed');
+          $('#onepager_meta .op-editpage-link').show();
 
         }, 2000);
 
@@ -107,14 +110,29 @@
         $pageTemplate.val("default");
         $pageTemplate.trigger('change');        
       }else if($('.editor-page-attributes__template select').length){
-        $('.editor-page-attributes__template select').val('default');
+        $('.editor-page-attributes__template select').val('');
         $('.editor-page-attributes__template select').trigger('change');
+
+        setTimeout(function(){
+          jQuery.ajax( {
+              url:wpApiSettings.root + wpApiSettings.versionString + typenow + 's/' + onepager.pageId,
+              method: 'POST',
+              beforeSend: function ( xhr ) {
+                  xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
+              },
+              data:{"template":"","id":onepager.pageId}
+          })
+          
+          $(".editor-post-save-draft").click();
+          // $('.editor-block-list__layout').after($('.onepager-meta-container').html());
+
+        }, 2000);
 
         setTimeout(function(){
           $(".editor-post-publish-button").click();
         }, 1000);
 
-        $('.editor-writing-flow #op-presets').remove();
+        // $('.editor-writing-flow #op-presets').remove();
         $('.editor-block-list__layout').show();
       }
     }
