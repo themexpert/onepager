@@ -49,9 +49,21 @@
           $('.edit-post-header__settings').prepend($onepagerDisableBtn);
           $('.edit-post-header__settings').prepend($onepagerEnableBtn);
 
-
           $('.editor-page-attributes__template select').on('change', templateChangeHandlerNew);
           $('.editor-page-attributes__template select').trigger('change');
+        }
+
+        if($('.editor-page-attributes__template select').val() == 'onepage.php'){
+          $onepagerEnableBtn.hide();
+          $onepagerDisableBtn.show();
+          $onepagerMetabox.show();
+          $('.editor-block-list__layout').hide();
+          $('.editor-block-list__layout').after($('.onepager-meta-container').html());
+        }
+        else
+        {
+          $onepagerEnableBtn.show();
+          $onepagerDisableBtn.hide();
         }
       }, 3000);
     });
@@ -62,6 +74,13 @@
         $pageTemplate.trigger('change');        
         $publish.click();
       }else{
+
+        if($('.editor-post-title__block textarea').val() == ''){
+          alert('Please add a title first!');
+          return;
+        }
+
+        $('.editor-block-list__layout').hide();
         $('.editor-page-attributes__template select').val('onepage.php');
         $('.editor-page-attributes__template select').trigger('change');
         
@@ -74,9 +93,9 @@
               },
               data:{"template":"onepage.php","id":onepager.pageId}
           })
-
           
-          $(".editor-post-publish-button").click();
+          $(".editor-post-save-draft").click();
+          $('.editor-block-list__layout').after($('.onepager-meta-container').html());
 
         }, 2000);
 
@@ -94,6 +113,9 @@
         setTimeout(function(){
           $(".editor-post-publish-button").click();
         }, 1000);
+
+        $('.editor-writing-flow #op-presets').remove();
+        $('.editor-block-list__layout').show();
       }
     }
 
