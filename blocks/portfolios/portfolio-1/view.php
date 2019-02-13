@@ -15,7 +15,7 @@
 				<?php if ($contents['title']):?>
 					<!-- Section Title -->
 					<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>">
-						<?php echo $contents['title'];?> <?= $contents['My Date'] ?>
+						<?php echo $contents['title'];?>
 					</h1>
 				<?php endif; ?>
 
