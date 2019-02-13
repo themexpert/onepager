@@ -1,14 +1,14 @@
 === Onepage Builder - Easiest Landing Page Builder For WordPress ===
 Contributors: themexpert, nadimtuhin, themesgrove, parvezvai
 Donate link: https://themesgrove.com/wp-onepager
-Tags: landing page, coming soon page, launch page, under construction page, onepage builder, page builder, sales page, business landing page, lead generation page, consulting landing page, service landing page, book launch page, webinar page, case study page, portfolio page, responsive page, coming soon page, app landing page, startup landing page, information product page, event landing page, seminar landing page, maintenance mode, coming soon, under construction,launch, maintenance, construction, offline, unavailable
+Tags: landing page, onepage, coming soon page, launch page, under construction page, onepage builder, page builder, sales page, business landing page, lead generation page, consulting landing page, service landing page, book launch page, webinar page, case study page, portfolio page, responsive page, coming soon page, app landing page, startup landing page, information product page, event landing page, seminar landing page, maintenance mode, coming soon, under construction,launch, maintenance, construction, offline, unavailable
 Stable tag: %version%
 Requires at least: 4.8
 Tested up to: 5.0.3
-Requires PHP: 5.3.3
+Requires PHP: 5.4
 License: GNU General Public License v2.0 or later
 
-Most Easiest & Beginner Friendly Landing Page, Sales page, Coming Soon Page, Under Construction Page Builder for WordPress.
+Most Easiest & Beginner Friendly Landing Page, Sales page, Coming Soon Page, Onepage & Under Construction Page Builder for WordPress.
 
 == Description ==
 
@@ -18,14 +18,14 @@ We believe that you shouldn't have to hire a developer to create a landing page.
 
 WPOnepager allow you to create beautiful landing page, sales page, webinar & event signup pages, lead generation page, and other type of pages in minutes, not hours!
 
-At WPOnepager, user experience is our #1 priority. Our pre-built page templates and blocks make OnePager the most beginner friendly landing page builder plugin in the market.
+At WPOnepager, user experience is our #1 priority. Our pre-built page templates and blocks make WPOnepager the most beginner friendly landing page builder plugin in the market.
 
 WPOnepager is a 100% mobile responsive, so all your landing pages will always look great on all devices (mobile, tablet, laptop, and desktop).
 
 WPOnepager' landing pages are also highly optimized for web and built using the web standards because we understand the importance of speed when it comes to SEO and conversion. We can honestly say that landing page you are going to make will be faster than your competitor.
 
 > <strong>WPOnepager Pro</strong><br />
-> This plugin is the core version of the WPOnepager Pro plugin that comes with all the premium landing pages, blocks and features you will ever need including full screen sections, multiple scroll animation, more animation for element, huge blocks collection, pre-made premium templates, form templates, and tons more. <a href="https://themesgrove.com/wp-onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=wponepager" rel="friend" title="OnePagr">Click here to purchase the best premium WordPress onepage builder now!</a>
+> This plugin is the core version of the WPOnepager Pro plugin that comes with all the premium landing pages, blocks and features you will ever need including full screen sections, multiple scroll animation, more animation for element, huge blocks collection, pre-made premium templates, form templates, and tons more. <a href="https://themesgrove.com/wp-onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=wponepager" rel="friend" title="WPOnepager">Click here to purchase the best premium WordPress onepage builder now!</a>
 
 We took the pain out of creating landing page and made it easy. Here's why smart business owners, designers, and developers love OnePagr, and you will too!
 
@@ -54,6 +54,9 @@ https://www.youtube.com/watch?v=gJKIwp21dXs
 * Fullscreen blocks to make presentational layout
 * Huge animation option 
 * Typography control - 900+ Google Fonts
+* 20+ Coming soon page
+* 50+ Premium Blocks (more added weekly)
+* 10+ Premium Templates (more added weekly)
 * Background video option 
 * Automatic Easy Updates
 * Shortcode Support
@@ -65,7 +68,7 @@ https://www.youtube.com/watch?v=gJKIwp21dXs
 
 = Type of WordPress landing page you can build with OnePager =
 
-OnePager drag & drop page builder combined with our blocks is the most easiest WordPress landing page builder plugin in the market. Here are some types of WordPress landing page you can create:
+WPOnepager drag & drop page builder combined with our blocks is the most easiest WordPress landing page builder plugin in the market. Here are some types of WordPress landing page you can create:
 
 * Business Landing Page
 * Under Construction Page 
@@ -98,32 +101,41 @@ If you like this plugin, then consider checking out our other projects:
 
 == Installation ==
 
-1. Install OnePager either via the WordPress.org plugin repository or by uploading the files to your server.
-2. Activate OnePager.
+1. Install WPOnepager either via the WordPress.org plugin repository or by uploading the files to your server.
+2. Activate WPOnepager.
 3. Navigate to the Pages tab from your admin menu and click the "Add New" button to begin creating your new WordPress landing page.
-4. Want more features? <a href="https://themesgrove.com/wp-onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=wponepager" rel="friend" title="OnePager">Purchase the OnePager Pro</a>!
+4. Want more features? <a href="https://themesgrove.com/wp-onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=wponepager" rel="friend" title="WPOnepager">Purchase the WPOnepager Pro</a>!
 
 
 == Screenshots ==
 
 1. Enable Onepage from your page with presets
-2. Onepager Builder
+2. WPOnepager Builder
 3. Colorpicker input type
 4. Developer friendly codebase
 
 
 == Frequently Asked Questions ==
 
-= Who should use OnePager? =
+= Who should use WPOnepager? =
 
-OnePager is perfect for business owners, agency, bloggers, marketer, developers, and basically everyone else. If you want to create a beautiful WordPress landing page, then you need to use the OnePager drag & drop onepage builder.
+WPOnepager is perfect for business owners, agency, bloggers, marketer, developers, and basically everyone else. If you want to create a beautiful WordPress landing page, then you need to use the OnePager drag & drop onepage builder.
 
-= Do I need to have coding skills to use OnePager? =
+= Do I need to have coding skills to use WPOnepager? =
 
-Absolutely not. You can create and manage your landing pages without any coding knowledge (100% drag & drop page builder). However, if you want to develop something sophisticated for your client you can easily create with OnePager fraemwork.
+Absolutely not. You can create and manage your landing pages without any coding knowledge (100% drag & drop page builder). However, if you want to develop something sophisticated for your client you can easily create with WPOnepager fraemwork.
 
 
 == Changelog ==
+= 2.0.3 =
+- New: Google Font picker added 
+- New: Date picker field added 
+- New: 2 new coming soon blocks 
+- Improved: Fullpage support added to free blocks
+- Improved: Group repeater number control via `config.php`
+- Fix: PHP error fix for several blocks 
+- Fix: Gutenberg loading issue fix
+
 = 2.0.2 =
 - New: Personal Photography template added
 - New: Admin menu and getting started video
