@@ -7,7 +7,7 @@
 	// Social link Animation 
 	$social_animation = ($settings['social_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['social_animation'].'"' : '';
 ?>
-<section id="<?= $id; ?>" class="fp-section uk-section coming-soon coming-soon-1 uk-height-viewport">
+<section id="<?= $id; ?>" class="fp-section uk-section coming-soon coming-soon-1 uk-height-viewport uk-position-relative">
 	<div class="uk-overlay-primary uk-position-cover"></div>
 	
 	<article class="uk-position-center">
