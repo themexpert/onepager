@@ -8,7 +8,7 @@ Tested up to: 5.0.3
 Requires PHP: 5.4
 License: GNU General Public License v2.0 or later
 
-Most Easiest & Beginner Friendly Landing Page, Sales page, Coming Soon Page, Onepage & Under Construction Page Builder for WordPress.
+Beginner Friendly Landing Page, Sales page, Onepage, Coming Soon Page Builder. You can create Under Construction Page, Service page, App landing page and many more with WPOnepager for WordPress.
 
 == Description ==
 
@@ -127,6 +127,9 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 
 == Changelog ==
+= 2.0.4 =
+- Fix: Coming soon section overlaping issue fix.
+
 = 2.0.3 =
 - New: Google Font picker added 
 - New: Date picker field added 
