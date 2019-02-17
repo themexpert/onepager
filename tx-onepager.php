@@ -83,3 +83,19 @@ function onepager_redirect() {
         wp_redirect(admin_url( 'admin.php?page=onepager-getting-started' ));
     }
 }
+
+// Appsero
+/**
+ * Initialize the plugin tracker
+ *
+ * @return void
+ */
+function appsero_init_tracker_wponepager() {
+
+  $client = new Appsero\Client( '1d1fcedc-f2b7-47af-b10f-432374011f07', 'WPOnepager', __FILE__ );
+
+  // Active insights
+  $client->insights()->init();
+}
+
+add_action( 'init', 'appsero_init_tracker_wponepager' );
