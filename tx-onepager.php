@@ -45,6 +45,7 @@ onepager_php_version_check();
 
 require( ONEPAGER_PATH . '/app/inc/support.php' );
 require( ONEPAGER_PATH . '/src/functions.php' );
+require( ONEPAGER_PATH . '/src/WordPress/wp_bootstrap_navwalker.php' );
 require( ONEPAGER_PATH . '/src/theme_helpers.php' );
 require( ONEPAGER_PATH . '/vendor/autoload.php' );
 
