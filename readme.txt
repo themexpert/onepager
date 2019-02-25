@@ -131,6 +131,7 @@ Absolutely not. You can create and manage your landing pages without any coding 
 - New: Appsero service integation for better understanding of plugin usages
 - Fix : $_SERVER ['SERVER_NAME'] not resolving issue fix for platform like Shifter.
 - Fix: Nav walker class updated to avoid PHP fatal error with latest theme
+- WordPress 5.1 tested
 
 = 2.0.4 =
 - Fix: Coming soon section overlaping issue fix.
