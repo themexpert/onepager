@@ -70,3 +70,10 @@
 #<?php echo $id; ?> .price-table ul li:first-child{
     padding-top:20px;
 }
+
+@media(max-width:768px){
+    #<?php echo $id?> .section-heading .uk-heading-primary{
+        font-size : <?php echo ($settings['title_size']/2) +10 ?>px;
+        line-height : <?php echo ($settings['title_size']/2) +15 ?>px;
+    }
+}

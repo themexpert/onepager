@@ -28,3 +28,14 @@
 		color : <?php echo $styles['icon_color'];?>;
 	}
 <?php endif; ?>
+
+
+@media(max-width:768px){
+	#<?php echo $id?> .uk-article .uk-heading-primary{
+		font-size : <?php echo ($settings['title_size']/2) +10 ?>px;
+		line-height : <?php echo ($settings['title_size']/2) +15 ?>px;
+	}
+	#<?php echo $id;?> .uk-card-media-left img{
+	  width:50px;
+	}
+}

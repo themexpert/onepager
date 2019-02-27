@@ -109,9 +109,9 @@ return array(
     ),
     array(
       'name' => 'testimonial_height',
-      'label' => 'Height',
+      'label' => 'Min Height',
       'append' => 'px',
-      'value' => 400,
+      'value' => 750,
     ),
 
     array(

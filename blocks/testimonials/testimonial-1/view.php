@@ -1,7 +1,7 @@
 <?php
 $slideshow_options[] = 'animation: ' . $settings['animation'] ;
 $slideshow_options[] = ($settings['autoplay']) ? 'autoplay: true' : '';
-$slideshow_options[] = ($settings['testimonial_height']) ? 'max-height:' . $settings['testimonial_height'] : '';
+$slideshow_options[] = ($settings['testimonial_height']) ? 'min-height:' . $settings['testimonial_height'] : '';
 $slideshow = implode('; ', $slideshow_options);
 $heading_class = ($settings['name_transformation']) ? 'uk-text-' . $settings['name_transformation'] : '';
 ?>
@@ -12,7 +12,7 @@ data-src="<?php echo $styles['bg_image'];?>" uk-img>
 	<div class="uk-overlay-primary uk-position-cover"></div>
 	<div class="uk-container">
 
-	    <ul class="uk-slideshow-items">
+	    <ul class="uk-slideshow-items" uk-height-viewport="min-height:<?php echo $settings['testimonial_height']; ?>">
 			<?php foreach($contents['testimonials'] as $index => $testimonial): ?>
 		        <li>
 		            <div class="uk-position-center uk-position-small uk-text-center uk-light">
@@ -24,7 +24,7 @@ data-src="<?php echo $styles['bg_image'];?>" uk-img>
 						<?php endif; ?>
 
 						<?php if($testimonial['testimony']):?>
-							<p class="testimony uk-width-3-4 uk-margin-auto" 
+							<p class="testimony uk-width-3-4@m uk-width-1-1@s  uk-margin-auto" 
 								uk-slideshow-parallax="x: 200,-200">
 								<?php echo $testimonial['testimony'];?>
 							</p>
@@ -49,7 +49,7 @@ data-src="<?php echo $styles['bg_image'];?>" uk-img>
 			<?php endforeach; ?>
 	    </ul>
 
-	    <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-padding"></ul>
+	    <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-padding uk-padding-remove-top uk-position-relative"></ul>
 	</div>
 
     <div class="uk-light">

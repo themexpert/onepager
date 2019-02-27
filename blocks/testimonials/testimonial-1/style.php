@@ -28,3 +28,5 @@
 #<?php echo $id; ?> .uk-overlay-primary{
 	background: <?php echo $styles['overlay_color']?>;
 }
+
+

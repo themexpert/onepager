@@ -25,3 +25,9 @@
 	border-color : <?php echo $styles['button_bg_color']?>;
 }
 
+@media(max-width:768px){
+	#<?php echo $id?> .uk-heading-primary{
+		font-size : <?php echo ($settings['title_size']/2) +10 ?>px;
+		line-height : <?php echo ($settings['title_size']/2) +15 ?>px;
+	}
+}

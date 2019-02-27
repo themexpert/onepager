@@ -7,8 +7,7 @@ $heading_class = ($settings['title_transformation']) ? 'uk-text-' . $settings['t
 ?>
 <div id="<?php echo $id; ?>" class="fp-section sliders slider-1">
 	<div class="uk-position-relative uk-visible-toggle slider-1" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>">
-
-		<ul class="uk-slideshow-items">
+		<ul class="uk-slideshow-items" uk-height-viewport>
 			<?php foreach($contents['sliders'] as $index => $slide): ?>
 			<li>
 				<img src="<?php echo $slide['image']?>" alt="" uk-cover>
@@ -37,4 +36,4 @@ $heading_class = ($settings['title_transformation']) ? 'uk-text-' . $settings['t
 			<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 		</div> <!-- uk-light -->
 	</div> <!-- uk-position-relative -->
-</div>
+</div> <!-- section-id -->

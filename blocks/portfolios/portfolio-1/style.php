@@ -27,3 +27,10 @@
 	color : <?php echo $styles['icon_color'];?>;
 	border-radius: 50%;
 }
+
+@media(max-width:768px){
+	#<?php echo $id?> .section-heading .uk-heading-primary{
+		font-size : <?php echo ($settings['title_size']/2) +10 ?>px;
+		line-height : <?php echo ($settings['title_size']/2) +15 ?>px;
+	}
+}

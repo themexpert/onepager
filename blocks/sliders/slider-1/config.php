@@ -98,7 +98,7 @@ return array(
     ),
     array(
       'name'     => 'title_transformation',
-      'label'    => 'Title Font Transformation',
+      'label'    => 'Title Transformation',
       'type'     => 'select',
       'value'    => 0,
       'options'  => array(

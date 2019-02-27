@@ -8,7 +8,7 @@
 
 ?>
 
-<footer id="<?php echo $id; ?>" class="fp-section fp-auto-height uk-text-<?php echo $alignment;?> footers footer-1">
+<footer id="<?php echo $id; ?>" class="fp-section fp-auto-height uk-text-<?php echo $alignment;?> footers footer-1 uk-padding">
 <div class="uk-section">
     <div class="uk-container" <?php echo $section_animation;?>>
         <div class="social-links">
@@ -30,7 +30,7 @@
               </div><!-- uk-navbar-center -->
           </nav> <!-- uk-navbat -->
           <?php if ($contents['copyright']): ?>
-              <p class="copyright"><?php echo $contents['copyright']; ?></p>
+              <p class="copyright uk-margin-remove"><?php echo $contents['copyright']; ?></p>
           <?php endif; ?>
     </div> <!-- uk-container -->
 </div>

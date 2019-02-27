@@ -7,7 +7,7 @@
 
  ?>
 
-<section id="<?php echo $id;?>" class="fp-section pricing pricing-1">
+<section id="<?php echo $id;?>" class="fp-section pricing pricing-1 uk-padding-small">
     <div class="uk-section">
         <div class="uk-container">
             <div class="section-heading uk-margin-large-bottom uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>

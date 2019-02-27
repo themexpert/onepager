@@ -1,8 +1,6 @@
 <?php
 	// media grid
 	$media_grid = 'uk-'. $settings['media_grid'] . '@m'; 
-	// Content Alignment
-	//$content_position = ($settings['media_alignment'] == 'right' ) ? 'uk-flex-first@m uk-first-column' : '';
 	// Animation Media
 	$animation_media = ($settings['animation_media']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['animation_media'].'"' : '';
 	// Animation Content
@@ -10,7 +8,7 @@
 ?>
 
 
-<section id="<?php echo $id;?>" class="fp-section features feature-3">
+<section id="<?php echo $id;?>" class="fp-section features feature-3 uk-padding-small">
 	<div class="uk-section">
 		<div class="uk-container">
 			<div class="uk-grid-large" uk-grid>
@@ -41,27 +39,26 @@
 									<?php endif;?>
 								</div>
 								<div class="uk-width-expand">
-								<div class="uk-card-body uk-padding-remove">
-									<h3 class="uk-card-title uk-text-<?php echo $settings['item_title_transformation'];?>">
-										<?php if(trim($feature['link'])): ?>
-											<a href="<?php echo $feature['link']; ?>" target="<?php echo $feature['target'] ? '_blank' : ''?>"><?php echo $feature['title'];?></a>
-										<?php else: ?>
-											<?php echo $feature['title'];?>
-										<?php endif; ?>
-									</h3>
-									<p class="uk-text-medium"><?php echo $feature['description'];?></p>
-								</div><!-- uk-card-body -->
+									<div class="uk-card-body uk-padding-remove">
+										<h3 class="uk-card-title uk-text-<?php echo $settings['item_title_transformation'];?>">
+											<?php if(trim($feature['link'])): ?>
+												<a href="<?php echo $feature['link']; ?>" target="<?php echo $feature['target'] ? '_blank' : ''?>"><?php echo $feature['title'];?></a>
+											<?php else: ?>
+												<?php echo $feature['title'];?>
+											<?php endif; ?>
+										</h3>
+										<p class="uk-text-medium"><?php echo $feature['description'];?></p>
+									</div><!-- uk-card-body -->
 								</div>
-
 							</div>
 						<?php endforeach; ?>
 					</div><!-- uk-panel -->
 				</article><!-- uk-article -->
 			</div> <!-- uk-width -->
 
-			<div class="uk-visible@m <?php echo $media_grid;?>" <?php echo $animation_media;?>>
+			<div class="<?php echo $media_grid;?>" <?php echo $animation_media;?>>
 				<img class="op-media" src="<?php echo $contents['image'];?>" alt="<?php echo $contents['title'];?>">
 			</div><!-- uk-grid-match -->
 		</div> <!-- uk-container -->
-	</div>
+	</div> <!-- uk-section -->
 </section> <!-- section id -->

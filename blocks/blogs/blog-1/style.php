@@ -46,3 +46,9 @@
 	border-bottom : 1px solid <?php echo $styles['link_color'];?>;
 }
 
+@media(max-width:768px){
+	#<?php echo $id?> .section-heading .uk-heading-primary{
+		font-size : <?php echo ($settings['section_title_size']/2) +10 ?>px;
+		line-height : <?php echo ($settings['section_title_size']/2) +15 ?>px;
+	}
+}

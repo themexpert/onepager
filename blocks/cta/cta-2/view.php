@@ -4,7 +4,7 @@
 	// Content Alignment
 	$content_alignment = ($settings['content_alignment']) ? $settings['content_alignment'] : '';
 ?>
-<section id="<?php echo $id;?>" class="fp-section uk-position-relative cta cta-2 " <?php echo ($styles['bg_parallax']) ? 'uk-parallax="bgy: -200"' : '' ?> tabindex="-1" data-src="<?php echo $styles['bg_image']; ?>" uk-img>
+<section id="<?php echo $id;?>" class="fp-section uk-background-cover uk-position-relative cta cta-2 uk-padding-small" <?php echo ($styles['bg_parallax']) ? 'uk-parallax="bgy: -200"' : '' ?> tabindex="-1" data-src="<?php echo $styles['bg_image']; ?>" uk-img>
 	<div class="uk-section">
 		<div class="uk-overlay-primary uk-position-cover"></div>
 		<div class="uk-container">
@@ -32,5 +32,5 @@
 				</div> <!-- uk-grid-1 -->
 			</div><!-- uk-grid-large -->
 		</div><!-- uk-container -->
-	</div>
+	</div> <!-- uk-section -->
 </section> <!-- end-section -->

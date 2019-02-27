@@ -40,3 +40,13 @@
  	color : <?php echo $styles['text_color'];?>;
  }
 
+
+@media(max-width:768px){
+	#<?php echo $id?> .uk-heading-primary{
+		font-size : <?php echo ($settings['title_size']/2) +10 ?>px;
+		line-height : <?php echo ($settings['title_size']/2) +15 ?>px;
+	}
+	#<?php echo $id?> .uk-text-lead{
+		font-size : <?php echo ($settings['title_size']/2) -8?>px;
+	}
+}

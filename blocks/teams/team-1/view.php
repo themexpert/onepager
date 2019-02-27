@@ -6,7 +6,7 @@
 	// item animation
 	$item_animation = ($settings['item_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['item_animation'].'"' : '';
 ?>
-<section id="<?php echo $id; ?>" class="fp-section teams team-1">
+<section id="<?php echo $id; ?>" class="fp-section teams team-1 uk-padding-small">
 	<div class="uk-section">
 		<div class="uk-container">
 			<div class="section-heading uk-margin-large-bottom uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
@@ -27,7 +27,7 @@
 
 			<div class="uk-grid-medium" uk-grid>
 				<?php foreach( $contents['items'] as $team ) :?>
-				<div class="uk-width-1-<?php echo $settings['items_columns'];?>@m">
+				<div class="uk-width-1-<?php echo $settings['items_columns'];?>@m uk-width-1-1@s">
 					<div class="uk-card uk-overflow-hidden" <?php echo $item_animation;?>>
 						<div class="uk-visible-toggle">
 							<img src="<?php echo $team['image'];?>" alt="<?php echo $team['title'];?>" />
@@ -54,5 +54,5 @@
 				<?php endforeach; ?>
 			</div> <!-- uk-grid-medium -->
 		</div> <!-- uk-container -->
-	</div>
+	</div> <!-- uk-section -->
 </section> <!-- uk-section -->

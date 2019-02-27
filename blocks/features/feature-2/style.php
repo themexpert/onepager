@@ -34,3 +34,10 @@
 	font-size : <?php echo $settings['item_desc_size']?>px;
 	color : <?php echo $styles['item_desc_color']?>;
 }
+
+@media(max-width:768px){
+	#<?php echo $id?> .section-heading .uk-heading-primary{
+		font-size : <?php echo ($settings['title_size']/2) +10 ?>px;
+		line-height : <?php echo ($settings['title_size']/2) +15 ?>px;
+	}
+}

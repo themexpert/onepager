@@ -41,3 +41,10 @@ background:<?php echo $styles['item_overlay_color'];?>;
     transform: scale(1.1);
     transition:all 0.3s ease;
 }
+
+@media(max-width:768px){
+	#<?php echo $id?> .section-heading .uk-heading-primary{
+		font-size : <?php echo ($settings['title_size']/2) +10 ?>px;
+		line-height : <?php echo ($settings['title_size']/2) +15 ?>px;
+	}
+}
