@@ -10,8 +10,8 @@
     "pimple/pimple": "^3.0",
     "kriswallsmith/assetic": "^1.2",
     "ramsey/array_column": "^1.1",
-    "symfony/http-foundation": "^2.7",
-    "appsero/client": "~1.0"
+    "symfony/http-foundation": "2.7.50",
+    "appsero/client": "^1.0"
   },
   "autoload": {
     "classmap": ["src/WordPress"],
