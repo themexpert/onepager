@@ -21,3 +21,7 @@
 	background : <?php echo $styles['cta_bg']; ?>;
 	color : <?php echo $styles['cta_color']; ?>;
 }
+
+@media only screen and (max-width: 400px) {
+#<?php echo $id ?> .uk-logo img{ width: 140px; }
+}
