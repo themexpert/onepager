@@ -95,8 +95,14 @@ function appsero_init_tracker_wponepager() {
 
   $client = new Appsero\Client( '1d1fcedc-f2b7-47af-b10f-432374011f07', 'WPOnepager', __FILE__ );
 
+  $metadata = array(
+    'active_theme'  => get_template()
+  );
+
   // Active insights
-  $client->insights()->init();
+  $client->insights()
+         ->add_extra( $metadata )
+         ->init();
 }
 
 add_action( 'init', 'appsero_init_tracker_wponepager' );
