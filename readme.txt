@@ -127,6 +127,11 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 
 == Changelog ==
+= 2.0.6 =
+- Fix: All blocks title now resize automatically in 1.5/2 ratio
+- Fix: onpage override fix for theme 
+- Improved: Navbar logo size reduced for mobile device 
+
 = 2.0.5 =
 - New: Appsero service integation for better understanding of plugin usages
 - Fix : $_SERVER ['SERVER_NAME'] not resolving issue fix for platform like Shifter.
