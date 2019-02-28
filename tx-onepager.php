@@ -3,7 +3,7 @@
  * Plugin Name:       WPOnepager
  * Plugin URI:        https://themesgrove.com/wp-onepager
  * Description:       The best and most easiest, beginner friendly landing page builder. Create one page website faster than ever.
- * Version:           2.0.4
+ * Version:           2.0.5
  * Author:            Themesgrove
  * Author URI:        https://themesgrove.com/
  * License:           GPL-2.0+
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if(!defined('ONEPAGER_VERSION')){
-  define( 'ONEPAGER_VERSION', '2.0.4' );
+  define( 'ONEPAGER_VERSION', '2.0.5' );
 }
 
 if(!defined('ONEPAGER_PHP_VERSION')) {
@@ -45,6 +45,7 @@ onepager_php_version_check();
 
 require( ONEPAGER_PATH . '/app/inc/support.php' );
 require( ONEPAGER_PATH . '/src/functions.php' );
+require( ONEPAGER_PATH . '/src/WordPress/wp_bootstrap_navwalker.php' );
 require( ONEPAGER_PATH . '/src/theme_helpers.php' );
 require( ONEPAGER_PATH . '/vendor/autoload.php' );
 
@@ -83,3 +84,19 @@ function onepager_redirect() {
         wp_redirect(admin_url( 'admin.php?page=onepager-getting-started' ));
     }
 }
+
+// Appsero
+/**
+ * Initialize the plugin tracker
+ *
+ * @return void
+ */
+function appsero_init_tracker_wponepager() {
+
+  $client = new Appsero\Client( '1d1fcedc-f2b7-47af-b10f-432374011f07', 'WPOnepager', __FILE__ );
+
+  // Active insights
+  $client->insights()->init();
+}
+
+add_action( 'init', 'appsero_init_tracker_wponepager' );

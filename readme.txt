@@ -4,7 +4,7 @@ Donate link: https://themesgrove.com/wp-onepager
 Tags: landing page, onepage, coming soon page, launch page, under construction page, onepage builder, page builder, sales page, business landing page, lead generation page, consulting landing page, service landing page, book launch page, webinar page, case study page, portfolio page, responsive page, coming soon page, app landing page, startup landing page, information product page, event landing page, seminar landing page, maintenance mode, coming soon, under construction,launch, maintenance, construction, offline, unavailable
 Stable tag: %version%
 Requires at least: 4.8
-Tested up to: 5.0.3
+Tested up to: 5.1.0
 Requires PHP: 5.4
 License: GNU General Public License v2.0 or later
 
@@ -127,6 +127,12 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 
 == Changelog ==
+= 2.0.5 =
+- New: Appsero service integation for better understanding of plugin usages
+- Fix : $_SERVER ['SERVER_NAME'] not resolving issue fix for platform like Shifter.
+- Fix: Nav walker class updated to avoid PHP fatal error with latest theme
+- WordPress 5.1 tested
+
 = 2.0.4 =
 - Fix: Coming soon section overlaping issue fix.
 
