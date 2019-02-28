@@ -20,7 +20,7 @@
 						'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
     				'walker'			=> new WP_Bootstrap_Navwalker()
 					)) ?>
-					<?php echo op_link($contents['link'], 'uk-visible@s uk-button uk-button-primary');?>
+					<?php echo op_link($contents['link'], 'uk-button uk-button-primary');?>
 					
 					<a uk-navbar-toggle-icon="" href="#offcanvas-<?php echo $id; ?>" uk-toggle class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon">
 						<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="navbar-toggle-icon"><rect y="9" width="20" height="2"></rect><rect y="3" width="20" height="2"></rect><rect y="15" width="20" height="2"></rect></svg>
