@@ -62,7 +62,7 @@ abstract class Onepager
     // Disable core presets
     public static function disableCorePresets()
     {
-        self::disablePresets('Onepager (plugin)');
+        self::disablePresets('Free');
     }
 
     public static function addPresets($name, $presets)
