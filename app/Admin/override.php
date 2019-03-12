@@ -20,15 +20,14 @@ function op_edit_with_onepager_link_in_page_row( $actions, $post ) {
     return $actions;
 }
 
-// Onepager page identifier
-add_filter( 'the_title', 'op_append_onepager_in_page_title', 10, 2 );
+add_filter( 'display_post_states', 'op_append_onepager_in_page_title', 10, 2 );
 
-function op_append_onepager_in_page_title( $title, $id ) {
-
-  $onepage_template = get_post_meta( $id, '_wp_page_template', true );
+function op_append_onepager_in_page_title( $post_states, $post ) {
+  $onepage_template = get_post_meta( $post->ID, '_wp_page_template', true );
 
   if($onepage_template == 'onepage.php' && (current_user_can('editor') || current_user_can('administrator')) ) {
-    // $title = sprintf('<a href="#">%1$s</a> -- Onepager', $title);
+    $post_states['onepager'] = __( 'Onepager', 'txop' );
   }
-  return $title;
+  return $post_states;
+
 }
