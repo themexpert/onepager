@@ -106,6 +106,13 @@ abstract class Onepager
         return onepager()->content()->isBuildMode();
     }
 
+    public static function isWooCommerceInstalled(){
+        if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+            return true;
+        }
+        return false;
+    }
+
     public static function fonts($name)
     {
         $fonts = require __DIR__ . '/data/font-families.php';

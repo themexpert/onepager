@@ -140,6 +140,7 @@ let InputControl = React.createClass({
       case "menu":
       case "page":
       case "category":
+      case "woocategories":
         controlHtml =
           <WpSelect ref="input" type={control.type}
                     className={control.class}

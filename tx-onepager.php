@@ -107,3 +107,7 @@ add_action( 'init', 'appsero_init_tracker_wponepager' );
 //         wp_redirect(admin_url( 'admin.php?page=onepager-getting-started' ));
 //     }
 // }
+// Some Woo actions
+add_action( 'op-woo-product-price', 'woocommerce_template_single_price', 5 );
+add_action( 'op-woo-product-rating-overview', 'wc_product_rating_overview', 15 );
+add_action( 'op-woo-add-to-cart-button', 'woocommerce_template_loop_add_to_cart', 5 );

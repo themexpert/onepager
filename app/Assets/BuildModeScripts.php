@@ -52,6 +52,7 @@ class BuildModeScripts
         $pages = $onepager->content()->getPages();
         $blocks = array_values((array) $onepager->blockManager()->all());
         $groupOrder = $onepager->blockManager()->getGroupOrder();
+        $woocategories = $onepager->content()->getWooCategories();
 
         $sections = array_map(function ($section) {
             $section = onepager()->render()->sectionBlockDataMerge($section);
@@ -85,7 +86,8 @@ class BuildModeScripts
       'groupOrder',
       'footer',
       'presets',
-      'basePreset'
+      'basePreset',
+      'woocategories'
     );
     }
 

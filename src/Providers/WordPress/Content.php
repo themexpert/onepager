@@ -35,6 +35,14 @@ class Content implements ContentInterface {
   public function getCategories() {
     return [ "select" ] + obj_to_array( get_terms( 'category', array( 'hide_empty' => 0 ) ), 'term_id', 'name' );
   }
+  
+  public function getWooCategories() {
+    if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+      return [ "select" ] + obj_to_array( get_terms( 'product_cat', array( 'hide_empty' => 0 ) ), 'term_id', 'name' );
+    }else{
+      return [ __('WooCommerce Not Found!', 'onepager') ];
+    }
+  }
 
   /**
    *
