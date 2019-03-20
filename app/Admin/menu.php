@@ -21,7 +21,7 @@ function register_admin_menu(){
     'onepager',
     $template,
     $icon,
-    '58.5'
+    '31'
   );
   add_submenu_page(
     'onepager', 
