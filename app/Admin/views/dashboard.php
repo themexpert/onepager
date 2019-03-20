@@ -1,13 +1,14 @@
-<?php 
-$layouts  = onepager()->presetManager()->all();
-$groups   = array_unique( array_reduce( $layouts, function ( $carry, $layout ) {
-  return array_merge( $carry, $layout['group'] );
-}, [ ] ) );
+<?php
+$layouts = onepager()->presetManager()->all();
+$groups = array_unique(array_reduce($layouts, function ($carry, $layout) {
+    return array_merge($carry, $layout['group']);
+}, []));
 
-function op_get_html_group_class( $groups ) {
-  return implode( " ", array_map( function ( $group ) {
-    return sanitize_title( $group );
-  }, $groups ) );
+function op_get_html_group_class($groups)
+{
+    return implode(' ', array_map(function ($group) {
+        return sanitize_title($group);
+    }, $groups));
 }
 ?>
 <div class="wrap" uk-filter="target: .layout-filter">
@@ -15,13 +16,13 @@ function op_get_html_group_class( $groups ) {
   
   <ul class="uk-subnav uk-subnav-pill" uk-margin>
     <li class="uk-active" uk-filter-control><a href="#">All</a></li>
-    <?php foreach( $groups as $group):?>
+    <?php foreach ($groups as $group):?>
       <li uk-filter-control="[data-group*='<?php echo sanitize_title($group)?>']"><a href="#"><?php echo $group?></a></li>
     <?php endforeach;?>
   </ul>
 
   <div class="layout-filter uk-child-width-1-2 uk-child-width-1-4@m" uk-grid>
-  <?php foreach ( $layouts as $layout ): ?>
+  <?php foreach ($layouts as $layout): ?>
     <div data-group="<?php echo op_get_html_group_class($layout['group'])?>">
       <div class="uk-card uk-card-default uk-transition-toggle" tabindex="0">
         <div class="uk-card-media-top uk-inline">
@@ -60,14 +61,16 @@ function op_get_html_group_class( $groups ) {
               <div class="uk-margin">
                   <label class="uk-form-label" for="form-stacked-text"><?php echo _e('Page Title', 'onepager')?></label>
                   <div class="uk-form-controls">
-                      <input class="uk-input" id="form-stacked-text" type="text" placeholder="<?php _e('Name of your page', 'onepager');?>" required>
+                      <input require class="uk-input page-title" id="form-stacked-text" type="text" placeholder="<?php _e('Name of your page', 'onepager');?>" required>
                   </div>
               </div>
               <div class="uk-margin">
                 <button 
                   type="submit" 
+                  id="op_create_page_from_layout_button"
                   class="uk-button uk-button-primary"
                   name="op_create_page_from_layout_button">
+                  <div uk-spinner style="display:none"></div>
                     <?php _e('Create', 'onepager');?>
                 </button>
               </div>
@@ -80,18 +83,56 @@ function op_get_html_group_class( $groups ) {
 </div>
 
 <script>
+  function addPage(data) {
+    jQuery(".uk-spinner").css("display", "block");
+
+    $.post(ajaxurl, data, function (res) {
+      if (res && res.success) {
+        window.location = res.url;
+        jQuery(".uk-spinner").css("display", "none");
+      } else {
+        alert("failed to insert layout ");
+        jQuery(".uk-spinner").css("display", "none");
+      }
+    });
+  }
+  
+</script>
+<script>
 UIkit.util.on('#layout-import', 'click', function (e) {
   e.preventDefault();
+
+  $ = $ = jQuery;
+  
   var name = $(this).data('name'),
       imagePath = $(this).data('image'),
       layoutId = $(this).data('id');
   // Set image
   $('#layout-image').attr('src', imagePath);
-  $('#layout-image').attr('alt', name);
+  // $('#layout-image').attr('alt', name);
   // Set name
   $('.uk-modal-title strong').text(name);
   // Set layout id 
   $('#layout-selection-modal .uk-button').val(layoutId);
+});
+
+UIkit.util.on('#op_create_page_from_layout_button', 'click', function (e) {
+  e.preventDefault();
+
+  $ = $ = jQuery;
+  let pageTitle = $(".page-title").val();
+
+  if(!pageTitle) {
+    alert("Please give a title for your page")
+    return;
+  }
+
+  addPage({
+    action: 'onepager_add_page',
+    pageTitle: pageTitle,
+    layoutId: $('#layout-selection-modal .uk-button').val()
+  })
+
 });
 
 </script>

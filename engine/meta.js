@@ -306,4 +306,14 @@
     });
   }
 
+  function addPage(data) {
+    $.post(ajaxurl, data, function (res) {
+      if (res && res.success) {
+        console.log(res)
+      } else {
+        alert("failed to insert layout ");
+      }
+    });
+  }
+
 })(jQuery);
