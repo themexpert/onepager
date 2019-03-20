@@ -4,6 +4,7 @@
     var pageId = onepager.pageId;
     var $onepagerEnableBtn = $('<button type="button" id="enable-onepager" class="op-btn op-btn-with-logo">Enable Onepager</button>');
     var $onepagerDisableBtn = $('<button type="button" id="disable-onepager" class="op-btn op-btn-with-logo">Disable Onepager</button>');
+    var $loading = $('<div class="onepager-loading" style="display:none"><div uk-spinner></div></div>');
 
     //var $editorTabs = $(".wp-editor-tabs");
     var $selectLayoutBtn = $(".op-select-preset");
@@ -52,6 +53,10 @@
           $('.editor-page-attributes__template select').trigger('change');
         }
 
+        if($('.block-editor')) {
+          $('.block-editor').prepend($loading);
+        }
+
         if($('.editor-page-attributes__template select').val() == 'onepage.php'){
           $onepagerEnableBtn.hide();
           $onepagerDisableBtn.show();
@@ -70,6 +75,7 @@
     });
 
     function enableOnepagerHandler() {
+      
       if($pageTemplate.length){
         if ($pageTemplate.find('option[value="onepager/onepage.php"]').get(0)) {
           $pageTemplate.val("onepager/onepage.php");
@@ -86,6 +92,8 @@
           return;
         }
 
+        $(".onepager-loading").css("display", "block")
+
         $('.editor-block-list__layout').hide();
         $('.editor-page-attributes__template select').val('onepage.php');
         $('.editor-page-attributes__template select').trigger('change');
@@ -97,7 +105,13 @@
               beforeSend: function ( xhr ) {
                   xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
               },
-              data:{"template":"onepage.php","id":onepager.pageId}
+              data:{"template":"onepage.php","id":onepager.pageId},
+              success: function(res) {
+                $(".onepager-loading").css("display", "none")
+              },
+            error: function (res) {
+              $(".onepager-loading").css("display", "none")
+            }
           })
           
           $(".editor-post-save-draft").click();
@@ -111,6 +125,7 @@
     }
 
     function disableOnepagerHandler() {
+
       if($pageTemplate.length){
         $pageTemplate.val("default");
         $pageTemplate.trigger('change');        
