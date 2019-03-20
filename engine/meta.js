@@ -203,7 +203,7 @@
           $postArea.show();
           $onepagerEnableBtn.show();
           $onepagerDisableBtn.hide();
-          // $onepagerMetabox.hide();
+          $onepagerMetabox.hide();
         }
       }, 10);
 
@@ -227,7 +227,7 @@
           // $('.edit-post-text-editor, .edit-post-visual-editor').show();
           $onepagerEnableBtn.show();
           $onepagerDisableBtn.hide();
-          // $onepagerMetabox.hide();
+          $onepagerMetabox.hide();
         }
       }, 10);
 
