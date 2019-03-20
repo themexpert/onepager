@@ -92,12 +92,12 @@ function op_get_html_group_class($groups)
 
 <script>
   function addPage(data) {
+    jQuery('#op_create_page_from_layout_button').attr('disabled', 'disabled')
     jQuery(".uk-spinner").css("display", "inline-block");
-
     $.post(ajaxurl, data, function (res) {
       if (res && res.success) {
         window.location = res.url;
-        jQuery(".uk-spinner").css("display", "none");
+        // jQuery(".uk-spinner").css("display", "none");
       } else {
         alert("failed to insert layout ");
         jQuery(".uk-spinner").css("display", "none");
