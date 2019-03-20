@@ -157,6 +157,11 @@
     }
 
     function layoutSelectHandler() {
+      if ($('.editor-post-title__block textarea').val() == '') {
+        alert('Please add a title first!');
+        return;
+      }
+
       //FIXME: $.data ?
       var confirmationMsg =
         "Are you sure you want to insert this layout?" +
@@ -198,7 +203,7 @@
           $postArea.show();
           $onepagerEnableBtn.show();
           $onepagerDisableBtn.hide();
-          $onepagerMetabox.hide();
+          // $onepagerMetabox.hide();
         }
       }, 10);
 
@@ -222,7 +227,7 @@
           // $('.edit-post-text-editor, .edit-post-visual-editor').show();
           $onepagerEnableBtn.show();
           $onepagerDisableBtn.hide();
-          $onepagerMetabox.hide();
+          // $onepagerMetabox.hide();
         }
       }, 10);
 
