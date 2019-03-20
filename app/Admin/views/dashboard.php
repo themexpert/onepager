@@ -11,13 +11,6 @@ function op_get_html_group_class($groups)
     }, $groups));
 }
 ?>
-<style type="text/css">
-  #op_create_page_from_layout_button .uk-spinner{
-    float: right;
-    margin-left: 20px;
-    line-height: 38px;
-  }
-</style>
 <div class="wrap" uk-filter="target: .layout-filter">
   <h1 class="uk-title">Dashboard</h1>
   
