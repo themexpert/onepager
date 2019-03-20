@@ -166,6 +166,8 @@
       var proceed = confirm(confirmationMsg);
 
       if (proceed) {
+        $(".onepager-loading").css("display", "block")
+        
         insertOnepagerLayout(pageId, layoutId);
       }
     }
