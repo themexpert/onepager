@@ -10,7 +10,7 @@
     var $selectLayoutBtn = $(".op-select-preset");
     var $postArea = $("#postdivrich");
     var $pageTemplate = $("#page_template");
-    
+
     var $export = $("#onepager-export-layout");
     var $onepagerMetabox = $("#onepager_meta");
     var $blankTemplate = $("#blank-template");
@@ -40,12 +40,12 @@
     $onepagerDisableBtn.on('click', disableOnepagerHandler);
 
     //initialize
-    $(window).load(function() {
-      setTimeout(function(){
-        if($postArea.length){
+    $(window).load(function () {
+      setTimeout(function () {
+        if ($postArea.length) {
           $postArea.before($onepagerEnableBtn);
-          $postArea.before($onepagerDisableBtn);    
-        }else{
+          $postArea.before($onepagerDisableBtn);
+        } else {
           $('.edit-post-header__settings').prepend($onepagerDisableBtn);
           $('.edit-post-header__settings').prepend($onepagerEnableBtn);
 
@@ -53,11 +53,11 @@
           $('.editor-page-attributes__template select').trigger('change');
         }
 
-        if($('.block-editor')) {
+        if ($('.block-editor')) {
           $('.block-editor').prepend($loading);
         }
 
-        if($('.editor-page-attributes__template select').val() == 'onepage.php'){
+        if ($('.editor-page-attributes__template select').val() == 'onepage.php') {
           $onepagerEnableBtn.hide();
           $onepagerDisableBtn.show();
           $onepagerMetabox.show();
@@ -66,8 +66,7 @@
           $('#onepager_meta .op-editpage-link').show();
           // $('.editor-block-list__layout').after($('.onepager-meta-container').html());
         }
-        else
-        {
+        else {
           $onepagerEnableBtn.show();
           $onepagerDisableBtn.hide();
         }
@@ -75,19 +74,19 @@
     });
 
     function enableOnepagerHandler() {
-      
-      if($pageTemplate.length){
+
+      if ($pageTemplate.length) {
         if ($pageTemplate.find('option[value="onepager/onepage.php"]').get(0)) {
           $pageTemplate.val("onepager/onepage.php");
         } else {
           $pageTemplate.val("onepage.php");
         }
         //$pageTemplate.val("onepage.php");
-        $pageTemplate.trigger('change');        
+        $pageTemplate.trigger('change');
         $publish.click();
-      }else{
+      } else {
 
-        if($('.editor-post-title__block textarea').val() == ''){
+        if ($('.editor-post-title__block textarea').val() == '') {
           alert('Please add a title first!');
           return;
         }
@@ -97,23 +96,23 @@
         $('.editor-block-list__layout').hide();
         $('.editor-page-attributes__template select').val('onepage.php');
         $('.editor-page-attributes__template select').trigger('change');
-        
-        setTimeout(function(){
-          jQuery.ajax( {
-              url:wpApiSettings.root + wpApiSettings.versionString + typenow + 's/' + onepager.pageId,
-              method: 'POST',
-              beforeSend: function ( xhr ) {
-                  xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
-              },
-              data:{"template":"onepage.php","id":onepager.pageId},
-              success: function(res) {
-                $(".onepager-loading").css("display", "none")
-              },
+
+        setTimeout(function () {
+          jQuery.ajax({
+            url: wpApiSettings.root + wpApiSettings.versionString + typenow + 's/' + onepager.pageId,
+            method: 'POST',
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader('X-WP-Nonce', wpApiSettings.nonce);
+            },
+            data: { "template": "onepage.php", "id": onepager.pageId },
+            success: function (res) {
+              $(".onepager-loading").css("display", "none")
+            },
             error: function (res) {
               $(".onepager-loading").css("display", "none")
             }
           })
-          
+
           $(".editor-post-save-draft").click();
           // $('.editor-block-list__layout').after($('.onepager-meta-container').html());
           $('#onepager_meta').removeClass('closed');
@@ -126,29 +125,29 @@
 
     function disableOnepagerHandler() {
 
-      if($pageTemplate.length){
+      if ($pageTemplate.length) {
         $pageTemplate.val("default");
-        $pageTemplate.trigger('change');        
-      }else if($('.editor-page-attributes__template select').length){
+        $pageTemplate.trigger('change');
+      } else if ($('.editor-page-attributes__template select').length) {
         $('.editor-page-attributes__template select').val('');
         $('.editor-page-attributes__template select').trigger('change');
 
-        setTimeout(function(){
-          jQuery.ajax( {
-              url:wpApiSettings.root + wpApiSettings.versionString + typenow + 's/' + onepager.pageId,
-              method: 'POST',
-              beforeSend: function ( xhr ) {
-                  xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
-              },
-              data:{"template":"","id":onepager.pageId}
+        setTimeout(function () {
+          jQuery.ajax({
+            url: wpApiSettings.root + wpApiSettings.versionString + typenow + 's/' + onepager.pageId,
+            method: 'POST',
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader('X-WP-Nonce', wpApiSettings.nonce);
+            },
+            data: { "template": "", "id": onepager.pageId }
           })
-          
+
           $(".editor-post-save-draft").click();
           // $('.editor-block-list__layout').after($('.onepager-meta-container').html());
 
         }, 2000);
 
-        setTimeout(function(){
+        setTimeout(function () {
           $(".editor-post-publish-button").click();
         }, 1000);
 
@@ -202,7 +201,7 @@
       }, 10);
 
     }
-    
+
     /**
      * Page Template Change Handler
      */
@@ -287,8 +286,8 @@
   }
 
   function resetTemplate() {
-    var payload = {action: 'onepager_get_sections', pageId: onepager.pageId};
-    var data = {action: 'onepager_save_sections', updated: null, pageId: onepager.pageId, sections: []};
+    var payload = { action: 'onepager_get_sections', pageId: onepager.pageId };
+    var data = { action: 'onepager_save_sections', updated: null, pageId: onepager.pageId, sections: [] };
 
     $.post(ajaxurl, payload, function (res) {
       if (res && res.success && res.sections.length !== 0) {
@@ -312,23 +311,18 @@
   }
 
   function loadEditor(data) {
+    $(".onepager-loading").css("display", "block")
+
     $.post(ajaxurl, data, function (res) {
       if (res && res.success) {
         location.href = onepager.buildModeUrl;
+        $(".onepager-loading").css("display", "none");
       } else {
+        $(".onepager-loading").css("display", "none")
         alert("failed to insert layout ");
       }
     });
   }
 
-  function addPage(data) {
-    $.post(ajaxurl, data, function (res) {
-      if (res && res.success) {
-        console.log(res)
-      } else {
-        alert("failed to insert layout ");
-      }
-    });
-  }
 
 })(jQuery);
