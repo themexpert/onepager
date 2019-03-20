@@ -78,7 +78,7 @@ function op_get_html_group_class($groups)
                   id="op_create_page_from_layout_button"
                   class="uk-button uk-button-primary"
                   name="op_create_page_from_layout_button">
-                  <div uk-spinner style="display:none"></div>
+                  <span uk-spinner style="display:none"></span>
                     <?php _e('Create', 'onepager');?>
                 </button>
               </div>
