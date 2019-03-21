@@ -1,0 +1,11 @@
+.content-2{ padding-top: 80px; padding-bottom: 80px;}
+
+
+/*	Responsive*/
+
+@media (max-width: 768px){
+	.content-2{
+		padding-top: 20px; padding-bottom: 20px;
+		text-align: center;
+	}
+}
