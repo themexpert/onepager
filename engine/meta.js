@@ -9,6 +9,7 @@
     var $selectLayoutBtn = $(".op-select-preset");
     var $postArea = $("#postdivrich");
     var $pageTemplate = $("#page_template");
+    
     var $export = $("#onepager-export-layout");
     var $onepagerMetabox = $("#onepager_meta");
     var $blankTemplate = $("#blank-template");
@@ -29,6 +30,7 @@
 
     $export.on('click', exportHandler);
     $pageTemplate.on('change', templateChangeHandler);
+    $pageTemplate.trigger('change');
     $selectLayoutBtn.on('click', layoutSelectHandler);
 
     $blankTemplate.on('click', resetTemplate);
@@ -37,20 +39,107 @@
     $onepagerDisableBtn.on('click', disableOnepagerHandler);
 
     //initialize
-    $pageTemplate.trigger('change');
-    $postArea.before($onepagerEnableBtn);
-    $postArea.before($onepagerDisableBtn);
+    $(window).load(function() {
+      setTimeout(function(){
+        if($postArea.length){
+          $postArea.before($onepagerEnableBtn);
+          $postArea.before($onepagerDisableBtn);    
+        }else{
+          $('.edit-post-header__settings').prepend($onepagerDisableBtn);
+          $('.edit-post-header__settings').prepend($onepagerEnableBtn);
+
+          $('.editor-page-attributes__template select').on('change', templateChangeHandlerNew);
+          $('.editor-page-attributes__template select').trigger('change');
+        }
+
+        if($('.editor-page-attributes__template select').val() == 'onepage.php'){
+          $onepagerEnableBtn.hide();
+          $onepagerDisableBtn.show();
+          $onepagerMetabox.show();
+          $('.editor-block-list__layout').hide();
+          $('#onepager_meta').removeClass('closed');
+          $('#onepager_meta .op-editpage-link').show();
+          // $('.editor-block-list__layout').after($('.onepager-meta-container').html());
+        }
+        else
+        {
+          $onepagerEnableBtn.show();
+          $onepagerDisableBtn.hide();
+        }
+      }, 3000);
+    });
 
     function enableOnepagerHandler() {
-      $pageTemplate.val("onepage.php");
-      $pageTemplate.trigger('change');
+      if($pageTemplate.length){
+        if ($pageTemplate.find('option[value="onepager/onepage.php"]').get(0)) {
+          $pageTemplate.val("onepager/onepage.php");
+        } else {
+          $pageTemplate.val("onepage.php");
+        }
+        //$pageTemplate.val("onepage.php");
+        $pageTemplate.trigger('change');        
+        $publish.click();
+      }else{
 
-      $publish.click();
+        if($('.editor-post-title__block textarea').val() == ''){
+          alert('Please add a title first!');
+          return;
+        }
+
+        $('.editor-block-list__layout').hide();
+        $('.editor-page-attributes__template select').val('onepage.php');
+        $('.editor-page-attributes__template select').trigger('change');
+        
+        setTimeout(function(){
+          jQuery.ajax( {
+              url:wpApiSettings.root + wpApiSettings.versionString + typenow + 's/' + onepager.pageId,
+              method: 'POST',
+              beforeSend: function ( xhr ) {
+                  xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
+              },
+              data:{"template":"onepage.php","id":onepager.pageId}
+          })
+          
+          $(".editor-post-save-draft").click();
+          // $('.editor-block-list__layout').after($('.onepager-meta-container').html());
+          $('#onepager_meta').removeClass('closed');
+          $('#onepager_meta .op-editpage-link').show();
+
+        }, 2000);
+
+      }
     }
 
     function disableOnepagerHandler() {
-      $pageTemplate.val("default");
-      $pageTemplate.trigger('change');
+      if($pageTemplate.length){
+        $pageTemplate.val("default");
+        $pageTemplate.trigger('change');        
+      }else if($('.editor-page-attributes__template select').length){
+        $('.editor-page-attributes__template select').val('');
+        $('.editor-page-attributes__template select').trigger('change');
+
+        setTimeout(function(){
+          jQuery.ajax( {
+              url:wpApiSettings.root + wpApiSettings.versionString + typenow + 's/' + onepager.pageId,
+              method: 'POST',
+              beforeSend: function ( xhr ) {
+                  xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
+              },
+              data:{"template":"","id":onepager.pageId}
+          })
+          
+          $(".editor-post-save-draft").click();
+          // $('.editor-block-list__layout').after($('.onepager-meta-container').html());
+
+        }, 2000);
+
+        setTimeout(function(){
+          $(".editor-post-publish-button").click();
+        }, 1000);
+
+        // $('.editor-writing-flow #op-presets').remove();
+        $('.editor-block-list__layout').show();
+      }
     }
 
     function layoutSelectHandler() {
@@ -98,6 +187,30 @@
       }, 10);
 
     }
+    
+    /**
+     * Page Template Change Handler
+     */
+    function templateChangeHandlerNew() {
+      var template = $(this).val();
+      console.log(template);
+
+      //10 ms - just after every other plugin has done their stuff
+      setTimeout(function () {
+        if (isOnepageTemplate(template)) {
+          // $('.edit-post-text-editor, .edit-post-visual-editor').hide();
+          $onepagerEnableBtn.hide();
+          $onepagerDisableBtn.show();
+          $onepagerMetabox.show();
+        } else {
+          // $('.edit-post-text-editor, .edit-post-visual-editor').show();
+          $onepagerEnableBtn.show();
+          $onepagerDisableBtn.hide();
+          $onepagerMetabox.hide();
+        }
+      }, 10);
+
+    }
   });
 
   /**
@@ -107,7 +220,8 @@
    */
   function isOnepageTemplate(template) {
     //if template is null return false
-    return template && ("onepage.php" === template || template.indexOf("onepager-") === 0);
+    // return template && ("onepage.php" === template || template.indexOf("onepager-") === 0);
+    return template && ("onepage.php" === template || template.indexOf("onepager-") === 0 || template.indexOf("onepager/") === 0);
   }
 
   /**

@@ -1,0 +1,15 @@
+.content-3{ padding-top: 80px; padding-bottom: 80px;}
+/*
+	Media
+*/
+
+.uk-link:hover, a:hover{
+	text-decoration: none;
+}
+
+/*.content-3 .uk-panel .uk-card-body{
+	padding: 20px 0;
+}*/
+
+.content-3 .uk-panel .op-media{  margin: 0 0 1rem; }
+

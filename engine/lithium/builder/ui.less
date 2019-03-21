@@ -643,16 +643,16 @@ h3.form-divider {
 
 // Sweet Alert
 .sweet-alert {
-  background: @bg-secondary !important;
+  background: @white !important;
   color: @text-color !important;
   h2 {
     color: lighten(@text-color, 15%) !important;
   }
 
   button.cancel {
-    background: @bg-primary !important;
+    background: @text-color !important;
     &:hover {
-      background: darken(@bg-primary, 5%) !important;
+      background: darken(@text-color, 5%) !important;
     }
   }
   .sa-confirm-button-container{ display: inline-block; }
@@ -755,10 +755,9 @@ h3.form-divider {
   }
 }
 
-.op-section-title .label{
-  position: absolute; top: 21px; right: 20px; z-index: 10;
-  font-size: 9px; line-height: 1em;
-  font-weight: normal; text-transform: uppercase;
+.op-section-title .uk-label{
+  right: 20px; z-index: 10;
+  font-size: 9px;
 }
 
 .section-handle{
@@ -802,4 +801,10 @@ body.op-sidebar-collapsed{
   }
   .title{ font-size: 4rem; margin-top: 10px; }
 
+}
+// Blocks style
+#op-blocks{
+  .uk-card{
+    cursor: pointer;
+  }
 }

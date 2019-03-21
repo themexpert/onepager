@@ -1,4 +1,5 @@
 {
+  "name": "Corporate 1",
   "sections": [
     {
       "id": "navbar",
@@ -6,11 +7,12 @@
       "title": "Navbar",
       "contents": {
         "logo": "http://s3.amazonaws.com/quantum-assets/logo-dark.png",
-        "menu": "6",
+        "menu": "0",
         "link": {
-          "url": "",
-          "text": "",
-          "target": false
+          "text": "Contact Us",
+          "url": "#",
+          "target": false,
+          "focus": true
         }
       },
       "settings": {
@@ -20,6 +22,7 @@
         "bg_color": "#ffffff",
         "link_color": "#777777",
         "link_hover_color": "#222222",
+        "link_active_color": "#0e6edb",
         "cta_bg": "#2196f3",
         "cta_color": "#ffffff"
       }
@@ -27,193 +30,305 @@
     {
       "id": "slider",
       "slug": "slider-1",
-      "title": "slider",
+      "title": "Slider",
       "contents": {
         "sliders": [
           {
+            "title": "Your Success Is Our Priority",
+            "description": "It is a long established fact that a reader will be distracted by the ",
+            "image": "https://images.unsplash.com/photo-1493689485253-f07fcbfc731b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2833&q=80",
+            "link": {
+              "text": "Work With Us",
+              "url": "#",
+              "target": false
+            }
+          },
+          {
             "title": "Onepage Builder for WordPress",
             "description": "Building onepage website has never been easier before",
-            "image": "http://s3.amazonaws.com/quantum-assets/icons/headphone-big.png",
+            "image": "https://images.unsplash.com/photo-1516542076529-1ea3854896f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2851&q=80",
             "link": {
-              "url": "http://getonepager.com",
-              "text": "Download Now",
+              "text": "Contact Us",
+              "url": "#",
               "target": false
-            },
-            "link_text": "Download Now"
+            }
           },
           {
             "title": "Revolutionary Website Builder",
             "description": "Ridiculously easy and built for tomorrows internet in mind",
-            "image": "http://s3.amazonaws.com/quantum-assets/icons/responsive-big.png",
+            "image": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2767&q=80",
             "link": {
+              "text": "Explore OnePager",
               "url": "http://getonepager.com",
-              "text": "Download Now",
               "target": false
-            },
-            "link_text": "Download Now"
+            }
           }
         ]
       },
       "settings": {
-        "title_size": "44",
-        "title_transformation": "text-uppercase",
-        "slider_height": "600"
+        "animation": "scale",
+        "autoplay": true,
+        "slider_height": "600",
+        "title_size": "62",
+        "title_transformation": "0",
+        "desc_size": "26"
       },
       "styles": {
-        "title_color": "#323232",
-        "slider_bg": "http://s3.amazonaws.com/quantum-assets/bg/bg2.jpg",
-        "button_bg": "#b8c9dc",
-        "button_color": "#fff",
-        "button_hover_color": "#E64A19"
+        "overlay_color": "rgba(4,4,4,0.52)",
+        "title_color": "#ffffff",
+        "desc_color": "#f5f5f5",
+        "button_color": "",
+        "button_bg": ""
       }
     },
     {
-      "id": "features",
-      "slug": "content-2",
-      "title": "Features",
+      "id": "abour-us",
+      "slug": "feature-1",
+      "title": "About",
       "contents": {
-        "title": "Modern and Ridiculously Easy Page Builder for All",
-        "description": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
-        "items": [
-          {
-            "title": "Responsive Design",
-            "description": "Blocks fit all devices",
-            "media": "http://s3.amazonaws.com/quantum-assets/icons/presentation.png"
-          },
-          {
-            "title": "WYSIWYG Editor",
-            "description": "Do Everything In One Place",
-            "media": "http://s3.amazonaws.com/quantum-assets/icons/tools.png"
-          },
-          {
-            "title": "Intuitive Configuration",
-            "description": "No more boalted configuration panel",
-            "media": "http://s3.amazonaws.com/quantum-assets/icons/gear.png"
-          }
-        ]
-      },
-      "settings": {
-        "title_size": "56",
-        "title_transformation": "text-uppercase",
-        "columns": "4",
-        "animation_title": "fadeInDown",
-        "animation_item": "zoomIn"
-      },
-      "styles": {
-        "bg_color": "#fff",
-        "title_color": "#323232",
-        "text_color": "#727272",
-        "icon_color": ""
-      }
-    },
-    {
-      "id": "call-to-action",
-      "slug": "content-5",
-      "title": "Call to action",
-      "contents": {
-        "title": "Modern and ridiculusly easy page builder for all",
-        "description": "I dream my painting and I paint my dream",
-        "image": "http://s3.amazonaws.com/quantum-assets/icons/download.png",
+        "title": "Lets make a better website together",
+        "description": "The world is a dangerous place to live; not because of the people who are evil, but because of the people who dont do anything about it.",
+        "image": "https://images.unsplash.com/photo-1525078892940-3e75c9a33a79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80",
         "link": {
-          "url": "",
-          "text": "",
+          "text": "Contact us",
+          "url": "#",
           "target": false
         }
       },
       "settings": {
-        "title_size": "56",
-        "title_transformation": "text-uppercase",
-        "animation": "fadeInUp"
+        "media_alignment": "right",
+        "media_grid": "width-1-2",
+        "title_size": "62",
+        "title_transformation": "0",
+        "desc_size": "18",
+        "animation_content": "slide-bottom-small",
+        "animation_media": "slide-right-medium"
       },
       "styles": {
-        "bg_image": "http://s3.amazonaws.com/quantum-assets/bg/bg6.jpg",
-        "bg_parallax": "",
-        "title_color": "#fff",
-        "text_color": "#ddd",
-        "button_border_color": "#b8c9dc",
+        "bg_image": "",
+        "bg_repeat": "",
+        "bg_color": "#ebeff2",
+        "title_color": "#323232",
+        "text_color": "#323232",
+        "button_bg_color": "#1565c0",
         "button_text_color": "#fff"
       }
     },
     {
-      "id": "teams",
-      "slug": "team-1",
-      "title": "Teams",
+      "id": "portfolio",
+      "slug": "portfolio-1",
+      "title": "Works",
       "contents": {
-        "title": "Meet The Team",
-        "items": [
+        "title": "Some Our Works",
+        "description": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
+        "portfolios": [
           {
-            "title": "Steve Jobs",
-            "designation": "CEO, Apple Inc",
-            "image": "http://s3.amazonaws.com/quantum-assets/images/4-thumb.jpg",
-            "social": [
-              "http://facebook.com/ThemeXpert",
-              "http://twitter.com/themexpert",
-              "http://linkedin.com/themexpert"
-            ]
+            "title": "Unity",
+            "description": "Onepage Joomla Template",
+            "thumb": "https://cdn.dribbble.com/users/59947/screenshots/5947082/muti.jpg",
+            "image": "https://cdn.dribbble.com/users/59947/screenshots/5947082/muti.jpg",
+            "link": "",
+            "target": false
           },
           {
-            "title": "Nikola Tesla",
-            "designation": "Scientist",
-            "image": "http://s3.amazonaws.com/quantum-assets/images/5-thumb.jpg",
-            "social": [
-              "http://behance.net/ThemeXpert",
-              "http://dribbble.com/themexpert",
-              "http://twitter.com/themexpert.com"
-            ]
+            "title": "BizCorp",
+            "description": "Onepage Joomla Template",
+            "thumb": "https://cdn.dribbble.com/users/43342/screenshots/5947735/nike2.jpg",
+            "image": "https://cdn.dribbble.com/users/43342/screenshots/5947735/nike2.jpg",
+            "link": "",
+            "target": false
           },
           {
-            "title": "Elon Musk",
-            "designation": "CEO, Tesla Motors",
-            "image": "http://s3.amazonaws.com/quantum-assets/images/6-thumb.jpg",
-            "social": [
-              "http://github.com/ThemeXpert",
-              "http://codepen.io/themexpert"
-            ]
+            "title": "Eventx",
+            "description": "Event Template for Joomla",
+            "thumb": "https://cdn.dribbble.com/users/2132441/screenshots/5948053/plants.png",
+            "image": "https://cdn.dribbble.com/users/2132441/screenshots/5948053/plants.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Eventx",
+            "description": "Event Template for Joomla",
+            "thumb": "https://cdn.dribbble.com/users/544003/screenshots/5947752/spiderman_miles.jpg",
+            "image": "https://cdn.dribbble.com/users/544003/screenshots/5947752/spiderman_miles.jpg",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Eventx",
+            "description": "Event Template for Joomla",
+            "thumb": "https://cdn.dribbble.com/users/66340/screenshots/5947538/bars-blobs-2.jpg",
+            "image": "https://cdn.dribbble.com/users/66340/screenshots/5947538/bars-blobs-2.jpg",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Eventx",
+            "description": "Event Template for Joomla",
+            "thumb": "https://cdn.dribbble.com/users/1355613/screenshots/5947447/look__a_ladybug.jpg",
+            "image": "https://cdn.dribbble.com/users/1355613/screenshots/5947447/look__a_ladybug.jpg",
+            "link": "",
+            "target": false
           }
         ]
       },
       "settings": {
-        "title_size": "56",
-        "title_transformation": "text-uppercase",
-        "animation": "zoomIn",
-        "overlay_animation": "scale"
+        "title_size": "62",
+        "title_transformation": "inherit",
+        "title_alignment": "center",
+        "desc_size": "18",
+        "title_animation": "slide-top-medium",
+        "overlay_animation": "slide-bottom",
+        "items_columns": "3",
+        "lightbox_animation": "slide"
       },
       "styles": {
-        "bg_color": "#ebeff2",
-        "title_color": "#323232"
+        "bg_color": "#fff",
+        "title_color": "#323232",
+        "desc_color": "#323232",
+        "overlay_color": "rgba(0, 0, 0, 0.5)",
+        "icon_color": "#fff",
+        "icon_bg": "#1565c0"
       }
     },
     {
       "id": "testimonials",
       "slug": "testimonial-1",
-      "title": "Testimonials",
+      "title": "Customers",
       "contents": {
-        "title": "People Love Us",
         "testimonials": [
           {
+            "image": "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=80&h=80",
+            "testimony": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis ex risus. Vivamus hendrerit nec ex vitae varius. Aliquam sollicitudin dapibus dapibus. Duis lacus diam, lacinia a fringilla semper, laoreet eget tellus. Vestibulum sed nisi rutrum, efficitur odio et, varius mi.",
             "name": "John Resig",
-            "designation": "Creator of jQuery",
-            "image": "http://s3.amazonaws.com/quantum-assets/images/8-thumb.jpg",
-            "testimony": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis ex risus. Vivamus hendrerit nec ex vitae varius. Aliquam sollicitudin dapibus dapibus. Duis lacus diam, lacinia a fringilla semper, laoreet eget tellus. Vestibulum sed nisi rutrum, efficitur odio et, varius mi."
+            "designation": "Creator of jQuery"
           },
           {
+            "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=80&h=80",
+            "testimony": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis ex risus. Vivamus hendrerit nec ex vitae varius. Aliquam sollicitudin dapibus dapibus. Duis lacus diam, lacinia a fringilla semper, laoreet eget tellus. Vestibulum sed nisi rutrum, efficitur odio et, varius mi.",
             "name": "Elon Musk",
-            "designation": "CEO and CTO of SpaceX",
-            "image": "http://s3.amazonaws.com/quantum-assets/images/7-thumb.jpg",
-            "testimony": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis ex risus. Vivamus hendrerit nec ex vitae varius. Aliquam sollicitudin dapibus dapibus. Duis lacus diam, lacinia a fringilla semper, laoreet eget tellus. Vestibulum sed nisi rutrum, efficitur odio et, varius mi."
+            "designation": "CEO and CTO of SpaceX"
           }
         ]
       },
       "settings": {
-        "title_size": "56",
-        "title_transformation": "text-uppercase"
+        "animation": "fade",
+        "autoplay": true,
+        "testimonial_height": "400",
+        "text_size": "18",
+        "name_size": "32",
+        "name_transformation": "0",
+        "designation_size": "16"
       },
       "styles": {
-        "bg_image": "",
-        "bg_repeat": "no-repeat",
-        "bg_color": "#f5f5f5",
-        "bg_parallax": "",
-        "text_color": ""
+        "bg_image": "https://images.unsplash.com/photo-1516692935701-4f35bff8b9f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+        "bg_parallax": true,
+        "overlay_color": "rgba(0,0,0,0.28)",
+        "testimoni_color": "#ffffff",
+        "name_color": "#ffffff",
+        "designation_color": "#ffffff",
+        "dot_color": "#ffffff"
+      }
+    },
+    {
+      "id": "team",
+      "slug": "team-1",
+      "title": "Team",
+      "contents": {
+        "title": "Meet The Team",
+        "description": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
+        "items": [
+          {
+            "title": "Steve Jobs",
+            "designation": "CEO, Apple Inc",
+            "image": "https://images.unsplash.com/photo-1500048993953-d23a436266cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=649&q=80",
+            "social": [
+              "http://facebook.com/ThemeXpert",
+              "http://twitter.com/themexpert",
+              "http://linkedin.com/themexpert"
+            ],
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Nikola Tesla",
+            "designation": "Scientist",
+            "image": "https://images.unsplash.com/photo-1519838255388-73be30bda0e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=650&q=80",
+            "social": [
+              "http://behance.net/ThemeXpert",
+              "http://dribbble.com/themexpert",
+              "http://twitter.com/themexpert.com"
+            ],
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Elon Musk",
+            "designation": "CEO, Tesla Motors",
+            "image": "https://images.unsplash.com/photo-1504593811423-6dd665756598?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=650&q=80",
+            "social": [
+              "http://github.com/ThemeXpert",
+              "http://codepen.io/themexpert"
+            ],
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "John Doe",
+            "designation": "CEO, Acme INC",
+            "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "social": [
+              "http://github.com/ThemeXpert",
+              "http://codepen.io/themexpert"
+            ],
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Mark Zuckerberg",
+            "designation": "CEO, Facebook",
+            "image": "https://images.unsplash.com/photo-1474313438662-85ce389c174a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "social": [
+              "http://github.com/ThemeXpert",
+              "http://codepen.io/themexpert"
+            ],
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Russell Brunson",
+            "designation": "CEO, Click Funnel",
+            "image": "https://images.unsplash.com/photo-1505869634514-f7b36e883cc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+            "social": [
+              "http://github.com/ThemeXpert",
+              "http://codepen.io/themexpert"
+            ],
+            "link": "",
+            "target": false
+          }
+        ]
+      },
+      "settings": {
+        "title_size": "62",
+        "title_transformation": "inherit",
+        "title_alignment": "center",
+        "desc_size": "18",
+        "title_animation": "slide-top-medium",
+        "items_columns": "3",
+        "item_name_size": "24",
+        "item_designation_size": "14",
+        "item_icon_size": "14",
+        "item_animation": "fade"
+      },
+      "styles": {
+        "bg_color": "#fff",
+        "title_color": "#323232",
+        "desc_color": "#323232",
+        "item_overlay_color": "rgba(0, 0, 0, 0.5)",
+        "item_name_color": "#fff",
+        "item_designation_color": "#fff",
+        "item_icon_color": "#fff",
+        "item_icon_hover_color": "#1565c0"
       }
     },
     {
@@ -228,14 +343,17 @@
           "http://behance.net/ThemeXpert",
           "http://dribbble.com/themexpert"
         ],
-        "menu": "",
-        "copyright": "Copyright &copy; 2015 OnePager, All Rights Reserved"
+        "menu": "2",
+        "copyright": "Copyright &copy; 2019 OnePager, All Rights Reserved"
       },
       "styles": {
-        "bg_color": "#e6e6e6",
-        "text_color": "#383838"
+        "bg_color": "#f5f5f5",
+        "text_color": "#383838",
+        "text_hover_color": "#1565c0",
+        "item_alignment": "center",
+        "section_animation": "0",
+        "menu_transformation": "inherit"
       }
     }
-  ],
-  "name": "Corporate 1"
+  ]
 }

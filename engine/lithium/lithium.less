@@ -16,3 +16,20 @@
 
 // Overlay
 @import 'site/overlay.less';
+
+// Utility class
+@media (min-width: 960px){
+  .op-max-width-none{
+    max-width: none;
+  }
+}
+.op-barnav{
+  > * > *{
+    width: 20px;
+    height: 3px;
+    border-radius: 3px;
+  }
+  > li.uk-active > *{
+    width: 30px;
+  }
+}

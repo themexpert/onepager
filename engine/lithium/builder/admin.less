@@ -3,9 +3,9 @@
 // ------------------------------------------
 // Wordpress Admin override + Style
 // ------------------------------------------
-#toplevel_page_onepager{
-  display: none;
-}
+// #toplevel_page_onepager{
+//   display: none;
+// }
 // Admin Toolbar
 // #wp-admin-bar-op-add-block {
 //   background: @brand-primary !important;
@@ -18,9 +18,11 @@
 
 // }
 // Logo - Sidebar menu
-//#adminmenu .toplevel_page_onepager-dashboard .wp-menu-image img {
-  #adminmenu .toplevel_page_onepager .wp-menu-image img {
+#adminmenu .toplevel_page_onepager .wp-menu-image img {
   width: 22px;
+}
+#adminmenu #toplevel_page_onepager a[href*="onepager-gopro"]{
+  color: #f44336;
 }
 
 // Font awesome for top menu
@@ -71,11 +73,9 @@
   position: relative;
   cursor: pointer;
   border-radius: 4px;
-  font-weight: bold;
   line-height: 1em;
-  text-transform: uppercase;
-  margin-top: 10px;
   text-decoration: none;
+  font-size: 12px;
 
   &:hover{
     background: darken(@btn, 12%);
@@ -91,23 +91,27 @@
 }
 
 .op-btn-with-logo {
-  padding: 14px 15px 14px 50px;
+  padding: 10px 15px 10px 42px;
 
   &:before {
     content: '';
     display: block;
     position: absolute;
     left: 10px;
-    top: 10px;
-    width: 30px;
-    height: 23px;
+    top: 8px;
+    width: 22px;
+    height: 100%;
     background: url('../images/logo-white.png') no-repeat;
     background-size: contain;
   }
 }
 
 #disable-onepager {
-  background: darken(@btn, 15%);
+  background: @text-color;
+  border-color: darken(@text-color, 2%);
+  &:hover{
+    background: darken(@text-color, 10%);
+  }
 }
 
 // Toolbar

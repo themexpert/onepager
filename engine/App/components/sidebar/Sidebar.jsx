@@ -110,7 +110,7 @@ let Sidebar = React.createClass({
     return (
       <ul className='tx-nav tx-nav-tabs'>
         <Tab onClick={handleTabClick} id='op-sections' icon="cubes" title='Layout' active={activeTab}
-             icon2="arrow-left" parent={true}/>
+             icon2="arrow-left" parent={true }/>
         <Tab onClick={handleTabClick} id='op-contents' icon='sliders' title='Contents' active={activeTab}/>
         <Tab onClick={handleTabClick} id='op-blocks' icon='cube' title='Blocks' active={activeTab}/>
         <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab}

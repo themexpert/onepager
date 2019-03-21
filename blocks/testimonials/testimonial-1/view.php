@@ -1,46 +1,59 @@
-<?php $slide_num = 0; ?>
+<?php
+$slideshow_options[] = 'animation: ' . $settings['animation'] ;
+$slideshow_options[] = ($settings['autoplay']) ? 'autoplay: true' : '';
+$slideshow_options[] = ($settings['testimonial_height']) ? 'min-height:' . $settings['testimonial_height'] : '';
+$slideshow = implode('; ', $slideshow_options);
+$heading_class = ($settings['name_transformation']) ? 'uk-text-' . $settings['name_transformation'] : '';
+?>
 
-<section id="<?php echo $id; ?>" class="op-section testimonials testimonial-1">
-	<?php if( $contents['title'] ): ?>
-		<h2 class="section-title text-center <?php echo $settings['title_transformation']?>"><?php echo $contents['title']?></h2>
-	<?php endif; ?>
+<div id="<?php echo $id; ?>" class="uk-position-relative testimonials testimonial-1 fp-section" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>"  
+<?php echo ($styles['bg_parallax']) ? 'uk-parallax="bgy: -200"' : '' ?>
+data-src="<?php echo $styles['bg_image'];?>" uk-img>
+	<div class="uk-overlay-primary uk-position-cover"></div>
+	<div class="uk-container">
 
-	<div id="slide-<?php echo $id ?>" data-interval=<?php echo (int) $settings['interval'] * 1000; ?> class="carousel slide" data-ride="carousel">
+	    <ul class="uk-slideshow-items" uk-height-viewport="min-height:<?php echo $settings['testimonial_height']; ?>">
+			<?php foreach($contents['testimonials'] as $index => $testimonial): ?>
+		        <li>
+		            <div class="uk-position-center uk-position-small uk-text-center uk-light">
 
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox">
+			            <?php if($testimonial['image']):?>
+							<div class="testionial-img uk-margin-medium-top">
+								<img class="uk-border-circle" src="<?php echo $testimonial['image']?>" alt="<?php echo $testimonial['name']?>">
+							</div>
+						<?php endif; ?>
 
-			<?php foreach($contents['testimonials'] as $item): ?>
-			<div class="item text-center <?php echo ($slide_num === 0) ? 'active' : ''?>">
-					<?php if($item['image']):?>
-					<figure>
-						<img src="<?php echo $item['image']?>" alt="<?php echo $item['name']?>">
-					</figure>
-					<?php endif; ?>
+						<?php if($testimonial['testimony']):?>
+							<p class="testimony uk-width-3-4@m uk-width-1-1@s  uk-margin-auto" 
+								uk-slideshow-parallax="x: 200,-200">
+								<?php echo $testimonial['testimony'];?>
+							</p>
+						<?php endif; ?>
 
-					<?php if($item['testimony']):?>
-						<p class="testimony"><?php echo $item['testimony']?></p>
-					<?php endif; ?>
+						<?php if($testimonial['name']):?>
+							<h3 class="uk-heading-primary <?php echo $heading_class; ?>" 
+								uk-slideshow-parallax="x: 200,0,-100">
+								<?php echo $testimonial['name'];?>
+							</h3>
+						<?php endif; ?>
 
-					<?php if($item['name']):?>
-						<h3 class="name"><?php echo $item['name']?></h3>
-					<?php endif; ?>
+						<?php if($testimonial['designation']):?>
+							<p class="uk-text-lead" 
+								uk-slideshow-parallax="x: 200,-200">
+								<?php echo $testimonial['designation'];?>
+							</p>
+						<?php endif; ?>
 
-					<?php if($item['designation']):?>
-						<p class="designation"><?php echo $item['designation']?></p>
-					<?php endif; ?>
-			</div>
-			<?php $slide_num++; endforeach; ?>
-		</div>
+		            </div>
+		        </li>
+			<?php endforeach; ?>
+	    </ul>
 
-		<?php if(count($contents['testimonials']) > 1): // Indicator will only show when more then one item publish?>
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<?php for($i = 0; $i < count($contents['testimonials']); $i++): ?>
-			<li data-target="#slide-<?php echo $id ?>" data-slide-to="<?php echo $i;?>" class="<?php echo ($i === 0) ? 'active' : ''?>"></li>
-			<?php endfor;?>
-		</ol>
-		<?php endif; ?>
+	    <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-padding uk-padding-remove-top uk-position-relative"></ul>
 	</div>
 
-</section>
+    <div class="uk-light">
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+    </div>
+</div>

@@ -95,14 +95,8 @@ let BlockCollection = React.createClass({
       return active ? block : false;
     });
 
-    if (blocks.length === 0) {
-      return (
-        <Alert bsStyle="warning">
-          <strong>You have no blocks</strong>
-        </Alert>
-      );
-    }
-
+    let msg = (blocks.length === 0) ? <Alert bsStyle="warning"> <strong>You have no blocks</strong> </Alert> : '';
+ 
 
     return (
       <div>
@@ -110,10 +104,9 @@ let BlockCollection = React.createClass({
                 defaultValue={this.state.group}
                 options={_.object(groups, groups)}
                 onChange={this.handleChange}/>
-
-
         <div>
           {blocks.map(block => <Block key={block.slug} block={block}/>)}
+          {msg}
         </div>
       </div>
     );

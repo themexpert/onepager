@@ -63,19 +63,15 @@ if ( ! function_exists( 'array_pluck' ) ) {
 }
 
 function onepager_get_edit_mode_url( $url, $mode ) {
-  $url   = League\Url\Url::createFromUrl( $url );
-  $query = $url->getQuery();
-  $query->modify( array( 'onepager' => $mode ) );
-
-  return $url->__toString();
+  // return $url;
+  return esc_url( add_query_arg( 'onepager', $mode,  $url) );
 }
 
 function onepager_get_preview_url($url){
-  $url   = League\Url\Url::createFromUrl( $url );
-  $query = $url->getQuery();
-  $query->modify( array( 'onepager_preview' => 1, 'onepager'=>0 ) );
-
-  return $url->__toString();
+  return esc_url( add_query_arg( array(
+      'onepager_preview' => '1',
+      'onepager' => '0',
+  ), $url ));
 }
 
 
@@ -107,21 +103,7 @@ if ( ! function_exists( 'untrailingslashit' ) ) {
 if ( ! function_exists( 'get_current_page_url' ) ) {
 
   function get_current_page_url() {
-    $pageURL = 'http';
-
-    if ( array_key_exists( 'HTTPS', $_SERVER ) && $_SERVER["HTTPS"] == "on" ) {
-      $pageURL = "https";
-    }
-
-    $pageURL .= "://";
-
-    if ( $_SERVER["SERVER_PORT"] != "80" ) {
-      $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
-    } else {
-      $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
-    }
-
-    return $pageURL;
+    return add_query_arg( NULL, NULL );
   }
 }
 

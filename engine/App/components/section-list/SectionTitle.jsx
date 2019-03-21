@@ -51,11 +51,11 @@ let Title = React.createClass({
           (
             <div>
               <Input type="text" ref="title" onKeyUp={this.updateTitleOnEnter} defaultValue={title}/>
-              <span onClick={this.updateTitle} className="label label-default">Enter</span>
+              <span onClick={this.updateTitle} className="uk-label uk-position-center-right">Save</span>
             </div>
           ) :
           (
-            <div>
+            <div data-uk-tooltip="title: Double click to rename; pos: right">
               {this.props.children}
             </div>
           )

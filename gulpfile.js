@@ -20,6 +20,7 @@ var ROOT_PATH = path.resolve(__dirname);
 
 var dest = './assets';
 var src = './engine';
+var svnDir = "~/Documents/wordpress.org/tx-onepager";
 
 var config = {
   less: {
@@ -49,6 +50,14 @@ var config = {
     fonts: dest + '/fonts'
   },
   uikit: {
+    js: dest + '/js',
+    css: dest + '/css'
+  },
+  'bootstrap-datepicker': {
+    js: dest + '/js',
+    css: dest + '/css'
+  },
+  'bootstrap-timepicker': {
     js: dest + '/js',
     css: dest + '/css'
   },
@@ -120,7 +129,7 @@ gulp.task('bower', function () {
 
 
 gulp.task('uikit-js', function () {
-  return gulp.src('./node_modules/uikit/dist/js/uikit.js')
+  return gulp.src(['./node_modules/uikit/dist/js/uikit.js', './node_modules/uikit/dist/js/uikit-icons.js'])
         .pipe(uglify())
         .pipe(gulp.dest(config.uikit.js))
 });
@@ -128,6 +137,28 @@ gulp.task('uikit-css', function () {
   return gulp.src('./node_modules/uikit/dist/css/uikit.css')
         .pipe(minify())
         .pipe(gulp.dest(config.uikit.css))
+});
+
+gulp.task('bootstrap-datepicker-js', function () {
+  return gulp.src(['./node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js'])
+    .pipe(uglify())
+    .pipe(gulp.dest(config['bootstrap-datepicker'].js))
+});
+gulp.task('bootstrap-datepicker-css', function () {
+  return gulp.src(['./node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css'])
+    .pipe(minify())
+    .pipe(gulp.dest(config['bootstrap-datepicker'].css))
+});
+
+gulp.task('bootstrap-timepicker-js', function () {
+  return gulp.src(['./node_modules/bootstrap-timepicker/js/bootstrap-timepicker.js'])
+    .pipe(uglify())
+    .pipe(gulp.dest(config['bootstrap-timepicker'].js))
+});
+gulp.task('bootstrap-timepicker-css', function () {
+  return gulp.src(['./node_modules/bootstrap-timepicker/css/bootstrap-timepicker.css'])
+    .pipe(minify())
+    .pipe(gulp.dest(config['bootstrap-timepicker'].css))
 });
 
 gulp.task('watch', function () {
@@ -144,7 +175,7 @@ gulp.task('build-clean', function () {
 });
 
 gulp.task('build', function (cb) {
-  return runSequence('build-clean', ['js', 'fonts', 'bower', 'images', 'less', 'uikit-js','uikit-css'], cb);
+  return runSequence('build-clean', ['js', 'fonts', 'bower', 'images', 'less', 'uikit-js', 'uikit-css', 'bootstrap-datepicker-css', 'bootstrap-datepicker-js', 'bootstrap-timepicker-css', 'bootstrap-timepicker-js'], cb);
 });
 
 
@@ -171,7 +202,7 @@ gulp.task('default', function () {
   runSequence('build', ['webpack-watch', 'watch']);
 });
 
-gulp.task('package', ['package-build'], function () {
+gulp.task('release', ['package-build'], function () {
   shell.exec("composer dump-autoload -o");
   
   var files = [
@@ -185,7 +216,6 @@ gulp.task('package', ['package-build'], function () {
 
 gulp.task('svn', function(){
   var version = getOnepagerVersion().replace("v", "");
-  var svnDir = "~/Documents/wordpress.org/tx-onepager";
   var init = [
     `cp tx-onepager.zip ${svnDir}`,
     `cd ${svnDir}`,

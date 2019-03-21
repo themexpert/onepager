@@ -10,6 +10,9 @@ const WpMediaFrame = require('./media/WpMediaFrame.jsx');
 const WpSelect = require('./WpSelect.jsx');
 const Select = require('./Select.jsx');
 const Link = require('./Link.jsx');
+const Font = require('./font/index.jsx');
+const Date = require('./date/index.jsx');
+const Time = require('./time/index.jsx');
 const TinyMCE = require('./editor/TinyMCE.jsx');
 const PureMixin = require('../../mixins/PureMixin.js');
 const Activity = require('../../lib/Activity.js');
@@ -43,6 +46,7 @@ let InputControl = React.createClass({
 
   render() {
     let controlHtml, control = this.props.options;
+    
 
     switch (control.type) {
       case "icon":
@@ -52,6 +56,36 @@ let InputControl = React.createClass({
                         defaultValue={control.value}
                         label={control.label}
                         size={control.size || ""}
+                        onChange={this.onChange}/>;
+        break;
+
+      case "font":
+        controlHtml =
+          <Font ref="input"
+                        label={control.label}
+                        className={control.class}
+                        defaultValue={control.value}
+                        label={control.label}
+                        onChange={this.onChange}/>;
+        break;
+
+      case "date":
+        controlHtml =
+          <Date ref="input"
+                        label={control.label}
+                        className={control.class}
+                        defaultValue={control.value}
+                        label={control.label}
+                        onChange={this.onChange}/>;
+        break;
+
+      case "time":
+        controlHtml =
+          <Time ref="input"
+                        label={control.label}
+                        className={control.class}
+                        defaultValue={control.value}
+                        label={control.label}
                         onChange={this.onChange}/>;
         break;
 
@@ -154,12 +188,12 @@ let InputControl = React.createClass({
         controlHtml =
           <Input ref="input"
             {...addon}
-                 type={control.type}
-                 label={control.label}
-                 className={control.class}
-                 placeholder={control.placeholder}
-                 defaultValue={control.value}
-                 onChange={this.onChange}/>;
+            type={control.type}
+            label={control.label}
+            className="uk-input"
+            placeholder={control.placeholder}
+            defaultValue={control.value}
+            onChange={this.onChange}/>;
     }
 
     let classes = this.props.hidden ? "hidden" : control.type+'-control';

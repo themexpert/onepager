@@ -1,7 +1,7 @@
 <?php
 	$sticky = ($settings['sticky_nav']) ? 'uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"' : '';
 ?>
-<div id="<?php echo $id; ?>" class="navbar-1" <?php echo $sticky; ?>>
+<div id="<?php echo $id; ?>" class="navbar navbar-1 fp-section fp-auto-height" <?php echo $sticky; ?>>
 	<div class="uk-container">
 		<nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
 				<div class="uk-navbar-left">
@@ -15,9 +15,10 @@
 					<?php wp_nav_menu(array(
 						'menu' =>$contents['menu'] ,
 						'menu_class'=>'uk-navbar-nav uk-visible@m',
+						'items_wrap' => '<ul id="%1$s" class="%2$s" uk-scrollspy-nav="closest: li; scroll: true; overflow:false; offset:80">%3$s</ul>',
 						'container' =>false,
-						'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-						'walker'            => new wp_bootstrap_navwalker()
+						'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
+    				'walker'			=> new WP_Bootstrap_Navwalker()
 					)) ?>
 					<?php echo op_link($contents['link'], 'uk-button uk-button-primary');?>
 					
@@ -39,8 +40,8 @@
 				'menu' =>$contents['menu'] ,
 				'menu_class'=>'uk-nav uk-nav-default',
 				'container' =>false,
-				'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-				'walker'            => new wp_bootstrap_navwalker()
+				'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
+    		'walker'			=> new WP_Bootstrap_Navwalker()
 			)) ?>
 
 	</div>

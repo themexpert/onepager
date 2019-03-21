@@ -5,36 +5,35 @@ $slideshow_options[] = ($settings['slider_height']) ? 'max-height:' . $settings[
 $slideshow = implode('; ', $slideshow_options);
 $heading_class = ($settings['title_transformation']) ? 'uk-text-' . $settings['title_transformation'] : '';
 ?>
-
-<div id="<?php echo $id; ?>" class="uk-position-relative uk-visible-toggle" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>">
-
-    <ul class="uk-slideshow-items">
+<div id="<?php echo $id; ?>" class="fp-section sliders slider-1">
+	<div class="uk-position-relative uk-visible-toggle slider-1" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>">
+		<ul class="uk-slideshow-items" uk-height-viewport>
 			<?php foreach($contents['sliders'] as $index => $slide): ?>
-        <li>
-						<img src="<?php echo $slide['image']?>" alt="" uk-cover>
-						<div class="uk-overlay-primary uk-position-cover"></div>
-            <div class="uk-position-center uk-position-small uk-text-center uk-light">
-								<h2 
-									class="uk-heading-primary <?php echo $heading_class ?>" 
-									uk-slideshow-parallax="x: 200,0,-100">
-									<?php echo $slide['title']?>
-								</h2>
-								<p 
-									class="uk-text-lead" 
-									uk-slideshow-parallax="x: 200,-200">
-									<?php echo $slide['description']?>
-								</p>
-								<div uk-slideshow-parallax="x: 100,-100">
-									<?php echo op_link($slide['link'], 'uk-button uk-button-primary');?>
-								</div>
-            </div>
-        </li>
+			<li>
+				<img src="<?php echo $slide['image']?>" alt="" uk-cover>
+				<div class="uk-overlay-primary uk-position-cover"></div>
+					<div class="uk-position-center uk-position-small uk-text-center uk-light">
+						<h2 
+							class="uk-heading-primary <?php echo $heading_class ?>" 
+							uk-slideshow-parallax="x: 200,0,-100">
+							<?php echo $slide['title']?>
+						</h2>
+						<p 
+							class="uk-text-lead" 
+							uk-slideshow-parallax="x: 200,-200">
+							<?php echo $slide['description']?>
+						</p>
+						<div uk-slideshow-parallax="x: 100,-100">
+							<?php echo op_link($slide['link'], 'uk-button uk-button-large uk-button-primary');?>
+						</div>
+				</div>
+			</li>
 			<?php endforeach; ?>
-    </ul>
+		</ul> <!-- uk-slideshow-items -->
 
-    <div class="uk-light">
-        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-    </div>
-
-</div>
+		<div class="uk-light">
+			<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+			<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+		</div> <!-- uk-light -->
+	</div> <!-- uk-position-relative -->
+</div> <!-- section-id -->

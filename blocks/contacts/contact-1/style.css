@@ -1,7 +1,23 @@
 .contact-1{ padding-top: 80px; padding-bottom: 80px; }
-.contact-1 .contact-row{ padding-left: 30px; position: relative; margin-top: 20px; }
-.contact-1 .contact-row .fa{ position: absolute; left: 0; }
-.contact-1 .social-links{ margin-top: 20px; }
+.contact-1 .uk-card .uk-card-header{
+	padding: 10px 0;
+}
+
+.contact-1 .uk-heading-primary{
+	font-size: 32px;
+}
+
+.contact-1 .heading-info .uk-text-lead{
+	margin: 10px 0;
+	font-size: 20px;
+}
+.contact-1 .uk-card .uk-card-header .fa{
+	font-size: 16px;
+}
+
+.contact-1 .social-links a{
+	font-size: 16px;
+}
 
 .contact-1 input[type="text"],
 .contact-1 input[type="email"],
@@ -12,6 +28,6 @@
   color: #757373;
 }
 .contact-1 input[type="submit"]{
-  padding: 6px 20px;
+  padding:15px 30px;
   border: 0;
 }
