@@ -157,6 +157,11 @@
     }
 
     function layoutSelectHandler() {
+      if ($('.editor-post-title__block textarea').val() == '') {
+        alert('Please add a title first!');
+        return;
+      }
+
       //FIXME: $.data ?
       var confirmationMsg =
         "Are you sure you want to insert this layout?" +

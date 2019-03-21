@@ -21,12 +21,13 @@ function op_get_html_group_class($groups)
     <?php endforeach;?>
   </ul>
 
-  <div class="layout-filter uk-child-width-1-2 uk-child-width-1-4@m" uk-grid>
+  <div class="layout-filter uk-child-width-1-2@s uk-child-width-1-4@m uk-flex-center" uk-grid>
   <?php foreach ($layouts as $layout): ?>
     <div data-group="<?php echo op_get_html_group_class($layout['group'])?>">
       <div class="uk-card uk-card-default uk-transition-toggle" tabindex="0">
         <div class="uk-card-media-top uk-inline">
-          <img src="<?php echo $layout['screenshot'] ?>" alt="<?php echo $layout['name'] ?>">
+
+          <img data-src="<?php echo $layout['screenshot'] ?>" alt="<?php echo $layout['name'] ?>" uk-img >
           <div class="uk-position-cover uk-overlay uk-overlay-primary uk-transition-fade"></div>
           <div class="uk-position-center uk-text-center uk-transition-fade">
             <p>
@@ -70,7 +71,7 @@ function op_get_html_group_class($groups)
                   id="op_create_page_from_layout_button"
                   class="uk-button uk-button-primary"
                   name="op_create_page_from_layout_button">
-                  <div uk-spinner style="display:none"></div>
+                  <span uk-spinner style="display:none"></span>
                     <?php _e('Create', 'onepager');?>
                 </button>
               </div>
@@ -84,12 +85,12 @@ function op_get_html_group_class($groups)
 
 <script>
   function addPage(data) {
-    jQuery(".uk-spinner").css("display", "block");
-
+    jQuery('#op_create_page_from_layout_button').attr('disabled', 'disabled')
+    jQuery(".uk-spinner").css("display", "inline-block");
     $.post(ajaxurl, data, function (res) {
       if (res && res.success) {
         window.location = res.url;
-        jQuery(".uk-spinner").css("display", "none");
+        // jQuery(".uk-spinner").css("display", "none");
       } else {
         alert("failed to insert layout ");
         jQuery(".uk-spinner").css("display", "none");
