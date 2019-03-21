@@ -1,5 +1,12 @@
 #<?php echo $id;?>{
-	background-color : <?php echo $styles['bg_color'];?>;
+<?php if ($styles['bg_image']): ?>
+	background-image:url(<?php echo $styles['bg_image'];?>);
+	background-repeat:no-repeat;
+	
+<?php endif; ?>
+<?php if ($styles['bg_color']): ?>
+	background-color : <?php echo $styles['bg_color']?>;
+<?php endif; ?>
 }
 
 #<?php echo $id;?> .uk-article .uk-heading-primary{

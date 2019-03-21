@@ -1,6 +1,12 @@
 #<?php echo $id;?>{
+<?php if ($styles['bg_image']): ?>
+	background-image:url(<?php echo $styles['bg_image'];?>);
+	background-repeat:no-repeat;
+	
+<?php endif; ?>
+<?php if ($styles['bg_color']): ?>
 	background-color : <?php echo $styles['bg_color']?>;
-	color : <?php echo $styles['text_color']?>;
+<?php endif; ?>
 }
 
 #<?php echo $id;?> .section-heading .uk-heading-primary{

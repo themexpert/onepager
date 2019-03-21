@@ -1,9 +1,12 @@
 #<?php echo $id ?>{
 	<?php if($styles['bg_image']):?>
-	background-image: url(<?php echo $styles['bg_image']?>);
-	background-repeat: <?php echo $styles['bg_repeat']?>;
+		background-image: url(<?php echo $styles['bg_image']?>);
+		background-repeat: <?php echo $styles['bg_repeat']?>;
+		background-size: cover;
 	<?php endif;?>
-	background-color : <?php echo $styles['bg_color'] ?>;
+	<?php if($styles['bg_color']):?>
+		background-color : <?php echo $styles['bg_color'] ?>;
+	<?php endif;?>
 	
 }
 #<?php echo $id ?> .uk-heading-primary {
@@ -27,6 +30,6 @@
 
 @media(max-width:768px){
 	#<?php echo $id?> .uk-heading-primary{
-		font-size : <?php echo ($settings['title_size']/1.5)?>px;
+		font-size : <?php echo ($settings['title_size']/2)?>px;
 	}
 }

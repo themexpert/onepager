@@ -52,16 +52,16 @@ return array(
   'settings' => array(
     array('label'=>'Media', 'type'=>'divider'), // Divider - Text
 
-    // array(
-    //   'name'     => 'media_alignment',
-    //   'label'    => 'Media Alignment',
-    //   'type'     => 'select',
-    //   'value'    => 'right',
-    //   'options'  => array(
-    //     'left'    => 'Left',
-    //     'right'   => 'Right'
-    //   ),
-    // ),
+    array(
+      'name'     => 'media_alignment',
+      'label'    => 'Content Alignment',
+      'type'     => 'select',
+      'value'    => 'right',
+      'options'  => array(
+        'left'    => 'Left',
+        'right'   => 'Right'
+      ),
+    ),
 
     array(
       'name'     => 'media_grid',
@@ -101,6 +101,16 @@ return array(
     ),
 
     array('label'=>'Content', 'type'=>'divider'), // Divider - Text
+      array(
+      'name'     => 'item_columns',
+      'label'    => 'Items Colmuns',
+      'type'     => 'select',
+      'value'    => '1',
+      'options'  => array(
+        '1'   => '1',
+        '2'   => '2',
+      ),
+    ),
 
     array(
       'name' => 'title_size',
@@ -185,6 +195,11 @@ return array(
   ),
 
   'styles' => array(
+    array(
+      'name'  => 'bg_image',
+      'label' => 'Background Image',
+      'type'  => 'image'
+    ),
     array(
       'name' => 'bg_color',
       'label' => 'Background Color',

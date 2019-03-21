@@ -12,7 +12,7 @@ data-src="<?php echo $styles['bg_image'];?>" uk-img>
 	<div class="uk-overlay-primary uk-position-cover"></div>
 	<div class="uk-container">
 
-	    <ul class="uk-slideshow-items" uk-height-viewport="min-height:<?php echo $settings['testimonial_height']; ?>">
+	    <ul class="uk-slideshow-items" uk-height-viewport>
 			<?php foreach($contents['testimonials'] as $index => $testimonial): ?>
 		        <li>
 		            <div class="uk-position-center uk-position-small uk-text-center uk-light">

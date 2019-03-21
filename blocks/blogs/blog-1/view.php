@@ -1,13 +1,13 @@
 <?php
 	// title animation
-	$title_animation = ($settings['title_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['title_animation'].'"' : '';
+	$title_animation = ($settings['title_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['title_animation'].';' : '';
 	// title alignment
 	$title_alignment = ($settings['title_alignment']) ? $settings['title_alignment'] : '';
 
 	// Alignment
 	$content_position = ($settings['media_alignment'] == 'right' ) ? 'uk-flex-last@s' : '';
-		// title animation
-	$item_animation = ($settings['item_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['item_animation'].'"' : '';
+	// items animation
+	$items_animation = ($settings['item_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['item_animation'].';target:> .uk-card; delay:200;"' : '';
 	// Arguments
 	$args = array(
 		'posts_per_page'   => $contents['total_posts'],
@@ -20,21 +20,21 @@
 <section id="<?php echo $id;?>" class="fp-section blogs blog-1 uk-padding-small">
 	<div class="uk-section">
 		<div class="uk-container">
-		    <div class="section-heading uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>
+		    <div class="section-heading uk-text-<?php echo $title_alignment;?>">
 		        <?php if($contents['title']):?>
 	              <!-- Section Title -->
-	              	<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>">
+	              	<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>" <?php echo ($settings['title_animation'] ? $title_animation .'delay:100"' : '' );?>>
 	                	<?php echo $contents['title'];?>
 	              	</h1>
 	            <?php endif; ?>
 
 	            <?php if($contents['description']):?>
-	                <div class="uk-text-lead"><?php echo $contents['description']?></div>
+	                <div class="uk-text-lead" <?php echo ($settings['title_animation'] ? $title_animation .'delay:300"' : '' );?>><?php echo $contents['description']?></div>
 		        <?php endif; ?>
 		    </div> <!-- Section heading -->
 
 			<!-- WP Posts -->
-			<div <?php echo $item_animation;?>>
+			<div <?php echo $items_animation;?>>
 				<?php if( $query->have_posts() ) : ?>
 					<?php while( $query->have_posts() ) : $query->the_post(); ?>
 						<div class="uk-card uk-child-width-1-2@s uk-margin" uk-grid>

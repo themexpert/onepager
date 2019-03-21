@@ -1,7 +1,7 @@
 <?php 
 
 	// info animation
-	$info_animation = ($settings['info_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['info_animation'].'"' : '';
+	$info_animation = ($settings['info_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['info_animation'].';' : '';
 
 	// form animation
 	$form_animation = ($settings['form_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['form_animation'].'"' : '';
@@ -11,23 +11,23 @@
 	<div class="uk-section">
 		<div class="uk-container">
 			<div class="uk-child-width-1-2@s uk-margin" uk-grid>
-				<div class="uk-card" <?php echo $info_animation;?>>
-					<div class="heading-info uk-margin-medium-bottom" <?php echo $info_animation;?>>
+				<div class="uk-card">
+					<div class="heading-info uk-margin-medium-bottom">
 						<?php if($contents['hotline_title']):?>
 							<!-- Section Title -->
-							<h3 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>">
+							<h3 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>" <?php echo ($settings['info_animation'] ? $info_animation .'delay:100"' : '' );?>>
 								<?php echo $contents['hotline_title'];?>
 							</h3>
 						<?php endif; ?>
 
 						<?php if($contents['hotline_number']):?>
-							<h4 class="uk-text-lead">
+							<h4 class="uk-text-lead" <?php echo ($settings['info_animation'] ? $info_animation .'delay:200"' : '' );?>>
 								<?php echo $contents['hotline_number']; ?> 	
 							</h4>
 						<?php endif; ?>
 					</div>
 					<?php if($contents['address']):?>
-						<div class="uk-card-header uk-padding-remove uk-margin">
+						<div class="uk-card-header uk-padding-remove uk-margin" <?php echo ($settings['info_animation'] ? $info_animation .'delay:300"' : '' );?>>
 							<div class="uk-grid-small uk-flex-middle" uk-grid>
 								<div class="uk-width-auto">
 									<span class="fa fa-home"></span>
@@ -42,7 +42,7 @@
 					<?php endif; ?>
 
 					<?php if($contents['phone']):?>
-						<div class="uk-card-header uk-padding-remove uk-margin">
+						<div class="uk-card-header uk-padding-remove uk-margin" <?php echo ($settings['info_animation'] ? $info_animation .'delay:400"' : '' );?>>
 							<div class="uk-grid-small uk-flex-middle" uk-grid>
 								<div class="uk-width-auto">
 									<span class="fa fa-phone"></span>
@@ -57,7 +57,8 @@
 					<?php endif; ?>
 
 					<?php if($contents['email']):?>
-						<div class="uk-card-header uk-padding-remove uk-margin">
+						<div class="uk-card-header uk-padding-remove uk-margin" 
+						<?php echo ($settings['info_animation'] ? $info_animation .'delay:500"' : '' );?>>
 							<div class="uk-grid-small uk-flex-middle" uk-grid>
 								<div class="uk-width-auto">
 									<span class="fa fa-envelope-o"></span>
@@ -71,7 +72,7 @@
 						</div> <!-- uk-card-header -->
 					<?php endif; ?>
 
-					<div class="social-links uk-margin">
+					<div class="social-links uk-margin" <?php echo ($settings['info_animation'] ? $info_animation .'delay:600"' : '' );?>>
 						<?php foreach ( $contents['social'] as $social ): ?>
 							<a class="icon" href="<?php echo $social ?>" target="_blank"></a>
 						<?php endforeach; ?>

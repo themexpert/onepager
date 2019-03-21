@@ -4,11 +4,11 @@
 	// title alignment
 	$title_alignment = ($settings['title_alignment']) ? $settings['title_alignment'] : '';
 	// title animation
-	$title_animation = ($settings['title_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['title_animation'].'"' : '';
+	$title_animation = ($settings['title_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['title_animation'].';' : '';
 	// items alignment
 	$items_alignment = ($settings['items_alignment']) ? $settings['items_alignment'] : '';
 	// items animation
-	$items_animation = ($settings['items_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['items_animation'].'"' : '';
+	$items_animation = ($settings['items_animation']) ? 'uk-scrollspy="cls:uk-animation-'.$settings['items_animation'].';target:>div> .uk-card; delay:200;"' : '';
 ?>
 
 
@@ -16,24 +16,24 @@
 	<div class="uk-section">
 		<div class="uk-container">
 			<article class="uk-article">
-				<div class="section-heading uk-margin-large-bottom uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
+				<div class="section-heading uk-margin-large-bottom uk-text-<?php echo $title_alignment;?>">	
 					<?php if($contents['title']):?>
 						<!-- Section Title -->
-						<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>">
+						<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>" <?php echo ($settings['title_animation'] ? $title_animation .'delay:100"' : '' );?>>
 							<?php echo $contents['title'];?>
 						</h1>
 					<?php endif; ?>
 					<?php if($contents['description']):?>
 						<!-- Section Sub Title -->
-						<p class="uk-text-lead">
+						<p class="uk-text-lead" <?php echo ($settings['title_animation'] ? $title_animation .'delay:100"' : '' );?>>
 							<?php echo $contents['description'];?>
 						</p>
 					<?php endif; ?>
 				</div>
-				<div class="uk-grid-medium" uk-grid >
+				<div class="uk-grid-large" <?php echo $items_animation;?> uk-grid >
 					<?php foreach($contents['items'] as $feature): ?>
 						<div class="uk-width-1-<?php echo $settings['items_columns'];?>@m uk-width-1-1@s">
-							<div class="uk-text-<?php echo $items_alignment;?>" <?php echo $items_animation;?>>
+							<div class="uk-card uk-text-<?php echo $items_alignment;?>">
 								<!-- Item image -->
 								<?php if( op_is_image($feature['media'])):?>
 									<img class="op-media" src="<?php echo $feature['media']; ?>" alt="<?php echo $feature['title'];?>" />

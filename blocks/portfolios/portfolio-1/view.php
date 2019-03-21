@@ -2,7 +2,7 @@
     // title alignment
     $title_alignment = ($settings['title_alignment']) ? $settings['title_alignment'] : '';
     // title animation
-    $title_animation = ($settings['title_animation']) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . '"' : '';
+    $title_animation = ($settings['title_animation']) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . ';' : '';
 
     // lightbox animation
     $lightbox_animation = ($settings['lightbox_animation']) ? 'uk-lightbox="animation:' . $settings['lightbox_animation'] . '"' : '';
@@ -11,20 +11,22 @@
 <section id="<?php echo $id; ?>" class="fp-section portfolios portfolio-1 uk-padding-small">
 	<div class="uk-section">
 		<div class="uk-container">
-			<div class="section-heading uk-margin-large-bottom uk-text-<?php echo $title_alignment;?>" <?php echo $title_animation;?>>	
+			<div class="section-heading uk-margin-large-bottom uk-text-<?php echo $title_alignment;?>">	
 				<?php if ($contents['title']):?>
 					<!-- Section Title -->
-					<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>">
+					<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation'];?>" <?php echo ($settings['title_animation'] ? $title_animation .'delay:100"' : '' );?>>
 						<?php echo $contents['title'];?>
 					</h1>
 				<?php endif; ?>
 				<?php if ($contents['description']):?>
-					<div class="uk-text-lead"><?php echo $contents['description']?></div>
+					<div class="uk-text-lead" <?php echo ($settings['title_animation'] ? $title_animation .'delay:300"' : '' );?>><?php echo $contents['description']?></div>
 				<?php endif; ?>
 			</div> <!-- Section heading -->
+
 			<div class="uk-grid-medium" uk-grid >
+			<?php $i=4; ?>
 				<?php foreach ($contents['portfolios'] as $portfolio) :?>
-				<div class="uk-width-1-<?php echo $settings['items_columns'];?>@m uk-width-1-1@s" <?php echo $lightbox_animation?>>
+				<div class="uk-width-1-<?php echo $settings['items_columns'];?>@m uk-width-1-1@s" <?php echo $lightbox_animation?> <?php echo ($settings['title_animation'] ? $title_animation .'delay:' .$i .'00"' : '' );?>>
 					<a class="lightbox" href="<?php echo $portfolio['image'];?>" uk-lightbox>
 						<figure class="overlay overlay-hover">
 							<img class="overlay-spin" src="<?php echo $portfolio['thumb']?>" alt="<?php echo $portfolio['title'];?>" />
@@ -44,7 +46,7 @@
 						</figure> <!-- overlay -->
 					</a><!-- lightbox -->
 				</div> <!-- uk-grid -->
-				<?php endforeach; ?>
+				<?php $i++;endforeach; ?>
 			</div>  <!-- uk-grid-medium -->
 		</div> <!-- uk-container -->
 	</div> <!-- uk-section -->

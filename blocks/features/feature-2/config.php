@@ -192,6 +192,11 @@ return array(
 
   'styles' => array(
     array(
+      'name'  => 'bg_image',
+      'label' => 'Background Image',
+      'type'  => 'image'
+    ),
+    array(
       'name' => 'bg_color',
       'label' => 'Background Color',
       'type' => 'colorpicker',
