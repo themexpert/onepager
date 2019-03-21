@@ -6,7 +6,7 @@
 		<nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
 				<div class="uk-navbar-left">
 						<?php if($contents['logo']) :?>
-							<a class="uk-navbar-item uk-logo" href="#"><img class="img-responsive" src="<?php echo $contents['logo']?>" alt="<?php wp_title(); ?>"/></a>
+							<a class="uk-navbar-item uk-logo" href="<?php echo site_url(); ?>"><img class="img-responsive" src="<?php echo $contents['logo']?>" alt="<?php wp_title(); ?>"/></a>
 						<?php else : ?>
 						<a class="uk-navbar-item uk-logo" href="<?php echo site_url(); ?>"><?php wp_title(); ?></a>
 						<?php endif; ?>
