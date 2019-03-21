@@ -21,7 +21,7 @@ function op_get_html_group_class($groups)
     <?php endforeach;?>
   </ul>
 
-  <div class="layout-filter uk-child-width-1-2@s uk-child-width-1-4@m uk-flex-center" uk-grid>
+  <div class="layout-filter uk-child-width-1-2@s uk-child-width-1-4@m" uk-grid>
   <?php foreach ($layouts as $layout): ?>
     <div data-group="<?php echo op_get_html_group_class($layout['group'])?>">
       <div class="uk-card uk-card-default uk-transition-toggle" tabindex="0">
