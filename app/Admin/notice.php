@@ -1,12 +1,4 @@
 <?php
-/**
- * Admin notice
- *
- * @package OnePager
- * @category Core
- * @author Parvez Akther
- */
-
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
     exit;

@@ -10,6 +10,7 @@ class TemplateLoader {
     $this->pageTemplateManager = $pageTemplateManager;
 
     add_action( 'wp_loaded', [ $this, 'loadOnepagerPageTemplates' ] );
+    add_action( 'wp_loaded', [ $this, 'loadOnepagerPageDefaultTemplates' ] );
     //9999999999 is a very big number to make sure that builder.php loads whatever happens
     add_filter( 'template_include', [ $this, 'loadBuildModeTemplate' ], 9999999999);
   }
@@ -28,10 +29,21 @@ class TemplateLoader {
    * Add page Templates
    */
   public function loadOnepagerPageTemplates() {
-    $default_onepage_template = locate_template( 'onepager/onepage.php' ) ?:
+    $onepager_canvas = locate_template( 'onepager/onepage.php' ) ?:
       onepager()->path( "/app/templates/onepage.php" );
 
-    $this->pageTemplateManager->addTemplate( 'OnePager', $default_onepage_template );
+    $this->pageTemplateManager->addTemplate( 'Onepager Canvas', $onepager_canvas );
+
+    // Any filename start with onepager*- will work from JS
+    $onepager_default = locate_template( 'onepager/onepager-default.php' ) ?:
+    onepager()->path( "/app/templates/onepager-default.php" );
+
+    $this->pageTemplateManager->addTemplate( 'Onepager Default', $onepager_default );
+    
+  }
+
+  public function loadOnepagerPageDefaultTemplates(){
+    
   }
 
   /**

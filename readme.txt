@@ -1,10 +1,10 @@
 === Onepage Builder - Easiest Landing Page Builder For WordPress ===
-Contributors: themexpert, nadimtuhin, themesgrove, parvezvai
+Contributors: themexpert, nadimtuhin, themesgrove, parvezvai, shamsbd71
 Donate link: https://themesgrove.com/wp-onepager
-Tags: landing page, onepage, coming soon page, launch page, under construction page, onepage builder, page builder, sales page, business landing page, lead generation page, consulting landing page, service landing page, book launch page, webinar page, case study page, portfolio page, responsive page, coming soon page, app landing page, startup landing page, information product page, event landing page, seminar landing page, maintenance mode, coming soon, under construction,launch, maintenance, construction, offline, unavailable
+Tags: landing page, page builder, coming soon page, onepage, launch page, under construction page, onepage builder, sales page, business landing page, lead generation page, consulting landing page, service landing page, book launch page, webinar page, case study page, portfolio page, responsive page, coming soon page, app landing page, startup landing page, information product page, event landing page, seminar landing page, maintenance mode, coming soon, under construction,launch, maintenance, construction, offline, unavailable
 Stable tag: %version%
 Requires at least: 4.8
-Tested up to: 5.1.0
+Tested up to: 5.1
 Requires PHP: 5.4
 License: GNU General Public License v2.0 or later
 

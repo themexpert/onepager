@@ -9,9 +9,9 @@ add_action('admin_menu', 'register_admin_menu', 20);
 function register_admin_menu(){
   //Icon
   $icon = onepager()->url( 'assets/images/logo-white.png' );
-  // Getting Started page
+  // Dashboard
   $template = function () {
-    include __DIR__ . "/views/settings.php";
+    include __DIR__ . "/views/dashboard.php";
   };
 
   add_menu_page(
@@ -21,7 +21,7 @@ function register_admin_menu(){
     'onepager',
     $template,
     $icon,
-    '58.5'
+    '31'
   );
   add_submenu_page(
     'onepager', 
@@ -37,6 +37,7 @@ function register_admin_menu(){
 add_action('admin_menu', 'register_submenu', 501);
 function register_submenu()
 {
+  // Getting started page
     add_submenu_page(
     'onepager',
     __('Welcome to OnePager', 'onepager'),
@@ -90,6 +91,9 @@ add_action('admin_enqueue_scripts', 'onepager_load_admin_scripts');
 function onepager_load_admin_scripts()
 {
     //add builder.css so icons and other stuff styles
+    wp_enqueue_script('uikit', op_asset('assets/js/uikit.js'));
+    wp_enqueue_script('uikit-icons', op_asset('assets/js/uikit-icons.js'));
+    
     wp_enqueue_style('uikit', op_asset('assets/css/uikit.css'));
     wp_enqueue_style('lithium-builder', op_asset('assets/css/lithium-builder.css'));
 }
