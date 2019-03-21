@@ -11,7 +11,7 @@ function getKey() {
 }
 
 function getSectionTitle(section) {
-  return section.id ? section.get('title') : "untitled section";
+  return section.id ? section.get('title') : section.get('name');
 }
 
 function getDuplicateTitle(title) {
@@ -21,13 +21,13 @@ function getDuplicateTitle(title) {
 export default function (block, duplicate = false) {
   let section = fromJS(block);
   let isNew = !section.get('id');
-
+  
   if (isNew) {
     section = section.set('id', getId());
     section = section.set('title', getSectionTitle(section));
   } else if (duplicate) {
     section = section.set('id', getId());
-    section = section.set('title', getDuplicateTitle());
+    section = section.set('title', getDuplicateTitle(section.get('title')));
   }
 
   /**
