@@ -207,7 +207,7 @@ return array(
 
     array(
       'name' => 'desc_color',
-      'label' => 'Desc Color',
+      'label' => 'Subtitle Color',
       'type' => 'colorpicker',
       'value' => '#323232'
 

@@ -24,6 +24,9 @@ let WpSelect = React.createClass({
       case "category":
         options = ODataStore.categories;
         break;
+      case "woocategories":
+        options = ODataStore.woocategories;
+        break;
     }
 
     return (

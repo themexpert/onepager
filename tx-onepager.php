@@ -57,6 +57,7 @@ require( ONEPAGER_PATH . '/app/OptionsPanel/settings.php' );
 require( ONEPAGER_PATH . '/app/Metabox/metabox.php' );
 require( ONEPAGER_PATH . '/app/Admin/menu.php' );
 require( ONEPAGER_PATH . '/app/Admin/notice.php' );
+require( ONEPAGER_PATH . '/app/Admin/override.php' );
 
 
 add_action('wp_head', 'print_onepager_meta');
@@ -89,20 +90,24 @@ function appsero_init_tracker_wponepager() {
 add_action( 'init', 'appsero_init_tracker_wponepager' );
 
 // Activation hook
-register_activation_hook(__FILE__, 'onepager_activation_hook');
+// register_activation_hook(__FILE__, 'onepager_activation_hook');
 
-function onepager_activation_hook() {
-  add_option('onepager_activated', true);
-}
-/**
- * redirect to the installation page
- * after active the plugin
- */
-add_action('admin_init', 'onepager_redirect');
+// function onepager_activation_hook() {
+//   add_option('onepager_activated', true);
+// }
+// /**
+//  * redirect to the installation page
+//  * after active the plugin
+//  */
+// add_action('admin_init', 'onepager_redirect');
 
-function onepager_redirect() {
-    if (get_option('onepager_activated', false)) {
-        delete_option('onepager_activated');
-        wp_redirect(admin_url( 'admin.php?page=onepager-getting-started' ));
-    }
-}
+// function onepager_redirect() {
+//     if (get_option('onepager_activated', false)) {
+//         delete_option('onepager_activated');
+//         wp_redirect(admin_url( 'admin.php?page=onepager-getting-started' ));
+//     }
+// }
+// Some Woo actions
+add_action( 'op-woo-product-price', 'woocommerce_template_single_price', 5 );
+add_action( 'op-woo-product-rating-overview', 'wc_product_rating_overview', 15 );
+add_action( 'op-woo-add-to-cart-button', 'woocommerce_template_loop_add_to_cart', 5 );

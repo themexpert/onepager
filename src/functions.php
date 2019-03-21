@@ -62,7 +62,7 @@ if ( ! function_exists( 'array_pluck' ) ) {
   }
 }
 
-function onepager_get_edit_mode_url( $url, $mode ) {
+function onepager_get_edit_mode_url( $url, $mode = 1 ) {
   // return $url;
   return esc_url( add_query_arg( 'onepager', $mode,  $url) );
 }

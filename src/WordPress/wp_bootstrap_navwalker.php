@@ -50,7 +50,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 			}
 			$indent = str_repeat( $t, $depth );
 			// Default class to add to the file.
-			$classes = array( 'dropdown-menu' );
+			$classes = array( 'uk-nav uk-navbar-dropdown-nav' );
 			/**
 			 * Filters the CSS class(es) applied to a menu list element.
 			 *
@@ -77,8 +77,20 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 				// build a string to use as aria-labelledby.
 				$labelledby = 'aria-labelledby="' . end( $matches[2] ) . '"';
 			}
-			$output .= "{$n}{$indent}<ul$class_names $labelledby role=\"menu\">{$n}";
+			$output .= "{$n}{$indent}<div class=\"uk-navbar-dropdown\"><ul$class_names $labelledby role=\"menu\">{$n}";
 		}
+
+		public function end_lvl( &$output, $depth = 0, $args = array() ) {
+			if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
+					$t = '';
+					$n = '';
+			} else {
+					$t = "\t";
+					$n = "\n";
+			}
+			$indent  = str_repeat( $t, $depth );
+			$output .= "$indent</ul></div>{$n}";
+	}
 
 		/**
 		 * Starts the element output.
