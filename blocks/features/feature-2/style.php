@@ -1,6 +1,5 @@
 #<?php echo $id;?>{
 	background-color : <?php echo $styles['bg_color']?>;
-	color : <?php echo $styles['text_color']?>;
 }
 
 #<?php echo $id;?> .section-heading .uk-heading-primary{
