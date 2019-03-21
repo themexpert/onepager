@@ -1,0 +1,500 @@
+{
+  "name": "Mobile Application",
+  "sections": [
+    {
+      "id": "s_504235337",
+      "slug": "navbar-1",
+      "title": "Navbar",
+      "contents": {
+        "logo": "http://s3.amazonaws.com/quantum-assets/logo-dark.png",
+        "menu": "179",
+        "link": {
+          "text": "",
+          "url": "",
+          "target": false,
+          "focus": true
+        }
+      },
+      "settings": {
+        "sticky_nav": "1"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "link_color": "#777",
+        "link_hover_color": "#222",
+        "link_active_color": "#0d73ee",
+        "cta_bg": "#0d73ee",
+        "cta_color": "#fff"
+      }
+    },
+    {
+      "id": "s_99344362",
+      "slug": "feature-1",
+      "title": "hero",
+      "contents": {
+        "title": "Mobipaath",
+        "description": "<p>Mobile Application Software</p>",
+        "image": "http://try.getonepager.com/wp-content/uploads/2019/03/Mockup3.png",
+        "link": {
+          "text": "Learn More",
+          "url": "",
+          "target": false,
+          "focus": true
+        }
+      },
+      "settings": {
+        "media_alignment": "right",
+        "media_grid": "width-1-3",
+        "title_size": "100",
+        "title_transformation": "uppercase",
+        "desc_size": "30",
+        "animation_content": "slide-left-medium",
+        "animation_media": "slide-right-medium"
+      },
+      "styles": {
+        "bg_image": "http://try.getonepager.com/wp-content/uploads/2019/03/hero-bg.png",
+        "bg_repeat": "no-repeat",
+        "bg_color": "#251f8e",
+        "title_color": "#ffffff",
+        "text_color": "#ffffff",
+        "button_bg_color": "#ffffff",
+        "button_text_color": "#5261f3"
+      }
+    },
+    {
+      "id": "s_130482130",
+      "slug": "feature-4",
+      "title": "service",
+      "contents": {
+        "title": "",
+        "description": "",
+        "items": [
+          {
+            "title": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
+            "description": "",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/01.jpg",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
+            "description": "",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/02.jpg",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
+            "description": "",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/03.jpg",
+            "link": "",
+            "target": false
+          }
+        ]
+      },
+      "settings": {
+        "title_size": "60",
+        "title_transformation": "0",
+        "title_alignment": "center",
+        "desc_size": "18",
+        "title_animation": "0",
+        "items_columns": "3",
+        "item_title_size": "16",
+        "item_desc_size": "16",
+        "items_alignment": "center",
+        "items_animation": "slide-bottom-medium",
+        "section_margin": "-130"
+      },
+      "styles": {
+        "bg_color": "#f4f4f4",
+        "title_color": "#323232",
+        "desc_color": "#222222",
+        "item_title_color": "#222222",
+        "item_desc_color": "#0a082e",
+        "icon_color": ""
+      }
+    },
+    {
+      "id": "s_733209137",
+      "slug": "feature-2",
+      "title": "vision",
+      "contents": {
+        "title": "Our Mission & Vision",
+        "description": "",
+        "items": [
+          {
+            "title": "",
+            "description": "Yet thus falcon ben secret immorally near rubbed some earth of ineffectively abandoned depending on the far mumbled.",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon-2.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "",
+            "description": "Yet thus falcon ben secret immorally near rubbed some earth of ineffectively abandoned depending on the far mumbled.",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon-1.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "",
+            "description": "Yet thus falcon ben secret immorally near rubbed some earth of ineffectively abandoned depending on the far mumbled.",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon-4.png",
+            "link": "",
+            "target": false
+          }
+        ]
+      },
+      "settings": {
+        "title_size": "60",
+        "title_transformation": "0",
+        "title_alignment": "center",
+        "desc_size": "18",
+        "title_animation": "slide-top-medium",
+        "items_columns": "3",
+        "item_title_size": "22",
+        "item_desc_size": "16",
+        "items_alignment": "center",
+        "items_animation": "slide-left-medium"
+      },
+      "styles": {
+        "bg_image": "http://onepager.demo/wp-content/uploads/2019/03/BG.png",
+        "bg_color": "",
+        "title_color": "#5261f3",
+        "desc_color": "#323232",
+        "item_title_color": "#222222",
+        "item_desc_color": "#222",
+        "icon_color": ""
+      }
+    },
+    {
+      "id": "s_524292193",
+      "slug": "feature-3",
+      "title": "activities",
+      "contents": {
+        "title": "Activities of Mobipaath",
+        "description": "",
+        "image": "http://try.getonepager.com/wp-content/uploads/2019/03/feature-1.png",
+        "items": [
+          {
+            "title": "Beautiful and Responsive Design",
+            "description": "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon-3.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Cross Browser Compatibility",
+            "description": "TDesign is not how it looks like of feels lie, design is how its works",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon-4.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Well Documentation",
+            "description": "Start by doing whats necessary; then do whats possible; and suddenly you are doing the impossible.",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon-5.png",
+            "link": "",
+            "target": false
+          }
+        ]
+      },
+      "settings": {
+        "media_alignment": "left",
+        "media_grid": "width-1-3",
+        "animation_media": "slide-right-medium",
+        "item_columns": "1",
+        "title_size": "60",
+        "title_transformation": "0",
+        "desc_size": "18",
+        "animation_content": "slide-left-medium",
+        "item_title_size": "24",
+        "item_title_transformation": "inherit",
+        "item_desc_size": "16"
+      },
+      "styles": {
+        "bg_image": "",
+        "bg_color": "#f4f4f4",
+        "title_color": "#5261f3",
+        "desc_color": "#727272",
+        "icon_color": "",
+        "item_title_color": "#323232",
+        "item_desc_color": "#222222"
+      }
+    },
+    {
+      "id": "s_601813329",
+      "slug": "feature-3",
+      "title": "teachers",
+      "contents": {
+        "title": "Opportunity ",
+        "description": "",
+        "image": "http://try.getonepager.com/wp-content/uploads/2019/03/feature-3.png",
+        "items": [
+          {
+            "title": "Beautiful and Responsive Design",
+            "description": "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon6.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Cross Browser Compatibility",
+            "description": "TDesign is not how it looks like of feels lie, design is how its works",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon9.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Well Documentation",
+            "description": "Start by doing whats necessary; then do whats possible; and suddenly you are doing the impossible.",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon8.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Well Documentation",
+            "description": "Start by doing whats necessary; then do whats possible; and suddenly you are doing the impossible.",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon7.png",
+            "link": "",
+            "target": false
+          }
+        ]
+      },
+      "settings": {
+        "media_alignment": "right",
+        "media_grid": "width-1-3",
+        "animation_media": "slide-left-medium",
+        "item_columns": "2",
+        "title_size": "60",
+        "title_transformation": "0",
+        "desc_size": "18",
+        "animation_content": "slide-right-medium",
+        "item_title_size": "24",
+        "item_title_transformation": "inherit",
+        "item_desc_size": "16"
+      },
+      "styles": {
+        "bg_image": "http://try.getonepager.com/wp-content/uploads/2019/03/bg.jpg",
+        "bg_color": "rgba(244,244,244,0)",
+        "title_color": "#5261f3",
+        "desc_color": "#727272",
+        "icon_color": "",
+        "item_title_color": "#323232",
+        "item_desc_color": "#222222"
+      }
+    },
+    {
+      "id": "s_887123521",
+      "slug": "cta-2",
+      "title": "Cta",
+      "contents": {
+        "title": "Modern and ridiculusly easy <br>page builder for all",
+        "description": "<p>I dream my painting and I paint my dream</p>",
+        "image": "",
+        "link": {
+          "text": "Download Now",
+          "url": "",
+          "target": false
+        }
+      },
+      "settings": {
+        "content_alignment": "center",
+        "content_animation": "slide-top-medium",
+        "title_size": "60",
+        "title_transformation": "0",
+        "desc_size": "18",
+        "button_font_size": "16",
+        "button_transformation": "inherit"
+      },
+      "styles": {
+        "bg_image": "http://try.getonepager.com/wp-content/uploads/2019/03/hero-bg.png",
+        "bg_parallax": true,
+        "overlay_color": "rgba(82,97,243,0.85)",
+        "title_color": "#ffffff",
+        "desc_color": "#ffffff",
+        "button_text_color": "#5261f3",
+        "button_bg_color": "#ffffff",
+        "button_border_color": "#ffffff"
+      }
+    },
+    {
+      "id": "s_207413654",
+      "slug": "feature-3",
+      "title": "Feature",
+      "contents": {
+        "title": "Feature of Mobipaath",
+        "description": "",
+        "image": "http://try.getonepager.com/wp-content/uploads/2019/03/feature-4.png",
+        "items": [
+          {
+            "title": "Beautiful and Responsive Design",
+            "description": "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon-3.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Cross Browser Compatibility",
+            "description": "TDesign is not how it looks like of feels lie, design is how its works",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon-4.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Well Documentation",
+            "description": "Start by doing whats necessary; then do whats possible; and suddenly you are doing the impossible.",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/icon-5.png",
+            "link": "",
+            "target": false
+          }
+        ]
+      },
+      "settings": {
+        "media_alignment": "right",
+        "media_grid": "width-1-3",
+        "animation_media": "slide-left-medium",
+        "item_columns": "1",
+        "title_size": "60",
+        "title_transformation": "0",
+        "desc_size": "18",
+        "animation_content": "slide-right-medium",
+        "item_title_size": "24",
+        "item_title_transformation": "inherit",
+        "item_desc_size": "16"
+      },
+      "styles": {
+        "bg_image": "",
+        "bg_color": "#ffffff",
+        "title_color": "#5261f3",
+        "desc_color": "#727272",
+        "icon_color": "",
+        "item_title_color": "#323232",
+        "item_desc_color": "#222222"
+      }
+    },
+    {
+      "id": "s_882828578",
+      "slug": "feature-4",
+      "title": "testimonial",
+      "contents": {
+        "title": "",
+        "description": "",
+        "items": [
+          {
+            "title": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+            "description": "Khariul Islam Bappi -Lead Designer",
+            "media": "",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+            "description": "Md. Uzzal - Content Wrier",
+            "media": "",
+            "link": "",
+            "target": false
+          }
+        ]
+      },
+      "settings": {
+        "title_size": "60",
+        "title_transformation": "0",
+        "title_alignment": "center",
+        "desc_size": "18",
+        "title_animation": "0",
+        "items_columns": "2",
+        "item_title_size": "18",
+        "item_desc_size": "20",
+        "items_alignment": "center",
+        "items_animation": "slide-top-medium",
+        "section_margin": "0"
+      },
+      "styles": {
+        "bg_color": "#f4f4f4",
+        "title_color": "#5261f3",
+        "desc_color": "#323232",
+        "item_title_color": "#222222",
+        "item_desc_color": "#5261f3",
+        "icon_color": ""
+      }
+    },
+    {
+      "id": "s_277213753",
+      "slug": "feature-4",
+      "title": "blog",
+      "contents": {
+        "title": "Our Blog Post",
+        "description": "",
+        "items": [
+          {
+            "title": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
+            "description": "",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/service1.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
+            "description": "",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/service2.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "A fool thinks himself to be wise, but a wise man knows himself to be a fool.",
+            "description": "",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/service1.png",
+            "link": "",
+            "target": false
+          }
+        ]
+      },
+      "settings": {
+        "title_size": "60",
+        "title_transformation": "0",
+        "title_alignment": "center",
+        "desc_size": "18",
+        "title_animation": "slide-top-medium",
+        "items_columns": "3",
+        "item_title_size": "16",
+        "item_desc_size": "16",
+        "items_alignment": "center",
+        "items_animation": "slide-left-medium",
+        "section_margin": "0"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "title_color": "#5261f3",
+        "desc_color": "#323232",
+        "item_title_color": "#222222",
+        "item_desc_color": "#222222",
+        "icon_color": ""
+      }
+    },
+    {
+      "id": "s_941434724",
+      "slug": "footer-1",
+      "title": "Footer",
+      "contents": {
+        "social": [
+          "http://facebook.com/ThemeXpert",
+          "http://twitter.com/themexpert",
+          "http://linkedin.com/themexpert",
+          "http://behance.net/ThemeXpert",
+          "http://dribbble.com/themexpert"
+        ],
+        "menu": "179",
+        "copyright": "Copyright &copy; 2019 OnePager, All Rights Reserved"
+      },
+      "styles": {
+        "bg_color": "#0a082e",
+        "text_color": "#f2f2f2",
+        "text_hover_color": "#0d73ee",
+        "item_alignment": "center",
+        "section_animation": "slide-left-medium",
+        "menu_transformation": "inherit"
+      }
+    }
+  ]
+}
