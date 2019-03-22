@@ -127,6 +127,23 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 
 == Changelog ==
+= 2.1.0 =
+- New: Dashboard to explore all layouts and easy to get started.
+- New: Feature-4 block added.
+- New: App landing page added.
+- New: Onepager page template(onepager default) that support theme header/footer.
+- New: WooCommerce block.
+
+- Improved: Adding new section now showing block name instead of ‘Untitled section’.
+- Improved: Edit with onepager link and onepager label added to page built with onepager.
+- Improved: Animation added to all blocks.
+- Improved: Several UI improvements.
+- Improved: All blocks image updated for faster loading
+
+- Fix: Scrolling issue fix for block picker.
+- Fix: All blocks PHP error fix.
+- Fix: Navbar block site url missing fix.
+
 = 2.0.6 =
 - Fix: All blocks title now resize automatically in 1.5/2 ratio
 - Fix: onpage override fix for theme 
