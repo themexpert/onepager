@@ -1,0 +1,313 @@
+{
+  "name": "Software Service",
+  "sections": [
+    {
+      "id": "s_94151086",
+      "slug": "cta-2",
+      "title": "hero",
+      "contents": {
+        "title": "The future of presenting starts here.",
+        "description": "<p>An open platform for presentations and content collaboration. Sign up to get early access.</p>\n<p>&nbsp;</p>\n<p>[mc4wp_form id=\"1729\"]</p>",
+        "image": "http://try.getonepager.com/wp-content/uploads/2019/02/content-img.png",
+        "link": {
+          "text": "",
+          "url": "",
+          "target": false,
+          "focus": true
+        }
+      },
+      "settings": {
+        "content_alignment": "center",
+        "content_animation": "slide-top-medium",
+        "title_size": "60",
+        "title_transformation": "capitalize",
+        "desc_size": "24",
+        "button_font_size": "16",
+        "button_transformation": "inherit"
+      },
+      "styles": {
+        "bg_image": "",
+        "bg_parallax": false,
+        "overlay_color": "rgba(255,255,255,1)",
+        "title_color": "#1c1d1e",
+        "desc_color": "#1c1d1e",
+        "button_text_color": "#ffffff",
+        "button_bg_color": "#0d73ee",
+        "button_border_color": "#0d73ee"
+      }
+    },
+    {
+      "id": "s_25320354",
+      "slug": "feature-2",
+      "title": "feature",
+      "contents": {
+        "title": "The presentation tool <br>for generation Onepager",
+        "description": "Presentations have defined entire industries and architected how organizations work. Yet for decades we’ve been stuck with the same tools. Pitch is a new beginning. An open platform for presentations and content collaboration. A new paradigm to improve the way presentations are crafted and knowledge is shared.",
+        "items": [
+          {
+            "title": "Designed for everyone. <br>Made for teams.",
+            "description": "No more missing fonts, broken layouts or manual versioning of presentations. \nFor teams and individuals, collaboration has never been easier.",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/1-1.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Work anywhere. <br>On all your devices.",
+            "description": "Collaborate seamlessly across devices from wherever you may be – whether you’re in the office, on the go, or making last-minute changes before your next meeting.",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/2.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Powerful templates. <br>Next-level layouts.",
+            "description": "Poorly designed presentations are a thing of the past. Create beautiful and high-quality content that is aligned with your brand, in just a few clicks.",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/3.png",
+            "link": "",
+            "target": false
+          },
+          {
+            "title": "Data from everywhere. <br>Updated in real time.",
+            "description": "Manually updating your business reports and sales pitches is tedious and painful. With Pitch, connect to external data sources to turn your presentations into living documents.",
+            "media": "http://try.getonepager.com/wp-content/uploads/2019/03/4.png",
+            "link": "",
+            "target": false
+          }
+        ]
+      },
+      "settings": {
+        "title_size": "60",
+        "title_transformation": "capitalize",
+        "title_alignment": "center",
+        "desc_size": "18",
+        "title_animation": "slide-top-medium",
+        "items_columns": "2",
+        "item_title_size": "36",
+        "item_desc_size": "18",
+        "items_alignment": "center",
+        "items_animation": "slide-left-medium"
+      },
+      "styles": {
+        "bg_image": "",
+        "bg_color": "#fafbfc",
+        "title_color": "#1c1d1e",
+        "desc_color": "#1c1d1e",
+        "item_title_color": "#1c1d1e",
+        "item_desc_color": "#424648",
+        "icon_color": ""
+      }
+    },
+    {
+      "id": "s_860657179",
+      "slug": "feature-1",
+      "title": "about",
+      "contents": {
+        "title": "Lets make a better website together",
+        "description": "The world is a dangerous place to live; not because of the people who are evil, but because of the people who dont do anything about it.",
+        "image": "",
+        "link": {
+          "text": "Read Article",
+          "url": "",
+          "target": false
+        }
+      },
+      "settings": {
+        "media_alignment": "right",
+        "media_grid": "width-1-2",
+        "title_size": "60",
+        "title_transformation": "capitalize",
+        "desc_size": "18",
+        "animation_content": "slide-left-medium",
+        "animation_media": "0"
+      },
+      "styles": {
+        "bg_image": "http://try.getonepager.com/wp-content/uploads/2019/02/Vector-Smart-Object.png",
+        "bg_repeat": "no-repeat",
+        "bg_color": "#ebeff2",
+        "title_color": "#323232",
+        "text_color": "#323232",
+        "button_bg_color": "#0274be",
+        "button_text_color": "#ffffff"
+      }
+    },
+    {
+      "id": "s_52604357",
+      "slug": "cta-3",
+      "title": "content",
+      "contents": {
+        "title": "Updated in real time",
+        "description": "We’re building the best next-generation presentation tool and platform for students, teachers, creatives, <br>managers, startups and teams everywhere. We are looking for people with a strong passion for <br>delightful user experiences and innovative design and technology.",
+        "link": {
+          "text": "Read More",
+          "url": "",
+          "target": false,
+          "focus": true
+        },
+        "items": [
+          {
+            "title": "Powerful Dashboard",
+            "icon": "fa fa-angle-right fa-lg",
+            "link": ""
+          },
+          {
+            "title": "Content Strategist",
+            "icon": "fa fa-angle-right fa-lg",
+            "link": ""
+          }
+        ]
+      },
+      "settings": {
+        "content_alignment": "center",
+        "content_animation": "slide-top-medium",
+        "title_size": "60",
+        "title_transformation": "capitalize",
+        "desc_size": "18",
+        "button_font_size": "16",
+        "button_transformation": "inherit",
+        "items_font_size": "20"
+      },
+      "styles": {
+        "bg_image": "",
+        "bg_parallax": false,
+        "overlay_color": "rgba(255,255,255,1)",
+        "title_color": "#1c1d1e",
+        "desc_color": "#1c1d1e",
+        "button_text_color": "#ffffff",
+        "button_bg_color": "#0d73ee",
+        "button_border_color": "#ffffff",
+        "items_text_color": "#1c1d1e",
+        "items_bg_color": "#ffffff",
+        "items_border_color": "#d5dbe0"
+      }
+    },
+    {
+      "id": "s_269507280",
+      "slug": "feature-1",
+      "title": "subscribe",
+      "contents": {
+        "title": "Stay up to the date",
+        "description": "<p>Get notified about company news, updates and be the first get early access to the<strong> faster, simpler and smarter</strong> way of presenting.</p>\n<p>&nbsp;</p>\n<p>[mc4wp_form id=\"1729\"]</p>",
+        "image": "http://try.getonepager.com/wp-content/uploads/2019/03/Mockups.png",
+        "link": {
+          "text": "",
+          "url": "",
+          "target": false
+        }
+      },
+      "settings": {
+        "media_alignment": "left",
+        "media_grid": "width-1-2",
+        "title_size": "60",
+        "title_transformation": "capitalize",
+        "desc_size": "18",
+        "animation_content": "slide-right-medium",
+        "animation_media": "slide-left-medium"
+      },
+      "styles": {
+        "bg_image": "",
+        "bg_repeat": "no-repeat",
+        "bg_color": "#ebeff2",
+        "title_color": "#1c1d1e",
+        "text_color": "#1c1d1e",
+        "button_bg_color": "#0d73ee",
+        "button_text_color": "#ffffff"
+      }
+    },
+    {
+      "id": "s_47317262",
+      "slug": "pricing-1",
+      "title": "pricing",
+      "contents": {
+        "title": "Choose Our Plan",
+        "description": "",
+        "pricings": [
+          {
+            "title": "Personal",
+            "featured": false,
+            "price": "<b>39</b>",
+            "money": "$",
+            "period": "Year",
+            "features": [
+              "100+ All Premium Templates",
+              "200+ Premium Blocks",
+              "Full Screen Blocks",
+              "All Coming Soon Blocks",
+              "Plugin updates *",
+              "Email support *",
+              "<b>1 Site</b>",
+              "All core features included"
+            ],
+            "link": {
+              "text": "sign up",
+              "url": "https://themesgrove.com/wp-onepager/#pricing",
+              "target": false,
+              "focus": true
+            }
+          },
+          {
+            "title": "Agency",
+            "featured": true,
+            "price": "<b>99</b>",
+            "money": "$",
+            "period": "Year",
+            "features": [
+              "100+ All Premium Templates",
+              "200+ Premium Blocks",
+              "Full Screen Blocks",
+              "All Coming Soon Blocks",
+              "Plugin updates *",
+              "Email support *",
+              "<b>5 Site</b>",
+              "All core features included"
+            ],
+            "link": {
+              "text": "sign up",
+              "url": "https://themesgrove.com/wp-onepager/#pricing",
+              "target": false,
+              "focus": true
+            }
+          },
+          {
+            "title": "Unlimited",
+            "featured": false,
+            "price": "<b>199</b>",
+            "money": "$",
+            "period": "Year",
+            "features": [
+              "100+ All Premium Templates",
+              "200+ Premium Blocks",
+              "Full Screen Blocks",
+              "All Coming Soon Blocks",
+              "Plugin updates *",
+              "Email support *",
+              "<b>Unlimited Sites</b>",
+              "All core features included"
+            ],
+            "link": {
+              "text": "sign up",
+              "url": "https://themesgrove.com/wp-onepager/#pricing",
+              "target": false,
+              "focus": true
+            }
+          }
+        ]
+      },
+      "settings": {
+        "title_size": "60",
+        "title_transformation": "capitalize",
+        "title_alignment": "center",
+        "desc_size": "18",
+        "title_animation": "slide-top-medium",
+        "items_columns": "3"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "title_color": "#1c1d1e",
+        "desc_color": "#1c1d1e",
+        "text_color": "#1c1d1e",
+        "feature_text_color": "#ffffff",
+        "feature_bg_color": "#0274be",
+        "value_bg_color": "#dddddd"
+      }
+    }
+  ]
+}
