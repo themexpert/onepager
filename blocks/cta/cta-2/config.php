@@ -130,7 +130,7 @@ return array(
       'name'    => 'overlay_color',
       'label'   => 'Overlay Color',
       'type'    => 'colorpicker',
-      'value' => 'rgba(34,34,34,.8)'
+      'value' => 'rgba(200,200,200,0.17)'
     ),
 
     array(
