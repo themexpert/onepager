@@ -2,22 +2,40 @@
 
 return array(
 
-  'slug'      => 'cta-2', // Must be unique and singular
+  'slug'      => 'cta-3', // Must be unique and singular
   'groups'    => array('Call To Actions'), // Blocks group for filter and plural
 
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array(
       'name'=>'title',
-      'value' => 'Modern and ridiculusly easy page builder for all'
+      'value' => 'Updated in real time'
     ),
     array(
       'name'=>'description',
-      'type'=>'editor',
-      'value'=> 'I dream my painting and I paint my dream'
+      'type'=>'textarea',
+      'value'=> 'We’re building the best next-generation presentation tool and platform for students, teachers, creatives, <br>managers, startups and teams everywhere. We are looking for people with a strong passion for <br>delightful user experiences and innovative design and technology.'
     ),
-    array('name'=>'image', 'type' => 'image', 'value'=> 'http://s3.amazonaws.com/quantum-assets/icons/download.png'),
-    array('name'=>'link', 'type' => 'link'),
+    array('name'=>'link', 'text' => 'Read More', 'type' => 'link'),
+
+    array('label'=>'Items', 'type'=>'divider'), // Divider - Text
+    array(
+      'name'=>'items',
+      'type'=>'repeater',
+      'fields' => array(
+        array(
+          array('name'=>'title', 'label' => 'Name', 'value' => 'Powerful Dashboard'),
+          array('name'=>'icon', 'type' => 'icon', 'value' => 'fa fa-angle-right fa-lg'),
+          array('name'=>'link'),
+        ),
+      array(
+          array('name'=>'title', 'label' => 'Name', 'value' => 'Content Strategist'),
+          array('name'=>'icon', 'type' => 'icon', 'value' => 'fa fa-angle-right fa-lg'),
+          array('name'=>'link'),
+        ),
+      )
+    )
+
   ),
 
   // Settings - $settings available on view file to access the option
@@ -110,6 +128,14 @@ return array(
       ),
     ),
 
+  array('label'=>'Items', 'type'=>'divider'), // Divider - Text
+    array(
+      'name' => 'items_font_size',
+      'label' => 'Font Size',
+      'append' => 'px',
+      'value' => '20'
+    ),
+
   ),
 
   // Fields - $styles available on view file to access the option
@@ -118,7 +144,7 @@ return array(
       'name'    => 'bg_image',
       'label'   => 'Background',
       'type'    => 'image',
-      'value'   => 'http://s3.amazonaws.com/quantum-assets/bg/bg6.jpg'
+      'value'   => ''
     ),
     array(
       'name'=>'bg_parallax',
@@ -130,20 +156,20 @@ return array(
       'name'    => 'overlay_color',
       'label'   => 'Overlay Color',
       'type'    => 'colorpicker',
-      'value' => 'rgba(200,200,200,0.17)'
+      'value' => 'rgba(255,255,255,1)'
     ),
 
     array(
       'name'  => 'title_color',
       'label' => 'Title Color',
       'type'  => 'colorpicker',
-      'value' => '#fff'
+      'value' => '#1c1d1e'
     ),
     array(
       'name'  => 'desc_color',
       'label' => 'Desc Color',
       'type'  => 'colorpicker',
-      'value' => '#ddd'
+      'value' => '#1c1d1e'
     ),
 
 
@@ -153,7 +179,7 @@ return array(
       'name'    => 'button_text_color',
       'label'   => 'Text Color',
       'type'    => 'colorpicker',
-      'value'   => '#fff'
+      'value'   => '#1c1d1e'
     ),
     array(
       'name'    => 'button_bg_color',
@@ -167,6 +193,27 @@ return array(
       'label'   => 'Border Color',
       'type'    => 'colorpicker',
       'value'   => '@color.primary'
+    ),
+
+    array('label'=>'Items', 'type'=>'divider'), // Divider - Text
+    array(
+      'name'    => 'items_text_color',
+      'label'   => 'Text Color',
+      'type'    => 'colorpicker',
+      'value'   => '#1c1d1e'
+    ),
+    array(
+      'name'    => 'items_bg_color',
+      'label'   => 'Bg Color',
+      'type'    => 'colorpicker',
+      'value'   => '#fff'
+    ),
+
+    array(
+      'name'    => 'items_border_color',
+      'label'   => 'Border Color',
+      'type'    => 'colorpicker',
+      'value'   => '#d5dbe0'
     ),
   ),
 
