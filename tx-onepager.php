@@ -76,9 +76,10 @@ do_action('onepager_loaded');
 function appsero_init_tracker_wponepager() {
 
   $client = new Appsero\Client( '1d1fcedc-f2b7-47af-b10f-432374011f07', 'WPOnepager', __FILE__ );
-
+  $theme = wp_get_theme();
   $metadata = array(
-    'active_theme'  => get_template()
+    'active_theme'  => $theme->get('Name'),
+    'theme_uri' => $theme->get('ThemeURI')
   );
 
   // Active insights
