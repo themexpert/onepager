@@ -1,6 +1,4 @@
 <?php
-	//$items = $settings['columns'];
-
 	// title alignment
 	$title_alignment = ($settings['title_alignment']) ? $settings['title_alignment'] : '';
 	// title animation
@@ -25,7 +23,7 @@
 					<?php endif; ?>
 					<?php if($contents['description']):?>
 						<!-- Section Sub Title -->
-						<p class="uk-text-lead" <?php echo ($settings['title_animation'] ? $title_animation .'delay:100"' : '' );?>>
+						<p class="uk-text-lead" <?php echo ($settings['title_animation'] ? $title_animation .'delay:300"' : '' );?>>
 							<?php echo $contents['description'];?>
 						</p>
 					<?php endif; ?>
