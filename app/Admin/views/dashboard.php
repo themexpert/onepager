@@ -61,24 +61,21 @@ function op_get_html_group_class($groups)
     <div data-group="<?php echo op_get_html_group_class($layout['group'])?>">
       <div class="uk-card uk-card-default uk-transition-toggle" tabindex="0">
         <div class="uk-card-media-top uk-inline">
-
           <img data-src="<?php echo $layout['screenshot'] ?>" alt="<?php echo $layout['name'] ?>" uk-img >
-          <div class="uk-position-cover uk-overlay uk-overlay-primary uk-transition-fade"></div>
-          <div class="uk-position-center uk-text-center uk-transition-fade">
-            <p>
-              <button 
+          <div class="uk-position-cover uk-overlay uk-overlay-default uk-transition-fade"></div>
+        </div>
+        
+        <div class="uk-card-footer uk-padding-small uk-margin-remove uk-text-center">
+          <p class="uk-margin-small-bottom"><strong><?php echo $layout['name'] ?></strong></p>
+          <button 
                 id="layout-import"
-                class="uk-button uk-button-primary uk-border-pill"
+                class="uk-button uk-button-primary uk-width-1-1"
                 uk-toggle="target: #layout-selection-modal"
                 data-name="<?php echo $layout['name'] ?>"
                 data-image="<?php echo $layout['screenshot'] ?>"
                 data-id="<?php echo $layout['id'] ?>"
                 >Import</button>
-            </p>
-          </div>
         </div>
-        
-        <p class="uk-card-footer uk-padding-small uk-margin-remove"><?php echo $layout['name'] ?></p>
       </div>
     </div>
   <?php endforeach; ?>
