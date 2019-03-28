@@ -65,29 +65,32 @@ class BuildModeScripts
         $disableBuildModeUrl = onepager_get_edit_mode_url(get_current_page_url(), false);
 
         $optionPanel = onepager()->optionsPanel('onepager')->getOptionsControls();
+        $pageOptionPanel = onepager()->optionsPanel('page')->getOptionsControls();
         $options = onepager()->optionsPanel('onepager')->getAllSavedOptions();
-        $page = 'onepager';
+        $pageOptions = onepager()->optionsPanel('page')->getAllSavedOptions();
 
         $presets = \Onepager::getPresets();
         $basePreset = \Onepager::getBasePreset();
 
         return compact(
-      'ajaxUrl',
-      'disableBuildModeUrl',
-      'optionPanel',
-      'options',
-      'page',
-      'blocks',
-      'pageId',
-      'sections',
-      'menus',
-      'pages',
-      'categories',
-      'groupOrder',
-      'footer',
-      'presets',
-      'basePreset',
-      'woocategories'
+            'ajaxUrl',
+            'disableBuildModeUrl',
+            'optionPanel',
+            'pageOptionPanel',
+            'options',
+            'pageOptions',
+            'page',
+            'blocks',
+            'pageId',
+            'sections',
+            'menus',
+            'pages',
+            'categories',
+            'groupOrder',
+            'footer',
+            'presets',
+            'basePreset',
+            'woocategories'
     );
     }
 

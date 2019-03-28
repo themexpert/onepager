@@ -1,6 +1,7 @@
 var path = require('path');
 var merge = require('webpack-merge');
 var webpack = require('webpack');
+var WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 
 var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
@@ -45,7 +46,11 @@ if(isProduction){
         'NODE_ENV': JSON.stringify('production'),
       }
     }),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new WebpackBuildNotifierPlugin({
+      title: "My Project Webpack Build",
+      suppressSuccess: true
+    })
   ];
 }
 

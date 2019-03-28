@@ -34,9 +34,11 @@ let Admin = React.createClass({
     jQuery('select.form-control').unbind();
     jQuery('[data-toggle="tooltip"]').unbind()
   },
-  render(){
-    let panel = this.state.optionPanel.get(this.state.activeTabIndex);
 
+  render(){
+    let panel = this.state.pageOptionPanel.get(this.state.activeTabIndex);
+    console.log("Page Panel", panel)
+    
     return (
       <div>
         <Tabs

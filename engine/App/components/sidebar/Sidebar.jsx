@@ -10,6 +10,7 @@ const AppActions = require('../../flux/AppActions.js');
 const AppStore = require('../../AppStore.js');
 const SectionList = require('../section-list/SectionList.jsx');
 const SectionControls = require('./SectionControls.jsx');
+const PageSettings = require("./Page-Settings.jsx");
 const Settings = require("./Settings.jsx");
 const Menu = require("./Menu.jsx");
 const $ = jQuery;
@@ -56,6 +57,8 @@ let Sidebar = React.createClass({
   handleGlobalSettingsSave(){
     let serializedSections = SectionTransformer.serializeSections(this.props.sections);
     let isSectionsDirty = AppStore.isDirty();
+
+    window.settings_type = this.props.sidebarTabState.active == 'op-page-settings' ? 'page' : 'onepager';
 
     let updated = OptionActions.syncWithSections
       .triggerPromise(serializedSections, (sections)=> {
@@ -115,8 +118,10 @@ let Sidebar = React.createClass({
         <Tab onClick={handleTabClick} id='op-blocks' icon='cube' title='Blocks' active={activeTab}/>
         <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab}
              visibleOn="op-sections"/>
-        <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab}
+        <Tab onClick={handleTabClick} id='op-page-settings' icon='cog' title='Page Settings' active={activeTab}
              visibleOn="op-sections"/>
+        {/* <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab}
+             visibleOn="op-sections"/> */}
       </ul>
     );
   },
@@ -201,9 +206,13 @@ let Sidebar = React.createClass({
               }
             </TabPane>
 
-            <TabPane id='op-settings' active={activeTab}>
-              <Settings whenSettingsDirty={this.whenSettingsDirty}/>
+            <TabPane id='op-page-settings' active={activeTab}>
+              <PageSettings whenSettingsDirty={this.whenSettingsDirty}/>
             </TabPane>
+
+            {/* <TabPane id='op-settings' active={activeTab}>
+              <Settings whenSettingsDirty={this.whenSettingsDirty}/>
+            </TabPane> */}
 
             {/* {activeTab === "op-sections" ? <Footer /> : null } */}
 
@@ -215,7 +224,7 @@ let Sidebar = React.createClass({
             <div className="uk-navbar-left"></div>
             <div className="uk-navbar-right">
               {
-                activeTab === 'op-settings' ?
+                activeTab === 'op-settings' || activeTab === 'op-page-settings' ?
                   <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave}
                           className='uk-button uk-button-primary uk-button-small'>
                     <span className={saveButtonIcon}></span> Update

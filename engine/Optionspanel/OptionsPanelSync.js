@@ -1,5 +1,6 @@
 const $ = jQuery;
 import toolbelt from '../shared/lib/toolbelt.js';
+import ODataStore from './../shared/onepager/ODataStore.js';
 
 module.exports = function (ajaxUrl, page) {
   let data = {
@@ -8,8 +9,13 @@ module.exports = function (ajaxUrl, page) {
   };
 
   function send(data){
+    data['page'] = window.settings_type;
+    data['pageID'] = ODataStore.pageId;
+
     return new Promise((resolve, reject)=> {
       $.post(ajaxUrl, data, (res)=> {
+        window.settings_type = 'onepager';
+
         return res.success ? resolve(res) : reject(res);
       });
     });

@@ -1,22 +1,26 @@
-<?php namespace App\Api\Controllers;
+<?php
 
-class OptionsApiController extends ApiController {
-  public function saveOptions() {
-    $page    = array_get( $_POST, 'page', false );
-    $options = array_get( $_POST, 'options', [ ] ) ?: [ ]; //making sure its an array
-    $options = $this->filterInput( $options );
+namespace App\Api\Controllers;
 
-    onepager()->optionsPanel( $page )->update( $options );
-    onepager()->render()->mergeSectionsAndSettings();
+class OptionsApiController extends ApiController
+{
+    public function saveOptions()
+    {
+        $page = array_get($_POST, 'page', false);
+        $options = array_get($_POST, 'options', []) ?: []; //making sure its an array
+        $options = $this->filterInput($options);
 
-    $sections = array_get( $_POST, 'sections', [ ] ) ?: [ ]; //making sure its an array
+        onepager()->optionsPanel($page)->update($options);
+        onepager()->render()->mergeSectionsAndSettings();
 
-    if ( count( $sections ) ) {
-      $sections = $this->filterInput( $sections );
-      $sections = onepager()->render()->mergeSectionsBlocksSettings( $sections );
-      $this->responseSuccess( compact( 'sections' ) );
-    } else {
-      $this->responseSuccess();
+        $sections = array_get($_POST, 'sections', []) ?: []; //making sure its an array
+
+        if (count($sections)) {
+            $sections = $this->filterInput($sections);
+            $sections = onepager()->render()->mergeSectionsBlocksSettings($sections);
+            $this->responseSuccess(compact('sections'));
+        } else {
+            $this->responseSuccess();
+        }
     }
-  }
 }

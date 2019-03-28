@@ -10,9 +10,9 @@ abstract class Onepager
     protected static $basePreset;
     protected static $scripts = [];
 
-    public static function getOptionPanel()
+    public static function getOptionPanel($menuSlug = 'onepager')
     {
-        return onepager()->optionsPanel('onepager');
+        return onepager()->optionsPanel($menuSlug);
     }
 
     // Get individual option
@@ -106,8 +106,9 @@ abstract class Onepager
         return onepager()->content()->isBuildMode();
     }
 
-    public static function isWooCommerceInstalled(){
-        if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+    public static function isWooCommerceInstalled()
+    {
+        if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
             return true;
         }
         return false;

@@ -108,7 +108,11 @@ class OptionsPanel implements OptionsPanelInterface
 
     public function update($options)
     {
-        update_option($this->menuSlug, $options);
+        if ($this->menuSlug == 'page') {
+            update_post_meta($_POST['pageID'], 'onepager_settings', $options);
+        } else {
+            update_option($this->menuSlug, $options);
+        }
         $this->flattenOptions();
     }
 
@@ -143,7 +147,11 @@ class OptionsPanel implements OptionsPanelInterface
         $data = [];
 
         if ($this->options) {
-            $data = get_option($this->menuSlug, []);
+            if ($this->menuSlug == 'page') {
+                $data = get_post_meta(onepager()->content()->getCurrentPageId(), 'onepager_settings')[0];
+            } else {
+                $data = get_option($this->menuSlug, []);
+            }
 
             $data = $this->mergeOptions($data, $this->getOptionsControls());
         }
@@ -152,6 +160,17 @@ class OptionsPanel implements OptionsPanelInterface
     }
 
     public function getOptionsControls()
+    {
+        $options = array_map(function ($options) {
+            $options['fields'] = array_values($this->transformOptions($options['fields']));
+
+            return $options;
+        }, $this->options);
+
+        return $options;
+    }
+
+    public function getPageOptionsControls()
     {
         $options = array_map(function ($options) {
             $options['fields'] = array_values($this->transformOptions($options['fields']));

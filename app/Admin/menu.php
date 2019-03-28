@@ -6,30 +6,31 @@ if (!defined('ABSPATH')) {
 // Register admin menu
 add_action('admin_menu', 'register_admin_menu', 20);
 
-function register_admin_menu(){
-  //Icon
-  $icon = onepager()->url( 'assets/images/logo-white.png' );
-  // Dashboard
-  $template = function () {
-    include __DIR__ . "/views/dashboard.php";
-  };
+function register_admin_menu()
+{
+    //Icon
+    $icon = onepager()->url('assets/images/logo-white.png');
+    // Dashboard
+    $template = function () {
+        include __DIR__ . '/views/dashboard.php';
+    };
 
-  add_menu_page(
-    __( 'OnePager', 'onepager' ),
-    __( 'OnePager', 'onepager' ),
-    'manage_options',
-    'onepager',
-    $template,
-    $icon,
-    '31'
+    add_menu_page(
+        __('OnePager', 'onepager'),
+        __('OnePager', 'onepager'),
+        'manage_options',
+        'onepager',
+        $template,
+        $icon,
+        '31'
   );
-  add_submenu_page(
-    'onepager', 
-    __( 'Dashboard', 'onepager' ),
-    __( 'Dashboard', 'onepager' ),
-    'manage_options', 
-    'onepager',
-    $template
+    add_submenu_page(
+        'onepager',
+        __('Dashboard', 'onepager'),
+        __('Dashboard', 'onepager'),
+        'manage_options',
+        'onepager',
+        $template
   );
 }
 
@@ -37,16 +38,16 @@ function register_admin_menu(){
 add_action('admin_menu', 'register_submenu', 501);
 function register_submenu()
 {
-  // Getting started page
+    // Getting started page
     add_submenu_page(
-    'onepager',
-    __('Welcome to OnePager', 'onepager'),
-    __('Getting Started', 'onepager'),
-    'manage_options',
-    'onepager-getting-started',
-    function () {
-        include __DIR__ . '/views/getting-started.php';
-    }
+        'onepager',
+        __('Welcome to OnePager', 'onepager'),
+        __('Getting Started', 'onepager'),
+        'manage_options',
+        'onepager-getting-started',
+        function () {
+            include __DIR__ . '/views/getting-started.php';
+        }
   );
     // add_submenu_page(
     //   'onepager',
@@ -57,12 +58,22 @@ function register_submenu()
     //   [ $this, 'handle_external_redirects' ]
     // );
     add_submenu_page(
-    'onepager',
-    '',
-    '<span class="dashicons dashicons-star-filled" style="font-size: 17px"></span> ' . __('Go Pro', 'onepager'),
-    'manage_options',
-    'onepager-gopro',
-    'handle_external_redirects'
+        'onepager',
+        '',
+        __('Settings', 'onepager'),
+        'manage_options',
+        'onepager-settings',
+        function () {
+            include __DIR__ . '/views/settings.php';
+        }
+  );
+    add_submenu_page(
+        'onepager',
+        '',
+        '<span class="dashicons dashicons-star-filled" style="font-size: 17px"></span> ' . __('Go Pro', 'onepager'),
+        'manage_options',
+        'onepager-gopro',
+        'handle_external_redirects'
   );
 }
 // Redirect
@@ -93,7 +104,7 @@ function onepager_load_admin_scripts()
     //add builder.css so icons and other stuff styles
     wp_enqueue_script('uikit', op_asset('assets/js/uikit.js'));
     wp_enqueue_script('uikit-icons', op_asset('assets/js/uikit-icons.js'));
-    
+
     wp_enqueue_style('uikit', op_asset('assets/css/uikit.css'));
     wp_enqueue_style('lithium-builder', op_asset('assets/css/lithium-builder.css'));
 }

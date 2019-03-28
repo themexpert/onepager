@@ -15,6 +15,8 @@ import LocalState from '../shared/lib/localState.js';
 let componentLocalState = LocalState('onepager_settings_ui_state')();
 
 let options = ODataStore.options;
+let pageOptions = ODataStore.pageOptions;
+console.log("odata", ODataStore)
 let sync = Sync(ODataStore.ajaxUrl, ODataStore.page);
 
 function transformer(fields, panelId) {
@@ -29,9 +31,27 @@ function transformer(fields, panelId) {
   });
 }
 
+function transformerPage(fields, panelId) {
+  return fields.map(field => {
+    field.ref = _.uniqueId("ref_");
+
+    if (pageOptions && pageOptions[panelId] && pageOptions[panelId][field.name] !== undefined) {
+      field.value = pageOptions[panelId][field.name];
+    }
+
+    return field;
+  });
+}
+
 //add refs to control
 let _optionPanel = _.map(toolbelt.copy(ODataStore.optionPanel), (panel)=> {
   panel.fields = transformer(panel.fields, panel.id);
+  return panel;
+});
+
+let _pageOptionPanel = _.map(toolbelt.copy(ODataStore.pageOptionPanel), (panel)=> {
+  panel.fields = transformerPage(panel.fields, panel.id);
+
   return panel;
 });
 
@@ -39,7 +59,8 @@ let AppState = {
   //FIXME: this is source of potential bug
   activeTabIndex: componentLocalState.get('activeTabIndex', 0),
   synced: fromJS(_optionPanel),
-  optionPanel: fromJS(_optionPanel)
+  optionPanel: fromJS(_optionPanel),
+  pageOptionPanel: fromJS(_pageOptionPanel),
 };
 
 //get tabs
@@ -79,6 +100,7 @@ let OptionsPanelStore = Reflux.createStore({
 
   onSyncWithSections(sections, callback){
     let options = this._prepareOptionsForSync();
+    
     let update = sync(options, sections);
 
     //FIXME: move this to UI
