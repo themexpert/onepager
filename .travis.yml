@@ -1,0 +1,50 @@
+# Travis CI (MIT License) configuration file
+# @link https://travis-ci.org/
+
+# Use new container based environment
+sudo: false
+
+# Declare project language.
+# @link http://about.travis-ci.org/docs/user/languages/php/
+language: php
+
+# Declare versions of PHP to use. Use one decimal max.
+# @link http://docs.travis-ci.com/user/build-configuration/
+matrix:
+    fast_finish: true
+
+    include:
+        # aliased to a recent 5.4.x version
+        - php: '5.4'
+        # aliased to a recent 5.5.x version
+        - php: '5.5'
+        # aliased to a recent 5.6.x version
+        - php: '5.6'
+        # aliased to a recent 7.0 version
+        - php: '7.0'
+        # aliased to a recent 7.1 version
+        - php: '7.1'
+          env: SNIFF=1
+        # aliased to a recent 7.2 version
+        - php: '7.2'
+        # php nightly
+        - php: 'nightly'
+
+    allow_failures:
+        - php: nightly
+
+before_install:
+  # Install PHP CodeSniffer.
+  - if [[ "$SNIFF" == "1" ]]; then composer self-update; fi
+  - if [[ "$SNIFF" == "1" ]]; then composer require squizlabs/php_codesniffer:dev-master; fi
+  - if [[ "$SNIFF" == "1" ]]; then composer install; fi
+  - phpenv rehash
+
+script:
+  # Search for PHP syntax errors.
+  - find -L . -path ./vendor -prune -o -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+  # Run PHPCS.
+  # If the custom ruleset is named `.phpcs.xml`, `phpcs.xml`, `.phpcs.xml.dist` or `phpcs.xml.dist`
+  # and, like the travis script, is in the root of the project, you can leave
+  # out the `--standard=` part of the command.
+  - if [[ "$SNIFF" == "1" ]]; then vendor/bin/phpcs . --standard=./custom-ruleset.xml; fi
