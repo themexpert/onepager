@@ -10,15 +10,15 @@ namespace App\Api\Controllers;
 
 
 class MenuApiController extends ApiController {
-  public function addMenu() {
-    $menuId    = array_get( $_POST, 'menuId', false );
-    $itemId    = array_get( $_POST, 'itemId', false );
-    $itemTitle = array_get( $_POST, 'itemTitle', false );
+	public function addMenu() {
+		$menuId    = array_get( $_POST, 'menuId', false );
+		$itemId    = array_get( $_POST, 'itemId', false );
+		$itemTitle = array_get( $_POST, 'itemTitle', false );
 
-    onepager()
-      ->navigationMenu()
-      ->addItem( $menuId, $itemTitle, $itemId );
+		onepager()
+		->navigationMenu()
+		->addItem( $menuId, $itemTitle, $itemId );
 
-    $this->responseSuccess();
-  }
+		$this->responseSuccess();
+	}
 }

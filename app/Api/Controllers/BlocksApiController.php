@@ -10,9 +10,9 @@ namespace App\Api\Controllers;
 
 
 class BlocksApiController extends ApiController {
-  public function reloadBlocks() {
-    $blocks = array_values( onepager()->blockManager()->all() );
+	public function reloadBlocks() {
+		$blocks = array_values( onepager()->blockManager()->all() );
 
-    $this->responseSuccess( compact( 'blocks' ) );
-  }
+		$this->responseSuccess( compact( 'blocks' ) );
+	}
 }

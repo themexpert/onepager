@@ -1,21 +1,21 @@
-#<?= $id ?>{
-	<?php if($styles['bg_image']):?>
-	background-image: url(<?= $styles['bg_image']?>);
+#<?php echo $id; ?>{
+	<?php if ( $styles['bg_image'] ) : ?>
+	background-image: url(<?php echo $styles['bg_image']; ?>);
 	background-repeat: no-repeat;
-    background-size: cover;
-	<?php endif;?>	
+	background-size: cover;
+	<?php endif; ?>	
 }
-#<?= $id; ?> .uk-overlay-primary{
-	background: <?= $styles['overlay_color']?>;
+#<?php echo $id; ?> .uk-overlay-primary{
+	background: <?php echo $styles['overlay_color']; ?>;
 }
-#<?= $id;?> .uk-heading-primary{
-	font-size : <?= $settings['title_size']?>px;
-	color : <?= $styles['title_color']?>;
+#<?php echo $id; ?> .uk-heading-primary{
+	font-size : <?php echo $settings['title_size']; ?>px;
+	color : <?php echo $styles['title_color']; ?>;
 }
-#<?= $id ?> .uk-text-lead {
-	font-size : <?= $settings['desc_size']?>px;
-	color : <?= $styles['desc_color']?>;
+#<?php echo $id; ?> .uk-text-lead {
+	font-size : <?php echo $settings['desc_size']; ?>px;
+	color : <?php echo $styles['desc_color']; ?>;
 }
-#<?= $id ?> .op-logo {
-    width: <?= $settings['logo_size']?>px;
+#<?php echo $id; ?> .op-logo {
+	width: <?php echo $settings['logo_size']; ?>px;
 }
