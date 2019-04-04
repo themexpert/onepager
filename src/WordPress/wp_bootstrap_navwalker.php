@@ -90,7 +90,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 			}
 			$indent  = str_repeat( $t, $depth );
 			$output .= "$indent</ul></div>{$n}";
-	}
+		}
 
 		/**
 		 * Starts the element output.

@@ -8,25 +8,28 @@ import serializeSection from './transformer/sectionSerializer.js';
 import _ from 'underscore';
 
 function findBlockBySectionSlug(blocks, slug) {
-  return _.find(blocks, {slug});
+	return _.find( blocks, {slug} );
 }
 
 function unserializeSections(sections, blocks) {
-  return _.map(sections, function (section) {
-    let block = findBlockBySectionSlug(blocks, section.slug);
+	return _.map(
+		sections,
+		function (section) {
+			let block = findBlockBySectionSlug( blocks, section.slug );
 
-    return unserializeSection(section, block);
-  }).filter(Boolean);
+			return unserializeSection( section, block );
+		}
+	).filter( Boolean );
 }
 
 function serializeSections(sections) {
-  return _.map(sections, serializeSection);
+	return _.map( sections, serializeSection );
 }
 
 export {
-  serializeSections,
-  unserializeSections,
-  unifySection,
-  stripClassesFromHTML,
-  replaceSectionStyleInDOM
+	serializeSections,
+	unserializeSections,
+	unifySection,
+	stripClassesFromHTML,
+	replaceSectionStyleInDOM
 };

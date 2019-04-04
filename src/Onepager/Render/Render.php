@@ -8,223 +8,218 @@ use ThemeXpert\Onepager\Block\Transformers\SerializedControlsConfigTransformer;
 use ThemeXpert\Onepager\Block\Transformers\SerializedControlsOptionsTransformer;
 use ThemeXpert\View\View;
 
-class Render
-{
-    protected $blockManager;
-    protected $view;
-    protected $sectionTransformer;
+class Render {
 
-    public function __construct(
-    View $view,
-    BlockManager $blockManager,
-    SerializedControlsConfigTransformer $sectionTransformer
-  ) {
-        $this->blockManager = $blockManager;
-        $this->view = $view;
-        $this->sectionTransformer = $sectionTransformer;
-    }
+	protected $blockManager;
+	protected $view;
+	protected $sectionTransformer;
 
-    public function sections($sections)
-    {
-        foreach ($sections as $section) {
-            echo $this->section($section);
-        }
-    }
+	public function __construct(
+	View $view,
+	BlockManager $blockManager,
+	SerializedControlsConfigTransformer $sectionTransformer
+	) {
+		$this->blockManager = $blockManager;
+		$this->view = $view;
+		$this->sectionTransformer = $sectionTransformer;
+	}
 
-    /**
-     * FIXME: Currently we are not smartly handling non existent blocks exceptions
-     *
-     * @param $section
-     *
-     * @return bool|mixed|null
-     */
-    public function isValidSection($section)
-    {
-        $block = $this->blockManager->get($section['slug']);
+	public function sections( $sections ) {
+		foreach ( $sections as $section ) {
+			echo $this->section( $section );
+		}
+	}
 
-        if (!$block) {
-            return false;
-        }
+	/**
+	 * FIXME: Currently we are not smartly handling non existent blocks exceptions
+	 *
+	 * @param $section
+	 *
+	 * @return bool|mixed|null
+	 */
+	public function isValidSection( $section ) {
+		$block = $this->blockManager->get( $section['slug'] );
 
-        return $block;
-    }
+		if ( ! $block ) {
+			return false;
+		}
 
-    public function section($section)
-    {
-        /**
-         * FIXME: Currently we are not smartly handling non existent blocks exceptions
-         */
-        if (!$block = $this->isValidSection($section)) {
-            return $this->noBlockDefined($section['slug']);
-        }
+		return $block;
+	}
 
-        $view_file = $this->locateViewFile($block);
+	public function section( $section ) {
+		/**
+		 * FIXME: Currently we are not smartly handling non existent blocks exceptions
+		 */
+		if ( ! $block = $this->isValidSection( $section ) ) {
+			return $this->noBlockDefined( $section['slug'] );
+		}
 
-        //throw better exceptions
-        if (!FileSystem::exists($view_file)) {
-            return $this->noViewFile($block['name']);
-        }
+		$view_file = $this->locateViewFile( $block );
 
-        $section = $this->sectionBlockDataMerge($section);
-        $section['url'] = $block['url'];
+		// throw better exceptions
+		if ( ! FileSystem::exists( $view_file ) ) {
+			return $this->noViewFile( $block['name'] );
+		}
 
-        return do_shortcode($this->view->make($view_file, $section));
-    }
+		$section = $this->sectionBlockDataMerge( $section );
+		$section['url'] = $block['url'];
 
-    public function sectionBlockDataMerge($section)
-    {
-        /** FIXME: Currently we are not smartly handling non existent blocks exceptions **/
+		return do_shortcode( $this->view->make( $view_file, $section ) );
+	}
 
-        if (!$block = $this->isValidSection($section)) {
-            return $section;
-            // return $this->noBlockDefined($section['slug']);
-        }
+	public function sectionBlockDataMerge( $section ) {
+		/** FIXME: Currently we are not smartly handling non existent blocks exceptions */
 
-        foreach (['settings', 'contents', 'styles'] as $tab) {
-            if (!array_key_exists($tab, $section)) {
-                $section[$tab] = [];
-            }
-            $section[$tab] = $this->sectionTransformer->mergePersistedDataAndConfigData($block[$tab], $section[$tab]);
-        }
+		if ( ! $block = $this->isValidSection( $section ) ) {
+			return $section;
+			// return $this->noBlockDefined($section['slug']);
+		}
 
-        return $section;
-    }
+		foreach ( ['settings', 'contents', 'styles'] as $tab ) {
+			if ( ! array_key_exists( $tab, $section ) ) {
+				$section[ $tab ] = [];
+			}
+			$section[ $tab ] = $this->sectionTransformer->mergePersistedDataAndConfigData( $block[ $tab ], $section[ $tab ] );
+		}
 
-    public function styles($sections)
-    {
-        foreach ($sections as $section) {
-            echo $this->style($section);
-        }
-    }
+		return $section;
+	}
 
-    /**
-     * @param $section
-     *
-     * @return null|string
-     */
-    public function style($section)
-    {
-        /** FIXME: Currently we are not smartly handling non existent blocks exceptions **/
-        if (!$block = $this->isValidSection($section)) {
-            return $this->noBlockDefined($section['slug']);
-        }
+	public function styles( $sections ) {
+		foreach ( $sections as $section ) {
+			echo $this->style( $section );
+		}
+	}
 
-        $style_file = $this->locateStyleFile($block);
+	/**
+	 * @param $section
+	 *
+	 * @return null|string
+	 */
+	public function style( $section ) {
+		/** FIXME: Currently we are not smartly handling non existent blocks exceptions */
+		if ( ! $block = $this->isValidSection( $section ) ) {
+			return $this->noBlockDefined( $section['slug'] );
+		}
 
-        //throw better exceptions
-        if (!FileSystem::exists($style_file)) {
-            //throw new \Exception( "Block style Does not exist" );
-            return null;
-        }
+		$style_file = $this->locateStyleFile( $block );
 
-        $section['url'] = $block['url'];
-        $style = $this->getStyleHTML($section, $style_file);
+		// throw better exceptions
+		if ( ! FileSystem::exists( $style_file ) ) {
+			// throw new \Exception( "Block style Does not exist" );
+			return null;
+		}
 
-        return $style;
-    }
+		$section['url'] = $block['url'];
+		$style = $this->getStyleHTML( $section, $style_file );
 
-    /**
-     * @param $section
-     * @param $style_file
-     *
-     * @return string
-     */
-    public function getStyleHTML($section, $style_file)
-    {
-        $style = "<style id='style-{$section['id']}'>";
-        $style .= $this->view->make($style_file, $section);
-        $style .= '</style>';
+		return $style;
+	}
 
-        return $style;
-    }
+	/**
+	 * @param $section
+	 * @param $style_file
+	 *
+	 * @return string
+	 */
+	public function getStyleHTML( $section, $style_file ) {
+		$style = "<style id='style-{$section['id']}'>";
+		$style .= $this->view->make( $style_file, $section );
+		$style .= '</style>';
 
-    /**
-     * @param $blockName
-     *
-     * @return mixed
-     */
-    public function noViewFile($blockName)
-    {
-        return "<!--No view file found for block {$blockName}-->";
-    }
+		return $style;
+	}
 
-    /**
-     * @param $sectionSlug
-     *
-     * @return string
-     */
-    public function noBlockDefined($sectionSlug)
-    {
-        return "<!--No block found for section {$sectionSlug}-->";
-    }
+	/**
+	 * @param $blockName
+	 *
+	 * @return mixed
+	 */
+	public function noViewFile( $blockName ) {
+		return "<!--No view file found for block {$blockName}-->";
+	}
 
-    /**
-     * @param $block
-     *
-     * @return null
-     */
-    public function locateViewFile($block)
-    {
-        $view_file = array_key_exists('view_file', $block) ? $block['view_file'] : null;
-        $view_file = locate_template('onepager/overrides/' . $block['slug'] . '/view.php') ?: $view_file;
+	/**
+	 * @param $sectionSlug
+	 *
+	 * @return string
+	 */
+	public function noBlockDefined( $sectionSlug ) {
+		return "<!--No block found for section {$sectionSlug}-->";
+	}
 
-        return $view_file;
-    }
+	/**
+	 * @param $block
+	 *
+	 * @return null
+	 */
+	public function locateViewFile( $block ) {
+		$view_file = array_key_exists( 'view_file', $block ) ? $block['view_file'] : null;
+		$view_file = locate_template( 'onepager/overrides/' . $block['slug'] . '/view.php' ) ?: $view_file;
 
-    /**
-     * @param $block
-     *
-     * @return null
-     */
-    public function locateStyleFile($block)
-    {
-        $style_file = array_key_exists('style_file', $block) ? $block['style_file'] : null;
-        $style_file = locate_template('onepager/overrides/' . $block['slug'] . '/style.php') ?: $style_file;
+		return $view_file;
+	}
 
-        return $style_file;
-    }
+	/**
+	 * @param $block
+	 *
+	 * @return null
+	 */
+	public function locateStyleFile( $block ) {
+		$style_file = array_key_exists( 'style_file', $block ) ? $block['style_file'] : null;
+		$style_file = locate_template( 'onepager/overrides/' . $block['slug'] . '/style.php' ) ?: $style_file;
 
-    public function mergeSectionsBlocksSettings($sections)
-    {
-        $transformer = new SerializedControlsOptionsTransformer();
+		return $style_file;
+	}
 
-        return array_filter(array_map(function ($section) use ($transformer) {
-            $block = onepager()->blockManager()->get($section['slug']);
-            if (!$block) {
-                return false;
-            }
+	public function mergeSectionsBlocksSettings( $sections ) {
+		$transformer = new SerializedControlsOptionsTransformer();
 
-            foreach (['settings', 'contents', 'styles'] as $tab) {
-                if (!array_key_exists($tab, $section)) {
-                    $section[$tab] = [];
-                }
+		return array_filter(
+			array_map(
+				function ( $section ) use ( $transformer ) {
+					$block = onepager()->blockManager()->get( $section['slug'] );
+					if ( ! $block ) {
+						return false;
+					}
 
-                $section[$tab] = $transformer
-          ->mergePersistedDataAndConfigData($block[$tab], $section[$tab] ?: []);
-            }
+					foreach ( ['settings', 'contents', 'styles'] as $tab ) {
+						if ( ! array_key_exists( $tab, $section ) ) {
+							$section[ $tab ] = [];
+						}
 
-            return $section;
-        }, $sections));
-    }
+						$section[ $tab ] = $transformer
+						->mergePersistedDataAndConfigData( $block[ $tab ], $section[ $tab ] ?: [] );
+					}
 
-    public function mergeSectionsAndSettings()
-    {
-        global $wpdb;
-        $sql = "SELECT post_id, meta_value FROM $wpdb->postmeta where meta_key='onepager_sections'";
-        $pages = $wpdb->get_results($sql);
+					return $section;
+				},
+				$sections
+			)
+		);
+	}
 
-        return array_map(function ($page) {
-            try {
-                $sections = unserialize($page->meta_value);
-            } catch (\Exception $e) {
-                $sections = [];
-            }
+	public function mergeSectionsAndSettings() {
+		global $wpdb;
+		$sql = "SELECT post_id, meta_value FROM $wpdb->postmeta where meta_key='onepager_sections'";
+		$pages = $wpdb->get_results( $sql );
 
-            $sections = onepager()->section()->getAllValidFromSection($sections);
-            $sections = $this->mergeSectionsBlocksSettings($sections);
-            update_post_meta($page->post_id, 'onepager_sections', $sections);
+		return array_map(
+			function ( $page ) {
+				try {
+					$sections = unserialize( $page->meta_value );
+				} catch ( \Exception $e ) {
+					$sections = [];
+				}
 
-            return $sections;
-        }, $pages);
-    }
+				$sections = onepager()->section()->getAllValidFromSection( $sections );
+				$sections = $this->mergeSectionsBlocksSettings( $sections );
+				update_post_meta( $page->post_id, 'onepager_sections', $sections );
+
+				return $sections;
+			},
+			$pages
+		);
+	}
 }

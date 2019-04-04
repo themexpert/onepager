@@ -10,11 +10,11 @@ namespace ThemeXpert\Providers\Contracts;
 
 
 interface SectionInterface {
-  public function get( $id, $index );
+	public function get( $id, $index );
 
-  public function set( $id, $index, $section );
+	public function set( $id, $index, $section );
 
-  public function all( $id );
+	public function all( $id );
 
-  public function save( $id, $sections );
+	public function save( $id, $sections );
 }

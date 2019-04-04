@@ -21,131 +21,131 @@ use ThemeXpert\View\View;
 
 class Onepager implements OnepagerInterface {
 
-  public function __construct( BaseAdapter $adapter, Container $container ) {
-    $this->adapter   = $adapter;
-    $this->container = $container;
-    $this->setBlockManager();
-    $this->setPresetManager();
-    $this->setRenderer();
-    $this->setViewProvider();
-  }
+	public function __construct( BaseAdapter $adapter, Container $container ) {
+		$this->adapter   = $adapter;
+		$this->container = $container;
+		$this->setBlockManager();
+		$this->setPresetManager();
+		$this->setRenderer();
+		$this->setViewProvider();
+	}
 
-  public function setBlockManager() {
-    $this->container['blockManager'] = function () {
-      $blockCollection   = new Collection;
-      $configTransformer = new ConfigTransformer( new FieldsTransformer );
+	public function setBlockManager() {
+		$this->container['blockManager'] = function () {
+			$blockCollection   = new Collection;
+			$configTransformer = new ConfigTransformer( new FieldsTransformer );
 
-      return new BlockManager( $configTransformer, $blockCollection );
-    };
-  }
+			return new BlockManager( $configTransformer, $blockCollection );
+		};
+	}
 
-  public function setPresetManager() {
-    $this->container['presetManager'] = function () {
-      return new PresetManager;
-    };
-  }
+	public function setPresetManager() {
+		$this->container['presetManager'] = function () {
+			return new PresetManager;
+		};
+	}
 
-  private function setRenderer() {
-    $this->container['render'] = function ( $container ) {
-      return new Render( $container['view'], $container['blockManager'], new SerializedControlsConfigTransformer() );
-    };
-  }
+	private function setRenderer() {
+		$this->container['render'] = function ( $container ) {
+			return new Render( $container['view'], $container['blockManager'], new SerializedControlsConfigTransformer() );
+		};
+	}
 
-  public function setViewProvider() {
-    $this->container['view'] = function () {
-      return new View( new PhpEngine() );
-    };
-  }
+	public function setViewProvider() {
+		$this->container['view'] = function () {
+			return new View( new PhpEngine() );
+		};
+	}
 
-  /**
-   * @return NavigationMenuInterface
-   */
-  public function navigationMenu() {
-    $container = $this->adapter->getContainer();
+	/**
+	 * @return NavigationMenuInterface
+	 */
+	public function navigationMenu() {
+		$container = $this->adapter->getContainer();
 
-    return $container['navigationMenu'];
-  }
+		return $container['navigationMenu'];
+	}
 
-  /**
-   * @return ToolbarInterface
-   */
-  public function toolbar() {
-    $container = $this->adapter->getContainer();
+	/**
+	 * @return ToolbarInterface
+	 */
+	public function toolbar() {
+		$container = $this->adapter->getContainer();
 
-    return $container['toolbar'];
-  }
+		return $container['toolbar'];
+	}
 
-  /**
-   * @return ContentInterface
-   */
-  public function content() {
-    $container = $this->adapter->getContainer();
+	/**
+	 * @return ContentInterface
+	 */
+	public function content() {
+		$container = $this->adapter->getContainer();
 
-    return $container['content'];
-  }
+		return $container['content'];
+	}
 
-  /**
-   * @return AssetInterface
-   */
-  public function asset() {
-    $container = $this->adapter->getContainer();
+	/**
+	 * @return AssetInterface
+	 */
+	public function asset() {
+		$container = $this->adapter->getContainer();
 
-    return $container['asset'];
-  }
+		return $container['asset'];
+	}
 
-  /**
-   * @return ApiInterface
-   */
-  public function api() {
-    $container = $this->adapter->getContainer();
+	/**
+	 * @return ApiInterface
+	 */
+	public function api() {
+		$container = $this->adapter->getContainer();
 
-    return $container['api'];
-  }
+		return $container['api'];
+	}
 
-  public function security() {
-    $container = $this->adapter->getContainer();
+	public function security() {
+		$container = $this->adapter->getContainer();
 
-    return $container['security'];
-  }
+		return $container['security'];
+	}
 
-  public function view() {
-    $container = $this->adapter->getContainer();
+	public function view() {
+		$container = $this->adapter->getContainer();
 
-    return $container['view'];
-  }
+		return $container['view'];
+	}
 
-  public function url( $string ) {
-    return trailingslashit( $this->adapter->getUrl() ) . $string;
-  }
+	public function url( $string ) {
+		return trailingslashit( $this->adapter->getUrl() ) . $string;
+	}
 
-  public function path( $path ) {
-    return $this->adapter->getPath() . DIRECTORY_SEPARATOR . $path;
-  }
+	public function path( $path ) {
+		return $this->adapter->getPath() . DIRECTORY_SEPARATOR . $path;
+	}
 
-  public function section() {
-    $container = $this->adapter->getContainer();
+	public function section() {
+		$container = $this->adapter->getContainer();
 
-    return $container['section'];
-  }
+		return $container['section'];
+	}
 
-  public function blockManager() {
-    return $this->container['blockManager'];
-  }
+	public function blockManager() {
+		return $this->container['blockManager'];
+	}
 
-  public function render() {
-    return $this->container['render'];
-  }
+	public function render() {
+		return $this->container['render'];
+	}
 
-  public function optionsPanel( $menuSlug ) {
-    return OptionsPanel::getInstance( $menuSlug );
-  }
+	public function optionsPanel( $menuSlug ) {
+		return OptionsPanel::getInstance( $menuSlug );
+	}
 
-  public function presetManager() {
-    return $this->container['presetManager'];
-  }
+	public function presetManager() {
+		return $this->container['presetManager'];
+	}
 
-  public function getOption() {
+	public function getOption() {
 
-  }
+	}
 
 }

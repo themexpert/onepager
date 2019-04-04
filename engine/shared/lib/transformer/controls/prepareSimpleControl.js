@@ -10,18 +10,18 @@
  * @returns {*}
  */
 function prepareSimpleControl(control, value) {
-  let name = control.get('name');
+	let name = control.get( 'name' );
 
-  /**
-   * If an input type text is changed into input type single-repeater
-   * then we will not replace the text value inside single repeater
-   * we will use the default value
-   */
-  if (typeof control.get('value') === typeof value) {
-    return control.set('value', value);
-  }
+	/**
+	 * If an input type text is changed into input type single-repeater
+	 * then we will not replace the text value inside single repeater
+	 * we will use the default value
+	 */
+	if (typeof control.get( 'value' ) === typeof value) {
+		return control.set( 'value', value );
+	}
 
-  return control;
+	return control;
 }
 
 

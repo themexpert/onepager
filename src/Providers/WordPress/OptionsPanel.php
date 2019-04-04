@@ -7,195 +7,188 @@ use ThemeXpert\Onepager\Block\Transformers\SerializedControlsConfigTransformer;
 use ThemeXpert\Providers\Contracts\OptionsPanelInterface;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
 
-class OptionsPanel implements OptionsPanelInterface
-{
-    protected static $panels = [];
-    protected $options = [];
-    protected $flatOptions;
-    protected $tabId;
-    protected $tabName;
-    protected $merger;
+class OptionsPanel implements OptionsPanelInterface {
 
-    public static function getInstance($menuSlug)
-    {
-        if (!array_key_exists($menuSlug, self::$panels)) {
-            self::$panels[$menuSlug] = new self($menuSlug);
-        }
+	protected static $panels = [];
+	protected $options = [];
+	protected $flatOptions;
+	protected $tabId;
+	protected $tabName;
+	protected $merger;
 
-        return self::$panels[$menuSlug];
-    }
+	public static function getInstance( $menuSlug ) {
+		if ( ! array_key_exists( $menuSlug, self::$panels ) ) {
+			self::$panels[ $menuSlug ] = new self( $menuSlug );
+		}
 
-    public function __construct($menuSlug)
-    {
-        $this->menuSlug = $menuSlug;
+		return self::$panels[ $menuSlug ];
+	}
 
-        add_action('admin_enqueue_scripts', [$this, 'localizeScript']);
-    }
+	public function __construct( $menuSlug ) {
+		$this->menuSlug = $menuSlug;
 
-    public function addMenuPage($pageTitle, $menuTitle, $iconUrl, $position = null)
-    {
-        add_action('admin_menu', function () use ($pageTitle, $menuTitle, $iconUrl, $position) {
-            add_menu_page(
-                $pageTitle,
-                $menuTitle,
-                'edit_theme_options',
-                $this->menuSlug,
-                [$this, 'printMountNode'],
-                $iconUrl,
-                $position
-      );
-        });
-    }
+		add_action( 'admin_enqueue_scripts', [$this, 'localizeScript'] );
+	}
 
-    public function addSubMenuPage($parentSlug, $pageTitle, $menuTitle)
-    {
-        add_action('admin_menu', function () use ($parentSlug, $pageTitle, $menuTitle) {
-            add_submenu_page(
-                $parentSlug,
-                $pageTitle,
-                $menuTitle,
-                'edit_theme_options',
-                $this->menuSlug,
-                [$this, 'printMountNode']
-      );
-        });
-    }
+	public function addMenuPage( $pageTitle, $menuTitle, $iconUrl, $position = null ) {
+		add_action(
+			'admin_menu',
+			function () use ( $pageTitle, $menuTitle, $iconUrl, $position ) {
+				add_menu_page(
+					$pageTitle,
+					$menuTitle,
+					'edit_theme_options',
+					$this->menuSlug,
+					[$this, 'printMountNode'],
+					$iconUrl,
+					$position
+				);
+			}
+		);
+	}
 
-    public function printMountNode()
-    {
-        echo '<div id="onepager-settings-mount"></div>';
-    }
+	public function addSubMenuPage( $parentSlug, $pageTitle, $menuTitle ) {
+		add_action(
+			'admin_menu',
+			function () use ( $parentSlug, $pageTitle, $menuTitle ) {
+				add_submenu_page(
+					$parentSlug,
+					$pageTitle,
+					$menuTitle,
+					'edit_theme_options',
+					$this->menuSlug,
+					[$this, 'printMountNode']
+				);
+			}
+		);
+	}
 
-    public function isOptionsPanel()
-    {
-        return endsWith(get_current_screen()->id, '_page_' . $this->menuSlug);
-    }
+	public function printMountNode() {
+		echo '<div id="onepager-settings-mount"></div>';
+	}
 
-    public function localizeScript()
-    {
-        if (!$this->isOptionsPanel()) {
-            return;
-        }
+	public function isOptionsPanel() {
+		return endsWith( get_current_screen()->id, '_page_' . $this->menuSlug );
+	}
 
-        new OptionsPanelScripts();
+	public function localizeScript() {
+		if ( ! $this->isOptionsPanel() ) {
+			return;
+		}
 
-        $optionPanel = $this->getOptionsControls();
-        $savedOptions = $this->getAllSavedOptions();
-        $onepager = onepager();
+		new OptionsPanelScripts();
 
-        $data = [
-            'optionPanel' => $optionPanel,
-            'options' => $savedOptions,
-            'page' => $this->menuSlug,
-            'ajaxUrl' => $onepager->api()->getAjaxUrl(),
-            'menus' => $onepager->content()->getMenus(),
-            'pages' => $onepager->content()->getPages(),
-            'categories' => $onepager->content()->getCategories(),
-        ];
+		$optionPanel = $this->getOptionsControls();
+		$savedOptions = $this->getAllSavedOptions();
+		$onepager = onepager();
 
-        wp_localize_script('admin-bundle', 'onepager', $data);
-    }
+		$data = [
+			'optionPanel' => $optionPanel,
+			'options' => $savedOptions,
+			'page' => $this->menuSlug,
+			'ajaxUrl' => $onepager->api()->getAjaxUrl(),
+			'menus' => $onepager->content()->getMenus(),
+			'pages' => $onepager->content()->getPages(),
+			'categories' => $onepager->content()->getCategories(),
+		];
 
-    public function getOption($name, $default = '')
-    {
-        if (!$this->flatOptions) {
-            $this->flattenOptions();
-        }
+		wp_localize_script( 'admin-bundle', 'onepager', $data );
+	}
 
-        //get default value
-        return array_key_exists($name, $this->flatOptions) ? $this->flatOptions[$name] : $default;
-    }
+	public function getOption( $name, $default = '' ) {
+		if ( ! $this->flatOptions ) {
+			$this->flattenOptions();
+		}
 
-    public function update($options)
-    {
-        update_option($this->menuSlug, $options);
-        $this->flattenOptions();
-    }
+		// get default value
+		return array_key_exists( $name, $this->flatOptions ) ? $this->flatOptions[ $name ] : $default;
+	}
 
-    protected function flattenOptions()
-    {
-        $options = $this->getAllSavedOptions();
+	public function update( $options ) {
+		update_option( $this->menuSlug, $options );
+		$this->flattenOptions();
+	}
 
-        if (!$options || !is_array($options)) {
-            $this->flatOptions = [];
-        } else {
-            $this->flatOptions = flatten_array($options);
-        }
-    }
+	protected function flattenOptions() {
+		$options = $this->getAllSavedOptions();
 
-    protected function mergeOptions($data, $tabs)
-    {
-        $merger = new SerializedControlsConfigTransformer();
-        $result = [];
+		if ( ! $options || ! is_array( $options ) ) {
+			$this->flatOptions = [];
+		} else {
+			$this->flatOptions = flatten_array( $options );
+		}
+	}
 
-        foreach ($tabs as $tab) {
-            $result[$tab['id']] = $merger->mergePersistedDataAndConfigData(
-                array_get($tab, 'fields', []),
-                array_get($data, $tab['id'], [])
-      );
-        }
+	protected function mergeOptions( $data, $tabs ) {
+		$merger = new SerializedControlsConfigTransformer();
+		$result = [];
 
-        return $result;
-    }
+		foreach ( $tabs as $tab ) {
+			$result[ $tab['id'] ] = $merger->mergePersistedDataAndConfigData(
+				array_get( $tab, 'fields', [] ),
+				array_get( $data, $tab['id'], [] )
+			);
+		}
 
-    public function getAllSavedOptions()
-    {
-        $data = [];
+		return $result;
+	}
 
-        if ($this->options) {
-            $data = get_option($this->menuSlug, []);
+	public function getAllSavedOptions() {
+		$data = [];
 
-            $data = $this->mergeOptions($data, $this->getOptionsControls());
-        }
+		if ( $this->options ) {
+			$data = get_option( $this->menuSlug, [] );
 
-        return !empty($data) ? $data : [];
-    }
+			$data = $this->mergeOptions( $data, $this->getOptionsControls() );
+		}
 
-    public function getOptionsControls()
-    {
-        $options = array_map(function ($options) {
-            $options['fields'] = array_values($this->transformOptions($options['fields']));
+		return ! empty( $data ) ? $data : [];
+	}
 
-            return $options;
-        }, $this->options);
+	public function getOptionsControls() {
+		$options = array_map(
+			function ( $options ) {
+				$options['fields'] = array_values( $this->transformOptions( $options['fields'] ) );
 
-        return $options;
-    }
+				return $options;
+			},
+			$this->options
+		);
 
-    public function transformOptions($options)
-    {
-        $transformer = new FieldsTransformer;
+		return $options;
+	}
 
-        return $transformer->transform($options);
-    }
+	public function transformOptions( $options ) {
+		$transformer = new FieldsTransformer;
 
-    public function tab($id, $name = null)
-    {
-        $this->tabId = $id;
-        $this->tabName = $name ?: ucfirst($id);
+		return $transformer->transform( $options );
+	}
 
-        return $this;
-    }
+	public function tab( $id, $name = null ) {
+		$this->tabId = $id;
+		$this->tabName = $name ?: ucfirst( $id );
 
-    public function add()
-    {
-        //if tab does not exist create one
-        if (!array_key_exists($this->tabId, $this->options)) {
-            $this->options[$this->tabId] = [
-                'name' => $this->tabName,
-                'id' => $this->tabId,
-                'icon' => 'TODO: icon',
-                'fields' => [],
-            ];
-        }
+		return $this;
+	}
 
-        $fields = &$this->options[$this->tabId]['fields'];
-        $options = func_get_args();
+	public function add() {
+		// if tab does not exist create one
+		if ( ! array_key_exists( $this->tabId, $this->options ) ) {
+			$this->options[ $this->tabId ] = [
+				'name' => $this->tabName,
+				'id' => $this->tabId,
+				'icon' => 'TODO: icon',
+				'fields' => [],
+			];
+		}
 
-        foreach ($options as $option) {
-            $fields[$option['name']] = $option;
-        }
+		$fields = &$this->options[ $this->tabId ]['fields'];
+		$options = func_get_args();
 
-        return $this;
-    }
+		foreach ( $options as $option ) {
+			$fields[ $option['name'] ] = $option;
+		}
+
+		return $this;
+	}
 }

@@ -8,19 +8,19 @@
 namespace ThemeXpert\Onepager;
 
 interface OnepagerInterface {
-  public function navigationMenu();
+	public function navigationMenu();
 
-  public function toolbar();
+	public function toolbar();
 
-  public function content();
+	public function content();
 
-  public function asset();
+	public function asset();
 
-  public function api();
+	public function api();
 
-  public function security();
+	public function security();
 
-  public function view();
+	public function view();
 
-  public function section();
+	public function section();
 }
