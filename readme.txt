@@ -127,6 +127,12 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 
 == Changelog ==
+= 2.2.0 =
+- Improved: Dashboard UI.
+- Improved: Preset naming.
+- Improved: Code coverage and testing by implemented travis CI & PHPCS.
+- Fix: Several blocks animation fixed.
+
 = 2.1.0 =
 - New: Dashboard to explore all layouts and easy to get started.
 - New: Feature-4 block added.
