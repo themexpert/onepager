@@ -19,7 +19,7 @@
     "phpcs": "phpcs --standard=phpcs.xml --extensions=php -s",
     "phpmd": "phpmd inc text phpmd.xml",
     "test": "phpunit --confirguration=phpunit.xml",
-    "lint": "composer run-script phpcs",
+    "lint": "composer run-script phpcs"
   },
   "require": {
     "pimple/pimple": "^3.0",
