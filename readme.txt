@@ -127,6 +127,9 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 
 == Changelog ==
+= 2.2.1 =
+- Improved: Dashboard UI updated now showing large image with scrolling effect.
+
 = 2.2.0 =
 - Improved: Dashboard UI.
 - Improved: Preset naming.
