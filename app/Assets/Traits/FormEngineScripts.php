@@ -44,10 +44,14 @@ trait FormEngineScripts
         $asset->style('op-bootstrap-timepicker', op_asset('assets/css/bootstrap-timepicker.css'));
         $asset->script('op-bootstrap-timepicker', op_asset('assets/js/bootstrap-timepicker.js'), '', ONEPAGER_VERSION, false);
 
+        // select2
+        $asset->style('op-select2', op_asset('assets/css/select2.css'));
+        $asset->script('op-select2', op_asset('assets/js/select2.js'), '', ONEPAGER_VERSION, false);
+
         $asset->script('op-uikit-icons', op_asset('assets/js/uikit-icons.js'), '', ONEPAGER_VERSION, false);
         // $asset->script('op-google-fonts', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', '', ONEPAGER_VERSION, false);
 
-        wp_enqueue_script('op-gfonts','//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+        wp_enqueue_script('op-gfonts', '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
         $asset->style('tx-lithium-ui', op_asset('assets/css/lithium-builder.css'));
     }
 

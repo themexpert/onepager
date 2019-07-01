@@ -15,9 +15,16 @@
     "mjolnic-bootstrap-colorpicker": "~2.1.2",
     "sweetalert": "~1.1",
     "toastr": "~2.1.1",
-    "wow": "~1.1.2"
+    "wow": "~1.1.2",
+    "select2": "~4.0"
   },
   "overrides": {
+    "select2": {
+      "main": [
+        "dist/js/select2.js",
+        "dist/css/select2.css"
+      ]
+    },
     "jquery.nicescroll": {
       "main": [
         "./jquery.nicescroll.min.js",

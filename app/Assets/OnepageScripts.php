@@ -48,16 +48,20 @@ class OnepageScripts
         // Load UIKit
         $asset->script('op-uikit', op_asset('assets/js/uikit.js'));
         $asset->style('op-uikit', op_asset('assets/css/uikit.css'));
-          // Load bootstrap datepicker
+        // Load bootstrap datepicker
         $asset->script('op-bootstrap-datepicker', op_asset('assets/js/bootstrap-datepicker.js'));
         $asset->style('op-bootstrap-datepicker', op_asset('assets/css/bootstrap-datepicker.css'));
 
-        // // Load bootstrap timepicker
+        // Load bootstrap timepicker
         $asset->script('op-bootstrap-timepicker', op_asset('assets/js/bootstrap-timepicker.js'));
         $asset->style('op-bootstrap-timepicker', op_asset('assets/css/bootstrap-timepicker.css'));
 
+        // Load select2
+        $asset->script('op-select2', op_asset('assets/js/select2.js'));
+        $asset->style('op-select2', op_asset('assets/css/select2.css'));
+
         // $asset->script('op-google-fonts', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
-        wp_enqueue_script('op-gfonts','//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+        wp_enqueue_script('op-gfonts', '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
     }
 
     // protected function shouldLoadTwitterBootstrap() {

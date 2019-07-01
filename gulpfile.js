@@ -61,6 +61,10 @@ var config = {
     js: dest + '/js',
     css: dest + '/css'
   },
+  // 'select2': {
+  //   js: dest + '/js',
+  //   css: dest + '/css'
+  // },
   watch: {
     src: src + '/**/*.*',
     less: src + '/lithium/**/*.less',
@@ -160,6 +164,17 @@ gulp.task('bootstrap-timepicker-css', function () {
     .pipe(minify())
     .pipe(gulp.dest(config['bootstrap-timepicker'].css))
 });
+
+// gulp.task('select2-js', function () {
+//   return gulp.src(['./node_modules/select2/dist/js/select2.js'])
+//     .pipe(uglify())
+//     .pipe(gulp.dest(config['select2'].js))
+// });
+// gulp.task('select2-css', function () {
+//   return gulp.src(['./node_modules/select2/dist/css/select2.css'])
+//     .pipe(minify())
+//     .pipe(gulp.dest(config['select2'].css))
+// });
 
 gulp.task('watch', function () {
   gulp.watch(config.watch.less, ['less']);
