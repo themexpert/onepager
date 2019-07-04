@@ -13,7 +13,15 @@
 					<div class="uk-text-<?php echo $content_alignment; ?>">
 						<!-- Title -->
 						<?php if ( $contents['title'] ) : ?>
-							<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation']; ?>" <?php echo ( $settings['content_animation'] ? $content_animation . 'delay:100"' : '' ); ?>><?php echo $contents['title']; ?></h1>
+							<?php
+								echo op_heading( 
+									$contents['title'],
+									$settings['heading_type'], 
+									'uk-heading-primary uk-text-center', 
+									'uk-text-' . $settings['title_transformation'], 
+									$content_animation . '"'
+								); 
+							?>
 						<?php endif; ?>
 
 						<!-- Description -->

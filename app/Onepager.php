@@ -107,19 +107,19 @@ abstract class Onepager {
 		$script = <<<EOT
         
         // dynamically google fonts loading.
-				var fontNotLoaded = jQuery('link[href="http://fonts.googleapis.com/css?family=$url"]').length;
+			var fontNotLoaded = jQuery('link[href="http://fonts.googleapis.com/css?family=$url"]').length;
 
-				if (!fontNotLoaded) {
-					try {
-						WebFont.load({
-							google: {
-								families: ["$font"]
-							}
-						});
-					} catch (e) {
-						console.log('WebFont not loaded!', e);
-					}
+			if (!fontNotLoaded) {
+				try {
+					WebFont.load({
+						google: {
+							families: ["$font"]
+						}
+					});
+				} catch (e) {
+					console.log('WebFont not loaded!', e);
 				}
+			}
 
 EOT;
 

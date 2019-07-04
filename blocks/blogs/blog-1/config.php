@@ -47,6 +47,20 @@ return array(
 
 	// Settings - $settings available on view file to access the option
 	'settings' => array(
+		array(
+	      'name'     => 'heading_type',
+	      'label'    => 'Heading Type',
+	      'type'     => 'select',
+	      'value'    => 'h1',
+	      'options'  => array(
+	        'h1'   => 'h1',
+	        'h2'   => 'h2',
+	        'h3'   => 'h3',
+	        'h4'   => 'h4',
+	        'h5'   => 'h5',
+	        'h6'   => 'h6',
+	      ),
+	    ),
 		array('label' => 'Heading', 'type' => 'divider'),
 		array(
 			'name'   => 'section_title_size',

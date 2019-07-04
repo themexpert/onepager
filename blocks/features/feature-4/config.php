@@ -7,12 +7,12 @@ return array(
 	'contents' => array(
 		array(
 			'name' => 'title',
-			'value' => '',
+			'value' => 'OUR SERVICES',
 		),
 		array(
 			'name' => 'description',
 			'type' => 'textarea',
-			'value' => '',
+			'value' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		),
 		array('label' => 'Items', 'type' => 'divider'), // Divider - Text
 
@@ -48,6 +48,20 @@ return array(
 	),
 
 	'settings' => array(
+		array(
+	      'name'     => 'heading_type',
+	      'label'    => 'Heading Type',
+	      'type'     => 'select',
+	      'value'    => 'h1',
+	      'options'  => array(
+	        'h1'   => 'h1',
+	        'h2'   => 'h2',
+	        'h3'   => 'h3',
+	        'h4'   => 'h4',
+	        'h5'   => 'h5',
+	        'h6'   => 'h6',
+	      ),
+	    ),
 		array('label' => 'Title Settings', 'type' => 'divider'), // Divider - Text
 
 		array(

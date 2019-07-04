@@ -23,9 +23,15 @@
 					<div class="uk-panel">
 						<!-- Title -->
 						<?php if ( $contents['title'] ) : ?>
-							<h1 class="uk-heading-primary <?php echo $heading_class; ?>" <?php echo ( $settings['animation_content'] ? $animation_content . 'delay:100"' : '' ); ?>>
-								<?php echo $contents['title']; ?>
-							</h1>
+							<?php
+								echo op_heading( 
+									$contents['title'],
+									$settings['heading_type'], 
+									'uk-heading-primary', 
+									'uk-text-' . $settings['title_transformation'], 
+									$animation_content . '"'
+								); 
+							?>
 						<?php endif; ?>
 						<!-- Description -->
 						<?php if ( $contents['description'] ) : ?>

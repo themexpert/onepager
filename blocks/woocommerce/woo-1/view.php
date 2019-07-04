@@ -41,9 +41,15 @@ if ( ! Onepager::isWooCommerceInstalled() ) {
 			<div class="section-heading uk-margin-medium uk-text-<?php echo $title_alignment; ?>" <?php echo $title_animation; ?>>
 					<?php if ( $contents['title'] ) : ?>
 							<!-- Section Title -->
-								<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation']; ?>">
-									<?php echo $contents['title']; ?>
-								</h1>
+								<?php
+									echo op_heading( 
+										$contents['title'],
+										$settings['heading_type'], 
+										'uk-heading-primary', 
+										'uk-text-' . $settings['title_transformation'], 
+										$title_animation . '"'
+									); 
+								?>
 						<?php endif; ?>
 
 						<?php if ( $contents['description'] ) : ?>

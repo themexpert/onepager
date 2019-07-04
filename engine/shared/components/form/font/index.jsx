@@ -47,7 +47,7 @@ let Font = React.createClass({
 
   render() {
     return (
-      <div className="uk-form-stacked">
+      <div className="uk-form-stacked test">
         <Select
           ref="input"
           type="font"

@@ -14,3 +14,10 @@ if ( ! function_exists( 'op_link' ) ) {
 		return '';
 	}
 }
+
+// Wrapper function for heading
+if ( !function_exists( 'op_heading' ) ){
+	function op_heading($text, $type, $class='', $transformation = '', $animation, $attr = ''){		
+		return "<$type class='".$class." ".$transformation ."'  $animation  $attr>" .$text. "</$type>";
+	}
+}

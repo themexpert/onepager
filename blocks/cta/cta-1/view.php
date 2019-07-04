@@ -13,8 +13,15 @@
 					<div class="" <?php echo $content_animation; ?>>
 						<!-- Title -->
 						<?php if ( $contents['title'] ) : ?>
-							<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation']; ?>"><?php echo $contents['title']; ?>
-							</h1>
+							<?php
+								echo op_heading( 
+									$contents['title'],
+									$settings['heading_type'], 
+									'uk-heading-primary', 
+									'uk-text-' . $settings['title_transformation'], 
+									$content_animation . '"'
+								); 
+							?>
 						<?php endif; ?>
 
 						<!-- Description -->
