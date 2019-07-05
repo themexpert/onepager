@@ -1,6 +1,6 @@
 <?php
 	// Content Animation
-	$content_animation = ( $settings['content_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['content_animation'] . '"' : '';
+	$content_animation = ( $settings['content_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['content_animation'] . ';"' : '';
 
 	// Button Animation
 	$button_animation = ( $settings['button_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['button_animation'] . '"' : '';
@@ -13,13 +13,12 @@
 					<div class="" <?php echo $content_animation; ?>>
 						<!-- Title -->
 						<?php if ( $contents['title'] ) : ?>
-							<?php
-								echo op_heading( 
+							<?php 
+								echo op_heading(
 									$contents['title'],
-									$settings['heading_type'], 
-									'uk-heading-primary', 
-									'uk-text-' . $settings['title_transformation'], 
-									$content_animation . '"'
+									$settings['heading_type'],
+									'uk-heading-primary  uk-text-'.$settings['title_transformation'],
+									$content_animation
 								); 
 							?>
 						<?php endif; ?>

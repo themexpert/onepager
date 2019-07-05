@@ -1,6 +1,6 @@
 <?php
 	// Title Animation
-	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . '"' : '';    // Title Animation
+	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . '";' : '';    // Title Animation
 	$content_animation = ( $settings['content_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['content_animation'] . '"' : '';  // Title
 	// Coundown Animation
 	$countdown_animation = ( $settings['countdown_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['countdown_animation'] . '"' : '';
@@ -13,13 +13,12 @@
 	<article class="uk-position-center">
 		<!-- Title -->
 		<?php if ( $contents['title'] ) : ?>
-			<?php
-				echo op_heading( 
+			<?php 
+				echo op_heading(
 					$contents['title'],
-					$settings['heading_type'], 
-					'uk-heading-primary uk-text-center', 
-					'uk-text-' . $settings['title_transformation'], 
-					$title_animation . '"'
+					$settings['heading_type'],
+					'uk-heading-primary uk-text-center uk-text-'.$settings['title_transformation'],
+					$title_animation
 				); 
 			?>
 		<?php endif; ?>

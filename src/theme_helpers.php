@@ -17,7 +17,10 @@ if ( ! function_exists( 'op_link' ) ) {
 
 // Wrapper function for heading
 if ( !function_exists( 'op_heading' ) ){
-	function op_heading($text, $type, $class='', $transformation = '', $animation, $attr = ''){		
-		return "<$type class='".$class." ".$transformation ."'  $animation  $attr>" .$text. "</$type>";
+	function op_heading($text, $type, $class='', $attr = ''){	
+		
+		$class = (!empty($class)) ? ' class="'.$class.'"' : '';
+
+		return "<$type $class $attr>". $text . "</$type>";
 	}
 }

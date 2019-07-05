@@ -2,7 +2,7 @@
 	// title alignment
 	$title_alignment = ( $settings['title_alignment'] ) ? $settings['title_alignment'] : '';
 	// title animation
-	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . ';' : '';
+	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . ';"' : '';
 
 	// lightbox animation
 	$lightbox_animation = ( $settings['lightbox_animation'] ) ? 'uk-lightbox="animation:' . $settings['lightbox_animation'] . '"' : '';
@@ -14,13 +14,12 @@
 			<div class="section-heading uk-margin-large-bottom uk-text-<?php echo $title_alignment; ?>">	
 				<?php if ( $contents['title'] ) : ?>
 					<!-- Section Title -->
-					<?php
-						echo op_heading( 
+					<?php 
+						echo op_heading(
 							$contents['title'],
-							$settings['heading_type'], 
-							'uk-heading-primary', 
-							'uk-text-' . $settings['title_transformation'], 
-							$title_animation . '"'
+							$settings['heading_type'],
+							'uk-heading-primary  uk-text-'.$settings['title_transformation'],
+							$title_animation
 						); 
 					?>
 				<?php endif; ?>

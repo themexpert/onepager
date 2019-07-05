@@ -1,6 +1,6 @@
 <?php
 	// title animation
-	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . ';' : '';
+	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . ';"' : '';
 	// title alignment
 	$title_alignment = ( $settings['title_alignment'] ) ? $settings['title_alignment'] : '';
 
@@ -15,7 +15,7 @@
 	);
 	// Build query
 	$query = new WP_Query( $args );
-	?>
+?>
 
 <section id="<?php echo $id; ?>" class="fp-section blogs blog-1 uk-padding-small">
 	<div class="uk-section">
@@ -23,13 +23,12 @@
 			<div class="section-heading uk-text-<?php echo $title_alignment; ?>">
 				<?php if ( $contents['title'] ) : ?>
 				  <!-- Section Title -->
-					  	<?php
-							echo op_heading( 
+					  	<?php 
+							echo op_heading(
 								$contents['title'],
-								$settings['heading_type'], 
-								'uk-heading-primary', 
-								'uk-text-' . $settings['title_transformation'], 
-								$title_animation . '"'
+								$settings['heading_type'],
+								'uk-heading-primary uk-text-'.$settings['title_transformation'],
+								$title_animation
 							); 
 						?>
 				<?php endif; ?>

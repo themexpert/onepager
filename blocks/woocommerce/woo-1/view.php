@@ -5,7 +5,7 @@ if ( ! Onepager::isWooCommerceInstalled() ) {
 }
 
 	// title animation
-	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . '"' : '';
+	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . ';"' : '';
 	// title alignment
 	$title_alignment = ( $settings['title_alignment'] ) ? $settings['title_alignment'] : '';
 
@@ -41,15 +41,14 @@ if ( ! Onepager::isWooCommerceInstalled() ) {
 			<div class="section-heading uk-margin-medium uk-text-<?php echo $title_alignment; ?>" <?php echo $title_animation; ?>>
 					<?php if ( $contents['title'] ) : ?>
 							<!-- Section Title -->
-								<?php
-									echo op_heading( 
-										$contents['title'],
-										$settings['heading_type'], 
-										'uk-heading-primary', 
-										'uk-text-' . $settings['title_transformation'], 
-										$title_animation . '"'
-									); 
-								?>
+							<?php 
+								echo op_heading(
+									$contents['title'],
+									$settings['heading_type'],
+									'uk-heading-primary  uk-text-'.$settings['title_transformation'],
+									$title_animation
+								); 
+							?>
 						<?php endif; ?>
 
 						<?php if ( $contents['description'] ) : ?>
