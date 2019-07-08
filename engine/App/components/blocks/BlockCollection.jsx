@@ -64,6 +64,8 @@ function arrayContainsArray(superset, subset) {
         result = true;
         return;
       }
+
+      return true;
   });
 
   return result;
@@ -122,7 +124,7 @@ let BlockCollection = React.createClass({
        */
       // let active = (this.state.group === "all") || block.groups.indexOf(this.state.group) !== -1;
       let active = (this.state.group === "all" || this.state.group.indexOf('all') !== -1) || arrayContainsArray(this.state.group, block.groups);
-      
+
       return active ? block : false;
     });
 
