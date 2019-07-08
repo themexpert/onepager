@@ -3,36 +3,36 @@
 use Pimple\Container;
 
 abstract class BaseAdapter implements AdapterInterface {
-  protected $url;
-  protected $path;
+	protected $url;
+	protected $path;
 
-  public final function __construct( Container $container, $path, $url ) {
-    $this->container = $container;
-    $this->path      = $path;
-    $this->url       = $url;
-    $this->setProviders();
-  }
+	public final function __construct( Container $container, $path, $url ) {
+		$this->container = $container;
+		$this->path      = $path;
+		$this->url       = $url;
+		$this->setProviders();
+	}
 
-  final function setProviders() {
-    $this->setNavigationMenuProvider();
-    $this->setSecurityProvider();
-    $this->setContentProvider();
-    $this->setToolbarProvider();
-    $this->setAssetProvider();
-    $this->setHooksProvider();
-    $this->setApiProvider();
-    $this->setSectionProvider();
-  }
+	final function setProviders() {
+		$this->setNavigationMenuProvider();
+		$this->setSecurityProvider();
+		$this->setContentProvider();
+		$this->setToolbarProvider();
+		$this->setAssetProvider();
+		$this->setHooksProvider();
+		$this->setApiProvider();
+		$this->setSectionProvider();
+	}
 
-  public function getContainer() {
-    return $this->container;
-  }
+	public function getContainer() {
+		return $this->container;
+	}
 
-  public function getUrl() {
-    return $this->url;
-  }
+	public function getUrl() {
+		return $this->url;
+	}
 
-  public function getPath() {
-    return $this->path;
-  }
+	public function getPath() {
+		return $this->path;
+	}
 }

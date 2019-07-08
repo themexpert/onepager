@@ -6,6 +6,14 @@
       "email": "info@themexpert.com"
     }
   ],
+  
+  "scripts": {
+    "format": "phpcbf --standard=phpcs.xml --report-summary --report-source",
+    "phpcs": "phpcs --standard=phpcs.xml --extensions=php -s",
+    "phpmd": "phpmd inc text phpmd.xml",
+    "test": "phpunit --confirguration=phpunit.xml",
+    "lint": "composer run-script phpcs"
+  },
   "require": {
     "pimple/pimple": "^3.0",
     "kriswallsmith/assetic": "^1.2",

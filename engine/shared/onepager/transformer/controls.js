@@ -3,14 +3,13 @@ import serializeControls from './../../lib/transformer/controls/serialize-contro
 import {fromJS} from 'immutable';
 
 function unserializeControls(persistedControls, sourceControls){
-  let serializedControls = fromJS(persistedControls);
-  let unserializedControls = fromJS(sourceControls);
+	let serializedControls = fromJS( persistedControls );
+	let unserializedControls = fromJS( sourceControls );
 
-  return immutableUnserializeControls(serializedControls, unserializedControls).toJS();
+	return immutableUnserializeControls( serializedControls, unserializedControls ).toJS();
 }
 
 export {
-  unserializeControls,
-  serializeControls
+	unserializeControls,
+	serializeControls
 };
-

@@ -1,7 +1,7 @@
 === Onepage Builder - Easiest Landing Page Builder For WordPress ===
-Contributors: themexpert, nadimtuhin, themesgrove, parvezvai
+Contributors: themexpert, nadimtuhin, themesgrove, parvezvai, shamsbd71
 Donate link: https://themesgrove.com/wp-onepager
-Tags: landing page, onepage, coming soon page, launch page, page builder, under construction page, onepage builder, sales page, business landing page, lead generation page, consulting landing page, service landing page, book launch page, webinar page, case study page, portfolio page, responsive page, coming soon page, app landing page, startup landing page, information product page, event landing page, seminar landing page, maintenance mode, coming soon, under construction,launch, maintenance, construction, offline, unavailable
+Tags: landing page, page builder, coming soon page, onepage, launch page, under construction page, onepage builder, sales page, business landing page, lead generation page, consulting landing page, service landing page, book launch page, webinar page, case study page, portfolio page, responsive page, coming soon page, app landing page, startup landing page, information product page, event landing page, seminar landing page, maintenance mode, coming soon, under construction,launch, maintenance, construction, offline, unavailable
 Stable tag: %version%
 Requires at least: 4.8
 Tested up to: 5.1
@@ -127,6 +127,32 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 
 == Changelog ==
+= 2.2.1 =
+- Improved: Dashboard UI updated now showing large image with scrolling effect.
+
+= 2.2.0 =
+- Improved: Dashboard UI.
+- Improved: Preset naming.
+- Improved: Code coverage and testing by implemented travis CI & PHPCS.
+- Fix: Several blocks animation fixed.
+
+= 2.1.0 =
+- New: Dashboard to explore all layouts and easy to get started.
+- New: Feature-4 block added.
+- New: App landing page added.
+- New: Onepager page template(onepager default) that support theme header/footer.
+- New: WooCommerce block.
+
+- Improved: Adding new section now showing block name instead of ‘Untitled section’.
+- Improved: Edit with onepager link and onepager label added to page built with onepager.
+- Improved: Animation added to all blocks.
+- Improved: Several UI improvements.
+- Improved: All blocks image updated for faster loading
+
+- Fix: Scrolling issue fix for block picker.
+- Fix: All blocks PHP error fix.
+- Fix: Navbar block site url missing fix.
+
 = 2.0.6 =
 - Fix: All blocks title now resize automatically in 1.5/2 ratio
 - Fix: onpage override fix for theme 

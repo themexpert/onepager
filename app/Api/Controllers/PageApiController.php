@@ -11,77 +11,76 @@ namespace App\Api\Controllers;
 use App\Assets\BlocksScripts;
 use App\Assets\OnepageScripts;
 
-class PageApiController extends ApiController
-{
-    public function selectLayout()
-    {
-        $pageId = array_get($_POST, 'pageId', false);
-        $layoutId = array_get($_POST, 'layoutId', false);
+class PageApiController extends ApiController {
 
-        $layouts = onepager()->presetManager()->all();
-        $layout = array_find_by($layouts, 'id', $layoutId);
+	public function selectLayout() {
+		$pageId = array_get( $_POST, 'pageId', false );
+		$layoutId = array_get( $_POST, 'layoutId', false );
 
-        if ($layout) {
-            onepager()->section()->save($pageId, $layout['sections']);
-            $this->buildOnepageScripts($layout['sections'], $pageId);
-            $this->responseSuccess();
-        } else {
-            $this->responseFailed();
-        }
-    }
+		$layouts = onepager()->presetManager()->all();
+		$layout = array_find_by( $layouts, 'id', $layoutId );
 
-    /**
-     * @param $sections
-     * @param $pageId
-     */
-    protected function buildOnepageScripts($sections, $pageId)
-    {
-        $blockScripts = new BlocksScripts();
-        $onepageScripts = new OnepageScripts();
+		if ( $layout ) {
+			onepager()->section()->save( $pageId, $layout['sections'] );
+			$this->buildOnepageScripts( $layout['sections'], $pageId );
+			$this->responseSuccess();
+		} else {
+			$this->responseFailed();
+		}
+	}
 
-        $onepageScripts->enqueueCommonScripts();
-        $onepageScripts->enqueuePageScripts();
-        $blockScripts->enqueueSectionBlocks($sections);
+	/**
+	 * @param $sections
+	 * @param $pageId
+	 */
+	protected function buildOnepageScripts( $sections, $pageId ) {
+		$blockScripts = new BlocksScripts();
+		$onepageScripts = new OnepageScripts();
 
-        if (wp_is_writable(ONEPAGER_CACHE_DIR)) {
-            onepager()->asset()->compilePageAssets($pageId);
-        }
-    }
+		$onepageScripts->enqueueCommonScripts();
+		$onepageScripts->enqueuePageScripts();
+		$blockScripts->enqueueSectionBlocks( $sections );
 
-    public function addPage()
-    {
-        $title = array_get($_POST, 'pageTitle', 'OnePage #' . rand(999, 9999));
-        $layoutId = array_get($_POST, 'layoutId', false);
+		if ( wp_is_writable( ONEPAGER_CACHE_DIR ) ) {
+			onepager()->asset()->compilePageAssets( $pageId );
+		}
+	}
 
-        $new_page_id = wp_insert_post([
-            'post_title' => $title,
-            'post_type' => 'page',
-            'post_name' => $title,
-            'comment_status' => 'closed',
-            'ping_status' => 'closed',
-            'post_content' => '',
-            'post_status' => 'publish',
-            'post_author' => get_user_by('id', 1)->user_id,
-            'menu_order' => 0,
-            'page_template' => 'onepage.php',
-            'template' => 'onepage.php'
-        ]);
+	public function addPage() {
+		$title = array_get( $_POST, 'pageTitle', 'OnePage #' . rand( 999, 9999 ) );
+		$layoutId = array_get( $_POST, 'layoutId', false );
 
-        $pageId = $new_page_id;
+		$new_page_id = wp_insert_post(
+			[
+				'post_title' => $title,
+				'post_type' => 'page',
+				'post_name' => $title,
+				'comment_status' => 'closed',
+				'ping_status' => 'closed',
+				'post_content' => '',
+				'post_status' => 'publish',
+				'post_author' => get_user_by( 'id', 1 )->user_id,
+				'menu_order' => 0,
+				'page_template' => 'onepage.php',
+				'template' => 'onepage.php',
+			]
+		);
 
-        $layouts = onepager()->presetManager()->all();
-        $layout = array_find_by($layouts, 'id', $layoutId);
+		$pageId = $new_page_id;
 
-        if ($layout) {
-            onepager()->section()->save($pageId, $layout['sections']);
-            $this->buildOnepageScripts($layout['sections'], $pageId);
+		$layouts = onepager()->presetManager()->all();
+		$layout = array_find_by( $layouts, 'id', $layoutId );
 
-            $response = ['success' => true, 'url' => get_site_url() . "?page_id={$pageId}&onepager=1"];
-            $this->responseSuccess($response);
-        } else {
-            $this->responseFailed();
-        }
+		if ( $layout ) {
+			onepager()->section()->save( $pageId, $layout['sections'] );
+			$this->buildOnepageScripts( $layout['sections'], $pageId );
 
-        // $this->responseSuccess($response);
-    }
+			$response = ['success' => true, 'url' => get_site_url() . "?page_id={$pageId}&onepager=1"];
+			$this->responseSuccess( $response );
+		} else {
+			$this->responseFailed();
+		}
+
+		// $this->responseSuccess($response);
+	}
 }

@@ -2,15 +2,26 @@
 
 // Wrapper function for link
 if ( ! function_exists( 'op_link' ) ) {
-  function op_link( $link, $class = '' ) {
-    $link['url'] = $link['url']?:"#";
+	function op_link( $link, $class = '' ) {
+		$link['url'] = $link['url'] ?: '#';
 
-    if ( $link['text'] ) {
-      $target = ( $link['target'] ) ? '_blank' : '_self';
+		if ( $link['text'] ) {
+			$target = ( $link['target'] ) ? '_blank' : '_self';
 
-      return '<a class="' . $class . '" href="' . $link['url'] . '" target="' . $target . '">' . $link['text'] . '</a>';
-    }
+			return '<a class="' . $class . '" href="' . $link['url'] . '" target="' . $target . '">' . $link['text'] . '</a>';
+		}
 
-    return '';
-  }
+		return '';
+	}
+}
+
+// Wrapper function for heading
+if ( !function_exists( 'op_heading' ) ){
+	function op_heading($text, $type, $class='', $attr = ''){	
+		// Fallback for previously created page prior 2.3
+		$type = ($type) ? $type : 'h2';
+		$class = (!empty($class)) ? ' class="'.$class.'"' : '';
+
+		return "<$type $class $attr>". $text . "</$type>";
+	}
 }

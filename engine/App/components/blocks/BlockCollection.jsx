@@ -130,7 +130,7 @@ let BlockCollection = React.createClass({
 
     return (
       <div>
-        <select className="blocks-options" multiple="multiple" ref="group" onChange={this.handleChange}>
+        <select className="blocks-options" multiple="multiple" ref="group" onChange={this.handleChange} placeholder="Select">
           {_.map(_.object(groups, groups), group => <option value={group}>{group}</option>)}
         </select>
 

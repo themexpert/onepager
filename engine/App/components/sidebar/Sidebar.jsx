@@ -95,11 +95,11 @@ let Sidebar = React.createClass({
   },
 
   _initNiceScroll(){
-    let tabContents = React.findDOMNode(this.refs.tabContents);
+//    let tabContents = React.findDOMNode(this.refs.tabContents);
 
-    $(function () {
-      $(tabContents).niceScroll({cursorcolor: '#ddd', cursorborder: '0'});
-    });
+//    $(function () {
+//      $(tabContents).niceScroll({cursorcolor: '#ddd', cursorborder: '0'});
+//    });
   },
 
   handleTabClick(id){

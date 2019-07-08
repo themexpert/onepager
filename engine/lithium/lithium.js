@@ -1,4 +1,6 @@
 // JS Goes here
-jQuery(function() {
-  
-});
+jQuery(
+	function() {
+
+	}
+);

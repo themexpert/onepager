@@ -4,21 +4,22 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "014f617cf8364a0e20aaf5b90b6e64f1",
-    "content-hash": "a02064e0dc601aa1950c6e9c183fe863",
+
+    "hash": "6ac3a02b1c6490ed671f27d76f6ddfb1",
+    "content-hash": "022ad3b540d7c24ac0700c2c21b59f30",
     "packages": [
         {
             "name": "appsero/client",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AppSero/client.git",
-                "reference": "0b76b4c4e6f7e6874e1b6f8a51f7449c8f1034a6"
+                "reference": "cceb2004a1a0920c3475adc158c7748c98f2b1f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AppSero/client/zipball/0b76b4c4e6f7e6874e1b6f8a51f7449c8f1034a6",
-                "reference": "0b76b4c4e6f7e6874e1b6f8a51f7449c8f1034a6",
+                "url": "https://api.github.com/repos/AppSero/client/zipball/cceb2004a1a0920c3475adc158c7748c98f2b1f4",
+                "reference": "cceb2004a1a0920c3475adc158c7748c98f2b1f4",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +48,7 @@
                 "theme",
                 "wordpress"
             ],
-            "time": "2019-02-16 04:55:54"
+            "time": "2019-05-09 07:18:04"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -388,16 +389,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.4.23",
+            "version": "v3.4.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "009f8dda80930e89e8344a4e310b08f9ff07dd2e"
+                "reference": "a9c4dfbf653023b668c282e4e02609d131f4057a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/009f8dda80930e89e8344a4e310b08f9ff07dd2e",
-                "reference": "009f8dda80930e89e8344a4e310b08f9ff07dd2e",
+                "url": "https://api.github.com/repos/symfony/process/zipball/a9c4dfbf653023b668c282e4e02609d131f4057a",
+                "reference": "a9c4dfbf653023b668c282e4e02609d131f4057a",
                 "shasum": ""
             },
             "require": {
@@ -478,6 +479,7 @@
                 "wp"
             ],
             "time": "2018-05-01 19:33:47"
+
         }
     ],
     "packages-dev": [],

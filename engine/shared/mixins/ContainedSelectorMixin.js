@@ -1,16 +1,18 @@
 import {findDOMNode} from 'react';
 
 module.exports = {
-  getContainerReactId(){
-    let el = findDOMNode(this.refs.container);
-    if (!el) return false;
+	getContainerReactId(){
+		let el = findDOMNode( this.refs.container );
+		if ( ! el) {
+			return false;
+		}
 
-    return el.getAttribute('data-reactid');
-  },
+		return el.getAttribute( 'data-reactid' );
+	},
 
-  getSelector(selector){
-    let reactId = this.getContainerReactId();
+	getSelector( selector ){
+		let reactId = this.getContainerReactId();
 
-    return "[data-reactid='" + reactId + "']" + " " + selector;
-  }
+		return "[data-reactid='" + reactId + "']" + " " + selector;
+	}
 };
