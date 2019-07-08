@@ -1,30 +1,30 @@
 <?php
-$slideshow_options[] = 'animation: ' . $settings['animation'] ;
-$slideshow_options[] = ($settings['autoplay']) ? 'autoplay: true' : '';
-$slideshow_options[] = ($settings['slider_height']) ? 'max-height:' . $settings['slider_height'] : '';
-$slideshow = implode('; ', $slideshow_options);
-$heading_class = ($settings['title_transformation']) ? 'uk-text-' . $settings['title_transformation'] : '';
+$slideshow_options[] = 'animation: ' . $settings['animation'];
+$slideshow_options[] = ( $settings['autoplay'] ) ? 'autoplay: true' : '';
+$slideshow_options[] = ( $settings['slider_height'] ) ? 'max-height:' . $settings['slider_height'] : '';
+$slideshow = implode( '; ', $slideshow_options );
+$heading_class = ( $settings['title_transformation'] ) ? 'uk-text-' . $settings['title_transformation'] : '';
 ?>
 <div id="<?php echo $id; ?>" class="fp-section sliders slider-1">
 	<div class="uk-position-relative uk-visible-toggle slider-1" tabindex="-1" uk-slideshow="<?php echo $slideshow; ?>">
 		<ul class="uk-slideshow-items" uk-height-viewport>
-			<?php foreach($contents['sliders'] as $index => $slide): ?>
+			<?php foreach ( $contents['sliders'] as $index => $slide ) : ?>
 			<li>
-				<img src="<?php echo $slide['image']?>" alt="" uk-cover>
+				<img src="<?php echo $slide['image']; ?>" alt="" uk-cover>
 				<div class="uk-overlay-primary uk-position-cover"></div>
 					<div class="uk-position-center uk-position-small uk-text-center uk-light">
 						<h2 
-							class="uk-heading-primary <?php echo $heading_class ?>" 
+							class="uk-heading-primary <?php echo $heading_class; ?>" 
 							uk-slideshow-parallax="x: 200,0,-100">
-							<?php echo $slide['title']?>
+							<?php echo $slide['title']; ?>
 						</h2>
 						<p 
 							class="uk-text-lead" 
 							uk-slideshow-parallax="x: 200,-200">
-							<?php echo $slide['description']?>
+							<?php echo $slide['description']; ?>
 						</p>
 						<div uk-slideshow-parallax="x: 100,-100">
-							<?php echo op_link($slide['link'], 'uk-button uk-button-large uk-button-primary');?>
+							<?php echo op_link( $slide['link'], 'uk-button uk-button-large uk-button-primary' ); ?>
 						</div>
 				</div>
 			</li>

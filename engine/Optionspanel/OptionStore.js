@@ -8,11 +8,11 @@ import toolbelt from './../shared/lib/toolbelt.js';
 import ODataStore from './../shared/onepager/ODataStore.js';
 import OptionActions from './OptionActions.js';
 import Sync from './OptionsPanelSync.js';
-const SectionTransformer = require('./../shared/onepager/sectionTransformer');
+const SectionTransformer = require( './../shared/onepager/sectionTransformer' );
 
 import LocalState from '../shared/lib/localState.js';
 
-let componentLocalState = LocalState('onepager_settings_ui_state')();
+let componentLocalState = LocalState( 'onepager_settings_ui_state' )();
 
 let options = ODataStore.options;
 let pageOptions = ODataStore.pageOptions;
@@ -20,15 +20,15 @@ console.log("odata", ODataStore)
 let sync = Sync(ODataStore.ajaxUrl, ODataStore.page);
 
 function transformer(fields, panelId) {
-  return fields.map(field=> {
-    field.ref = _.uniqueId("ref_");
-
-    if (options && options[panelId] && options[panelId][field.name] !== undefined) {
-      field.value = options[panelId][field.name];
-    }
-
-    return field;
-  });
+	return fields.map(
+		field => {
+        field.ref = _.uniqueId( "ref_" );
+        if (options && options[panelId] && options[panelId][field.name] !== undefined) {
+				field.value = options[panelId][field.name];
+			}
+        return field;
+		}
+	);
 }
 
 function transformerPage(fields, panelId) {

@@ -1,28 +1,28 @@
 <?php namespace App\Content;
 
 class OnepageToolbar {
-  public function __construct() {
-    add_action( 'wp', [ $this, 'addToolbar' ] );
-  }
+	public function __construct() {
+		add_action( 'wp', [ $this, 'addToolbar' ] );
+	}
 
-  function addToolbar() {
-    $isOnepage   = onepager()->content()->isOnepage();
-    $isPreview   = onepager()->content()->isPreview();
-    $isBuildMode = onepager()->content()->isBuildMode();
+	function addToolbar() {
+		$isOnepage   = onepager()->content()->isOnepage();
+		$isPreview   = onepager()->content()->isPreview();
+		$isBuildMode = onepager()->content()->isBuildMode();
 
-    if ( $isOnepage && ! $isPreview ) {
-      $url = onepager_get_edit_mode_url( get_current_page_url(), true );
+		if ( $isOnepage && ! $isPreview ) {
+			$url = onepager_get_edit_mode_url( get_current_page_url(), true );
 
-      onepager()->toolbar()->addMenu(
-        'op-enable-livemode',
-        $url,
-        '<span class="fa fa-circle"></span> Edit with Onepager'
-      );
-    }
+			onepager()->toolbar()->addMenu(
+				'op-enable-livemode',
+				$url,
+				'<span class="fa fa-circle"></span> Edit with Onepager'
+			);
+		}
 
-    //hide the navbar when livemode
-    if ( $isPreview || $isBuildMode ) {
-      show_admin_bar( false );
-    }
-  }
+		// hide the navbar when livemode
+		if ( $isPreview || $isBuildMode ) {
+			show_admin_bar( false );
+		}
+	}
 }

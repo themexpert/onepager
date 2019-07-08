@@ -2,41 +2,44 @@
 
 
 class PresetsLoader {
-  protected $presetManager;
+	protected $presetManager;
 
-  public function __construct( $presetManager ) {
-    $this->presetManager = $presetManager;
+	public function __construct( $presetManager ) {
+		$this->presetManager = $presetManager;
 
-    add_action( 'admin_init', [ $this, 'onepagerPresetsLoader' ] );
-    add_action( 'admin_init', [ $this, 'themePresetsLoader' ] );
-  }
+		add_action( 'admin_init', [ $this, 'onepagerPresetsLoader' ] );
+		add_action( 'admin_init', [ $this, 'themePresetsLoader' ] );
+	}
 
-  public function onepagerPresetsLoader() {
-    $groups = "Free";
+	public function onepagerPresetsLoader() {
+		$groups = 'Free';
 
-    $this->presetManager->loadAllFromPath(
-      ONEPAGER_PRESETS_PATH, ONEPAGER_PRESETS_URL, $groups );
-  }
+		$this->presetManager->loadAllFromPath(
+			ONEPAGER_PRESETS_PATH,
+			ONEPAGER_PRESETS_URL,
+			$groups
+		);
+	}
 
-  public function themePresetsLoader() {
-    $groups = [ $this->getCurrentThemePresetsGroup() ];
+	public function themePresetsLoader() {
+		$groups = [ $this->getCurrentThemePresetsGroup() ];
 
-    $dir = ONEPAGER_THEME_PATH . "/presets";
-    $url = ONEPAGER_THEME_URL . "/presets";
+		$dir = ONEPAGER_THEME_PATH . '/presets';
+		$url = ONEPAGER_THEME_URL . '/presets';
 
-    if ( ! file_exists( $dir ) ) {
-      return;
-    }
+		if ( ! file_exists( $dir ) ) {
+			return;
+		}
 
-    $this->presetManager->loadAllFromPath( $dir, $url, $groups );
-  }
+		$this->presetManager->loadAllFromPath( $dir, $url, $groups );
+	}
 
-  /**
-   * @return string
-   */
-  private function getCurrentThemePresetsGroup() {
-    $currentTheme = wp_get_theme();
+	/**
+	 * @return string
+	 */
+	private function getCurrentThemePresetsGroup() {
+		$currentTheme = wp_get_theme();
 
-    return $currentTheme->get( 'Name' ) . " (theme)";
-  }
+		return $currentTheme->get( 'Name' ) . ' (theme)';
+	}
 }

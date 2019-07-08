@@ -1,9 +1,0 @@
-.content-1{ padding-top: 80px; padding-bottom: 80px; }
-.content-1 .btn{ margin: 2rem 0; }
-@media (max-width: 768px){
-	.content-1{
-		padding-top: 20px;
-		padding-bottom: 20px;
-		text-align: center;
-	}
-}

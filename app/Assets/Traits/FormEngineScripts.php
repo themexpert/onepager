@@ -27,7 +27,7 @@ trait FormEngineScripts
         $asset->script('tx-bootstrap-select', op_asset('assets/js/bootstrap-select.js'), ['jquery'], ONEPAGER_VERSION, false);
         $asset->script('tx-iconselector', op_asset('assets/js/icon-selector-bootstrap.js'), ['jquery'], ONEPAGER_VERSION, false);
         $asset->script('tx-colorpicker', op_asset('assets/js/bootstrap-colorpicker.js'), ['jquery'], ONEPAGER_VERSION, false);
-        $asset->script('tx-nicescroll', op_asset('assets/js/jquery.nicescroll.min.js'), ['jquery'], ONEPAGER_VERSION, false);
+        //$asset->script('tx-nicescroll', op_asset('assets/js/jquery.nicescroll.min.js'), ['jquery'], ONEPAGER_VERSION, false);
         $asset->script('tx-toastr', op_asset('assets/js/toastr.js'), ['jquery'], ONEPAGER_VERSION, false);
 
         $asset->style('tx-colorpicker', op_asset('assets/css/bootstrap-colorpicker.css'));

@@ -78,14 +78,14 @@ Onepager::getOptionPanel('page')
 //     );
 
 // Onepager::basePreset( array(
-//   'primary'   => "#1565c0",
-//   'secondary' => '#0a3d78',
-//   'accent'    => '#E64A19',
+// 'primary'   => "#1565c0",
+// 'secondary' => '#0a3d78',
+// 'accent'    => '#E64A19',
 // ) );
 //
 // Onepager::addPresets( "default", array(
-//   [ 'primary' => 'red', 'secondary' => 'yellow' ],
-//   [ 'primary' => 'green', 'secondary' => 'yellow' ],
+// [ 'primary' => 'red', 'secondary' => 'yellow' ],
+// [ 'primary' => 'green', 'secondary' => 'yellow' ],
 // ) );
 
 add_action('wp_head', function () {
