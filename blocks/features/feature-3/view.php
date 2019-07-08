@@ -4,7 +4,7 @@
 	// Animation Media
 	$animation_media = ( $settings['animation_media'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['animation_media'] . '"' : '';
 	// Animation Content
-	$animation_content = ( $settings['animation_content'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['animation_content'] . ';' : '';
+	$animation_content = ( $settings['animation_content'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['animation_content'] . ';"' : '';
 	// Alignment
 	$content_position = ( $settings['media_alignment'] == 'right' ) ? 'uk-flex-first@m uk-first-column' : '';
 ?>
@@ -18,9 +18,14 @@
 					<article class="uk-article">
 						<?php if ( $contents['title'] ) : ?>
 							<!-- Section Title -->
-							<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation']; ?>" <?php echo ( $settings['animation_content'] ? $animation_content . 'delay:100"' : '' ); ?>>
-								<?php echo $contents['title']; ?>
-							</h1>
+							<?php 
+								echo op_heading(
+									$contents['title'],
+									$settings['heading_type'],
+									'uk-heading-primary uk-text-'.$settings['title_transformation'],
+									$animation_content
+								); 
+							?>
 						<?php endif; ?>
 
 						<?php if ( $contents['description'] ) : ?>

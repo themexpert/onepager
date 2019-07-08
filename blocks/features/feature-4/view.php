@@ -3,7 +3,7 @@
 	// title alignment
 	$title_alignment = ( $settings['title_alignment'] ) ? $settings['title_alignment'] : '';
 	// title animation
-	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . ';' : '';
+	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . ';"' : '';
 	// items alignment
 	$items_alignment = ( $settings['items_alignment'] ) ? $settings['items_alignment'] : '';
 	// items animation
@@ -11,7 +11,7 @@
 ?>
 
 
-<section id="<?php echo $id; ?>" class="fp-section features feature-4">
+<section id="<?php echo $id; ?>" class="fp-section features feature-4 uk-padding-large">
 	<div class="uk-section">
 		<div class="uk-container">
 			<article class="uk-article">
@@ -19,9 +19,14 @@
 					<div class="section-heading uk-margin-large-bottom uk-text-<?php echo $title_alignment; ?>">	
 						<?php if ( $contents['title'] ) : ?>
 							<!-- Section Title -->
-							<h1 class="uk-heading-primary uk-text-<?php echo $settings['title_transformation']; ?>" <?php echo ( $settings['title_animation'] ? $title_animation . 'delay:100"' : '' ); ?>>
-								<?php echo $contents['title']; ?>
-							</h1>
+							<?php 
+								echo op_heading(
+									$contents['title'],
+									$settings['heading_type'],
+									'uk-heading-primary uk-text-'.$settings['title_transformation'],
+									$title_animation
+								); 
+							?>
 						<?php endif; ?>
 						<?php if ( $contents['description'] ) : ?>
 							<!-- Section Sub Title -->
@@ -63,3 +68,4 @@
 		</div> <!-- uk-container -->
 	</div> <!-- uk-section -->
 </section> <!-- fp-section -->
+

@@ -2,7 +2,7 @@
 	$media_grid = 'uk-' . $settings['media_grid'] . '@m';
 	// Animation
 	$animation_media = ( $settings['animation_media'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['animation_media'] . '"' : '';
-	$animation_content = ( $settings['animation_content'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['animation_content'] . ';' : '';
+	$animation_content = ( $settings['animation_content'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['animation_content'] . ';"' : '';
 	// Alignment
 	$content_position = ( $settings['media_alignment'] == 'right' ) ? 'uk-flex-first@m uk-first-column' : '';
 	// Text transformation class
@@ -23,9 +23,14 @@
 					<div class="uk-panel">
 						<!-- Title -->
 						<?php if ( $contents['title'] ) : ?>
-							<h1 class="uk-heading-primary <?php echo $heading_class; ?>" <?php echo ( $settings['animation_content'] ? $animation_content . 'delay:100"' : '' ); ?>>
-								<?php echo $contents['title']; ?>
-							</h1>
+						<?php 
+							echo op_heading(
+								$contents['title'],
+								$settings['heading_type'],
+								'uk-heading-primary uk-text-'.$settings['title_transformation'],
+								$animation_content
+							); 
+						?>
 						<?php endif; ?>
 						<!-- Description -->
 						<?php if ( $contents['description'] ) : ?>

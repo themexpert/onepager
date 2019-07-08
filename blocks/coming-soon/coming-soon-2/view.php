@@ -1,6 +1,6 @@
 <?php
 	// Title Animation
-	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . '"' : '';
+	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . '";' : '';
 	// Logo Animation
 	$logo_animation = ( $settings['logo_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['logo_animation'] . '"' : '';
 	// Content Animation
@@ -18,8 +18,14 @@
 			<?php endif; ?>
 			<!-- Title -->
 			<?php if ( $contents['title'] ) : ?>
-				<h1 class="uk-heading-primary uk-text-center uk-text-<?php echo $settings['title_transformation']; ?>" <?php echo $title_animation; ?> ><?php echo $contents['title']; ?>
-				</h1>
+				<?php 
+					echo op_heading(
+						$contents['title'],
+						$settings['heading_type'],
+						'uk-heading-primary  uk-text-'.$settings['title_transformation'],
+						$title_animation
+					); 
+				?>
 			<?php endif; ?>
 			<!-- Description -->
 			<?php if ( $contents['description'] ) : ?>
