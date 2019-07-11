@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "appsero/client",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AppSero/client.git",
-                "reference": "cceb2004a1a0920c3475adc158c7748c98f2b1f4"
+                "reference": "dedab5a4813b113ce901b2670bb8b00cd12063e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AppSero/client/zipball/cceb2004a1a0920c3475adc158c7748c98f2b1f4",
-                "reference": "cceb2004a1a0920c3475adc158c7748c98f2b1f4",
+                "url": "https://api.github.com/repos/AppSero/client/zipball/dedab5a4813b113ce901b2670bb8b00cd12063e9",
+                "reference": "dedab5a4813b113ce901b2670bb8b00cd12063e9",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
                 "theme",
                 "wordpress"
             ],
-            "time": "2019-05-09 07:18:04"
+            "time": "2019-05-14 08:54:07"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -388,16 +388,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.4.27",
+            "version": "v3.4.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "a9c4dfbf653023b668c282e4e02609d131f4057a"
+                "reference": "d129c017e8602507688ef2c3007951a16c1a8407"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/a9c4dfbf653023b668c282e4e02609d131f4057a",
-                "reference": "a9c4dfbf653023b668c282e4e02609d131f4057a",
+                "url": "https://api.github.com/repos/symfony/process/zipball/d129c017e8602507688ef2c3007951a16c1a8407",
+                "reference": "d129c017e8602507688ef2c3007951a16c1a8407",
                 "shasum": ""
             },
             "require": {
@@ -433,7 +433,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2019-04-08 16:15:54"
+            "time": "2019-05-30 15:47:52"
         }
     ],
     "packages-dev": [],

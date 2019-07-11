@@ -25,7 +25,7 @@
     "gulp-util": "^3.0.4",
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
-    "lodash": ">=4.17.5",
+    "lodash": "^4.17.14",
     "main-bower-files": "^2.7.0",
     "node-libs-browser": "^0.5.2",
     "react-hot-loader": "^1.2.7",
@@ -35,7 +35,7 @@
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.9.11",
-    "webpack-dev-server": ">=3.1.11",
+    "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^0.1.2",
     "wrench": "^1.5.8"
   },
@@ -59,13 +59,13 @@
   "dependencies": {
     "alt": "^0.17.1",
     "async": "^1.2.1",
-    "bootstrap-datepicker": "^1.8.0",
+    "bootstrap-datepicker": "^1.9.0",
     "bootstrap-timepicker": "^0.5.2",
     "classnames": "^2.1.1",
     "flux": "^2.0.3",
     "immutable": "^3.7.4",
     "install": "^0.12.2",
-    "npm": "^6.9.0",
+    "npm": "^6.10.0",
     "object-assign": "^2.0.0",
     "react": "^0.13.2",
     "react-bootstrap": "^0.21.2",
@@ -75,7 +75,7 @@
     "sortablejs": "git+https://github.com/nadimtuhin/Sortable.git",
     "sweetalert": "^1.0.1",
     "tinycolor2": "^1.1.2",
-    "uikit": "^3.0.3",
+    "uikit": "^3.1.6",
     "underscore": "^1.8.3",
     "underscore.string": "^3.1.1"
   }
