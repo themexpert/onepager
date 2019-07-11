@@ -1,0 +1,29 @@
+.blog-1{ padding-top: 80px; padding-bottom: 80px;}
+
+.blog-1 .uk-card {
+	overflow: hidden;
+}
+
+.blog-1 .uk-card .post-thumb,
+.blog-1 .uk-card .post-thumb figure{
+	transition: all 0.3s ease;
+	overflow: hidden;
+	max-height: 300px;
+}
+
+.blog-1 .uk-card .post-thumb img{
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	transition: all 0.3s ease;
+}
+
+.blog-1 .uk-card:hover .post-thumb img{
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+	transition: all 0.3s ease;
+
+}
+
+.blog-1 .uk-card .uk-card-body .uk-text-small{
+	margin: -10px 0 20px;
+}
