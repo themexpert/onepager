@@ -1,0 +1,20 @@
+.select2-container {
+  width: 100% !important;
+  margin-bottom: 10px;
+  z-index: 9999999;
+}
+.select2-container--default .select2-selection--multiple {
+  border-color: #e5e5e5;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple,
+.select2-dropdown {
+  border-color: #007bff;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #edf3f9;
+  border-color: #007bff;
+  text-transform: capitalize;
+}
+.select2-results__options .select2-results__option {
+  text-transform: capitalize;
+}
