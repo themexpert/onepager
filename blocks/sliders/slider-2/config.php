@@ -148,7 +148,4 @@ return array(
 
 	),
 
-  // 'assets' => function( $path ){
-  // Onepager::addStyle('slider-2', $path . '/style.css');
-  // }
 );

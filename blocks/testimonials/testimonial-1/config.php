@@ -34,17 +34,6 @@ return array(
 			'label' => 'Background Image',
 			'type'  => 'image',
 		),
-		// array(
-		// 'name'     => 'bg_repeat',
-		// 'label'    => 'Image Repeat',
-		// 'type'     => 'select',
-		// 'value'    => 'no-repeat',
-		// 'options'  => array(
-		// 'no-repeat'     => 'No Repeat',
-		// 'repeat-x'      => 'Repeat X',
-		// 'repeat-y'      => 'Repeat Y',
-		// )
-		// ),
 		array(
 			'name' => 'bg_parallax',
 			'type' => 'switch',
@@ -147,7 +136,4 @@ return array(
 
 	),
 
-  // 'assets' => function( $path ){
-  // Onepager::addStyle('testimonial-1', $path . '/style.css');
-  // }
 );

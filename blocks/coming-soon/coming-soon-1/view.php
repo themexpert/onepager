@@ -6,59 +6,74 @@
 	$countdown_animation = ( $settings['countdown_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['countdown_animation'] . '"' : '';
 	// Social link Animation
 	$social_animation = ( $settings['social_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['social_animation'] . '"' : '';
-?>
-<section id="<?php echo $id; ?>" class="fp-section uk-section coming-soon coming-soon-1 uk-height-viewport uk-position-relative">
-	<div class="uk-overlay-primary uk-position-cover"></div>
-	
-	<article class="uk-position-center">
-		<!-- Title -->
-		<?php if ( $contents['title'] ) : ?>
-			<?php 
-				echo op_heading(
-					$contents['title'],
-					$settings['heading_type'],
-					'uk-heading-primary uk-text-center uk-text-'.$settings['title_transformation'],
-					$title_animation
-				); 
-			?>
-		<?php endif; ?>
-		<!-- countdown -->
-		<?php if ( $contents['date'] ) : ?>
-		<div class="countdown uk-flex uk-flex-center uk-text-center uk-flex-middle uk-container uk-container-center" >
-			<div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: <?php echo $contents['date']; ?>">
-					<div class="countdown-number">
-						<div class="uk-countdown-number uk-countdown-days"></div>
-							<div class="uk-countdown-label"><?php _e( 'Days', 'onepager' ); ?></div>
+	?>
+	<section id="<?php echo $id; ?>" class="fp-section uk-section coming-soon coming-soon-1 uk-position-relative uk-height-viewport uk-flex uk-flex-center uk-flex-middle">
+			<div class="uk-overlay-primary uk-position-cover"></div>
+			<div class="uk-container">
+
+				<div class="section-heading uk-margin-large-bottom uk-text-center">	
+					<?php if ( $contents['title'] ) : ?>
+					<!-- Section Title -->
+					  	<?php 
+							echo op_heading(
+								$contents['title'],
+								$settings['heading_type'],
+								'uk-heading-primary uk-text-'.$settings['title_transformation'],
+								$title_animation
+							); 
+						?>
+					<?php endif; ?>
+				</div>
+
+				<!-- countdown -->
+				<?php if ( $contents['date'] ) : ?>
+					<div class="countdown uk-flex uk-flex-center uk-text-center uk-flex-middle" <?php echo $countdown_animation; ?>>
+						<div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: <?php echo $contents['date']; ?>">
+							<div class="uk-child-width-1-4@s" uk-grid>
+								<div class="countdown-number">
+									<div class="op-countdown-single uk-padding">
+										<div class="uk-countdown-number uk-countdown-days"></div>
+										<div class="uk-countdown-label"><?php _e( 'Days', 'onepager' ); ?></div>
+									</div>
+								</div>
+
+								<div class="countdown-number">
+									<div class="op-countdown-single uk-padding">
+										<div class="uk-countdown-number uk-countdown-hours"></div>
+										<div class="uk-countdown-label"><?php _e( 'Hours', 'onepager' ); ?></div>
+									</div>
+								</div>
+
+								<div class="countdown-number">
+									<div class="op-countdown-single uk-padding">
+										<div class="uk-countdown-number uk-countdown-minutes"></div>
+										<div class="uk-countdown-label"><?php _e( 'Minutes', 'onepager' ); ?></div>
+									</div>
+								</div>
+
+								<div class="countdown-number">
+									<div class="op-countdown-single uk-padding">
+										<div class="uk-countdown-number uk-countdown-seconds"></div>
+										<div class="uk-countdown-label"><?php _e( 'Seconds', 'onepager' ); ?></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> 
+				<?php endif; ?>
+				<!-- Description -->
+				<?php if ( $contents['description'] ) : ?>
+					<div class="uk-text-lead uk-text-center uk-align-center uk-width-1-2@s" <?php echo $content_animation; ?> >
+						<?php echo $contents['description']; ?>
 					</div>
-					
-					<div class="countdown-number">
-							<div class="uk-countdown-number uk-countdown-hours"></div>
-								<div class="uk-countdown-label"><?php _e( 'Hours', 'onepager' ); ?></div>
-					</div>
-					
-					<div class="countdown-number">
-						<div class="uk-countdown-number uk-countdown-minutes"></div>
-							<div class="uk-countdown-label"><?php _e( 'Minutes', 'onepager' ); ?></div>
-					</div>
-					
-					<div class="countdown-number">
-						<div class="uk-countdown-number uk-countdown-seconds"></div>
-						<div class="uk-countdown-label"><?php _e( 'Seconds', 'onepager' ); ?></div>
-					</div>
-			</div>
-		</div> 
-		<?php endif; ?>
-		<!-- Description -->
-		<?php if ( $contents['description'] ) : ?>
-			<div class="uk-text-lead uk-text-center uk-align-center uk-width-1-2@s" <?php echo $content_animation; ?> >
-				<?php echo $contents['description']; ?>
-			</div>
-		<?php endif; ?>
-		<!-- social-links -->
-		<div class="social-links uk-margin uk-text-center" <?php echo $social_animation; ?> >
-			<?php foreach ( $contents['social'] as $social ) : ?>
-				<a class="icon" href="<?php echo $social; ?>" target="_blank"></a>
-			<?php endforeach; ?>
-		</div>
-	</article>
-</section> <!-- end-section -->
+				<?php endif; ?>
+				<!-- social-links -->
+				<div class="social-links uk-margin uk-text-center" <?php echo $social_animation; ?> >
+					<?php foreach ( $contents['social'] as $social ) : ?>
+						<a class="icon" href="<?php echo $social; ?>" target="_blank"></a>
+					<?php endforeach; ?>
+				</div>
+
+			</div><!-- uk-container -->
+	</section> <!-- end-section -->
+

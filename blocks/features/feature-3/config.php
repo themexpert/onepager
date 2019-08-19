@@ -50,6 +50,7 @@ return array(
 	),
 
 	'settings' => array(
+		array('label' => 'Media', 'type' => 'divider'), // Divider - Text
 		array(
 	      'name'     => 'heading_type',
 	      'label'    => 'Heading Type',
@@ -64,7 +65,6 @@ return array(
 	        'h6'   => 'h6',
 	      ),
 	    ),
-		array('label' => 'Media', 'type' => 'divider'), // Divider - Text
 
 		array(
 			'name'     => 'media_alignment',

@@ -47,6 +47,7 @@ return [
 
 	// Settings - $settings available on view file to access the option
 	'settings' => [
+		['label' => 'Heading', 'type' => 'divider'], // Divider - Text
 		array(
 	      'name'     => 'heading_type',
 	      'label'    => 'Heading Type',
@@ -61,7 +62,6 @@ return [
 	        'h6'   => 'h6',
 	      ),
 	    ),
-		['label' => 'Heading', 'type' => 'divider'], // Divider - Text
 		[
 			'name' => 'title_size',
 			'label' => 'Title Size',

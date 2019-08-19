@@ -9,7 +9,8 @@
 	background: <?php echo $styles['overlay_color']; ?>;
 }
 #<?php echo $id; ?> .uk-heading-primary{
-	font-size : <?php echo $settings['title_size']; ?>px;
+	font-size : <?php echo $settings['section_title_size']; ?>px;
+	font-weight : <?php echo $settings['title_font_weight']; ?>;
 	color : <?php echo $styles['title_color']; ?>;
 }
 #<?php echo $id; ?> .uk-text-lead {
@@ -29,14 +30,13 @@
 	color : <?php echo $styles['icon_color']; ?>;
 }
 
-#<?php echo $id; ?> .countdown-number {
-	background: <?php echo $styles['countdown_bg_color']; ?>;
-	margin: 15px;
-	width: <?php echo $settings['countdown_size']; ?>px;
-	height: <?php echo $settings['countdown_size']; ?>px;
+#<?php echo $id; ?> .op-countdown-single {
+	height: 165px;
+	width: 165px;
+	margin: 0 auto;
 	border: 1px solid <?php echo $styles['countdown_bg_color']; ?>;
+	background-color: <?php echo $styles['countdown_bg_color']; ?>;
 	border-radius: 100%;
-	padding: 30px 0 0 0;
 }
 #<?php echo $id; ?> .social-links > a {
 	font-size: 18px;
@@ -45,4 +45,9 @@
 	height: 40px;
 	border-radius: 100%;
 	line-height: 40px;
+}
+@media(max-width:768px){
+	#<?php echo $id; ?> .uk-heading-primary{
+		font-size : <?php echo ( $settings['section_title_size'] / 1.5 ); ?>px;
+	}
 }

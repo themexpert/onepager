@@ -12,8 +12,6 @@ return array(
 
 
 	'styles' => array(
-
-
 		array(
 			'name'    => 'bg_color',
 			'label'   => 'Background Color',
@@ -89,7 +87,4 @@ return array(
 		),
 	),
 
-	// 'assets' => function( $path ){
- // onepager()->asset()->style( 'footer-1', $path . '/style.css' );
- // }
 );

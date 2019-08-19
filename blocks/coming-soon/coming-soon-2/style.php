@@ -9,7 +9,8 @@
 	background: <?php echo $styles['overlay_color']; ?>;
 }
 #<?php echo $id; ?> .uk-heading-primary{
-	font-size : <?php echo $settings['title_size']; ?>px;
+	font-size : <?php echo $settings['section_title_size']; ?>px;
+	font-weight : <?php echo $settings['title_font_weight']; ?>;
 	color : <?php echo $styles['title_color']; ?>;
 }
 #<?php echo $id; ?> .uk-text-lead {
@@ -18,4 +19,9 @@
 }
 #<?php echo $id; ?> .op-logo {
 	width: <?php echo $settings['logo_size']; ?>px;
+}
+@media(max-width:768px){
+	#<?php echo $id; ?> .uk-heading-primary{
+		font-size : <?php echo ( $settings['section_title_size'] / 1.5 ); ?>px;
+	}
 }

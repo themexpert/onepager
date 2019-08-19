@@ -61,6 +61,7 @@
     "async": "^1.2.1",
     "bootstrap-datepicker": "^1.9.0",
     "bootstrap-timepicker": "^0.5.2",
+    "bower": "^1.8.8",
     "classnames": "^2.1.1",
     "flux": "^2.0.3",
     "immutable": "^3.7.4",

@@ -48,6 +48,7 @@ return array(
 	),
 
 	'settings' => array(
+		array('label' => 'Heading', 'type' => 'divider'), // Divider - Text
 		array(
 	      'name'     => 'heading_type',
 	      'label'    => 'Heading Type',
@@ -62,7 +63,6 @@ return array(
 	        'h6'   => 'h6',
 	      ),
 	    ),
-		array('label' => 'Title Settings', 'type' => 'divider'), // Divider - Text
 
 		array(
 			'name' => 'title_size',

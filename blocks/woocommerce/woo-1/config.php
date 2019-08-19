@@ -59,6 +59,7 @@ return array(
 
 	// Settings - $settings available on view file to access the option
 	'settings' => array(
+		array('label' => 'Section Heading', 'type' => 'divider'),
 		array(
 	      'name'     => 'heading_type',
 	      'label'    => 'Heading Type',
@@ -74,7 +75,6 @@ return array(
 	      ),
 	    ),
     
-		array('label' => 'Section Heading', 'type' => 'divider'),
 		array(
 			'name'   => 'section_title_size',
 			'label'  => 'Title Size',

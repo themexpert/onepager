@@ -29,4 +29,6 @@
 	background: <?php echo $styles['overlay_color']; ?>;
 }
 
-
+#<?php echo $id; ?> .uk-border-circle {
+    margin: 0 auto;
+}
