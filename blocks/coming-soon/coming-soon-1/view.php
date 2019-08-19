@@ -9,7 +9,7 @@
 	?>
 	<section id="<?php echo $id; ?>" class="fp-section uk-section coming-soon coming-soon-1 uk-position-relative uk-height-viewport uk-flex uk-flex-center uk-flex-middle">
 			<div class="uk-overlay-primary uk-position-cover"></div>
-			<div class="uk-container">
+			<div class="uk-container uk-position-z-index">
 
 				<div class="section-heading uk-margin-large-bottom uk-text-center">	
 					<?php if ( $contents['title'] ) : ?>
