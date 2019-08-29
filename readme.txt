@@ -127,6 +127,10 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 
 == Changelog ==
+
+= 2.2.4 =
+-Added: Six New Blocks
+
 = 2.2.3 =
 - Fix: Coming Soon Block Responsive issue
 - Improved: Heading type option
