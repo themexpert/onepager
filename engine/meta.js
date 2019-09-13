@@ -11,6 +11,7 @@
 			var $selectLayoutBtn = $( ".op-select-preset" );
 			var $postArea = $( "#postdivrich" );
 			var $pageTemplate = $( "#page_template" );
+			var $pageTemplateAlternative = $( '.editor-page-attributes__template select' );
 
 			var $export = $( "#onepager-export-layout" );
 			var $onepagerMetabox = $( "#onepager_meta" );
@@ -62,8 +63,12 @@
 							if ($( '.block-editor' )) {
 								$( '.block-editor' ).prepend( $loading );
 							}
-
-							if ($( '.editor-page-attributes__template select' ).val() == 'onepage.php') {
+							if(
+								$pageTemplate.val() == 'onepage.php' ||
+								$pageTemplate.val() == 'onepager-default.php' ||
+								$pageTemplateAlternative.val() == 'onepage.php' ||
+								$pageTemplateAlternative.val() == 'onepager-default.php'
+							){
 								$onepagerEnableBtn.hide();
 								$onepagerDisableBtn.show();
 								$onepagerMetabox.show();
@@ -76,12 +81,17 @@
 								$onepagerDisableBtn.hide();
 							}
 						},
-						3000
+						1000
 					);
 				}
 			);
 
 			function enableOnepagerHandler() {
+				var $wpTitle = $('#title');
+				if (!$wpTitle.val()) {
+					$wpTitle.val('OnePager #' + $('#post_ID').val());
+					$('#title-prompt-text').addClass('screen-reader-text');
+				}
 
 				if ($pageTemplate.length) {
 					if ($pageTemplate.find( 'option[value="onepager/onepage.php"]' ).get( 0 )) {
@@ -130,7 +140,7 @@
 							$( '#onepager_meta .op-editpage-link' ).show();
 
 						},
-						2000
+						1000
 					);
 
 				}
@@ -145,35 +155,40 @@
 					$( '.editor-page-attributes__template select' ).val( '' );
 					$( '.editor-page-attributes__template select' ).trigger( 'change' );
 
-					setTimeout(
-						function () {
-							jQuery.ajax(
-								{
-									url: wpApiSettings.root + wpApiSettings.versionString + typenow + 's/' + onepager.pageId,
-									method: 'POST',
-									beforeSend: function (xhr) {
-										  xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
-									},
-									data: { "template": "", "id": onepager.pageId }
-								}
-							)
-
-							$( ".editor-post-save-draft" ).click();
-							// $('.editor-block-list__layout').after($('.onepager-meta-container').html());
-						},
-						2000
-					);
-
-					setTimeout(
-						function () {
-							$( ".editor-post-publish-button" ).click();
-						},
-						1000
-					);
+					// setTimeout(
+					// 	function () {
+					// 		$( ".editor-post-publish-button" ).click();
+					// 	},
+					// 	1000
+					// );
 
 					// $('.editor-writing-flow #op-presets').remove();
-					$( '.editor-block-list__layout' ).show();
+					// $( '.editor-block-list__layout' ).show();
 				}
+
+				setTimeout(
+					function () {
+						jQuery.ajax(
+							{
+								url: wpApiSettings.root + wpApiSettings.versionString + typenow + 's/' + onepager.pageId,
+								method: 'POST',
+								beforeSend: function (xhr) {
+									  xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
+								},
+								data: { "template": "", "id": onepager.pageId }
+							}
+						).done(function() {
+							$( ".editor-post-save-draft, #save-post" ).click();
+							$( ".editor-post-publish-button, #publish" ).click();
+							$( '.editor-block-list__layout' ).show();
+						});
+
+						$( ".editor-post-save-draft" ).click();
+						$('.editor-block-list__layout').after($('.onepager-meta-container').html());
+					},
+					100
+				);
+
 			}
 
 			function layoutSelectHandler() {
