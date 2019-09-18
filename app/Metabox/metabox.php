@@ -4,7 +4,31 @@ use ThemeXpert\View\View;
 
 add_action( 'add_meta_boxes', 'tx_add_onepager_metabox', 1 );
 add_action( 'admin_enqueue_scripts', 'tx_onepager_metabox_scripts' );
+// add_action( 'edit_form_after_title', 'tx_onepager_switch_mode_button');
 
+/**
+ * Print switch mode button.
+ *
+ * Adds a switch button in post edit screen (which has cpt support). To allow
+ * the user to switch from the native WordPress editor to Elementor builder.
+ *
+ * Fired by `edit_form_after_title` action.
+ *
+ * @since 1.0.0
+ * @access public
+ *
+ * @param \WP_Post $post The current post object.
+ */
+// function tx_onepager_switch_mode_button( $post ) {
+// 	// Exit if Gutenberg are active.
+// 	if (did_action('enqueue_block_editor_assets')) {
+// 		return;
+// 	}
+// 	>
+// 	<button type="button" id="enable-onepager" class="op-btn op-btn-with-logo">Enable OnePager</button>
+// 	<button type="button" id="disable-onepager" class="op-btn op-btn-with-logo" style="display: none;">Disable OnePager</button>
+// 	<php
+// }
 function tx_get_preset_groups_class( $groups ) {
 	return implode(
 		'',

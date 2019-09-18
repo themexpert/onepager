@@ -4,7 +4,7 @@ Donate link: https://themesgrove.com/wp-onepager
 Tags: landing page, page builder, coming soon page, onepage, launch page, under construction page, onepage builder, sales page, business landing page, lead generation page, consulting landing page, service landing page, book launch page, webinar page, case study page, portfolio page, responsive page, coming soon page, app landing page, startup landing page, information product page, event landing page, seminar landing page, maintenance mode, coming soon, under construction,launch, maintenance, construction, offline, unavailable
 Stable tag: %version%
 Requires at least: 4.8
-Tested up to: 5.1
+Tested up to: 5.2.3
 Requires PHP: 5.4
 License: GNU General Public License v2.0 or later
 
@@ -125,6 +125,11 @@ WPOnepager is perfect for business owners, agency, bloggers, marketer, developer
 
 Absolutely not. You can create and manage your landing pages without any coding knowledge (100% drag & drop page builder). However, if you want to develop something sophisticated for your client you can easily create with WPOnepager fraemwork.
 
+== Development ==
+1. composer install
+2. npm Install
+3. bower install
+4. 
 
 == Changelog ==
 
