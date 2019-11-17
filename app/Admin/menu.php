@@ -86,12 +86,19 @@ function handle_external_redirects() {
 // Load css
 add_action( 'admin_enqueue_scripts', 'onepager_load_admin_scripts' );
 function onepager_load_admin_scripts() {
-	// add builder.css so icons and other stuff styles
-	wp_enqueue_script( 'uikit', op_asset( 'assets/js/uikit.js' ) );
-	wp_enqueue_script( 'uikit-icons', op_asset( 'assets/js/uikit-icons.js' ) );
+	global $wp;  
+	$current_url = add_query_arg(array($_GET), $wp->request);
+	$current_url_slug = $current_url ? explode("=", $current_url) : '';
 
-	wp_enqueue_style( 'uikit', op_asset( 'assets/css/uikit.css' ) );
+	// add builder.css so icons and other stuff styles
+	if($current_url_slug[1] === 'onepager'){
+		wp_enqueue_script( 'uikit', op_asset( 'assets/js/uikit.js' ) );
+		wp_enqueue_script( 'uikit-icons', op_asset( 'assets/js/uikit-icons.js' ) );
+	
+		wp_enqueue_style( 'uikit', op_asset( 'assets/css/uikit.css' ) );
+	}
 	wp_enqueue_style( 'lithium-builder', op_asset( 'assets/css/lithium-builder.css' ) );
+	
 }
 
 // add_action('admin_menu', 'tx_add_dashboard_page');
