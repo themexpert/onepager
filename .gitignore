@@ -27,3 +27,6 @@ blocks/test
 /bower_components
 npm-debug.log
 .bowerrc
+
+# NPM/YARN lock file
+*.lock
