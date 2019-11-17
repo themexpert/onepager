@@ -30,3 +30,4 @@ npm-debug.log
 
 # NPM/YARN lock file
 *.lock
+*-lock.json
