@@ -2,6 +2,13 @@
 
 class WpConflictResolver {
   public function __construct() {
+    // check if layout is not onepager
+    global $template;
+    $baseName = basename($template);
+    if ($baseName != 'onepager.php' ) {
+        return;
+    }
+
     add_action('wp', [$this, 'remove_sumome']);
     add_action( 'wp_enqueue_scripts', [ $this, 'dequeue_default_template_stylesheet' ], 999 );
   }

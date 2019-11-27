@@ -1,12 +1,10 @@
-<?php /** Template Name: Onepager Default */ ?>
-<?php get_header(); ?>
-
 <?php
-while ( have_posts() ) :
-	the_post();
-	?>
+/**
+ * Template Name: Onepager Default
+ * */
+get_header();
+?>
+<main id="onepager-content" role="main">
 	<?php the_content(); ?>
-<?php endwhile; // end of the loop. ?>
-
-<?php
-get_footer();
+</main><!-- #site-content -->
+<?php get_footer(); ?>

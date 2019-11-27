@@ -45,10 +45,20 @@ class Application {
 	}
 
 	protected function enqueue_assets() {
+		// stops core assets
 		new WpConflictResolver();
+
+		// one pager css/js
+		// todo: fix the conflict with template
 		new OnepageScripts();
+
+		// load all blocks assets
 		new BlocksScripts();
+
+		// load only on builder
 		new BuildModeScripts();
+
+		// build js for
 		new PreviewScripts();
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'compile_assets' ], 1000 );
