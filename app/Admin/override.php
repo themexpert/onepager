@@ -15,7 +15,7 @@ function op_edit_with_onepager_link_in_page_row( $actions, $post ) {
 		$actions['edit_with_onepager'] = sprintf(
 			'<a href="%1$s">%2$s</a>',
 			$page_permalink,
-			__( 'Edit with Onepager', 'onepager' )
+			__( 'Edit with Onepager', 'tx-onepager' )
 		);
 	}
 	return $actions;

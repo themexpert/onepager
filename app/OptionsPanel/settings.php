@@ -5,7 +5,7 @@ Onepager::getOptionPanel()
 		->add(
 			array(
 				'name'   => 'section_title_size',
-				'label'  => 'Section Title Size',
+				'label'  => __('Section Title Size'),
 				'append' => 'px',
 				'value'  => '44',
 			)
@@ -25,11 +25,11 @@ Onepager::getOptionPanel()
 		)
 		->tab( 'advanced' )
 		->add(
-			array( 'name' => 'onepager_debug', 'label' => 'Development Mode', 'type' => 'switch', 'value' => false ),
+			array( 'name' => 'onepager_debug', 'label' => __('Development Mode'), 'type' => 'switch', 'value' => false ),
 			array(
 				'name'        => 'google_analytics',
 				'type'        => 'textarea',
-				'label'       => 'Google Analytics',
+				'label'       => __('Google Analytics'),
 				'placeholder' => 'Paste your code here',
 			)
 		);

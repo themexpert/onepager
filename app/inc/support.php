@@ -11,13 +11,13 @@
  */
 function get_editor_section_list_footer() {
 	$footer = '<a href="https://www.youtube.com/watch?v=pwKcmckBZD4" target="_blank">
-    <span class="fa fa-video-camera"></span> Video Tutorial
+    <span class="fa fa-video-camera"></span>' . __('Video Tutorial', 'tx-onepager') . '
   </a>';
 
 	$footer .= '<a href="https://docs.getonepager.com" target="_blank">
-    <span class="fa fa-book"></span> Documentation
+    <span class="fa fa-book"></span>' . __('Documentation', 'tx-onepager') . '
   </a>';
-
+	
 	return apply_filters( 'editor_section_list_footer', $footer );
 }
 

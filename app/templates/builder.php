@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="profile" href="http://gmpg.org/xfn/11">
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-  <title>Onepage builder - <?php wp_title(); ?></title>
+  <title><?php esc_html_e('Onepage builder', 'tx-onepager');?> - <?php wp_title(); ?></title>
 
 	<?php wp_head(); ?>
   <style>
@@ -25,7 +25,7 @@
 <div id="onepager-builder">
   <div class="app-loading flex flex-middle flex-center flex-column">
 	<span class="loader"></span>
-	<span class="title">Initializing Onepager</span>
+	<span class="title"><?php esc_html_e('Initializing Onepager', 'tx-onepager');?></span>
   </div>
 </div>
 <div id="onepager-preview">

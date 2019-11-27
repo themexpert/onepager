@@ -40,7 +40,7 @@ class Content implements ContentInterface {
 		if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 			return [ 'select' ] + obj_to_array( get_terms( 'product_cat', array( 'hide_empty' => 0 ) ), 'term_id', 'name' );
 		} else {
-			return [ __( 'WooCommerce Not Found!', 'onepager' ) ];
+			return [ __( 'WooCommerce Not Found!', 'tx-onepager' ) ];
 		}
 	}
 

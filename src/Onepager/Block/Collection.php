@@ -11,7 +11,7 @@ class Collection extends \ArrayObject {
 				$msg = __(
 					"You added a block with slug name {$key} which is already occupied by another block.
 							Please rename slug in {$value['config_file']}",
-					'onepager'
+					'tx-onepager'
 				);
 				throw new \Exception( $msg );
 			}

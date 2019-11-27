@@ -69,7 +69,7 @@ function tx_add_onepager_metabox() {
 
 	add_meta_box(
 		'onepager_meta',
-		__( 'OnePager', 'onepager' ),
+		__( 'OnePager', 'tx-onepager' ),
 		$template,
 		'page',
 		'normal',

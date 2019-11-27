@@ -41,14 +41,14 @@ if ( ! class_exists( 'OnePager_Admin_Notice' ) ) {
 				  <p><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span> 
 				  <?php
 					echo sprintf(
-						esc_html__( 'Hello! We&rsquo;re really grateful that you&rsquo;re now a part of the Themesgrove family. We hope you&rsquo;re happy with everything OnePager has to offer.%1$sIf you can spare a minute, please help us by leaving a 5-star rating on WordPress.org. By spreading the love, we can continue to develop new amazing features in the future, for free!', 'onepager' ),
+						esc_html__( 'Hello! We&rsquo;re really grateful that you&rsquo;re now a part of the Themesgrove family. We hope you&rsquo;re happy with everything OnePager has to offer.%1$sIf you can spare a minute, please help us by leaving a 5-star rating on WordPress.org. By spreading the love, we can continue to develop new amazing features in the future, for free!', 'tx-onepager' ),
 						'<br/>'
 					);
 					?>
 					  </p>
-					<a href="https://wordpress.org/support/plugin/tx-onepager/reviews/#new-post" class="uk-button uk-button-primary uk-margin-small-right" target="_blank"><span class="dashicons dashicons-external" style="line-height:36px; margin-right:5px;"></span><span><?php _e( 'Ok, you deserve it', 'onepager' ); ?></span></a>
-					<a href="<?php echo $no_thanks; ?>" class="uk-button uk-button-default uk-margin-small-right" target="_blank"><span class="dashicons dashicons-calendar" style="line-height:36px; margin-right:5px;"></span><span><?php _e( 'Nope, maybe later', 'onepager' ); ?></span></a>
-					<a href="<?php echo $no_thanks; ?>" class="uk-button uk-button-default"><span class="dashicons dashicons-smiley" style="line-height:36px; margin-right:5px;"></span><span><?php _e( 'I already did', 'onepager' ); ?></span></a>
+					<a href="https://wordpress.org/support/plugin/tx-onepager/reviews/#new-post" class="uk-button uk-button-primary uk-margin-small-right" target="_blank"><span class="dashicons dashicons-external" style="line-height:36px; margin-right:5px;"></span><span><?php esc_html_e('Ok, you deserve it', 'tx-onepager');?></span></a>
+					<a href="<?php echo $no_thanks; ?>" class="uk-button uk-button-default uk-margin-small-right" target="_blank"><span class="dashicons dashicons-calendar" style="line-height:36px; margin-right:5px;"></span><span><?php esc_html_e('Nope, maybe later', 'tx-onepager');?></span></a>
+					<a href="<?php echo $no_thanks; ?>" class="uk-button uk-button-default"><span class="dashicons dashicons-smiley" style="line-height:36px; margin-right:5px;"></span><span><?php esc_html_e('I already did', 'tx-onepager');?></span></a>
 
 					<a href="<?php echo $dismiss; ?>" class="dismiss uk-position-small uk-position-top-right"><span class="dashicons dashicons-dismiss"></span></a>
 			  </div>

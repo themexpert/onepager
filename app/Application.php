@@ -39,9 +39,7 @@ class Application {
 	public function cache_dir_notice() {
 		?>
 	<div class="error">
-	  <p>'<?php echo ONEPAGER_CACHE_DIR; ?>' is used to store compiled assets.
-		But its not writable by server.
-		Making it writable will increase the performance of your website</p>
+	  <p>'<?php echo ONEPAGER_CACHE_DIR; ?>' <?php esc_html_e('is used to store compiled assets. But its not writable by server. Making it writable will increase the performance of your website', 'tx-onepager');?></p>
 	</div>
 		<?php
 	}

@@ -19,7 +19,7 @@ class BlockManager {
 				$msg = __(
 					'You were trying to add blocks from ' . $path .
 					' but this path does not exist. Please create this folder.',
-					'onepager'
+					'tx-onepager'
 				);
 				throw new \Exception( $msg );
 			}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Onepager Generator</title>
+  <title><?php esc_html_e('Onepager Generator', 'tx-onepager');?></title>
 
   <link rel="stylesheet" href="../assets/css/bootstrap.css"/>
   <link rel="stylesheet" href="../assets/css/font-awesome.css"/>
