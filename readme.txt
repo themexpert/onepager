@@ -133,6 +133,9 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 == Changelog ==
 
+= 2.2.6 =
+- Fix: Uikit loading issue fix
+
 = 2.2.5 =
 - Fix: Plugin redirection after install
 - Fix: Classic editor onepager enable/disable 
