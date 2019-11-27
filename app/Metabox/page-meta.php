@@ -6,7 +6,7 @@
 		<select>
 		  <option value=".og-all"><?php esc_html_e('All', 'tx-onepager');?></option>
 		  <?php foreach ( $groups as $group ) : ?>
-			<option value=".<?php echo tx_get_preset_group_class( $group ); ?>"><?php esc_html_e($group, 'tx-onepager');?></option>
+			<option value=".<?php echo tx_get_preset_group_class( $group ); ?>"><?php $group;?></option>
 			<?php endforeach; ?>
 		</select>
 	  </div>

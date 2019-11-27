@@ -53,7 +53,7 @@ function op_get_html_group_class($groups)
 						</svg>
 					</div>
 					<div class="uk-width-5-6">
-						<h5 class="uk-margin-remove-bottom"><?php _e('Unlock More Layouts', 'onepager'); ?>
+						<h5 class="uk-margin-remove-bottom"><?php esc_html_e('Unlock More Layouts', 'tx-onepager'); ?>
 						</h5>
 						<p class="uk-margin-remove-top"><?php esc_html_e('Upgrade to PRO version and unlock more layouts, blocks and features you could imagine.', 'tx-onepager');?>
 						</p>
@@ -96,7 +96,7 @@ function op_get_html_group_class($groups)
 						uk-toggle="target: #layout-selection-modal"
 						data-name="<?php echo $layout['name']; ?>"
 						data-image="<?php echo $layout['screenshot']; ?>"
-						data-id="<?php echo $layout['id']; ?>">Import</button>
+						data-id="<?php echo $layout['id']; ?>"><?php esc_html_e('Import', 'tx-onepager');?></button>
 				</div>
 			</div>
 		</div>
@@ -126,7 +126,7 @@ function op_get_html_group_class($groups)
 							<button type="submit" id="op_create_page_from_layout_button"
 								class="uk-button uk-button-primary" name="op_create_page_from_layout_button">
 								<span uk-spinner style="display:none"></span>
-								<?php _e('Create', 'onepager'); ?>
+								<?php esc_html_e('Create', 'tx-onepager');?>
 							</button>
 						</div>
 					</form>
