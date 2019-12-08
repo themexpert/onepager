@@ -1,96 +1,131 @@
-var gulp = require('gulp');
-var less = require('gulp-less');
-var mainBowerFiles = require('main-bower-files');
-var gulpFilter = require('gulp-filter');
-var concat = require('gulp-concat');
-var minify = require('gulp-minify-css');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var archiver = require('archiver');
-var fs = require('fs');
-var gulpShell = require('gulp-shell');
-var runSequence = require('gulp-run-sequence');
-var clean = require('gulp-clean');
-var wrench = require('wrench');
-var path = require('path');
-var Promise = require('bluebird');
-var shell = require("shelljs");
+// var gulp = require('gulp');
+const { series, src, dest } = require('gulp');
 
-var ROOT_PATH = path.resolve(__dirname);
+const fs = require('fs');
+const del = require('del');
+const path = require('path');
+const merge = require('merge-stream');
 
-var dest = './assets';
-var src = './engine';
-var svnDir = "~/Documents/wordpress.org/tx-onepager";
+const less = require('gulp-less');
+const mainBowerFiles = require('main-bower-files');
+const gulpFilter = require('gulp-filter');
 
-var config = {
+const cleanCSS = require('gulp-clean-css');
+const sourcemaps = require('gulp-sourcemaps');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
+
+const gulpZip = require('gulp-zip');
+
+const gulpShell = require('gulp-shell');
+
+const ROOT_PATH = path.resolve(__dirname);
+
+const assetsPath = './assets';
+const source = './engine';
+const svnDir = "~/Documents/wordpress.org/tx-onepager";
+
+const config = {
   less: {
-    src: src + '/lithium/*.less',
-    dest: dest + '/css',
+    src: source + '/lithium/*.less',
+    dest: assetsPath + '/css',
     settings: {
       indentedSyntax: false, // Enable .less syntax?
       imagePath: '/images' // Used by the image-url helper
     }
   },
   js: {
-    src: [src + '/*.js', src + '/lithium/*.js'],
-    dest: dest + '/'
+    src: [source + '/*.js', source + '/lithium/*.js'],
+    dest: assetsPath + '/'
   },
   images: {
-    src: src + '/lithium/images/**/*',
-    dest: dest + '/images'
+    src: source + '/lithium/images/**/*',
+    dest: assetsPath + '/images'
   },
   fonts: {
-    src: src + '/fonts/**/*',
-    dest: dest + '/fonts'
+    src: source + '/fonts/**/*',
+    dest: assetsPath + '/fonts'
   },
   bower: {
-    js: dest + '/js',
-    css: dest + '/css',
-    images: dest + '/images',
-    fonts: dest + '/fonts'
+    js: assetsPath + '/js',
+    css: assetsPath + '/css',
+    images: assetsPath + '/images',
+    fonts: assetsPath + '/fonts'
   },
   uikit: {
-    js: dest + '/js',
-    css: dest + '/css'
+    js: assetsPath + '/js',
+    css: assetsPath + '/css'
   },
   'bootstrap-datepicker': {
-    js: dest + '/js',
-    css: dest + '/css'
+    js: assetsPath + '/js',
+    css: assetsPath + '/css'
   },
   'bootstrap-timepicker': {
-    js: dest + '/js',
-    css: dest + '/css'
+    js: assetsPath + '/js',
+    css: assetsPath + '/css'
   },
   watch: {
-    src: src + '/**/*.*',
-    less: src + '/lithium/**/*.less',
-    js: src + '/*.js',
+    src: source + '/**/*.*',
+    less: source + '/lithium/**/*.less',
+    js: source + '/*.js',
     tasks: ['build']
   }
 };
 
-
-gulp.task('less', function () {
-  return gulp.src(config.less.src)
+function assets(){
+  var lessPath = src(config.less.src)
     .pipe(less(config.less.settings))
-    .pipe(gulp.dest(config.less.dest));
-});
+    .pipe(sourcemaps.init())
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write())
+    .pipe(dest(config.less.dest))
 
-gulp.task('js', function () {
-  return gulp.src(config.js.src)
+  var jsPath = src(config.js.src)
     .pipe(uglify())
-    .pipe(gulp.dest(config.js.dest));
-});
+    .pipe(dest(config.js.dest))
 
-gulp.task('fonts', function () {
-  return gulp.src(config.fonts.src)
-    .pipe(gulp.dest(config.fonts.dest));
-});
+  var fontsPath = src(config.fonts.src)
+    .pipe(dest(config.fonts.dest))
 
-gulp.task('images', function () {
-  return gulp.src(config.images.src)
-    .pipe(gulp.dest(config.images.dest));
-});
+  var imagesPath = src(config.images.src)
+    .pipe(dest(config.images.dest))
+  // UiKit
+  const uikitPath = './node_modules/uikit/dist';
+  var uikitCss = src(uikitPath + '/css/uikit.css')
+    .pipe(sourcemaps.init())
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write())
+    .pipe(dest(config.uikit.css)) 
+
+  var uikitJs = src([uikitPath + '/js/uikit.js', uikitPath + '/js/uikit-icons.js'])
+    .pipe(uglify())
+    .pipe(dest(config.uikit.js))
+
+  //Bootstrap datepicker
+  const bsDatePickerPath = './node_modules/bootstrap-datepicker/dist'
+  var bsDatePickerJs = src([bsDatePickerPath + '/js/bootstrap-datepicker.js'])
+    .pipe(uglify())
+    .pipe(dest(config['bootstrap-datepicker'].js))
+  var bsDatePickerCss = src([bsDatePickerPath + '/css/bootstrap-datepicker.css'])
+    .pipe(sourcemaps.init())
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write())
+    .pipe(dest(config['bootstrap-datepicker'].css))
+
+  // BS timepicker
+  const bsTimepickerPath = './node_modules/bootstrap-timepicker'
+  var bsTimepickerJs = src([bsTimepickerPath + '/js/bootstrap-timepicker.js'])
+    .pipe(uglify())
+    .pipe(dest(config['bootstrap-timepicker'].js))
+
+  var bsTimepickerCss = src([bsTimepickerPath + '/css/bootstrap-timepicker.css'])
+    .pipe(sourcemaps.init())
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write())
+    .pipe(dest(config['bootstrap-timepicker'].css))
+
+  return merge(lessPath, jsPath, fontsPath, imagesPath, uikitCss, uikitJs, bsDatePickerCss, bsDatePickerJs, bsTimepickerCss, bsTimepickerJs)
+}
 
 /*** Filters for bower main files **/
 var jsFilter = gulpFilter('**/*.js'),
@@ -99,157 +134,133 @@ lessFilter = gulpFilter('**/*.less'),
 fontFilter = gulpFilter(['**/*.svg', '**/*.eot', '**/*.woff', '**/*.woff2', '**/*.ttf']),
 imgFilter = gulpFilter(['**/*.png', '**/*.gif', '**/*.jpg']);
 
-gulp.task('bower', function () {
-  return gulp.src(mainBowerFiles())
+function bower(){
+  return src(mainBowerFiles())
 
     .pipe(jsFilter)
     .pipe(uglify())
-    .pipe(gulp.dest(config.bower.js))
+    .pipe(dest(config.bower.js))
     .pipe(jsFilter.restore())
 
     .pipe(lessFilter)
     .pipe(less())
-    .pipe(gulp.dest(config.bower.css))
+    .pipe(dest(config.bower.css))
     .pipe(rename({extname: 'css'}))
     .pipe(lessFilter.restore())
 
     .pipe(cssFilter)
-    .pipe(minify())
-    .pipe(gulp.dest(config.bower.css))
+    .pipe(sourcemaps.init())
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write())
+    .pipe(dest(config.bower.css))
     .pipe(cssFilter.restore())
 
     .pipe(imgFilter)
-    .pipe(gulp.dest(config.bower.images))
+    .pipe(dest(config.bower.images))
     .pipe(imgFilter.restore())
 
     .pipe(fontFilter)
-    .pipe(gulp.dest(config.bower.fonts))
+    .pipe(dest(config.bower.fonts))
     .pipe(fontFilter.restore());
-});
+}
 
-
-gulp.task('uikit-js', function () {
-  return gulp.src(['./node_modules/uikit/dist/js/uikit.js', './node_modules/uikit/dist/js/uikit-icons.js'])
-        .pipe(uglify())
-        .pipe(gulp.dest(config.uikit.js))
-});
-gulp.task('uikit-css', function () {
-  return gulp.src('./node_modules/uikit/dist/css/uikit.css')
-        .pipe(minify())
-        .pipe(gulp.dest(config.uikit.css))
-});
-
-gulp.task('bootstrap-datepicker-js', function () {
-  return gulp.src(['./node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js'])
-    .pipe(uglify())
-    .pipe(gulp.dest(config['bootstrap-datepicker'].js))
-});
-gulp.task('bootstrap-datepicker-css', function () {
-  return gulp.src(['./node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css'])
-    .pipe(minify())
-    .pipe(gulp.dest(config['bootstrap-datepicker'].css))
-});
-
-gulp.task('bootstrap-timepicker-js', function () {
-  return gulp.src(['./node_modules/bootstrap-timepicker/js/bootstrap-timepicker.js'])
-    .pipe(uglify())
-    .pipe(gulp.dest(config['bootstrap-timepicker'].js))
-});
-gulp.task('bootstrap-timepicker-css', function () {
-  return gulp.src(['./node_modules/bootstrap-timepicker/css/bootstrap-timepicker.css'])
-    .pipe(minify())
-    .pipe(gulp.dest(config['bootstrap-timepicker'].css))
-});
-
-gulp.task('watch', function () {
+function watch(){
   gulp.watch(config.watch.less, ['less']);
   gulp.watch(config.watch.js, ['js']);
-});
+}
+// gulp.task('watch', function () {
+//   gulp.watch(config.watch.less, ['less']);
+//   gulp.watch(config.watch.js, ['js']);
+// });
 
+
+function webpackProd(){
+  gulpShell.task(['webpack  -p --color --progress'])
+}
+function webpackDev(){
+  gulpShell.task(['webpack --color --progress'])
+}
+function webpackWatch(){
+  gulpShell.task(['webpack  --watch --color --progress'])  
+}
 
 /**
- * Build section
+ * Clean everything
  */
-gulp.task('build-clean', function () {
-  return gulp.src(dest).pipe(clean());
-});
-
-gulp.task('build', function (cb) {
-  return runSequence('build-clean', ['js', 'fonts', 'bower', 'images', 'less', 'uikit-js', 'uikit-css', 'bootstrap-datepicker-css', 'bootstrap-datepicker-js', 'bootstrap-timepicker-css', 'bootstrap-timepicker-js'], cb);
-});
-
-
-/**
- * webpack section
- */
-gulp.task('webpack-production', gulpShell.task(['webpack  -p --color --progress']));
-gulp.task('webpack-development', gulpShell.task(['webpack --color --progress']));
-gulp.task('webpack-watch', gulpShell.task(['webpack  --watch --color --progress']));
-
-
+function clean(){
+  return del([assetsPath, './temp']);
+}
 /**
  * Package build section
  */
-gulp.task('package-build', function (cb) {
-  var task = process.argv.indexOf('-dev') !== -1 ? 'webpack-development':'webpack-production';
-  return runSequence('build', task, cb);
-});
+function packageBuild(cb){
+  var task = process.argv.indexOf('-dev') !== -1 ? 'webpackDev':'webpackProd';
+  return series('build', task, cb);
+}
 
 /**
  * Default tasks
  */
-gulp.task('default', function () {
-  runSequence('build', ['webpack-watch', 'watch']);
-});
+// gulp.task('default', function () {
+//   runSequence('build', ['webpack-watch', 'watch']);
+// });
 
-gulp.task('release', ['package-build'], function () {
-  shell.exec("composer dump-autoload -o");
-  
-  var files = [
-    'app', 'assets', 'blocks', 'src', 'vendor', 'presets',
-    'tx-onepager.php', 'constants.php', 'theme.php', 'uninstall.php',
-    'readme.txt', 'CHANGELOG.md'
-  ];
-
-  packager("tx-onepager", files, ROOT_PATH);
-});
-
-gulp.task('svn', function(){
-  var version = getOnepagerVersion().replace("v", "");
-  var init = [
-    `cp tx-onepager.zip ${svnDir}`,
-    `cd ${svnDir}`,
-    `unzip tx-onepager.zip`,
-    `rm -rf trunk/*`,
-    `mv tx-onepager/* trunk`,
-    `rm -rf tx-onepager.zip tx-onepager`,
-    `svn add * --force`,
-    `svn rm $( svn status | sed -e '/^!/!d' -e 's/^!//' )`
-  ];
-
-  var tag = [ `cd ${svnDir}`, `svn cp trunk tags/${version}`, `svn ci -m '${version} released'` ];
-
-  shell.exec(init.join(" && "));
-  shell.exec(tag.join(" && "));
-});
-
-function packager(name, files, root) {
-  var tmpPath = ".op" + Math.ceil(Math.random() * 100).toString();
-  var version = getOnepagerVersion();
-  var archiveName = `${name}.zip`;
-
-  copier(root, tmpPath, files);
-
-  shell.exec('sudo find ' + tmpPath + ' -type d -exec chmod 755 {} \\;');
-  shell.exec('sudo find ' + tmpPath + ' -type f -exec chmod 644 {} \\;');
-
-  replaceVersion(`${tmpPath}/readme.txt`, version);
-
-  zipper(archiveName, tmpPath, name)
-    .then(function () {
-      wrench.rmdirSyncRecursive(tmpPath, true);
-    });
+// Copy files to /temp dir
+function copy(cb){
+  return src([
+      './**',
+      './*/**',
+      '!./node_modules/**',
+      '!./bower_components/**',
+      '!./engine/**',
+      '!./temp/**',
+      '!gulpfile.js',
+      '!package.json',
+      '!*.json',
+      '!*.yml',
+      '!*.xml',
+      '!*.zip',
+      '!*.config.js',
+      '!*.lock',
+      '!*.gitignore',
+  ]).pipe(dest('temp/tx-onepager'));
+  cb();
 }
+
+function package(){
+  var version = getOnepagerVersion();
+  var archiveName = `tx-onepager-${version}.zip`;
+  // Replace version num
+  replaceVersion('./temp/tx-onepager/readme.txt', version);
+  // create zip
+  return src(['./temp/**', './temp/*/**',])
+        .pipe(gulpZip(archiveName))
+        .pipe(dest('./temp'))
+}
+
+exports.clean = clean
+exports.assets = series(assets, bower)
+exports.release = series( clean, assets, bower, copy, package)
+
+// gulp.task('svn', function(){
+//   var version = getOnepagerVersion().replace("v", "");
+//   var init = [
+//     `cp tx-onepager.zip ${svnDir}`,
+//     `cd ${svnDir}`,
+//     `unzip tx-onepager.zip`,
+//     `rm -rf trunk/*`,
+//     `mv tx-onepager/* trunk`,
+//     `rm -rf tx-onepager.zip tx-onepager`,
+//     `svn add * --force`,
+//     `svn rm $( svn status | sed -e '/^!/!d' -e 's/^!//' )`
+//   ];
+
+//   var tag = [ `cd ${svnDir}`, `svn cp trunk tags/${version}`, `svn ci -m '${version} released'` ];
+
+//   shell.exec(init.join(" && "));
+//   shell.exec(tag.join(" && "));
+// });
+
 
 function getOnepagerVersion(){
   var p = fs.readFileSync('tx-onepager.php', 'utf-8');
@@ -260,53 +271,4 @@ function replaceVersion(file, version){
   var readme = fs.readFileSync(file, `utf-8`);
   readme = readme.replace("%version%", version);
   fs.writeFileSync(file, readme);
-}
-
-function copier(root, dest, src) {
-  function includePattern(f, p) {
-    var file = path.resolve(p, f);
-
-    return files.filter(function (white) {
-      return file.indexOf(white) !== -1;
-    }).length ? true : false;
-  }
-
-  var files = src.map(function (file) {
-    return path.resolve(root, file);
-  });
-
-  //remove previous one
-  wrench.rmdirSyncRecursive(dest, true);
-
-  //copy files
-  wrench.copyDirSyncRecursive(root, dest, {
-    forceDelete: true,
-    include: includePattern
-  });
-}
-
-function zipper(packageName, localDirectory, destinationDirectory) {
-  var output = fs.createWriteStream(packageName);
-  var archive = archiver.create('zip', {}); // or archiver('zip', {});
-
-  //create the archive if it does not exists
-  if (!fs.existsSync(packageName)) {
-    fs.writeSync(packageName);
-  }
-
-  //add package directory to the zip file
-  archive.directory(localDirectory, destinationDirectory);
-
-  //pipe out the output
-  archive.pipe(output);
-  archive.finalize();
-
-  return new Promise(function (resolve, reject) {
-    output.on('close', function () {
-      console.log(archive.pointer() + ' total bytes');
-      console.log('built package: ' + packageName);
-
-      resolve();
-    });
-  });
 }

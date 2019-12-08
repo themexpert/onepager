@@ -4,15 +4,15 @@ Donate link: https://themesgrove.com/wp-onepager
 Tags: landing page, page builder, coming soon page, onepage, launch page, under construction page, onepage builder, sales page, business landing page, lead generation page, consulting landing page, service landing page, book launch page, webinar page, case study page, portfolio page, responsive page, coming soon page, app landing page, startup landing page, information product page, event landing page, seminar landing page, maintenance mode, coming soon, under construction,launch, maintenance, construction, offline, unavailable
 Stable tag: %version%
 Requires at least: 4.8
-Tested up to: 5.2
-Requires PHP: 5.4
+Tested up to: 5.3
+Requires PHP: 5.6
 License: GNU General Public License v2.0 or later
 
 Beginner Friendly Landing Page, Sales page, Onepage, Coming Soon Page Builder. You can create Under Construction Page, Service page, App landing page and many more with WPOnepager for WordPress.
 
 == Description ==
 
-= WordPress Landing Page Builder Plugin =
+= Easiest Landing Page Builder =
 
 We believe that you shouldn't have to hire a developer to create a landing page. That's why we built <a href="https://themesgrove.com/wp-onepager/?utm_source=wp-repo&utm_medium=link&utm_campaign=wponepager" rel="friend" title="WPOnepager">WPOnepager</a>, a drag & drop WordPress onepage builder that's EASY, POWERFUL and FAST.
 

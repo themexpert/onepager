@@ -1,0 +1,110 @@
+Arguments: 
+  /Users/parvez/.nvm/versions/node/v12.9.0/bin/node /Users/parvez/.yarn/bin/yarn.js install
+
+PATH: 
+  /Users/parvez/.nvm/versions/node/v12.9.0/bin:/Users/parvez/.yarn/bin:/Users/parvez/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/parvez/.composer/vendor/bin:/Users/parvez/Library/Android/sdk/emulator:/Users/parvez/Library/Android/sdk/tools:/Users/parvez/Library/Android/sdk/tools/bin:/Users/parvez/Library/Android/sdk/platform-tools
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  12.9.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Applications/AMPPS/www/magicpress/wp-content/plugins/tx-onepager/package.json: Unexpected token } in JSON at position 1064
+      at JSON.parse (<anonymous>)
+      at /Users/parvez/.yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/Users/parvez/.yarn/lib/cli.js:304:30)
+      at /Users/parvez/.yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "onepager",
+    "version": "1.1.4",
+    "description": "OnePager: One Stop OnePage Theme Solution wordpress and joomla",
+    "author": "",
+    "main": "main.js",
+    "license": "MIT",
+    "devDependencies": {
+      "babel-loader": "^5.1.4",
+      "babelify": "^6.0.2",
+      "bluebird": "^2.9.34",
+      "css-loader": "^0.15.1",
+      "del": "^5.1.0",
+      "file-loader": "^0.8.4",
+      "gulp": "^4.0.2",
+      "gulp-clean-css": "^4.2.0",
+      "gulp-filter": "^2.0.2",
+      "gulp-less": "^4.0.1",
+      "gulp-rename": "^1.2.2",
+      "gulp-shell": "^0.7.1",
+      "gulp-sourcemaps": "^2.6.5",
+      "gulp-uglify": "^3.0.2",
+      "gulp-zip": "^5.0.1",
+      "less": "^2.5.1",
+      "less-loader": "^2.2.0",
+      "lodash": "^4.17.14",
+      "main-bower-files": "^2.7.0",
+      "node-libs-browser": "^0.5.2",
+      "react-hot-loader": "^1.2.7",
+      "reactify": "^1.1.0",
+      "shelljs": "^0.5.1",
+      "strip-loader": "^0.1.0",
+      "style-loader": "^0.12.3",
+      "url-loader": "^0.5.6",
+      "webpack": "^1.9.11",
+      "webpack-dev-server": "^3.7.2",
+      "webpack-merge": "^0.1.2",
+      "bower": "^1.8.8",
+    },
+    "scripts": {
+      "start": "gulp",
+      "dev": "TARGET=dev webpack --watch --devtool eval --progress --colors --hot",
+      "build": "TARGET=build webpack -p"
+    },
+    "jest": {
+      "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+      "testFileExtensions": [
+        "es6",
+        "js"
+      ],
+      "moduleFileExtensions": [
+        "js",
+        "json",
+        "es6"
+      ]
+    },
+    "dependencies": {
+      "alt": "^0.17.1",
+      "async": "^1.2.1",
+      "bootstrap-datepicker": "^1.9.0",
+      "bootstrap-timepicker": "^0.5.2",
+      "classnames": "^2.1.1",
+      "flux": "^2.0.3",
+      "immutable": "^3.7.4",
+      "install": "^0.12.2",
+      "npm": "^6.10.0",
+      "object-assign": "^2.0.0",
+      "react": "^0.13.2",
+      "react-bootstrap": "^0.21.2",
+      "react-dom": "^0.14.0",
+      "react-router": "^0.13.3",
+      "reflux": "^0.2.8",
+      "sortablejs": "git+https://github.com/nadimtuhin/Sortable.git",
+      "sweetalert": "^1.0.1",
+      "tinycolor2": "^1.1.2",
+      "uikit": "^3.1.6",
+      "underscore": "^1.8.3",
+      "underscore.string": "^3.1.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

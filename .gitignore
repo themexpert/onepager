@@ -25,6 +25,7 @@ blocks/test
 /vendor
 /node_modules
 /bower_components
+/temp
 npm-debug.log
 .bowerrc
 
