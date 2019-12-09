@@ -1,6 +1,7 @@
 var path = require('path');
 var merge = require('webpack-merge');
 var webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
@@ -12,7 +13,7 @@ var common = {
     optionspanel: ['./engine/optionspanel.jsx'],
     'onepager-builder': ['./engine/onepager-builder.jsx'],
     'onepager-preview': ['./engine/onepager-preview.jsx'],
-    generator: ['./engine/generator.jsx']
+    // generator: ['./engine/generator.jsx']
   },
   output: {
     filename: '[name].bundle.js',
@@ -24,7 +25,7 @@ var common = {
       {test: /\.jsx?$/, loaders: ['babel?stage=1'], include: path.resolve(ROOT_PATH, 'engine')},
       // use ! to chain loaders
       {test: /\.css$/, loader: 'style!css'},
-      {test: /\.less$/, loader: 'style!css!less'},
+      {test: /\.less$/, loader: 'style!css!less', options: { javascriptEnabled: true}},
       // inline base64 URLs for <=8k images, direct URLs for the rest
       {test: /\.(png|jpg)$/, loader: 'url?limit=10240'}
     ]
@@ -32,6 +33,7 @@ var common = {
 };
 
 if(isProduction){
+  
   common.module.loaders.push({ test: /\.jsx?$/, loader: "strip-loader?strip[]=console.log" });
   common.plugins = [
    new webpack.optimize.UglifyJsPlugin({

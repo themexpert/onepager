@@ -5,19 +5,19 @@ const fs = require('fs');
 const del = require('del');
 const path = require('path');
 const merge = require('merge-stream');
+const run = require('gulp-run-command').default
 
 const less = require('gulp-less');
 const mainBowerFiles = require('main-bower-files');
 const gulpFilter = require('gulp-filter');
 
 const cleanCSS = require('gulp-clean-css');
-const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 
 const gulpZip = require('gulp-zip');
 
-const gulpShell = require('gulp-shell');
+const shell = require('gulp-shell');
 
 const ROOT_PATH = path.resolve(__dirname);
 
@@ -30,6 +30,7 @@ const config = {
     src: source + '/lithium/*.less',
     dest: assetsPath + '/css',
     settings: {
+      javascriptEnabled: true,
       indentedSyntax: false, // Enable .less syntax?
       imagePath: '/images' // Used by the image-url helper
     }
@@ -75,9 +76,7 @@ const config = {
 function assets(){
   var lessPath = src(config.less.src)
     .pipe(less(config.less.settings))
-    .pipe(sourcemaps.init())
     .pipe(cleanCSS())
-    .pipe(sourcemaps.write())
     .pipe(dest(config.less.dest))
 
   var jsPath = src(config.js.src)
@@ -92,9 +91,7 @@ function assets(){
   // UiKit
   const uikitPath = './node_modules/uikit/dist';
   var uikitCss = src(uikitPath + '/css/uikit.css')
-    .pipe(sourcemaps.init())
     .pipe(cleanCSS())
-    .pipe(sourcemaps.write())
     .pipe(dest(config.uikit.css)) 
 
   var uikitJs = src([uikitPath + '/js/uikit.js', uikitPath + '/js/uikit-icons.js'])
@@ -107,9 +104,7 @@ function assets(){
     .pipe(uglify())
     .pipe(dest(config['bootstrap-datepicker'].js))
   var bsDatePickerCss = src([bsDatePickerPath + '/css/bootstrap-datepicker.css'])
-    .pipe(sourcemaps.init())
     .pipe(cleanCSS())
-    .pipe(sourcemaps.write())
     .pipe(dest(config['bootstrap-datepicker'].css))
 
   // BS timepicker
@@ -119,20 +114,18 @@ function assets(){
     .pipe(dest(config['bootstrap-timepicker'].js))
 
   var bsTimepickerCss = src([bsTimepickerPath + '/css/bootstrap-timepicker.css'])
-    .pipe(sourcemaps.init())
     .pipe(cleanCSS())
-    .pipe(sourcemaps.write())
     .pipe(dest(config['bootstrap-timepicker'].css))
 
   return merge(lessPath, jsPath, fontsPath, imagesPath, uikitCss, uikitJs, bsDatePickerCss, bsDatePickerJs, bsTimepickerCss, bsTimepickerJs)
 }
 
 /*** Filters for bower main files **/
-var jsFilter = gulpFilter('**/*.js'),
-cssFilter = gulpFilter('**/*.css'),
-lessFilter = gulpFilter('**/*.less'),
-fontFilter = gulpFilter(['**/*.svg', '**/*.eot', '**/*.woff', '**/*.woff2', '**/*.ttf']),
-imgFilter = gulpFilter(['**/*.png', '**/*.gif', '**/*.jpg']);
+var jsFilter = gulpFilter('**/*.js', { restore: true }),
+cssFilter = gulpFilter('**/*.css', { restore: true }),
+lessFilter = gulpFilter('**/*.less', { restore: true }),
+fontFilter = gulpFilter(['**/*.svg', '**/*.eot', '**/*.woff', '**/*.woff2', '**/*.ttf'], { restore: true }),
+imgFilter = gulpFilter(['**/*.png', '**/*.gif', '**/*.jpg'], { restore: true });
 
 function bower(){
   return src(mainBowerFiles())
@@ -140,34 +133,32 @@ function bower(){
     .pipe(jsFilter)
     .pipe(uglify())
     .pipe(dest(config.bower.js))
-    .pipe(jsFilter.restore())
+    .pipe(jsFilter.restore)
 
     .pipe(lessFilter)
     .pipe(less())
     .pipe(dest(config.bower.css))
     .pipe(rename({extname: 'css'}))
-    .pipe(lessFilter.restore())
+    .pipe(lessFilter.restore)
 
     .pipe(cssFilter)
-    .pipe(sourcemaps.init())
-    .pipe(cleanCSS())
-    .pipe(sourcemaps.write())
+    // .pipe(cleanCSS())
     .pipe(dest(config.bower.css))
-    .pipe(cssFilter.restore())
+    .pipe(cssFilter.restore)
 
     .pipe(imgFilter)
     .pipe(dest(config.bower.images))
-    .pipe(imgFilter.restore())
+    .pipe(imgFilter.restore)
 
     .pipe(fontFilter)
     .pipe(dest(config.bower.fonts))
-    .pipe(fontFilter.restore());
+    .pipe(fontFilter.restore);
 }
 
-function watch(){
-  gulp.watch(config.watch.less, ['less']);
-  gulp.watch(config.watch.js, ['js']);
-}
+// function watch(){
+//   gulp.watch(config.watch.less, ['less']);
+//   gulp.watch(config.watch.js, ['js']);
+// }
 // gulp.task('watch', function () {
 //   gulp.watch(config.watch.less, ['less']);
 //   gulp.watch(config.watch.js, ['js']);
@@ -175,13 +166,13 @@ function watch(){
 
 
 function webpackProd(){
-  gulpShell.task(['webpack  -p --color --progress'])
+  return shell(['webpack  -p --color --progress'])
 }
 function webpackDev(){
-  gulpShell.task(['webpack --color --progress'])
+  return shell(['webpack --color --progress'])
 }
 function webpackWatch(){
-  gulpShell.task(['webpack  --watch --color --progress'])  
+  return shell(['webpack  --watch --color --progress'])  
 }
 
 /**
@@ -193,9 +184,13 @@ function clean(){
 /**
  * Package build section
  */
-function packageBuild(cb){
-  var task = process.argv.indexOf('-dev') !== -1 ? 'webpackDev':'webpackProd';
-  return series('build', task, cb);
+function webpackBuild(cb){
+  // return gulpRun('npm run build')
+  async () => gulpRun('npm run build')()
+  // return process.argv.indexOf('-dev') !== -1 ? webpackDev() : webpackProd();
+  // var task = process.argv.indexOf('-dev') !== -1 ? 'webpackDev':'webpackProd';
+  // return series(task, cb);
+  // return webpackProd();
 }
 
 /**
@@ -240,7 +235,7 @@ function package(){
 
 exports.clean = clean
 exports.assets = series(assets, bower)
-exports.release = series( clean, assets, bower, copy, package)
+exports.release = series( clean, assets, bower, run('npm run build'), copy, package)
 
 // gulp.task('svn', function(){
 //   var version = getOnepagerVersion().replace("v", "");
