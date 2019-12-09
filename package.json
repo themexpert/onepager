@@ -47,7 +47,8 @@
     "start": "gulp",
     "dev": "TARGET=dev webpack --watch --devtool eval --progress --colors --hot",
     "build": "TARGET=build webpack -p",
-    "release": "gulp release"
+    "release": "gulp release",
+    "bower": "bower install"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",

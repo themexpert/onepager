@@ -12,9 +12,9 @@ jobs:
     - name: Build
       run: |
         yarn install
-        npm install -g bower
-        bower install
         composer install
+        yarn add bower --dev
+        npm run bower
         npm run release
     - name: WordPress Plugin Deploy
       uses: 10up/action-wordpress-plugin-deploy@master
