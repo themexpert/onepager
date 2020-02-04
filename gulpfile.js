@@ -1,5 +1,5 @@
 // var gulp = require('gulp');
-const { series, src, dest } = require('gulp');
+const { series, src, dest, watch } = require('gulp');
 
 const fs = require('fs');
 const del = require('del');
@@ -164,6 +164,21 @@ function bower(){
 //   gulp.watch(config.watch.js, ['js']);
 // });
 
+function watcher(){
+  var listenLessPath = src(config.less.src)
+  .pipe(less(config.less.settings))
+  .pipe(cleanCSS())
+  .pipe(dest(config.less.dest));
+
+  var listenJSPath = src(config.js.src)
+    .pipe(uglify())
+    .pipe(dest(config.js.dest));
+
+  return merge(listenLessPath, listenJSPath)
+}
+function listen(){
+    watch([config.watch.less, config.watch.js], series([watcher]));
+}
 
 function webpackProd(){
   return shell(['webpack  -p --color --progress'])
@@ -236,6 +251,7 @@ function package(){
 exports.clean = clean
 exports.assets = series(assets, bower)
 exports.release = series( clean, assets, bower, run('npm run build'), copy, package)
+exports.default = series( clean, assets, bower, listen)
 
 // gulp.task('svn', function(){
 //   var version = getOnepagerVersion().replace("v", "");
