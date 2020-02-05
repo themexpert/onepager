@@ -251,7 +251,7 @@ function package(){
 exports.clean = clean
 exports.assets = series(assets, bower)
 exports.release = series( clean, assets, bower, run('npm run build'), copy, package)
-exports.default = series( clean, assets, bower, listen)
+exports.default = series( clean, assets, bower, run('npm run build'), listen)
 
 // gulp.task('svn', function(){
 //   var version = getOnepagerVersion().replace("v", "");
