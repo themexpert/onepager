@@ -133,6 +133,9 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 == Changelog ==
 
+= 2.2.7 =
+- Fix: Rating notification style in dashboard.
+
 = 2.2.6 =
 - Fix: Uikit loading issue fix
 
