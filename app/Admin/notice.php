@@ -36,7 +36,7 @@ if ( ! class_exists( 'OnePager_Admin_Notice' ) ) {
 			$no_thanks  = wp_nonce_url( add_query_arg( 'onepager_rating_notice', 'no_thanks_rating_btn' ), 'no_thanks_rating_btn' );
 			$dismiss    = wp_nonce_url( add_query_arg( 'onepager_rating_notice', 'dismiss_rating_btn' ), 'dismiss_rating_btn' ); ?>
 			
-			<div class="uk-margin-medium-top uk-margin-right">
+			<div class="uk-margin-medium-top uk-margin-right rating-notice">
 			  <div class="uk-card uk-card-primary uk-card-hover uk-card-body uk-padding-small">
 				  <p><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span> 
 				  <?php
