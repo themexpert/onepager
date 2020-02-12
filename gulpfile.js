@@ -68,7 +68,8 @@ const config = {
   watch: {
     src: source + '/**/*.*',
     less: source + '/lithium/**/*.less',
-    js: source + '/*.js',
+    js: source + '/**/*.js',
+    // js: [source + '/*.js', source + '/lithium/*.js'],
     tasks: ['build']
   }
 };
