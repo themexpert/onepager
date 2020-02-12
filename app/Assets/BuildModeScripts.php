@@ -67,28 +67,30 @@ class BuildModeScripts
         $optionPanel = onepager()->optionsPanel('onepager')->getOptionsControls();
         $options = onepager()->optionsPanel('onepager')->getAllSavedOptions();
         $page = 'onepager';
+        $dashboardUrl = get_dashboard_url().'edit.php?post_type=page';
 
         $presets = \Onepager::getPresets();
         $basePreset = \Onepager::getBasePreset();
 
         return compact(
-      'ajaxUrl',
-      'disableBuildModeUrl',
-      'optionPanel',
-      'options',
-      'page',
-      'blocks',
-      'pageId',
-      'sections',
-      'menus',
-      'pages',
-      'categories',
-      'groupOrder',
-      'footer',
-      'presets',
-      'basePreset',
-      'woocategories'
-    );
+            'ajaxUrl',
+            'disableBuildModeUrl',
+            'optionPanel',
+            'options',
+            'page',
+            'blocks',
+            'pageId',
+            'sections',
+            'menus',
+            'pages',
+            'categories',
+            'groupOrder',
+            'footer',
+            'presets',
+            'basePreset',
+            'woocategories',
+            'dashboardUrl'
+        );
     }
 
     /**

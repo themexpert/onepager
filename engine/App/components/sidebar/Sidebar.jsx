@@ -138,7 +138,7 @@ let Sidebar = React.createClass({
     let isSettingsDirty = this.state.isSettingsDirty;
     let {isDirty} = this.props;
     let buildModeUrl = ODataStore.disableBuildModeUrl;
-    
+    let dashboardUrl = ODataStore.dashboardUrl;
     let saveButtonIcon = cx({
       "fa fa-refresh fa-spin": this.state.saving,
       "fa fa-check": !this.state.saving
@@ -212,7 +212,7 @@ let Sidebar = React.createClass({
         
         <footer className="op-footer-wrapper uk-position-bottom">
           <nav className="uk-navbar uk-navbar-container">
-            <div className="uk-navbar-left"></div>
+            <div className="uk-navbar-left"><a href={dashboardUrl}>Exit to Dashboard</a></div>
             <div className="uk-navbar-right">
               {
                 activeTab === 'op-settings' ?
