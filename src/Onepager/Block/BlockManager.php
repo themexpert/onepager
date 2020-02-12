@@ -7,6 +7,7 @@ class BlockManager {
 
 	protected $groupOrder = array();
 	protected $ignoredGroups = array();
+	protected $blockCount = 0;
 
 	public function __construct( ConfigTransformer $configTransformer, Collection $blocksCollection ) {
 		$this->configTransformer = $configTransformer;
@@ -25,7 +26,7 @@ class BlockManager {
 			}
 
 			$folders = FS::folders( $path );
-
+			
 			foreach ( $folders as $folder ) {
 				$config_file = untrailingslashit( $path ) . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . 'config.php';
 
@@ -39,6 +40,23 @@ class BlockManager {
 			}
 		} catch ( \Exception $e ) {
 			print( 'Caught exception: ' . $e->getMessage() . "\n<br>" );
+		}
+	}
+
+	/**
+	 * load all blocks from path
+	 */
+	public function loadBlocksFromPath($path, $url, $groups = array()){
+		$blocks = FS::folders( $path );
+		if($blocks){
+			foreach ( $blocks as $folder ) {
+				$config_file = untrailingslashit( $path ) . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . 'block.jpg';
+				if ( ! FS::exists( $config_file ) ) {
+					$this->loadBlocksFromPath( $path . DIRECTORY_SEPARATOR . $folder, trailingslashit( $url ) . $folder, $groups );
+					continue;
+				}
+			}
+			$this->blockCount += count($blocks);
 		}
 	}
 
@@ -64,6 +82,14 @@ class BlockManager {
 				return ! count( array_intersect( $block['groups'], $ignoredGroups ) );
 			}
 		);
+	}
+	public function showAllBlocks(){
+		$blocks = $this->loadBlocksFromPath(
+			ONEPAGER_BLOCKS_PATH,
+			ONEPAGER_BLOCKS_URL,
+			'Core Blocks'
+		);
+		return 'blocks - '. $this->blockCount;
 	}
 
 	/**
