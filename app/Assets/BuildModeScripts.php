@@ -68,7 +68,8 @@ class BuildModeScripts
         $options = onepager()->optionsPanel('onepager')->getAllSavedOptions();
         $page = 'onepager';
         $dashboardUrl = get_dashboard_url().'edit.php?post_type=page';
-
+        $onepagerProLoaded = did_action( 'onepager_pro_loaded' ) ? true : false;
+        $proUpgradeLink = 'https://themesgrove.com/wp-onepager/?utm_source=wp-admin&utm_medium=dashboard&utm_campaign=wponepager-gopro';
         $presets = \Onepager::getPresets();
         $basePreset = \Onepager::getBasePreset();
 
@@ -89,7 +90,9 @@ class BuildModeScripts
             'presets',
             'basePreset',
             'woocategories',
-            'dashboardUrl'
+            'dashboardUrl',
+            'onepagerProLoaded',
+            'proUpgradeLink'
         );
     }
 

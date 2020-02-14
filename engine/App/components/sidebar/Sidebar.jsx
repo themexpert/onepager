@@ -139,6 +139,8 @@ let Sidebar = React.createClass({
     let {isDirty} = this.props;
     let buildModeUrl = ODataStore.disableBuildModeUrl;
     let dashboardUrl = ODataStore.dashboardUrl;
+    let onepagerProLoaded = ODataStore.onepagerProLoaded;
+    let proUpgradeLink = ODataStore.proUpgradeLink;
     let saveButtonIcon = cx({
       "fa fa-refresh fa-spin": this.state.saving,
       "fa fa-check": !this.state.saving
@@ -211,6 +213,15 @@ let Sidebar = React.createClass({
         </main>
         
         <footer className="op-footer-wrapper uk-position-bottom">
+          {! onepagerProLoaded ? 
+          <div className="upgrade-to-pro">
+            <p>Unlock more layouts, blocks and features you could imagine.</p>
+            <a href={proUpgradeLink} target="_blank">
+              Upgrade to PRO
+            </a>
+          </div>
+          : null}
+          
           <nav className="uk-navbar uk-navbar-container">
             <div className="uk-navbar-left"><a href={dashboardUrl}>Exit to Dashboard</a></div>
             <div className="uk-navbar-right">
