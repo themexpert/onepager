@@ -91,6 +91,14 @@ class BlockManager {
 		);
 		return 'blocks - '. $this->blockCount;
 	}
+	public function showAllBlocksCollection(){
+		$blocksCollection = $this->loadAllFromPath(
+			ONEPAGER_BLOCKS_PATH,
+			ONEPAGER_BLOCKS_URL,
+			'Core Blocks'
+		);
+		return (array) $this->blocksCollection;
+	}
 
 	/**
 	 * @return array

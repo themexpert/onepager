@@ -1,12 +1,12 @@
 <?php
-$layouts = onepager()->presetManager()->all();
 $blocks = onepager()->blockManager()->showAllBlocks();
+$blockCollection = array_values((array) onepager()->blockManager()->showAllBlocksCollection());
 
 $groups = array_unique(
 	array_reduce(
-		$layouts,
-		function ( $carry, $layout ) {
-			return array_merge( $carry, $layout['group'] );
+		$blockCollection,
+		function ( $carry, $block ) {
+			return array_merge( $carry, $block['groups'] );
 		},
 		[]
 	)
@@ -23,9 +23,46 @@ function op_get_html_group_class( $groups ) {
 		)
 	);
 }
+
+function update_block_name($string){
+	$name = ucfirst(join(" ", explode("-", $string)));
+	return $name;
+}
+
+function singleBlock($BlockCollec∂çtionsArr){
+	$count = 1;
+	foreach($BlockCollec∂çtionsArr as $singleBlock):
+		?>
+		<div data-group="<?php echo op_get_html_group_class( $singleBlock['groups'] ); ?>">
+			<div class="uk-card uk-card-default uk-transition-toggle single-block-<?php echo $singleBlock['slug'];?>" tabindex="0" >
+				<div class="uk-card-media-top uk-inline uk-height-medium" uk-overflow-auto>
+					<img src="<?php echo $singleBlock['image']?>">
+				</div>
+				<div class="uk-card-footer uk-padding-small uk-margin-remove uk-text-center">
+					<p class="uk-margin-small-bottom">
+					<strong>
+						<?php echo update_block_name($singleBlock['name']); ?>
+					</strong>
+					</p>
+					<a class="uk-button uk-button-primary uk-width-1-1" href="#">Demo</a>
+					<!-- <button 
+						id="layout-import"
+						class="uk-button uk-button-primary uk-width-1-1"
+						uk-toggle="target: #layout-selection-modal"
+						data-name="<?php //echo $singleBlock['name']; ?>"
+						data-image="<?php //echo $singleBlock['image']; ?>"
+						data-id="<?php //echo $singleBlock['id']; ?>"
+						>Demo</button> -->
+				</div>
+			</div>
+		</div>
+		<?php
+	endforeach;
+}
+
 ?>
 <div class="wrap" uk-filter="target: .layout-filter">
-  <h1 class="uk-title"><?php _e( 'Dashboard', 'onepager' ); ?></h1>
+  	<h1 class="uk-title"><?php _e( 'Blocks', 'onepager' ); ?></h1>
 
 	<?php if ( ! did_action( 'onepager_pro_loaded' ) ) : ?>
 	<div class="uk-card uk-card-small uk-card-secondary uk-card-body uk-margin uk-margin-medium-top uk-margin-medium-bottom">
@@ -61,11 +98,12 @@ function op_get_html_group_class( $groups ) {
 	  </div>
 	</div>
 	<?php endif; ?>
+
 	<!-- show block count -->
-  	<div class="uk-card">
+  	<div class="op-block-wrapper">
 		<?php //echo $blocks;?>
-  	</div>
-	<!-- show all templates -->
+	</div>
+
 	<ul class="uk-subnav uk-subnav-pill" uk-margin>
 		<li class="uk-active" uk-filter-control><a href="#">All</a></li>
 		<?php foreach ( $groups as $group ) : ?>
@@ -73,61 +111,12 @@ function op_get_html_group_class( $groups ) {
 		<?php endforeach; ?>
 	</ul>
 
-	<div class="layout-filter uk-child-width-1-2@s uk-child-width-1-4@m" uk-grid>
-		<?php foreach ( $layouts as $layout ) : ?>
-		<div data-group="<?php echo op_get_html_group_class( $layout['group'] ); ?>">
-			<div class="uk-card uk-card-default uk-transition-toggle" tabindex="0" >
-					<div class="uk-card-media-top uk-inline uk-height-medium" uk-overflow-auto>
-						<img data-src="<?php echo $layout['screenshot']; ?>" alt="<?php echo $layout['name']; ?>" uk-img >
-					</div>
-					<div class="uk-card-footer uk-padding-small uk-margin-remove uk-text-center">
-						<p class="uk-margin-small-bottom"><strong><?php echo $layout['name']; ?></strong></p>
-						<button 
-							id="layout-import"
-							class="uk-button uk-button-primary uk-width-1-1"
-							uk-toggle="target: #layout-selection-modal"
-							data-name="<?php echo $layout['name']; ?>"
-							data-image="<?php echo $layout['screenshot']; ?>"
-							data-id="<?php echo $layout['id']; ?>"
-							>Import</button>
-					</div>
-			</div>
-		</div>
-		<?php endforeach; ?>
+	<div class="layout-filter  uk-child-width-1-2@s uk-child-width-1-4@m" uk-grid>
+		<?php 
+			singleBlock($blockCollection);
+		?>
 	</div>
-
-	<!-- This is the modal -->
-	<div id="layout-selection-modal" class="uk-flex-top" uk-modal="bg-close:false">
-		<div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-			<h4 class="uk-modal-title"><?php _e( 'Get started with ', 'onepager' ); ?> <strong class="uk-text-primary"></strong></h4>
-			<div uk-grid>
-				<div class="uk-width-1-3@m">
-				<img id="layout-image" />
-				</div>
-				<div class="uk-width-2-3@m">
-				<form class="uk-form-stacked" method="post" action="options.php">
-				<div class="uk-margin">
-					<label class="uk-form-label" for="form-stacked-text"><?php echo _e( 'Page Title', 'onepager' ); ?></label>
-					<div class="uk-form-controls">
-						<input require class="uk-input page-title" id="form-stacked-text" type="text" placeholder="<?php _e( 'Name of your page', 'onepager' ); ?>" required>
-					</div>
-				</div>
-				<div class="uk-margin">
-					<button 
-					type="submit" 
-					id="op_create_page_from_layout_button"
-					class="uk-button uk-button-primary"
-					name="op_create_page_from_layout_button">
-					<span uk-spinner style="display:none"></span>
-						<?php _e( 'Create', 'onepager' ); ?>
-					</button>
-				</div>
-				</form>
-				</div>
-			</div>
-			<button class="uk-modal-close-default" type="button" uk-close></button>
-		</div>
-	</div>
+	
 </div>
 
 <script>
