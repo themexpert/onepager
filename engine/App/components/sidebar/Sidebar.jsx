@@ -139,6 +139,8 @@ let Sidebar = React.createClass({
     let {isDirty} = this.props;
     let buildModeUrl = ODataStore.disableBuildModeUrl;
     let dashboardUrl = ODataStore.dashboardUrl;
+    let getUpdatePlugins = ODataStore.getUpdatePlugins;
+    let pluginUpdateUrl = ODataStore.pluginUpdateUrl;
     let onepagerProLoaded = ODataStore.onepagerProLoaded;
     let proUpgradeLink = ODataStore.proUpgradeLink;
     let saveButtonIcon = cx({
@@ -162,6 +164,11 @@ let Sidebar = React.createClass({
             <div className="uk-navbar-left"><a className="uk-logo op-btn-with-logo uk-light" href="#">OnePager</a></div>
             
             <div className="uk-navbar-right">
+              {
+                getUpdatePlugins? 
+                <a className="new-update-status" href={pluginUpdateUrl}>New Update Available</a>
+                : null
+              }
               <a href={buildModeUrl} className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
                 <span className="fa fa-close"></span>
               </a>

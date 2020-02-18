@@ -18,19 +18,15 @@ class BuildModeScripts
             onepager()->asset()->enqueue();
         }, 1000000);
     }
-
     public function enqueueScripts()
     {
         if (!$this->isBuildMode()) {
             return;
         }
-
         $this->resetWpScriptQueue();
-
         $this->enqueueFormEngineScripts();
         $this->enqueueInitializerScript();
     }
-
     protected function enqueueInitializerScript()
     {
         $asset = onepager()->asset();
@@ -47,6 +43,8 @@ class BuildModeScripts
 
         $footer = get_editor_section_list_footer();
         $ajaxUrl = $onepager->api()->getAjaxUrl();
+        $getUpdatePlugins = $onepager->api()->getUpdatePlugins();
+        $pluginUpdateUrl = get_admin_url(). 'plugins.php';
         $menus = $onepager->content()->getMenus();
         $categories = $onepager->content()->getCategories();
         $pages = $onepager->content()->getPages();
@@ -72,7 +70,6 @@ class BuildModeScripts
         $proUpgradeLink = 'https://themesgrove.com/wp-onepager/?utm_source=wp-admin&utm_medium=dashboard&utm_campaign=wponepager-gopro';
         $presets = \Onepager::getPresets();
         $basePreset = \Onepager::getBasePreset();
-
         return compact(
             'ajaxUrl',
             'disableBuildModeUrl',
@@ -92,7 +89,9 @@ class BuildModeScripts
             'woocategories',
             'dashboardUrl',
             'onepagerProLoaded',
-            'proUpgradeLink'
+            'proUpgradeLink',
+            'getUpdatePlugins',
+            'pluginUpdateUrl'
         );
     }
 
