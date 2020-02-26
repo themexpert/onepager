@@ -105,7 +105,13 @@ class OptionsPanel implements OptionsPanelInterface {
 	}
 
 	public function update( $options ) {
-		update_option( $this->menuSlug, $options );
+		$op_settings_panel = [];
+		$op_settings_panel['general'] = get_option('op_settings_general');
+		$op_settings_panel['styles']['color'] = get_option('op_setting_styles');
+		$op_settings_panel['advanced'] = get_option('op_setting_advanced');
+
+		update_option( $this->menuSlug, $op_settings_panel ); // data comes from setting option panel of onepager dashboard
+		// update_option( $this->menuSlug, $options );
 		$this->flattenOptions();
 	}
 

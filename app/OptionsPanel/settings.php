@@ -62,31 +62,53 @@ add_action(
  */
 $tab = [
     [
-        'id' => 'global_settings',
-        'title' => __('Global Settings', 'onepager')
+        'id' => 'op_settings_general',
+        'title' => __('General', 'onepager')
     ],
     [
-        'id' => 'meta_settings',
-        'title' => __('Meta Settings', 'onepager')
+        'id' => 'op_setting_styles',
+        'title' => __('Styles', 'onepager')
+    ],
+    [
+        'id' => 'op_setting_advanced',
+        'title' => __('Advanced', 'onepager')
     ]
 ];
 
 $fields = [
-    'global_settings' => [
+    'op_settings_general' => [
         [
-            'name' => 'text',
+            'name' => 'section_title_size',
             'label' => __('Section Title Size', 'onepager'),
             'desc' => __('in px', 'onepager'),
             'type' => 'text',
             'default' => '44'
         ],
+    ],
+    'op_setting_styles' => [
         [
-            'name' => 'color',
-            'label' => __('Color', 'onepager'),
+            'name' => 'primary',
+            'label' => __('Primary Color', 'onepager'),
             'desc' => __('Font color', 'onepager'),
-            'type' => 'text',
+            'type' => 'color',
             'default' => '#fff'
         ],
+        [
+            'name' => 'seconday',
+            'label' => __('Secondary Color', 'onepager'),
+            'desc' => __('Font color', 'onepager'),
+            'type' => 'color',
+            'default' => '#fff'
+        ],
+        [
+            'name' => 'accent',
+            'label' => __('Accent Color', 'onepager'),
+            'desc' => __('Font color', 'onepager'),
+            'type' => 'color',
+            'default' => '#fff'
+        ],
+    ],
+    'op_setting_advanced' => [
         [
             'name' => 'google_analytics',
             'label' => __('Google Analytics', 'onepager'),
@@ -94,14 +116,11 @@ $fields = [
             'type' => 'textarea',
             'default' => ''
         ],
-    ],
-    'meta_settings' => [
         [
-            'name' => 'text',
-            'label' => __('Title', 'onepager'),
-            'desc' => __('Your website title', 'onepager'),
-            'type' => 'text',
-            'default' => 'OnePage Landing Page Builder'
+            'name'  => 'onepager_debug',
+            'label' => __( 'Debug', 'onepager' ),
+            'desc'  => __( 'Debug Mode', 'onepager' ),
+            'type'  => 'checkbox'
         ],
     ]
 ];

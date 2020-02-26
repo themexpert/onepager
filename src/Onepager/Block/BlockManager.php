@@ -10,8 +10,16 @@ class BlockManager {
 	protected $blockCount = 0;
 
 	public function __construct( ConfigTransformer $configTransformer, Collection $blocksCollection ) {
+		$op_settings_panel = [];
+		$op_settings_panel['general'] = get_option('op_settings_general');
+		$op_settings_panel['styles']['color'] = get_option('op_setting_styles');
+		$op_settings_panel['advanced'] = get_option('op_setting_advanced');
+		update_option( 'onepager', $op_settings_panel ); // data comes from setting option panel of onepager dashboard
+		
 		$this->configTransformer = $configTransformer;
 		$this->blocksCollection  = $blocksCollection;
+
+
 	}
 
 	public function loadAllFromPath( $path, $url, $groups = array() ) {
@@ -44,7 +52,8 @@ class BlockManager {
 	}
 
 	/**
-	 * load all blocks from path
+	 * load all blocks from 
+	 * created by Anam
 	 */
 	public function loadBlocksFromPath($path, $url, $groups = array()){
 		$blocks = FS::folders( $path );
@@ -66,6 +75,10 @@ class BlockManager {
 
 		$config           = $this->configTransformer->transform( $config, $file, $url );
 		$config['groups'] = array_merge( $config['groups'], (array) $groups );
+		// echo '<pre>';
+		// var_dump($config);
+		// echo '</pre>';
+		// die();
 		$this->blocksCollection->set( $config['slug'], $config );
 	}
 
