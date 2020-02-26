@@ -19,7 +19,8 @@
     "kriswallsmith/assetic": "^1.2",
     "ramsey/array_column": "^1.1",
     "symfony/http-foundation": "2.7.50",
-    "appsero/client": "^1.0"
+    "appsero/client": "^1.0",
+    "tareq1988/wordpress-settings-api-class": "dev-master"
   },
   "autoload": {
     "classmap": ["src/WordPress"],

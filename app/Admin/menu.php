@@ -58,6 +58,16 @@ function register_submenu() {
 			include __DIR__ . '/views/blocks.php';
 		}
 	);
+	add_submenu_page(
+        'onepager',
+        __('Settings', 'onepager'),
+        __('Settings', 'onepager'),
+        'manage_options',
+        'onepager-settings',
+        function () {
+            include __DIR__ . '/views/settings.php';
+        }
+  	);
 	// add_submenu_page(
 	// 'onepager',
 	// '',
