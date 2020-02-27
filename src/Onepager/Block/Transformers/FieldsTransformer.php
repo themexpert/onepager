@@ -5,6 +5,10 @@ namespace ThemeXpert\Onepager\Block\Transformers;
 class FieldsTransformer {
 
 	public function transform( $fields ) {
+		/**
+		 * Fields 
+		 * that comes raw data from config php file
+		 */
 		return array_map(
 			function ( $control ) {
 				$control = $this->mergeOptionsData( $control );
@@ -119,11 +123,9 @@ class FieldsTransformer {
 	 */
 	public function getOptionData( $value ) {
 		$option = str_replace( '@', '', $value );
-
 		$pieces = explode( '.', $option );
 		if ( count( $pieces ) == 2 ) {
 			$options = \Onepager::getOption( $pieces[0] );
-
 			if ( is_array( $options ) && array_key_exists( $pieces[1], $options ) ) {
 				return $options[ $pieces[1] ];
 			} else {

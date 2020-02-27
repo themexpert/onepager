@@ -72,13 +72,8 @@ class BlockManager {
 	public function add( $file, $url, $groups = array() ) {
 		$url    = untrailingslashit( $url );
 		$config = require( $file );
-
 		$config           = $this->configTransformer->transform( $config, $file, $url );
 		$config['groups'] = array_merge( $config['groups'], (array) $groups );
-		// echo '<pre>';
-		// var_dump($config);
-		// echo '</pre>';
-		// die();
 		$this->blocksCollection->set( $config['slug'], $config );
 	}
 
@@ -87,8 +82,9 @@ class BlockManager {
 	}
 
 	public function all() {
-		$ignoredGroups = $this->getIgnoredGroups();
-
+		// ignore group means those category what are duplicated
+		$ignoredGroups = $this->getIgnoredGroups(); 
+		
 		return array_filter(
 			(array) $this->blocksCollection,
 			function ( $block ) use ( $ignoredGroups ) {
@@ -104,6 +100,10 @@ class BlockManager {
 		);
 		return 'blocks - '. $this->blockCount;
 	}
+	/**
+	 * Display block for dashboard
+	 * create by anam
+	 */
 	public function showAllBlocksCollection(){
 		$blocksCollection = $this->loadAllFromPath(
 			ONEPAGER_BLOCKS_PATH,
