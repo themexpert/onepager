@@ -112,11 +112,11 @@ function onepager_load_admin_scripts() {
 	$current_url_slug = $current_url ? explode("=", $current_url) : '';
 
 	// add builder.css so icons and other stuff styles
-	if( $current_url_slug[1] === 'onepager' OR 
+	if( $current_url_slug && ($current_url_slug[1] === 'onepager' OR 
 			$current_url_slug[1] === 'onepager-license' OR 
 			$current_url_slug[1] === 'onepager-blocks' OR 
 			$current_url_slug[1] === 'onepager-license&onepager_pro_activation' OR 
-			$current_url_slug[1] === 'onepager-getting-started'){
+			$current_url_slug[1] === 'onepager-getting-started')){
 		wp_enqueue_script( 'uikit', op_asset( 'assets/js/uikit.js' ) );
 		wp_enqueue_script( 'uikit-icons', op_asset( 'assets/js/uikit-icons.js' ) );
 	
