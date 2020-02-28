@@ -116,7 +116,8 @@ let Sidebar = React.createClass({
         <Tab onClick={handleTabClick} id='op-menu' icon='link' title='Menu' active={activeTab}
              visibleOn="op-sections"/>
         <Tab onClick={handleTabClick} id='op-settings' icon='cog' title='Global Settings' active={activeTab}
-             visibleOn="op-sections"/>
+            //  visibleOn="op-sections"/>
+             visibleOn=""/>
       </ul>
     );
   },
