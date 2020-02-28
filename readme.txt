@@ -129,17 +129,15 @@ Absolutely not. You can create and manage your landing pages without any coding 
 1. composer install
 2. npm Install
 3. bower install
-4. 
 
 == Changelog ==
 
 = 2.2.8 =
-- New - Global option panel in onepager dashboard. 
-- New - Settings menu in onepager dashboard.
-- New - Blocks menu added and display all blocks in the dashboard.
-- Improved - Show Update notification in sidebar of builder mood.
-- Improved - Upgrade to pro panel added in builder mode.
-- Improved - Exit to dashboard link added in builder siderbar footer.
+- New: Introduced brand new global setting.
+- New: Introduced page level setting. 
+- New: Introduced dedicated block menu in the dashboard.
+- Improved: Show Update notification in the sidebar.
+- Improved: New exit to dashboard option.
 
 = 2.2.7 =
 - Fix: Rating notification style in dashboard.

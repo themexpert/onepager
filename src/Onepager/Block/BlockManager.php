@@ -11,9 +11,9 @@ class BlockManager {
 
 	public function __construct( ConfigTransformer $configTransformer, Collection $blocksCollection ) {
 		$op_settings_panel = [];
-		$op_settings_panel['general'] = get_option('op_settings_general');
-		$op_settings_panel['styles']['color'] = get_option('op_setting_styles');
-		$op_settings_panel['advanced'] = get_option('op_setting_advanced');
+		$op_settings_panel['general'] = get_option('op_settings_general') ?: [];
+		$op_settings_panel['styles']['color'] = get_option('op_setting_styles') ?: [];
+		$op_settings_panel['advanced'] = get_option('op_setting_advanced') ?: [];
 		update_option( 'onepager', $op_settings_panel ); // data comes from setting option panel of onepager dashboard
 		
 		$this->configTransformer = $configTransformer;
