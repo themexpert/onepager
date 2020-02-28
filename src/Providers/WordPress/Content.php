@@ -102,6 +102,6 @@ class Content implements ContentInterface {
 	}
 
 	protected function isPermitted() {
-		return is_super_admin();
+		return is_super_admin() || current_user_can( 'edit_posts' );
 	}
 }
