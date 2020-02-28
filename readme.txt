@@ -133,6 +133,14 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 == Changelog ==
 
+= 2.2.8 =
+- New - Global option panel in onepager dashboard. 
+- New - Settings menu in onepager dashboard.
+- New - Blocks menu added and display all blocks in the dashboard.
+- Improved - Show Update notification in sidebar of builder mood.
+- Improved - Upgrade to pro panel added in builder mode.
+- Improved - Exit to dashboard link added in builder siderbar footer.
+
 = 2.2.7 =
 - Fix: Rating notification style in dashboard.
 
