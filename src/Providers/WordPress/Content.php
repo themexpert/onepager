@@ -100,7 +100,11 @@ class Content implements ContentInterface {
 
 		return $post && $post->ID ? $post->ID : null;
 	}
-
+	/**
+	 * user permission
+	 * currently it setted to 
+	 * who has the edit posts power.
+	 */
 	protected function isPermitted() {
 		return is_super_admin() || current_user_can( 'edit_posts' );
 	}
