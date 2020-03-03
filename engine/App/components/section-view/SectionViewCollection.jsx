@@ -14,21 +14,31 @@ function setBodyClass(sections) {
     $body.removeClass(noBlockClassName);
   }
 }
+function setBodyClassForPageSettings(sections, pageID){
+  let $body = jQuery('body');
+  let bodyClassWithID = `txop-page-${pageID}`;
+  if (sections === 0) {
+    $body.removeClass(bodyClassWithID);
+  } else {
+    $body.addClass(bodyClassWithID);
+  }
+}
 
 let SectionViewCollection = React.createClass({
   mixins: [PureMixin],
 
   componentDidMount(){
     setBodyClass(this.props.sections.length);
+    setBodyClassForPageSettings(this.props.sections.length, this.props.pageID);
   },
 
   componentDidUpdate(){
     setBodyClass(this.props.sections.length);
+    setBodyClassForPageSettings(this.props.sections.length, this.props.pageID);
   },
 
   render() {
     let sections = this.props.sections;
-
     return (
       <div>
         {

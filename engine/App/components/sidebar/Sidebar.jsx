@@ -42,7 +42,7 @@ let Sidebar = React.createClass({
   },
 
   handleSave(){
-    let updated = AppStore.save();
+    let updated = AppStore.save(); // return a promise
     this.setState({saving: true});
 
     updated.then(()=> {

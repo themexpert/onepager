@@ -24,7 +24,7 @@ let Preview = React.createClass({
   },
 
   render() {
-    let {sections, activeSectionIndex} = this.state;
+    let {sections, activeSectionIndex, pageID} = this.state;
 
     let viewSections = _.map(sections, function (section) {
       return _.pick(section, ['content', 'key', 'style', 'id']);
@@ -33,6 +33,7 @@ let Preview = React.createClass({
     return (
         <SectionViewCollection
           activeSectionIndex={activeSectionIndex}
+          pageID = {pageID}
           sections={viewSections}/>
     );
   }

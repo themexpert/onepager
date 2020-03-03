@@ -37,6 +37,7 @@ let _menuState = {id: null, index: null, title: null};
 let _savedSections = getSerializedSectionsAsJSON(_sections);
 let AUTO_SAVE_DELAY = 150;
 let _previewFrameLoaded = false;
+let _pageID = ODataStore.pageId;
 
 let _collapseSidebar = localState.get('collapseSidebar', false);
 let _activeSectionIndex = _sections[localState.get('activeSectionIndex')] ? localState.get('activeSectionIndex') : null;
@@ -256,7 +257,8 @@ let AppStore = assign({}, BaseStore, {
       collapseSidebar: _collapseSidebar,
       sidebarTabState: _sidebarTabState,
       activeSectionIndex: _activeSectionIndex,
-      previewFrameLoaded: _previewFrameLoaded
+      previewFrameLoaded: _previewFrameLoaded,
+      pageID: _pageID
     };
   },
 
@@ -273,7 +275,7 @@ let AppStore = assign({}, BaseStore, {
   },
 
   setSectionsAsSavedSections(){
-    _savedSections = getSerializedSectionsAsJSON(_sections);
+    _savedSections = getSerializedSectionsAsJSON(_sections); // return the changed json
     emitChange();
   },
 
