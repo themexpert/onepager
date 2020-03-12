@@ -63,9 +63,31 @@ class Render {
 		}
 
 		$section = $this->sectionBlockDataMerge( $section );
-		$section['url'] = $block['url'];
-
 		return do_shortcode( $this->view->make( $view_file, $section ) );
+	}
+
+	/**
+	 * 
+	 */
+	public function syncPageSettingsWithSection($pageId, $sections){
+		foreach ( $sections as $section ) {
+			/**
+			 * FIXME: Currently we are not smartly handling non existent blocks exceptions
+			 */
+			if ( ! $block = $this->isValidSection( $section ) ) {
+				return $this->noBlockDefined( $section['slug'] );
+			}
+
+			$view_file = $this->locateViewFile( $block );
+
+			// throw better exceptions
+			if ( ! FileSystem::exists( $view_file ) ) {
+				return $this->noViewFile( $block['name'] );
+			}
+
+			$section = $this->sectionBlockDataMerge( $section );
+			return do_shortcode( $this->view->makePageStyle( $view_file, $section, $pageId ) );
+		}
 	}
 
 	public function sectionBlockDataMerge( $section ) {
@@ -91,9 +113,14 @@ class Render {
 			echo $this->style( $section );
 		}
 	}
+	public function pageStyles($sections, $pageId, $pageOptionPanel){
+		foreach ( $sections as $section ) {
+			echo $this->pageStyle( $section, $pageId, $pageOptionPanel);
+		}
+	}
 
 	/**
-	 * @param $section
+	 * @param $section - contains individual section data which comes from db 
 	 *
 	 * @return null|string
 	 */
@@ -102,7 +129,31 @@ class Render {
 		if ( ! $block = $this->isValidSection( $section ) ) {
 			return $this->noBlockDefined( $section['slug'] );
 		}
+		/**
+		 * return the style sheet file from the array
+		 */
+		$style_file = $this->locateStyleFile( $block );
+		
+		// throw better exceptions
+		if ( ! FileSystem::exists( $style_file ) ) {
+			// throw new \Exception( "Block style Does not exist" );
+			return null;
+		}
+		
+		$section['url'] = $block['url'];
+		$style = $this->getStyleHTML( $section, $style_file );
 
+		return $style;
+	}
+
+	public function pageStyle( $section, $pageId, $pageOptionPanel ) {
+		/** FIXME: Currently we are not smartly handling non existent blocks exceptions */
+		if ( ! $block = $this->isValidSection( $section ) ) {
+			return $this->noBlockDefined( $section['slug'] );
+		}
+		/**
+		 * return the style sheet file from the array
+		 */
 		$style_file = $this->locateStyleFile( $block );
 
 		// throw better exceptions
@@ -112,9 +163,8 @@ class Render {
 		}
 
 		$section['url'] = $block['url'];
-		$style = $this->getStyleHTML( $section, $style_file );
-
-		return $style;
+		$pageStyle = $this->getPageStyleHTML( $section, $style_file, $pageId, $pageOptionPanel );
+		return $pageStyle;
 	}
 
 	/**
@@ -129,6 +179,18 @@ class Render {
 		$style .= '</style>';
 
 		return $style;
+	}
+	/**
+	 * @param $section
+	 * @param $style_file
+	 *
+	 * @return string
+	 */
+	public function getPageStyleHTML( $section, $style_file, $pageId, $pageOptionPanel ) {
+		$pageStyle = "<style id='op-page-{$pageId}-style-{$section['id']}'>";
+		$pageStyle .= $this->view->makePageStyle( $style_file, $section, $pageId, $pageOptionPanel );
+		$pageStyle .= '</style>';
+		return $pageStyle;
 	}
 
 	/**
@@ -179,7 +241,7 @@ class Render {
 		return array_filter(
 			array_map(
 				function ( $section ) use ( $transformer ) {
-					$block = onepager()->blockManager()->get( $section['slug'] );
+					$block = onepager()->blockManager()->get( $section['slug'] ); // get data from local config
 					if ( ! $block ) {
 						return false;
 					}
@@ -220,6 +282,27 @@ class Render {
 				return $sections;
 			},
 			$pages
+		);
+	}
+
+	/**
+	 * 
+	 */
+	public function mergeSectionsAndSettingsWithPage($pageId = ''){
+		global $wpdb;
+		$page_settings_sql = "SELECT meta_value FROM $wpdb->postmeta where meta_key='op_page_option_settings' and post_id={$pageId} ";
+		$page_sections_sql = "SELECT meta_value FROM $wpdb->postmeta where meta_key='onepager_sections' and post_id={$pageId} ";
+		$page_settings = $wpdb->get_results( $page_settings_sql );
+		$page_sections = $wpdb->get_results( $page_sections_sql );
+		return array_map(
+			function($settings){
+				try{
+					$page_settigs_section = unserialize($settings->meta_value);
+				}catch( \Exception $e){
+					$page_settigs_section = [];
+				}
+			},
+			$page_settings	
 		);
 	}
 }

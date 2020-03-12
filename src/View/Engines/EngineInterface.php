@@ -11,5 +11,6 @@ interface EngineInterface {
 	 * @return string
 	 */
 	public function get( $path, array $data = array() );
+	public function getPageStyle( $path, array $data = array(), $pageId, $pageOptionPanel );
 
 }

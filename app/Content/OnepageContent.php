@@ -23,12 +23,19 @@ class OnepageContent {
 
 		$this->setOnepageContentLoaded();
 
+		/**
+		 * builder preview mode
+		 */
 		if ( $this->isPreview() ) {
 			return $this->getBuildModeContent();
 		}
 
 		$pageId = $this->getCurrentPageId();
-
+		//$this->renderPageSettings($pageId);
+		/**
+		 * return the frontend preview 
+		 * without builder mode 
+		 */
 		return $this->getPageContent( $pageId );
 	}
 
@@ -87,5 +94,14 @@ class OnepageContent {
 	 */
 	protected function renderPageSections( $sections ) {
 		return onepager()->render()->sections( $sections );
+	}
+	/**
+	 * @param $sections
+	 *
+	 * @return mixed
+	 */
+	protected function renderPageSettings( $pageId ) {
+		$sections = $this->getAllValidSections( $pageId );
+		return onepager()->render()->syncPageSettingsWithSection( $pageId, $sections );
 	}
 }

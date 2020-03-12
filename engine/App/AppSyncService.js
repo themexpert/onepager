@@ -75,6 +75,28 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
   };
 
+  function updatePageSettings(sections){
+    return new Promise((resolve, reject)=>{
+      let payload = {
+        action: "onepager_save_page_settings",
+        pageId: pageId
+      };
+
+      $.post(ODataStore.ajaxUrl, payload, (res)=> {
+        if (!res || !res.success) {
+          notify.error('Unable to save. Make sure you are logged in'); //bad message
+
+          return reject('Unable to save. Make sure you are logged in'); //bad message
+        }
+
+        console.log('res', res);
+
+        return resolve('i am new to onepager, dont fire me');
+      });
+
+    });
+  }
+
   function reloadSections(sections){
     return new Promise((resolve, reject)=>{
       let payload = {
@@ -115,7 +137,8 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     reloadSections,
     reloadBlocks,
     updateSection,
-    rawUpdate
+    rawUpdate,
+    updatePageSettings
   };
 }
 

@@ -33,6 +33,9 @@ function transformSections(sections){
 
 let _blocks = sortBlocks(ODataStore.blocks);
 let _sections = transformSections(ODataStore.sections);
+
+// debugger;
+console.log('sections', _sections);
 let _menuState = {id: null, index: null, title: null};
 let _savedSections = getSerializedSectionsAsJSON(_sections);
 let AUTO_SAVE_DELAY = 150;
@@ -270,6 +273,16 @@ let AppStore = assign({}, BaseStore, {
     return updated;
   },
 
+  pageSave(){
+    let callingRoute = syncService.updatePageSettings();
+    callingRoute.then( (res) => {
+      console.log('hello, for appstorre')
+    }).catch( (err) => {
+      console.log('err', err);
+    } );
+    return callingRoute;
+  },
+
   isDirty(){
     return getSerializedSectionsAsJSON(_sections) !== _savedSections;
   },
@@ -308,6 +321,11 @@ let AppStore = assign({}, BaseStore, {
     liveService.rawUpdate(_sections);
   },
 
+  /**
+   * 
+   * @param {sections} sections data comes for page specific section from db onepager_sections row of post_meta table
+   * @param {*} isSectionsDirty 
+   */
   settingsChanged(sections, isSectionsDirty){
     /** Horrible codes*/
     reloadBlocks().then(function(){

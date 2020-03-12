@@ -104,8 +104,8 @@ class SerializedControlsConfigTransformer {
 	}
 
 	/**
-	 * @param $configData
-	 * @param $serializedData
+	 * @param $configData - means thats comes from blocks folder config.php file from local
+	 * @param $serializedData - updated data that comes from database
 	 *
 	 * @return mixed
 	 */

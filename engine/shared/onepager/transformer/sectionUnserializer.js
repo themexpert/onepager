@@ -13,6 +13,7 @@ function sectionUnserializer(section, block) {
 	block.id = section.id;
 	block.title = section.title;
 	block.style = section.style;
+	block.page_style = section.page_style;
 	block.content = stripClassesFromHTML( block.livemode, section.content );
 	block.contents = unserializeControls( section.contents, block.contents );
 	block.settings = unserializeControls( section.settings, block.settings );

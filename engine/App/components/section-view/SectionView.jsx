@@ -11,8 +11,13 @@ function removeSectionStyle(id) {
 }
 
 function replaceSectionStyle(id, style) {
+  // debugger;
   $(`#style-${id}`).remove();
   $("head").append(style);
+}
+function addStyleToPage(page_style){
+  // debugger;
+  $("head").append(page_style);
 }
 
 let Section = React.createClass({
@@ -44,8 +49,9 @@ let Section = React.createClass({
   },
 
   setSectionStyle(){
-    let {id, style} = this.props.section;
+    let {id, style, page_style} = this.props.section;
     replaceSectionStyle(id, style);
+    addStyleToPage( page_style);
   },
 
   scrollIntoView(){

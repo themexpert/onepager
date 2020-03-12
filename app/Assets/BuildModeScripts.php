@@ -53,9 +53,14 @@ class BuildModeScripts
         $woocategories = $onepager->content()->getWooCategories();
 
         $sections = array_map(function ($section) {
+            $pageId = $this->getCurrentPageId();
+            $pageOptionPanel = onepager()->optionsPanel('onepager')->getAllSavedPageOptions($pageId);
+
             $section = onepager()->render()->sectionBlockDataMerge($section);
             $section['content'] = onepager()->render()->section($section);
             $section['style'] = onepager()->render()->style($section);
+            $section['page_style'] = onepager()->render()->pageStyle($section, $pageId, $pageOptionPanel);
+            // $section['page_style'] = 'heelo page style';
 
             return $section;
         }, onepager()->section()->getAllValid($pageId));
@@ -63,7 +68,9 @@ class BuildModeScripts
         $disableBuildModeUrl = onepager_get_edit_mode_url(get_current_page_url(), false);
 
         $optionPanel = onepager()->optionsPanel('onepager')->getOptionsControls();
+        $pageOptionPanel = onepager()->optionsPanel('onepager')->getPageOptionsControls($pageId);
         $options = onepager()->optionsPanel('onepager')->getAllSavedOptions();
+        $pageSettingOptions = onepager()->optionsPanel('onepager')->getAllSavedPageOptions($pageId);
         $page = 'onepager';
         $dashboardUrl = get_dashboard_url().'edit.php?post_type=page';
         $onepagerProLoaded = did_action( 'onepager_pro_loaded' ) ? true : false;
@@ -74,7 +81,9 @@ class BuildModeScripts
             'ajaxUrl',
             'disableBuildModeUrl',
             'optionPanel',
+            'pageOptionPanel',
             'options',
+            'pageSettingOptions',
             'page',
             'blocks',
             'pageId',

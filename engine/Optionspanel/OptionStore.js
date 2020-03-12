@@ -14,8 +14,9 @@ import LocalState from '../shared/lib/localState.js';
 
 let componentLocalState = LocalState( 'onepager_settings_ui_state' )();
 
-let options = ODataStore.options;
-let sync = Sync( ODataStore.ajaxUrl, ODataStore.page );
+// let options = ODataStore.options;
+let options = ODataStore.pageSettingOptions;
+let sync = Sync( ODataStore.ajaxUrl, ODataStore.page, ODataStore.pageId );
 
 function transformer(fields, panelId) {
 	return fields.map(
@@ -95,6 +96,20 @@ let OptionsPanelStore = Reflux.createStore(
                 OptionActions.syncWithSections.completed();
 				},
 				OptionActions.syncWithSections.failed
+			);
+		},
+
+		onSyncPageWithSections( sections, callback ){
+			let options = this._prepareOptionsForSync();
+			let update = sync( options, sections );
+			//FIXME: move this to UI
+			update.then(
+				(res) => {
+					callback( res.sections );
+                	this.setSyncedOptions();
+                	OptionActions.syncPageWithSections.completed();
+				},
+				OptionActions.syncPageWithSections.failed
 			);
 		},
 

@@ -4,6 +4,7 @@ use ThemeXpert\Providers\WordPress\Api;
 if ( is_admin() && defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 	$apiRouter = new Api();
 	$apiRouter->post( 'onepager_save_options', 'App\Api\Controllers\OptionsApiController@saveOptions' );
+	$apiRouter->post( 'onepager_save_page_settings', 'App\Api\Controllers\OptionsApiController@savePageSettingsOption' );
 	$apiRouter->post( 'onepager_add_menu', 'App\Api\Controllers\MenuApiController@addMenu' );
 
 	$apiRouter->post( 'onepager_save_sections', 'App\Api\Controllers\SectionsApiController@saveSections' );

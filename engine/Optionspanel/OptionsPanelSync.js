@@ -1,10 +1,12 @@
 const $ = jQuery;
 import toolbelt from '../shared/lib/toolbelt.js';
 
-module.exports = function (ajaxUrl, page) {
+module.exports = function (ajaxUrl, page, pageID='') {
 	let data = {
-		action: 'onepager_save_options',
-		page: page
+		// action: 'onepager_save_options',
+		action: 'onepager_save_page_settings',
+		page: page,
+		pageID: pageID
 	};
 
 	function send(data){

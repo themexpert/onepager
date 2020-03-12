@@ -71,6 +71,22 @@ let Sidebar = React.createClass({
       swal('could not save');
     });
   },
+  handlePageSettingsSave(){
+    let serializedSections = SectionTransformer.serializeSections(this.props.sections);
+    let isSectionsDirty = AppStore.isDirty(); // return a promise
+    let updated = OptionActions.syncPageWithSections
+      .triggerPromise(serializedSections, (sections)=> {
+        AppStore.settingsChanged(sections, isSectionsDirty);
+      });
+    this.setState({saving: true});
+
+    updated.then(()=> {
+      this.setState({isSettingsDirty: false, saving: false});
+    }, ()=> {
+      this.setState({saving: false});
+      swal('could not save');
+    });
+  },
 
   whenSettingsDirty(){
     //FIXME: why the! should I use a promise here?
@@ -235,7 +251,8 @@ let Sidebar = React.createClass({
             <div className="uk-navbar-right">
               {
                 activeTab === 'op-settings' ?
-                  <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave}
+                  // <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave}
+                  <button disabled={!isSettingsDirty} onClick={this.handlePageSettingsSave}
                           className='uk-button uk-button-primary uk-button-small'>
                     <span className={saveButtonIcon}></span> Update
                   </button> :

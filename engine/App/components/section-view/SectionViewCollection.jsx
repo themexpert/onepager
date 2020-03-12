@@ -39,6 +39,7 @@ let SectionViewCollection = React.createClass({
 
   render() {
     let sections = this.props.sections;
+    // debugger;
     return (
       <div>
         {

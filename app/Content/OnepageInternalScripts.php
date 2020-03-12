@@ -3,6 +3,7 @@
 class OnepageInternalScripts {
 	public function __construct() {
 		add_action( 'wp_head', [ $this, 'injectInternalScripts' ] );
+		add_filter( 'body_class', [ $this, 'injectBodyClass' ] );
 	}
 
 	public function injectInternalScripts() {
@@ -12,7 +13,16 @@ class OnepageInternalScripts {
 
 		$pageId   = $this->getCurrentPageId();
 		$sections = $this->getAllValidSectionsFromPageId( $pageId );
+		$pageOptionPanel = $this->getPageOptionPanelFromPageId( $pageId );
+
 		$this->renderStylesFromSections( $sections );
+		$this->renderStylesForPageSettings(  $sections, $pageId, $pageOptionPanel );
+
+	}
+	public function injectBodyClass($classes){
+		$pageId   = $this->getCurrentPageId();
+		$classes[] = 'txop-page-'.$pageId;
+		return $classes;
 	}
 
 	/**
@@ -44,11 +54,26 @@ class OnepageInternalScripts {
 	protected function getAllValidSectionsFromPageId( $pageId ) {
 		return onepager()->section()->getAllValid( $pageId );
 	}
+	/**
+	 * @return page option panel data
+	 */
+	protected function getPageOptionPanelFromPageId($pageId){
+		$pageOptionPanelData = onepager()->optionsPanel('onepager')->getAllSavedPageOptions($pageId);
+		return $pageOptionPanelData;
+	}
 
 	/**
 	 * @param $sections
 	 */
 	protected function renderStylesFromSections( $sections ) {
 		onepager()->render()->styles( $sections );
+	}
+	/**
+	 * @param $pageId
+	 * @param $sections
+	 * @param $pageOptionPanel
+	 */
+	protected function renderStylesForPageSettings( $sections, $pageId, $pageOptionPanel ) {
+		onepager()->render()->pageStyles( $sections, $pageId, $pageOptionPanel );
 	}
 }

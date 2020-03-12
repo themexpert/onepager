@@ -23,4 +23,7 @@ class View {
 	public function make( $file, $data ) {
 		return $this->compilerEngine->get( $file, $data );
 	}
+	public function makePageStyle( $file, $data, $pageId, $pageOptionPanel ) {
+		return $this->compilerEngine->getPageStyle( $file, $data, $pageId, $pageOptionPanel );
+	}
 }

@@ -114,6 +114,10 @@ class OptionsPanel implements OptionsPanelInterface {
 		// update_option( $this->menuSlug, $options );
 		$this->flattenOptions();
 	}
+	public function updatePageSettingsOption($pageID, $options){
+		$update_status = update_post_meta($pageID, 'op_page_option_settings', $options);
+		return $update_status; 
+	}
 
 	protected function flattenOptions() {
 		$options = $this->getAllSavedOptions();
@@ -147,7 +151,14 @@ class OptionsPanel implements OptionsPanelInterface {
 
 			$data = $this->mergeOptions( $data, $this->getOptionsControls() );
 		}
-
+		return ! empty( $data ) ? $data : [];
+	}
+	public function getAllSavedPageOptions($pageId) {
+		$data = [];
+		if ( $this->options ) {
+			$data = get_post_meta( $pageId, 'op_page_option_settings', true );
+			$data = $this->mergeOptions( $data, $this->getOptionsControls() );
+		}
 		return ! empty( $data ) ? $data : [];
 	}
 
@@ -162,6 +173,27 @@ class OptionsPanel implements OptionsPanelInterface {
 		);
 
 		return $options;
+	}
+	public function getPageOptionsControls($pageId){
+		// return $this->getOptionsControls();
+		$options = $this->getAllSavedPageOptions($pageId);
+
+		if ( ! $options || ! is_array( $options ) ) {
+			$this->flatOptions = [];
+		} else {
+			$this->flatOptions = flatten_array( $options );
+		}
+		$options = array_map(
+			function ( $options ) {
+				$options['fields'] = array_values( $this->transformOptions( $options['fields'] ) );
+
+				return $options;
+			},
+			$this->options
+		);
+
+		return $options;
+
 	}
 
 	public function transformOptions( $options ) {
