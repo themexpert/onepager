@@ -41,6 +41,7 @@ let _savedSections = getSerializedSectionsAsJSON(_sections);
 let AUTO_SAVE_DELAY = 150;
 let _previewFrameLoaded = false;
 let _pageID = ODataStore.pageId;
+let _pageSettingOptions = ODataStore.pageSettingOptions;
 
 let _collapseSidebar = localState.get('collapseSidebar', false);
 let _activeSectionIndex = _sections[localState.get('activeSectionIndex')] ? localState.get('activeSectionIndex') : null;
@@ -243,6 +244,25 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
       setPreviewFrameLoaded();
       emitChange();
       break;
+
+    case actions.UPDATE_PAGE_SETTINGS:
+      var a = 'page settings';
+      debugger;
+      emitChange();
+      break;
+      
+    case actions.UPDATE_PAGE_STYLE:
+      var b = 'page style';
+      debugger;
+      emitChange();
+      break;
+
+    case actions.UPDATE_PAGE_ADVANCE:
+      var c = 'page advance';
+      debugger;
+      emitChange();
+      break;
+
   }
 });
 
@@ -261,7 +281,8 @@ let AppStore = assign({}, BaseStore, {
       sidebarTabState: _sidebarTabState,
       activeSectionIndex: _activeSectionIndex,
       previewFrameLoaded: _previewFrameLoaded,
-      pageID: _pageID
+      pageID: _pageID,
+      pageSettingOptions: _pageSettingOptions,
     };
   },
 

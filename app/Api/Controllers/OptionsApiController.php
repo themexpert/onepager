@@ -27,9 +27,8 @@ class OptionsApiController extends ApiController {
 		
 		onepager()->optionsPanel( $page )->updatePageSettingsOption( $pageID, $pageOptions );
 		onepager()->render()->mergeSectionsAndSettings();
-		onepager()->render()->mergeSectionsAndSettingsWithPage('35');
+		onepager()->render()->mergeSectionsAndSettingsWithPage($pageID);
 
-		// $this->responseSuccess(compact( 'I am new bolod' ));
 		$sections = array_get( $_POST, 'sections', [ ] ) ?: [ ]; // making sure its an array
 
 		if ( count( $sections ) ) {

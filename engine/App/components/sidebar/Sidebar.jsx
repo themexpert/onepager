@@ -40,7 +40,9 @@ let Sidebar = React.createClass({
       isSettingsDirty: false
     };
   },
-
+  /**
+   * handle section update
+   */
   handleSave(){
     let updated = AppStore.save(); // return a promise
     this.setState({saving: true});
@@ -52,7 +54,11 @@ let Sidebar = React.createClass({
       swal('could not save');
     });
   },
-
+  /**
+   * handle global settings
+   * Need to move this function 
+   * to another part of this application
+   */
   handleGlobalSettingsSave(){
     let serializedSections = SectionTransformer.serializeSections(this.props.sections);
     let isSectionsDirty = AppStore.isDirty();
@@ -71,6 +77,10 @@ let Sidebar = React.createClass({
       swal('could not save');
     });
   },
+  /**
+   * handle page settings option panel
+   * update the database
+   */
   handlePageSettingsSave(){
     let serializedSections = SectionTransformer.serializeSections(this.props.sections);
     let isSectionsDirty = AppStore.isDirty(); // return a promise
@@ -87,7 +97,11 @@ let Sidebar = React.createClass({
       swal('could not save');
     });
   },
-
+  /**
+   * handle page settings option panel
+   * let know the builder 
+   * when any changes happen
+   */
   whenSettingsDirty(){
     //FIXME: why the! should I use a promise here?
     OptionActions

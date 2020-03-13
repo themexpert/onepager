@@ -20,6 +20,9 @@ module.exports = {
 			UPDATE_TITLE     : null,
 			COLLAPSE_SIDEBAR : null,
 			PREVIEW_FRAME_LOADED : null,
+			UPDATE_PAGE_SETTINGS : null,
+			UPDATE_PAGE_STYLE : null,
+			UPDATE_PAGE_ADVANCE : null,
 		}
 	),
 
