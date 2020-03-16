@@ -1,0 +1,508 @@
+{
+  "name": "Law",
+  "sections": [
+    {
+      "id": "s_5011605",
+      "slug": "navbar-2",
+      "title": "Navbar-2",
+      "contents": {
+        "logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/logo.jpg",
+        "menu": "",
+        "link": {
+          "url": "tel:+546400769444",
+          "text": "(546) 400 769 - 444",
+          "target": false
+        }
+      },
+      "settings": {
+        "menu_font_size": "14",
+        "menu_font_weight": "600"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "link_color": "#ffffff",
+        "link_hover_color": "#29cb8b",
+        "link_active_color": "",
+        "cta_bg": "",
+        "cta_color": "#fff"
+      }
+    },
+    {
+      "id": "s_82230932",
+      "slug": "features-12",
+      "title": "Features-12",
+      "contents": {
+        "title": "We work as part of your team, helping solve your toughest and most complex legal issues. Wherever you are.",
+        "section_btn": {
+          "url": "",
+          "text": "Request a free Consultation",
+          "target": false
+        }
+      },
+      "settings": {
+        "section_heading_type": "h1",
+        "title_font_size": "50",
+        "title_font_weight": "700",
+        "section_title_transformation": "0",
+        "animation_content": "0",
+        "section_button_size": "17",
+        "section_btn_font_weight": "600"
+      },
+      "styles": {
+        "bg_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/Hero-Block.jpg",
+        "bg_color": "#ffffff",
+        "section_title_color": "#ffffff",
+        "button_bg": "#ffffff",
+        "button_bg_hover": "#29cb8b",
+        "button_color": "#29cb8b",
+        "button_color_hover": "#ffffff"
+      }
+    },
+    {
+      "id": "s_72740071",
+      "slug": "features-8",
+      "title": "Features-8",
+      "contents": {
+        "title": "Lawyers in Melbourne can be complex and, at times, intimidating. From business to family law, our legal experts make complicated decisions easy to understand.",
+        "sub_heading": [
+          {
+            "heading": "60",
+            "tagline": "K Trusted by 60,000 clients"
+          },
+          {
+            "heading": "30",
+            "tagline": "+ Years experience"
+          }
+        ],
+        "list_items": [
+          {
+            "title": "Trusted by 1000s of clients with over 99% success rate",
+            "media": "fa fa-check fa-2x"
+          },
+          {
+            "title": "30+ Years experience",
+            "media": "fa fa-check fa-2x"
+          },
+          {
+            "title": "Family Law, Criminal Law, Busines Law, Conveyancing & more",
+            "media": "fa fa-check fa-2x"
+          }
+        ],
+        "link": {
+          "url": "",
+          "text": "CALL (02) 8084 2764",
+          "target": false
+        },
+        "link_2": {
+          "url": "",
+          "text": "Free Consultation",
+          "target": false
+        }
+      },
+      "settings": {
+        "heading_type": "h1",
+        "animation_content": "0",
+        "title_size": "40",
+        "title_font_weight": "600",
+        "title_transformation": "0",
+        "subheading_bigger_size": "70",
+        "subheading_smaller_size": "26",
+        "subheading_font_weight": "600",
+        "subheading_transformation": "0",
+        "item_font_weight": "600",
+        "item_title_size": "24",
+        "item_title_transformation": "inherit"
+      },
+      "styles": {
+        "bg_image": "",
+        "bg_parallax": false,
+        "bg_size": "inherit",
+        "bg_color": "#f1f1f1",
+        "title_color": "#132a46",
+        "sub_heading_primary": "#29cb8b",
+        "sub_heading_secondary": "#dd5346",
+        "icon_color": "#132a46",
+        "item_text_color": "#132a46",
+        "btn_bg1": "#29cb8b",
+        "btn_text1": "#ffffff",
+        "btn_bg2": "#fff",
+        "btn_text2": "#dd5346"
+      }
+    },
+    {
+      "id": "s_762414329",
+      "slug": "features-9",
+      "title": "Features-9",
+      "contents": {
+        "section_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/another-block.jpg",
+        "section_title": "Our approach reduces the need for complicated legal tangles. Rose Lawyers Melbourne will save you time, money and stress.",
+        "main_text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+        "sponser_award": "Award",
+        "awards": [
+          {
+            "awardImage": "https://demo.wponepager.com/wp-content/uploads/2020/03/award-1.png"
+          },
+          {
+            "awardImage": "https://demo.wponepager.com/wp-content/uploads/2020/03/award-2.png"
+          },
+          {
+            "awardImage": "https://demo.wponepager.com/wp-content/uploads/2020/03/award-3.png"
+          },
+          {
+            "awardImage": "https://demo.wponepager.com/wp-content/uploads/2020/03/award-4.png"
+          },
+          {
+            "awardImage": "https://demo.wponepager.com/wp-content/uploads/2020/03/award-5.png"
+          }
+        ]
+      },
+      "settings": {
+        "animation_media": "0",
+        "animation_content": "0",
+        "heading_type": "h1",
+        "title_size": "36",
+        "title_font_weight": "700",
+        "title_transformation": "0",
+        "title_alignment": "0",
+        "text_size": "16",
+        "text_font_weight": "300",
+        "award_text_size": "24",
+        "award_font_weight": "600",
+        "award_text_transformation": "0"
+      },
+      "styles": {
+        "bg_color": "#f1f1f1",
+        "right_box_bg": "#ffffff",
+        "title_color": "#29cb8b",
+        "text_color": "#132a46",
+        "award_color": "#132a46",
+        "award_border_color": "#dddddd"
+      }
+    },
+    {
+      "id": "s_739629390",
+      "slug": "blog-5",
+      "title": "Blog-5",
+      "contents": {
+        "title": "Legal Advice",
+        "category": "0",
+        "total_posts": "3",
+        "text_limit": "20",
+        "readmore_text": "Read More"
+      },
+      "settings": {
+        "heading_type": "h1",
+        "section_title_size": "40",
+        "section_title_font_weight": "700",
+        "title_transformation": "capitalize",
+        "title_alignment": "center",
+        "title_animation": "0",
+        "item_title_size": "20",
+        "item_font_weight": "600",
+        "item_desc_size": "16",
+        "item_title_transformation": "uppercase",
+        "item_animation": "0",
+        "item_btn_size": "16",
+        "item_btn_font_weight": "400"
+      },
+      "styles": {
+        "bg_color": "#f1f1f1",
+        "section_title_color": "#132a46",
+        "title_color": "#132a46",
+        "designation_color": "#132a46",
+        "text_color": "#132a46",
+        "counter_num": "#dd5346",
+        "btn_bg": "#29cb8b",
+        "btn_text": "#ffffff",
+        "btn_bg_hover": "#ffffff",
+        "btn_text_hover": "#dd5346"
+      }
+    },
+    {
+      "id": "s_518949160",
+      "slug": "features-10",
+      "title": "Features-10",
+      "contents": {
+        "section_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/block-1.jpg",
+        "heading_text": "We are among the leading Law Firms in Sydney and have\r\n            the expertise and skill to assist you with any large,\r\n            complicated and serious matters.",
+        "tab_items": [
+          {
+            "title": "General Practice",
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
+            "tab_btn": {
+              "url": "",
+              "text": "Get Help Now",
+              "target": false
+            }
+          },
+          {
+            "title": "Business Solution",
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
+            "tab_btn": {
+              "url": "",
+              "text": "Get Help Now",
+              "target": false
+            }
+          },
+          {
+            "title": "Wide Experience ",
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
+            "tab_btn": {
+              "url": "",
+              "text": "Get Help Now",
+              "target": false
+            }
+          },
+          {
+            "title": "Planning",
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.",
+            "tab_btn": {
+              "url": "",
+              "text": "Get Help Now",
+              "target": false
+            }
+          }
+        ]
+      },
+      "settings": {
+        "animation_media": "0",
+        "heading_type": "h1",
+        "title_size": "36",
+        "title_font_weight": "700",
+        "title_transformation": "0",
+        "animation_content": "0",
+        "tab_title_size": "20",
+        "tab_font_weight": "600",
+        "tab_text_transformation": "0",
+        "tab_desc_size": "16",
+        "tab_desc_font_weight": "300",
+        "button_font": "",
+        "btn_font_size": "18",
+        "btn_font_weight": "400",
+        "btn_text_transform": "0"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "title_color": "#132a46",
+        "tab_color": "#132a46",
+        "tab_color_hover": "#dd5344",
+        "text_color": "#132a46",
+        "button_bg_color": "#29cb8b",
+        "button_bg_color_hover": "#ffffff",
+        "button_text_color": "#ffffff",
+        "button_text_color_hover": "#29cb8b"
+      }
+    },
+    {
+      "id": "s_426710456",
+      "slug": "contact-4",
+      "title": "Contact-4",
+      "contents": {
+        "section_title": "Get The Defense You Need From A Law Firm.",
+        "section_blocks": [
+          {
+            "title": "30+ Years experience",
+            "media": "fa fa-check",
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
+          },
+          {
+            "title": "Trusted by 1000s of clients with                        over 99% success rate",
+            "media": "fa fa-check",
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
+          }
+        ],
+        "contact_heading": "How Can We Help?",
+        "contact_shortcode": "[contact-form-7 id=\"10\" title=\"Contact form 1\"]",
+        "section_btn": {
+          "text": "Download The Guide",
+          "url": "",
+          "target": false
+        }
+      },
+      "settings": {
+        "heading_type": "h1",
+        "title_size": "40",
+        "title_font_weight": "700",
+        "title_transformation": "0",
+        "title_alignment": "left",
+        "animation_content": "0",
+        "block_title_size": "24",
+        "block_title_font_weight": "600",
+        "block_title_transformation": "0",
+        "block_text_size": "",
+        "block_text_font_weight": "400"
+      },
+      "styles": {
+        "bg_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/contact-bg.jpg",
+        "bg_color": "#f1f1f1",
+        "heading_color": "#132a46",
+        "text_color": "#132a46",
+        "btn_bg": "#29cb8b",
+        "btn_text": "#ffffff",
+        "btn_bg_hover": "#ffffff",
+        "btn_text_hover": "#29cb8b",
+        "btn_border_color": "#29cb8b"
+      }
+    },
+    {
+      "id": "s_797059249",
+      "slug": "features-11",
+      "title": "Features-11",
+      "contents": {
+        "section_title": "Here's what some clients wonderful experience",
+        "heading": "Hear it from our customer",
+        "section_desc": "\"we've seen amazing results already. I made back the purchase price in just 48 hours! Man, this thing is getting better and better as I learn more about it. Thanks to software, we've just launched our 5th website!\"",
+        "section_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/side-image-feature.jpg",
+        "image_icon": "fa fa-play-circle fa-5x",
+        "video_source": "https://youtu.be/DG6USXbTsW0",
+        "logo_items": [
+          {
+            "single_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/logo-1.png"
+          },
+          {
+            "single_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/logo-2.png"
+          },
+          {
+            "single_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/logo-3.png"
+          }
+        ],
+        "section_btn": {
+          "url": "",
+          "text": "See More Customer Stories",
+          "target": false
+        }
+      },
+      "settings": {
+        "animation_media": "0",
+        "section_heading_type": "h1",
+        "section_title_size": "60",
+        "section_title_font_weight": "700",
+        "section_title_transformation": "0",
+        "animation_content": "0",
+        "heading_type": "h1",
+        "title_size": "42",
+        "title_font_weight": "300",
+        "title_transformation": "0",
+        "text_size": "",
+        "text_font_weight": "300",
+        "btn_font_size": "16",
+        "btn_font_weight": "300"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "section_title_color": "#192330",
+        "title_color": "#132a46",
+        "text_color": "#132a46",
+        "btn_bg": "#29cb8b",
+        "btn_text": "#ffffff",
+        "btn_bg_hover": "#ffffff",
+        "btn_bg_hover_text": "#29cb8b",
+        "btn_border_color": "#29cb8b"
+      }
+    },
+    {
+      "id": "s_926750585",
+      "slug": "feature-13",
+      "title": "Feature-13",
+      "contents": {
+        "section_title": "Meet Our Attorneys",
+        "sub_heading": [
+          {
+            "image": "https://demo.wponepager.com/wp-content/uploads/2020/03/team1.jpg",
+            "name": "Marisa Goldberg",
+            "designation": "Bank & Financial Lawyer",
+            "desc": "The trial lawyers at Arnold & Itkin LLP are known for the unique blend of skill, energy, and passion they bring to each and every case.",
+            "contact": {
+              "url": "",
+              "text": "Contact Link",
+              "target": false
+            }
+          },
+          {
+            "image": "https://demo.wponepager.com/wp-content/uploads/2020/03/team-2.jpg",
+            "name": "Kevin Stiller",
+            "designation": "Senior Lawyer",
+            "desc": "The trial lawyers at Arnold & Itkin LLP are known for the unique blend of skill, energy, and passion they bring to each and every case.",
+            "contact": {
+              "url": "",
+              "text": "Contact Link",
+              "target": false
+            }
+          },
+          {
+            "image": "https://demo.wponepager.com/wp-content/uploads/2020/03/team-3.jpg",
+            "name": "Jack Smith",
+            "designation": "Senior Lawyer",
+            "desc": "The trial lawyers at Arnold & Itkin LLP are known for the unique blend of skill, energy, and passion they bring to each and every case.",
+            "contact": {
+              "url": "",
+              "text": "Contact Link",
+              "target": false
+            }
+          }
+        ]
+      },
+      "settings": {
+        "heading_type": "h1",
+        "title_size": "40",
+        "title_font_weight": "700",
+        "title_transformation": "0",
+        "content_animation": "0",
+        "attorney_title_font": "",
+        "attorney_title_size": "30",
+        "attorney_designation_size": "16",
+        "attorney_title_font_weight": "700",
+        "attorney_designation_font_weight": "700",
+        "attorney_title_transformation": "0",
+        "attorney_text_size": "16",
+        "attorney_text_font_weight": "300",
+        "attorney_button_size": "16",
+        "attorney_button_font_weight": "300",
+        "attorney_button_transformation": "0"
+      },
+      "styles": {
+        "bg_color": "#f1f1f1",
+        "section_title_color": "#132a46",
+        "title_color": "#132a46",
+        "designation_color": "#132a46",
+        "text_color": "#132a46",
+        "btn_bg": "#29cb8b",
+        "btn_text": "#ffffff",
+        "btn_bg_hover": "#ffffff",
+        "btn_text_hover": "#dd5346"
+      }
+    },
+    {
+      "id": "s_474089530",
+      "slug": "footer-2",
+      "title": "Footer-2",
+      "contents": {
+        "section_heading": "Are you having any problems but can’t consult to anyone?",
+        "subheading": "Talk to us! We promise we can help you! <span class\"highlight\">Call Now! (1)223-3344-334</span>",
+        "footer_media": "fa fa-phone fa-4x",
+        "icon_url": "tel:+12233344334"
+      },
+      "settings": {
+        "section_alignment": "center",
+        "heading_type": "h1",
+        "section_title_size": "42",
+        "title_font_weight": "700",
+        "title_transformation": "inherit",
+        "animation_title": "0",
+        "subheading_size": "28",
+        "subhead_font_weight": "700"
+      },
+      "styles": {
+        "bg_color": "#f1f1f1",
+        "section_heading_color": "#132a46",
+        "subheading_color": "#29cb8b",
+        "subheading_highlighted": "#dd5346",
+        "icon_bg": "#ffffff",
+        "icon_bg_hover": "#dd5346",
+        "icon_color": "#dd5346",
+        "icon_color_hover": "#ffffff",
+        "icon_border": "#29cb8b"
+      }
+    }
+  ]
+}
