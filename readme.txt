@@ -133,6 +133,7 @@ Absolutely not. You can create and manage your landing pages without any coding 
 == Changelog ==
 
 = 2.2.9 =
+- New: New law layout.
 - New: 1 new block added in Blog category.
 - New: 1 new block added in Contact category.
 - New: 6 new block added in Features category.
