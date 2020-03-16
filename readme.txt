@@ -132,6 +132,13 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 == Changelog ==
 
+= 2.2.9 =
+- New: 1 new block added in Blog category.
+- New: 1 new block added in Contact category.
+- New: 6 new block added in Features category.
+- New: 1 new block added in Navbar category.
+- New: 1 new block added in Footer category.
+
 = 2.2.8 =
 - New: Introduced brand new global setting.
 - New: Introduced page level setting. 
