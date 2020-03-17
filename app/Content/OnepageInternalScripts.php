@@ -19,6 +19,10 @@ class OnepageInternalScripts {
 		$this->renderStylesForPageSettings(  $sections, $pageId, $pageOptionPanel );
 
 	}
+	/**
+	 * add onepager class to body 
+	 * for frontend view. 
+	 */
 	public function injectBodyClass($classes){
 		$pageId   = $this->getCurrentPageId();
 		$classes[] = 'txop-page-'.$pageId;
