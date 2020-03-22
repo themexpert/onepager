@@ -7,13 +7,13 @@ Onepager::getOptionPanel()
 				'name'   => 'section_title_size',
 				'label'  => 'Section Title Size',
 				'append' => 'px',
-				'value'  => '44',
+				'value'  => '',
             ),
             array(
 				'name'   => 'section_subtitle_size',
 				'label'  => 'Section Subtitle Size',
 				'append' => 'px',
-				'value'  => '20',
+				'value'  => '',
 			)
 		)
 		->tab( 'styles', 'Styles' )
