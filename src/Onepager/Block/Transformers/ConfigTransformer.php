@@ -21,6 +21,7 @@ class ConfigTransformer {
 		// unique slug that is used to identify a block
 		// boys make it unique
 		$slug = $config['slug'];
+		$type = $config['type'] ?: '';
 
 		// used to categorize blocks
 		$groups = $this->get( $config, 'groups', array() );
@@ -65,6 +66,7 @@ class ConfigTransformer {
 			'url',
 			'dir',
 			'slug',
+			'type',
 			'livemode',
 			'enqueue',
 			'name',

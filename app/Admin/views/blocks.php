@@ -36,6 +36,7 @@ function singleBlock($BlockCollec∂çtionsArr){
 		<div data-group="<?php echo op_get_html_group_class( $singleBlock['groups'] ); ?>">
 			<div class="uk-card uk-card-default uk-transition-toggle single-block-<?php echo $singleBlock['slug'];?>" tabindex="0" >
 				<div class="uk-card-media-top uk-inline uk-height-medium" uk-overflow-auto>
+					<p><?php echo $singleBlock['type'];?></p>
 					<img src="<?php echo $singleBlock['image']?>">
 				</div>
 				<div class="uk-card-footer uk-padding-small uk-margin-remove uk-text-center">

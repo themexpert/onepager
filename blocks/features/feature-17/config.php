@@ -3,6 +3,7 @@
 return array(
     'slug'      => 'feature-17',
     'groups'    => array('features'),
+    'type'    => 'sexy',
     'contents'  => array(
         array(
             'name'  => 'section_image',

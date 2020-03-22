@@ -36,7 +36,7 @@ $title_animation = ($settings['title_animation']) ? 'uk-scrollspy="cls:uk-animat
                             <p class="service-desc"><?php echo $single_service['service_desc'] ?></p>
                         </div>
                     </div>
-                    <? endforeach;?>
+                    <?php endforeach;?>
                 <?php endif;?>
             </div>
 

@@ -1,0 +1,490 @@
+{
+  "name": "Educaton",
+  "sections": [
+    {
+      "id": "s_8198366",
+      "slug": "navbar-3",
+      "title": "Navbar-3",
+      "contents": {
+        "logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/education-logo.png",
+        "main_menu": "2",
+        "right_menu": "3"
+      },
+      "settings": {
+        "sticky_nav": "1",
+        "menu_font_size": "15",
+        "menu_font_weight": "600"
+      },
+      "styles": {
+        "bg_color": "#fff3f5",
+        "menu_font_color": "#142b45",
+        "menu_font_hover_color": "#ff8099",
+        "btn_box_shadow": "rgba(251, 136, 159, 0.35)",
+        "menu_bottom_border": "#dddddd"
+      }
+    },
+    {
+      "id": "s_2110530",
+      "slug": "feature-14",
+      "title": "Feature-14",
+      "contents": {
+        "top_subheading": "Welcome to the Onepager Education Theme",
+        "main_heading": "Best Learning Management<br/> System for Wordpress",
+        "desc": "\"This book is written with the sole objective of helping the reader<br/> achieve a happy, satisfying, and worthwhile life.\"",
+        "cta_link": {
+          "url": "#",
+          "text": "LEARN MORE",
+          "target": false
+        }
+      },
+      "settings": {
+        "heading_top_size": "20",
+        "heading_top_font_weight": "500",
+        "heading_type": "h1",
+        "heading_size": "52",
+        "heading_font_weight": "700",
+        "title_transformation": "0",
+        "content_animation": "0",
+        "desc_size": "18",
+        "desc_font_weight": "400",
+        "btn_size": "15",
+        "btn_font_weight": "600"
+      },
+      "styles": {
+        "bg_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/Hero-1.jpg",
+        "bg_parallax": false,
+        "bg_image_size": "uk-background-cover",
+        "section_bg": "#fff3f5",
+        "heading_top": "#142b45",
+        "main_heading": "#142b45",
+        "hero_desc": "#142b45",
+        "button_color": "#142b45",
+        "button_bg": "rgb(255, 255, 255)",
+        "btn_box_shadow": "rgba(251, 136, 159, 0.35)"
+      }
+    },
+    {
+      "id": "s_46238285",
+      "slug": "feature-15",
+      "title": "Feature-15",
+      "contents": {
+        "section_title": "Our Services",
+        "section_desc": "Proin ac lobortis arcu, a vestibulum augue. Vivamus ipsum neque, facilisis vel<br/> mollis vitae, mollis nec ante. Quisque aliquam dictum condim.",
+        "services": [
+          {
+            "media_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/item-1.png",
+            "service_title": "Scholarship Facility",
+            "service_desc": "The precursor to The Secret, The<br/> Power of Positive Thinking has<br/> helped millions of men."
+          },
+          {
+            "media_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/item-2.png",
+            "service_title": "Skilled Lecturers",
+            "service_desc": "The precursor to The Secret, The<br/> Power of Positive Thinking has<br/> helped millions of men."
+          },
+          {
+            "media_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/item-3.png",
+            "service_title": "Online & Offline courses",
+            "service_desc": "The precursor to The Secret, The<br/> Power of Positive Thinking has<br/> helped millions of men."
+          }
+        ]
+      },
+      "settings": {
+        "heading_type": "h1",
+        "section_title_size": "52",
+        "section_description_size": "18",
+        "section_title_font_weight": "700",
+        "section_title_transformation": "inherit",
+        "title_alignment": "center",
+        "title_animation": "0",
+        "item_font_size": "32",
+        "item_font_weight": "700",
+        "item_title_transformation": "inherit",
+        "item_desc_font": "18",
+        "item_desc_font_weight": "300",
+        "content_animation": "fadeInUp"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "section_title_color": "#142b45",
+        "section_desc_color": "#142b45",
+        "item_title_color": "#142b45",
+        "item_desc_color": "#142b45"
+      }
+    },
+    {
+      "id": "s_353563139",
+      "slug": "feature-18",
+      "title": "Feature-18",
+      "contents": {
+        "section_title": "Popular Online Courses",
+        "section_desc": "Proin ac lobortis arcu, a vestibulum augue. Vivamus ipsum neque, facilisis vel<br/> \n            mollis vitae, mollis nec ante. Quisque aliquam dictum condim.",
+        "online_courses": [
+          {
+            "image": "https://demo.wponepager.com/wp-content/uploads/2020/03/course-image-1.jpg",
+            "title": "IT Foundations",
+            "desc": "The precursor to The Secret, The Power of Positive Thinking has helped millions of men.",
+            "author": "Jacke Masito",
+            "student_num": "112",
+            "rating": "5",
+            "course_link": {
+              "url": "#",
+              "text": "Course Link",
+              "target": false
+            }
+          },
+          {
+            "image": "https://demo.wponepager.com/wp-content/uploads/2020/03/course-image-2.jpg",
+            "title": "Basic Marketing",
+            "desc": "The precursor to The Secret, The Power of Positive Thinking has helped millions of men.",
+            "author": "Jacke Masito",
+            "student_num": "112",
+            "rating": "5",
+            "course_link": {
+              "url": "#",
+              "text": "Course Link",
+              "target": false
+            }
+          },
+          {
+            "image": "https://demo.wponepager.com/wp-content/uploads/2020/03/course-image-3.jpg",
+            "title": "Web Technology",
+            "desc": "The precursor to The Secret, The Power of Positive Thinking has helped millions of men.",
+            "author": "Jacke Masito",
+            "student_num": "112",
+            "rating": "5",
+            "course_link": {
+              "url": "#",
+              "text": "Course Link",
+              "target": false
+            }
+          }
+        ],
+        "courses_link": {
+          "url": "#",
+          "text": "VIEW ALL COURSES",
+          "target": false
+        }
+      },
+      "settings": {
+        "heading_type": "h1",
+        "section_title_size": "52",
+        "section_description_size": "18",
+        "section_title_font_weight": "700",
+        "section_title_transformation": "inherit",
+        "title_alignment": "center",
+        "title_animation": "0",
+        "img_border_radius": "4",
+        "blog_font_size": "32",
+        "blog_font_weight": "700",
+        "blog_title_transformation": "inherit",
+        "author_meta_font": "14",
+        "author_meta_font_weight": "300",
+        "blog_desc_font": "18",
+        "blog_desc_font_weight": "300",
+        "course_meta_font": "14",
+        "course_meta_font_weight": "300",
+        "post_btn_font": "16",
+        "all_post_font_weight": "500",
+        "post_btn_radius": "5",
+        "content_animation": "fadeInUp"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "section_title_color": "#142b45",
+        "section_desc_color": "#142b45",
+        "blog_title_color": "#142b45",
+        "blog_meta_color": "#142b45",
+        "blog_desc": "#142b45",
+        "course_meta_color": "#142b45",
+        "course_border_meta_color": "#142b45",
+        "all_post_btn_bg": "rgb(255, 255, 255)",
+        "all_post_btn_bg_hover": "rgba(251, 136, 159, 0.35)"
+      }
+    },
+    {
+      "id": "s_802905245",
+      "slug": "slider-3",
+      "title": "Slider-3",
+      "contents": {
+        "section_title": "Success Stories",
+        "section_desc": "Proin ac lobortis arcu, a vestibulum augue. Vivamus ipsum neque, facilisis vel<br/> mollis vitae, mollis nec ante. Quisque aliquam dictum condim.",
+        "sliders": [
+          {
+            "description": "\"Wow! I have the exact same personality, the only thing that has changed is my mindset and a few behaviors.I gained so much confidence in my ability to connect and deepen my relationships with people. It’s amazing how much easier it has been to meet new people and create instant connections\"",
+            "name": "Jack Stevens",
+            "designation": "Students",
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2019/03/img1.jpg"
+          },
+          {
+            "description": "\"Wow! I have the exact same personality, the only thing that has changed is my mindset and a few behaviors.I gained so much confidence in my ability to connect and deepen my relationships with people. It’s amazing how much easier it has been to meet new people and create instant connections\"",
+            "name": "Jack Stevens",
+            "designation": "Students",
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2019/03/img2.jpg"
+          },
+          {
+            "description": "\"Wow! I have the exact same personality, the only thing that has changed is my mindset and a few behaviors.I gained so much confidence in my ability to connect and deepen my relationships with people. It’s amazing how much easier it has been to meet new people and create instant connections\"",
+            "name": "Jack Stevens",
+            "designation": "Students",
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2019/03/client.png"
+          },
+          {
+            "description": "\"Wow! I have the exact same personality, the only thing that has changed is my mindset and a few behaviors.I gained so much confidence in my ability to connect and deepen my relationships with people. It’s amazing how much easier it has been to meet new people and create instant connections\"",
+            "name": "Jack Stevens",
+            "designation": "Students",
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2019/03/img2.jpg"
+          },
+          {
+            "description": "\"Wow! I have the exact same personality, the only thing that has changed is my mindset and a few behaviors.I gained so much confidence in my ability to connect and deepen my relationships with people. It’s amazing how much easier it has been to meet new people and create instant connections\"",
+            "name": "Jack Stevens",
+            "designation": "Students",
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2019/03/img1.jpg"
+          },
+          {
+            "description": "\"Wow! I have the exact same personality, the only thing that has changed is my mindset and a few behaviors.I gained so much confidence in my ability to connect and deepen my relationships with people. It’s amazing how much easier it has been to meet new people and create instant connections\"",
+            "name": "Jack Stevens",
+            "designation": "Students",
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2019/03/img2.jpg"
+          }
+        ]
+      },
+      "settings": {
+        "heading_type": "h1",
+        "title_size": "44",
+        "title_font_weight": "600",
+        "title_transformation": "inherit",
+        "section_desc_size": "20",
+        "section_desc_font_weight": "400",
+        "slide_title_font": "26",
+        "slide_title_font_weight": "600",
+        "slide_desc_font": "20",
+        "slide_desc_font_weight": "400",
+        "slide_designation_font": "14",
+        "slide_designation_font_weight": "300",
+        "autoplay": true,
+        "infinite_sliding": true,
+        "autoplay_interval": "3000",
+        "slide_animation": "ease-in-out",
+        "media_size": "500",
+        "button_font_size": "16",
+        "button_transformation": "inherit"
+      },
+      "styles": {
+        "bg_color": "#ff5678",
+        "section_heading_color": "#ffffff",
+        "section_desc_color": "#ffffff",
+        "slide_title_color": "#142b45",
+        "slide_desc_color": "#142b45",
+        "slide_designation_color": "#142b45",
+        "slide_nav_bg": "#ffffff",
+        "slide_img_box_shadow": "#dddddd",
+        "slide_nav_box_shadow": "#dddddd"
+      }
+    },
+    {
+      "id": "s_608690346",
+      "slug": "feature-16",
+      "title": "Feature-16",
+      "contents": {
+        "section_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/section-image.jpg",
+        "sub_heading": "Welcome to the Onepager Education Theme",
+        "heading": "Best Learning Management<br/> System for Wordpress",
+        "desc": "\"This book is written with the sole objective of helping the reader<br/> achieve a happy, satisfying, and worthwhile life.\"",
+        "btn_1": {
+          "url": "",
+          "text": "LEARN MORE",
+          "target": false
+        },
+        "btn_2": {
+          "url": "",
+          "text": "PLAY VIDEO",
+          "target": false
+        }
+      },
+      "settings": {
+        "heading_type": "h1",
+        "title_size": "52",
+        "title_font_weight": "500",
+        "title_transformation": "0",
+        "subtitle_size": "20",
+        "desc_size": "20",
+        "desc_font_weight": "300",
+        "btn_size": "16",
+        "btn_font_weight": "500",
+        "btn_radius": "10"
+      },
+      "styles": {
+        "bg_color": "#fee7eb",
+        "subheading_color": "#142b45",
+        "heading_color": "#142b45",
+        "desc_color": "#142b45",
+        "btn_bg_color": "rgb(255, 255, 255)",
+        "btn_shadow_color": "rgba(251, 136, 159, 0.35)",
+        "btn_hover_text_color": "#142b45"
+      }
+    },
+    {
+      "id": "s_886308406",
+      "slug": "blog-6",
+      "title": "Blog-6",
+      "contents": {
+        "title": "Latest From The Blog",
+        "desc": "Proin ac lobortis arcu, a vestibulum augue. Vivamus ipsum neque, facilisis vel <br/>\n            mollis vitae, mollis nec ante. Quisque aliquam dictum condim.",
+        "category": "",
+        "total_posts": "3",
+        "text_limit": "20",
+        "readmore_text": "Read More",
+        "all_post": {
+          "url": "#",
+          "text": "ALL POST",
+          "target": false
+        }
+      },
+      "settings": {
+        "heading_type": "h1",
+        "img_border_radius": "3",
+        "section_title_size": "52",
+        "section_description_size": "18",
+        "section_title_font_weight": "700",
+        "title_transformation": "inherit",
+        "title_alignment": "center",
+        "title_animation": "0",
+        "meta_font": "14",
+        "meta_font_weight": "300",
+        "blog_font_size": "32",
+        "blog_font_weight": "700",
+        "blog_title_transformation": "inherit",
+        "btn_font_size": "15",
+        "btn_font_weight": "300",
+        "btn_text_transformation": "inherit",
+        "post_btn_font": "16",
+        "all_post_font_weight": "500",
+        "post_btn_radius": "5",
+        "blog_item_animation": "fadeInUp"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "section_title_color": "#142b45",
+        "section_desc_color": "#142b45",
+        "blog_meta_color": "#72808f",
+        "blog_title_color": "#1d4251",
+        "btn_color": "#1d4251",
+        "btn_color_hover": "#ff5678",
+        "all_post_btn_bg": "rgb(255, 255, 255)",
+        "all_post_btn_bg_hover": "rgba(251, 136, 159, 0.35)"
+      }
+    },
+    {
+      "id": "s_187966485",
+      "slug": "feature-17",
+      "title": "Feature-17",
+      "contents": {
+        "section_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/newsletter-icon.png",
+        "main_title": "Sign up for Our Newsletter",
+        "section_desc": "Proin ac lobortis arcu, a vestibulum augue. Vivamus ipsum neque, facilisis vel<br/> \n            mollis vitae, mollis nec ante. Quisque aliquam dictum condim.",
+        "form_shortcode": "",
+        "social_icons": [
+          {
+            "social_icon": "fa fa-facebook fa-2x",
+            "social_link": "#"
+          },
+          {
+            "social_icon": "fa fa-twitter fa-2x",
+            "social_link": "#"
+          },
+          {
+            "social_icon": "fa fa-youtube fa-2x",
+            "social_link": "#"
+          }
+        ]
+      },
+      "settings": {
+        "heading_type": "h1",
+        "animation_content": "0",
+        "title_size": "52",
+        "title_font_weight": "600",
+        "title_transformation": "0",
+        "desc_font_size": "18",
+        "desc_font_weight": "400",
+        "form_font_size": "16",
+        "form_font_weight": "400",
+        "field_border_radius": "10"
+      },
+      "styles": {
+        "bg_color": "#fee7eb",
+        "field_bg": "rgb(255, 255, 255)",
+        "field_shadow": "rgba(251, 136, 159, 0.35)",
+        "field_border": "#ffffff",
+        "social_bg": "#ffffff",
+        "social_color": "#142b45"
+      }
+    },
+    {
+      "id": "s_628923540",
+      "slug": "slider-4",
+      "title": "Slider-4",
+      "contents": {
+        "sliders": [
+          {
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/slide-item-1.jpg"
+          },
+          {
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/slide-item-2.jpg"
+          },
+          {
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/slide-item-3.jpg"
+          },
+          {
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/slide-item-4.jpg"
+          },
+          {
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/slide-item-5.jpg"
+          },
+          {
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/slide-item-1.jpg"
+          },
+          {
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/slide-item-2.jpg"
+          }
+        ],
+        "social_button": {
+          "url": "",
+          "text": "FOLLOW US",
+          "target": false
+        }
+      },
+      "settings": {
+        "btn_font": "14",
+        "btn_font_weight": "600",
+        "btn_border_radius": "10",
+        "autoplay": true,
+        "infinite_sliding": true,
+        "autoplay_interval": "3000",
+        "slide_animation": "ease-in-out"
+      },
+      "styles": {
+        "bg_color": "#ff5678",
+        "item_overlay_BG": "rgba(255, 255, 255, 0.6)",
+        "btn_bg_color": "rgb(255, 255, 255)",
+        "btn_text_color": "#142b45",
+        "btn_box_shadow": "rgba(251, 136, 159, 0.35)"
+      }
+    },
+    {
+      "id": "s_577785581",
+      "slug": "footer-3",
+      "title": "Footer-3",
+      "contents": {
+        "section_footer": "2019 Onepager – All Rights Reserved"
+      },
+      "settings": {
+        "footer_font_size": "14",
+        "footer_font_weight": "300",
+        "footer_alignment": "center"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "footer_color": "#142b45"
+      }
+    }
+  ]
+}
