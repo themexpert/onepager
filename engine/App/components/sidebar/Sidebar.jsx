@@ -153,7 +153,7 @@ let Sidebar = React.createClass({
   },
 
   render() {
-    let {sections, blocks, activeSectionIndex, activeSection} = this.props;
+    let {sections, blocks, activeSectionIndex, activeSection, pageSettingOptions} = this.props;
     let sectionEditable = activeSectionIndex !== null;
     let activeTab = this.props.sidebarTabState.active;
     let sectionSettings = activeSection ? _.pick(activeSection, ['settings', 'contents', 'styles']) : {};
@@ -164,6 +164,13 @@ let Sidebar = React.createClass({
       let section = _.copy(sections[activeSectionIndex]);
       section[key] = fields;
       AppActions.updateSection(activeSectionIndex, section);
+    };
+    
+    /**
+     * live page update
+     */
+    let pagUpdate = (key, fields)=> {
+      AppActions.updatePageSettigs(key, fields);
     };
     
     let isSettingsDirty = this.state.isSettingsDirty;
@@ -242,7 +249,7 @@ let Sidebar = React.createClass({
             </TabPane>
 
             <TabPane id='op-settings' active={activeTab}>
-              <Settings whenSettingsDirty={this.whenSettingsDirty}/>
+              <Settings pagUpdate={pagUpdate} whenSettingsDirty={this.whenSettingsDirty}/>
             </TabPane>
 
             {/* {activeTab === "op-sections" ? <Footer /> : null } */}

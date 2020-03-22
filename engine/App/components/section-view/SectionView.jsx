@@ -11,12 +11,10 @@ function removeSectionStyle(id) {
 }
 
 function replaceSectionStyle(id, style) {
-  // debugger;
   $(`#style-${id}`).remove();
   $("head").append(style);
 }
 function addStyleToPage(page_style){
-  // debugger;
   $("head").append(page_style);
 }
 

@@ -68,25 +68,8 @@ class PhpEngine implements EngineInterface {
 
 		extract( $__data );
 		?>
-		.<?php echo 'txop-page-'.$__pageId .' #' .$id . ' .uk-heading-primary'; ?> {
-			font-size:<?php echo $page_general_settins['section_title_size'] . 'px';?>;
-		}
+		.<?php echo 'txop-page-'.$__pageId .' #' .$id . ' .uk-heading-primary'; ?> {font-size:<?php echo $page_general_settins['section_title_size'] . 'px';?>;}
 		<?php
-		// echo "#$__pageId $id .section_title_size{ font-size: 900px}";
-		// echo '<pre>';
-		// var_dump('including path', include $__path);
-		// echo '</pre>';
-		// die();
-
-		// We'll evaluate the contents of the view inside a try/catch block so we can
-		// flush out any stray output that might get out before an error occurs or
-		// an exception is thrown. This prevents any partial views from leaking.
-		// try {
-		// 	include $__path;
-		// } catch ( Exception $e ) {
-		// 	$this->handleViewException( $e, $obLevel );
-		// }
-
 		return ltrim( ob_get_clean() );
 	}
 

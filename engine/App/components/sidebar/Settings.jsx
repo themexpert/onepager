@@ -10,7 +10,8 @@ let Admin = React.createClass({
   mixins: [Reflux.connect(OptionsPanelStore)],
 
   propTypes: {
-    whenSettingsDirty: React.PropTypes.func
+    whenSettingsDirty: React.PropTypes.func,
+    pagUpdate: React.PropTypes.func
   },
 
   componentDidMount: function() {
@@ -35,9 +36,9 @@ let Admin = React.createClass({
     jQuery('[data-toggle="tooltip"]').unbind()
   },
   render(){
-    console.log("rendering Admin");
+    console.log("rendering Admin from settings file");
     let panel = this.state.optionPanel.get(this.state.activeTabIndex);
-
+    
     return (
       <div>
         <Tabs
@@ -47,6 +48,7 @@ let Admin = React.createClass({
         {!panel? null:
           <Content
             whenSettingsDirty={this.props.whenSettingsDirty}
+            pagUpdate={this.props.pagUpdate}
             index={this.state.activeTabIndex}
             panel={panel}/>
         }

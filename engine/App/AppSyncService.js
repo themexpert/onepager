@@ -21,7 +21,6 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
         if (!res || !res.success) {
           return notify.error('Unable to sync. Make sure you are logged in');
         }
-
         //else
         AppActions.sectionSynced(sectionIndex, res);
 
@@ -76,6 +75,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
   };
 
   function updatePageSettings(sections){
+    // debugger;
     return new Promise((resolve, reject)=>{
       let payload = {
         action: "onepager_save_page_settings",
@@ -125,10 +125,28 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     let payload = {
       action  : 'onepager_reload_blocks'
     };
+    // debugger;
 
     return new Promise((resolve, reject)=>{
       jQuery.post(ODataStore.ajaxUrl, payload, (res)=>{
         return res.success ? resolve(res.blocks) : reject("Could not load blocks");
+      })
+    });
+  }
+
+  function pageSyncServiceLive(sections, pageSettingOptions){
+    let payload = {
+      action : 'onepager_save_page_settings_live',
+      pageId : pageId,
+      options: pageSettingOptions,
+      sections: sections, 
+    };
+
+    return new Promise( (resolve, reject) => {
+      jQuery.post(ODataStore.ajaxUrl, payload, (res)=> {
+        return res.success 
+        ? resolve(res.optionStyleArr) 
+        : reject('something went wrong');
       })
     });
   }
@@ -138,7 +156,8 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     reloadBlocks,
     updateSection,
     rawUpdate,
-    updatePageSettings
+    updatePageSettings,
+    pageSyncServiceLive
   };
 }
 

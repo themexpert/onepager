@@ -25,7 +25,7 @@ let Preview = React.createClass({
 
   render() {
     let {sections, activeSectionIndex, pageID} = this.state;
-    // debugger;
+    
     let viewSections = _.map(sections, function (section) {
       return _.pick(section, ['content', 'key', 'style', 'id', 'page_style']);
     });

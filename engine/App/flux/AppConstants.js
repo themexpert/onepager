@@ -21,6 +21,7 @@ module.exports = {
 			COLLAPSE_SIDEBAR : null,
 			PREVIEW_FRAME_LOADED : null,
 			UPDATE_PAGE_SETTINGS : null,
+			FULL_PAGE_SECTION_SYNCED : null,
 			UPDATE_PAGE_STYLE : null,
 			UPDATE_PAGE_ADVANCE : null,
 		}

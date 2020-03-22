@@ -70,5 +70,16 @@ module.exports = {
 	previewFrameLoaded(){
 		let type = actions.PREVIEW_FRAME_LOADED;
 		dispatcher.handleViewAction( {type} );
+	},
+
+	updatePageSettigs(index, fields){
+		let type = actions.UPDATE_PAGE_SETTINGS;
+		dispatcher.handleViewAction( {type, index, fields} );
+	},
+
+	fullPageSectionSynced(sections){
+		let type = actions.FULL_PAGE_SECTION_SYNCED;
+		dispatcher.handleViewAction( {type, sections} );
 	}
+
 };

@@ -118,6 +118,19 @@ class Render {
 			echo $this->pageStyle( $section, $pageId, $pageOptionPanel);
 		}
 	}
+	/**
+	 * sync option panel style 
+	 * with all the sections of the page
+	 * Need to remove @sections
+	 */
+	public function syncPageStyles($sections, $pageId, $pageOptionPanel){
+		$styleArr = [];
+		foreach ( $sections as $section ) {
+			$returnStyle = $this->pageStyle( $section, $pageId, $pageOptionPanel);
+			array_push($styleArr, $returnStyle);
+		}
+		return $styleArr;
+	}
 
 	/**
 	 * @param $section - contains individual section data which comes from db 

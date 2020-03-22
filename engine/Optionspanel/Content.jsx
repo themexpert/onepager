@@ -24,6 +24,7 @@ let Content = React.createClass({
 
   update(){
     let controls = this.props.panel.get('fields');
+    let controlKey = this.props.panel.get('id');
 
     controls = controls.map(control=> {
       let ref = this.refs[control.get('ref')];
@@ -43,13 +44,15 @@ let Content = React.createClass({
     });
 
     OptionsPanelActions.update([this.props.index, 'fields'], controls);
+    this.props.pagUpdate(controlKey, controls);
+    // debugger;
     this.props.whenSettingsDirty();
   },
 
   render(){
-    console.log("rendering Content");
+    console.log("rendering Content from content jsx");
     let controls = this.props.panel.get('fields');
-
+    // debugger;
     let controlsHtml = controls.map((control, ii)=> {
       let props = {
         onChange: this.update,

@@ -60,7 +60,6 @@ class BuildModeScripts
             $section['content'] = onepager()->render()->section($section);
             $section['style'] = onepager()->render()->style($section);
             $section['page_style'] = onepager()->render()->pageStyle($section, $pageId, $pageOptionPanel);
-            // $section['page_style'] = 'heelo page style';
 
             return $section;
         }, onepager()->section()->getAllValid($pageId));

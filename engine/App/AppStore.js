@@ -34,15 +34,13 @@ function transformSections(sections){
 let _blocks = sortBlocks(ODataStore.blocks);
 let _sections = transformSections(ODataStore.sections);
 
-// debugger;
-console.log('sections', _sections);
 let _menuState = {id: null, index: null, title: null};
 let _savedSections = getSerializedSectionsAsJSON(_sections);
 let AUTO_SAVE_DELAY = 150;
 let _previewFrameLoaded = false;
 let _pageID = ODataStore.pageId;
 let _pageSettingOptions = ODataStore.pageSettingOptions;
-
+let _pageSettingOptionPanel = ODataStore.pageOptionPanel; // Need to remove this 
 let _collapseSidebar = localState.get('collapseSidebar', false);
 let _activeSectionIndex = _sections[localState.get('activeSectionIndex')] ? localState.get('activeSectionIndex') : null;
 let _sidebarTabState = _activeSectionIndex !== null ?
@@ -94,6 +92,60 @@ function addSection(section) {
 function updateSection(sectionIndex, section) {
   _sections[sectionIndex] = section;
   liveService.updateSection(_sections, sectionIndex);
+}
+
+function updatePageSettingsLive(key, fields){
+  /**
+   * prepare fields to synced
+   */
+  let optionData = fields.toJS();
+  optionData = optionData.reduce(
+    (map, control) => {
+      map[control.name] = control.value;
+      return map;
+    },
+    {}
+  );
+  _pageSettingOptions[key] = optionData;
+  /**
+   * send request
+   * return a promise 
+   * @res = style array for page's section
+   */
+  let livePageSyncPromise = syncService.pageSyncServiceLive(_sections, _pageSettingOptions);
+
+  livePageSyncPromise.then( (res) => {    
+    let styleArr = res;    
+    /**
+     * sync previously loaded sections
+     * with updated option panel data
+     */
+    _sections.filter(function(section, index){
+      section['page_style']  = styleArr[index];
+    });
+    /**
+     * call action to sync full page with updated sections
+     * to load preview jsx again
+     * to load latest option panel data
+     * inside head tag.
+     */
+    AppActions.fullPageSectionSynced(_sections)
+  });
+
+}
+
+function fullPageSectionSynced(sectionsArr){
+  /**
+   * copy existing sections while load the component
+   */
+  let sections = toolbelt.copy(_sections);
+  /**
+   * sync section page style key
+   * with changed data
+   */
+  sections.filter(function(section, index){
+    section['page_style'] = sectionsArr[index];
+  })
 }
 
 // function to duplicate a section
@@ -246,20 +298,12 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
       break;
 
     case actions.UPDATE_PAGE_SETTINGS:
-      var a = 'page settings';
-      debugger;
+      updatePageSettingsLive(action.index, action.fields)
       emitChange();
       break;
       
-    case actions.UPDATE_PAGE_STYLE:
-      var b = 'page style';
-      debugger;
-      emitChange();
-      break;
-
-    case actions.UPDATE_PAGE_ADVANCE:
-      var c = 'page advance';
-      debugger;
+    case actions.FULL_PAGE_SECTION_SYNCED:
+      fullPageSectionSynced(action.sections)
       emitChange();
       break;
 
@@ -283,6 +327,7 @@ let AppStore = assign({}, BaseStore, {
       previewFrameLoaded: _previewFrameLoaded,
       pageID: _pageID,
       pageSettingOptions: _pageSettingOptions,
+      pageSettingOptionPanel: _pageSettingOptionPanel, // Need to remove this 
     };
   },
 
