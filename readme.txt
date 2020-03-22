@@ -132,6 +132,23 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 == Changelog ==
 
+= 2.3.0 =
+- New: Brand New Page Setting Panel for each individual Page.
+- New: Education Layout.
+- New: 5 new block in feature category.
+- New: 1 new block in navbar category.
+- New: 2 new block in slider category.
+- New: 1 new block in footer category.
+- New: 1 new block in blog category.
+
+= 2.2.9 =
+- New: New law layout.
+- New: 1 new block added in Blog category.
+- New: 1 new block added in Contact category.
+- New: 6 new block added in Features category.
+- New: 1 new block added in Navbar category.
+- New: 1 new block added in Footer category.
+
 = 2.2.8 =
 - New: Introduced brand new global setting.
 - New: Introduced page level setting. 
