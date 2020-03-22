@@ -3,6 +3,7 @@
 return array(
     'slug'      => 'feature-14',
     'groups'    => array('features'),
+    'type'    => 'new',
     'contents'  => array(
         array(
             'name'      => 'top_subheading',

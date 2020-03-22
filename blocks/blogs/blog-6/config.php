@@ -2,6 +2,7 @@
 
 return array(
     'slug'  => 'blog-6',
+    'type'    => 'new',
     'groups'    => array('blogs'),
     'contents'  => array(
         array(

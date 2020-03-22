@@ -2,6 +2,7 @@
 
 return array(
     'slug' => 'footer-3',
+    'type'    => 'new',
     'groups' => array('footers'),
     'contents' => array(
         array(

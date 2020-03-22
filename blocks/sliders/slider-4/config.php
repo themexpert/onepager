@@ -3,6 +3,7 @@
 return array(
 
 'slug'      => 'slider-4', // Must be unique
+'type'    => 'new',
 'groups'    => array('sliders'), // Blocks group for filter
     // Fields - $contents available on view file to access the option
     'contents' => array(
