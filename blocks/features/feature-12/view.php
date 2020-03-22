@@ -1,4 +1,6 @@
-
+<?php
+$animation_content = ($settings['animation_content']) ? 'uk-scrollspy="cls:uk-animation-' . $settings['animation_content'] . ';"' : '';
+?>
 <section id="<?php echo $id; ?>" class="fp-section features feature-12 uk-padding-small uk-background-cover" data-src="<?php echo $styles['bg_image'] ?>" uk-img>
     <div class="uk-section-large">
         <div class="uk-container">

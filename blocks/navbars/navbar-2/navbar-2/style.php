@@ -5,10 +5,15 @@
 
 #<?php echo $id; ?> .uk-navbar-nav > li > a{
 	color : <?php echo $styles['link_color']; ?>;
-	padding: 0;
+    <?php echo $settings['menu_font_size'] ? 'font-size: ' . $settings['menu_font_size'] . 'px' : '' ?>;
+	font-weight: <?php echo $settings['menu_font_weight'] ?>;
+    min-height: 50px;
+    padding: 0;
 	margin: 0 15px;
 	position: relative;
 }
+
+
 #<?php echo $id; ?> .uk-navbar-nav > li:first-child a{
 	margin-left: 0;
 }
@@ -83,9 +88,13 @@
     padding-right: 0;
 }
 
+<<<<<<< HEAD
 #<?php echo $id; ?> ul#menu-main-menu li a{
 	min-height: 50px;
 }
+=======
+
+>>>>>>> develop
 
 #<?php echo $id; ?> .contact-wrapper > a.uk-button {
     color: #dd5346;

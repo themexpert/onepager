@@ -1,3 +1,9 @@
+<?php
+
+$title_animation = ($settings['animation_title']) ? 'uk-scrollspy="cls:uk-animation-' . $settings['animation_title'] . ';"' : '';
+
+?>
+
 
 <footer id="<?php echo $id; ?>" class="fp-section fp-auto-height footers footer-2">
     <div class="uk-section">

@@ -1,6 +1,5 @@
 
-
-<div id="<?php echo $id; ?>" class="navbar navbar-1 fp-section fp-auto-height uk-position-relative" <?php echo $sticky; ?>>
+<div id="<?php echo $id; ?>" class="navbar navbar-1 fp-section fp-auto-height uk-position-relative">
     <div class="uk-position-top">
     <div class="uk-container">
         <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>

@@ -85,6 +85,31 @@ return array(
                 'capitalize' => 'Capitalized',
             ),
         ),
+        array(
+            'name' => 'animation_title',
+            'label' => 'Title Animation',
+            'type' => 'select',
+            'value' => '0',
+            'options' => array(
+                '0' => 'None',
+                'fade' => 'Fade',
+                'scale-up' => 'Scale Up',
+                'scale-down' => 'Scale Down',
+                'slide-top-small' => 'Slide Top Small',
+                'slide-bottom-small' => 'Slide Bottom Small',
+                'slide-left-small' => 'Slide Left Small',
+                'slide-right-small' => 'Slide Right Small',
+                'slide-top-medium' => 'Slide Top Medium',
+                'slide-bottom-medium' => 'Slide Bottom Medium',
+                'slide-left-medium' => 'Slide Left Medium',
+                'slide-right-medium' => 'Slide Right Medium',
+                'slide-top' => 'Slide Top 100%',
+                'slide-bottom' => 'Slide Bottom 100%',
+                'slide-left' => 'Slide Left 100%',
+                'slide-right' => 'Slide Right 100%',
+
+            ),
+        ),
 
         array('label' => 'Sub Heading', 'type' => 'divider'), // Divider - Text
 

@@ -11,7 +11,26 @@ return array(
         array('name' => 'menu', 'type' => 'menu'),
         array('name' => 'link', 'type' => 'link', 'label' => 'Phone', 'text' => '(546) 400 769 - 444', 'url' => 'tel:+546400769444'),
     ),
-    'settings' => array(),
+    'settings' => array(
+        array(
+            'name' => 'menu_font_size',
+            'label' => 'Menu Font Size',
+            'append' => 'px',
+            'value' => '14',
+        ),
+        array(
+            'name' => 'menu_font_weight',
+            'label' => 'Font Weight',
+            'type' => 'select',
+            'value' => '600',
+            'options' => array(
+                '400' => '400',
+                '500' => '500',
+                '600' => '600',
+                '700' => '700',
+            ),
+        ),
+    ),
     'styles' => array(
         array(
             'name' => 'bg_color',
