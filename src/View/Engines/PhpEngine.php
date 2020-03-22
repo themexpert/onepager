@@ -57,8 +57,10 @@ class PhpEngine implements EngineInterface {
 		$data = $__data;
 		$page_settins_data = '';
 		$common_data = array_map(function($key) use ($__data, $page_settins_data){
-			if(array_key_exists($key, $__data['settings'])){
-				return $__data['settings']['heading_type'];
+			if($data['settings']){
+				if(array_key_exists($key, $__data['settings'])){
+					return $__data['settings']['heading_type'];
+				}
 			}
 		}, array_keys($__pageOptionPanel['general']));
 		$page_general_settins = $__pageOptionPanel['general'];
