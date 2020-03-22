@@ -45,8 +45,10 @@
   },
   "scripts": {
     "start": "gulp",
-    "dev": "webpack --watch --devtool eval --progress --colors --hot",
-    "build": "webpack -p",
+    "devwin": "webpack --watch --devtool eval --progress --colors --hot",
+    "buildwin": "webpack -p",
+    "dev": "TARGET=dev webpack --watch --devtool eval --progress --colors --hot",
+    "build": "TARGET=build webpack -p",
     "release": "gulp release",
     "bower": "bower install"
   },

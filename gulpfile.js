@@ -251,10 +251,23 @@ function package(){
 
 exports.clean = clean
 exports.assets = series(assets, bower)
-// exports.release = series( clean, assets, bower, run('npm run build'), copy, package)
-// exports.default = series( clean, assets, bower, run('npm run build'), listen)
+/**
+ * for windows release
+ * 1. gulp ready
+ * 2. npm run buildwin
+ * 3. gulp release
+ * for windows dev
+ * 1. gulp defaultwin
+ * 2. npm run devwin
+ */
+exports.ready = series( clean, assets, bower)
+exports.releasewin = series( copy, package)
+exports.defaultwin = series( clean, assets, bower, listen)
+/**
+ * for MacOs
+ */
+exports.default = series( clean, assets, bower, run('npm run build'), listen)
 exports.release = series( clean, assets, bower, run('npm run build'), copy, package)
-exports.default = series( clean, assets, bower, listen)
 
 // gulp.task('svn', function(){
 //   var version = getOnepagerVersion().replace("v", "");
