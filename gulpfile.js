@@ -255,7 +255,7 @@ exports.assets = series(assets, bower)
  * for windows release
  * 1. gulp ready
  * 2. npm run buildwin
- * 3. gulp release
+ * 3. gulp releasewin
  * for windows dev
  * 1. gulp defaultwin
  * 2. npm run devwin
