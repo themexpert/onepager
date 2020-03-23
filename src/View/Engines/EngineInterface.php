@@ -12,5 +12,6 @@ interface EngineInterface {
 	 */
 	public function get( $path, array $data = array() );
 	public function getPageStyle( $path, array $data = array(), $pageId, $pageOptionPanel );
+	public function getPageStyleLive( $sectionId, $pageId, $pageOptionPanel );
 
 }

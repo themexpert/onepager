@@ -134,12 +134,12 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     });
   }
 
-  function pageSyncServiceLive(sections, pageSettingOptions){
+  function pageSyncServiceLive(pageSettingOptions, sectionsId){
     let payload = {
       action : 'onepager_save_page_settings_live',
       pageId : pageId,
       options: pageSettingOptions,
-      sections: sections, 
+      sectionsId: sectionsId, 
     };
 
     return new Promise( (resolve, reject) => {

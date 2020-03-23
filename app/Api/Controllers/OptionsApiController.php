@@ -59,9 +59,9 @@ class OptionsApiController extends ApiController {
 		$pageId  = array_get($_POST, 'pageId', ''); 
 		$pageOptions = array_get($_POST, 'options', [ ] ) ?: [ ]; 
 		$pageOptions = $this->filterInput( $pageOptions );
-		$sections = array_get( $_POST, 'sections', [ ] ) ?: [ ]; // making sure its an array
+		$sectionsId = $_POST['sectionsId']; // making sure its an array
 		
-		$styleArr = onepager()->render()->syncPageStyles($sections, $pageId, $pageOptions);
+		$styleArr = onepager()->render()->syncPageStyles($pageId, $pageOptions, $sectionsId);
 		if($styleArr){
 			$optionStyleArr = $styleArr;
 			$this->responseSuccess(compact('optionStyleArr'));

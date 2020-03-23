@@ -18,6 +18,9 @@ class PhpEngine implements EngineInterface {
 	public function getPageStyle( $path, array $data = array(), $pageId, $pageOptionPanel ) {
 		return $this->evaluatePathForPage( $path, $data, $pageId, $pageOptionPanel  );
 	}
+	public function getPageStyleLive($sectionId, $pageId, $pageOptionPanel){
+		return $this->evaluateLiveDataForPage( $sectionId, $pageId, $pageOptionPanel );
+	}
 
 	/**
 	 * Get the evaluated contents of the view at the given path.
@@ -71,6 +74,16 @@ class PhpEngine implements EngineInterface {
 		extract( $__data );
 		?>
 		.<?php echo 'txop-page-'.$__pageId .' #' .$id . ' .uk-heading-primary'; ?> {font-size:<?php echo $page_general_settins['section_title_size'] . 'px';?>;}
+		<?php
+		return ltrim( ob_get_clean() );
+	}
+
+	protected function evaluateLiveDataForPage( $sectionId, $__pageId, $__pageOptionPanel ) {
+		$page_general_settins = $__pageOptionPanel['general'];
+		$obLevel = ob_get_level();
+		ob_start();
+		?>
+		.<?php echo 'txop-page-'.$__pageId .' #' .$sectionId . ' .uk-heading-primary'; ?> {font-size:<?php echo $page_general_settins['section_title_size'] . 'px';?>;}
 		<?php
 		return ltrim( ob_get_clean() );
 	}

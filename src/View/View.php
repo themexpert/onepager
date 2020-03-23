@@ -26,4 +26,7 @@ class View {
 	public function makePageStyle( $file, $data, $pageId, $pageOptionPanel ) {
 		return $this->compilerEngine->getPageStyle( $file, $data, $pageId, $pageOptionPanel );
 	}
+	public function makePageStyleLive( $sectionId, $pageId, $pageOptionPanel ) {
+		return $this->compilerEngine->getPageStyleLive($sectionId, $pageId, $pageOptionPanel );
+	}
 }

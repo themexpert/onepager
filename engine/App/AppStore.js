@@ -107,12 +107,16 @@ function updatePageSettingsLive(key, fields){
     {}
   );
   _pageSettingOptions[key] = optionData;
+  let sectionsId = [];
+  _sections.forEach( (section) => {
+    sectionsId.push(section['id']);
+  });
   /**
    * send request
    * return a promise 
    * @res = style array for page's section
    */
-  let livePageSyncPromise = syncService.pageSyncServiceLive(_sections, _pageSettingOptions);
+  let livePageSyncPromise = syncService.pageSyncServiceLive( _pageSettingOptions, sectionsId);
 
   livePageSyncPromise.then( (res) => {    
     let styleArr = res;    
@@ -144,7 +148,7 @@ function fullPageSectionSynced(sectionsArr){
    * with changed data
    */
   sections.filter(function(section, index){
-    section['page_style'] = sectionsArr[index];
+    section['page_style'] = sectionsArr[index]['page_style'];
   })
 }
 

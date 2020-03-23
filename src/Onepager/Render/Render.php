@@ -123,10 +123,10 @@ class Render {
 	 * with all the sections of the page
 	 * Need to remove @sections
 	 */
-	public function syncPageStyles($sections, $pageId, $pageOptionPanel){
+	public function syncPageStyles( $pageId, $pageOptionPanel, $sectionsId){
 		$styleArr = [];
-		foreach ( $sections as $section ) {
-			$returnStyle = $this->pageStyle( $section, $pageId, $pageOptionPanel);
+		foreach ( $sectionsId as $sectionId ) {
+			$returnStyle = $this->pageSettingsStyle( $sectionId, $pageId, $pageOptionPanel);
 			array_push($styleArr, $returnStyle);
 		}
 		return $styleArr;
@@ -180,6 +180,11 @@ class Render {
 		return $pageStyle;
 	}
 
+	public function pageSettingsStyle( $sectionId, $pageId, $pageOptionPanel ) {
+		$pageStyle = $this->getPageStyleLive( $sectionId, $pageId, $pageOptionPanel );
+		return $pageStyle;
+	}
+
 	/**
 	 * @param $section
 	 * @param $style_file
@@ -202,6 +207,13 @@ class Render {
 	public function getPageStyleHTML( $section, $style_file, $pageId, $pageOptionPanel ) {
 		$pageStyle = "<style id='op-page-{$pageId}-style-{$section['id']}'>";
 		$pageStyle .= $this->view->makePageStyle( $style_file, $section, $pageId, $pageOptionPanel );
+		$pageStyle .= '</style>';
+		return $pageStyle;
+	}
+
+	public function getPageStyleLive( $sectionId, $pageId, $pageOptionPanel ) {
+		$pageStyle = "<style id='op-page-{$pageId}-style-{$sectionId}'>";
+		$pageStyle .= $this->view->makePageStyleLive( $sectionId, $pageId, $pageOptionPanel );
 		$pageStyle .= '</style>';
 		return $pageStyle;
 	}
