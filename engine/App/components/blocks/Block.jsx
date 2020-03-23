@@ -27,6 +27,11 @@ let Block = React.createClass({
 
     return (
       <div className="uk-card uk-card-default uk-card-hover uk-margin-bottom" onClick={this.handleCreateSection}>
+        {block.type 
+        ? 
+        <span className="txop-new-badge">{block.type}</span>
+        : null
+        }
         <img src={block.image} alt={block.name} style={{width: "100%"}} data-toggle="tooltip"
              title="+ Click to insert block" data-placement="top"/>
         <span className="uk-text-meta uk-hidden">{block.name} {block.groups}</span>

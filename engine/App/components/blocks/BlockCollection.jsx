@@ -104,7 +104,7 @@ let BlockCollection = React.createClass({
                 defaultValue={this.state.group}
                 options={_.object(groups, groups)}
                 onChange={this.handleChange}/>
-        <div>
+        <div className="block-collection-list">
           {blocks.map(block => <Block key={block.slug} block={block}/>)}
           {msg}
         </div>
