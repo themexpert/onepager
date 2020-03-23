@@ -28,7 +28,7 @@ $content_animation = ($settings['content_animation']) ? 'uk-scrollspy="cls:uk-an
                 <div <?php echo $settings['content_animation'] ? $content_animation . 'delay: 400' : '';?> class="uk-grid uk-margin-large-top" uk-grid>
                     <?php if($contents['online_courses']): ?>
                         <?php foreach($contents['online_courses'] as $single_course):?>
-                            <div class="uk-width-1-3@m uk-height-match">
+                            <div class="uk-width-1-3@s uk-height-match">
                                 <article class="uk-article">
                                     <div class="img-wrapper">
                                         <a href="<?php echo $single_course['course_link']['url'];?>">

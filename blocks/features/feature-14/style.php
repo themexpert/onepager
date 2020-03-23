@@ -38,11 +38,19 @@
     box-shadow: 0px -1px 5px 0px <?php echo $styles['btn_box_shadow'];?>;
 }
 
-@media(max-width: 960px){
-    #<?php echo $id;?> .content-wrapper h1.uk-heading-primary, #<?php echo $id;?> .content-wrapper h2.uk-heading-primary, #<?php echo $id;?> .content-wrapper h3.uk-heading-primary, #<?php echo $id;?> .content-wrapper h4.uk-heading-primary, #<?php echo $id;?> .content-wrapper h5.uk-heading-primary, #<?php echo $id;?> .content-wrapper h6.uk-heading-primary {
+
+
+@media(max-width: 768px){
+    #<?php echo $id;?> {
+        display: flex;
+        align-items: center;
+        background-position: center;
+    }
+    #<?php echo $id;?> .content-wrapper .uk-heading-primary {
         font-size: <?php echo (($settings['heading_size'] / 2) + 5) . 'px' ?>;
         line-height: <?php echo (($settings['heading_size'] / 2) + 15) . 'px' ?>;
     }
+
 
     #<?php echo $id;?> .content-wrapper h4.top-heading-text {
         font-size: <?php echo (($settings['heading_top_size'] / 2) + 5) . 'px' ?>;
@@ -53,10 +61,6 @@
         font-size: <?php echo (($settings['btn_size'] / 2) + 4) . 'px' ?>;
     }
 
-    
-}
-
-@media(max-width: 600px){
     #<?php echo $id;?>{
         background-position: bottom left;
     }

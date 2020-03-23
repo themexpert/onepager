@@ -41,11 +41,14 @@
     color: <?php echo $styles['btn_hover_text_color'];?>;
 }
 
-@media(max-width: 600px){
+@media(max-width: 768px){
     #<?php echo $id;?> .heading{
         <?php echo $settings['title_size'] ? 'font-size: ' . (($settings['title_size'] / 2) + 5) . 'px' : '';?>;
         <?php echo $settings['title_size'] ? 'line-height: ' . (($settings['title_size'] / 2) + 15) . 'px' : '';?>;
     }
+    #<?php echo $id;?> .content-wrapper {
+            padding: 30px;
+        }
 
     #<?php echo $id;?> p br{
         display: none;

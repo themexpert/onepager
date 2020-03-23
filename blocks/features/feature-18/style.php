@@ -95,7 +95,7 @@
     }
 }
 
-@media(max-width: 600px){
+@media(max-width: 768px){
     #<?php echo $id;?> .section-heading h1.uk-heading-primary, #<?php echo $id;?> .section-heading h2.uk-heading-primary, #<?php echo $id;?> .section-heading h3.uk-heading-primary, #<?php echo $id;?> .section-heading h4.uk-heading-primary, #<?php echo $id;?> .section-heading h5.uk-heading-primary, #<?php echo $id;?> .section-heading h6.uk-heading-primary{
         font-size: <?php echo (($settings['section_title_size'] / 2) + 5) . 'px'; ?>;
         line-height: <?php echo (($settings['section_title_size'] / 2) + 15) . 'px'; ?>;

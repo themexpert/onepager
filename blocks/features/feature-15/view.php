@@ -27,7 +27,7 @@ $title_animation = ($settings['title_animation']) ? 'uk-scrollspy="cls:uk-animat
             <div class="uk-grid uk-margin-large-top services" uk-grid>
                 <?php if($contents['services']):?>
                     <?php foreach($contents['services'] as $single_service):?>
-                    <div class="uk-width-1-3@m uk-height-match uk-text-center">
+                    <div class="uk-width-1-3@s uk-height-match uk-text-center">
                         <div class="single-content-wrapper">
                             <div class="img-wrapper">
                                 <img src="<?php echo $single_service['media_image']?>" alt="<?php echo $single_service['service_title']?>">
