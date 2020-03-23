@@ -42,6 +42,12 @@
 	<?php foreach ( $onepagerLayouts as $layout ) : ?>
 	  <div class="media og-all <?php echo tx_get_preset_groups_class( $layout['group'] ); ?>">
 		<figure class="thumbnails">
+			<?php 
+			$layout_type = array_get($layout, 'type') ? array_get($layout, 'type') : null;
+			if($layout_type):
+			?>
+			<span class="txop-new-badge"><?php echo $layout_type; ?></span>
+			<?php endif; ?>
 		  <img src="<?php echo $layout['screenshot']; ?>"/>
 		  <figcaption>
 			<h3><?php echo $layout['name']; ?></h3>
