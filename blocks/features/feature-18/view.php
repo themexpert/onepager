@@ -31,11 +31,11 @@ $content_animation = ($settings['content_animation']) ? 'uk-scrollspy="cls:uk-an
                             <div class="uk-width-1-3@s uk-height-match">
                                 <article class="uk-article">
                                     <div class="img-wrapper">
-                                        <a href="<?php echo $single_course['course_link']['url'];?>">
+                                        <a href="<?php echo $single_course['course_link'];?>">
                                             <img src="<?php echo $single_course['image'];?>" alt="<?php echo $single_course['title'];?>">
                                         </a>
                                     </div>
-                                    <a href="<?php echo $single_course['course_link']['url'];?>">
+                                    <a href="<?php echo $single_course['course_link'];?>">
                                         <h1 class="uk-article-title uk-margin-remove-bottom uk-text-<?php echo $settings['blog_title_transformation'];?>"><?php echo $single_course['title'];?></h1>
                                     </a>
                                     <p class="uk-article-meta uk-margin-remove-top"><?php echo $single_course['author'];?></p>
@@ -43,7 +43,7 @@ $content_animation = ($settings['content_animation']) ? 'uk-scrollspy="cls:uk-an
 
                                     
                                     <ul class="meta-list">
-                                        <li><?php echo esc_html($single_course['student_num'] . ' Students') ?></li>
+                                        <li><?php echo esc_html($single_course['student_num'] > 1 ? $single_course['student_num'] . " Students" : $single_course['student_num'] . " Student") ?></li>
                                         <li><?php echo esc_html($single_course['rating'] . ' Star Rating') ?></li>
                                     </ul>
                                 </article>

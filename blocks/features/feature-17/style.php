@@ -2,6 +2,10 @@
     background-color: <?php echo $styles['bg_color']; ?>;
 }
 
+#<?php echo $id;?> .tg-form {
+        display: flex;
+        justify-content: center;
+}
 
 #<?php echo $id;?> .content-wrapper .uk-heading-primary {
     font-size: <?php echo $settings['title_size'] . 'px';?>;
@@ -67,18 +71,36 @@
     color: <?php echo $styles['social_bg'];?>;
 }
 
+#<?php echo $id;?> .tg-notice{
+    color: red;
+    font-weight: bold;
+    text-shadow: 0 1px 1px #f02e17;
+    transform: scale(1);
+    animation-name: notice;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: all 300ms ease-in-out;
+}
+
+@keyframes notice {
+  0%   {transform: scale(1.1)}
+  50%  {transform: scale(1.2)}
+  100% {transform: scale(1.1)}
+}
+
+
 
 @media(max-width:768px){
-    #<?php echo $id;?> .tx-form {
+    #<?php echo $id;?> .tg-form {
         flex-direction: column;
     }
-    #<?php echo $id;?> .tx-form .form-group{
+    #<?php echo $id;?> .tg-form .form-group{
         width: 100%;
     }
-    #<?php echo $id;?> .tx-form .form-group input[type="email"]{
+    #<?php echo $id;?> .tg-form .form-group input[type="email"]{
         width: 100%;
     }
-    #<?php echo $id;?> .tx-form .your-email input{
+    #<?php echo $id;?> .tg-form .your-email input{
         margin-bottom: 15px;
         padding: 15px 6px!important;
     }

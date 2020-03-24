@@ -7,6 +7,11 @@
 #<?php echo $id; ?> ul.uk-slider-items li:hover .item-wrapper{
     transform: scale(1.2);
 }
+
+#<?php echo $id; ?> .item-wrapper img{
+    min-height: 315px;
+    object-fit: cover;
+}
 #<?php echo $id; ?> ul.uk-slider-items li .tx-overlay{
         position: absolute;
         top: -150%;

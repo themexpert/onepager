@@ -25,9 +25,14 @@ return array(
             'value' => '3',
         ),
         array(
-            'name' => 'text_limit',
-            'label' => 'Excerpt Length',
-            'value' => 20,
+            'name'  => 'post_order',
+            'label' => 'Order By',
+            'type'  => 'select',
+            'value' => 'DESC',
+            'options'   => array(
+                'DESC'  => 'Descending',  
+                'ASC'  => 'Ascending',  
+            )
         ),
         array(
             'name' => 'readmore_text',

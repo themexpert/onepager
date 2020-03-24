@@ -26,7 +26,7 @@ return array(
                     array('name' => 'author', 'label' => 'Author Name', 'value' => 'Jacke Masito'),
                     array('name' => 'student_num', 'label' => 'Number of Student', 'append' => 'Students', 'value' => 112),
                     array('name' => 'rating', 'label' => 'Course Rating', 'append' => 'Star Rating', 'value' => 5),
-                    array('name' => 'course_link', 'text' => 'Course Link', 'type' => 'link', 'url' => '#')
+                    array('name' => 'course_link', 'label' => 'Item Link', 'value' => '#', 'placeholder' => home_url())
                 ),
                 array(
                     array('name' => 'image', 'label' => 'Image', 'type' => 'image', 'value' => 'https://demo.wponepager.com/wp-content/uploads/2020/03/course-image-2.jpg'),
@@ -35,7 +35,7 @@ return array(
                     array('name' => 'author', 'label' => 'Author Name', 'value' => 'Jacke Masito'),
                     array('name' => 'student_num', 'label' => 'Number of Student', 'append' => 'Students', 'value' => 112),
                     array('name' => 'rating', 'label' => 'Course Rating', 'append' => 'Star Rating', 'value' => 5),
-                    array('name' => 'course_link', 'text' => 'Course Link', 'type' => 'link', 'url' => '#')
+                    array('name' => 'course_link', 'label' => 'Item Link', 'value' => '#', 'placeholder' => home_url())
                 ),
                 array(
                     array('name' => 'image', 'label' => 'Image', 'type' => 'image', 'value' => 'https://demo.wponepager.com/wp-content/uploads/2020/03/course-image-3.jpg'),
@@ -44,7 +44,7 @@ return array(
                     array('name' => 'author', 'label' => 'Author Name', 'value' => 'Jacke Masito'),
                     array('name' => 'student_num', 'label' => 'Number of Student', 'append' => 'Students', 'value' => 112),
                     array('name' => 'rating', 'label' => 'Course Rating', 'append' => 'Star Rating', 'value' => 5),
-                    array('name' => 'course_link', 'text' => 'Course Link', 'type' => 'link', 'url' => '#')
+                    array('name' => 'course_link', 'label' => 'Item Link', 'value' => '#', 'placeholder' => home_url())
                 )
             )
         ),

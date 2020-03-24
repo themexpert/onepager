@@ -19,7 +19,12 @@
                         ?>
                         <p><?php echo $contents['section_desc'];?></p>
                         <div class="form-wrapper uk-padding-large">
-                            <?php echo do_shortcode($contents['form_shortcode'])?>
+                            <?php if($contents['form_shortcode']){
+                                echo do_shortcode($contents['form_shortcode']);
+                            } else{
+                                echo '<h3 class="tg-notice"> "N.B. Please use form shortcode."</h3>';
+                            }
+                             ?>
                         </div>
                         <div class="social-icons-wrapper uk-flex uk-flex-center uk-margin-medium-top">
                             <?php foreach($contents['social_icons'] as $single_icon): ?>

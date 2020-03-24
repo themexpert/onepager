@@ -8,6 +8,7 @@ $blog_animation = ($settings['blog_item_animation']) ? 'uk-scrollspy="cls:uk-ani
 $args = array(
     'posts_per_page' => $contents['total_posts'],
     'cat' => $contents['category'],
+    'order'   => $contents['post_order'],
 );
 // Build query
 $query = new WP_Query($args);
