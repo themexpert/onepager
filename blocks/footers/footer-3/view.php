@@ -5,7 +5,7 @@
         <div class="uk-container">
             <div class="uk-grid uk-margin-auto">
                 <div class="uk-width-1-1">
-                    <p class="footer-content uk-text-<?php echo $settings['footer_alignment'];?>">2019 Onepager – All Rights Reserved</p>
+                    <p class="footer-content uk-text-<?php echo $settings['footer_alignment'];?>">2020 Onepager – All Rights Reserved</p>
                 </div>
             </div>
         </div>
