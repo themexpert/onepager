@@ -15,23 +15,28 @@
             <div class="uk-navbar-center">
                 <div class="center-menu-wrapper">
                 <?php
-                    wp_nav_menu(
-                        array(
-                            'menu' => $contents['main_menu'],
-                            'menu_class' => 'uk-navbar-nav uk-visible@m',
-                            'items_wrap' => '<ul id="%1$s" class="%2$s" uk-scrollspy-nav="closest: li; scroll: true; overflow:false; offset:80">%3$s</ul>',
-                            'container' => false,
-                            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                            'walker'            => new WP_Bootstrap_Navwalker(),
-                        )
-                    )
-                    ?>
+                    if($contents['main_menu']):
+                        wp_nav_menu(
+                            array(
+                                'menu' => $contents['main_menu'],
+                                'menu_class' => 'uk-navbar-nav uk-visible@m',
+                                'items_wrap' => '<ul id="%1$s" class="%2$s" uk-scrollspy-nav="closest: li; scroll: true; overflow:false; offset:80">%3$s</ul>',
+                                'container' => false,
+                                'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                                'walker'            => new WP_Bootstrap_Navwalker(),
+                            )
+                        );
+                    else:
+                        echo "choose a menu";
+                    endif;
+                ?>
                 </div>
             </div>
             <div class="uk-navbar-right">
                 <div class="uk-flex uk-flex-middle right-menu-wrapper">
                     <?php
-                        wp_nav_menu(
+                        if($contents['right_menu']):
+                            wp_nav_menu(
                                 array(
                                     'menu' => $contents['right_menu'],
                                     'menu_class' => 'uk-navbar-nav uk-visible@m',
@@ -40,7 +45,10 @@
                                     'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
                                     'walker'            => new WP_Bootstrap_Navwalker(),
                                 )
-                                );
+                            );
+                        else:
+                            echo "choose a menu";
+                        endif;
                     ?>
                     <a uk-navbar-toggle-icon="" href="#offcanvas-<?php echo $id; ?>" uk-toggle class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon">
                         <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="navbar-toggle-icon"><rect y="9" width="20" height="2"></rect><rect y="3" width="20" height="2"></rect><rect y="15" width="20" height="2"></rect></svg>
