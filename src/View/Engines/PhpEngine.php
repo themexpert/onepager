@@ -12,6 +12,11 @@ class PhpEngine implements EngineInterface {
 	 *
 	 * @return string
 	 */
+	public function getAllFonts($name){
+		$fonts = require ONEPAGER_PATH . '/app/data/font-families.php';
+		$font = isset( $fonts[ $name ] ) ? $fonts[ $name ]['family'] : 'Roboto Condensed';
+		return $font;
+	}
 	public function get( $path, array $data = array() ) {
 		return $this->evaluatePath( $path, $data );
 	}
@@ -57,6 +62,9 @@ class PhpEngine implements EngineInterface {
 	 * @return string
 	 */
 	protected function evaluatePathForPage( $__path, $__data, $__pageId, $__pageOptionPanel ) {
+		$name = $__pageOptionPanel['general']['section_heading_font'];
+		$section_heading_font = $this->getAllFonts($name);
+
 		$data = $__data;
 		$page_settins_data = '';
 		$common_data = array_map(function($key) use ($__data, $page_settins_data){
@@ -76,16 +84,21 @@ class PhpEngine implements EngineInterface {
 		extract( $__data );
 		?>
 		.<?php echo 'txop-page-'.$__pageId .' #' .$id . ' .uk-heading-primary'; ?> {font-size:<?php echo $page_general_settins['section_title_size'] . 'px';?>;}
+		.<?php echo 'txop-page-'.$__pageId .' #' .$id . ' .uk-heading-primary'; ?> {font-family:<?php echo $section_heading_font;?>;}
 		<?php
 		return ltrim( ob_get_clean() );
 	}
 
 	protected function evaluateLiveDataForPage( $sectionId, $__pageId, $__pageOptionPanel ) {
+		$name = $__pageOptionPanel['general']['section_heading_font'];
+		$section_heading_font = $this->getAllFonts($name);
+
 		$page_general_settins = $__pageOptionPanel['general'];
 		$obLevel = ob_get_level();
 		ob_start();
 		?>
 		.<?php echo 'txop-page-'.$__pageId .' #' .$sectionId . ' .uk-heading-primary'; ?> {font-size:<?php echo $page_general_settins['section_title_size'] . 'px';?>;}
+		.<?php echo 'txop-page-'.$__pageId .' #' .$sectionId . ' .uk-heading-primary'; ?> {font-family:<?php echo $section_heading_font;?>;}
 		<?php
 		return ltrim( ob_get_clean() );
 	}

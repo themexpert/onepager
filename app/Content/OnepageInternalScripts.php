@@ -17,7 +17,16 @@ class OnepageInternalScripts {
 
 		$this->renderStylesFromSections( $sections );
 		$this->renderStylesForPageSettings(  $sections, $pageId, $pageOptionPanel );
+		$this->loadPageFonts( $pageOptionPanel );		
 
+	}
+	/**
+	 * Load fonts for page settings option panel
+	 */
+	public function loadPageFonts($pageOptionPanel){
+		$option_panel_general = $pageOptionPanel['general'];
+		$section_heading_font = $option_panel_general['section_heading_font']; 
+		\Onepager::fonts($section_heading_font);
 	}
 	/**
 	 * add onepager class to body 
