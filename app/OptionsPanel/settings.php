@@ -10,6 +10,11 @@ Onepager::getOptionPanel()
 				'value'  => '',
             ),
             array(
+                'name' => 'section_heading_font',
+                'type' => 'font', 
+                'label' => 'Section Title Fonts'
+            ),
+            array(
 				'name'   => 'section_subtitle_size',
 				'label'  => 'Section Subtitle Size',
 				'append' => 'px',
