@@ -84,6 +84,7 @@ class PhpEngine implements EngineInterface {
 		extract( $__data );
 		?>
 		.<?php echo 'txop-page-'.$__pageId .' #' .$id . ' .uk-heading-primary'; ?> {font-size:<?php echo $page_general_settins['section_title_size'] . 'px';?>;}
+		.<?php echo 'txop-page-'.$__pageId .' #' .$id . ' .uk-heading-primary'; ?> {line-height:<?php echo '1';?>;}
 		.<?php echo 'txop-page-'.$__pageId .' #' .$id . ' .uk-heading-primary'; ?> {font-family:<?php echo $section_heading_font;?>;}
 		<?php
 		return ltrim( ob_get_clean() );
@@ -98,6 +99,7 @@ class PhpEngine implements EngineInterface {
 		ob_start();
 		?>
 		.<?php echo 'txop-page-'.$__pageId .' #' .$sectionId . ' .uk-heading-primary'; ?> {font-size:<?php echo $page_general_settins['section_title_size'] . 'px';?>;}
+		.<?php echo 'txop-page-'.$__pageId .' #' .$sectionId . ' .uk-heading-primary'; ?> {line-height:<?php echo '1';?>;}
 		.<?php echo 'txop-page-'.$__pageId .' #' .$sectionId . ' .uk-heading-primary'; ?> {font-family:<?php echo $section_heading_font;?>;}
 		<?php
 		return ltrim( ob_get_clean() );
