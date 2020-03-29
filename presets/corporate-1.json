@@ -71,7 +71,8 @@
         "slider_height": "600",
         "title_size": "62",
         "title_transformation": "0",
-        "desc_size": "26"
+        "desc_size": "26",
+        "heading_type": "h1"
       },
       "styles": {
         "overlay_color": "rgba(4,4,4,0.52)",
@@ -102,7 +103,8 @@
         "title_transformation": "0",
         "desc_size": "18",
         "animation_content": "slide-bottom-small",
-        "animation_media": "slide-right-medium"
+        "animation_media": "slide-right-medium",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "",
@@ -180,7 +182,8 @@
         "title_animation": "slide-top-medium",
         "overlay_animation": "slide-bottom",
         "items_columns": "3",
-        "lightbox_animation": "slide"
+        "lightbox_animation": "slide",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_color": "#fff",
@@ -318,7 +321,8 @@
         "item_name_size": "24",
         "item_designation_size": "14",
         "item_icon_size": "14",
-        "item_animation": "fade"
+        "item_animation": "fade",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_color": "#fff",

@@ -49,7 +49,8 @@
         "title_transformation": "uppercase",
         "desc_size": "30",
         "animation_content": "slide-left-medium",
-        "animation_media": "slide-right-medium"
+        "animation_media": "slide-right-medium",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "http://try.getonepager.com/wp-content/uploads/2019/03/hero-bg.png",
@@ -103,7 +104,8 @@
         "item_desc_size": "16",
         "items_alignment": "center",
         "items_animation": "slide-bottom-medium",
-        "section_margin": "-130"
+        "section_margin": "-130",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_color": "#f4f4f4",
@@ -155,7 +157,8 @@
         "item_title_size": "22",
         "item_desc_size": "16",
         "items_alignment": "center",
-        "items_animation": "slide-left-medium"
+        "items_animation": "slide-left-medium",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "http://onepager.demo/wp-content/uploads/2019/03/BG.png",
@@ -210,7 +213,8 @@
         "animation_content": "slide-left-medium",
         "item_title_size": "24",
         "item_title_transformation": "inherit",
-        "item_desc_size": "16"
+        "item_desc_size": "16",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "",
@@ -272,7 +276,8 @@
         "animation_content": "slide-right-medium",
         "item_title_size": "24",
         "item_title_transformation": "inherit",
-        "item_desc_size": "16"
+        "item_desc_size": "16",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "http://try.getonepager.com/wp-content/uploads/2019/03/bg.jpg",
@@ -305,7 +310,8 @@
         "title_transformation": "0",
         "desc_size": "18",
         "button_font_size": "16",
-        "button_transformation": "inherit"
+        "button_transformation": "inherit",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "http://try.getonepager.com/wp-content/uploads/2019/03/hero-bg.png",
@@ -361,7 +367,8 @@
         "animation_content": "slide-right-medium",
         "item_title_size": "24",
         "item_title_transformation": "inherit",
-        "item_desc_size": "16"
+        "item_desc_size": "16",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "",
@@ -408,7 +415,8 @@
         "item_desc_size": "20",
         "items_alignment": "center",
         "items_animation": "slide-top-medium",
-        "section_margin": "0"
+        "section_margin": "0",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_color": "#f4f4f4",
@@ -461,7 +469,8 @@
         "item_desc_size": "16",
         "items_alignment": "center",
         "items_animation": "slide-left-medium",
-        "section_margin": "0"
+        "section_margin": "0",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_color": "#ffffff",

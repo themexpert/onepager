@@ -23,7 +23,8 @@
         "title_transformation": "capitalize",
         "desc_size": "24",
         "button_font_size": "16",
-        "button_transformation": "inherit"
+        "button_transformation": "inherit",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "",
@@ -84,7 +85,8 @@
         "item_title_size": "36",
         "item_desc_size": "18",
         "items_alignment": "center",
-        "items_animation": "slide-left-medium"
+        "items_animation": "slide-left-medium",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "",
@@ -117,7 +119,8 @@
         "title_transformation": "capitalize",
         "desc_size": "18",
         "animation_content": "slide-left-medium",
-        "animation_media": "0"
+        "animation_media": "0",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "http://try.getonepager.com/wp-content/uploads/2019/02/Vector-Smart-Object.png",
@@ -163,7 +166,8 @@
         "desc_size": "18",
         "button_font_size": "16",
         "button_transformation": "inherit",
-        "items_font_size": "20"
+        "items_font_size": "20",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "",
@@ -200,7 +204,8 @@
         "title_transformation": "capitalize",
         "desc_size": "18",
         "animation_content": "slide-right-medium",
-        "animation_media": "slide-left-medium"
+        "animation_media": "slide-left-medium",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_image": "",
@@ -297,7 +302,8 @@
         "title_alignment": "center",
         "desc_size": "18",
         "title_animation": "slide-top-medium",
-        "items_columns": "3"
+        "items_columns": "3",
+        "heading_type": "h1"
       },
       "styles": {
         "bg_color": "#ffffff",
