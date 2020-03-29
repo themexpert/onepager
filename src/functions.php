@@ -193,3 +193,18 @@ function get_default_template_stylesheet_handle() {
 
 	return null;
 }
+
+function check_dependent_plugin($plugin_slug, $plugin_file_name, $plugin_type){
+	$all_plugins = get_plugins();
+	$admin_url = get_admin_url();
+	$plugin_search_page = $admin_url . 'plugin-install.php?s='. $plugin_slug .'&tab=search&type=term';
+	$plugin_to_check = $plugin_slug . '/' . $plugin_file_name ; 
+	$check = array_key_exists($plugin_to_check, $all_plugins);
+	if(! $check){
+		if('free' == $plugin_type){
+			echo "<h4>" .$plugin_slug. " is not installed. Please <a href=".$plugin_search_page.">install</a> it.</h4>";
+		}
+	}else{
+		return true;
+	}
+}
