@@ -18,6 +18,22 @@ function addStyleToPage(page_style){
   $("head").append(page_style);
 }
 
+
+function setSectionClass(fullScreen) {
+  let pageSections = document.querySelectorAll('#onepager-preview .op-section-view');
+  if( fullScreen ){
+    pageSections.forEach(function(section){
+      if(!section.classList.contains('section')){
+        section.className += ' section ';
+      }
+    });
+  }else{
+    pageSections.forEach(function(section){
+      section.classList.remove('section')
+    });
+  }
+}
+
 let Section = React.createClass({
   shouldComponentUpdate(nextProps){
     let equalProps = JSON.stringify(nextProps) === JSON.stringify(this.props);
@@ -28,12 +44,14 @@ let Section = React.createClass({
   componentDidMount(){
     this.setSectionContent();
     this.setSectionStyle();
+    this.setfullPageClass();
   },
 
   componentDidUpdate(){
     this.scrollIntoView();
     this.setSectionContent();
     this.setSectionStyle();
+    this.setfullPageClass();
   },
 
   componentWillUnmount(){
@@ -50,6 +68,11 @@ let Section = React.createClass({
     let {id, style, page_style} = this.props.section;
     replaceSectionStyle(id, style);
     addStyleToPage( page_style);
+  },
+
+  setfullPageClass(){
+    let fullScreen = this.props.fullScreen;
+    setSectionClass(fullScreen);
   },
 
   scrollIntoView(){

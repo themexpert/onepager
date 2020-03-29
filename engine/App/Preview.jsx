@@ -24,16 +24,19 @@ let Preview = React.createClass({
   },
 
   render() {
-    let {sections, activeSectionIndex, pageID} = this.state;
+    let {sections, activeSectionIndex, pageID, pageSettingOptions} = this.state;
     
     let viewSections = _.map(sections, function (section) {
       return _.pick(section, ['content', 'key', 'style', 'id', 'page_style']);
     });
 
+    let fullScreen = pageSettingOptions['general']['full_screen'];
+
     return (
         <SectionViewCollection
           activeSectionIndex={activeSectionIndex}
           pageID = {pageID}
+          fullScreen = {fullScreen}
           sections={viewSections}/>
     );
   }

@@ -45,14 +45,14 @@ let Content = React.createClass({
 
     OptionsPanelActions.update([this.props.index, 'fields'], controls);
     this.props.pagUpdate(controlKey, controls);
-    // debugger;
+
     this.props.whenSettingsDirty();
   },
 
   render(){
     console.log("rendering Content from content jsx");
     let controls = this.props.panel.get('fields');
-    // debugger;
+    
     let controlsHtml = controls.map((control, ii)=> {
       let props = {
         onChange: this.update,

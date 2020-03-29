@@ -64,9 +64,17 @@ class OptionsApiController extends ApiController {
 		$styleArr = onepager()->render()->syncPageStyles($pageId, $pageOptions, $sectionsId);
 		if($styleArr){
 			$optionStyleArr = $styleArr;
-			$this->responseSuccess(compact('optionStyleArr'));
+			$fullScreen = $pageOptions['general']['full_screen'];
+			$this->responseSuccess(compact('optionStyleArr', 'fullScreen'));
 		}else{
 			$this->responseSuccess('Something wend wrong. Need to check ajax request data');
 		}
+	}
+
+	public function loadFullPageScript(){
+		$asset = onepager()->asset();
+		$asset->script( 'op-fullpage-ext-overflow', op_asset( 'assets/js/scrolloverflow.js' ) );
+		$asset->script('op-fullpage', op_asset('assets/js/fullpage.js'));
+		$asset->style( 'op-fullpage', op_asset( 'assets/css/fullpage.css' ) );
 	}
 }

@@ -39,13 +39,14 @@ let SectionViewCollection = React.createClass({
 
   render() {
     let sections = this.props.sections;
+    let fullScreen = this.props.fullScreen;
     
     return (
-      <div>
+      <div id={fullScreen ? 'fullpage' : null}>
         {
           sections.map((section, index)=> {
             let active = this.props.activeSectionIndex === index;
-            return <SectionView active={active} section={section} key={section.key} index={index}/>;
+            return <SectionView active={active} fullScreen={fullScreen} section={section} key={section.key} index={index}/>;
           })
         }
       </div>

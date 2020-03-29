@@ -145,7 +145,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     return new Promise( (resolve, reject) => {
       jQuery.post(ODataStore.ajaxUrl, payload, (res)=> {
         return res.success 
-        ? resolve(res.optionStyleArr) 
+        ? resolve(res) 
         : reject('something went wrong');
       })
     });

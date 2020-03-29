@@ -119,30 +119,36 @@ function updatePageSettingsLive(key, fields){
   let livePageSyncPromise = syncService.pageSyncServiceLive( _pageSettingOptions, sectionsId);
 
   livePageSyncPromise.then( (res) => {    
-    let styleArr = res;    
-    /**
-     * sync previously loaded sections
-     * with updated option panel data
-     */
-    _sections.filter(function(section, index){
-      section['page_style']  = styleArr[index];
-    });
-    /**
-     * call action to sync full page with updated sections
-     * to load preview jsx again
-     * to load latest option panel data
-     * inside head tag.
-     */
-    AppActions.fullPageSectionSynced(_sections)
+    if (res.success) { 
+      let styleArr = res.optionStyleArr;    
+      let fullScreen = res.fullScreen ? res.fullScreen : null;    
+      /**
+       * sync previously loaded sections
+       * with updated option panel data
+       */
+      _sections.filter(function(section, index){
+        section['page_style']  = styleArr[index];
+      });
+      /**
+       * call action to sync full page with updated sections
+       * to load preview jsx again
+       * to load latest option panel data
+       * inside head tag.
+       */
+      AppActions.fullPageSectionSynced(_sections, fullScreen);
+    }
   });
 
 }
 
-function fullPageSectionSynced(sectionsArr){
+function fullPageSectionSynced(sectionsArr, fullScreen){
   /**
    * copy existing sections while load the component
    */
   let sections = toolbelt.copy(_sections);
+  let pageSettingOptions = toolbelt.copy(_pageSettingOptions);
+  pageSettingOptions['general']['full_screen'] = fullScreen;
+  
   /**
    * sync section page style key
    * with changed data
@@ -307,7 +313,7 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
       break;
       
     case actions.FULL_PAGE_SECTION_SYNCED:
-      fullPageSectionSynced(action.sections)
+      fullPageSectionSynced(action.sections, action.fullScreen)
       emitChange();
       break;
 

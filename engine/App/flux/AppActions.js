@@ -77,9 +77,9 @@ module.exports = {
 		dispatcher.handleViewAction( {type, index, fields} );
 	},
 
-	fullPageSectionSynced(sections){
+	fullPageSectionSynced(sections, fullScreen){
 		let type = actions.FULL_PAGE_SECTION_SYNCED;
-		dispatcher.handleViewAction( {type, sections} );
+		dispatcher.handleViewAction( {type, sections, fullScreen} );
 	}
 
 };
