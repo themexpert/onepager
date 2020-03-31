@@ -21,6 +21,10 @@ class OnepageInternalScripts {
 			$asset->script( 'op-fullpage-ext-overflow', op_asset( 'assets/js/scrolloverflow.js' ) );
 			$asset->script('op-fullpage', op_asset('assets/js/fullpage.js'));
 			$asset->style( 'op-fullpage', op_asset( 'assets/css/fullpage.css' ) );
+
+			wp_enqueue_script('op-full-page-ext-overflow', op_asset( 'assets/js/scrolloverflow.js' ), 'jquery', time());
+			wp_enqueue_script('op-full-page', op_asset('assets/js/fullpage.js'), 'jquery', time());
+			wp_enqueue_style('op-full-page', op_asset( 'assets/css/fullpage.css' ), '', time());
 		}
         
 	}
@@ -40,19 +44,55 @@ class OnepageInternalScripts {
 
 		$page_settings_general = $pageOptionPanel['general'];
 		$full_page_status = array_get($page_settings_general, 'full_screen');
+		if(onepager()->content()->isPreview()):
+			if($full_page_status):
 		?>
-		<script>
-			jQuery(document).ready(function ($) {
-				$("#fullpage").fullpage({
-					css3: true,
-					navigation: true,
-					scrollOverflow: true,
-					lazyLoading: false,
-					v2compatible: true,
-				});
-			});
-		</script>
+		
+				<script>
+					jQuery(document).ready(function ($) {
+						// $("#fullpage").fullpage({
+						// 	css3: true,
+						// 	navigation: true,
+						// 	scrollOverflow: false,
+						// 	lazyLoading: false,
+						// 	v2compatible: true,
+						// });
+						$("#fullpage").fullpage({
+							sectionSelector: ".op-section-view",
+							css3: true,
+							navigation: true,
+							scrollOverflow: false,
+							lazyLoading: false,
+
+							afterLoad: function(origin, destination, direction){
+								UIkit.scrollspy('#' + destination.item.id + ' [uk-scrollspy]', {inview: true, outview: true});
+							}
+						});
+					});
+				</script>
 		<?php
+			endif;
+		else:
+			if($full_page_status):
+			?>
+				<script>
+					jQuery(document).ready(function ($) {
+						$(".op-sections").fullpage({
+							sectionSelector: ".fp-section",
+							css3: true,
+							navigation: true,
+							scrollOverflow: false,
+							lazyLoading: false,
+
+							// afterLoad: function(origin, destination, direction){
+							// 	UIkit.scrollspy('#' + destination.item.id + ' [uk-scrollspy]', {inview: true, outview: true});
+							// }
+						});
+					});
+				</script>
+			<?php 
+			endif;
+		endif;
 
 	}
 	/**

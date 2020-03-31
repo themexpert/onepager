@@ -22,9 +22,15 @@ function addStyleToPage(page_style){
 function setSectionClass(fullScreen) {
   let pageSections = document.querySelectorAll('#onepager-preview .op-section-view');
   if( fullScreen ){
-    pageSections.forEach(function(section){
+    pageSections.forEach(function(section, index){
       if(!section.classList.contains('section')){
-        section.className += ' section ';
+        if('0' == index){
+          if(section.querySelector('div#navs')){
+            section.className += '';
+          }
+        }else{
+          section.className += ' section ';
+        }
       }
     });
   }else{

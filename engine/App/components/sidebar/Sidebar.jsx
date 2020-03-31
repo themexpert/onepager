@@ -207,6 +207,9 @@ let Sidebar = React.createClass({
                 <a className="new-update-status" href={pluginUpdateUrl}>New Update Available</a>
                 : null
               }
+              <a href={buildModeUrl} target="_blank" className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
+                View
+              </a>
               <a href={buildModeUrl} className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
                 <span className="fa fa-close"></span>
               </a>
