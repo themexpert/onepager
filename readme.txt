@@ -132,6 +132,19 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 == Changelog ==
 
+
+= 2.3.1 =
+- New: Typography settings in Page Setting Panel. 
+- New: Book Landing Page Layout. 
+- New: 7 New blocks in Feature Category. 
+- New: 1 New block in Slider Category. 
+- New: 1 New Block in Footer Category.
+- Fix: PHP Engine varible issue. 
+- Update: JSON Updated for Software Company Layout. 
+- Update: JSON Updated for Corporate Layout. 
+- Upate: JSON Updated for Personal Photography Layout. 
+- Update: JSON Updated for Mobile App Layout. 
+
 = 2.3.0 =
 - New: Brand New Page Setting Panel for each individual Page.
 - New: Education Layout.
