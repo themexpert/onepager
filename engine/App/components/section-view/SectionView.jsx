@@ -50,14 +50,14 @@ let Section = React.createClass({
   componentDidMount(){
     this.setSectionContent();
     this.setSectionStyle();
-    this.setfullPageClass();
+    // this.setfullPageClass();
   },
 
   componentDidUpdate(){
     this.scrollIntoView();
     this.setSectionContent();
     this.setSectionStyle();
-    this.setfullPageClass();
+    // this.setfullPageClass();
   },
 
   componentWillUnmount(){
@@ -103,11 +103,13 @@ let Section = React.createClass({
   render() {
     console.log("re rendering section view");
 
+    let sectionId = this.props.section.id;
+
     let classes = cx('op-section-view', {
       'active': this.props.active
     });
 
-    return <section className={classes} onClick={this.handleClick}/>;
+    return <section id={sectionId} data-section-id={sectionId} className={classes} onClick={this.handleClick}/>;
   }
 });
 
