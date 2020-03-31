@@ -1,0 +1,473 @@
+{
+  "name": "Book",
+  "type": "new",
+  "sections": [
+    {
+      "id": "s_419266425",
+      "slug": "feature-25",
+      "title": "Feature-25",
+      "contents": {
+        "right_side_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/onepager-normand-logo.png",
+        "author_name": "Norman Vincent Peale",
+        "title_tag": "international bestseller <span class=\"highlight\">More than 5 million copies sold</span>",
+        "section_title": "The Power of Positive Thinking",
+        "section_desc": "\"This book is written with the sole objective of helping the reader achieve a happy, satisfying, and worthwhile life.\"",
+        "logos": [
+          {
+            "company_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/sponser-1.png"
+          },
+          {
+            "company_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/sponser-2.png"
+          },
+          {
+            "company_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/sponser-3.png"
+          },
+          {
+            "company_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/sponser-4.png"
+          },
+          {
+            "company_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/sponser-5.png"
+          }
+        ],
+        "hero_btn": {
+          "url": "",
+          "text": "GET THE BOOK!",
+          "target": false
+        }
+      },
+      "settings": {
+        "author_font_size": "26",
+        "author_font_weight": "500",
+        "heading_type": "h1",
+        "Title_font_size": "52",
+        "title_font_weight": "700",
+        "title_transformation": "capitalize",
+        "animation_content": "slide-bottom-medium",
+        "Title_before_font_size": "16",
+        "title_before_font_weight": "600",
+        "desc_font_size": "18",
+        "desc_font_weight": "400",
+        "btn_font_size": "18",
+        "btn_font_weight": "600",
+        "animation_media": "slide-top-medium"
+      },
+      "styles": {
+        "section_bg": "#fff004",
+        "author_color": "#4bb93e",
+        "title_before_color": "#142b45",
+        "title_before_highlight_color": "#4bb93e",
+        "title_color": "#142b45",
+        "desc_color": "#142b45",
+        "btn_color": "#142b45",
+        "btn_bg_color": "#4bb93e"
+      }
+    },
+    {
+      "id": "s_50183897",
+      "slug": "feature-20",
+      "title": "Feature-20",
+      "contents": {
+        "section_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/section-person-image.png",
+        "top_tagline": " @NORMANVINCENTPEALE",
+        "title": "IT'S 2019.<br/> I'M 70.<br/> I'M RETIRED.",
+        "desc": "The precursor to The Secret, The Power of Positive Thinking has helped millions of men and women to achieve fulfillment in their lives. In this phenomenal bestseller, Dr. Peale demonstrates the power of faith in action. With the practical techniques outlined in this book, you can energize your life -- and give yourself the initiative needed to carry out your ambitions and hopes.",
+        "signature": "https://demo.wponepager.com/wp-content/uploads/2020/03/signature-photo.jpg"
+      },
+      "settings": {
+        "animation_content": "slide-bottom-medium",
+        "heading_type": "h1",
+        "section_title_size": "52",
+        "section_title_font_weight": "700",
+        "section_title_transformation": "uppercase",
+        "top_tagline": "20",
+        "top_tagline_font_weight": "500",
+        "desc_font_size": "18",
+        "section_desc_font_weight": "400"
+      },
+      "styles": {
+        "bg_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/background-image-text.jpg",
+        "bg_position": "top-center",
+        "section_bg": "#ffffff",
+        "tagline_color": "#f22e13",
+        "heading_color": "#142b45",
+        "text_color": "#142b45"
+      }
+    },
+    {
+      "id": "s_594611497",
+      "slug": "feature-23",
+      "title": "Feature-23",
+      "contents": {
+        "background_title": "Reasons 01",
+        "section-image": "https://demo.wponepager.com/wp-content/uploads/2020/03/reason-book-side.png",
+        "section_title": "8 Reasons to read this book",
+        "section_desc": "The precursor to The Secret, The Power of Positive Thinking has helped millions of men and women to achieve fulfillment in their lives. In this phenomenal bestseller, Dr. Peale demonstrates the power of faith in action. With the practical techniques outlined in this book, you can energize your life -- and give yourself the initiative needed to carry out your ambitions and hopes.",
+        "feature_title": "You'll learn how to:",
+        "features": [
+          {
+            "feature_text": "Believe in yourself and in everything you do"
+          },
+          {
+            "feature_text": "Develop the power to reach your goals"
+          },
+          {
+            "feature_text": "Break the worry habit and achieve a relaxed life"
+          },
+          {
+            "feature_text": "Improve your personal and professional relationships"
+          },
+          {
+            "feature_text": "Assume control over your circumstances"
+          },
+          {
+            "feature_text": "Be kind to yourself"
+          }
+        ],
+        "feature_icon": "fa fa-check fa-2x"
+      },
+      "settings": {
+        "section_bg_font_size": "120",
+        "section_bg_font_weight": "700",
+        "heading_type": "h1",
+        "title_font_size": "46",
+        "title_font_weight": "700",
+        "title_transformation": "lowercase",
+        "animation_content": "slide-left-medium",
+        "desc_font_size": "18",
+        "desc_font_weight": "400",
+        "list_font_size": "18",
+        "list_title_font_weight": "700",
+        "list_font_weight": "400",
+        "animation_media": "slide-right-medium"
+      },
+      "styles": {
+        "section_bg": "#4bb93e",
+        "section_bg_title": "#ffffff",
+        "section_title": "#142b45",
+        "section_desc": "#142b45",
+        "section_list_title": "#142b45",
+        "section_list": "#ffffff"
+      }
+    },
+    {
+      "id": "s_713100425",
+      "slug": "slider-5",
+      "title": "Slider-5",
+      "contents": {
+        "section_title": "HOW THIS BOOK IS STRUCTURED",
+        "section_desc": "4 Rules And 36 Screenshot Stories",
+        "sliders": [
+          {
+            "slide_num": "Rules 01",
+            "slide_title": "Don't Focus On One Thing 234",
+            "slide_desc": "The precursor to The Secret, The Power of Positive Thinking has helped millions of men and women to achieve fulfillment in their lives. In this phenomenal bestseller, Dr. Peale demonstrates the power of faith in action. With the practical techniques outlined in this book, you can energize your life -- and give yourself the initiative needed to carry out your ambitions and hopes. Dr. Peale demonstrates the power of faith in action. With the practical techniques outlined in this book, you can energize your life -- and give yourself the initiative needed to carry out your ambitions and hopes.",
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/slider-book.png"
+          },
+          {
+            "slide_num": "Rules 02",
+            "slide_title": "Don't Focus On One Thing 123",
+            "slide_desc": "The precursor to The Secret, The Power of Positive Thinking has helped millions of men and women to achieve fulfillment in their lives. In this phenomenal bestseller, Dr. Peale demonstrates the power of faith in action. With the practical techniques outlined in this book, you can energize your life -- and give yourself the initiative needed to carry out your ambitions and hopes. Dr. Peale demonstrates the power of faith in action. With the practical techniques outlined in this book, you can energize your life -- and give yourself the initiative needed to carry out your ambitions and hopes.",
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/slider-book.png"
+          },
+          {
+            "slide_num": "Rules 03",
+            "slide_title": "Don't Focus On One Thing",
+            "slide_desc": "The precursor to The Secret, The Power of Positive Thinking has helped millions of men and women to achieve fulfillment in their lives. In this phenomenal bestseller, Dr. Peale demonstrates the power of faith in action. With the practical techniques outlined in this book, you can energize your life -- and give yourself the initiative needed to carry out your ambitions and hopes. Dr. Peale demonstrates the power of faith in action. With the practical techniques outlined in this book, you can energize your life -- and give yourself the initiative needed to carry out your ambitions and hopes.",
+            "slide_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/slider-book.png"
+          }
+        ]
+      },
+      "settings": {
+        "heading_type": "h1",
+        "section_title_size": "52",
+        "section_title_font_weight": "700",
+        "title_transformation": "uppercase",
+        "section_desc_font_size": "18",
+        "section_desc_font_weight": "400",
+        "animation": "fade",
+        "autoplay": false,
+        "min_height": "530",
+        "slider_number_font_size": "52",
+        "slider_num_font_weight": "600",
+        "slider_title_font_size": "26",
+        "slider_title_font_weight": "600",
+        "slider_desc_font_size": "18",
+        "slider_desc_font_weight": "400"
+      },
+      "styles": {
+        "bg_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/slider-background.png",
+        "section_bg": "#ffffff",
+        "section_title_color": "#142b45",
+        "section_desc_color": "#142b45",
+        "slider_label_color": "#142b45",
+        "slider_title_color": "#142b45",
+        "slider_desc_color": "#142b45",
+        "slider_primary_bg_color": "#4bb93e"
+      }
+    },
+    {
+      "id": "s_13345360",
+      "slug": "feature-19",
+      "title": "Feature-19",
+      "contents": {
+        "section_title": "What People Are Saying",
+        "reviews": [
+          {
+            "review": "“The precursor to The Secret, The Power of Positive Thinking has helped millions of men and women to achieve fulfillment in their lives. In this phenomenal bestseller, Dr. Peale demonstrates the power of \n                        faith in action.”",
+            "author_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/review-1.png",
+            "author_name": "TUCKER MAX",
+            "author_designation": "Ceo Of Book In A Box"
+          },
+          {
+            "review": "“The precursor to The Secret, The Power of Positive Thinking has helped millions of men and women to achieve fulfillment in their lives. In this phenomenal bestseller, Dr. Peale demonstrates the power of faith in action. With the practical techniques outlined in this book, you can energize your life.”",
+            "author_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/review-2.png",
+            "author_name": "ANDREW WARNER",
+            "author_designation": "Creator Of Mixergy"
+          },
+          {
+            "review": "“The precursor to The Secret, The Power of Positive Thinking has helped millions of men and women to achieve fulfillment in their lives. In this phenomenal bestseller, Dr. Peale demonstrates the power of faith in action. With the practical techniques outlined in this book, you can energize your life.”",
+            "author_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/review-3.png",
+            "author_name": "SEAN LANGHI",
+            "author_designation": "Author Of The Creative Curve"
+          },
+          {
+            "review": "“The precursor to The Secret, The Power of Positive Thinking has helped millions of men and women to achieve fulfillment in their lives. In this phenomenal bestseller, Dr. Peale demonstrates the power of \n                        faith in action.”",
+            "author_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/review-4.png",
+            "author_name": "ALEXANDER ROSARIO",
+            "author_designation": "First Time Entrepreneur"
+          }
+        ]
+      },
+      "settings": {
+        "animation_content": "slide-bottom-medium",
+        "heading_type": "h1",
+        "section_title_size": "52",
+        "section_title_font_weight": "700",
+        "section_title_transformation": "uppercase",
+        "rev_desc_size": "20",
+        "rev_desc_font_weight": "500",
+        "author_image_radius": "50%",
+        "rev_author_title_size": "26",
+        "rev_author_title_font_weight": "500",
+        "rev_author_pos_size": "16",
+        "rev_author_pos_font_weight": "500"
+      },
+      "styles": {
+        "bg_color": "#fff004",
+        "section_heading_color": "#142b45",
+        "rev_desc_color": "#142b45",
+        "rev_author_color": "#142b45",
+        "rev_author_pos_color": "#142b45"
+      }
+    },
+    {
+      "id": "s_992850347",
+      "slug": "feature-21",
+      "title": "Feature-21",
+      "contents": {
+        "top_tagline": "More than 5 million copies sold",
+        "heading": "Removing This Book",
+        "desc": "This book is not timeless. My publisher hates this because they want to sell lots of books over many decades.\n            The thing is, stuff that works usually only works for a short amount of time before the crowd piles in.\n            This book is exactly that: urgent tactics you must use before everyone else. The more people who buy this book, the less valuable it becomes. Buy it right now for the biggest advantage.",
+        "btn1": {
+          "url": "#",
+          "text": "GET THE BOOK!",
+          "target": false
+        },
+        "btn2": {
+          "url": "#",
+          "text": "Click here to buy in bulk",
+          "target": false
+        },
+        "sponser_logos": [
+          {
+            "sponser_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/sponser-1.png"
+          },
+          {
+            "sponser_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/sponser-2.png"
+          },
+          {
+            "sponser_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/sponser-3.png"
+          },
+          {
+            "sponser_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/sponser-4.png"
+          },
+          {
+            "sponser_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/sponser-5.png"
+          }
+        ],
+        "right_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/pw-of-positive.png"
+      },
+      "settings": {
+        "heading_type": "h1",
+        "section_title_size": "52",
+        "section_title_font_weight": "700",
+        "section_title_transformation": "uppercase",
+        "animation_content": "0",
+        "top_tagline": "20",
+        "top_tagline_font_weight": "500",
+        "desc_font_size": "18",
+        "btn_font_size": "18",
+        "btn_font_weight": "500",
+        "btn_text_transformation": "capitalized",
+        "animation_media": "0"
+      },
+      "styles": {
+        "section_bg": "#ffffff",
+        "top_tagline": "#4bb93e",
+        "main_heading": "#142b45",
+        "desc_color": "#142b45",
+        "btn_text_color": "#4bb93e",
+        "btn_text_color_hover": "#142b45",
+        "btn_bg": "rgba(255,255,255,0)",
+        "btn_bg_hover": "#4bb93e"
+      }
+    },
+    {
+      "id": "s_614442164",
+      "slug": "feature-22",
+      "title": "Feature-22",
+      "contents": {
+        "section_title": "FAQ",
+        "tabs": [
+          {
+            "tab_title": "What is the meaning of power of positive thinking?",
+            "tab_desc": "Peale wrote more than 40 books. His seminal work, \"The Power of Positive Thinking,\" was translated into 42 languages and sold more than 15 million copies worldwide."
+          },
+          {
+            "tab_title": "How many copies of the power of positive thinking were sold?",
+            "tab_desc": "Peale wrote more than 40 books. His seminal work, \"The Power of Positive Thinking,\" was translated into 42 languages and sold more than 15 million copies worldwide."
+          },
+          {
+            "tab_title": "When was the power of positive thinking written?",
+            "tab_desc": "Peale wrote more than 40 books. His seminal work, \"The Power of Positive Thinking,\" was translated into 42 languages and sold more than 15 million copies worldwide."
+          },
+          {
+            "tab_title": "Where did Norman Vincent Peale preached?",
+            "tab_desc": "Peale wrote more than 40 books. His seminal work, \"The Power of Positive Thinking,\" was translated into 42 languages and sold more than 15 million copies worldwide."
+          },
+          {
+            "tab_title": "Who said shoot for the moon and if you miss you will still be among the stars?",
+            "tab_desc": "Peale wrote more than 40 books. His seminal work, \"The Power of Positive Thinking,\" was translated into 42 languages and sold more than 15 million copies worldwide."
+          }
+        ]
+      },
+      "settings": {
+        "animation_content": "scale-down",
+        "heading_type": "h1",
+        "section_title_size": "52",
+        "section_title_font_weight": "700",
+        "section_title_transformation": "uppercase",
+        "tab_title_font_size": "26",
+        "tab_title_font_weight": "600",
+        "tab_desc_font_size": "18",
+        "tab_desc_font_weight": "500"
+      },
+      "styles": {
+        "bg_color": "#4bb93e",
+        "section_title_color": "#142b45",
+        "tab_title_color": "#142b45",
+        "tab_desc_color": "#142b45",
+        "hover_active_color": "#ffffff"
+      }
+    },
+    {
+      "id": "s_356885433",
+      "slug": "feature-24",
+      "title": "Feature-24",
+      "contents": {
+        "left_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/block-24-left-image.jpg",
+        "section_title": "About The Author",
+        "section_desc": "Norman Vincent Peale was an American minister and author known for his work in popularizing the concept of positive thinking, especially through his best-selling book The Power \n            of Positive Thinking.",
+        "quotes_title": "Quotes",
+        "quotes_desc": "Change your thoughts and you change your world. <br/>Believe in yourself! Have faith in your abilities! Without a humble but reasonable confidence in your own powers you cannot be \n            successful or happy. <br/>Christmas waves a magic wand over this world, and behold, everything is softer and more beautiful.",
+        "story_title": "RECENT STORIES",
+        "stroies": [
+          {
+            "story_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/story-logo-1.png",
+            "story_text": "<a href='#'>Latka's $5M Risk Paid Off!</a>"
+          },
+          {
+            "story_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/story-logo-2.png",
+            "story_text": "<a href='#'>Billionaire Invests $2M in Latka!</a>"
+          },
+          {
+            "story_logo": "https://demo.wponepager.com/wp-content/uploads/2020/03/story-logo-3.png",
+            "story_text": "<a href='#'>Latka Sells Company at 4x Initial Price...</a>"
+          }
+        ]
+      },
+      "settings": {
+        "heading_type": "h1",
+        "section_title_size": "52",
+        "section_title_font_weight": "700",
+        "title_transformation": "uppercase",
+        "animation_content": "slide-right-medium",
+        "section_text_size": "18",
+        "section_text_font_weight": "400",
+        "quote_title_size": "20",
+        "quote_title_font_weight": "500",
+        "quote_desc_size": "16",
+        "quote_desc_font_weight": "500",
+        "story_title_size": "26",
+        "story_title_font_weight": "600",
+        "story_text_size": "18",
+        "story_text_font_weight": "600",
+        "animation_media": "slide-left-medium"
+      },
+      "styles": {
+        "bg_image": "https://demo.wponepager.com/wp-content/uploads/2020/03/norman-fp-24-bg.jpg",
+        "bg_position": "top-center",
+        "section_bg": "#ffffff",
+        "quote_bg": "#fff004",
+        "section_title_color": "#142b45",
+        "section_desc_color": "#142b45",
+        "quote_title_color": "#142b45",
+        "quote_desc_color": "#142b45",
+        "story_title_color": "#142b45",
+        "story_desc_color": "#142b45",
+        "story_link_color": "#4bb93e"
+      }
+    },
+    {
+      "id": "s_189392318",
+      "slug": "footer-4",
+      "title": "Footer-4",
+      "contents": {
+        "footer_left_text": {
+          "url": "",
+          "text": "The Power of Positive Thinking",
+          "target": false
+        },
+        "footer_center_text": "Norman Vincent Peale",
+        "footer_right_label": "Follow Me ",
+        "social_shares": [
+          {
+            "social_share": "fa fa-twitter fa-lg",
+            "btn_link": "https://twitter.com"
+          },
+          {
+            "social_share": "fa fa-linkedin-square fa-lg",
+            "btn_link": "https://linkedin.com"
+          },
+          {
+            "social_share": "fa fa-facebook fa-lg",
+            "btn_link": "https://facebook.com"
+          },
+          {
+            "social_share": "fa fa-skype fa-lg",
+            "btn_link": "https://skype.com"
+          }
+        ]
+      },
+      "settings": {
+        "footer_font_size": "16",
+        "footer_font_weight": "500"
+      },
+      "styles": {
+        "bg_color": "#ffffff",
+        "text_color": "#142b45",
+        "link_color_hover": "#4bb93e"
+      }
+    }
+  ]
+}
