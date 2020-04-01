@@ -31,6 +31,8 @@ let Sidebar = React.createClass({
   componentDidMount(){
     this._unsavedAlert();
     this._initNiceScroll();
+    $('body #onepager-preview').find('iframe#onepager-iframe').wrap("<div id='preview-frame-wrapper'></div>");
+
   },
 
   getInitialState(){
@@ -108,6 +110,25 @@ let Sidebar = React.createClass({
       .isDirty
       .triggerPromise()
       .then(isSettingsDirty=> this.setState({isSettingsDirty}));
+  },
+
+  handleResponsiveToggle(){
+    $('.op-footer-wrapper .responsive-check-panel').find('.responsive-devices').toggleClass('open');
+    // $('body #onepager-preview').find('iframe#onepager-iframe').wrap("<div id='preview-frame-wrapper'></div>");
+    // if($('.op-footer-wrapper .responsive-check-panel').find('.responsive-devices').hasClass('open')){
+    //   $('body #onepager-preview').find('iframe#onepager-iframe').wrap("<div id='preview-frame-wrapper'></div>");
+    // }else{
+    //   $('body #onepager-preview').find('iframe#onepager-iframe').unwrap();
+    // }
+  },
+  
+  handleResponsiveFrame(device){
+    if( ($('body').hasClass('iframe-desktop')) || ($('body').hasClass('iframe-tablet')) || ($('body').hasClass('iframe-mobile')) ){
+      $('body').removeClass('iframe-desktop iframe-tablet iframe-mobile');
+    }
+    let previewDevice = 'iframe-' + device;
+    $('body').addClass(previewDevice);
+
   },
 
 
@@ -272,6 +293,14 @@ let Sidebar = React.createClass({
           
           <nav className="uk-navbar uk-navbar-container">
             <div className="uk-navbar-left"><a href={dashboardUrl}>Exit to Dashboard</a></div>
+            <div className="responsive-check-panel">
+              <a href="#" onClick={this.handleResponsiveToggle}><i className="fa fa-desktop responsive-check-button"></i></a> 
+              <ul className="responsive-devices">
+                <li onClick={() => this.handleResponsiveFrame('desktop')}><i className="fa-fw fa fa-desktop"></i> Desktop</li>
+                <li onClick={() => this.handleResponsiveFrame('tablet')}><i className="fa-fw fa fa-tablet"></i> Tablet (768px)</li>
+                <li onClick={() => this.handleResponsiveFrame('mobile')}><i className="fa-fw fa fa-mobile-phone"></i> Mobile (360px)</li>
+              </ul>
+            </div>
             <div className="uk-navbar-right">
               {
                 activeTab === 'op-settings' ?
