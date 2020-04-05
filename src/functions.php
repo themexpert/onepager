@@ -193,18 +193,61 @@ function get_default_template_stylesheet_handle() {
 
 	return null;
 }
+/**
+ * @plugin_slug (WordPress Org plugin slug)
+ * @plugin_file_name (Main php file name for plugin)
+ * @plugin_type (dependable plugin free or pro)
+ */
+if( ! function_exists('txop_check_dependent_plugin')){
+	function txop_check_dependent_plugin($plugin_slug, $plugin_file_name, $plugin_type="free"){
+		/**
+		 * get all installed plugin list
+		 */
+		$all_plugins = get_plugins();
+		/**
+		 * get all active plugin list
+		 */
+		$active_plugins = get_option( 'active_plugins' );
+		/**
+		 * wordPress admin url
+		 */
+		$admin_url = get_admin_url();
+		/**
+		 * plugin activation page
+		 */
+		$plugin_activation_page = $admin_url . 'plugins.php';
+		/**
+		 * plugin search page in admin
+		 */
+		$plugin_search_page = $admin_url . 'plugin-install.php?s='. $plugin_slug .'&tab=search&type=term';
+		/**
+		 * creating plugin slug as it installed 
+		 */
+		$plugin_to_check = $plugin_slug . '/' . $plugin_file_name ;
 
-function check_dependent_plugin($plugin_slug, $plugin_file_name, $plugin_type){
-	$all_plugins = get_plugins();
-	$admin_url = get_admin_url();
-	$plugin_search_page = $admin_url . 'plugin-install.php?s='. $plugin_slug .'&tab=search&type=term';
-	$plugin_to_check = $plugin_slug . '/' . $plugin_file_name ; 
-	$check = array_key_exists($plugin_to_check, $all_plugins);
-	if(! $check){
-		if('free' == $plugin_type){
-			echo "<h4>" .$plugin_slug. " is not installed. Please <a href=".$plugin_search_page.">install</a> it.</h4>";
+		$check = array_key_exists($plugin_to_check, $all_plugins);
+
+		if(! $check){
+			if('free' == $plugin_type){
+				return "<div class='plugin-not-installed'><h4>" .$plugin_slug. " is not installed. Please <a target='_blank' href=".$plugin_search_page.">install</a> it.</h4></div>";
+			}
+		}else{
+			if(in_array($plugin_to_check, $active_plugins)){
+				return null;
+			}else{
+				return "<div class='plugin-not-active'><h4>" .$plugin_slug. " is not active. Please <a target='_blank' href=".$plugin_activation_page.">active</a> it.</h4></div>";
+			}
 		}
-	}else{
-		return true;
+	}
+}
+
+/**
+ * @check_type (type of data to check)
+ */
+if(! function_exists('txop_error_checking')){
+	function txop_error_checking($check_type){
+		if('shortcode' == $check_type){
+			return esc_html('Please add shortcode', 'tx-onepager');
+		}
 	}
 }
