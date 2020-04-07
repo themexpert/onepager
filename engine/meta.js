@@ -310,6 +310,7 @@
 						{
 							name: name,
 							screenshot: screenshot,
+							identifier: 'txonepager',
 							sections: res.sections
 						}
 					);
