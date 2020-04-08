@@ -19,6 +19,6 @@
         </table>
 
         <?php wp_nonce_field( 'upload-template-nonce' ); ?>
-        <?php submit_button( __( 'Upload', 'tx-onepager' ), 'primary', 'upload_template_button' ); ?>
+        <?php submit_button( __( 'Import Template', 'tx-onepager' ), 'primary', 'upload_template_button' ); ?>
     </form>
 </div>
