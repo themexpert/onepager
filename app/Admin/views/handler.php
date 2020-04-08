@@ -3,11 +3,11 @@
 Class TXOP_Handler{
 
     public function __construct(){
-        $this->upload_handler();
+        $this->txop_upload_handler();
     }
 
     
-    public function upload_handler(){
+    public function txop_upload_handler(){
         /**
          * check the import post data
          */

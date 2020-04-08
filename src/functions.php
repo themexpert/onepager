@@ -287,3 +287,56 @@ if(! function_exists('txop_insert_user_templates')){
 		return $wpdb->insert_id;
 	}
 }
+
+/**
+ * fetch user templates from db
+ */
+if(! function_exists('txop_fetch_user_templates')){
+	function txop_fetch_user_templates($args = []){
+		global $wpdb;
+
+		$defaults = [
+			'number' 	=> 20,
+			'offset' 	=> 0,
+			'orderby' 	=> 'id',
+			'order'		=> 'ASC'
+		];
+		$args = wp_parse_args($args, $defaults);
+
+
+		
+		$sql = $wpdb->prepare(
+				"SELECT * FROM {$wpdb->prefix}op_user_templates
+				ORDER BY {$args['orderby']} {$args['order']}
+				LIMIT %d, %d",
+				$args['offset'], $args['number']
+		);
+	
+		$items = $wpdb->get_results( $sql );
+	
+		return $items;
+	}
+}
+/**
+ * get the total count of the user 
+ * imported templates or save templates
+ */
+if(! function_exists('txop_count_user_templates')){
+	function txop_count_user_templates(){
+		global $wpdb;
+		return (int) $wpdb->get_var( "SELECT count(id) from {$wpdb->prefix}op_user_templates" );
+	}
+}
+/**
+ * Delete template from db
+ */
+if(! function_exists('txop_delete_template')){
+	function txop_delete_template($id){
+		global $wpdb;
+		return $wpdb->delete(
+			$wpdb->prefix. 'op_user_templates',
+			['id' => $id],
+			['%d']
+		);
+	}
+}

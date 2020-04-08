@@ -10,7 +10,8 @@ class TXOP_Admin_Menu{
 		add_action( 'admin_menu', [$this, 'register_admin_menu'], 20 );
 		add_action( 'admin_menu', [$this, 'register_submenu'], 501 );
 		add_action( 'admin_init', [$this, 'on_admin_init'] );
-		add_action( 'admin_init', [$this, 'txop_admin_form_handle'] );
+		add_action( 'admin_init', [$this, 'txop_template_import_handle'] );
+		add_action( 'admin_post_txop-delete-template', [$this, 'txop_template_delete_handle'] );
 		add_action( 'admin_enqueue_scripts', [$this, 'onepager_load_admin_scripts'] );
 	}
 
@@ -121,11 +122,18 @@ class TXOP_Admin_Menu{
 		$template->handle_template_pages();
 	}
 	/**
-	 * Hanlde all form 
+	 * Hanlde template import 
 	 */
-	public function txop_admin_form_handle(){
+	public function txop_template_import_handle(){
 		include __DIR__ . '/views/handler.php';
 		new TXOP_Handler();
+	}
+	/**
+	 * Hanlde template delete
+	 */
+	public function txop_template_delete_handle(){
+		include __DIR__ . '/views/delete-handler.php';
+		new TXOP_Delete_Handler();
 	}
 	/**
 	 * Redirect
