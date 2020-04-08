@@ -251,3 +251,39 @@ if(! function_exists('txop_error_checking')){
 		}
 	}
 }
+
+/**
+ * insert user template to db
+ */
+if(! function_exists('txop_insert_user_templates')){
+	function txop_insert_user_templates($args = []){
+
+		global $wpdb;
+
+		$defaults = [
+			'name' => 'template', 
+			'type' => 'page', 
+			'data' => '', 
+			'created_by' => get_current_user_id(), 
+			'created_at' => current_time('mysql'), 
+		];
+
+		$data = wp_parse_args($args, $defaults);
+
+		$inserted = $wpdb->insert(
+			"{$wpdb->prefix}op_user_templates",
+			$data,
+			[
+				'%s',
+				'%s',
+				'%s',
+				'%d',
+				'%s',
+			]
+		);
+		if(! $inserted){
+			return new \WP_Error('Faild-to-insert', __('Faild to insert', 'tx-onepager'));
+		}
+		return $wpdb->insert_id;
+	}
+}
