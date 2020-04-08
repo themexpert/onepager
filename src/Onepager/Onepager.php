@@ -28,6 +28,22 @@ class Onepager implements OnepagerInterface {
 		$this->setPresetManager();
 		$this->setRenderer();
 		$this->setViewProvider();
+		$this->createUserTemplateTable();
+	}
+
+	public function createUserTemplateTable(){
+		global $wpdb;
+
+        $charset_collate = $wpdb->get_charset_collate();
+
+		$schema = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}op_user_templates` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(100) NOT NULL , `type` VARCHAR(100) NOT NULL , `data` LONGTEXT NOT NULL , `created_by` BIGINT NOT NULL , `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) $charset_collate";
+
+
+        if ( ! function_exists( 'dbDelta' ) ) {
+            require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        }
+
+        dbDelta( $schema );
 	}
 
 	public function setBlockManager() {
