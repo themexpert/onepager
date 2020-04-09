@@ -15,6 +15,7 @@ const Menu = require("./Menu.jsx");
 const $ = jQuery;
 // const Footer = require('./../section-list/Footer.jsx');
 const BlockCollection = require('../blocks/BlockCollection.jsx');
+const PopupModal = require('../../../shared/components/PopupModal.jsx');
 
 import notify from '../../../shared/plugins/notify.js';
 import cx from "classnames";
@@ -153,7 +154,14 @@ let Sidebar = React.createClass({
   handleTabClick(id){
     AppStore.setTabState({active: id});
   },
-
+  /**
+   * handle the popup
+   * to insert the block to page
+   */
+  handlePopupModal(){
+    var modalElement = document.querySelector('#onepager-builder .popup-modal');
+    modalElement.classList.toggle('open');
+  },
   _renderTabs(){
     let handleTabClick = this.handleTabClick;
     let activeTab = this.props.sidebarTabState.active;
@@ -180,6 +188,7 @@ let Sidebar = React.createClass({
     let sectionSettings = activeSection ? _.pick(activeSection, ['settings', 'contents', 'styles']) : {};
 
     let handleTabClick = this.handleTabClick;
+    let handlePopupModal = this.handlePopupModal;
 
     let update = (key, fields)=> {
       let section = _.copy(sections[activeSectionIndex]);
@@ -217,110 +226,120 @@ let Sidebar = React.createClass({
     });
 
     return (
-      <div className="op-sidebar op-ui clearfix">
-        <header className="op-header-wrapper">
-          <nav className="uk-navbar uk-navbar-container">
-            <div className="uk-navbar-left"><a className="uk-logo op-btn-with-logo uk-light" href="#">OnePager</a></div>
-            
-            <div className="uk-navbar-right">
-              {
-                getUpdatePlugins? 
-                <a className="new-update-status" href={pluginUpdateUrl}>New Update Available</a>
-                : null
-              }
-              <a href={buildModeUrl} target="_blank" className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
-                View
-              </a>
-              <a href={buildModeUrl} className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
-                <span className="fa fa-close"></span>
-              </a>
-            </div>
-          </nav>
-        </header>
-        
-        <main className="op-content-wrapper" ref='tabContents'>
-          {this._renderTabs()}
+      <div className="builder-wrapper">
 
-          <div className='tab-content'>
-            <div className={overlayClasses}/>
-
-            <TabPane id='op-sections' active={activeTab}>
-              <SectionList
-                openBlocks={handleTabClick.bind(this, 'op-blocks')}
-                activeSectionIndex={activeSectionIndex}
-                blocks={blocks}
-                sections={sections}/>
-            </TabPane>
-
-            <TabPane id="op-blocks" active={activeTab}>
-              <BlockCollection blocks={blocks}/>
-            </TabPane>
-
-            <TabPane id='op-menu' active={activeTab}>
-              <Menu sections={sections}/>
-            </TabPane>
-
-            <TabPane id='op-contents' active={activeTab}>
-              {sectionEditable ?
-                <SectionControls
-                  update={update}
-                  title={sections[activeSectionIndex].title}
-                  sectionSettings={sectionSettings}
-                  sectionIndex={activeSectionIndex}/> :
-
-                <h2>please select a section</h2>
-              }
-            </TabPane>
-
-            <TabPane id='op-settings' active={activeTab}>
-              <Settings pagUpdate={pagUpdate} whenSettingsDirty={this.whenSettingsDirty}/>
-            </TabPane>
-
-            {/* {activeTab === "op-sections" ? <Footer /> : null } */}
-
-          </div>
-        </main>
-        
-        <footer className="op-footer-wrapper uk-position-bottom">
-          {! onepagerProLoaded ? 
-          <div className="upgrade-to-pro">
-            <p>Unlock more layouts, blocks and features you could imagine.</p>
-            <a href={proUpgradeLink} target="_blank">
-              Upgrade to PRO
-            </a>
-          </div>
-          : null}
+        <div className="op-sidebar op-ui clearfix">
+          <header className="op-header-wrapper">
+            <nav className="uk-navbar uk-navbar-container">
+              <div className="uk-navbar-left"><a className="uk-logo op-btn-with-logo uk-light" href="#">OnePager</a></div>
+              
+              <div className="uk-navbar-right">
+                {
+                  getUpdatePlugins? 
+                  <a className="new-update-status" href={pluginUpdateUrl}>New Update Available</a>
+                  : null
+                }
+                <a href={buildModeUrl} target="_blank" className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
+                  View
+                </a>
+                <a href={buildModeUrl} className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
+                  <span className="fa fa-close"></span>
+                </a>
+              </div>
+            </nav>
+          </header>
           
-          <nav className="uk-navbar uk-navbar-container">
-            <div className="uk-navbar-left"><a href={dashboardUrl}>Exit to Dashboard</a></div>
-            <div className="responsive-check-panel">
-              <a href="#" onClick={this.handleResponsiveToggle}><i className="fa fa-desktop responsive-check-button"></i></a> 
-              <ul className="responsive-devices">
-                <li onClick={() => this.handleResponsiveFrame('desktop')}><i className="fa-fw fa fa-desktop"></i> Desktop</li>
-                <li onClick={() => this.handleResponsiveFrame('tablet')}><i className="fa-fw fa fa-tablet"></i> Tablet (768px)</li>
-                <li onClick={() => this.handleResponsiveFrame('mobile')}><i className="fa-fw fa fa-mobile-phone"></i> Mobile (360px)</li>
-              </ul>
+          <main className="op-content-wrapper" ref='tabContents'>
+            {this._renderTabs()}
+
+            <div className='tab-content'>
+              <div className={overlayClasses}/>
+
+              <TabPane id='op-sections' active={activeTab}>
+                <SectionList
+                  openBlocks={handleTabClick.bind(this, 'op-blocks')}
+                  openPopup={handlePopupModal}
+                  activeSectionIndex={activeSectionIndex}
+                  blocks={blocks}
+                  sections={sections}/>
+              </TabPane>
+
+              <TabPane id="op-blocks" active={activeTab}>
+                <BlockCollection blocks={blocks}/>
+              </TabPane>
+
+              <TabPane id='op-menu' active={activeTab}>
+                <Menu sections={sections}/>
+              </TabPane>
+
+              <TabPane id='op-contents' active={activeTab}>
+                {sectionEditable ?
+                  <SectionControls
+                    update={update}
+                    title={sections[activeSectionIndex].title}
+                    sectionSettings={sectionSettings}
+                    sectionIndex={activeSectionIndex}/> :
+
+                  <h2>please select a section</h2>
+                }
+              </TabPane>
+
+              <TabPane id='op-settings' active={activeTab}>
+                <Settings pagUpdate={pagUpdate} whenSettingsDirty={this.whenSettingsDirty}/>
+              </TabPane>
+
+              {/* {activeTab === "op-sections" ? <Footer /> : null } */}
+
             </div>
-            <div className="uk-navbar-right">
-              {
-                activeTab === 'op-settings' ?
-                  // <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave}
-                  <button disabled={!isSettingsDirty} onClick={this.handlePageSettingsSave}
-                          className='uk-button uk-button-primary uk-button-small'>
-                    <span className={saveButtonIcon}></span> Update
-                  </button> :
-                  <button disabled={!isDirty} onClick={this.handleSave} className='uk-button uk-button-primary uk-button-small'>
-                    <span className={saveButtonIcon}></span> Update
-                  </button>
-              }
+          </main>
+          
+          <footer className="op-footer-wrapper uk-position-bottom">
+            {! onepagerProLoaded ? 
+            <div className="upgrade-to-pro">
+              <p>Unlock more layouts, blocks and features you could imagine.</p>
+              <a href={proUpgradeLink} target="_blank">
+                Upgrade to PRO
+              </a>
             </div>
-          </nav>
-        </footer>
-        
-        <div className="op-sidebar-control" onClick={this.collapseSidebar}>
-          <span className={classes}></span>
+            : null}
+            
+            <nav className="uk-navbar uk-navbar-container">
+              <div className="uk-navbar-left"><a href={dashboardUrl}>Exit to Dashboard</a></div>
+              <div className="responsive-check-panel">
+                <a href="#" onClick={this.handleResponsiveToggle}><i className="fa fa-desktop responsive-check-button"></i></a> 
+                <ul className="responsive-devices">
+                  <li onClick={() => this.handleResponsiveFrame('desktop')}><i className="fa-fw fa fa-desktop"></i> Desktop</li>
+                  <li onClick={() => this.handleResponsiveFrame('tablet')}><i className="fa-fw fa fa-tablet"></i> Tablet (768px)</li>
+                  <li onClick={() => this.handleResponsiveFrame('mobile')}><i className="fa-fw fa fa-mobile-phone"></i> Mobile (360px)</li>
+                </ul>
+              </div>
+              <div className="uk-navbar-right">
+                {
+                  activeTab === 'op-settings' ?
+                    // <button disabled={!isSettingsDirty} onClick={this.handleGlobalSettingsSave}
+                    <button disabled={!isSettingsDirty} onClick={this.handlePageSettingsSave}
+                            className='uk-button uk-button-primary uk-button-small'>
+                      <span className={saveButtonIcon}></span> Update
+                    </button> :
+                    <button disabled={!isDirty} onClick={this.handleSave} className='uk-button uk-button-primary uk-button-small'>
+                      <span className={saveButtonIcon}></span> Update
+                    </button>
+                }
+              </div>
+            </nav>
+          </footer>
+          
+          <div className="op-sidebar-control" onClick={this.collapseSidebar}>
+            <span className={classes}></span>
+          </div>
         </div>
+        
+        <div className="popup-modal">
+          <PopupModal blocks={blocks}/>
+        </div>
+
       </div>
+
     );
   }
 });

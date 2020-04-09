@@ -1,0 +1,37 @@
+.builder-wrapper{
+    .popup-modal{
+        position: absolute;
+        left:0;
+        right:0;
+        width:100%;
+        height:100%;
+        margin:0 auto;
+        top:0px;
+        height:100vh;
+        z-index: 99999;
+        overflow: auto;
+        background:rgba(0, 0, 0, 0.5);
+        display:flex;
+        align-items: center;
+        display:none;
+        .popup-modal-wrapper{
+            height:90vh;
+            width:70%;
+            margin:0 auto;
+            background:white;
+            overflow:auto;
+            .block-collection-wrapper{
+                padding:30px;
+                .block-collection-list{
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    grid-gap: 20px;
+                }
+            }
+        }
+        
+    }
+    .popup-modal.open{
+        display:flex;
+    }
+}
