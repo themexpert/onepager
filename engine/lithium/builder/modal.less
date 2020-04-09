@@ -19,13 +19,73 @@
             width:70%;
             margin:0 auto;
             background:white;
-            overflow:auto;
+            overflow:hidden;
+            border-radius:5px;
+            .topbar{
+                display:grid;
+                grid-auto-flow: column;
+                grid-template-columns: 0.2fr 1fr 0.2fr ;
+                background:#e3e3e3;
+                padding:10px;
+                .logo{
+                    b{
+                        font-size:16px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+                }
+                .tab{
+                    ul{
+                        text-align: center;
+                        display:flex;
+                        margin:0;
+                        padding:0;
+                        align-items: center;
+                        justify-content: center;
+                        li{
+                            display:inline-block;
+                            list-style-type: none;
+                            margin:0px 15px;
+                            padding:3px 15px;
+                            transition:all 0.3s ease;
+                            background:transparent;
+                            border:solid 1px transparent;
+                            border-radius: 2px;
+                            cursor: pointer;
+                            &:hover{
+                                background:white;
+                                border-color: #c8c8c8;
+
+                            }
+                        }
+                    }
+                }
+                .right{
+                    text-align: right;
+                }
+            }
             .block-collection-wrapper{
                 padding:30px;
+                height: 90vh;
+                overflow: auto;
+                .form-group{
+                    width:200px;
+                }
                 .block-collection-list{
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
                     grid-gap: 20px;
+                }
+            }
+            .bottom-bar{
+                text-align: center;
+                background:#e3e3e3;
+                padding:30px;
+                margin-bottom:30px;
+                h4{
+                    margin: 0;
+                    font-weight: bold;
+                    font-size:16px;
                 }
             }
         }

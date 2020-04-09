@@ -14,11 +14,23 @@ let PopupModal = React.createClass({
         return (
             <div className="popup-modal-wrapper">
                 <div className="topbar">
-                    <h2>hello popup modal</h2>
-                    <button onClick={this.handleClosePopup}>close</button>
+                    <div className="logo"><b>Onepager</b></div>
+                    <div className="tab">
+                        <ul>
+                            <li>Blocks</li>
+                            <li>Pages</li>
+                            <li>My Templates</li>
+                        </ul>
+                    </div>
+                    <div className="right">
+                        <button onClick={this.handleClosePopup}>close</button>
+                    </div>
                 </div>
                 <div className="block-collection-wrapper">
                     <BlockCollection blocks={blocks}/>
+                    <div className="bottom-bar">
+                        <h4>We are developing more blocks. Stay tuned.</h4>
+                    </div>
                 </div>
             </div>
         );
