@@ -66,7 +66,11 @@ function tx_add_onepager_metabox() {
 			compact( 'onepagerLayouts', 'post', 'groups', 'sections', 'editorUrl' )
 		);
 	};
-
+	
+	/**
+	 * Add meta box syntax
+	 * add_meta_box($id, $title, $callback, $screen, $context, $priority, $callback_args) 
+	 */
 	add_meta_box(
 		'onepager_meta',
 		__( 'OnePager', 'onepager' ),
