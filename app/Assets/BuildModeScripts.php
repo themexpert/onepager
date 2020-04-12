@@ -65,6 +65,7 @@ class BuildModeScripts
         }, onepager()->section()->getAllValid($pageId));
 
         $disableBuildModeUrl = onepager_get_edit_mode_url(get_current_page_url(), false);
+        $preview_link = get_preview_post_link($this->getCurrentPageId());
 
         $optionPanel = onepager()->optionsPanel('onepager')->getOptionsControls();
         $pageOptionPanel = onepager()->optionsPanel('onepager')->getPageOptionsControls($pageId);
@@ -99,7 +100,8 @@ class BuildModeScripts
             'onepagerProLoaded',
             'proUpgradeLink',
             'getUpdatePlugins',
-            'pluginUpdateUrl'
+            'pluginUpdateUrl',
+            'preview_link'
         );
     }
 

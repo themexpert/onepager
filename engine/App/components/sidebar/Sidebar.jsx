@@ -206,6 +206,7 @@ let Sidebar = React.createClass({
     let isSettingsDirty = this.state.isSettingsDirty;
     let {isDirty} = this.props;
     let buildModeUrl = ODataStore.disableBuildModeUrl;
+    let previewLink = ODataStore.preview_link;
     let dashboardUrl = ODataStore.dashboardUrl;
     let getUpdatePlugins = ODataStore.getUpdatePlugins;
     let pluginUpdateUrl = ODataStore.pluginUpdateUrl;
@@ -239,7 +240,7 @@ let Sidebar = React.createClass({
                   <a className="new-update-status" href={pluginUpdateUrl}>New Update Available</a>
                   : null
                 }
-                <a href={buildModeUrl} target="_blank" className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
+                <a href={previewLink} target="_blank" className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
                   View
                 </a>
                 <a href={buildModeUrl} className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
