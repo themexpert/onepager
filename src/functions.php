@@ -7,6 +7,11 @@
  */
 if ( ! function_exists( 'array_find_by' ) ) {
 	function array_find_by( $collection, $key, $value ) {
+		/**
+		 * return the first match key from array column
+		 * return integer if match 
+		 * otherwise return boolean false
+		 */
 		$foundKey = array_search( $value, array_column( $collection, $key ) );
 		if ( is_bool( $foundKey ) ) {
 			return false;
