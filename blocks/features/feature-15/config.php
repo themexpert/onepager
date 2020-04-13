@@ -2,7 +2,7 @@
 return array(
     'slug'      => 'feature-15',
     'groups'    => array('features'),
-    'type'    => 'new',
+    'tag'    => 'new',
     'contents'  => array(
         array(
             'name'  => 'section_title',

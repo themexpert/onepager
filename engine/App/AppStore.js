@@ -7,6 +7,7 @@ const SectionTransformer = require('./../shared/onepager/sectionTransformer.js')
 const ShouldSync = require('../shared/lib/ShouldSync.js');
 const Activity = require('../shared/lib/Activity.js');
 const ODataStore = require('./../shared/onepager/ODataStore.js');
+console.log(ODataStore);
 const BaseStore = require('./flux/BaseStore.js');
 const AppActions = require('./flux/AppActions.js');
 const SyncService = require('./AppSyncService.js');
@@ -41,6 +42,7 @@ let _previewFrameLoaded = false;
 let _pageID = ODataStore.pageId;
 let _pageSettingOptions = ODataStore.pageSettingOptions;
 let _pageSettingOptionPanel = ODataStore.pageOptionPanel; // Need to remove this 
+let _savedTemplates = ODataStore.savedTemplates; // Need to remove this 
 let _collapseSidebar = localState.get('collapseSidebar', false);
 let _activeSectionIndex = _sections[localState.get('activeSectionIndex')] ? localState.get('activeSectionIndex') : null;
 let _sidebarTabState = _activeSectionIndex !== null ?
@@ -338,6 +340,7 @@ let AppStore = assign({}, BaseStore, {
       pageID: _pageID,
       pageSettingOptions: _pageSettingOptions,
       pageSettingOptionPanel: _pageSettingOptionPanel, // Need to remove this 
+      savedTemplates: _savedTemplates, // Need to remove this 
     };
   },
 

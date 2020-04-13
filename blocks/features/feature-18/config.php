@@ -3,7 +3,7 @@
 return array(
     'slug'  => 'feature-18',
     'groups'    => array('features'),
-    'type'    => 'new',
+    'tag'    => 'new',
     'contents'  => array(
         array(
             'name' => 'section_title',

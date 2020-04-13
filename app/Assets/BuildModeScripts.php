@@ -50,6 +50,8 @@ class BuildModeScripts
         $pages = $onepager->content()->getPages();
         $blocks = array_values((array) $onepager->blockManager()->all());
         $groupOrder = $onepager->blockManager()->getGroupOrder();
+        // $savedTemplates = $onepager->templatesManager()->getAllSavedTemplates();
+        $savedTemplates = $onepager->savedTemplates()->loadAllSavedTemplates();
         $woocategories = $onepager->content()->getWooCategories();
 
         $sections = array_map(function ($section) {
@@ -101,7 +103,8 @@ class BuildModeScripts
             'proUpgradeLink',
             'getUpdatePlugins',
             'pluginUpdateUrl',
-            'preview_link'
+            'preview_link',
+            'savedTemplates',
         );
     }
 

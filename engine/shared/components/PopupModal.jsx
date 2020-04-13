@@ -1,5 +1,6 @@
 const React = require('react');
 const BlockCollection = require('../../App/components/blocks/BlockCollection.jsx');
+const SavedTemplates = require('../../App/components/templates/SavedTemplates.jsx');
 
 let PopupModal = React.createClass({
     getInitialState(){
@@ -21,6 +22,7 @@ let PopupModal = React.createClass({
         console.log("rendering popup");
 
         let blocks = this.props.blocks;
+        let savedTemplates = this.props.savedTemplates;
     
         return (
             <div className="popup-modal-wrapper">
@@ -46,7 +48,7 @@ let PopupModal = React.createClass({
                             <h2>Pages</h2>
                         </div>
                         <div id="tab-my-template" className={'tab-my-template' === this.state.active ? 'tab-pane tab-my-template active' : 'tab-pane'}>
-                            <h2>My templates</h2>
+                            <SavedTemplates templates={savedTemplates}/>
                         </div>
 
                         <div className="bottom-bar">

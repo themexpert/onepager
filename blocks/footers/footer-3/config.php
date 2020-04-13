@@ -2,7 +2,7 @@
 
 return array(
     'slug' => 'footer-3',
-    'type'    => 'new',
+    'tag'    => 'update',
     'groups' => array('footers'),
     'contents' => array(
         array(

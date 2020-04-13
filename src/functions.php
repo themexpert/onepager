@@ -322,6 +322,39 @@ if(! function_exists('txop_fetch_user_templates')){
 		return $items;
 	}
 }
+
+/**
+ * fetch user templates from db
+ */
+if(! function_exists('txop_fetch_all_saved_templates')){
+	function txop_fetch_all_saved_templates($args = []){
+		global $wpdb;
+		/**
+		 * default agrs
+		 */
+		$defaults = [
+			'orderby' 	=> 'id',
+			'order'		=> 'DESC'
+		];
+		$args = wp_parse_args($args, $defaults);
+		/**
+		 * prepare sql statement
+		 */
+		$sql = $wpdb->prepare(
+				"SELECT * FROM {$wpdb->prefix}op_user_templates
+				ORDER BY %s %s",
+				$args['orderby'], $args['order']
+		);
+		/**
+		 * store the result to a variable
+		 */
+		$items = $wpdb->get_results( $sql );
+		/**
+		 * return the results
+		 */
+		return $items;
+	}
+}
 /**
  * get the total count of the user 
  * imported templates or save templates

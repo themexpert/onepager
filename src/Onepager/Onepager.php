@@ -5,6 +5,7 @@ use Pimple\Container;
 use ThemeXpert\Onepager\Adapters\BaseAdapter;
 use ThemeXpert\Onepager\Block\Collection;
 use ThemeXpert\Onepager\Block\BlockManager;
+use ThemeXpert\Onepager\Templates\SavedTemplates;
 use ThemeXpert\Onepager\Block\PresetManager;
 use ThemeXpert\Onepager\Block\Transformers\ConfigTransformer;
 use ThemeXpert\Onepager\Block\Transformers\FieldsTransformer;
@@ -16,6 +17,7 @@ use ThemeXpert\Providers\Contracts\AssetInterface;
 use ThemeXpert\Providers\Contracts\ContentInterface;
 use ThemeXpert\Providers\Contracts\NavigationMenuInterface;
 use ThemeXpert\Providers\Contracts\ToolbarInterface;
+// use ThemeXpert\Providers\Contracts\TemplatesInterface;
 use ThemeXpert\View\Engines\PhpEngine;
 use ThemeXpert\View\View;
 
@@ -29,6 +31,7 @@ class Onepager implements OnepagerInterface {
 		$this->setRenderer();
 		$this->setViewProvider();
 		$this->createUserTemplateTable();
+		$this->setAllSavedTemplates();
 	}
 
 	public function createUserTemplateTable(){
@@ -92,6 +95,14 @@ class Onepager implements OnepagerInterface {
 	}
 
 	/**
+	 * @return TemplatesInterface
+	 */
+	// public function templatesManager() {
+	// 	$container = $this->adapter->getContainer();
+	// 	return $container['templateManager'];
+	// }
+
+	/**
 	 * @return ContentInterface
 	 */
 	public function content() {
@@ -150,6 +161,20 @@ class Onepager implements OnepagerInterface {
 
 	public function render() {
 		return $this->container['render'];
+	}
+	/**
+	 * User saved templates initiate
+	 */
+	public function setAllSavedTemplates() {
+		return $this->container['savedTemplates'] =  function () {
+			return new SavedTemplates;
+		};
+	}
+	/**
+	 * Instantiate my templates functions
+	 */
+	public function savedTemplates() {
+		return $this->container['savedTemplates'];
 	}
 
 	public function optionsPanel( $menuSlug ) {

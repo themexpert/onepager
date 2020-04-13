@@ -4,7 +4,7 @@ return array(
 
 	'slug'      => 'slider-3', // Must be unique
 	'groups'    => array('sliders'), // Blocks group for filter
-    'type'    => 'new',
+    'tag'    => 'new',
   // Fields - $contents available on view file to access the option
   'contents' => array(
     array('label' => 'Slider Content', 'type' => 'divider'),
