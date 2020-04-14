@@ -25,16 +25,21 @@ let SavedTemplates = React.createClass({
     return (
       <div>
         <div className="template-collection-lists-wrapper">
-        <ul className="uk-list uk-list-striped">
-            <li>
-                <span>Name</span>
-                <span>Type</span>
-                <span>Created By</span>
-                <span>Created At</span>
-                <span>Action</span>
-            </li>
-          {templates.map(template => <Template template={template} />)}
-        </ul>
+        <table className="uk-table uk-table-divider">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Created By</th>
+                  <th>Created At</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+            {templates.map(template => <Template template={template} />)}
+          </tbody>
+        </table>
+        
         </div>
       </div>
     );

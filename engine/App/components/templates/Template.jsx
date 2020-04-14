@@ -17,13 +17,13 @@ let Template = React.createClass({
     let template = this.props.template;
 
     return (
-      <li>
-        <span className="name">{template.name}</span>
-        <span className="type">{template.type}</span>
-        <span className="user">{template.created_by === '1' ? 'Admin' : null}</span>
-        <span className="date">{template.created_at}</span>
-        <span className="insert"><button>Insert</button></span>
-      </li>
+      <tr>
+        <td className="name">{template.name}</td>
+        <td className="type">{template.type}</td>
+        <td className="user">{template.created_by === '1' ? 'Admin' : null}</td>
+        <td className="date">{template.created_at}</td>
+        <td className="insert"><button>Insert</button></td>
+      </tr>
     );
   }
 });
