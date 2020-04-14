@@ -13,6 +13,7 @@ class PresetManager {
 	}
 
 	public function add( $file, $url, $groups = array() ) {
+		
 		$config = json_decode( file_get_contents( $file ), true );
 		if ( ! is_array( $config ) ) {
 			return;

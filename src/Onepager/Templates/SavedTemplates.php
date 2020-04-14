@@ -10,6 +10,11 @@ class SavedTemplates {
 		$templates = txop_fetch_all_saved_templates();
 		return $templates;
 	}
+	public function loadAllPagePresets(  ) {
+		$pagePresets = onepager()->presetManager()->all();
+		;
+		return $pagePresets;
+	}
 
 	
 }

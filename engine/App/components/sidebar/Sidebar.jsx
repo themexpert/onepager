@@ -182,7 +182,7 @@ let Sidebar = React.createClass({
   },
 
   render() {
-    let {sections, blocks, activeSectionIndex, activeSection, pageSettingOptions, savedTemplates} = this.props;
+    let {sections, blocks, activeSectionIndex, activeSection, pageSettingOptions, savedTemplates, pagePresets} = this.props;
     let sectionEditable = activeSectionIndex !== null;
     let activeTab = this.props.sidebarTabState.active;
     let sectionSettings = activeSection ? _.pick(activeSection, ['settings', 'contents', 'styles']) : {};
@@ -336,7 +336,7 @@ let Sidebar = React.createClass({
         </div>
         
         <div className="popup-modal">
-          <PopupModal blocks={blocks} savedTemplates={savedTemplates}/>
+          <PopupModal blocks={blocks} savedTemplates={savedTemplates} pagePresets={pagePresets}/>
         </div>
 
       </div>

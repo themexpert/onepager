@@ -48,6 +48,9 @@ function tx_get_preset_group_class( $group ) {
 function tx_add_onepager_metabox() {
 	$template = function ( $post ) {
 		$onepagerLayouts = onepager()->presetManager()->all();
+		echo '<pre>';
+		var_dump ($onepagerLayouts);
+		echo '</pre>';
 		$groups          = array_unique(
 			array_reduce(
 				$onepagerLayouts,

@@ -1,5 +1,6 @@
 const React = require('react');
 const BlockCollection = require('../../App/components/blocks/BlockCollection.jsx');
+const PresetCollections = require('../../App/components/presets/PresetCollections.jsx');
 const SavedTemplates = require('../../App/components/templates/SavedTemplates.jsx');
 
 let PopupModal = React.createClass({
@@ -22,6 +23,7 @@ let PopupModal = React.createClass({
         console.log("rendering popup");
 
         let blocks = this.props.blocks;
+        let pagePresets = this.props.pagePresets;
         let savedTemplates = this.props.savedTemplates;
     
         return (
@@ -45,7 +47,7 @@ let PopupModal = React.createClass({
                             <BlockCollection blocks={blocks}/>
                         </div>
                         <div id="tab-page" className={'tab-page' === this.state.active ? 'tab-pane tab-page active' : 'tab-pane'}>
-                            <h2>Pages</h2>
+                            <PresetCollections pagePresets={pagePresets}/>
                         </div>
                         <div id="tab-my-template" className={'tab-my-template' === this.state.active ? 'tab-pane tab-my-template active' : 'tab-pane'}>
                             <SavedTemplates templates={savedTemplates}/>
