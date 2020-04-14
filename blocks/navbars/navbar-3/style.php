@@ -14,7 +14,7 @@
     transition: 400ms ease-in-out;
 }
 
-#<?php echo $id;?> .center-menu-wrapper li a:hover{
+#<?php echo $id;?> .center-menu-wrapper li a:hover, #<?php echo $id;?> .center-menu-wrapper li.uk-active a{
     color: <?php echo $styles['menu_font_hover_color']; ?>;
 }
 
@@ -28,7 +28,7 @@
     transition: 400ms ease-in-out;
 }
 
-#<?php echo $id;?> .center-menu-wrapper li a:hover::after {
+#<?php echo $id;?> .center-menu-wrapper li a:hover::after, #<?php echo $id;?> .center-menu-wrapper li.uk-active a::after {
     width: 100%;
 }
 
