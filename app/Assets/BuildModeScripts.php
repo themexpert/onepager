@@ -41,6 +41,7 @@ class BuildModeScripts
     {
         $onepager = onepager();
 
+        $pagePresets = onepager()->presetManager()->all();
         $footer = get_editor_section_list_footer();
         $ajaxUrl = $onepager->api()->getAjaxUrl();
         $getUpdatePlugins = $onepager->api()->getUpdatePlugins();
@@ -105,6 +106,7 @@ class BuildModeScripts
             'pluginUpdateUrl',
             'preview_link',
             'savedTemplates',
+            'pagePresets',
         );
     }
 

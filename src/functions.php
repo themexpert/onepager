@@ -334,7 +334,7 @@ if(! function_exists('txop_fetch_all_saved_templates')){
 		 */
 		$defaults = [
 			'orderby' 	=> 'id',
-			'order'		=> 'ASC'
+			'order'		=> 'DESC'
 		];
 		$args = wp_parse_args($args, $defaults);
 		/**

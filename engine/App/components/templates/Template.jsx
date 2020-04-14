@@ -18,6 +18,7 @@ let Template = React.createClass({
 
     return (
       <tr>
+        <td className="id">{template.id}</td>
         <td className="name">{template.name}</td>
         <td className="type">{template.type}</td>
         <td className="user">{template.created_by === '1' ? 'Admin' : null}</td>
