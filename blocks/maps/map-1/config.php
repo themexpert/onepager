@@ -15,7 +15,7 @@
             array(
                 'name'      => 'title',
                 'label'     => 'Heading',
-                'value'     => 'ThemesGroove',
+                'value'     => 'ThemesGrove',
             ),
             array(
                 'name'      => 'location',
@@ -51,12 +51,23 @@
             ),
             array(
                 'name'      => 'contact_position',
-                'label'     => 'Map Text Position',
+                'label'     => 'Map Text area Position',
                 'type'      => 'select',
                 'value'     => 'bottom',
                 'options'   => array(
                     'top'       => 'Top',
                     'bottom'    => 'Bottom'
+                )
+            ),
+            array(
+                'name'      => 'text_alignment',
+                'label'     => 'Text Alignment',
+                'type'      => 'select',
+                'value'     => 'center',
+                'options'   => array(
+                    'center'    => 'Center',
+                    'left'      => 'Left',
+                    'right'     => 'Right',
                 )
             ),
             array(
