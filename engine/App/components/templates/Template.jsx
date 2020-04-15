@@ -19,7 +19,7 @@ let Template = React.createClass({
     if(confirm){
       AppActions.mergeSections(this.props.template.data);
       //FIXME: return a promise from addSection then hook this success
-      notify.success('Template Added');
+      notify.success('Template Added Successfully');
       // AppStore.setTabState({active: 'op-contents'});
     }
   },
