@@ -84,6 +84,7 @@ function addSection(section) {
 
   //its a row section to need to uni(quei)fy
   section = SectionTransformer.unifySection(section);
+  debugger;
   _sections.push(section);
   setActiveSection(sectionIndex);
 

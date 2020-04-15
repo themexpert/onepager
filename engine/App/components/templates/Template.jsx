@@ -5,11 +5,24 @@ const AppStore = require('../../AppStore.js');
 
 import notify from '../../../shared/plugins/notify';
 
+
+
 let Template = React.createClass({
   mixins: [PureMixin],
 
   propTypes: {
     template: React.PropTypes.object
+  },
+
+  handleMergeSection() {
+    debugger;
+    var confirm = confirm('Are you sure');
+    if(confirm){
+      AppActions.mergeSection(this.props.template.data);
+      //FIXME: return a promise from addSection then hook this success
+      notify.success('template merged');
+      // AppStore.setTabState({active: 'op-contents'});
+    }
   },
 
   render() {
@@ -23,7 +36,7 @@ let Template = React.createClass({
         <td className="type">{template.type}</td>
         <td className="user">{template.created_by === '1' ? 'Admin' : null}</td>
         <td className="date">{template.created_at}</td>
-        <td className="insert"><button>Insert</button></td>
+        <td className="insert" onClick={this.handleMergeSection}><button>Insert</button></td>
       </tr>
     );
   }
