@@ -19,6 +19,13 @@ class BlocksScripts {
       $this->enqueueSectionBlocks( $sections );
     }
   }
+  /**
+   * convert sections from user save templates
+   */
+  public function convertSavedSections($sections){
+    $blocks = $this->getBlocksFromUsedSections( $sections );
+    return $blocks;
+  }
 
   public function enqueueSectionBlocks( $sections ) {
     $blocks = $this->getBlocksFromUsedSections( $sections );

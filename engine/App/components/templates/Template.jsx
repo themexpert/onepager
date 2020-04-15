@@ -16,9 +16,9 @@ let Template = React.createClass({
 
   handleMergeSection() {
     debugger;
-    var confirm = confirm('Are you sure');
+    var confirm = window.confirm('Are you sure ?');
     if(confirm){
-      AppActions.mergeSection(this.props.template.data);
+      AppActions.mergeSections(this.props.template.data);
       //FIXME: return a promise from addSection then hook this success
       notify.success('template merged');
       // AppStore.setTabState({active: 'op-contents'});

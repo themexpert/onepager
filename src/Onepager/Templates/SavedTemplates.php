@@ -1,4 +1,5 @@
 <?php namespace ThemeXpert\Onepager\Templates;
+use App\Assets\BlocksScripts;
 
 
 class SavedTemplates {
@@ -7,10 +8,13 @@ class SavedTemplates {
 	 * get all saved template from db
 	 */
 	public function loadAllSavedTemplates(  ) {
+		$blockScripts = new BlocksScripts();
+
 		$templates = txop_fetch_all_saved_templates();
-		$filteredTemplates = array_filter($templates, function($template){
-			$new_data = unserialize($template->data);
-			$template->data = $new_data;
+		$filteredTemplates = array_filter($templates, function($template) use($blockScripts){
+			$unserialize_data = unserialize($template->data);
+			$data = $blockScripts->convertSavedSections( $unserialize_data );
+			$template->data = $data;
 			return $template;
 		});
 		return $filteredTemplates;

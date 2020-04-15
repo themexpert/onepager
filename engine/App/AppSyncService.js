@@ -9,6 +9,7 @@ import {serializeSections}  from './../shared/onepager/sectionTransformer';
 function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
   let updateSection = function (sections, sectionIndex) {
+    // debugger;
     let payload = {
       pageId  : pageId,
       action  : 'onepager_save_sections',

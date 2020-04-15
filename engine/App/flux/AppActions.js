@@ -12,6 +12,11 @@ module.exports = {
 		dispatcher.handleViewAction( {type, section} );
 	},
 
+	mergeSections( sections ) {
+		let type = actions.MERGE_SECTIONS;
+		dispatcher.handleViewAction( {type, sections} );
+	},
+
 	activateSection( index ){
 		let type = actions.ACTIVATE_SECTION;
 		dispatcher.handleViewAction( {type, index} );

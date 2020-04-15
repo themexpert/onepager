@@ -5,6 +5,7 @@ module.exports = {
 		{
 			ADD_TASK         : null,
 			ADD_SECTION      : null,
+			MERGE_SECTIONS   : null,
 			REMOVE_SECTION   : null,
 			EDIT_SECTION     : null,
 			ACTIVATE_SECTION : null,

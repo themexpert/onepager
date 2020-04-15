@@ -91,6 +91,19 @@ function addSection(section) {
   liveService.updateSection(_sections, sectionIndex);
 }
 
+// function to add a section
+function mergeSections(sections) {
+  debugger;
+  let sectionIndex = _sections.length; //isn't it :p
+
+  //its a row section to need to uni(quei)fy
+  // section = SectionTransformer.unifySection(section);
+  // debugger;
+  // _sections.push(section);
+  // setActiveSection(sectionIndex);
+
+  // liveService.updateSection(_sections, sectionIndex);
+}
 
 // function to update a section
 function updateSection(sectionIndex, section) {
@@ -249,6 +262,11 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
   switch (action.type) {
     case actions.ADD_SECTION:
       addSection(action.section);
+      emitChange();
+      break;
+
+    case actions.MERGE_SECTIONS:
+      mergeSections(action.sections);
       emitChange();
       break;
 
