@@ -25,6 +25,32 @@ class SectionsApiController extends ApiController {
 			$this->responseSuccess( $response );
 		}
 	}
+	/**
+	 * Merge section 
+	 * for saved templates
+	 * while insert from popup modal
+	 */
+	public function mergeSections() {
+		$sections = array_get( $_POST, 'sections', [] ) ?: []; // making sure its an array
+		$pageId = array_get( $_POST, 'pageId', false );
+
+		$sections = $this->filterInput( $sections );
+
+		if ( $pageId ) {
+			onepager()->section()->save( $pageId, $sections );
+			$this->buildOnepageScripts( $sections, $pageId );
+
+			$this->responseSuccess( ['message' => 'compiled assets'] );
+		}
+		else {
+			$finalOutput = [];
+			foreach ($sections as $section ) {
+				$response = $this->prepareSectionWithContentAndStyle( $section );
+				array_push($finalOutput, $response);
+			}
+			$this->responseSuccess( $finalOutput );
+		}
+	}
 
 	public function getSections() {
 		$pageId = array_get( $_POST, 'pageId', false );

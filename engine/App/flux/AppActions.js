@@ -72,6 +72,11 @@ module.exports = {
 		dispatcher.handleViewAction( {type, index, res} );
 	},
 
+	sectionsShouldSynced( res ){
+		let type = actions.SECTIONS_SHOULD_SYNCED;
+		dispatcher.handleViewAction( {type, res} );
+	},
+
 	previewFrameLoaded(){
 		let type = actions.PREVIEW_FRAME_LOADED;
 		dispatcher.handleViewAction( {type} );

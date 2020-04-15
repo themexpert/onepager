@@ -15,12 +15,11 @@ let Template = React.createClass({
   },
 
   handleMergeSection() {
-    debugger;
     var confirm = window.confirm('Are you sure ?');
     if(confirm){
       AppActions.mergeSections(this.props.template.data);
       //FIXME: return a promise from addSection then hook this success
-      notify.success('template merged');
+      notify.success('Template Added');
       // AppStore.setTabState({active: 'op-contents'});
     }
   },

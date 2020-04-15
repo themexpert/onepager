@@ -9,6 +9,7 @@ if ( is_admin() && defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 	$apiRouter->post( 'onepager_add_menu', 'App\Api\Controllers\MenuApiController@addMenu' );
 
 	$apiRouter->post( 'onepager_save_sections', 'App\Api\Controllers\SectionsApiController@saveSections' );
+	$apiRouter->post( 'onepager_merge_sections', 'App\Api\Controllers\SectionsApiController@mergeSections' );
 	$apiRouter->post( 'onepager_get_sections', 'App\Api\Controllers\SectionsApiController@getSections' );
 	$apiRouter->post( 'onepager_reload_sections', 'App\Api\Controllers\SectionsApiController@reloadSections' );
 

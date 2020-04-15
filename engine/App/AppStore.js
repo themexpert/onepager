@@ -84,25 +84,24 @@ function addSection(section) {
 
   //its a row section to need to uni(quei)fy
   section = SectionTransformer.unifySection(section);
-  debugger;
   _sections.push(section);
   setActiveSection(sectionIndex);
 
   liveService.updateSection(_sections, sectionIndex);
 }
 
-// function to add a section
+/**
+ * 
+ * @param {section} 
+ * section those are comes from saved template
+ * all section that will be merged
+ */
 function mergeSections(sections) {
-  debugger;
-  let sectionIndex = _sections.length; //isn't it :p
-
-  //its a row section to need to uni(quei)fy
-  // section = SectionTransformer.unifySection(section);
-  // debugger;
-  // _sections.push(section);
-  // setActiveSection(sectionIndex);
-
-  // liveService.updateSection(_sections, sectionIndex);
+  sections.forEach(section => {
+    section = SectionTransformer.unifySection(section);
+    _sections.push(section);
+  });
+  liveService.mergeSections(_sections);
 }
 
 // function to update a section
@@ -227,6 +226,24 @@ function sectionSynced(index, res) {
   section.style = res.style;
 }
 
+function sectionAgainSynced(res, index) {
+  if(Number.isInteger(+index)){
+    let section;
+    _sections[index] = toolbelt.copy(_sections[index]);
+    section = _sections[index];
+    section.content = stripClassesFromHTML(section.livemode, res.content);
+    section.style = res.style;
+  }
+}
+/**
+ * after convert the data 
+ * from routes asyn operation
+ * @param {res} res 
+ */
+function sectionShouldSynced(res){
+  Object.entries(res).forEach( ([index, res]) => sectionAgainSynced(res, index))
+}
+
 function emitChange(){
   AppStore.emitChange();
 }
@@ -302,6 +319,11 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
 
     case actions.SECTIONS_SYNCED:
       sectionSynced(action.index, action.res);
+      emitChange();
+      break;
+
+    case actions.SECTIONS_SHOULD_SYNCED:
+      sectionShouldSynced(action.res);
       emitChange();
       break;
 

@@ -39,6 +39,35 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     ]);
   };
 
+  let mergeSections = function (sections) {
+    let payload = {
+      pageId  : pageId,
+      action  : 'onepager_merge_sections',
+      sections: serializeSections(sections)
+    };
+
+    let sync = function () {
+      $.post(ODataStore.ajaxUrl, payload, (res)=> {
+        if (!res || !res.success) {
+          return notify.error('Unable to sync. Make sure you are logged in');
+        }
+        //else
+        AppActions.sectionsShouldSynced(res);
+
+        if (pageId) {
+          notify.success('Sync Successful');
+        }
+
+      });
+    };
+
+    async.series([
+      (pass)=> inactive().then(pass, (err)=>console.log(err)),
+      (pass)=> shouldSectionsSync(sections).then(pass),
+      (pass)=> sync(pass)
+    ]);
+  };
+
   let rawUpdate = function (sections) {
 
     return new Promise((resolve, reject)=> {
@@ -156,6 +185,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     reloadSections,
     reloadBlocks,
     updateSection,
+    mergeSections,
     rawUpdate,
     updatePageSettings,
     pageSyncServiceLive
