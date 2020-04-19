@@ -28,7 +28,7 @@ let SavedTemplates = React.createClass({
         <table className="uk-table uk-table-divider">
           <thead>
               <tr>
-                  <th>ID</th>
+                  {/* <th>ID</th> */}
                   <th>Name</th>
                   <th>Type</th>
                   <th>Created By</th>

@@ -15,7 +15,7 @@ let Template = React.createClass({
   },
 
   handleMergeSection() {
-    var confirm = window.confirm('Are you sure ?');
+    var confirm = window.confirm('Merge with your page ?');
     if(confirm){
       AppActions.mergeSections(this.props.template.data);
       //FIXME: return a promise from addSection then hook this success
@@ -30,12 +30,12 @@ let Template = React.createClass({
 
     return (
       <tr>
-        <td className="id">{template.id}</td>
+        {/* <td className="id">{template.id}</td> */}
         <td className="name">{template.name}</td>
         <td className="type">{template.type}</td>
         <td className="user">{template.created_by === '1' ? 'Admin' : null}</td>
         <td className="date">{template.created_at}</td>
-        <td className="insert" onClick={this.handleMergeSection}><button>Insert</button></td>
+        <td className="insert" onClick={this.handleMergeSection}><button className="uk-button uk-button-primary uk-button-small">Insert</button></td>
       </tr>
     );
   }
