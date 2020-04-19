@@ -4,6 +4,7 @@ if ( ! Onepager::isWooCommerceInstalled() ) {
 	return;
 }
 
+
 	// title animation
 	$title_animation = ( $settings['title_animation'] ) ? 'uk-scrollspy="cls:uk-animation-' . $settings['title_animation'] . ';"' : '';
 	// title alignment
@@ -12,24 +13,55 @@ if ( ! Onepager::isWooCommerceInstalled() ) {
 	// title animation
 	$item_animation = ( $settings['item_animation'] ) ? 'uk-scrollspy="cls: uk-animation-' . $settings['item_animation'] . '; target: > div > .uk-card; delay: 300;"' : '';
 
+	$mcq  = WC()->query->get_meta_query();
+	$mcq[] = array(
+		'key'     => '_featured',
+		'value'   => 'yes',
+	);
 	// Woo Arguments
 	$args = array(
 		'post_type'             => 'product',
 		'post_status'           => 'publish',
 		'posts_per_page'        => $contents['num_products'],
+		'order'					=> 'DESC',
 		'tax_query'             => array(
-			array(
-				'taxonomy'      => 'product_cat',
-				'terms'         => $contents['category'],
-			),
 			array(
 				'taxonomy'      => 'product_visibility',
 				'field'         => 'slug',
 				'terms'         => 'exclude-from-catalog', // Possibly 'exclude-from-search' too
 				'operator'      => 'NOT IN',
 			),
-		),
+		)
 	);
+	if($contents['prod_options'] === 'featured_prod'){
+		$args['post__in'] = wc_get_featured_product_ids();
+	} elseif ($contents['prod_options'] === 'best_selling') {
+		$args['meta_key'] = 'total_sales';
+		$args['orderby'] = 'meta_value_num';
+	} elseif ($contents['prod_options'] === 'sale_prod') {
+		$args['meta_query'] = array(
+			'relation' => 'OR',
+			array( // Simple products type
+				'key'           => '_sale_price',
+				'value'         => 0,
+				'compare'       => '>',
+				'type'          => 'numeric'
+			),
+			array( // Variable products type
+				'key'           => '_min_variation_sale_price',
+				'value'         => 0,
+				'compare'       => '>',
+				'type'          => 'numeric'
+			)
+		);
+	} 
+	
+	if($contents['category']){
+		$args['tax_query'][0] = array(
+			'taxonomy'      => 'product_cat',
+			'terms'			=> $contents['category']
+		);
+	}
 	// Build query
 	$query = new WP_Query( $args );
 
@@ -83,7 +115,7 @@ if ( ! Onepager::isWooCommerceInstalled() ) {
 									<?php endif; ?>
 
 									<?php if ( $contents['add_to_cart'] ) : ?>
-										<?php do_action( 'op-woo-add-to-cart-button' ); ?>
+										<?php do_action( 'op-woo-add-to-cart-button'); ?>
 									<?php endif; ?>
 
 								</div> <!-- uk-card-body -->
