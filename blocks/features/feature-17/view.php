@@ -18,14 +18,16 @@
                             );
                         ?>
                         <p><?php echo $contents['section_desc'];?></p>
-                        <div class="form-wrapper uk-padding-large">
-                            <?php if($contents['form_shortcode']){
-                                echo do_shortcode($contents['form_shortcode']);
-                            } else{
-                                echo '<h3 class="tg-notice"> "N.B. Please use form shortcode."</h3>';
-                            }
-                             ?>
-                        </div>
+                        
+                        <?php if($contents['form_shortcode']):?>
+                            <div class="form-wrapper uk-padding-large">
+                                <?php echo do_shortcode($contents['form_shortcode']); ?>
+                            </div>
+                        <?php else: ?>
+                            <?php if(null === txop_check_dependent_plugin('contact-form-7', 'wp-contact-form-7.php', 'free')): ?>
+                                <h2><?php echo txop_error_checking('shortcode'); ?></h2>
+                            <?php endif; ?>
+                        <?php endif;?>
                         <div class="social-icons-wrapper uk-flex uk-flex-center uk-margin-medium-top">
                             <?php foreach($contents['social_icons'] as $single_icon): ?>
                                 <a target="_blank" href="<?php echo $single_icon['social_link']?>">

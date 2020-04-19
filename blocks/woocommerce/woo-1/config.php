@@ -27,6 +27,18 @@ return array(
 			'value' => '6',
 		),
 		array(
+			'name'		=> 'prod_options',
+			'label'		=> 'Product Options',
+			'type'		=> 'select',
+			'value'		=> 'recent_prod',
+			'options'	=> array(
+				'recent_prod'		=> 'Recent Product',
+				'featured_prod'		=> 'Featured Product',
+				'best_selling'		=> 'Best Selling Product',
+				'sale_prod'			=> 'Sale Product'
+			)
+		),
+		array(
 			'name' => 'columns',
 			'label' => 'Columns',
 			'type' => 'select',
@@ -79,7 +91,7 @@ return array(
 			'name'   => 'section_title_size',
 			'label'  => 'Title Size',
 			'append' => 'px',
-			'value'  => '@section_title_size',
+			'value'  => '60',
 		),
 		array(
 			'name'     => 'title_transformation',
@@ -222,7 +234,7 @@ return array(
 			'name'    => 'button_text_color',
 			'label'   => 'Button Text Color',
 			'type'    => 'colorpicker',
-			'value'   => '#fff',
+			'value'   => '#323232',
 		),
 	),
 

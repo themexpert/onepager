@@ -44,5 +44,8 @@
         <?php $settings['title_font_size'] ? 'font-size: ' . ($settings['title_font_size'] / 2) . 'px' : ''?>;
         <?php $settings['title_font_size'] ? 'line-height: ' . ($settings['title_font_size'] / 2) . 'px' : ''?>;
     }
+    #<?php echo $id; ?> a.uk-button-primary{
+        padding: 0 30px;
+    }
 
 }

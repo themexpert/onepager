@@ -75,5 +75,8 @@
         <?php echo $settings['title_size'] ? 'line-height: ' . (($settings['title_size'] / 2) + 15) . 'px' : ''; ?>;
 
     }
+    #<?php echo $id; ?> .image-wrapper a img{
+        width: 100%;
+    }
 
 }
