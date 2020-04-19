@@ -32,7 +32,7 @@ let Sidebar = React.createClass({
   componentDidMount(){
     this._unsavedAlert();
     this._initNiceScroll();
-    $('body #onepager-preview').find('iframe#onepager-iframe').wrap("<div id='preview-frame-wrapper'></div>");
+    // $('body #onepager-preview').find('iframe#onepager-iframe').wrap("<div id='preview-frame-wrapper'></div>");
 
   },
 
