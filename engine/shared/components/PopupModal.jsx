@@ -23,7 +23,7 @@ let PopupModal = React.createClass({
         console.log("rendering popup");
 
         let blocks = this.props.blocks;
-        let pagePresets = this.props.pagePresets;
+        // let pagePresets = this.props.pagePresets;
         let savedTemplates = this.props.savedTemplates;
     
         return (
@@ -33,7 +33,7 @@ let PopupModal = React.createClass({
                     <div className="tab">
                         <ul className="tx-nav tx-nav-tabs">
                             <li onClick={this.handleTab} id="tab-block" className={'tab-block' === this.state.active ? 'tab-block active' : null} > Blocks </li>
-                            <li onClick={this.handleTab} id="tab-page" className={'tab-page' === this.state.active ? 'tab-page active' : null} >Pages</li>
+                            {/* <li onClick={this.handleTab} id="tab-page" className={'tab-page' === this.state.active ? 'tab-page active' : null} >Pages</li> */}
                             <li onClick={this.handleTab} id="tab-my-template" className={'tab-my-template' === this.state.active ? 'tab-my-template active' : null}>My Templates</li>
                         </ul>
                     </div>
@@ -47,7 +47,7 @@ let PopupModal = React.createClass({
                             <BlockCollection blocks={blocks}/>
                         </div>
                         <div id="tab-page" className={'tab-page' === this.state.active ? 'tab-pane tab-page active' : 'tab-pane'}>
-                            <PresetCollections pagePresets={pagePresets}/>
+                            {/* <PresetCollections pagePresets={pagePresets}/> */}
                         </div>
                         <div id="tab-my-template" className={'tab-my-template' === this.state.active ? 'tab-pane tab-my-template active' : 'tab-pane'}>
                             <SavedTemplates templates={savedTemplates}/>

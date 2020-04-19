@@ -336,7 +336,8 @@ let Sidebar = React.createClass({
         </div>
         
         <div className="popup-modal">
-          <PopupModal blocks={blocks} savedTemplates={savedTemplates} pagePresets={pagePresets}/>
+          {/* <PopupModal blocks={blocks} savedTemplates={savedTemplates} pagePresets={pagePresets}/> */}
+          <PopupModal blocks={blocks} savedTemplates={savedTemplates}/>
         </div>
 
       </div>
