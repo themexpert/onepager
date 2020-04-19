@@ -106,7 +106,7 @@ class BuildModeScripts
             'pluginUpdateUrl',
             'preview_link',
             'savedTemplates',
-            'pagePresets',
+            'pagePresets'
         );
     }
 

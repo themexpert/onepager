@@ -35,7 +35,7 @@ class TXOP_Admin_Menu{
 			__( 'Dashboard', 'onepager' ),
 			'manage_options',
 			'onepager',
-			[$this, 'op_dashboard_view'],
+			[$this, 'op_dashboard_view']
 		);
 	}
 	/**
@@ -76,7 +76,7 @@ class TXOP_Admin_Menu{
 			__('Templates', 'onepager'),
 			'manage_options',
 			'onepager-templates',
-			[$this, 'txop_onepager_templates'],
+			[$this, 'txop_onepager_templates']
 		);
 		
 		add_submenu_page(
