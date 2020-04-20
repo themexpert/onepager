@@ -24,4 +24,8 @@
     #<?php echo $id;?> .contact-details {
         padding-left: 0;
     }
+
+    #<?php echo $id;?>  .contact-wrapper {
+        flex-direction: column;
+    }
 }
