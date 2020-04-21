@@ -13,8 +13,8 @@ class SavedTemplates {
 		$templates = txop_fetch_all_saved_templates();
 		$filteredTemplates = array_filter($templates, function($template) use($blockScripts){
 			$unserialize_data = unserialize($template->data);
-			$data = $blockScripts->convertSavedSections( $unserialize_data );
-			$template->data = $data;
+			// $data = $blockScripts->convertSavedSections( $unserialize_data );
+			$template->data = $unserialize_data;
 			return $template;
 		});
 		return $filteredTemplates;

@@ -34,7 +34,11 @@ class SectionsApiController extends ApiController {
 		$sections = array_get( $_POST, 'sections', [] ) ?: []; // making sure its an array
 		$pageId = array_get( $_POST, 'pageId', false );
 
-		$sections = $this->filterInput( $sections );
+		/**
+		 * return only id, name slug
+		 */
+		// $sections = $this->filterInput( $sections );
+
 
 		if ( $pageId ) {
 			onepager()->section()->save( $pageId, $sections );

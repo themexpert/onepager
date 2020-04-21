@@ -43,7 +43,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     let payload = {
       pageId  : pageId,
       action  : 'onepager_merge_sections',
-      sections: serializeSections(sections)
+      sections: sections
     };
 
     let sync = function () {

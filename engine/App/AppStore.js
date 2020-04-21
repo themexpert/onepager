@@ -97,8 +97,16 @@ function addSection(section) {
  * all section that will be merged
  */
 function mergeSections(sections) {
-  sections.forEach(section => {
-    section = SectionTransformer.unifySection(section);
+  let passedSection;
+  
+  if('object' == typeof sections){
+    passedSection = Object.keys(sections).map(function (key) { 
+      return sections[key]; 
+    }); 
+  }
+
+  passedSection.forEach(section => {
+    // section = SectionTransformer.unifySection(section);
     _sections.push(section);
   });
   liveService.mergeSections(_sections);
@@ -233,6 +241,9 @@ function sectionAgainSynced(res, index) {
     section = _sections[index];
     section.content = stripClassesFromHTML(section.livemode, res.content);
     section.style = res.style;
+    section.settings = res.settings;
+    section.contents = res.contents;
+    section.styles = res.styles;
   }
 }
 /**
@@ -241,7 +252,8 @@ function sectionAgainSynced(res, index) {
  * @param {res} res 
  */
 function sectionShouldSynced(res){
-  Object.entries(res).forEach( ([index, res]) => sectionAgainSynced(res, index))
+    let finalTransformation = transformSections(res);
+    Object.entries(finalTransformation).forEach( ([index, finalTransformation]) => sectionAgainSynced(finalTransformation, index))
 }
 
 function emitChange(){
