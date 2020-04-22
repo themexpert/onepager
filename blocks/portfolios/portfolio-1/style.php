@@ -25,6 +25,7 @@
 #<?php echo $id; ?> .icon{
 	background : <?php echo $styles['icon_bg']; ?>;
 	color : <?php echo $styles['icon_color']; ?>;
+	border: 1px solid <?php echo $styles['icon_color']; ?>;
 	border-radius: 50%;
 }
 

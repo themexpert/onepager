@@ -67,7 +67,7 @@ return array(
 			'name' => 'title_size',
 			'label' => 'Title Size',
 			'append' => 'px',
-			'value' => '@section_title_size',
+			'value' => '44',
 		),
 		array(
 			'name'     => 'title_transformation',
@@ -262,7 +262,7 @@ return array(
 			'name' => 'item_icon_hover_color',
 			'label' => 'Icon Hover Color',
 			'type'  => 'colorpicker',
-			'value' => '@color.primary',
+			'value' => '#006FF0',
 		),
 	),
 

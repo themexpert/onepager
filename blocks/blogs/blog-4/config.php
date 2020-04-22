@@ -66,7 +66,7 @@ return array(
 			'name'   => 'section_title_size',
 			'label'  => 'Title Size',
 			'append' => 'px',
-			'value'  => '@section_title_size',
+			'value'  => '44',
 		),
 		array(
 			'name'     => 'title_transformation',
@@ -129,6 +129,14 @@ return array(
 		),
 
 		array('label' => 'Items', 'type' => 'divider'),
+
+		array(
+			'name'		=> 'min_height',
+			'label'		=> 'Minimum Box Height',
+			'append'	=> 'px',
+			'type'		=> 'text',
+			'value'		=> '450'
+		),
 
 		array(
 			'name' => 'item_title_size',
@@ -198,7 +206,19 @@ return array(
 	      'label'   => 'Background',
 	      'type'    => 'image',
 	      'value'   => ''
-	    ),
+		),
+		array(
+			'name'    => 'bg_box',
+			'label'   => 'Box Background Color',
+			'type'    => 'colorpicker',
+			'value'   => '#ffffff',
+		),
+		array(
+			'name'    => 'bg_box_shadow',
+			'label'   => 'Box Shadow Color',
+			'type'    => 'colorpicker',
+			'value'   => '#dddddd',
+		),
 
 		array('label' => 'Heading', 'type' => 'divider'),
 		array(
@@ -233,6 +253,12 @@ return array(
 			'label'   => 'Link Color',
 			'type'    => 'colorpicker',
 			'value'   => '#323232',
+		),
+		array(
+			'name'    => 'link_hover',
+			'label'   => 'Link Hover Color',
+			'type'    => 'colorpicker',
+			'value'   => '#006FF0',
 		),
 	),
 

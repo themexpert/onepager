@@ -99,7 +99,7 @@ return array(
 			'name' => 'title_size',
 			'label' => 'Title Size',
 			'append' => 'px',
-			'value' => '@section_title_size',
+			'value' => '44',
 		),
 		array(
 			'name'     => 'title_transformation',
@@ -193,20 +193,20 @@ return array(
 			'name'    => 'button_text_color',
 			'label'   => 'Text Color',
 			'type'    => 'colorpicker',
-			'value'   => '#1c1d1e',
+			'value'   => '#ffffff',
 		),
 		array(
 			'name'    => 'button_bg_color',
 			'label'   => 'Bg Color',
 			'type'    => 'colorpicker',
-			'value'   => '@color.primary',
+			'value'   => '#006FF0',
 		),
 
 		array(
 			'name'    => 'button_border_color',
 			'label'   => 'Border Color',
 			'type'    => 'colorpicker',
-			'value'   => '@color.primary',
+			'value'   => '#006FF0',
 		),
 
 		array('label' => 'Items', 'type' => 'divider'), // Divider - Text

@@ -94,6 +94,7 @@
     #<?php echo $id; ?> h1.quote-heading, #<?php echo $id; ?> h2.quote-heading, #<?php echo $id; ?> h3.quote-heading, #<?php echo $id; ?> h4.quote-heading{
         font-size: <?php echo ($settings['title_size'] / 2) + 10; ?>px;
         line-height: <?php echo ($settings['title_size'] / 2) + 15; ?>px;
+        padding: 8px;
     }
     #<?php echo $id; ?> .uk-card.uk-card-body h2 {
        font-size: <?php echo (($settings['subheading_bigger_size'] / 2) + 10) . 'px'; ?>;
@@ -123,5 +124,19 @@
         text-align: left!important;
     }
 
+
+}
+
+@media(max-width:640px){
+
+    #<?php echo $id; ?> h1.quote-heading, #<?php echo $id; ?> h2.quote-heading, #<?php echo $id; ?> h3.quote-heading, #<?php echo $id; ?> h4.quote-heading{
+        font-size: <?php echo ($settings['title_size'] / 2) + 5; ?>px;
+        line-height: <?php echo ($settings['title_size'] / 2) + 15; ?>px;
+        padding: 8px;
+    }
+
+    #<?php echo $id; ?> ul.uk-list li{
+        font-size: <?php echo (($settings['item_title_size'] / 2) + 5) . 'px'; ?>;
+    }
 
 }

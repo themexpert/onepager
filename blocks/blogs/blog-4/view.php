@@ -46,48 +46,53 @@
 							$query->the_post();
 							$customOption = '';
 							?>
-							<div class="uk-width-1-2@m uk-inline ">
-								<?php 
-									if($i % 2 != 0) :
-										if( $i != 1) {
-											$customOption = 'uk-margin-xlarge-top uk-margin-xlarge-bottom';
-										}
-								?>
-								<div class="uk-card <?php echo $customOption; ?>">
-						            <div class="uk-card-media-top">
-						                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( '', array('', '') ); ?></a>
-						            </div>
-						            <div class="uk-card-body uk-card-default uk-margin-large-left uk-position-bottom-right">
-						            	<div class="uk-label uk-text-background uk-text-large"><?php echo get_the_date(); ?></div>
-							            <h2 class="uk-card-title uk-margin-small-top uk-text-bold uk-text-<?php echo $settings['item_title_transformation']; ?>">
+					<?php if($i % 2 !== 0): ?>
+					<div class="uk-width-1-2@s uk-margin-medium-bottom">
+						<div class="box-wrapper">
+							<div class="odd-box">
+								<div class="image-wrapper">
+									<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( '', array('', '') ); ?></a>
+								</div>
+								<div class="content-wrapper">
+									<div class="uk-background uk-text-medium uk-text-bold">
+										<?php echo get_the_date(); ?>
+									</div>
+									<h2 class="uk-margin-small-top uk-text-bold uk-text-<?php echo $settings['item_title_transformation']; ?>">
 											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 										</h2>
-										<div class="uk-label category"><?php echo get_the_category()[0]->name; ?></div>
-						                <p class="uk-text-small">
-											<?php op_the_excerpt( $contents['text_limit'] ); ?>
-										</p>
-						            </div>
-						        </div>
-						        <?php else:  ?>
-						        <div class="uk-card">
-						            <div class="uk-card-body uk-card-default uk-position-top-left uk-margin-large-right uk-position-z-index">
-						            	<div class="uk-label uk-text-background uk-text-large"><?php echo get_the_date('dS, F'); ?></div>
-							            <h2 class="uk-card-title uk-margin-small-top uk-text-bold uk-text-<?php echo $settings['item_title_transformation']; ?>">
-											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-										</h2>
-										<div class="uk-label category"><?php echo get_the_category()[0]->name; ?></div>
-						                <p class="uk-text-small">
-											<?php op_the_excerpt( $contents['text_limit'] ); ?>
-										</p>
-						            </div>
-						            <div class="uk-card-media-top uk-margin-large-left uk-margin-xlarge-top uk-position-right-bottom">
-						                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( '', array('', '') ); ?></a>
-						            </div>
-						        </div>
-						        <?php endif;  ?>
+									<div class="uk-label category"><?php echo get_the_category()[0]->name; ?></div>
+									<p class="uk-text-small">
+										<?php op_the_excerpt( $contents['text_limit'] ); ?>
+									</p>
+								</div>
 							</div>
-							<?php $i++; endwhile; ?>
-						<?php endif; ?>
+						</div> <!-- box-wrapper -->
+					</div>
+					<?else: ?>
+					<div class="uk-width-1-2@s uk-margin-medium-bottom">
+						<div class="box-wrapper">
+							<div class="even-box">
+								<div class="content-wrapper">
+									<div class="uk-background uk-text-medium uk-text-bold">
+										<?php echo get_the_date(); ?>
+									</div>
+									<h2 class="uk-margin-small-top uk-text-bold uk-text-<?php echo $settings['item_title_transformation']; ?>">
+											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+										</h2>
+									<div class="uk-label category"><?php echo get_the_category()[0]->name; ?></div>
+									<p class="uk-text-small">
+										<?php op_the_excerpt( $contents['text_limit'] ); ?>
+									</p>
+								</div>
+								<div class="image-wrapper">
+									<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( '', array('', '') ); ?></a>
+								</div>
+							</div>
+						</div> <!-- box-wrapper -->
+					</div>
+					<?php endif;?>
+					<?php $i++; endwhile; ?>
+					<?php endif; ?>
 					<?php wp_reset_query(); ?>
 				</div>
 			</div>

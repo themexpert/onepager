@@ -16,7 +16,7 @@ return array(
 			'type' => 'editor',
 			'value' => 'The world is a dangerous place to live; not because of the people who are evil, but because of the people who dont do anything about it.',
 		),
-		array( 'name' => 'link', 'type' => 'link'),
+		array( 'name' => 'link', 'text' => 'Contact Us', 'type' => 'link'),
 	),
 
 	// Settings - $settings available on view file to access the option
@@ -41,7 +41,7 @@ return array(
 			'name' => 'title_size',
 			'label' => 'Title Size',
 			'append' => 'px',
-			'value' => '@section_title_size',
+			'value' => '44',
 		),
 		array(
 			'name'     => 'title_transformation',
@@ -145,7 +145,7 @@ return array(
 			'name'    => 'bg_color',
 			'label'   => 'Background Color',
 			'type'    => 'colorpicker',
-			'value'   => '@color.secondary',
+			'value'   => '#262624',
 		),
 
 		array('label' => 'Content', 'type' => 'divider'), // Divider - Text
@@ -176,14 +176,14 @@ return array(
 			'name'    => 'button_bg_color',
 			'label'   => 'Bg Color',
 			'type'    => 'colorpicker',
-			'value'   => '@color.primary',
+			'value'   => '#262624',
 		),
 
 		array(
 			'name'    => 'button_border_color',
 			'label'   => 'Border Color',
 			'type'    => 'colorpicker',
-			'value'   => '@color.primary',
+			'value'   => '#ffffff',
 		),
 	),
 

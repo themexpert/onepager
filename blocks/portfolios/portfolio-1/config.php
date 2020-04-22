@@ -66,7 +66,7 @@ return [
 			'name' => 'title_size',
 			'label' => 'Title Size',
 			'append' => 'px',
-			'value' => '@section_title_size',
+			'value' => '44',
 		],
 		[
 			'name' => 'title_transformation',
@@ -204,14 +204,14 @@ return [
 			'name' => 'icon_color',
 			'label' => 'Icon Color',
 			'type' => 'colorpicker',
-			'value' => '#fff',
+			'value' => '#ffffff',
 		],
 		[
 			'name' => 'icon_bg',
 			'label' => 'Icon Background',
 			'type' => 'colorpicker',
-			'value' => '@color.primary',
-		],
+			'value' => '#000000',
+		]
 	],
 
 	// 'assets' => function( $path ){

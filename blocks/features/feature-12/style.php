@@ -49,3 +49,10 @@
     }
 
 }
+
+@media only screen and (max-width: 640px){
+    #<?php echo $id; ?> h1.uk-heading-primary, #<?php echo $id; ?> h2.uk-heading-primary, #<?php echo $id; ?> h3.uk-heading-primary, #<?php echo $id; ?> h4.uk-heading-primary, #<?php echo $id; ?> h5.uk-heading-primary, #<?php echo $id; ?> h6.uk-heading-primary {
+        <?php echo $settings['title_font_size'] ? 'font-size: ' . (($settings['title_font_size'] / 2) + 10) . 'px' : '' ?>;
+        <?php echo $settings['title_font_size'] ? 'line-height: ' . (($settings['title_font_size'] / 2) + 15) . 'px' : '' ?>;
+    }
+}

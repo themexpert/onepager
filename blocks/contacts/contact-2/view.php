@@ -35,11 +35,21 @@
 						</div>
 					<?php endif; ?>
 
-					<?php if ($contents['form']): ?>	
-						<div class="<?php echo ($settings['content_alignment'] == 'center') ? 'uk-margin-auto' : '' ?> uk-margin-medium-top uk-width-1-2" <?php echo $form_animation;?>>
-							<?php echo do_shortcode($contents['form']);?>
-						</div>
-					<?php endif; ?>
+							<?php
+								echo txop_check_dependent_plugin('contact-form-7', 'wp-contact-form-7.php', 'free');
+							?>	
+							<?php if ($contents['form']): ?>
+								<div class="<?php echo ($settings['content_alignment'] == 'center') ? 'uk-margin-auto' : '' ?> uk-margin-medium-top uk-width-1-2" <?php echo $form_animation;?>>	
+									<?php echo do_shortcode($contents['form']);?>
+								</div>
+							<?php else: ?>
+								<?php if(null === txop_check_dependent_plugin('contact-form-7', 'wp-contact-form-7.php', 'free')): ?>
+								<h3 class="uk-text-secondary"><?php echo txop_error_checking('shortcode'); ?></h3>
+								<?php endif; ?>
+							<?php endif; ?>
+
+
+					
 
 				</div> <!-- text-alignment -->
 				

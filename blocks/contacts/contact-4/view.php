@@ -32,6 +32,17 @@ if ($contents['section_blocks']):
                     <div class="contact-area">
                         <h2 class="uk-margin-medium-bottom"><?php echo $contents['contact_heading']; ?></h2>
                         <?php echo do_shortcode($contents['contact_shortcode']); ?>
+
+                            <?php
+                                echo txop_check_dependent_plugin('contact-form-7', 'wp-contact-form-7.php', 'free');
+                            ?>	
+                            <?php if ($contents['contact_shortcode']): ?>
+                                <?php echo do_shortcode($contents['contact_shortcode']);?>
+                            <?php else: ?>
+                                <?php if(null === txop_check_dependent_plugin('contact-form-7', 'wp-contact-form-7.php', 'free')): ?>
+                                    <h3 class="uk-text-secondary"><?php echo txop_error_checking('shortcode'); ?></h3>
+                                <?php endif; ?>
+                            <?php endif; ?>
                     </div>
                 </div>
             </div>

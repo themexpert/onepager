@@ -2,7 +2,7 @@
 
 return array(
     'slug'      => 'slider-5',
-    'type'      => 'new',
+    'tag'      => 'new',
     'groups'    => array('sliders'),
     'contents'  => array(
         array(

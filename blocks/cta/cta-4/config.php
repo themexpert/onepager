@@ -81,7 +81,7 @@ return array(
 			'name' => 'title_size',
 			'label' => 'Title Size',
 			'append' => 'px',
-			'value' => '@section_title_size',
+			'value' => '44',
 		),
 		array(
 			'name'     => 'title_transformation',

@@ -85,3 +85,17 @@
         right: 18%;
     }
 }
+
+@media(max-width:640px){
+    #<?php echo $id; ?> h1.uk-heading-primary, #<?php echo $id; ?> h2.uk-heading-primary, #<?php echo $id; ?> h3.uk-heading-primary, #<?php echo $id; ?> h4.uk-heading-primary, #<?php echo $id; ?> h5.uk-heading-primary, #<?php echo $id; ?> h6.uk-heading-primary{
+        font-size: <?php echo ($settings['title_size'] / 2) + 5 ?>px;
+        line-height: <?php echo ($settings['title_size'] / 2) + 20 ?>px;
+    }
+
+    #<?php echo $id; ?> h3.tx-heading-border::before {
+        left: 14%;
+    }
+    #<?php echo $id; ?> h3.tx-heading-border::after {
+        right: 14%;
+    }
+}

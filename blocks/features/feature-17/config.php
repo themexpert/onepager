@@ -3,7 +3,7 @@
 return array(
     'slug'      => 'feature-17',
     'groups'    => array('features'),
-    'type'    => 'new',
+    'tag'    => 'new',
     'contents'  => array(
         array(
             'name'  => 'section_image',

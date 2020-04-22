@@ -39,12 +39,20 @@
 			</div> <!-- uk-grid-1 -->
 
 			<div class="uk-width-1-2@m">
-				<div class="uk-text-right">
-
-					<?php if ($contents['form']): ?>	
-						<div class="<?php echo ($settings['content_alignment'] == 'center') ? 'uk-margin-auto' : '' ?> " <?php echo $form_animation;?>>
+				<div class="uk-text-right uk-height-1-1">
+					<?php
+						echo txop_check_dependent_plugin('contact-form-7', 'wp-contact-form-7.php', 'free');
+					?>	
+					<?php if ($contents['form']): ?>
+						<div class="<?php echo ($settings['content_alignment'] == 'center') ? 'uk-margin-auto' : '' ?> " <?php echo $form_animation;?>>	
 							<?php echo do_shortcode($contents['form']);?>
 						</div>
+					<?php else: ?>
+						<?php if(null === txop_check_dependent_plugin('contact-form-7', 'wp-contact-form-7.php', 'free')): ?>
+							<div class="uk-flex uk-flex-middle uk-flex-center uk-height-1-1">
+								<h3 class="uk-text-secondary"><?php echo txop_error_checking('shortcode'); ?></h3>
+							</div>
+						<?php endif; ?>
 					<?php endif; ?>
 				</div> <!-- text-alignment -->
 			</div> <!-- uk-grid-1 -->

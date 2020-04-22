@@ -31,28 +31,28 @@
 						<div class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: <?php echo $contents['date']; ?>">
 							<div class="uk-child-width-1-4@s" uk-grid>
 								<div class="countdown-number">
-									<div class="op-countdown-single uk-padding">
+									<div class="op-countdown-single uk-padding uk-flex uk-flex-column uk-flex-middle uk-flex-center">
 										<div class="uk-countdown-number uk-countdown-days"></div>
 										<div class="uk-countdown-label"><?php _e( 'Days', 'onepager' ); ?></div>
 									</div>
 								</div>
 
 								<div class="countdown-number">
-									<div class="op-countdown-single uk-padding">
+									<div class="op-countdown-single uk-padding uk-flex uk-flex-column uk-flex-middle uk-flex-center">
 										<div class="uk-countdown-number uk-countdown-hours"></div>
 										<div class="uk-countdown-label"><?php _e( 'Hours', 'onepager' ); ?></div>
 									</div>
 								</div>
 
 								<div class="countdown-number">
-									<div class="op-countdown-single uk-padding">
+									<div class="op-countdown-single uk-padding uk-flex uk-flex-column uk-flex-middle uk-flex-center">
 										<div class="uk-countdown-number uk-countdown-minutes"></div>
 										<div class="uk-countdown-label"><?php _e( 'Minutes', 'onepager' ); ?></div>
 									</div>
 								</div>
 
 								<div class="countdown-number">
-									<div class="op-countdown-single uk-padding">
+									<div class="op-countdown-single uk-padding uk-flex uk-flex-column uk-flex-middle uk-flex-center">
 										<div class="uk-countdown-number uk-countdown-seconds"></div>
 										<div class="uk-countdown-label"><?php _e( 'Seconds', 'onepager' ); ?></div>
 									</div>

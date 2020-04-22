@@ -88,6 +88,17 @@
 						</div>
 					<?php endif; ?>
 					<?php echo do_shortcode( $contents['form'] ); ?>
+
+					<?php
+						echo txop_check_dependent_plugin('contact-form-7', 'wp-contact-form-7.php', 'free');
+					?>	
+					<?php if ($contents['form']): ?>	
+						<?php echo do_shortcode($contents['form']);?>
+					<?php else: ?>
+						<?php if(null === txop_check_dependent_plugin('contact-form-7', 'wp-contact-form-7.php', 'free')): ?>
+						<h3 class="uk-text-primary"><?php echo txop_error_checking('shortcode'); ?></h3>
+						<?php endif; ?>
+					<?php endif; ?>
 				</div><!-- uk-grid-item-match -->
 			</div><!-- uk-child-width -->
 		</div> <!-- uk-container -->
