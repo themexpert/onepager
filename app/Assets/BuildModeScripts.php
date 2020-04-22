@@ -41,6 +41,7 @@ class BuildModeScripts
     {
         $onepager = onepager();
 
+        $pagePresets = onepager()->presetManager()->all();
         $footer = get_editor_section_list_footer();
         $ajaxUrl = $onepager->api()->getAjaxUrl();
         $getUpdatePlugins = $onepager->api()->getUpdatePlugins();
@@ -50,6 +51,8 @@ class BuildModeScripts
         $pages = $onepager->content()->getPages();
         $blocks = array_values((array) $onepager->blockManager()->all());
         $groupOrder = $onepager->blockManager()->getGroupOrder();
+        // $savedTemplates = $onepager->templatesManager()->getAllSavedTemplates();
+        $savedTemplates = $onepager->savedTemplates()->loadAllSavedTemplates();
         $woocategories = $onepager->content()->getWooCategories();
 
         $sections = array_map(function ($section) {
@@ -65,6 +68,7 @@ class BuildModeScripts
         }, onepager()->section()->getAllValid($pageId));
 
         $disableBuildModeUrl = onepager_get_edit_mode_url(get_current_page_url(), false);
+        $preview_link = get_preview_post_link($this->getCurrentPageId());
 
         $optionPanel = onepager()->optionsPanel('onepager')->getOptionsControls();
         $pageOptionPanel = onepager()->optionsPanel('onepager')->getPageOptionsControls($pageId);
@@ -99,7 +103,10 @@ class BuildModeScripts
             'onepagerProLoaded',
             'proUpgradeLink',
             'getUpdatePlugins',
-            'pluginUpdateUrl'
+            'pluginUpdateUrl',
+            'preview_link',
+            'savedTemplates',
+            'pagePresets'
         );
     }
 

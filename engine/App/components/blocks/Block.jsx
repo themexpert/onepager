@@ -29,7 +29,12 @@ let Block = React.createClass({
       <div className="uk-card uk-card-default uk-card-hover uk-margin-bottom" onClick={this.handleCreateSection}>
         {block.type 
         ? 
-        <span className="txop-new-badge">{block.type}</span>
+        <span className="txop-pro-badge">{block.type}</span>
+        : null
+        }
+        {block.tag 
+        ? 
+        <span className={`txop-${block.tag}-badge`} >{block.tag}</span>
         : null
         }
         <img src={block.image} alt={block.name} style={{width: "100%"}} data-toggle="tooltip"

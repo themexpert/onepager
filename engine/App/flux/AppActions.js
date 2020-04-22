@@ -12,6 +12,11 @@ module.exports = {
 		dispatcher.handleViewAction( {type, section} );
 	},
 
+	mergeSections( sections ) {
+		let type = actions.MERGE_SECTIONS;
+		dispatcher.handleViewAction( {type, sections} );
+	},
+
 	activateSection( index ){
 		let type = actions.ACTIVATE_SECTION;
 		dispatcher.handleViewAction( {type, index} );
@@ -65,6 +70,11 @@ module.exports = {
 	sectionSynced( index, res ){
 		let type = actions.SECTIONS_SYNCED;
 		dispatcher.handleViewAction( {type, index, res} );
+	},
+
+	sectionsShouldSynced( res ){
+		let type = actions.SECTIONS_SHOULD_SYNCED;
+		dispatcher.handleViewAction( {type, res} );
 	},
 
 	previewFrameLoaded(){

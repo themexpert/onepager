@@ -7,6 +7,7 @@ const SectionTransformer = require('./../shared/onepager/sectionTransformer.js')
 const ShouldSync = require('../shared/lib/ShouldSync.js');
 const Activity = require('../shared/lib/Activity.js');
 const ODataStore = require('./../shared/onepager/ODataStore.js');
+console.log(ODataStore);
 const BaseStore = require('./flux/BaseStore.js');
 const AppActions = require('./flux/AppActions.js');
 const SyncService = require('./AppSyncService.js');
@@ -41,6 +42,8 @@ let _previewFrameLoaded = false;
 let _pageID = ODataStore.pageId;
 let _pageSettingOptions = ODataStore.pageSettingOptions;
 let _pageSettingOptionPanel = ODataStore.pageOptionPanel; // Need to remove this 
+let _savedTemplates = ODataStore.savedTemplates;  
+let _pagePresets = ODataStore.pagePresets; 
 let _collapseSidebar = localState.get('collapseSidebar', false);
 let _activeSectionIndex = _sections[localState.get('activeSectionIndex')] ? localState.get('activeSectionIndex') : null;
 let _sidebarTabState = _activeSectionIndex !== null ?
@@ -87,6 +90,27 @@ function addSection(section) {
   liveService.updateSection(_sections, sectionIndex);
 }
 
+/**
+ * 
+ * @param {section} 
+ * section those are comes from saved template
+ * all section that will be merged
+ */
+function mergeSections(sections) {
+  let passedSection;
+  
+  if('object' == typeof sections){
+    passedSection = Object.keys(sections).map(function (key) { 
+      return sections[key]; 
+    }); 
+  }
+
+  passedSection.forEach(section => {
+    // section = SectionTransformer.unifySection(section);
+    _sections.push(section);
+  });
+  liveService.mergeSections(_sections);
+}
 
 // function to update a section
 function updateSection(sectionIndex, section) {
@@ -210,6 +234,28 @@ function sectionSynced(index, res) {
   section.style = res.style;
 }
 
+function sectionAgainSynced(res, index) {
+  if(Number.isInteger(+index)){
+    let section;
+    _sections[index] = toolbelt.copy(_sections[index]);
+    section = _sections[index];
+    section.content = stripClassesFromHTML(section.livemode, res.content);
+    section.style = res.style;
+    section.settings = res.settings;
+    section.contents = res.contents;
+    section.styles = res.styles;
+  }
+}
+/**
+ * after convert the data 
+ * from routes asyn operation
+ * @param {res} res 
+ */
+function sectionShouldSynced(res){
+    let finalTransformation = transformSections(res);
+    Object.entries(finalTransformation).forEach( ([index, finalTransformation]) => sectionAgainSynced(finalTransformation, index))
+}
+
 function emitChange(){
   AppStore.emitChange();
 }
@@ -248,6 +294,11 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
       emitChange();
       break;
 
+    case actions.MERGE_SECTIONS:
+      mergeSections(action.sections);
+      emitChange();
+      break;
+
     case actions.EDIT_SECTION:
       editSection(action.index);
       emitChange();
@@ -280,6 +331,11 @@ let dispatcherIndex = AppDispatcher.register(function (payload) {
 
     case actions.SECTIONS_SYNCED:
       sectionSynced(action.index, action.res);
+      emitChange();
+      break;
+
+    case actions.SECTIONS_SHOULD_SYNCED:
+      sectionShouldSynced(action.res);
       emitChange();
       break;
 
@@ -338,6 +394,8 @@ let AppStore = assign({}, BaseStore, {
       pageID: _pageID,
       pageSettingOptions: _pageSettingOptions,
       pageSettingOptionPanel: _pageSettingOptionPanel, // Need to remove this 
+      savedTemplates: _savedTemplates, 
+      pagePresets: _pagePresets, 
     };
   },
 

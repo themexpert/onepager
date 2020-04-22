@@ -20,5 +20,7 @@ interface AdapterInterface {
 	public function getPath();
 
 	public function getUrl();
+	
+	// public function setSavedTemplates();
 
 }

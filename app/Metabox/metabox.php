@@ -48,6 +48,7 @@ function tx_get_preset_group_class( $group ) {
 function tx_add_onepager_metabox() {
 	$template = function ( $post ) {
 		$onepagerLayouts = onepager()->presetManager()->all();
+
 		$groups          = array_unique(
 			array_reduce(
 				$onepagerLayouts,
@@ -66,7 +67,11 @@ function tx_add_onepager_metabox() {
 			compact( 'onepagerLayouts', 'post', 'groups', 'sections', 'editorUrl' )
 		);
 	};
-
+	
+	/**
+	 * Add meta box syntax
+	 * add_meta_box($id, $title, $callback, $screen, $context, $priority, $callback_args) 
+	 */
 	add_meta_box(
 		'onepager_meta',
 		__( 'OnePager', 'onepager' ),

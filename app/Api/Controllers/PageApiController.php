@@ -50,6 +50,11 @@ class PageApiController extends ApiController {
 		$title = array_get( $_POST, 'pageTitle', 'OnePage #' . rand( 999, 9999 ) );
 		$layoutId = array_get( $_POST, 'layoutId', false );
 
+		
+		/**
+		 * wp_insert_post syntax
+		 * wp_insert_post($postarr, $wp_error)
+		 */
 		$new_page_id = wp_insert_post(
 			[
 				'post_title' => $title,

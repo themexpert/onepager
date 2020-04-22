@@ -9,6 +9,7 @@ import {serializeSections}  from './../shared/onepager/sectionTransformer';
 function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
   let updateSection = function (sections, sectionIndex) {
+    // debugger;
     let payload = {
       pageId  : pageId,
       action  : 'onepager_save_sections',
@@ -23,6 +24,35 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
         }
         //else
         AppActions.sectionSynced(sectionIndex, res);
+
+        if (pageId) {
+          notify.success('Sync Successful');
+        }
+
+      });
+    };
+
+    async.series([
+      (pass)=> inactive().then(pass, (err)=>console.log(err)),
+      (pass)=> shouldSectionsSync(sections).then(pass),
+      (pass)=> sync(pass)
+    ]);
+  };
+
+  let mergeSections = function (sections) {
+    let payload = {
+      pageId  : pageId,
+      action  : 'onepager_merge_sections',
+      sections: sections
+    };
+
+    let sync = function () {
+      $.post(ODataStore.ajaxUrl, payload, (res)=> {
+        if (!res || !res.success) {
+          return notify.error('Unable to sync. Make sure you are logged in');
+        }
+        //else
+        AppActions.sectionsShouldSynced(res);
 
         if (pageId) {
           notify.success('Sync Successful');
@@ -155,6 +185,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     reloadSections,
     reloadBlocks,
     updateSection,
+    mergeSections,
     rawUpdate,
     updatePageSettings,
     pageSyncServiceLive

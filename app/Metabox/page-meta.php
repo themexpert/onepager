@@ -43,16 +43,24 @@
 	  <div class="media og-all <?php echo tx_get_preset_groups_class( $layout['group'] ); ?>">
 		<figure class="thumbnails">
 			<?php 
-			$layout_type = array_get($layout, 'type') ? array_get($layout, 'type') : null;
-			if($layout_type):
+			// $layout_type = array_get($layout, 'type') ? array_get($layout, 'type') : null;
+			// if($layout_type):
 			?>
-			<span class="txop-new-badge"><?php echo $layout_type; ?></span>
-			<?php endif; ?>
+			<?php $type = array_get($layout, 'type') ? $layout['type'] : '';?>
+			<?php $tag = array_get($layout, 'tag') ? $layout['tag'] : '';?>
+			<?php if($type):?>
+				<span class="txop-pro-badge"><?php echo $type; ?></span>
+			<?php endif;?>
+			<?php if($tag):?>
+				<span class="txop-<?php echo $tag; ?>-badge"><?php echo $tag; ?></span>
+			<?php endif;?>
+			<!-- <span class="txop-new-badge"><?php //echo $layout_type; ?></span> -->
+			<?php //endif; ?>
 		  <img src="<?php echo $layout['screenshot']; ?>"/>
 		  <figcaption>
 			<h3><?php echo $layout['name']; ?></h3>
 			<button data-layout-id="<?php echo $layout['id']; ?>" class="op-btn op-select-preset" type="button">Select
-			<button data-layout-id="<?php echo $layout['id']; ?>" class="op-btn op-select-preset" type="button">Select
+			<!-- <button data-layout-id="<?php //echo $layout['id']; ?>" class="op-btn op-select-preset" type="button">Select -->
 			</button>
 		  </figcaption>
 		</figure>

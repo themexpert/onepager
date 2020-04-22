@@ -76,10 +76,14 @@ function op_get_html_group_class( $groups ) {
 	<div class="layout-filter uk-child-width-1-2@s uk-child-width-1-4@m" uk-grid>
 		<?php foreach ( $layouts as $layout ) : ?>
 		<?php $type = array_get($layout, 'type') ? $layout['type'] : '';?>
+		<?php $tag = array_get($layout, 'tag') ? $layout['tag'] : '';?>
 		<div data-group="<?php echo op_get_html_group_class( $layout['group'] ); ?>">
 			<div class="uk-card uk-card-default uk-transition-toggle" tabindex="0" >
 					<?php if($type):?>
-						<span class="txop-new-badge"><?php echo $type; ?></span>
+						<span class="txop-pro-badge"><?php echo $type; ?></span>
+					<?php endif;?>
+					<?php if($tag):?>
+						<span class="txop-<?php echo $tag; ?>-badge"><?php echo $tag; ?></span>
 					<?php endif;?>
 					<div class="uk-card-media-top uk-inline uk-height-medium" uk-overflow-auto>
 						<img data-src="<?php echo $layout['screenshot']; ?>" alt="<?php echo $layout['name']; ?>" uk-img >

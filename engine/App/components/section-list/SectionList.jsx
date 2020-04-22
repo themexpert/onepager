@@ -66,11 +66,14 @@ let SectionList = React.createClass({
   },
 
   render() {
-    let {sections, openBlocks} = this.props;
+    let {sections, openBlocks, openPopup} = this.props;
 
     return (
       <div className="list-sections">
-        <Button bsStyle='primary' className="btn-block" onClick={openBlocks}>
+        {/* <Button bsStyle='primary' className="btn-block" onClick={openBlocks}>
+          <span className="fa fa-plus"></span> Add Block
+        </Button> */}
+        <Button bsStyle='primary' className="btn-block" onClick={openPopup}>
           <span className="fa fa-plus"></span> Add Block
         </Button>
 

@@ -1,0 +1,190 @@
+.builder-wrapper{
+    .popup-modal{
+        position: absolute;
+        left:0;
+        right:0;
+        width:100%;
+        height:100%;
+        margin:0 auto;
+        top:0px;
+        height:100vh;
+        z-index: 99999;
+        overflow: auto;
+        background:rgba(0, 0, 0, 0.5);
+        display:flex;
+        align-items: center;
+        display:none;
+        .popup-modal-wrapper{
+            height:90vh;
+            width:70%;
+            margin:0 auto;
+            background:white;
+            overflow:hidden;
+            border-radius:5px;
+            .topbar{
+                display:grid;
+                grid-auto-flow: column;
+                grid-template-columns: 0.2fr 1fr 0.2fr ;
+                background:#e3e3e3;
+                padding:10px;
+                .logo{
+                    b{
+                        font-size:16px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+                }
+                .tab{
+                    ul{
+                        text-align: center;
+                        display:flex;
+                        margin:0;
+                        padding:0;
+                        align-items: center;
+                        justify-content: center;
+                        li{
+                            display:inline-block;
+                            list-style-type: none;
+                            margin:0px 15px;
+                            padding:3px 15px;
+                            transition:all 0.3s ease;
+                            background:transparent;
+                            border:solid 1px transparent;
+                            border-radius: 2px;
+                            cursor: pointer;
+                            &:hover{
+                                background:white;
+                                border-color: #c8c8c8;
+
+                            }
+                        }
+                        li.active{
+                            background:white;
+                            border-color: #c8c8c8;
+                        }
+                    }
+                }
+                .right{
+                    text-align: right;
+                }
+            }
+            .block-collection-wrapper{
+                padding:30px;
+                height: 90vh;
+                overflow: auto;
+                .form-group{
+                    width:200px;
+                }
+                .block-collection-list{
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-gap: 20px;
+                    .uk-card{
+                        cursor: pointer;
+                        .txop-pro-badge{
+                            background:#7e0359;
+                            color:white;
+                            padding:1px 5px 1px;
+                            position: absolute;
+                            border-radius:2px;
+                            text-transform: uppercase;
+                            font-weight: normal;
+                            z-index:1;
+                            font-size: 9px;
+                            right:0;
+                        }
+                        .txop-new-badge{
+                            background:#06048c;
+                            color:white;
+                            padding:1px 5px 1px;
+                            position: absolute;
+                            border-radius:2px;
+                            text-transform: uppercase;
+                            font-weight: normal;
+                            z-index:1;
+                            font-size: 9px;
+                        }
+                        .txop-update-badge{
+                            background:#038997;
+                            color:white;
+                            padding:1px 5px 1px;
+                            position: absolute;
+                            border-radius:2px;
+                            text-transform: uppercase;
+                            font-weight: normal;
+                            z-index:1;
+                            font-size: 9px;
+                        }
+                    }
+                }
+                .preset-collection-lists-wrapper{
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-gap: 20px;
+                    .uk-card{
+                        cursor: pointer;
+                        height:350px;
+                        overflow:hidden;
+                        .txop-pro-badge{
+                            background:#7e0359;
+                            color:white;
+                            padding:1px 5px 1px;
+                            position: absolute;
+                            border-radius:2px;
+                            text-transform: uppercase;
+                            font-weight: normal;
+                            z-index:1;
+                            font-size: 9px;
+                            right:0;
+                        }
+                        .txop-new-badge{
+                            background:#06048c;
+                            color:white;
+                            padding:1px 5px 1px;
+                            position: absolute;
+                            border-radius:2px;
+                            text-transform: uppercase;
+                            font-weight: normal;
+                            z-index:1;
+                            font-size: 9px;
+                        }
+                        .txop-update-badge{
+                            background:#038997;
+                            color:white;
+                            padding:1px 5px 1px;
+                            position: absolute;
+                            border-radius:2px;
+                            text-transform: uppercase;
+                            font-weight: normal;
+                            z-index:1;
+                            font-size: 9px;
+                        }
+                    }
+                }
+            }
+            .template-collection-lists-wrapper{
+                ul{
+                    li{
+                        display:grid;
+                        grid-auto-flow: column;
+                    }
+                }
+            }
+            .bottom-bar{
+                text-align: center;
+                background:#e3e3e3;
+                padding:30px;
+                margin-bottom:30px;
+                h4{
+                    margin: 0;
+                    font-weight: bold;
+                    font-size:16px;
+                }
+            }
+        }
+        
+    }
+    .popup-modal.open{
+        display:flex;
+    }
+}

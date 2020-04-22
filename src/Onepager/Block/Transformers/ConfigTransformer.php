@@ -22,6 +22,7 @@ class ConfigTransformer {
 		// boys make it unique
 		$slug = $config['slug'];
 		$type = array_get($config, 'type') ? $config['type'] : '';
+		$tag = array_get($config, 'tag') ? $config['tag'] : '';
 
 
 		// used to categorize blocks
@@ -68,6 +69,7 @@ class ConfigTransformer {
 			'dir',
 			'slug',
 			'type',
+			'tag',
 			'livemode',
 			'enqueue',
 			'name',

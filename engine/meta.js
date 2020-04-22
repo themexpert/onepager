@@ -293,11 +293,13 @@
 	 * @param name
 	 */
 	function exportOnepagerSections(pageId, name) {
+		var userTemplate = prompt("Enter template name", "mytemplate");
 		var payload = {
 			action: 'onepager_get_sections',
 			pageId: pageId
 		};
 
+		var donwloadFileName = 'onepager-' + name + '-' + pageId + '-' + Date.now(); 
 		name = name || 'template-' + pageId;
 		var screenshot = name + ".jpg";
 
@@ -308,9 +310,14 @@
 				if (res.success) {
 					downloadAsJson(
 						{
-							name: name,
+							// name: name,
+							name: userTemplate,
 							screenshot: screenshot,
+							file:donwloadFileName,
+							identifier: 'txonepager',
+							type:'page',
 							sections: res.sections
+
 						}
 					);
 				} else {
@@ -326,7 +333,7 @@
 		var dlAnchorElem = document.getElementById( 'downloadAnchorElem' );
 
 		dlAnchorElem.setAttribute( "href", dataStr );
-		dlAnchorElem.setAttribute( "download", data.name + ".json" );
+		dlAnchorElem.setAttribute( "download", data.file + ".json" );
 		dlAnchorElem.click();
 	}
 

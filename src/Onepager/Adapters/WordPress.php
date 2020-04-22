@@ -8,6 +8,7 @@ use ThemeXpert\Providers\WordPress\NavigationMenu;
 use ThemeXpert\Providers\WordPress\Section;
 use ThemeXpert\Providers\WordPress\Security;
 use ThemeXpert\Providers\WordPress\Toolbar;
+// use ThemeXpert\Providers\WordPress\TemplateManager;
 
 
 /**
@@ -62,4 +63,10 @@ class WordPress extends BaseAdapter {
 			return new Section();
 		};
 	}
+
+	// public function setSavedTemplates(){
+	// 	$this->container['templateManager'] = function () {
+	// 		return new TemplateManager();
+	// 	};
+	// }
 }

@@ -72,7 +72,7 @@ body.op-build-active {
   background: @bg-primary;
   overflow-x: hidden;
   #onepager-preview{
-    #preview-frame-wrapper{
+    #onepager-iframe{
       width:100%;
       height:100%;
       transition:all 0.3s ease;
@@ -84,7 +84,7 @@ body.op-build-active {
 }
 body.iframe-desktop{
   #onepager-preview{
-    #preview-frame-wrapper{
+    #onepager-iframe{
       width:100%;
     }
   }
@@ -92,7 +92,7 @@ body.iframe-desktop{
 body.iframe-tablet{
   #onepager-preview{
     text-align: center;
-    #preview-frame-wrapper{
+    #onepager-iframe{
       max-width:768px;
       height: 95vh;
       margin: 0 auto;
@@ -105,7 +105,7 @@ body.iframe-tablet{
 body.iframe-mobile{
   #onepager-preview{
     text-align: center;
-    #preview-frame-wrapper{
+    #onepager-iframe{
       max-width:360px;
       height: 95vh;
       margin: 0 auto;
@@ -605,20 +605,44 @@ h3.form-divider {
   // }
 
   #op-contents .tab-pane { padding: 10px 3px;}
-  #op-sections { height: 100%;}
+  #op-sections { height: 100%; padding:20px;}
   #op-blocks{
     .block-collection-list{
       padding-bottom:100px;
     }
-    .txop-new-badge{
-      background:#06048c;
+    .txop-pro-badge{
+      background:#7e0359;
       color:white;
-      padding:3px 10px 3px;
+      padding:1px 5px 1px;
       position: absolute;
       border-radius:2px;
       text-transform: uppercase;
-      font-weight: bold;
+      font-weight: normal;
       font-size:8px;
+      right:0;
+      font-size: 9px;
+    }
+    .txop-new-badge{
+      background:#06048c;
+      color:white;
+      padding:1px 5px 1px;
+      position: absolute;
+      border-radius:2px;
+      text-transform: uppercase;
+      font-weight: normal;
+      z-index:1;
+      font-size: 9px;
+    }
+    .txop-update-badge{
+      background:#038997;
+      color:white;
+      padding:1px 5px 1px;
+      position: absolute;
+      border-radius:2px;
+      text-transform: uppercase;
+      font-weight: normal;
+      z-index:1;
+      font-size: 9px;
     }
   }
 
