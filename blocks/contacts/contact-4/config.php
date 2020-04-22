@@ -193,7 +193,7 @@ return array(
             'name' => 'block_text_size',
             'label' => 'Item Text Size',
             'append' => 'px',
-            'value' => '44',
+            'value' => '18',
         ),
         array(
             'name' => 'block_text_font_weight',
