@@ -39,7 +39,7 @@ let Block = React.createClass({
         }
         <img src={block.image} alt={block.name} style={{width: "100%"}} data-toggle="tooltip"
              title="+ Click to insert block" data-placement="top"/>
-        <span className="uk-text-meta">{block.name}</span>
+        <span className="uk-text-meta uk-hidden">{block.name}</span>
         <span className="uk-text-meta uk-hidden">{block.groups}</span>
       </div>
     );
