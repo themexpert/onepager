@@ -38,7 +38,9 @@ let PopupModal = React.createClass({
                         </ul>
                     </div>
                     <div className="right">
-                        <button className="uk-button uk-button-danger uk-button-small" onClick={this.handleClosePopup}>X</button>
+                        <span className="close-btn" onClick={this.handleClosePopup}>
+                            <i className="fa fa-times"></i>
+                        </span>
                     </div>
                 </div>
                 <div className="block-collection-wrapper">
