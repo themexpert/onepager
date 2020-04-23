@@ -2,12 +2,20 @@ const React = require('react');
 const BlockCollection = require('../../App/components/blocks/BlockCollection.jsx');
 const PresetCollections = require('../../App/components/presets/PresetCollections.jsx');
 const SavedTemplates = require('../../App/components/templates/SavedTemplates.jsx');
-
+const AppStore = require('../../App/AppStore');
 let PopupModal = React.createClass({
     getInitialState(){
         return {
           active: 'tab-block',
+          assetUrl: '',
         };
+    },
+
+    componentDidMount(){
+        let assetUrl = AppStore.getAssetUrl();
+        this.setState({
+            assetUrl: assetUrl
+        })
     },
     handleClosePopup(){
         var modalElement = document.querySelector('#onepager-builder .popup-modal');
@@ -21,7 +29,9 @@ let PopupModal = React.createClass({
     },
     render() {
         console.log("rendering popup");
-
+        console.log('popup state', this.state);
+        const opAssetUrl = this.state.assetUrl;
+        const OPLOGO = opAssetUrl + '/images/logo.svg';
         let blocks = this.props.blocks;
         // let pagePresets = this.props.pagePresets;
         let savedTemplates = this.props.savedTemplates;
@@ -29,7 +39,12 @@ let PopupModal = React.createClass({
         return (
             <div className="popup-modal-wrapper">
                 <div className="topbar">
-                    <div className="logo"><b>Onepager</b></div>
+                    <div className="logo">
+                        <object type="image/svg+xml" data={OPLOGO}>
+                          Your browser does not support SVG
+                        </object>
+                        <b>Library</b>
+                    </div>
                     <div className="tab">
                         <ul className="tx-nav tx-nav-tabs">
                             <li onClick={this.handleTab} id="tab-block" className={'tab-block' === this.state.active ? 'tab-block active' : null} > Blocks </li>

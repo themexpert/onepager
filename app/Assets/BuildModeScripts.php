@@ -80,6 +80,7 @@ class BuildModeScripts
         $proUpgradeLink = 'https://themesgrove.com/wp-onepager/?utm_source=wp-admin&utm_medium=dashboard&utm_campaign=wponepager-gopro';
         $presets = \Onepager::getPresets();
         $basePreset = \Onepager::getBasePreset();
+        $assetUrl = ONEPAGER_URL . '/assets';
         return compact(
             'ajaxUrl',
             'disableBuildModeUrl',
@@ -106,7 +107,8 @@ class BuildModeScripts
             'pluginUpdateUrl',
             'preview_link',
             'savedTemplates',
-            'pagePresets'
+            'pagePresets',
+            'assetUrl'
         );
     }
 

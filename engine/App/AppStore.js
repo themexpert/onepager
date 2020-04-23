@@ -32,6 +32,7 @@ function transformSections(sections){
   return SectionTransformer.unserializeSections(sections, _blocks);
 }
 
+let _assetUrl = ODataStore.assetUrl; 
 let _blocks = sortBlocks(ODataStore.blocks);
 let _sections = transformSections(ODataStore.sections);
 
@@ -383,6 +384,7 @@ let AppStore = assign({}, BaseStore, {
   getAll() {
     return {
       isDirty: this.isDirty(),
+      assetUrl: _assetUrl,
       blocks: _blocks,
       sections: _sections,
       menuState: _menuState,
@@ -453,6 +455,10 @@ let AppStore = assign({}, BaseStore, {
     setActiveSection(index);
     this.setSections(sections);
     liveService.rawUpdate(_sections);
+  },
+  
+  getAssetUrl(){
+    return _assetUrl;
   },
 
   /**
