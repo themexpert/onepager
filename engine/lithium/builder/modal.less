@@ -101,12 +101,49 @@
                     grid-template-columns: repeat(3, 1fr);
                     grid-gap: 20px;
                     .uk-card{
-                        cursor: pointer;
                         display:flex;
+                        flex-direction:column;
                         align-items: center;
-                        justify-content: center;
+                        justify-content: space-between;
                         padding:10px;
                         border-radius:3px;
+                        flex-wrap:wrap;
+                        border:solid 1px #e7e6e6;
+                        margin-bottom:0px !important;
+                        min-height:150px;
+                        position: relative;
+                        .overlay{
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            left: 0;
+                            top: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background:rgba(0, 0, 0, 0.5);
+                            opacity:0;
+                            transition:all 0.3s ease;
+                            border-radius: 3px;
+                            button{
+                                cursor: pointer;
+                                padding: 8px 20px;
+                                border-radius: 3px;
+                                line-height: 1;
+                                background:#39b54a;
+                                i{
+                                    margin-right:5px;
+                                }
+                            }
+                        }
+                        &:hover{
+                            .overlay{
+                                opacity:1;
+                            }
+                        }
+                        .uk-text-meta{
+                            margin-top:5px;
+                        }
                         .txop-pro-badge{
                             background:#7e0359;
                             color:white;
