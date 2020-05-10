@@ -25,6 +25,7 @@ let SavedTemplates = React.createClass({
     return (
       <div>
         <div className="template-collection-lists-wrapper">
+        {templates.length > 0 ? ( 
         <table className="uk-table uk-table-divider">
           <thead>
               <tr>
@@ -40,7 +41,15 @@ let SavedTemplates = React.createClass({
             {templates.map(template => <Template template={template} />)}
           </tbody>
         </table>
-        
+        ) : (
+        <div className="no-template">
+          <p className="icon"><span><i className="fa fa-smile-o"></i></span></p>
+          <h4>Haven't saved templated Yet ? </h4>
+          <p>
+            <span>Your template should be here. Design, Save & Reuse it.  </span>
+          </p>
+        </div> 
+        )}
         </div>
       </div>
     );

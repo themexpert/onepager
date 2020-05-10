@@ -252,7 +252,33 @@
                     td.insert{
                         button{
                             border-radius:3px;
+                            background:transparent;
+                            color:inherit;
+                            transition:all 0.3s ease;
+                            i{
+                                margin-right:3px;
+                            }
                         }
+                    }
+                    tr{
+                        &:hover{
+                            td.insert{
+                                button{
+                                    color:white;
+                                    background:#39b54a;
+                                }
+                            }
+                        }
+                    }
+                }
+                .no-template{
+                    h4{
+                        font-weight: bold;
+                    }
+                    text-align: center;
+                    padding:50px;
+                    .icon{
+                        font-size:50px;
                     }
                 }
             }
