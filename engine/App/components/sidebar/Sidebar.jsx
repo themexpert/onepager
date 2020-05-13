@@ -40,7 +40,9 @@ let Sidebar = React.createClass({
     return {
       saving: false,
       collapse: false,
-      isSettingsDirty: false
+      isSettingsDirty: false,
+      saveTemplateLoading:false,
+      exportLoading:false
     };
   },
   /**
@@ -123,6 +125,51 @@ let Sidebar = React.createClass({
     // }
   },
   
+  handleSaveOptionToggle(){
+    $('.op-footer-wrapper .save-option-panel').find('.save-option-lists').toggleClass('open');
+  },
+  /**
+   * export page
+   */
+  handleExport(){
+    let exported = AppStore.exportPage(); // return a promise
+    this.setState({exportLoading: true});
+
+    var donwloadFileName = 'onepager-' + 'pageName' + '-' + 'pageId' + '-' + Date.now(); 
+		var name = 'name' || 'template-' + 'pageId';
+    var screenshot = name + ".jpg";
+
+    exported.then( res => {
+      this.exportDownloadAsJson({
+        name: 'userTemplate',
+        screenshot: screenshot,
+        file:donwloadFileName,
+        identifier: 'txonepager',
+        type:'page',
+        sections: res.sections
+      })
+      this.setState({exportLoading: false});
+    }).catch( rej => {
+      this.setState({exportLoading: false});
+      swal('could not save' + rej);
+    });
+  },
+  /**
+   * data hold all section data of this page
+   * @param {data} 
+   */
+  exportDownloadAsJson(data) {
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent( JSON.stringify( data, null, 2 ) );
+		var dlAnchorElem = document.getElementById( 'exportAnchorElem' );
+
+    dlAnchorElem.setAttribute( "href", dataStr );
+		dlAnchorElem.setAttribute( "download", data.file + ".json" );
+		dlAnchorElem.click();
+	},
+
+  handleSaveTemplate(){
+    this.setState({saveTemplateLoading: true});
+  },
   handleResponsiveFrame(device){
     if( ($('body').hasClass('iframe-desktop')) || ($('body').hasClass('iframe-tablet')) || ($('body').hasClass('iframe-mobile')) ){
       $('body').removeClass('iframe-desktop iframe-tablet iframe-mobile');
@@ -226,6 +273,15 @@ let Sidebar = React.createClass({
       "saving-overlay": this.state.saving
     });
 
+    let saveTemplateClasses = cx({
+      "fa fa-refresh fa-spin": this.state.saveTemplateLoading
+    });
+    let exportClasses = cx({
+      "fa fa-refresh fa-spin": this.state.exportLoading
+    });
+
+
+
     return (
       <div className="builder-wrapper">
 
@@ -305,7 +361,7 @@ let Sidebar = React.createClass({
             : null}
             
             <nav className="uk-navbar uk-navbar-container">
-              <div className="uk-navbar-left"><a href={dashboardUrl}>Exit to Dashboard</a></div>
+              <div className="uk-navbar-left"><a href={dashboardUrl}>Exit</a></div>
               <div className="responsive-check-panel">
                 <a href="#" onClick={this.handleResponsiveToggle}><i className="fa fa-desktop responsive-check-button"></i></a> 
                 <ul className="responsive-devices">
@@ -326,6 +382,14 @@ let Sidebar = React.createClass({
                       <span className={saveButtonIcon}></span> Update
                     </button>
                 }
+                <div className="save-option-panel">
+                  <a href="#" onClick={this.handleSaveOptionToggle}><i className="fa fa-arrow-up"></i></a> 
+                  <ul className="save-option-lists">
+                    <li onClick={this.handleSaveTemplate}><i className={saveTemplateClasses}></i> Save as Template</li>
+                    <li onClick={this.handleExport}><i className={exportClasses}></i> Export </li>
+                  </ul>
+                  <a id="exportAnchorElem"></a>
+                </div>
               </div>
             </nav>
           </footer>

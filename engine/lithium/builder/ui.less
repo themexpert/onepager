@@ -507,6 +507,33 @@ h3.form-divider {
           display:block;
         }
       }
+      .save-option-panel{
+        color:white;
+        margin:0px 20px;
+        .save-option-lists{
+          position: absolute;
+          left:0;
+          top:-88px;
+          width:100%;
+          background:#017bff;
+          color:white;
+          margin:0;
+          padding:10px;
+          display:none;
+          li{
+            list-style-type: none;
+            padding:7px;
+            transition:all 0.3s ease;
+            &:hover{
+              cursor: pointer;
+              background:#0472e9;
+            }
+          }
+        }
+        .save-option-lists.open{
+          display:block;
+        }
+      }
     }
     .uk-button-primary{
       border-radius: 2px;

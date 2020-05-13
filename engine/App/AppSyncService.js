@@ -181,6 +181,21 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     });
   }
 
+  function exportPage(pageId){
+    var payload = {
+			action: 'onepager_get_sections',
+			pageId: pageId
+    };
+
+    return new Promise((resolve, reject) => {
+      jQuery.post(ODataStore.ajaxUrl, payload, (res) => {
+        return res.success 
+          ? resolve( res )
+          : reject("oops!! onepager could not export this page");
+      });
+    });
+    
+  }
   return {
     reloadSections,
     reloadBlocks,
@@ -188,7 +203,8 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     mergeSections,
     rawUpdate,
     updatePageSettings,
-    pageSyncServiceLive
+    pageSyncServiceLive,
+    exportPage
   };
 }
 

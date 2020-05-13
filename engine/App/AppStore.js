@@ -408,6 +408,10 @@ let AppStore = assign({}, BaseStore, {
 
     return updated;
   },
+  exportPage(){
+    let exportPageData = syncService.exportPage(_pageID);
+    return exportPageData;
+  },
 
   pageSave(){
     let callingRoute = syncService.updatePageSettings();
