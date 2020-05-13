@@ -132,16 +132,21 @@ let Sidebar = React.createClass({
    * export page
    */
   handleExport(){
+    let pageTitle = ODataStore.pageInfo.title;
+    var userTemplate = prompt("Enter template name", pageTitle);
+    
     let exported = AppStore.exportPage(); // return a promise
     this.setState({exportLoading: true});
 
-    var donwloadFileName = 'onepager-' + 'pageName' + '-' + 'pageId' + '-' + Date.now(); 
-		var name = 'name' || 'template-' + 'pageId';
+    let trimmedTitle = ODataStore.pageInfo.title.replace(/\s+/g, '');
+
+    var donwloadFileName = 'onepager' + trimmedTitle + ODataStore.pageId + Date.now(); 
+		var name = trimmedTitle || 'template-' + 'pageId';
     var screenshot = name + ".jpg";
 
     exported.then( res => {
       this.exportDownloadAsJson({
-        name: 'userTemplate',
+        name: userTemplate,
         screenshot: screenshot,
         file:donwloadFileName,
         identifier: 'txonepager',
@@ -250,6 +255,7 @@ let Sidebar = React.createClass({
       AppActions.updatePageSettigs(key, fields);
     };
     
+    let {status, title} = ODataStore.pageInfo;
     let isSettingsDirty = this.state.isSettingsDirty;
     let {isDirty} = this.props;
     let buildModeUrl = ODataStore.disableBuildModeUrl;
@@ -274,10 +280,12 @@ let Sidebar = React.createClass({
     });
 
     let saveTemplateClasses = cx({
-      "fa fa-refresh fa-spin": this.state.saveTemplateLoading
+      "fa fa-refresh fa-spin fa-fw": this.state.saveTemplateLoading,
+      "fa fa-save fa-fw": !this.state.saveTemplateLoading
     });
     let exportClasses = cx({
-      "fa fa-refresh fa-spin": this.state.exportLoading
+      "fa fa-refresh fa-spin fa-fw": this.state.exportLoading,
+      "fa fa-download fa-fw": !this.state.exportLoading
     });
 
 
@@ -288,7 +296,7 @@ let Sidebar = React.createClass({
         <div className="op-sidebar op-ui clearfix">
           <header className="op-header-wrapper">
             <nav className="uk-navbar uk-navbar-container">
-              <div className="uk-navbar-left"><a className="uk-logo op-btn-with-logo uk-light" href="#">OnePager</a></div>
+              <div className="uk-navbar-left"><a className="uk-logo op-btn-with-logo uk-light" href="#">{title}</a></div>
               
               <div className="uk-navbar-right">
                 {

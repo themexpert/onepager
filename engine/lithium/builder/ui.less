@@ -482,11 +482,25 @@ h3.form-divider {
       position: relative;
       .responsive-check-panel{
         color:white;
-        margin:0px 20px;
+        margin:0px 0px;
+        border:solid 1px transparent;
+        background:#3c4b5b;
+        padding:6px;
+        line-height: 0;
+        border-radius:2px;
+        a{
+          color:rgba(255,255,255,.7);
+          font-size:10px;
+        }
+        &:hover{
+          a{
+            color:rgba(255,255,255,1);
+          }
+        }
         .responsive-devices{
           position: absolute;
           left:0;
-          top:-122px;
+          top:-112px;
           width:100%;
           background:#017bff;
           color:white;
@@ -497,9 +511,14 @@ h3.form-divider {
             list-style-type: none;
             padding:7px;
             transition:all 0.3s ease;
+            background:#0e72dd;
+            border: solid 1px #549ae4;
+            padding: 7px 15px;
+            margin-bottom: 1px;
+            border-radius: 2px;
             &:hover{
               cursor: pointer;
-              background:#0472e9;
+              background:#0a68ce;
             }
           }
         }
@@ -509,11 +528,25 @@ h3.form-divider {
       }
       .save-option-panel{
         color:white;
-        margin:0px 20px;
+        margin:0px 0px;
+        border:solid 1px transparent;
+        background:#3c4b5b;
+        padding:6px;
+        line-height: 0;
+        border-radius:2px;
+        a{
+          color:rgba(255,255,255,.7);
+          font-size:10px;
+        }
+        &:hover{
+          a{
+            color:rgba(255,255,255,1);
+          }
+        }
         .save-option-lists{
           position: absolute;
           left:0;
-          top:-88px;
+          top:-81px;
           width:100%;
           background:#017bff;
           color:white;
@@ -524,9 +557,17 @@ h3.form-divider {
             list-style-type: none;
             padding:7px;
             transition:all 0.3s ease;
+            background:#0e72dd;
+            border: solid 1px #549ae4;
+            padding: 7px 15px;
+            margin-bottom: 1px;
+            border-radius: 2px;
+            i{
+              margin-right:5px;
+            }
             &:hover{
               cursor: pointer;
-              background:#0472e9;
+              background:#0a68ce;
             }
           }
         }
@@ -536,12 +577,45 @@ h3.form-divider {
       }
     }
     .uk-button-primary{
+      font-size: 10px;
       border-radius: 2px;
-      margin-top:-4px;
+      margin-top:0px;
+      line-height: 1;
+      padding:6px 15px;
+      letter-spacing: -0.1px;
+      background:#006fe6;
+      border:solid 1px transparent;
+      margin-right:2px;
+      color:rgba(255,255,255,.7);
+      span{
+        margin-right:3px;
+      }
+      &[disabled]{
+        background:#3c4b5b;
+        &:hover{
+          background:#3c4b5b;
+        }
+      }
+      &:hover{
+        background:#006fe6;
+      }
     }
     .uk-navbar-left{
+      font-size: 10px;
+      border-radius: 2px;
+      margin-top:0px;
+      line-height: 1;
+      padding:6px 15px;
+      letter-spacing: 1px;
+      background:#3c4b5b;
+      border:solid 1px transparent;
+      margin-right:2px;
+      color:rgba(255,255,255,.7);
       a{
         color:rgba(255,255,255,.7);
+        &:hover{
+          color:rgba(255,255,255,1);
+        }
       }
     }
   }
@@ -949,7 +1023,8 @@ h3.form-divider {
   color: @text-color;
   padding: 10px;
   border-radius: 0 4px 4px 0;
-  position: absolute; bottom: 6px; right: -30px;
+  position: absolute; bottom: 6px;
+  right: -32px;
   font-size: 16px;
   cursor: pointer;
   border: 1px solid darken(@bg-primary, 5%);

@@ -39,6 +39,10 @@ class BuildModeScripts
 
     public function localizeScriptData($pageId)
     {
+        $pageInfo = [];
+        $pageInfo['title'] = get_the_title($pageId);
+        $pageInfo['status'] = get_post_status($pageId);
+
         $onepager = onepager();
 
         $pagePresets = onepager()->presetManager()->all();
@@ -83,6 +87,7 @@ class BuildModeScripts
         $assetUrl = ONEPAGER_URL . '/assets';
         return compact(
             'ajaxUrl',
+            'pageInfo',
             'disableBuildModeUrl',
             'optionPanel',
             'pageOptionPanel',
