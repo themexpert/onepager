@@ -2,6 +2,7 @@ const React = require('react');
 const BlockCollection = require('../../App/components/blocks/BlockCollection.jsx');
 const PresetCollections = require('../../App/components/presets/PresetCollections.jsx');
 const SavedTemplates = require('../../App/components/templates/SavedTemplates.jsx');
+const ImportTemplate = require('../../App/components/templates/ImportTemplate.jsx');
 const AppStore = require('../../App/AppStore');
 let PopupModal = React.createClass({
     getInitialState(){
@@ -53,6 +54,7 @@ let PopupModal = React.createClass({
                         </ul>
                     </div>
                     <div className="right">
+                        <button onClick={this.handleTab} id="tab-upload" className={'tab-upload' === this.state.active ? 'tab-upload' : null }>Upload</button>
                         <span className="close-btn" onClick={this.handleClosePopup}>
                             <i className="fa fa-times"></i>
                         </span>
@@ -69,7 +71,9 @@ let PopupModal = React.createClass({
                         <div id="tab-my-template" className={'tab-my-template' === this.state.active ? 'tab-pane tab-my-template active' : 'tab-pane'}>
                             <SavedTemplates templates={savedTemplates}/>
                         </div>
-
+                        <div id="tab-upload" className={'tab-upload' === this.state.active ? 'tab-pane tab-upload active' : 'tab-pane'}>
+                            <ImportTemplate />
+                        </div>
                         <div className="bottom-bar">
                             <h4>We are developing more blocks. Stay tuned.</h4>
                         </div>
