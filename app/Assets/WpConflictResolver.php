@@ -17,10 +17,15 @@ class WpConflictResolver {
     }
 
     global $wp_styles;
-
+    
+    
     if( method_exists($wp_styles, 'remove') )
     {
       $wp_styles->remove( get_default_template_stylesheet_handle() );
+      if(onepager()->content()->isOnepageDefault()){
+        $wp_styles->add('theme-default-stylesheet', get_stylesheet_uri() );
+        $wp_styles->enqueue(array('theme-default-stylesheet'));
+      }
     }
   }
 
