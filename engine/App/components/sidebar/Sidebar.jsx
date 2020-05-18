@@ -118,12 +118,6 @@ let Sidebar = React.createClass({
 
   handleResponsiveToggle(){
     $('.op-footer-wrapper .responsive-check-panel').find('.responsive-devices').toggleClass('open');
-    // $('body #onepager-preview').find('iframe#onepager-iframe').wrap("<div id='preview-frame-wrapper'></div>");
-    // if($('.op-footer-wrapper .responsive-check-panel').find('.responsive-devices').hasClass('open')){
-    //   $('body #onepager-preview').find('iframe#onepager-iframe').wrap("<div id='preview-frame-wrapper'></div>");
-    // }else{
-    //   $('body #onepager-preview').find('iframe#onepager-iframe').unwrap();
-    // }
   },
   
   handleSaveOptionToggle(){
@@ -210,16 +204,20 @@ let Sidebar = React.createClass({
   handleTabClick(id){
     AppStore.setTabState({active: id});
   },
+
   /**
    * handle the popup
    * to insert the block to page
    */
   handlePopupModal(tabName = 'tab-block'){
+    // set active tab name
     let activeTabName = tabName;
     this.setState({modalActiveTab: activeTabName});
+    // toggle the modal
     var modalElement = document.querySelector('#onepager-builder .popup-modal');
     modalElement.classList.toggle('open');
   },
+
   _renderTabs(){
     let handleTabClick = this.handleTabClick;
     let activeTab = this.props.sidebarTabState.active;
@@ -330,7 +328,7 @@ let Sidebar = React.createClass({
               <TabPane id='op-sections' active={activeTab}>
                 <SectionList
                   openBlocks={handleTabClick.bind(this, 'op-blocks')}
-                  openPopup={handlePopupModal.bind(this, 'tab-upload')}
+                  openPopup={handlePopupModal.bind(this, 'tab-block')}
                   activeSectionIndex={activeSectionIndex}
                   blocks={blocks}
                   sections={sections}/>

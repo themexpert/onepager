@@ -25,7 +25,6 @@ let PopupModal = React.createClass({
             active: nextProps.active,
             savedTemplates: nextProps.savedTemplates,
         });
-        debugger;
     },
     handleClosePopup(){
         var modalElement = document.querySelector('#onepager-builder .popup-modal');
