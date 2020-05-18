@@ -7,7 +7,7 @@ const AppStore = require('../../App/AppStore');
 let PopupModal = React.createClass({
     getInitialState(){
         return {
-          active: 'tab-block',
+          active: '',
           assetUrl: '',
         };
     },
@@ -16,7 +16,12 @@ let PopupModal = React.createClass({
         let assetUrl = AppStore.getAssetUrl();
         this.setState({
             assetUrl: assetUrl
-        })
+        });
+    },
+    componentWillReceiveProps (nextProps){
+        this.setState({
+            active: nextProps.active,
+        });
     },
     handleClosePopup(){
         var modalElement = document.querySelector('#onepager-builder .popup-modal');
@@ -73,6 +78,9 @@ let PopupModal = React.createClass({
                         </div>
                         <div id="tab-upload" className={'tab-upload' === this.state.active ? 'tab-pane tab-upload active' : 'tab-pane'}>
                             <ImportTemplate />
+                        </div>
+                        <div id="tab-save-template" className={'tab-save-template' === this.state.active ? 'tab-pane tab-save-template active' : 'tab-pane'}>
+                            <h2>Save your template</h2>
                         </div>
                         <div className="bottom-bar">
                             <h4>We are developing more blocks. Stay tuned.</h4>

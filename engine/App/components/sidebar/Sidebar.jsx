@@ -42,7 +42,8 @@ let Sidebar = React.createClass({
       collapse: false,
       isSettingsDirty: false,
       saveTemplateLoading:false,
-      exportLoading:false
+      exportLoading:false,
+      modalActiveTab:''
     };
   },
   /**
@@ -173,7 +174,10 @@ let Sidebar = React.createClass({
 	},
 
   handleSaveTemplate(){
-    this.setState({saveTemplateLoading: true});
+    this.setState({
+      saveTemplateLoading: false
+    });
+    this.handlePopupModal('tab-save-template');
   },
   handleResponsiveFrame(device){
     if( ($('body').hasClass('iframe-desktop')) || ($('body').hasClass('iframe-tablet')) || ($('body').hasClass('iframe-mobile')) ){
@@ -210,7 +214,9 @@ let Sidebar = React.createClass({
    * handle the popup
    * to insert the block to page
    */
-  handlePopupModal(){
+  handlePopupModal(tabName = 'tab-block'){
+    let activeTabName = tabName;
+    this.setState({modalActiveTab: activeTabName});
     var modalElement = document.querySelector('#onepager-builder .popup-modal');
     modalElement.classList.toggle('open');
   },
@@ -280,7 +286,8 @@ let Sidebar = React.createClass({
     });
 
     let saveTemplateClasses = cx({
-      "fa fa-refresh fa-spin fa-fw": this.state.saveTemplateLoading,
+      // "fa fa-refresh fa-spin fa-fw": this.state.saveTemplateLoading,
+      "fa fa-save fa-fw": this.state.saveTemplateLoading,
       "fa fa-save fa-fw": !this.state.saveTemplateLoading
     });
     let exportClasses = cx({
@@ -323,7 +330,7 @@ let Sidebar = React.createClass({
               <TabPane id='op-sections' active={activeTab}>
                 <SectionList
                   openBlocks={handleTabClick.bind(this, 'op-blocks')}
-                  openPopup={handlePopupModal}
+                  openPopup={handlePopupModal.bind(this, 'tab-upload')}
                   activeSectionIndex={activeSectionIndex}
                   blocks={blocks}
                   sections={sections}/>
@@ -409,7 +416,7 @@ let Sidebar = React.createClass({
         
         <div className="popup-modal">
           {/* <PopupModal blocks={blocks} savedTemplates={savedTemplates} pagePresets={pagePresets}/> */}
-          <PopupModal blocks={blocks} savedTemplates={savedTemplates}/>
+          <PopupModal active={this.state.modalActiveTab} blocks={blocks} savedTemplates={savedTemplates}/>
         </div>
 
       </div>

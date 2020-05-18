@@ -23,6 +23,7 @@ let SectionList = React.createClass({
 
   propTypes: {
     openBlocks: React.PropTypes.func,
+    openPopup: React.PropTypes.func,
     activeSectionIndex: React.PropTypes.number,
     blocks: React.PropTypes.array,
     sections: React.PropTypes.array
