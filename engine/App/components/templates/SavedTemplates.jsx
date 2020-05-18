@@ -19,7 +19,8 @@ let SavedTemplates = React.createClass({
     console.log("rendering saved templates");
 
     let templates = this.props.templates;
-    console.log(templates);
+    
+    console.log('templates', templates);
  
 
     return (

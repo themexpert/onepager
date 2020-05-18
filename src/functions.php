@@ -326,6 +326,30 @@ if(! function_exists('txop_fetch_user_templates')){
 /**
  * fetch user templates from db
  */
+if(! function_exists('txop_fetch_single_templates')){
+	function txop_fetch_single_templates($args = []){
+		global $wpdb;
+
+		$defaults = [
+			'id' 	=> '0',
+		];
+		$args = wp_parse_args($args, $defaults);
+
+		$sql = $wpdb->prepare(
+				"SELECT * FROM {$wpdb->prefix}op_user_templates
+				WHERE id = {$args['id']}"
+		);
+	
+		$items = $wpdb->get_results( $sql );
+	
+		return $items;
+	}
+}
+
+
+/**
+ * fetch user templates from db
+ */
 if(! function_exists('txop_fetch_all_saved_templates')){
 	function txop_fetch_all_saved_templates($args = []){
 		global $wpdb;

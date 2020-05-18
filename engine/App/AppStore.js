@@ -54,6 +54,7 @@ let _sidebarTabState = _activeSectionIndex !== null ?
 
 let shouldLiveSectionsSync = ShouldSync(_sections, 'sections');
 let shouldSectionsSync = ShouldSync(_sections, 'sections');
+let savedTemplates = ShouldSync(_savedTemplates, 'savedTemplates');
 
 let syncService = SyncService(ODataStore.pageId, Activity(AUTO_SAVE_DELAY), shouldSectionsSync);
 let liveService = SyncService(null, Activity(AUTO_SAVE_DELAY), shouldLiveSectionsSync);
@@ -412,11 +413,24 @@ let AppStore = assign({}, BaseStore, {
     let exportPageData = syncService.exportPage(_pageID);
     return exportPageData;
   },
+
   importTemplate(jsonData){
     console.log('imported data', jsonData);
     let importJSONData = syncService.importJsonData(jsonData);
+
+    importJSONData.then(res => {
+      this.updateModalTemplate(res);
+      return new Promise( (resolve, reject ) => resolve('inserted'));
+      // new Promise((res, rej) => {
+      //   return res('inserted and working for sync');
+      // }) 
+    }).catch( rej => {
+      return new Promise( (resolve, reject ) => reject('rejected'));
+      // new Promise((res, rej) => {
+      //   return rej('rejected data');
+      // })
+    })
     return importJSONData;
-    // return new Promise( (resolve, reject ) => resolve('inserted'));
   },
 
   pageSave(){
@@ -435,6 +449,14 @@ let AppStore = assign({}, BaseStore, {
 
   setSectionsAsSavedSections(){
     _savedSections = getSerializedSectionsAsJSON(_sections); // return the changed json
+    emitChange();
+  },
+
+  updateModalTemplate(updatedRow){
+    var previousTemplates = _savedTemplates;
+    previousTemplates.push(updatedRow.inserted_data[0]); // return the changed json
+    _savedTemplates = previousTemplates;
+    // debugger;
     emitChange();
   },
 

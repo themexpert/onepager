@@ -35,7 +35,7 @@ let ImportTemplate = React.createClass({
         console.log('form submited');
         this.setState({loading:true});
         let importPromise = AppStore.importTemplate(this.state.selectedFileData);
-            
+        // debugger;
         importPromise.then(
             res => {
                 this.setState({loading:false});

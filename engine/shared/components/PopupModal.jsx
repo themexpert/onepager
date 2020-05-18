@@ -9,19 +9,23 @@ let PopupModal = React.createClass({
         return {
           active: '',
           assetUrl: '',
+          savedTemplates: '',
         };
     },
 
     componentDidMount(){
         let assetUrl = AppStore.getAssetUrl();
         this.setState({
-            assetUrl: assetUrl
+            assetUrl: assetUrl,
+            savedTemplates: this.props.savedTemplates
         });
     },
     componentWillReceiveProps (nextProps){
         this.setState({
             active: nextProps.active,
+            savedTemplates: nextProps.savedTemplates,
         });
+        debugger;
     },
     handleClosePopup(){
         var modalElement = document.querySelector('#onepager-builder .popup-modal');
@@ -30,8 +34,10 @@ let PopupModal = React.createClass({
     handleTab(e){
         var tabElement = e.target.getAttribute('id');
         this.setState({
-            active: tabElement
-        })
+            active: tabElement,
+            savedTemplates: this.props.savedTemplates
+        });
+        this.forceUpdate();
     },
     render() {
         console.log("rendering popup");
@@ -40,8 +46,8 @@ let PopupModal = React.createClass({
         const OPLOGO = opAssetUrl + '/images/logo.svg';
         let blocks = this.props.blocks;
         // let pagePresets = this.props.pagePresets;
-        let savedTemplates = this.props.savedTemplates;
-    
+        let savedTemplates = this.state.savedTemplates;
+        // debugger;
         return (
             <div className="popup-modal-wrapper">
                 <div className="topbar">
@@ -74,7 +80,8 @@ let PopupModal = React.createClass({
                             {/* <PresetCollections pagePresets={pagePresets}/> */}
                         </div>
                         <div id="tab-my-template" className={'tab-my-template' === this.state.active ? 'tab-pane tab-my-template active' : 'tab-pane'}>
-                            <SavedTemplates templates={savedTemplates}/>
+                            <SavedTemplates templates={this.state.savedTemplates}/>
+                            {/* <SavedTemplates templates={savedTemplates}/> */}
                         </div>
                         <div id="tab-upload" className={'tab-upload' === this.state.active ? 'tab-pane tab-upload active' : 'tab-pane'}>
                             <ImportTemplate />
