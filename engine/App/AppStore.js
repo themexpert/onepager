@@ -412,6 +412,12 @@ let AppStore = assign({}, BaseStore, {
     let exportPageData = syncService.exportPage(_pageID);
     return exportPageData;
   },
+  importTemplate(jsonData){
+    console.log('imported data', jsonData);
+    let importJSONData = syncService.importJsonData(jsonData);
+    return importJSONData;
+    // return new Promise( (resolve, reject ) => resolve('inserted'));
+  },
 
   pageSave(){
     let callingRoute = syncService.updatePageSettings();

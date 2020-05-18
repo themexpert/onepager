@@ -194,8 +194,24 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
           : reject("oops!! onepager could not export this page");
       });
     });
-    
   }
+  
+  function importJsonData(jsonData){
+    var payload = {
+			action: 'onepager_import_layout',
+			data: jsonData
+    };
+
+    return new Promise((resolve, reject) => {
+      jQuery.post(ODataStore.ajaxUrl, payload, (res) => {
+        // debugger;
+        return res.insert_id 
+          ? resolve( res )
+          : reject("oops!! onepager could not import this page");
+      });
+    });
+  }
+
   return {
     reloadSections,
     reloadBlocks,
@@ -204,7 +220,8 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     rawUpdate,
     updatePageSettings,
     pageSyncServiceLive,
-    exportPage
+    exportPage,
+    importJsonData
   };
 }
 

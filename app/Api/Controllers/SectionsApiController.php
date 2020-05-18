@@ -66,6 +66,22 @@ class SectionsApiController extends ApiController {
 		$sections = onepager()->section()->getAllValid( $pageId );
 		$this->responseSuccess( compact( 'sections' ) );
 	}
+	
+	public function importLayout() {
+		$json_data = array_get( $_POST, 'data', false );
+
+		$name = array_key_exists('name', $json_data) ? sanitize_text_field($json_data['name']) : 'template';
+        $type = array_key_exists('type', $json_data) ? sanitize_text_field($json_data['type']) : 'page';
+		$data = serialize($json_data['sections']);
+
+		$insert_id = txop_insert_user_templates([
+            'name'      => $name,
+            'type'      => $type,
+            'data'      => $data
+        ]);
+		$this->responseSuccess( compact('insert_id') );
+		
+	}
 
 	public function reloadSections() {
 		$sections = array_get( $_POST, 'sections', [] ) ?: []; // making sure its an array
