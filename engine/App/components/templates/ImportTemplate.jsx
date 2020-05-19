@@ -14,7 +14,8 @@ let ImportTemplate = React.createClass({
     getInitialState(){
         return {
             selectedFileData: null,
-            loading:false
+            loading:false,
+            error:''
         };
     },
     mixins: [PureMixin],
@@ -25,17 +26,25 @@ let ImportTemplate = React.createClass({
         this.fileReader.readAsText(files);
         this.fileReader.onload = event => {
             let jsonData = JSON.parse(event.target.result);
+            if( 'txonepager' != jsonData.identifier ){
+                this.setState({
+                    error: 'Wrong JSON File. Please upload Onepager JSON'
+                })
+            }else{
+                this.setState({
+                    error: ''
+                })
+            }
             this.setState({ selectedFileData: JSON.parse(event.target.result) });
-            console.log('jsondata', jsonData);
+            console.log('jsondata', jsonData.identifier);
         };
     },
 
     handleImportFormSubmit(e){
         e.preventDefault();
-        console.log('form submited');
         this.setState({loading:true});
+        
         let importPromise = AppStore.importTemplate(this.state.selectedFileData);
-        // debugger;
         importPromise.then(
             res => {
                 this.setState({loading:false});
@@ -47,11 +56,6 @@ let ImportTemplate = React.createClass({
                 swal(rej);
             }
         );
-        // if(! this.state.selectedFileData){
-        //     swal('please select a json file first');
-        // }else{
-            
-        // }
     },
 
     render() {
@@ -61,8 +65,14 @@ let ImportTemplate = React.createClass({
         return (
             <div>
                 <div className="js-upload" uk-form-custom>
+                    
+                    <div className="upload-error">
+                        <span style={{color:'red'}}>
+                            {this.state.error ? this.state.error : null}
+                        </span>
+                    </div>
                     <form onSubmit={this.handleImportFormSubmit}>
-                        <input type="file" name="choose-template-json" id="choose-template-json" accept="application/json" onChange={this.handleTemplateImport} />
+                        <input type="file" name="choose-template-json" id="choose-template-json" accept="application/json" onChange={this.handleTemplateImport} required />
 
                         <button type="submit" className="uk-button uk-button-default">Upload{this.state.loading ? 'ing': ''}</button>
                     </form>

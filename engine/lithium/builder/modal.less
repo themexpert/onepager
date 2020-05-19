@@ -67,7 +67,6 @@
                             &:hover{
                                 background:white;
                                 border-color: #c8c8c8;
-
                             }
                         }
                         li.active{
@@ -78,6 +77,9 @@
                 }
                 .right{
                     text-align: right;
+                    display:flex;
+                    align-items: center;
+                    justify-content: flex-end;
                     .close-btn{
                         margin:0px 10px 0px;
                         display:inline-block;
@@ -85,6 +87,18 @@
                         i{
                             font-size: 17px;
                             color: #9d9c9c;
+                        }
+                    }
+                    button{
+                        color:#9d9c9c;
+                        padding:1px 5px;
+                        margin:0px;
+                        border:none;
+                        margin-right:5px;
+                        &:hover{
+                            background:#d0cfcf;
+                            color:#595858;
+                            border:none;
                         }
                     }
                 }
