@@ -417,21 +417,21 @@ let AppStore = assign({}, BaseStore, {
   },
 
   importTemplate(jsonData){
-    console.log('imported data', jsonData);
+    // console.log('imported data', jsonData);
     let importJSONData = syncService.importJsonData(jsonData);
 
-    importJSONData.then(res => {
-      this.updateModalTemplate(res);
-      return new Promise( (resolve, reject ) => resolve('inserted'));
-      // new Promise((res, rej) => {
-      //   return res('inserted and working for sync');
-      // }) 
-    }).catch( rej => {
-      return new Promise( (resolve, reject ) => reject('rejected'));
-      // new Promise((res, rej) => {
-      //   return rej('rejected data');
-      // })
-    })
+    // importJSONData.then(res => {
+    //   this.updateModalTemplate(res);
+    //   return new Promise( (resolve, reject ) => resolve('inserted'));
+    //   // new Promise((res, rej) => {
+    //   //   return res('inserted and working for sync');
+    //   // }) 
+    // }).catch( rej => {
+    //   return new Promise( (resolve, reject ) => reject('rejected'));
+    //   // new Promise((res, rej) => {
+    //   //   return rej('rejected data');
+    //   // })
+    // })
     return importJSONData;
   },
 
