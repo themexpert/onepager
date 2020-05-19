@@ -57,10 +57,10 @@ let SavedTemplates = React.createClass({
         ) : (
         <div className="no-template">
           <p className="icon"><span><i className="fa fa-smile-o"></i></span></p>
-          <h4>Haven't saved templated Yet ? </h4>
-          <p>
+          <p>You didn't save any template yet.</p>
+          {/* <p>
             <span>Your template should be here. Design, Save & Reuse it.  </span>
-          </p>
+          </p> */}
         </div> 
         )}
         </div>
