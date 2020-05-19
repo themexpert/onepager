@@ -95,6 +95,7 @@ let ImportTemplate = React.createClass({
                     </div>
                     <form onSubmit={this.handleImportFormSubmit}>
                         <label htmlFor="choose-template-json">
+                            <p>Import template to Onepager library</p>
                             <span className="text"> <i className={importButtonIcon}></i> {this.state.loading ? 'Uploading' : 'Select File'}</span>
                         </label>
                         <input type="file" name="choose-template-json" id="choose-template-json" accept="application/json" onChange={this.handleTemplateImport} required />

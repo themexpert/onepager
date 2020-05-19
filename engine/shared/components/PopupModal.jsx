@@ -9,7 +9,7 @@ const AppStore = require('../../App/AppStore');
 let PopupModal = React.createClass({
     getInitialState(){
         return {
-          active: '',
+          active: 'tab-block',
           assetUrl: '',
           savedTemplates: '',
         };
@@ -33,12 +33,12 @@ let PopupModal = React.createClass({
         modalElement.classList.remove('open');
     },
     handleTab(e){
+        // debugger;
         var tabElement = e.target.getAttribute('id');
         this.setState({
             active: tabElement,
             savedTemplates: this.props.savedTemplates
         });
-        this.forceUpdate();
     },
     render() {
         console.log("rendering popup");
@@ -66,8 +66,8 @@ let PopupModal = React.createClass({
                         </ul>
                     </div>
                     <div className="right">
-                        <button onClick={this.handleTab} id="tab-upload" className={'tab-upload' === this.state.active ? 'tab-upload' : null }>Upload</button>
-                        <button onClick={this.handleTab} id="tab-save-template" className={'tab-save-template' === this.state.active ? 'tab-save-template' : null }>Save</button>
+                        <button id="tab-upload" className={'tab-upload' === this.state.active ? 'tab-upload' : null } onClick={this.handleTab} > <i id="tab-upload" className="fa fa-upload"></i> </button>
+                        <button id="tab-save-template" className={'tab-save-template' === this.state.active ? 'tab-save-template' : null } onClick={this.handleTab}> <i id="tab-save-template" className="fa fa-save"></i> </button>
                         <span className="close-btn" onClick={this.handleClosePopup}>
                             <i className="fa fa-times"></i>
                         </span>

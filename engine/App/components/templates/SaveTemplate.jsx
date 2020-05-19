@@ -37,7 +37,10 @@ let SaveTemplate = React.createClass({
         importPromise.then(
             res => {
                 AppStore.syncSavedTemplateLibrary(res);
-                this.setState({loading:false});
+                this.setState({
+                    name: null,
+                    loading:false
+                });
                 console.log(res);
             }
         ).catch(
@@ -58,10 +61,10 @@ let SaveTemplate = React.createClass({
         return (
             <div className="save-template-input">
                 <div className="save-template-input-wrapper">
-                    <h2>Save your page to Onepager library</h2>
-                    <p>Your page content will be available for export and reuse on any page or website</p>
+                    <p>Save your page to Onepager library</p>
+                    {/* <p>Your page content will be available for export and reuse on any page or website</p> */}
                     <form onSubmit={this.handleSaveTemplateFormSubmit}>
-                        <input type="text" required name="choose-template-json" id="choose-template-json" onChange={this.handleNameInput} />
+                        <input placeholder="Type your template name" type="text" required name="choose-template-json" id="choose-template-json" onChange={this.handleNameInput} value={this.state.name ? this.state.name : null} />
 
                         <button type="submit" className="submit-button"> <span className={saveButtonIcon}></span> {this.state.loading ? 'saving': 'save'}</button>
                     </form>

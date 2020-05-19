@@ -213,6 +213,7 @@ let Sidebar = React.createClass({
   },
 
   handleTabClick(id){
+    debugger;
     AppStore.setTabState({active: id});
   },
 

@@ -28,6 +28,7 @@
                 background:#e3e3e3;
                 padding:10px;
                 align-items: center;
+                box-shadow:0px 0px 5px rgba(0, 0, 0, 0.4);
                 .logo{
                     display:flex;
                     align-items: center;
@@ -57,7 +58,7 @@
                         li{
                             display:inline-block;
                             list-style-type: none;
-                            margin:0px 15px;
+                            margin:0px 5px;
                             padding:3px 15px;
                             transition:all 0.3s ease;
                             background:transparent;
@@ -81,8 +82,10 @@
                     align-items: center;
                     justify-content: flex-end;
                     .close-btn{
-                        margin:0px 10px 0px;
+                        padding:0px 10px 0px 15px;
                         display:inline-block;
+                        margin-left:5px;
+                        border-left:solid 1px #9d9c9c; 
                         cursor: pointer;
                         i{
                             font-size: 17px;
@@ -94,11 +97,15 @@
                         padding:1px 5px;
                         margin:0px;
                         border:none;
-                        margin-right:5px;
+                        margin-right:10px;
+                        background:transparent;
+                        transition:all 0.2s ease;
                         &:hover{
-                            background:#d0cfcf;
                             color:#595858;
                             border:none;
+                        }
+                        &:focus{
+                            outline:none;
                         }
                     }
                 }
@@ -257,6 +264,11 @@
                             border:dotted 4px #eee;
                             cursor: pointer;
                             margin-bottom:50px;
+                            p{
+                                font-size: 24px;
+                                font-weight: normal;
+                                margin-bottom:30px;
+                            }
                             
                             span.text{
                                 background:#39b54a;
@@ -266,6 +278,7 @@
                                 color:white;
                                 font-weight: normal;
                                 border-radius:4px;
+                                display:inline-block;
                                 i{
                                     margin-right:7px;
                                 }
@@ -279,8 +292,9 @@
                 .save-template-input{
                     text-align: center;
                     padding:50px 0px;
-                    h2{
-                        font-weight: bold;
+                    p{
+                        font-weight: normal;
+                        font-size:24px;
                     }
                     form{
                         margin:50px 0px 100px;
@@ -336,7 +350,11 @@
                         }
                     }
                     tr{
+                        background:transparent;
+                        transition:all 0.2s ease;
                         &:hover{
+                            background:#f7f7f7;
+                            cursor: pointer;
                             td.insert{
                                 button{
                                     color:white;
