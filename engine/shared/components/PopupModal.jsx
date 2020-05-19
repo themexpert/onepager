@@ -5,6 +5,7 @@ const SavedTemplates = require('../../App/components/templates/SavedTemplates.js
 const ImportTemplate = require('../../App/components/templates/ImportTemplate.jsx');
 const SaveTemplate = require('../../App/components/templates/SaveTemplate.jsx');
 const AppStore = require('../../App/AppStore');
+
 let PopupModal = React.createClass({
     getInitialState(){
         return {

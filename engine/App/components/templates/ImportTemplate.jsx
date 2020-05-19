@@ -72,6 +72,7 @@ let ImportTemplate = React.createClass({
                         </span>
                     </div>
                     <form onSubmit={this.handleImportFormSubmit}>
+                        <label htmlFor="choose-template-json">Select File</label>
                         <input type="file" name="choose-template-json" id="choose-template-json" accept="application/json" onChange={this.handleTemplateImport} required />
 
                         <button type="submit" className="uk-button uk-button-default">Upload{this.state.loading ? 'ing': ''}</button>

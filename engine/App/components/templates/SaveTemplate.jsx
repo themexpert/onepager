@@ -5,19 +5,19 @@ const Button = require('react-bootstrap/lib/Button');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const Template = require('./Template.jsx');
 const Select = require("../../../shared/components/form/Select.jsx");
-// const AppStore  = require('../../stores/AppStore');
 const swal = require('sweetalert');
 const AppStore = require('../../AppStore');
-
+import cx from "classnames";
 
 let SaveTemplate = React.createClass({
+    mixins: [PureMixin],
+    
     getInitialState(){
         return {
             name: null,
             loading:false
         };
     },
-    mixins: [PureMixin],
 
     handleNameInput(event){
         const name = event.target.value;
@@ -50,14 +50,20 @@ let SaveTemplate = React.createClass({
 
     render() {
         console.log('save template state', this.state);
+        let saveButtonIcon = cx({
+            "fa fa-refresh fa-spin": this.state.loading,
+        });
+      
 
         return (
-            <div>
+            <div className="save-template-input">
                 <div className="save-template-input-wrapper">
+                    <h2>Save your page to Onepager library</h2>
+                    <p>Your page content will be available for export and reuse on any page or website</p>
                     <form onSubmit={this.handleSaveTemplateFormSubmit}>
-                        <input type="text" name="choose-template-json" id="choose-template-json" onChange={this.handleNameInput} />
+                        <input type="text" required name="choose-template-json" id="choose-template-json" onChange={this.handleNameInput} />
 
-                        <button type="submit" className="uk-button uk-button-default">Save{this.state.loading ? 'ing': ''}</button>
+                        <button type="submit" className="submit-button"> <span className={saveButtonIcon}></span> {this.state.loading ? 'saving': 'save'}</button>
                     </form>
                 </div>
             </div>
