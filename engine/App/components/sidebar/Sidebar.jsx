@@ -51,6 +51,7 @@ let Sidebar = React.createClass({
   },
   componentWillReceiveProps (nextProps){
     this.setState({
+      modalActiveTab:nextProps.modalActiveTabName,
       savedTemplates:nextProps.savedTemplates
     });
   },

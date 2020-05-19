@@ -5,23 +5,35 @@ const Button = require('react-bootstrap/lib/Button');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const Template = require('./Template.jsx');
 const Select = require("../../../shared/components/form/Select.jsx");
-// const AppStore  = require('../../stores/AppStore');
 
 
 let SavedTemplates = React.createClass({
-  mixins: [PureMixin],
+
+  getInitialState(){
+    return {
+      templates: ''
+    };
+  },
 
   propTypes: {
     templates: React.PropTypes.array
   },
 
-  render() {
-    console.log("rendering saved templates");
+  componentDidMount(){
+    this.setState({
+      templates: this.props.templates
+    });
+  },
+  componentWillReceiveProps (nextProps){
+    this.setState({
+      templates: nextProps.templates
+    });
+  },
 
-    let templates = this.props.templates;
+  render() {
     
-    console.log('templates', templates);
- 
+    console.log("rendering saved templates");
+    let templates = this.state.templates;    
 
     return (
       <div>

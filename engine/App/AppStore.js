@@ -32,6 +32,7 @@ function transformSections(sections){
   return SectionTransformer.unserializeSections(sections, _blocks);
 }
 
+let _modalActiveTabName = 'tab-block'; 
 let _assetUrl = ODataStore.assetUrl; 
 let _blocks = sortBlocks(ODataStore.blocks);
 let _sections = transformSections(ODataStore.sections);
@@ -399,6 +400,7 @@ let AppStore = assign({}, BaseStore, {
       pageSettingOptionPanel: _pageSettingOptionPanel, // Need to remove this 
       savedTemplates: _savedTemplates, 
       pagePresets: _pagePresets, 
+      modalActiveTabName: _modalActiveTabName 
     };
   },
 
@@ -468,20 +470,28 @@ let AppStore = assign({}, BaseStore, {
     _savedSections = getSerializedSectionsAsJSON(_sections); // return the changed json
     emitChange();
   },
-
+  /**
+   * update template library of modal 
+   * after save template
+   * @param {*} NewTemplate 
+   */
   syncSavedTemplateLibrary(NewTemplate){
     var previousTemplates = _savedTemplates;
     previousTemplates.push(NewTemplate.inserted_data[0]); // return the changed json
     _savedTemplates = previousTemplates;
-    // debugger;
+    _modalActiveTabName = 'tab-my-template';
     emitChange();
   },
-
+  /**
+   * update template library of modal 
+   * after import template
+   * @param {*} updatedRow 
+   */
   updateModalTemplate(updatedRow){
     var previousTemplates = _savedTemplates;
     previousTemplates.push(updatedRow.inserted_data[0]); // return the changed json
     _savedTemplates = previousTemplates;
-    // debugger;
+    _modalActiveTabName = 'tab-my-template';
     emitChange();
   },
 
