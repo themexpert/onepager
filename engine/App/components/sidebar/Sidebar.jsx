@@ -29,13 +29,6 @@ let Sidebar = React.createClass({
     AppActions.collapseSidebar(!this.props.collapseSidebar)
   },
 
-  componentDidMount(){
-    this._unsavedAlert();
-    this._initNiceScroll();
-    // $('body #onepager-preview').find('iframe#onepager-iframe').wrap("<div id='preview-frame-wrapper'></div>");
-
-  },
-
   getInitialState(){
     return {
       saving: false,
@@ -43,9 +36,26 @@ let Sidebar = React.createClass({
       isSettingsDirty: false,
       saveTemplateLoading:false,
       exportLoading:false,
-      modalActiveTab:''
+      modalActiveTab:'',
+      savedTemplates:''
     };
   },
+  
+  componentDidMount(){
+    this._unsavedAlert();
+    this._initNiceScroll();
+    // $('body #onepager-preview').find('iframe#onepager-iframe').wrap("<div id='preview-frame-wrapper'></div>");
+    this.setState({
+      savedTemplates:this.props.savedTemplates
+    })
+  },
+  componentWillReceiveProps (nextProps){
+    this.setState({
+      savedTemplates:nextProps.savedTemplates
+    });
+  },
+
+
   /**
    * handle section update
    */
@@ -238,6 +248,7 @@ let Sidebar = React.createClass({
   },
 
   render() {
+    console.warn('sidebar state', this.state);
     let {sections, blocks, activeSectionIndex, activeSection, pageSettingOptions, savedTemplates, pagePresets} = this.props;
     let sectionEditable = activeSectionIndex !== null;
     let activeTab = this.props.sidebarTabState.active;
@@ -269,6 +280,7 @@ let Sidebar = React.createClass({
     let pluginUpdateUrl = ODataStore.pluginUpdateUrl;
     let onepagerProLoaded = ODataStore.onepagerProLoaded;
     let proUpgradeLink = ODataStore.proUpgradeLink;
+
     let saveButtonIcon = cx({
       "fa fa-refresh fa-spin": this.state.saving,
       "fa fa-check": !this.state.saving
@@ -288,6 +300,7 @@ let Sidebar = React.createClass({
       "fa fa-save fa-fw": this.state.saveTemplateLoading,
       "fa fa-save fa-fw": !this.state.saveTemplateLoading
     });
+
     let exportClasses = cx({
       "fa fa-refresh fa-spin fa-fw": this.state.exportLoading,
       "fa fa-download fa-fw": !this.state.exportLoading

@@ -433,6 +433,23 @@ let AppStore = assign({}, BaseStore, {
     return importJSONData;
   },
 
+  /**
+   * Save a template from builder
+   * @param {pageID} 
+   */
+  saveTemplate(name, type){
+    console.log('imported data', name, type);
+    let saveTemplatePromise = syncService.saveTemplate(_pageID, name, type);
+
+    // saveTemplatePromise.then(res => {
+    //   this.updateModalTemplate(res);
+    //   return new Promise( (resolve, reject ) => resolve('inserted'));
+    // }).catch( rej => {
+    //   return new Promise( (resolve, reject ) => reject('rejected'));
+    // })
+    return saveTemplatePromise;
+  },
+
   pageSave(){
     let callingRoute = syncService.updatePageSettings();
     callingRoute.then( (res) => {
@@ -449,6 +466,14 @@ let AppStore = assign({}, BaseStore, {
 
   setSectionsAsSavedSections(){
     _savedSections = getSerializedSectionsAsJSON(_sections); // return the changed json
+    emitChange();
+  },
+
+  syncSavedTemplateLibrary(NewTemplate){
+    var previousTemplates = _savedTemplates;
+    previousTemplates.push(NewTemplate.inserted_data[0]); // return the changed json
+    _savedTemplates = previousTemplates;
+    // debugger;
     emitChange();
   },
 

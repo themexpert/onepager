@@ -180,7 +180,30 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
       })
     });
   }
+  /**
+   * export a page from builder 
+   * @param {pageID}
+   */
+  function saveTemplate(pageID, name, type){
+    var payload = {
+			action: 'onepager_save_layout',
+			pageID: pageID,
+			name: name,
+			type: type,
+    };
 
+    return new Promise((resolve, reject) => {
+      jQuery.post(ODataStore.ajaxUrl, payload, (res) => {
+        return res.success 
+          ? resolve( res )
+          : reject("oops!! onepager could not save this page");
+      });
+    });
+  }
+  /**
+   * export a page from builder 
+   * @param {pageID}
+   */
   function exportPage(pageId){
     var payload = {
 			action: 'onepager_get_sections',
@@ -195,7 +218,11 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
       });
     });
   }
-  
+
+  /**
+   * import a exported json from builder
+   * @param {*} jsonData 
+   */
   function importJsonData(jsonData){
     var payload = {
 			action: 'onepager_import_layout',
@@ -221,7 +248,8 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     updatePageSettings,
     pageSyncServiceLive,
     exportPage,
-    importJsonData
+    importJsonData,
+    saveTemplate
   };
 }
 

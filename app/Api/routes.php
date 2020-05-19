@@ -12,6 +12,7 @@ if ( is_admin() && defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 	$apiRouter->post( 'onepager_merge_sections', 'App\Api\Controllers\SectionsApiController@mergeSections' );
 	$apiRouter->post( 'onepager_get_sections', 'App\Api\Controllers\SectionsApiController@getSections' );
 	$apiRouter->post( 'onepager_import_layout', 'App\Api\Controllers\SectionsApiController@importLayout' );
+	$apiRouter->post( 'onepager_save_layout', 'App\Api\Controllers\SectionsApiController@saveLayout' );
 	$apiRouter->post( 'onepager_reload_sections', 'App\Api\Controllers\SectionsApiController@reloadSections' );
 
 	$apiRouter->post( 'onepager_reload_blocks', 'App\Api\Controllers\BlocksApiController@reloadBlocks' );
