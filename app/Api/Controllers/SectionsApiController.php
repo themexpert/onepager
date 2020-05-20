@@ -92,6 +92,9 @@ class SectionsApiController extends ApiController {
 		$inserted_data = txop_fetch_single_templates([
 			'id' => $insert_id
 		]);
+		$new_data = unserialize($inserted_data[0]->data);
+		$inserted_data[0]->data = $new_data;
+
 		$this->responseSuccess( compact('insert_id', 'inserted_data') );
 	}
 	/**
