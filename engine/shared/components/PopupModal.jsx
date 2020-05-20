@@ -42,7 +42,7 @@ let PopupModal = React.createClass({
     },
     render() {
         console.log("rendering popup");
-        console.log('popup state', this.state);
+        // console.log('popup state', this.state);
         const opAssetUrl = this.state.assetUrl;
         const OPLOGO = opAssetUrl + '/images/logo.svg';
         let blocks = this.props.blocks;

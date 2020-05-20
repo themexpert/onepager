@@ -77,7 +77,7 @@ let ImportTemplate = React.createClass({
 
     render() {
         console.log("importing template");
-        console.log('state', this.state);
+        // console.log('state', this.state);
 
         let importButtonIcon = cx({
             "fa fa-refresh fa-spin": this.state.loading,

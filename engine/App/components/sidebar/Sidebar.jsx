@@ -251,7 +251,7 @@ let Sidebar = React.createClass({
   },
 
   render() {
-    console.warn('sidebar state', this.state);
+    // console.warn('sidebar state', this.state);
     let {sections, blocks, activeSectionIndex, activeSection, pageSettingOptions, savedTemplates, pagePresets} = this.props;
     let sectionEditable = activeSectionIndex !== null;
     let activeTab = this.props.sidebarTabState.active;

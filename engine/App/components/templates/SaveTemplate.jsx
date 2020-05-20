@@ -52,7 +52,7 @@ let SaveTemplate = React.createClass({
     },
 
     render() {
-        console.log('save template state', this.state);
+        // console.log('save template state', this.state);
         let saveButtonIcon = cx({
             "fa fa-refresh fa-spin": this.state.loading,
         });
