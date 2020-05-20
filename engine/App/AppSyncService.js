@@ -196,7 +196,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
       jQuery.post(ODataStore.ajaxUrl, payload, (res) => {
         return res.success 
           ? resolve( res )
-          : reject("oops!! onepager could not save this page");
+          : reject(res.message);
       });
     });
   }

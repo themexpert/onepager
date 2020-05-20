@@ -79,6 +79,9 @@ class SectionsApiController extends ApiController {
 		}
 
 		$sections = onepager()->section()->getAllValid( $pageID );
+		if(empty($sections)){
+			$this->responseFailed(['message' => 'Page contains no sections to save']);
+		}
 		$data = serialize($sections);
 		
 		$insert_id = txop_insert_user_templates([

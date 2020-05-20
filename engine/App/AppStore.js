@@ -107,7 +107,7 @@ function mergeSections(sections) {
       return sections[key]; 
     }); 
   }
-
+  debugger;
   passedSection.forEach(section => {
     // section = SectionTransformer.unifySection(section);
     _sections.push(section);
