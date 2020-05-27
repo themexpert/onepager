@@ -44,9 +44,9 @@ let Block = React.createClass({
           <i className="fa fa-download"></i>
           <span>Insert</span>
           </button>
+          <span className="uk-text-meta uk-hidden">{block.name}</span>
+          <span className="uk-text-meta uk-hidden">{block.groups}</span>
         </div>
-        {/* <span className="uk-text-meta uk-hidden">{block.name}</span> */}
-        {/* <span className="uk-text-meta uk-hidden">{block.groups}</span> */}
       </div>
     );
   }
