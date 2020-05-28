@@ -107,8 +107,9 @@ function mergeSections(sections) {
       return sections[key]; 
     }); 
   }
-  debugger;
+  // debugger;
   passedSection.forEach(section => {
+    section.id = toolbelt.randomId( "s_" );
     // section = SectionTransformer.unifySection(section);
     _sections.push(section);
   });
