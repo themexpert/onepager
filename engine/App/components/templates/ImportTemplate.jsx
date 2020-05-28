@@ -94,11 +94,11 @@ let ImportTemplate = React.createClass({
                         </span>
                     </div>
                     <form onSubmit={this.handleImportFormSubmit}>
-                        <label htmlFor="choose-template-json">
+                        <label htmlFor="choose-template-json-for-import">
                             <p>Import template to Onepager library</p>
                             <span className="text"> <i className={importButtonIcon}></i> {this.state.loading ? 'Uploading' : 'Select File'}</span>
                         </label>
-                        <input type="file" name="choose-template-json" id="choose-template-json" accept="application/json" onChange={this.handleTemplateImport} required />
+                        <input type="file" name="choose-template-json-for-import" id="choose-template-json-for-import" accept="application/json" onChange={this.handleTemplateImport} required />
 
                         {/* <button type="submit" className="uk-button uk-button-default">Upload{this.state.loading ? 'ing': ''}</button> */}
                     </form>

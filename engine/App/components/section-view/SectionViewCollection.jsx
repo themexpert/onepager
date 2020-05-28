@@ -46,7 +46,7 @@ let SectionViewCollection = React.createClass({
         {
           sections.map((section, index)=> {
             let active = this.props.activeSectionIndex === index;
-            return <SectionView active={active} fullScreen={fullScreen} section={section} key={section.key} index={index}/>;
+            return <SectionView active={active} key={section.slug} fullScreen={fullScreen} section={section} key={section.key} index={index}/>;
           })
         }
       </div>

@@ -25,7 +25,7 @@ let Template = React.createClass({
   },
 
   render() {
-    console.log("rendering template");
+    // console.log("rendering template");
     let template = this.props.template;
 
     return (

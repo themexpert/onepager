@@ -15,9 +15,9 @@ let SavedTemplates = React.createClass({
     };
   },
 
-  propTypes: {
-    templates: React.PropTypes.array
-  },
+  // propTypes: {
+  //   templates: React.PropTypes.array
+  // },
 
   componentDidMount(){
     this.setState({
@@ -51,7 +51,7 @@ let SavedTemplates = React.createClass({
               </tr>
           </thead>
           <tbody>
-            {templates.map(template => <Template template={template} />)}
+            {templates.map(template => <Template key={template.id} template={template} />)}
           </tbody>
         </table>
         ) : (

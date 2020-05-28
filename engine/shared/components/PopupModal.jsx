@@ -42,13 +42,11 @@ let PopupModal = React.createClass({
     },
     render() {
         console.log("rendering popup");
-        // console.log('popup state', this.state);
         const opAssetUrl = this.state.assetUrl;
         const OPLOGO = opAssetUrl + '/images/logo.svg';
         let blocks = this.props.blocks;
         // let pagePresets = this.props.pagePresets;
         let savedTemplates = this.state.savedTemplates;
-        // debugger;
         return (
             <div className="popup-modal-wrapper">
                 <div className="topbar">
