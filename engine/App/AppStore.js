@@ -111,9 +111,10 @@ function mergeSections(sections) {
   passedSection.forEach(section => {
     section.id = toolbelt.randomId( "s_" );
     // section = SectionTransformer.unifySection(section);
-    _sections.push(section);
+    // _sections.push(section);
   });
-  liveService.mergeSections(_sections);
+  liveService.mergeSections(passedSection);
+  // liveService.mergeSections(_sections);
 }
 
 // function to update a section
@@ -256,8 +257,14 @@ function sectionAgainSynced(res, index) {
  * @param {res} res 
  */
 function sectionShouldSynced(res){
-    let finalTransformation = transformSections(res);
-    Object.entries(finalTransformation).forEach( ([index, finalTransformation]) => sectionAgainSynced(finalTransformation, index))
+  let transformRes = transformSections(res);
+  Object.entries(transformRes).forEach( ([index, res]) => {
+    if(typeof res == 'object'){
+      _sections.push(res)
+    }
+  } )
+    // let finalTransformation = transformSections(_sections);
+    Object.entries(_sections).forEach( ([index, finalTransformation]) => sectionAgainSynced(finalTransformation, index))
 }
 
 function emitChange(){
