@@ -459,6 +459,14 @@ let AppStore = assign({}, BaseStore, {
     // })
     return saveTemplatePromise;
   },
+  /**
+   * delete saved template
+   */
+  deleteTemplate(id, name, type ){
+    console.log('preparing to delete');
+    let deleteTemplatePromise = syncService.deleteTemplate(id, name, type);
+    return deleteTemplatePromise;
+  },
 
   pageSave(){
     let callingRoute = syncService.updatePageSettings();
@@ -487,6 +495,20 @@ let AppStore = assign({}, BaseStore, {
     var previousTemplates = _savedTemplates;
     previousTemplates.push(NewTemplate.inserted_data[0]); // return the changed json
     _savedTemplates = previousTemplates;
+    _modalActiveTabName = 'tab-my-template';
+    emitChange();
+  },
+  /**
+   * update template library of modal 
+   * after delete template
+   * @param {*} NewTemplate 
+   */
+  syncLibraryAfterDelete(deletedId){
+    var previousTemplates = _savedTemplates;
+    var filterdTemplate = previousTemplates.filter( (template) => {
+      return deletedId != template.id
+    });
+    _savedTemplates = filterdTemplate;
     _modalActiveTabName = 'tab-my-template';
     emitChange();
   },

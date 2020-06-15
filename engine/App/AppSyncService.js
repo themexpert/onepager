@@ -201,6 +201,25 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     });
   }
   /**
+   * delete a template from popup 
+   * @param {pageID}
+   */
+  function deleteTemplate(id, name, type){
+    var payload = {
+			action: 'onepager_delete_layout',
+			id: id,
+			name: name,
+			type: type,
+    };
+    return new Promise((resolve, reject) => {
+      jQuery.post(ODataStore.ajaxUrl, payload, (res) => {
+        return res.success 
+          ? resolve( res )
+          : reject('failed');
+      });
+    });
+  }
+  /**
    * export a page from builder 
    * @param {pageID}
    */
@@ -249,6 +268,7 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     pageSyncServiceLive,
     exportPage,
     importJsonData,
+    deleteTemplate,
     saveTemplate
   };
 }

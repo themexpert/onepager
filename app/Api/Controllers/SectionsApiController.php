@@ -98,6 +98,31 @@ class SectionsApiController extends ApiController {
 		$this->responseSuccess( compact('insert_id', 'inserted_data') );
 	}
 	/**
+	 * delete layout from builder
+	 */
+	public function deleteLayout() {
+		$id = array_get( $_POST, 'id', false );
+		$name = array_get( $_POST, 'name', false );
+		$type = array_get( $_POST, 'type', false );
+
+		if ( ! $id ) {
+			$this->responseFailed();
+		}
+		/**
+		 * check if the id exist
+		 */
+		$check_the_data = txop_fetch_single_templates([
+			'id' => $id
+		]);
+		if($name == $check_the_data[0]->name){
+			$delete_status = txop_delete_template($id);
+			$this->responseSuccess( compact('delete_status') );
+		}else{
+			$mismatc_message = 'ID not matched';
+			$this->responseFailed( compact('mismatc_message') );
+		}
+	}
+	/**
 	 * import layout from builder
 	 */
 	public function importLayout() {

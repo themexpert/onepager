@@ -339,14 +339,14 @@
                         text-transform: capitalize;
                     }
                     td.insert{
-                        button{
+                        button.insert-layout,
+                        button.export-layout,
+                        button.delete-layout{
                             border-radius:3px;
                             background:transparent;
                             color:inherit;
                             transition:all 0.3s ease;
-                            i{
-                                margin-right:3px;
-                            }
+                            margin-right:5px;
                         }
                     }
                     tr{
@@ -356,9 +356,17 @@
                             background:#f7f7f7;
                             cursor: pointer;
                             td.insert{
-                                button{
+                                button.insert-layout{
                                     color:white;
                                     background:#39b54a;
+                                }
+                                button.export-layout{
+                                    color:white;
+                                    background:#017bff;
+                                }
+                                button.delete-layout{
+                                    color:white;
+                                    background:red;
                                 }
                             }
                         }
