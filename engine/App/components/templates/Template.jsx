@@ -13,7 +13,7 @@ let Template = React.createClass({
     return {
       // saving: false,
       deleteTemplateLoading:false,
-      // exportLoading:false,
+      templateExportLoading:false,
       // modalActiveTab:'',
       // savedTemplates:''
     };
@@ -58,11 +58,42 @@ let Template = React.createClass({
    * Export Layout
    */  
   handleExportLayout(){
-    // var userTemplate = prompt("Enter template name", pageTitle);
-    if(confirm){
-      alert('Exported');
-    }
+    this.setState({templateExportLoading: true})
+    const { data, id, name, type} = this.props.template;
+    
+    let trimmedTitle = name.replace(/\s+/g, '');
+    var donwloadFileName = 'onepager' + trimmedTitle + id + Date.now(); 
+		var templateName = trimmedTitle;
+    var screenshot = templateName + ".jpg";
+
+    this.exportTemplateAsJson({
+      name: name,
+      screenshot: screenshot,
+      file:donwloadFileName,
+      identifier: 'txonepager',
+      type:type,
+      sections: data
+    });
+
   },
+  /**
+   * data hold all section data of this page
+   * @param {data} 
+   */
+  exportTemplateAsJson(data) {
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent( JSON.stringify( data, null, 2 ) );
+		var dlAnchorElem = document.getElementById( 'exportLayoutAnchorElem' );
+
+    var downloadName = data.name ? data.name.replace(/\s+/g, '') : data.file;
+
+    dlAnchorElem.setAttribute( "href", dataStr );
+    dlAnchorElem.setAttribute( "download", downloadName + ".json" );
+    setTimeout(() => {
+      dlAnchorElem.click();
+      this.setState({templateExportLoading: false})
+    }, 500)
+
+	},
 
 
   render() {
@@ -79,7 +110,7 @@ let Template = React.createClass({
         <td className="insert">
           <button className="uk-button uk-button-primary uk-button-small insert-layout" onClick={this.handleMergeSection}>Insert</button>
           <button className="uk-button uk-button-primary uk-button-small export-layout" onClick={this.handleExportLayout}>
-            <i className="fa fa-download"></i>
+            {this.state.templateExportLoading ? <i className="fa fa-refresh fa-spin"></i> : <i className="fa fa-download"></i>}
           </button>
           <button className="uk-button uk-button-primary uk-button-small delete-layout" onClick={this.handleDeleteLayout}>
             {this.state.deleteTemplateLoading ? <i className="fa fa-refresh fa-spin"></i> : <i className="fa fa-trash"></i>}

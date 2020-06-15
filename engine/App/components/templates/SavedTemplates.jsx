@@ -38,6 +38,8 @@ let SavedTemplates = React.createClass({
     return (
       <div>
         <div className="template-collection-lists-wrapper">
+        <a id="exportLayoutAnchorElem"></a>
+
         {templates.length > 0 ? ( 
         <table className="uk-table uk-table-divider">
           <thead>
