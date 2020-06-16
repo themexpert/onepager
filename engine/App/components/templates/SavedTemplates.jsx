@@ -11,7 +11,8 @@ let SavedTemplates = React.createClass({
 
   getInitialState(){
     return {
-      templates: ''
+      templates: '',
+      loading:false
     };
   },
 
@@ -29,6 +30,9 @@ let SavedTemplates = React.createClass({
       templates: nextProps.templates
     });
   },
+  handleLoadingState(status){
+    this.setState({loading:status})
+  },
 
   render() {
     
@@ -36,10 +40,12 @@ let SavedTemplates = React.createClass({
     let templates = this.state.templates;    
 
     return (
-      <div>
+      <div className="template-collection-lists">
         <div className="template-collection-lists-wrapper">
         <a id="exportLayoutAnchorElem"></a>
-
+        <div className={this.state.loading ? 'loading-overlay loading': 'loading-overlay'}>
+           {this.state.loading ? <i className="fa fa-refresh fa-spin"></i> : null }
+        </div>
         {templates.length > 0 ? ( 
         <table className="uk-table uk-table-divider uk-table-middle">
           <thead>
@@ -54,7 +60,7 @@ let SavedTemplates = React.createClass({
               </tr>
           </thead>
           <tbody>
-            {templates.map(template => <Template key={template.id} template={template} />)}
+            {templates.map(template => <Template key={template.id} template={template} loadingState={this.handleLoadingState} />)}
           </tbody>
         </table>
         ) : (

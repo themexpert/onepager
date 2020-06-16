@@ -12,6 +12,7 @@ let Template = React.createClass({
   getInitialState(){
     return {
       // saving: false,
+      templateMergeLoading:false,
       deleteTemplateLoading:false,
       templateExportLoading:false,
       // modalActiveTab:'',
@@ -28,10 +29,25 @@ let Template = React.createClass({
   handleMergeSection() {
     var confirm = window.confirm('Merge with your page ?');
     if(confirm){
-      AppActions.mergeSections(this.props.template.data);
+      // AppActions.mergeSections(this.props.template.data);
       //FIXME: return a promise from addSection then hook this success
-      notify.success('Template Added Successfully');
+      // notify.success('Template Added Successfully');
       // AppStore.setTabState({active: 'op-contents'});
+      this.setState({templateMergeLoading:true});
+      /**
+       * send only clicked template json data 
+       */
+      let savedTemplateMergePromise = AppStore.mergeSavedTemplateWithPage(this.props.template.data);
+      this.props.loadingState(true);
+      savedTemplateMergePromise.then(res => {
+        notify.success('Template Added Successfully');
+        this.setState({templateMergeLoading:false});
+        this.props.loadingState(false);
+      }).catch(rej => {
+        notify.error('Can not insert. Something went wrong');
+        this.setState({templateMergeLoading:false});
+        this.props.loadingState(false);
+      });
     }
   },
   /**
@@ -40,17 +56,21 @@ let Template = React.createClass({
   handleDeleteLayout(){
     var confirm = window.confirm('Are you sure to delete ?');
     const {id, name, type} = this.props.template;
-    this.setState({deleteTemplateLoading: true})
+    this.setState({deleteTemplateLoading: true});
+    this.props.loadingState(true);
+
     if(confirm){
       let deletedPromise = AppStore.deleteTemplate(id, name, type); // return a promise
       deletedPromise.then( res => {
-        this.setState({deleteTemplateLoading: false})
         if(res.success){
           console.log('layout deleted. Need to sync library');
           AppStore.syncLibraryAfterDelete(id);
+          this.setState({deleteTemplateLoading: false})
+          this.props.loadingState(false);
         }
       }).catch( rej => {
         console.log('reject .....', rej);
+        this.props.loadingState(false);
       })
     }else{
       this.setState({deleteTemplateLoading: false})
@@ -111,7 +131,8 @@ let Template = React.createClass({
         <td className="date">{template.created_at}</td>
         <td className="insert">
           <span className="insert-layout" onClick={this.handleMergeSection}>
-            <i className="fa fa-download"></i>
+            {/* <i className="fa fa-download"></i> */}
+            {this.state.templateMergeLoading ? <i className="fa fa-refresh fa-spin"></i> : <i className="fa fa-download"></i>}
             <span>Insert</span>
           </span>
         </td>

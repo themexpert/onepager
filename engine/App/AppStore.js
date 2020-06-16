@@ -117,8 +117,11 @@ function mergeSections(sections) {
    * pass only clicked section 
    * not all sections of the page. 
    */
-  liveService.mergeSections(passedSection);
   // liveService.mergeSections(_sections);
+  let layoutInsertPromise = liveService.mergeSections(passedSection);
+  return layoutInsertPromise;
+  // console.log('layoutInsertPromise', layoutInsertPromise);
+  // debugger;
 }
 
 // function to update a section
@@ -427,24 +430,13 @@ let AppStore = assign({}, BaseStore, {
     let exportPageData = syncService.exportPage(_pageID);
     return exportPageData;
   },
-
+  /**
+   * 
+   * @param {*} jsonData 
+   */
   importTemplate(jsonData){
-    // console.log('imported data', jsonData);
-    let importJSONData = syncService.importJsonData(jsonData);
-
-    // importJSONData.then(res => {
-    //   this.updateModalTemplate(res);
-    //   return new Promise( (resolve, reject ) => resolve('inserted'));
-    //   // new Promise((res, rej) => {
-    //   //   return res('inserted and working for sync');
-    //   // }) 
-    // }).catch( rej => {
-    //   return new Promise( (resolve, reject ) => reject('rejected'));
-    //   // new Promise((res, rej) => {
-    //   //   return rej('rejected data');
-    //   // })
-    // })
-    return importJSONData;
+    let importJSONDataPromise = syncService.importJsonData(jsonData);
+    return importJSONDataPromise;
   },
 
   /**
@@ -452,16 +444,16 @@ let AppStore = assign({}, BaseStore, {
    * @param {pageID} 
    */
   saveTemplate(name, type){
-    console.log('imported data', name, type);
     let saveTemplatePromise = syncService.saveTemplate(_pageID, name, type);
-
-    // saveTemplatePromise.then(res => {
-    //   this.updateModalTemplate(res);
-    //   return new Promise( (resolve, reject ) => resolve('inserted'));
-    // }).catch( rej => {
-    //   return new Promise( (resolve, reject ) => reject('rejected'));
-    // })
     return saveTemplatePromise;
+  },
+  /**
+   * 
+   * @param {*} templateData 
+   */
+  mergeSavedTemplateWithPage(templateData){
+    let templateInsertPromise = mergeSections(templateData);
+    return templateInsertPromise;
   },
   /**
    * delete saved template

@@ -319,6 +319,26 @@
                     }
                 }
             }
+            .template-collection-lists{
+                position:relative;
+                .loading-overlay{
+                    display:none;
+                }
+                .loading-overlay.loading{
+                    z-index:9;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(247, 247, 247, 0.8);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size:40px;
+                    color:#979797;
+                }
+            }
             .template-collection-lists-wrapper{
                 ul{
                     li{
