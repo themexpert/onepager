@@ -52,6 +52,8 @@ let Template = React.createClass({
       }).catch( rej => {
         console.log('reject .....', rej);
       })
+    }else{
+      this.setState({deleteTemplateLoading: false})
     }
   },
   /**
@@ -108,13 +110,19 @@ let Template = React.createClass({
         <td className="user">{template.created_by === '1' ? 'Admin' : null}</td>
         <td className="date">{template.created_at}</td>
         <td className="insert">
-          <button className="uk-button uk-button-primary uk-button-small insert-layout" onClick={this.handleMergeSection}>Insert</button>
-          <button className="uk-button uk-button-primary uk-button-small export-layout" onClick={this.handleExportLayout}>
-            {this.state.templateExportLoading ? <i className="fa fa-refresh fa-spin"></i> : <i className="fa fa-download"></i>}
-          </button>
-          <button className="uk-button uk-button-primary uk-button-small delete-layout" onClick={this.handleDeleteLayout}>
+          <span className="insert-layout" onClick={this.handleMergeSection}>
+            <i className="fa fa-download"></i>
+            <span>Insert</span>
+          </span>
+        </td>
+        <td className="export-delete">
+          <span className="delete-layout" onClick={this.handleDeleteLayout}>
             {this.state.deleteTemplateLoading ? <i className="fa fa-refresh fa-spin"></i> : <i className="fa fa-trash"></i>}
-          </button>
+          </span>
+          <span className="export-layout" onClick={this.handleExportLayout}>
+            <span>Export</span>
+            {this.state.templateExportLoading ? <i className="fa fa-refresh fa-spin"></i> : <i className="fa fa-sign-out"></i>}
+          </span>
         </td>
       </tr>
     );

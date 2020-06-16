@@ -41,15 +41,16 @@ let SavedTemplates = React.createClass({
         <a id="exportLayoutAnchorElem"></a>
 
         {templates.length > 0 ? ( 
-        <table className="uk-table uk-table-divider">
+        <table className="uk-table uk-table-divider uk-table-middle">
           <thead>
               <tr>
                   {/* <th>ID</th> */}
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Created By</th>
-                  <th>Created At</th>
-                  <th>Action</th>
+                  <th className="uk-width-1-6">Name</th>
+                  <th className="uk-width-1-6">Type</th>
+                  <th className="uk-width-1-6">Created By</th>
+                  <th className="uk-width-1-6">Created At</th>
+                  <th className="uk-width-1-6">Action</th>
+                  <th className="uk-width-1-6"></th>
               </tr>
           </thead>
           <tbody>

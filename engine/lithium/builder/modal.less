@@ -329,8 +329,22 @@
 
                 }
                 table{
+                    thead{
+                        tr{
+                            th{
+                                font-size:10px;
+                            }
+                        }
+                    }
+                    tbody{
+                        td{
+                            font-size:13px;
+                            color:#979797;
+                        }
+                    }
                     td.name{
                         text-transform: capitalize;
+                        font-weight:bold;
                     }
                     td.type{
                         text-transform: capitalize;
@@ -339,14 +353,38 @@
                         text-transform: capitalize;
                     }
                     td.insert{
-                        button.insert-layout,
-                        button.export-layout,
-                        button.delete-layout{
-                            border-radius:3px;
-                            background:transparent;
+                        span.insert-layout{
+                            i{
+                                margin-right:6px;
+                            }
+                            // border-radius:3px;
+                            // background:transparent;
                             color:inherit;
                             transition:all 0.3s ease;
                             margin-right:5px;
+                            padding:0;
+                            &:hover{
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    td.export-delete{
+                        text-align: right;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                        span.export-layout{
+                            i{
+                                margin-left:5px;
+                            }
+                            margin-right:0px;
+                        }
+                        span.delete-layout{
+                            // border-radius:3px;
+                            // background:transparent;
+                            color:inherit;
+                            transition:all 0.3s ease;
+                            margin-right:15px;
                         }
                     }
                     tr{
@@ -354,19 +392,23 @@
                         transition:all 0.2s ease;
                         &:hover{
                             background:#f7f7f7;
-                            cursor: pointer;
                             td.insert{
-                                button.insert-layout{
-                                    color:white;
-                                    background:#39b54a;
+                                span.insert-layout{
+                                    // color:white;
+                                    color:#39b54a;
+                                    // background:#39b54a;
                                 }
-                                button.export-layout{
-                                    color:white;
-                                    background:#017bff;
+                                
+                            }
+                            td.export-delete{
+                                span.export-layout{
+                                    color:#017bff;
+                                    // background:#017bff;
                                 }
-                                button.delete-layout{
-                                    color:white;
-                                    background:red;
+                                span.delete-layout{
+                                    // color:rgb(71, 54, 54);
+                                    // background:red;
+                                    color:red;
                                 }
                             }
                         }
