@@ -113,6 +113,10 @@ function mergeSections(sections) {
     // section = SectionTransformer.unifySection(section);
     // _sections.push(section);
   });
+  /**
+   * pass only clicked section 
+   * not all sections of the page. 
+   */
   liveService.mergeSections(passedSection);
   // liveService.mergeSections(_sections);
 }

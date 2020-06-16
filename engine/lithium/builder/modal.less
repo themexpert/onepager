@@ -337,6 +337,8 @@
                         }
                     }
                     tbody{
+                        background:#f7f7f7;
+                        border:solid 1px #e5e5e5;
                         td{
                             font-size:13px;
                             color:#979797;
@@ -370,14 +372,15 @@
                     }
                     td.export-delete{
                         text-align: right;
-                        &:hover{
-                            cursor: pointer;
-                        }
+                       
                         span.export-layout{
                             i{
                                 margin-left:5px;
                             }
                             margin-right:0px;
+                            &:hover{
+                                cursor: pointer;
+                            }
                         }
                         span.delete-layout{
                             // border-radius:3px;
@@ -385,13 +388,17 @@
                             color:inherit;
                             transition:all 0.3s ease;
                             margin-right:15px;
+                            &:hover{
+                                cursor: pointer;
+                            }
                         }
                     }
                     tr{
                         background:transparent;
                         transition:all 0.2s ease;
                         &:hover{
-                            background:#f7f7f7;
+                            // background:#f7f7f7;
+                            background:#fff;
                             td.insert{
                                 span.insert-layout{
                                     color:white;
