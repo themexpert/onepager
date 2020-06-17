@@ -40,9 +40,11 @@ let Template = React.createClass({
       let savedTemplateMergePromise = AppStore.mergeSavedTemplateWithPage(this.props.template.data);
       this.props.loadingState(true);
       savedTemplateMergePromise.then(res => {
-        notify.success('Template Added Successfully');
-        this.setState({templateMergeLoading:false});
-        this.props.loadingState(false);
+        if(res){
+          notify.success('Template Added Successfully');
+          this.setState({templateMergeLoading:false});
+          this.props.loadingState(false);
+        }
       }).catch(rej => {
         notify.error('Can not insert. Something went wrong');
         this.setState({templateMergeLoading:false});

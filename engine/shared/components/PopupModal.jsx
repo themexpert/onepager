@@ -94,6 +94,9 @@ let PopupModal = React.createClass({
                         </div>
                     </div>
                 </div>
+                <div className="popup-overlay">
+                    <i className="fa fa-refresh fa-spin"></i>
+                </div>
             </div>
         );
     }

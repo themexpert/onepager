@@ -9,34 +9,44 @@ import {serializeSections}  from './../shared/onepager/sectionTransformer';
 function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
   let updateSection = function (sections, sectionIndex) {
-    // debugger;
-    let payload = {
-      pageId  : pageId,
-      action  : 'onepager_save_sections',
-      updated : sectionIndex,
-      sections: serializeSections(sections)
-    };
+    return new Promise( (resolve, reject) => {
 
-    let sync = function () {
-      $.post(ODataStore.ajaxUrl, payload, (res)=> {
-        if (!res || !res.success) {
-          return notify.error('Unable to sync. Make sure you are logged in');
-        }
-        //else
-        AppActions.sectionSynced(sectionIndex, res);
+      let payload = {
+        pageId  : pageId,
+        action  : 'onepager_save_sections',
+        updated : sectionIndex,
+        sections: serializeSections(sections)
+      };
 
-        if (pageId) {
-          notify.success('Sync Successful');
-        }
+      let sync = function () {
+        $.post(ODataStore.ajaxUrl, payload, (res)=> {
+          if (!res || !res.success) {
+            return notify.error('Unable to sync. Make sure you are logged in');
+          }
+          //else
+          AppActions.sectionSynced(sectionIndex, res);
 
-      });
-    };
+          if (pageId) {
+            notify.success('Sync Successful');
+          }
+          /**
+           * return promise 
+           * after success or 
+           * reject on faliur
+           */
+          return res.success ? resolve(res.success): reject('Unable to sync. Make sure you are logged in');
 
-    async.series([
-      (pass)=> inactive().then(pass, (err)=>console.log(err)),
-      (pass)=> shouldSectionsSync(sections).then(pass),
-      (pass)=> sync(pass)
-    ]);
+        });
+      };
+
+      async.series([
+        (pass)=> inactive().then(pass, (err)=>console.log(err)),
+        (pass)=> shouldSectionsSync(sections).then(pass),
+        (pass)=> sync(pass)
+      ]);
+
+    });
+
   };
 
   let mergeSections = function (sections) {

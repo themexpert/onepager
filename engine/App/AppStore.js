@@ -90,7 +90,9 @@ function addSection(section) {
   _sections.push(section);
   setActiveSection(sectionIndex);
 
-  liveService.updateSection(_sections, sectionIndex);
+  // liveService.updateSection(_sections, sectionIndex);
+  const liveSyncPromise = liveService.updateSection(_sections, sectionIndex);
+  return liveSyncPromise;
 }
 
 /**
@@ -454,6 +456,14 @@ let AppStore = assign({}, BaseStore, {
   mergeSavedTemplateWithPage(templateData){
     let templateInsertPromise = mergeSections(templateData);
     return templateInsertPromise;
+  },
+  /**
+   * 
+   * @param {*} blockData 
+   */
+  blockInsertToPage(blockData){
+    let blockInsertPromise = addSection(blockData);
+    return blockInsertPromise;
   },
   /**
    * delete saved template

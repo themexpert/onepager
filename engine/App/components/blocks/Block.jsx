@@ -8,17 +8,41 @@ import notify from '../../../shared/plugins/notify';
 let Block = React.createClass({
   mixins: [PureMixin],
 
+  getInitialState(){
+    return {
+      blockInsertLoading:false,
+    };
+  },
   propTypes: {
     block: React.PropTypes.object
   },
 
   handleCreateSection() {
-    AppActions.addSection(this.props.block);
-
+    /**
+     * disable below 4 line 
+     * these line are previous code
+     */
+    // AppActions.addSection(this.props.block);
     //FIXME: return a promise from addSection then hook this success
-    notify.success('New section added');
-
+    // notify.success('New section added');
     // AppStore.setTabState({active: 'op-contents'});
+    this.setState({blockInsertLoading:true});
+    this.props.handleBlockInsertLoading(true);
+    /**
+     * promise based reply
+     */
+    const blockInsertPromise = AppStore.blockInsertToPage(this.props.block);
+    blockInsertPromise.then( res => {
+      if(res){
+        notify.success('New section added');
+        this.setState({blockInsertLoading:false});
+        this.props.handleBlockInsertLoading(false);
+      }
+    }).catch( rej => {
+      notify.error('Can not insert! Something went wrong.');
+      this.setState({blockInsertLoading:false});
+      this.props.handleBlockInsertLoading(false);
+    });
   },
 
   render() {
@@ -41,7 +65,7 @@ let Block = React.createClass({
              title="+ Click to insert block" data-placement="top"/>
         <div className="overlay">
           <button className="uk-button uk-button-primary" onClick={this.handleCreateSection}> 
-          <i className="fa fa-download"></i>
+          {this.state.blockInsertLoading ? <i className="fa fa-refresh fa-spin"></i> : <i className="fa fa-download"></i>}
           <span>Insert</span>
           </button>
           <span className="uk-text-meta uk-hidden">{block.name}</span>

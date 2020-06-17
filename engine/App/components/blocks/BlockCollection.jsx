@@ -60,7 +60,8 @@ let BlockCollection = React.createClass({
 
   getInitialState(){
     return {
-      group: 'all'
+      group: 'all',
+      blockInsertLoading: false,
     };
   },
 
@@ -68,6 +69,15 @@ let BlockCollection = React.createClass({
     let group = this.refs.group.getValue();
 
     this.setState({group: group});
+  },
+  handleBlockInsertLoading(status){
+    this.setState({blockInsertLoading: status});
+    var parentSelector = document.querySelector('.popup-modal-wrapper .popup-overlay');
+    if(status){
+      parentSelector.classList.add('loading');
+    }else{
+      parentSelector.classList.remove('loading');
+    }
   },
 
   render() {
@@ -99,13 +109,16 @@ let BlockCollection = React.createClass({
  
 
     return (
-      <div>
+      <div className="all-block-collection">
+        {/* <div className={this.state.blockInsertLoading ? 'block-insert-overlay loading': 'block-insert-overlay'}>
+          {this.state.blockInsertLoading ? <i className="fa fa-refresh fa-spin"></i> : <i className="fa fa-refresh fa-spin"></i> }
+        </div> */}
         <Select type="select" ref="group"
                 defaultValue={this.state.group}
                 options={_.object(groups, groups)}
                 onChange={this.handleChange}/>
         <div className="block-collection-list">
-          {blocks.map(block => <Block key={block.slug} block={block}/>)}
+          {blocks.map(block => <Block key={block.slug} block={block} handleBlockInsertLoading={this.handleBlockInsertLoading}/>)}
           {msg}
         </div>
       </div>
