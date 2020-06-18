@@ -148,6 +148,10 @@ let Sidebar = React.createClass({
     if(this.props.isDirty){
       return; 
     }
+    if(this.props.sections.length < 1){
+      notify.error('please add a section in page.');
+      return;
+    }
     let pageTitle = ODataStore.pageInfo.title;
     var userTemplate = prompt("Enter template name", pageTitle);
     if(userTemplate == null){
@@ -195,6 +199,10 @@ let Sidebar = React.createClass({
   handleSaveTemplate(){
     if(this.props.isDirty){
       return; 
+    }
+    if(this.props.sections.length < 1){
+      notify.error('please add a section in page.');
+      return;
     }
     this.setState({
       saveTemplateLoading: false
