@@ -29,9 +29,17 @@ class Api implements ApiInterface {
 	public function getUpdatePlugins(){
 		$onepager_free = 'onepager/tx-onepager.php';
 		$onepager_pro = 'onepager-pro/onepager-pro.php';
-		$plugins_needs_to_update_array =  get_option('_site_transient_update_plugins')->response;
-		if(array_key_exists($onepager_free, $plugins_needs_to_update_array) || array_key_exists($onepager_pro, $plugins_needs_to_update_array)){
-			return true;
+		/**
+		 * get the update plugin list
+		 */
+		$get_update_plugins = get_option('_site_transient_update_plugins');
+		if($get_update_plugins){
+			$plugins_needs_to_update_array =  get_option('_site_transient_update_plugins')->response;
+			if(array_key_exists($onepager_free, $plugins_needs_to_update_array) || array_key_exists($onepager_pro, $plugins_needs_to_update_array)){
+				return true;
+			}else{
+				return false;
+			}
 		}else{
 			return false;
 		}
