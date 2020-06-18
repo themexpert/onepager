@@ -126,21 +126,33 @@ let Sidebar = React.createClass({
       .triggerPromise()
       .then(isSettingsDirty=> this.setState({isSettingsDirty}));
   },
-
+  /**
+   * handle responsive iframe check
+   */
   handleResponsiveToggle(){
+    $('.op-footer-wrapper .save-option-panel').find('.save-option-lists').removeClass('open');
     $('.op-footer-wrapper .responsive-check-panel').find('.responsive-devices').toggleClass('open');
   },
-  
+  /**
+   * handle page option panel
+   * for save template and export
+   */
   handleSaveOptionToggle(){
+    $('.op-footer-wrapper .responsive-check-panel').find('.responsive-devices').removeClass('open');
     $('.op-footer-wrapper .save-option-panel').find('.save-option-lists').toggleClass('open');
   },
   /**
    * export page
    */
   handleExport(){
+    if(this.props.isDirty){
+      return; 
+    }
     let pageTitle = ODataStore.pageInfo.title;
     var userTemplate = prompt("Enter template name", pageTitle);
-    
+    if(userTemplate == null){
+      return;
+    }
     let exported = AppStore.exportPage(); // return a promise
     this.setState({exportLoading: true});
 
@@ -181,6 +193,9 @@ let Sidebar = React.createClass({
 	},
 
   handleSaveTemplate(){
+    if(this.props.isDirty){
+      return; 
+    }
     this.setState({
       saveTemplateLoading: false
     });
@@ -293,6 +308,14 @@ let Sidebar = React.createClass({
       "fa fa-chevron-left": !this.props.collapseSidebar,
       "fa fa-chevron-right": this.props.collapseSidebar
     });
+    
+    let pageOptionClasses = cx({
+      "okkkk": !isDirty,
+      "dirty": isDirty,
+    });
+    // console.log('pageOptionClasses', this.state.isSettingsDirty);
+    // console.log('pageOptionClasses', this.state.isSettingsDirty);
+    // console.log('isDirty', isDirty);
 
     let overlayClasses = cx({
       "saving-overlay": this.state.saving
@@ -414,8 +437,8 @@ let Sidebar = React.createClass({
                 <div className="save-option-panel">
                   <a href="#" onClick={this.handleSaveOptionToggle}><i className="fa fa-arrow-up"></i></a> 
                   <ul className="save-option-lists">
-                    <li onClick={this.handleSaveTemplate}><i className={saveTemplateClasses}></i> Save as Template</li>
-                    <li onClick={this.handleExport}><i className={exportClasses}></i> Export </li>
+                    <li onClick={this.handleSaveTemplate} className={pageOptionClasses}><i className={saveTemplateClasses}></i> Save as Template</li>
+                    <li onClick={this.handleExport} className={pageOptionClasses}><i className={exportClasses}></i> Export </li>
                   </ul>
                   <a id="exportAnchorElem"></a>
                 </div>
