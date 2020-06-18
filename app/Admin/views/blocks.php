@@ -32,13 +32,20 @@ function update_block_name($string){
 function singleBlock($BlockCollec∂çtionsArr){
 	$count = 1;
 	foreach($BlockCollec∂çtionsArr as $singleBlock):
+		$type = array_get($singleBlock, 'type') ? $singleBlock['type'] : '';
+		$tag = array_get($singleBlock, 'tag') ? $singleBlock['tag'] : '';
 		?>
 		<div data-group="<?php echo op_get_html_group_class( $singleBlock['groups'] ); ?>">
 			<div class="uk-card uk-card-default uk-transition-toggle single-block-<?php echo $singleBlock['slug'];?>" tabindex="0" >
 				<div class="uk-card-media-top uk-inline uk-height-medium" uk-overflow-auto>
-					<?php if($singleBlock['type']): ?>
-					<span class="txop-new-badge"><?php echo $singleBlock['type'];?></span>
-					<?php endif; ?>
+					
+					<?php if($type):?>
+						<span class="txop-pro-badge"><?php echo $type; ?></span>
+					<?php endif;?>
+					<?php if($tag):?>
+						<span class="txop-<?php echo $tag; ?>-badge"><?php echo $tag; ?></span>
+					<?php endif;?>
+
 					<img src="<?php echo $singleBlock['image']?>">
 				</div>
 				<div class="uk-card-footer uk-padding-small uk-margin-remove uk-text-center">
