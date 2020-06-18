@@ -201,6 +201,10 @@ let Sidebar = React.createClass({
     });
     this.handlePopupModal('tab-save-template');
   },
+  /**
+   * handle responsive iframe
+   * @param {*} device 
+   */
   handleResponsiveFrame(device){
     if( ($('body').hasClass('iframe-desktop')) || ($('body').hasClass('iframe-tablet')) || ($('body').hasClass('iframe-mobile')) ){
       $('body').removeClass('iframe-desktop iframe-tablet iframe-mobile');
