@@ -37,6 +37,7 @@ let Block = React.createClass({
         notify.success('New section added');
         this.setState({blockInsertLoading:false});
         this.props.handleBlockInsertLoading(false);
+        document.querySelector('#onepager-builder .popup-modal').classList.remove('open');
       }
     }).catch( rej => {
       notify.error('Can not insert! Something went wrong.');

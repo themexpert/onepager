@@ -29,10 +29,17 @@ let Template = React.createClass({
   handleMergeSection() {
     var confirm = window.confirm('Merge with your page ?');
     if(confirm){
+      /**
+       * old style 
+       * uncomment below 4 line for old style
+       */
       // AppActions.mergeSections(this.props.template.data);
       //FIXME: return a promise from addSection then hook this success
       // notify.success('Template Added Successfully');
       // AppStore.setTabState({active: 'op-contents'});
+      /**
+       * promise based insert
+       */
       this.setState({templateMergeLoading:true});
       /**
        * send only clicked template json data 
@@ -44,6 +51,7 @@ let Template = React.createClass({
           notify.success('Template Added Successfully');
           this.setState({templateMergeLoading:false});
           this.props.loadingState(false);
+          document.querySelector('#onepager-builder .popup-modal').classList.remove('open');
         }
       }).catch(rej => {
         notify.error('Can not insert. Something went wrong');
