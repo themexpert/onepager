@@ -133,6 +133,15 @@ Absolutely not. You can create and manage your landing pages without any coding 
 == Changelog ==
 
 
+= 2.4 =
+- New: Popup modal to insert new blocks to page.
+- New: Page and Section Save Option. 
+- New: Export and Import option for any page and section.
+- New: Responsive check option.
+- New: Saved Template menu in dashboard. 
+- New: Google Map block.
+- Update: WooCommerce block.
+
 = 2.3.1 =
 - New: Typography settings in Page Setting Panel. 
 - New: Book Landing Page Layout. 
