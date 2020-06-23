@@ -325,9 +325,6 @@ let Sidebar = React.createClass({
       "okkkk": !isDirty,
       "dirty": isDirty,
     });
-    // console.log('pageOptionClasses', this.state.isSettingsDirty);
-    // console.log('pageOptionClasses', this.state.isSettingsDirty);
-    // console.log('isDirty', isDirty);
 
     let overlayClasses = cx({
       "saving-overlay": this.state.saving

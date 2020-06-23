@@ -41,7 +41,6 @@ let ImportTemplate = React.createClass({
                 let importPromise = AppStore.importTemplate(jsonData);
                 importPromise.then(
                     res => {
-                        // debugger;
                         AppStore.updateModalTemplate(res);
                         this.setState({loading:false})
                     }
@@ -53,32 +52,11 @@ let ImportTemplate = React.createClass({
                 );
             }
             this.setState({ selectedFileData: JSON.parse(event.target.result) });
-            console.log('jsondata', jsonData.identifier);
         };
     },
 
-    // handleImportFormSubmit(e){
-    //     e.preventDefault();
-    //     this.setState({loading:true});
-        
-    //     let importPromise = AppStore.importTemplate(this.state.selectedFileData);
-    //     importPromise.then(
-    //         res => {
-    //             this.setState({loading:false});
-    //             console.log(res);
-    //         }
-    //     ).catch(
-    //         rej => {
-    //             this.setState({loading:false});
-    //             swal(rej);
-    //         }
-    //     );
-    // },
-
     render() {
         console.log("importing template");
-        // console.log('state', this.state);
-
         let importButtonIcon = cx({
             "fa fa-refresh fa-spin": this.state.loading,
             "fa fa-upload": !this.state.loading

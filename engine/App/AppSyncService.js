@@ -127,7 +127,6 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
   };
 
   function updatePageSettings(sections){
-    // debugger;
     return new Promise((resolve, reject)=>{
       let payload = {
         action: "onepager_save_page_settings",
@@ -177,7 +176,6 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
     let payload = {
       action  : 'onepager_reload_blocks'
     };
-    // debugger;
 
     return new Promise((resolve, reject)=>{
       jQuery.post(ODataStore.ajaxUrl, payload, (res)=>{
@@ -272,7 +270,6 @@ function AppSyncService(pageId, inactive, shouldSectionsSync) {
 
     return new Promise((resolve, reject) => {
       jQuery.post(ODataStore.ajaxUrl, payload, (res) => {
-        // debugger;
         return res.insert_id 
           ? resolve( res )
           : reject("oops!! onepager could not import this page");

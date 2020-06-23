@@ -7,7 +7,6 @@ const SectionTransformer = require('./../shared/onepager/sectionTransformer.js')
 const ShouldSync = require('../shared/lib/ShouldSync.js');
 const Activity = require('../shared/lib/Activity.js');
 const ODataStore = require('./../shared/onepager/ODataStore.js');
-console.log(ODataStore);
 const BaseStore = require('./flux/BaseStore.js');
 const AppActions = require('./flux/AppActions.js');
 const SyncService = require('./AppSyncService.js');
@@ -109,7 +108,6 @@ function mergeSections(sections) {
       return sections[key]; 
     }); 
   }
-  // debugger;
   passedSection.forEach(section => {
     section.id = toolbelt.randomId( "s_" );
     // section = SectionTransformer.unifySection(section);
@@ -122,8 +120,6 @@ function mergeSections(sections) {
   // liveService.mergeSections(_sections);
   let layoutInsertPromise = liveService.mergeSections(passedSection);
   return layoutInsertPromise;
-  // console.log('layoutInsertPromise', layoutInsertPromise);
-  // debugger;
 }
 
 // function to update a section

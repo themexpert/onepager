@@ -28,12 +28,10 @@ let SaveTemplate = React.createClass({
 
     handleSaveTemplateFormSubmit(e){
         e.preventDefault();
-        console.log('form submited');
         this.setState({loading:true});
         let name = this.state.name;
         let type = 'page';
         let importPromise = AppStore.saveTemplate(name, type);
-        // debugger;
         importPromise.then(
             res => {
                 AppStore.syncSavedTemplateLibrary(res);
@@ -41,7 +39,6 @@ let SaveTemplate = React.createClass({
                     name: null,
                     loading:false
                 });
-                console.log(res);
             }
         ).catch(
             rej => {
@@ -52,7 +49,6 @@ let SaveTemplate = React.createClass({
     },
 
     render() {
-        // console.log('save template state', this.state);
         let saveButtonIcon = cx({
             "fa fa-refresh fa-spin": this.state.loading,
         });

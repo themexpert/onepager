@@ -33,7 +33,6 @@ let PopupModal = React.createClass({
         modalElement.classList.remove('open');
     },
     handleTab(e){
-        // debugger;
         var tabElement = e.target.getAttribute('id');
         this.setState({
             active: tabElement,
