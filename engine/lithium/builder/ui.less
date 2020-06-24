@@ -451,6 +451,23 @@ h3.form-divider {
         background:rgba(255,255,255,0);
       }
     }
+    .page-preview-link{
+      background: #1266c0;
+      padding: 2px 8px 3px;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      color:rgba(255, 255, 255, 0.7);
+      margin-right:10px;
+      text-transform: uppercase;
+      transition:all 0.3s ease;
+      &:hover{
+        background: #075bb5;
+        text-decoration:none;
+        color:rgba(255, 255, 255, 1);
+      }
+    }
   }
   // Panel Main area
   .op-content-wrapper{
@@ -495,6 +512,7 @@ h3.form-divider {
           font-size:10px;
         }
         &:hover{
+          background-color:#337ab7;
           a{
             color:rgba(255,255,255,1);
           }
@@ -502,7 +520,7 @@ h3.form-divider {
         .responsive-devices{
           position: absolute;
           left:0;
-          top:-112px;
+          top:-123px;
           width:100%;
           background:#017bff;
           color:white;
@@ -511,16 +529,24 @@ h3.form-divider {
           display:none;
           li{
             list-style-type: none;
-            padding:7px;
             transition:all 0.3s ease;
-            background:#0e72dd;
-            border: solid 1px #549ae4;
-            padding: 7px 15px;
-            margin-bottom: 1px;
-            border-radius: 2px;
+            background:#086dd8;
+            border-top: solid 1px #017bff;
+            padding: 10px 15px;
+            border-radius: 0px;
+            i{
+              margin-right:5px;
+            }
+            &:first-child{
+              border-radius:3px 3px 0px 0px;
+              border-top:none;
+            }
+            &:last-child{
+              border-radius:0px 0px 3px 3px;
+            }
             &:hover{
               cursor: pointer;
-              background:#0a68ce;
+              background:#0861c2;
             }
           }
         }
@@ -541,6 +567,7 @@ h3.form-divider {
           font-size:10px;
         }
         &:hover{
+          background-color:#337ab7;
           a{
             color:rgba(255,255,255,1);
           }
@@ -548,7 +575,7 @@ h3.form-divider {
         .save-option-lists{
           position: absolute;
           left:0;
-          top:-81px;
+          top:-88px;
           width:100%;
           background:#017bff;
           color:white;
@@ -561,20 +588,26 @@ h3.form-divider {
           }
           li{
             list-style-type: none;
-            padding:7px;
             transition:all 0.3s ease;
-            background:#0e72dd;
-            border: solid 1px #549ae4;
-            padding: 7px 15px;
-            margin-bottom: 1px;
-            border-radius: 2px;
+            background:#086dd8;
+            border-top: solid 1px #017bff;
+            padding: 10px 15px;
+            border-radius: 0px;
             i{
               margin-right:5px;
             }
             &:hover{
               cursor: pointer;
-              background:#0a68ce;
+              background:#0861c2;
             }
+            &:first-child{
+              border-radius:3px 3px 0px 0px;
+              border-top:none;
+            }
+            &:last-child{
+              border-radius:0px 0px 3px 3px;
+            }
+
           }
         }
         .save-option-lists.open{
@@ -617,11 +650,19 @@ h3.form-divider {
       border:solid 1px transparent;
       margin-right:2px;
       color:rgba(255,255,255,.7);
+      &:hover{
+        background:red;
+        a{
+          color:rgba(255,255,255,1);
+          text-decoration: none;
+        }
+      }
       a{
         color:rgba(255,255,255,.7);
-        &:hover{
-          color:rgba(255,255,255,1);
-        }
+        // &:hover{
+        //   color:rgba(255,255,255,1);
+        //   text-decoration: none;
+        // }
       }
     }
   }
