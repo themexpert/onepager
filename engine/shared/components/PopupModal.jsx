@@ -89,7 +89,10 @@ let PopupModal = React.createClass({
                             <SaveTemplate />
                         </div>
                         <div className="bottom-bar">
-                            <h4>We are developing more blocks. Stay tuned.</h4>
+                            <h4>
+                                <span>If you like our plugin please </span>
+                                <a target="_blank" href="https://wordpress.org/support/plugin/tx-onepager/reviews/#new-post">rate us on wordpress.org</a>
+                            </h4>
                         </div>
                     </div>
                 </div>

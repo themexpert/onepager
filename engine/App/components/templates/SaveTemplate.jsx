@@ -57,7 +57,7 @@ let SaveTemplate = React.createClass({
         return (
             <div className="save-template-input">
                 <div className="save-template-input-wrapper">
-                    <p>Save your page to Onepager library</p>
+                    <p>Save page to Onepager library</p>
                     {/* <p>Your page content will be available for export and reuse on any page or website</p> */}
                     <form onSubmit={this.handleSaveTemplateFormSubmit}>
                         <input placeholder="Type your template name" type="text" required name="choose-template-json" id="choose-template-json" onChange={this.handleNameInput} value={this.state.name ? this.state.name : null} />

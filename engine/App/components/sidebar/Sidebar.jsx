@@ -322,7 +322,7 @@ let Sidebar = React.createClass({
     });
     
     let pageOptionClasses = cx({
-      "okkkk": !isDirty,
+      "": !isDirty,
       "dirty": isDirty,
     });
 
@@ -357,12 +357,12 @@ let Sidebar = React.createClass({
                   <a className="new-update-status" href={pluginUpdateUrl}>New Update Available</a>
                   : null
                 }
-                <a href={previewLink} target="_blank" className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
-                  View
+                <a href={previewLink} target="_blank" className="page-preview-link">
+                  preview
                 </a>
-                <a href={buildModeUrl} className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
+                {/* <a href={buildModeUrl} className="uk-button uk-button-text uk-button-small uk-margin-right uk-light">
                   <span className="fa fa-close"></span>
-                </a>
+                </a> */}
               </div>
             </nav>
           </header>
