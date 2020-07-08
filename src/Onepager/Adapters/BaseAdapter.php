@@ -22,7 +22,7 @@ abstract class BaseAdapter implements AdapterInterface {
 		$this->setHooksProvider();
 		$this->setApiProvider();
 		$this->setSectionProvider();
-		// $this->setSavedTemplates();
+		$this->opi18nStrings();
 	}
 
 	public function getContainer() {

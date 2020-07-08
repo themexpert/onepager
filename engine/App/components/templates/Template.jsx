@@ -2,6 +2,7 @@ const React = require('react');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const AppActions = require('../../flux/AppActions.js');
 const AppStore = require('../../AppStore.js');
+const {opi18n:i18n} = onepager;
 
 import notify from '../../../shared/plugins/notify';
 
@@ -27,7 +28,7 @@ let Template = React.createClass({
    * Merge layout to page
    */
   handleMergeSection() {
-    var confirm = window.confirm('Merge with your page ?');
+    var confirm = window.confirm(i18n.user_input.merge_layout_text);
     if(confirm){
       /**
        * old style 
@@ -48,13 +49,13 @@ let Template = React.createClass({
       this.props.loadingState(true);
       savedTemplateMergePromise.then(res => {
         if(res){
-          notify.success('Template Added Successfully');
+          notify.success(i18n.success.template_added);
           this.setState({templateMergeLoading:false});
           this.props.loadingState(false);
           document.querySelector('#onepager-builder .popup-modal').classList.remove('open');
         }
       }).catch(rej => {
-        notify.error('Can not insert. Something went wrong');
+        notify.error(i18n.error.insert);
         this.setState({templateMergeLoading:false});
         this.props.loadingState(false);
       });
@@ -64,7 +65,7 @@ let Template = React.createClass({
    * Delete Layout 
    */
   handleDeleteLayout(){
-    var confirm = window.confirm('Are you sure to delete ?');
+    var confirm = window.confirm(i18n.user_input.delete_layout_text);
     const {id, name, type} = this.props.template;
     this.setState({deleteTemplateLoading: true});
     this.props.loadingState(true);
@@ -136,13 +137,13 @@ let Template = React.createClass({
         {/* <td className="id">{template.id}</td> */}
         <td className="name">{template.name}</td>
         <td className="type">{template.type}</td>
-        <td className="user">{template.created_by === '1' ? 'Admin' : null}</td>
+        <td className="user">{template.created_by === '1' ? i18n.tbody.admin : null}</td>
         <td className="date">{template.created_at}</td>
         <td className="insert">
           <span className="insert-layout" onClick={this.handleMergeSection}>
             {/* <i className="fa fa-download"></i> */}
             {this.state.templateMergeLoading ? <i className="fa fa-refresh fa-spin"></i> : <i className="fa fa-download"></i>}
-            <span>Insert</span>
+            <span>{i18n.tbody.insert}</span>
           </span>
         </td>
         <td className="export-delete">
@@ -150,7 +151,7 @@ let Template = React.createClass({
             {this.state.deleteTemplateLoading ? <i className="fa fa-refresh fa-spin"></i> : <i className="fa fa-trash"></i>}
           </span>
           <span className="export-layout" onClick={this.handleExportLayout}>
-            <span>Export</span>
+            <span>{i18n.tbody.export}</span>
             {this.state.templateExportLoading ? <i className="fa fa-refresh fa-spin"></i> : <i className="fa fa-sign-out"></i>}
           </span>
         </td>

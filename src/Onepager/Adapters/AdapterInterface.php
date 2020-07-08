@@ -14,6 +14,8 @@ interface AdapterInterface {
 	public function setAssetProvider();
 
 	public function setApiProvider();
+	
+	public function opi18nStrings();
 
 	public function setSectionProvider();
 

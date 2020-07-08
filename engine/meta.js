@@ -2,8 +2,8 @@
 (function ($) {
 	$(function ($) {
 		var pageId = onepager.pageId;
-		var $onepagerEnableBtn = $( '<button type="button" id="enable-onepager" class="op-btn op-btn-with-logo">Enable Onepager</button>' );
-		var $onepagerDisableBtn = $( '<button type="button" id="disable-onepager" class="op-btn op-btn-with-logo">Disable Onepager</button>' );
+		var $onepagerEnableBtn = $( '<button type="button" id="enable-onepager" class="op-btn op-btn-with-logo">'+ __("Enable Onepager", "tx-onepager") +'</button>' );
+		var $onepagerDisableBtn = $( '<button type="button" id="disable-onepager" class="op-btn op-btn-with-logo">'+ __("Disable Onepager", "tx-onepager") +'</button>' );
 		var $loading = $( '<div class="onepager-loading" style="display:none"><div uk-spinner></div></div>' );
 
 		// var $editorTabs = $(".wp-editor-tabs");
@@ -198,8 +198,8 @@
 
 			// FIXME: $.data ?
 			var confirmationMsg =
-				"Are you sure you want to insert this layout?" +
-				"This layout will replace your current layout!";
+				__("Are you sure you want to insert this layout?", 'tx-onepager') +
+				__("This layout will replace your current layout!", "tx-onepager");
 
 			var layoutId = $( this ).attr( "data-layout-id" );
 			var proceed = confirm( confirmationMsg );
@@ -293,7 +293,7 @@
 	 * @param name
 	 */
 	function exportOnepagerSections(pageId, name) {
-		var userTemplate = prompt("Enter template name", "mytemplate");
+		var userTemplate = prompt(__("Enter template name", "tx-onepager"), __("mytemplate", "tx-onepager"));
 		var payload = {
 			action: 'onepager_get_sections',
 			pageId: pageId
@@ -321,7 +321,7 @@
 						}
 					);
 				} else {
-					alert( "oops!! onepager could not export this page" );
+					alert( __("oops!! onepager could not export this page", "tx-onepager") );
 				}
 			}
 		);
@@ -357,8 +357,8 @@
 			function (res) {
 				if (res && res.success && res.sections.length !== 0) {
 					var confirmationMsg =
-					"Are you sure you want to insert this layout?" +
-					"This layout will replace your current layout!";
+					__("Are you sure you want to insert this layout?", "tx-onepager") +
+					__("This layout will replace your current layout!", "tx-onepager");
 
 					var proceed = confirm( confirmationMsg );
 
@@ -388,7 +388,7 @@
 					$( ".onepager-loading" ).css( "display", "none" );
 				} else {
 					$( ".onepager-loading" ).css( "display", "none" )
-					alert( "failed to insert layout " );
+					alert( __("failed to insert layout ", "tx-onepager") );
 				}
 			}
 		);

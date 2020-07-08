@@ -45,6 +45,7 @@ class BuildModeScripts
 
         $onepager = onepager();
 
+        $opi18n = onepager()->opi18n()->get_opi18n_strings();
         $pagePresets = onepager()->presetManager()->all();
         $footer = get_editor_section_list_footer();
         $ajaxUrl = $onepager->api()->getAjaxUrl();
@@ -113,6 +114,7 @@ class BuildModeScripts
             'preview_link',
             'savedTemplates',
             'pagePresets',
+            'opi18n',
             'assetUrl'
         );
     }

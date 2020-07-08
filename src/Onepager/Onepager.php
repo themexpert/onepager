@@ -18,6 +18,7 @@ use ThemeXpert\Providers\Contracts\ContentInterface;
 use ThemeXpert\Providers\Contracts\NavigationMenuInterface;
 use ThemeXpert\Providers\Contracts\ToolbarInterface;
 // use ThemeXpert\Providers\Contracts\TemplatesInterface;
+use ThemeXpert\Providers\Contracts\Opi18nInterface;
 use ThemeXpert\View\Engines\PhpEngine;
 use ThemeXpert\View\View;
 
@@ -187,6 +188,15 @@ class Onepager implements OnepagerInterface {
 
 	public function getOption() {
 
+	}
+
+	/**
+	 * @return Opi18nInterface
+	 */
+	public function opi18n(){
+		$container = $this->adapter->getContainer();
+
+		return $container['getopi18nstrings'];
 	}
 
 }

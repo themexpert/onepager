@@ -3,6 +3,7 @@ import PanelGroup from 'react-bootstrap/lib/PanelGroup';
 import Panel from 'react-bootstrap/lib/Panel';
 import Input from '../../../shared/components/form/Input.jsx';
 import AddToMenu from './menu/AddToMenu.jsx';
+const {opi18n:i18n} = onepager;
 
 import "./menu/style.less";
 
@@ -31,7 +32,7 @@ const Menu = React.createClass({
     let menu = {
       type    : 'menu',
       value   : '',
-      label   : 'Menu Position',
+      label   : i18n.label.menu_position,
       onChange: this.isFormValid
     };
 
@@ -45,7 +46,7 @@ const Menu = React.createClass({
           <PanelGroup accordion>
             { sections.map(this._renderMenuPanel) }
           </PanelGroup> :
-          <p className="alert alert-info"><i className="fa fa-info-circle"></i> Select any menu from the list.</p>
+          <p className="alert alert-info"><i className="fa fa-info-circle"></i> {i18n.alert.select_menu}</p>
         }
       </div>
     );

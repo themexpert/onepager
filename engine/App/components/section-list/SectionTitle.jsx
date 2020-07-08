@@ -3,6 +3,7 @@ const Input      = require('react-bootstrap/lib/Input');
 const PureMixin  = require('../../../shared/mixins/PureMixin.js');
 const scrollIntoView  = require('../../../shared/plugins/scrollview.js');
 const AppActions = require('../../flux/AppActions.js');
+const {opi18n:i18n} = onepager;
 
 let Title = React.createClass({
   propTypes: {
@@ -51,11 +52,11 @@ let Title = React.createClass({
           (
             <div>
               <Input type="text" ref="title" onKeyUp={this.updateTitleOnEnter} defaultValue={title}/>
-              <span onClick={this.updateTitle} className="uk-label uk-position-center-right">Save</span>
+              <span onClick={this.updateTitle} className="uk-label uk-position-center-right">{i18n.save}</span>
             </div>
           ) :
           (
-            <div data-uk-tooltip="title: Double click to rename; pos: right">
+            <div data-uk-tooltip={`title: ${i18n.tooltip.rename}; pos: right`}>
               {this.props.children}
             </div>
           )

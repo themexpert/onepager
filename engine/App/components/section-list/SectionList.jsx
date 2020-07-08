@@ -6,6 +6,7 @@ const SectionLi = require('./Section.jsx');
 const AppStore = require('../../AppStore.js');
 const AppActions = require('../../flux/AppActions.js');
 //const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+const {opi18n:i18n} = onepager;
 
 import toolbelt from '../../../shared/lib/toolbelt.js';
 
@@ -75,7 +76,7 @@ let SectionList = React.createClass({
           <span className="fa fa-plus"></span> Add Block
         </Button> */}
         <Button bsStyle='primary' className="btn-block" onClick={openPopup}>
-          <span className="fa fa-plus"></span> Add Block
+          <span className="fa fa-plus"></span> {i18n.add_block}
         </Button>
 
         <div ref="sections">

@@ -14,7 +14,7 @@ const gulpFilter = require('gulp-filter');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
-
+const wpPot = require('gulp-wp-pot');
 const gulpZip = require('gulp-zip');
 
 const shell = require('gulp-shell');
@@ -268,6 +268,29 @@ exports.defaultwin = series( clean, assets, bower, listen)
  */
 exports.default = series( clean, assets, bower, run('npm run build'), listen)
 exports.release = series( clean, assets, bower, run('npm run build'), copy, package)
+
+function generatePot(){
+    return src([
+        './*.php',
+        './*/**.php',
+        './*/*/**.php',
+        './*/*/*/**.php',
+        './assets/*.js',
+        './assets/**.js',
+        '!./node_modules',
+        '!./node_modules/**',
+        '!./bower_components',
+        '!./bower_components/**',
+        '!./vendor',
+        '!./vendor/**',
+    ])
+        .pipe(wpPot( {
+            domain: 'tx-onepager',
+            package: 'Onepager Translation',
+        } ))
+        .pipe(dest('./languages/txonepager.pot'));
+}
+exports.generatePot = series( generatePot)
 
 // gulp.task('svn', function(){
 //   var version = getOnepagerVersion().replace("v", "");

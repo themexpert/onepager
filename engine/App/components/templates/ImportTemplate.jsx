@@ -9,6 +9,7 @@ const Select = require("../../../shared/components/form/Select.jsx");
 const swal = require('sweetalert');
 const AppStore = require('../../AppStore');
 import cx from "classnames";
+const {opi18n:i18n} = onepager;
 
 
 let ImportTemplate = React.createClass({
@@ -31,7 +32,7 @@ let ImportTemplate = React.createClass({
 
             if( 'txonepager' != jsonData.identifier ){
                 this.setState({
-                    error: 'Wrong JSON File. Please upload Onepager JSON',
+                    error: i18n.error.wrong_json,
                     loading:false
                 })
             }else{
@@ -73,8 +74,8 @@ let ImportTemplate = React.createClass({
                     </div>
                     <form onSubmit={this.handleImportFormSubmit}>
                         <label htmlFor="choose-template-json-for-import">
-                            <p>Import template to Onepager library</p>
-                            <span className="text"> <i className={importButtonIcon}></i> {this.state.loading ? 'Uploading' : 'Select File'}</span>
+                            <p>{i18n.import_op_library}</p>
+                            <span className="text"> <i className={importButtonIcon}></i> {this.state.loading ? i18n.button.uploading : i18n.button.select_file}</span>
                         </label>
                         <input type="file" name="choose-template-json-for-import" id="choose-template-json-for-import" accept="application/json" onChange={this.handleTemplateImport} required />
 

@@ -5,6 +5,7 @@ const Button = require('react-bootstrap/lib/Button');
 const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const Template = require('./Template.jsx');
 const Select = require("../../../shared/components/form/Select.jsx");
+const {opi18n:i18n} = onepager;
 
 
 let SavedTemplates = React.createClass({
@@ -51,11 +52,11 @@ let SavedTemplates = React.createClass({
           <thead>
               <tr>
                   {/* <th>ID</th> */}
-                  <th className="uk-width-1-6">Name</th>
-                  <th className="uk-width-1-6">Type</th>
-                  <th className="uk-width-1-6">Created By</th>
-                  <th className="uk-width-1-6">Created At</th>
-                  <th className="uk-width-1-6">Action</th>
+                  <th className="uk-width-1-6">{i18n.thead.name}</th>
+                  <th className="uk-width-1-6">{i18n.thead.type}</th>
+                  <th className="uk-width-1-6">{i18n.thead.created_by}</th>
+                  <th className="uk-width-1-6">{i18n.thead.created_at}</th>
+                  <th className="uk-width-1-6">{i18n.thead.action}</th>
                   <th className="uk-width-1-6"></th>
               </tr>
           </thead>
@@ -66,7 +67,7 @@ let SavedTemplates = React.createClass({
         ) : (
         <div className="no-template">
           <p className="icon"><span><i className="fa fa-smile-o"></i></span></p>
-          <p>You didn't save any template yet.</p>
+          <p>{i18n.alert.no_save_template}</p>
           {/* <p>
             <span>Your template should be here. Design, Save & Reuse it.  </span>
           </p> */}

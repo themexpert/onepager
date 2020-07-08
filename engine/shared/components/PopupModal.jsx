@@ -5,6 +5,7 @@ const SavedTemplates = require('../../App/components/templates/SavedTemplates.js
 const ImportTemplate = require('../../App/components/templates/ImportTemplate.jsx');
 const SaveTemplate = require('../../App/components/templates/SaveTemplate.jsx');
 const AppStore = require('../../App/AppStore');
+const {opi18n:i18n} = onepager;
 
 let PopupModal = React.createClass({
     getInitialState(){
@@ -57,9 +58,9 @@ let PopupModal = React.createClass({
                     </div>
                     <div className="tab">
                         <ul className="tx-nav tx-nav-tabs">
-                            <li onClick={this.handleTab} id="tab-block" className={'tab-block' === this.state.active ? 'tab-block active' : null} > Blocks </li>
+                            <li onClick={this.handleTab} id="tab-block" className={'tab-block' === this.state.active ? 'tab-block active' : null} > {i18n.tab.blocks} </li>
                             {/* <li onClick={this.handleTab} id="tab-page" className={'tab-page' === this.state.active ? 'tab-page active' : null} >Pages</li> */}
-                            <li onClick={this.handleTab} id="tab-my-template" className={'tab-my-template' === this.state.active ? 'tab-my-template active' : null}>My Templates</li>
+                            <li onClick={this.handleTab} id="tab-my-template" className={'tab-my-template' === this.state.active ? 'tab-my-template active' : null}>{i18n.tab.my_templates}</li>
                         </ul>
                     </div>
                     <div className="right">
@@ -90,8 +91,8 @@ let PopupModal = React.createClass({
                         </div>
                         <div className="bottom-bar">
                             <h4>
-                                <span>If you like our plugin please </span>
-                                <a target="_blank" href="https://wordpress.org/support/plugin/tx-onepager/reviews/#new-post">rate us on wordpress.org</a>
+                                <span>{i18n.review.str1}</span>
+                                <a target="_blank" href="https://wordpress.org/support/plugin/tx-onepager/reviews/#new-post">{i18n.review.str2}</a>
                             </h4>
                         </div>
                     </div>

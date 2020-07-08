@@ -8,6 +8,7 @@ const Select = require("../../../shared/components/form/Select.jsx");
 const swal = require('sweetalert');
 const AppStore = require('../../AppStore');
 import cx from "classnames";
+const {opi18n:i18n} = onepager;
 
 let SaveTemplate = React.createClass({
     mixins: [PureMixin],
@@ -57,12 +58,12 @@ let SaveTemplate = React.createClass({
         return (
             <div className="save-template-input">
                 <div className="save-template-input-wrapper">
-                    <p>Save page to Onepager library</p>
+                    <p>{i18n.save_page_op_library}</p>
                     {/* <p>Your page content will be available for export and reuse on any page or website</p> */}
                     <form onSubmit={this.handleSaveTemplateFormSubmit}>
-                        <input placeholder="Type your template name" type="text" required name="choose-template-json" id="choose-template-json" onChange={this.handleNameInput} value={this.state.name ? this.state.name : null} />
+                        <input placeholder={i18n.placeholder.type_template_name} type="text" required name="choose-template-json" id="choose-template-json" onChange={this.handleNameInput} value={this.state.name ? this.state.name : null} />
 
-                        <button type="submit" className="submit-button"> <span className={saveButtonIcon}></span> {this.state.loading ? 'saving': 'save'}</button>
+                        <button type="submit" className="submit-button"> <span className={saveButtonIcon}></span> {this.state.loading ? i18n.button.saving: i18n.button.save}</button>
                     </form>
                 </div>
             </div>

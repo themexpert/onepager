@@ -8,6 +8,7 @@ use ThemeXpert\Providers\WordPress\NavigationMenu;
 use ThemeXpert\Providers\WordPress\Section;
 use ThemeXpert\Providers\WordPress\Security;
 use ThemeXpert\Providers\WordPress\Toolbar;
+use ThemeXpert\Providers\WordPress\Opi18n;
 // use ThemeXpert\Providers\WordPress\TemplateManager;
 
 
@@ -61,6 +62,12 @@ class WordPress extends BaseAdapter {
 	public function setSectionProvider() {
 		$this->container['section'] = function () {
 			return new Section();
+		};
+	}
+	
+	public function opi18nStrings() {
+		$this->container['getopi18nstrings'] = function () {
+			return new Opi18n();
 		};
 	}
 

@@ -9,6 +9,7 @@ const PureMixin = require('../../../shared/mixins/PureMixin.js');
 const Tab = require('../../../shared/components/Tab.jsx');
 const TabPane = require('../../../shared/components/TabPane.jsx');
 const SectionTitle = require("../section-list/SectionTitle.jsx");
+const {opi18n:i18n} = onepager;
 
 import LocalState from '../../../shared/lib/localState.js';
 
@@ -132,11 +133,11 @@ let SectionControls = React.createClass({
         <h4>{this.props.title}</h4>
         <ul className="nav nav-pills">
           {sectionSettings.contents.length && (sectionSettings.settings.length !== 0 || sectionSettings.styles.length!== 0) ?
-            <Tab onClick={handleTabClick} id="contents" title="Content" active={activeTab}/> : null}
+            <Tab onClick={handleTabClick} id="contents" title={i18n.tab.contents} active={activeTab}/> : null}
           {sectionSettings.settings.length ?
-            <Tab onClick={handleTabClick} id="settings" title="Settings" active={activeTab}/> : null}
+            <Tab onClick={handleTabClick} id="settings" title={i18n.tab.settings} active={activeTab}/> : null}
           {sectionSettings.styles.length ?
-            <Tab onClick={handleTabClick} id="styles" title="Styles" active={activeTab}/> : null}
+            <Tab onClick={handleTabClick} id="styles" title={i18n.tab.styles} active={activeTab}/> : null}
         </ul>
 
         <div className="tab-content" ref="tabContents">

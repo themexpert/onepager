@@ -98,8 +98,9 @@ function tx_onepager_metabox_scripts( $hook ) {
 		'buildModeUrl' => onepager_get_edit_mode_url( get_permalink( $post->ID ), true ),
 	);
 
-	wp_enqueue_script( 'tx-onepager-page-meta', op_asset( 'assets/meta.js' ), true );
+	wp_enqueue_script( 'tx-onepager-page-meta', op_asset( 'assets/meta.js' ), ["jquery", "wp-i18n"], true );
 	wp_enqueue_style( 'tx-lithium', op_asset( 'assets/css/lithium-builder.css' ) );
 	wp_localize_script( 'tx-onepager-page-meta', 'onepager', $data );
+	wp_set_script_translations( 'tx-onepager-page-meta', 'tx-onepager' );
 }
 

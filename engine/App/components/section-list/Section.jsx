@@ -6,14 +6,15 @@ const PureMixin  = require('../../../shared/mixins/PureMixin.js');
 const AppActions = require('../../flux/AppActions.js');
 const scrollIntoView  = require('../../../shared/plugins/scrollview.js');
 const SectionTitle = require("./SectionTitle.jsx");
+const {opi18n:i18n} = onepager;
 
 function confirmDelete(proceed) {
   swal({
-    title             : "Are you sure?",
-    text              : "Time travel is still hard and there is no way back",
+    title             : i18n.delete.title,
+    text              : i18n.delete.text,
     type              : "warning",
     showCancelButton  : true,
-    confirmButtonText : "Yes, delete it",
+    confirmButtonText : i18n.delete.confirm_button_text,
     closeOnConfirm    : true,
     confirmButtonColor: '#d32f2f'
   }, proceed);
@@ -81,9 +82,9 @@ let Section = React.createClass({
             {title}
           </h3>
           <div className="action-btns">
-            <span className="fa fa-edit" onClick={this.handleEditSection} data-toggle="tooltip" title="Edit"></span>
-            <span className="fa fa-copy" onClick={this.handleDuplicateSection} data-toggle="tooltip" title="Copy"></span>
-            <span className="fa fa-trash-o" onClick={this.handleRemoveSection} data-toggle="tooltip" title="Delete"></span>
+            <span className="fa fa-edit" onClick={this.handleEditSection} data-toggle="tooltip" title={i18n.tooltip.edit}></span>
+            <span className="fa fa-copy" onClick={this.handleDuplicateSection} data-toggle="tooltip" title={i18n.tooltip.copy}></span>
+            <span className="fa fa-trash-o" onClick={this.handleRemoveSection} data-toggle="tooltip" title={i18n.tooltip.delete}></span>
           </div>
         </SectionTitle>
       </div>

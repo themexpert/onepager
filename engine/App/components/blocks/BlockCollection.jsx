@@ -6,6 +6,7 @@ const PureMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 const Block = require('./Block.jsx');
 const Select = require("../../../shared/components/form/Select.jsx");
 // const AppStore  = require('../../stores/AppStore');
+const {opi18n:i18n} = onepager;
 
 function orderGroups(blocks, groupOrder) {
   let groups = _.unique(blocks.reduceRight(function (groups, block) {
@@ -105,7 +106,7 @@ let BlockCollection = React.createClass({
       return active ? block : false;
     });
 
-    let msg = (blocks.length === 0) ? <Alert bsStyle="warning"> <strong>You have no blocks</strong> </Alert> : '';
+    let msg = (blocks.length === 0) ? <Alert bsStyle="warning"> <strong>{i18n.alert.no_blocks}</strong> </Alert> : '';
  
 
     return (
