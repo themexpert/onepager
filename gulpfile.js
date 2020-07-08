@@ -268,7 +268,13 @@ exports.defaultwin = series( clean, assets, bower, listen)
  */
 exports.default = series( clean, assets, bower, run('npm run build'), listen)
 exports.release = series( clean, assets, bower, run('npm run build'), copy, package)
-
+/**
+ * from gulp file command - gulp generatePot
+ * with gulp command string inside js file can not convert to i18n
+ * from cli command - wp i18n make-pot . languages/tx-onepager.pot
+ * but with cli command string inside js file easily convert to i18n function
+ * command must be run from onepager plugin directory. 
+ */
 function generatePot(){
     return src([
         './*.php',
@@ -286,9 +292,9 @@ function generatePot(){
     ])
         .pipe(wpPot( {
             domain: 'tx-onepager',
-            package: 'Onepager Translation',
+            package: 'WPOnepager',
         } ))
-        .pipe(dest('./languages/txonepager.pot'));
+        .pipe(dest('./languages/tx-onepager.pot'));
 }
 exports.generatePot = series( generatePot)
 

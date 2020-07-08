@@ -91,6 +91,11 @@ function appsero_init_tracker_wponepager()
 
 add_action('init', 'appsero_init_tracker_wponepager');
 
+function wponepager_localization_setup() {
+    load_plugin_textdomain( 'tx-onepager', false, ONEPAGER_LANGUAGES_PATH );
+}
+add_action('init', 'wponepager_localization_setup');
+
 // Activation hook
 register_activation_hook(__FILE__, 'onepager_activation_hook');
 function onepager_activation_hook()
