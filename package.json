@@ -1,7 +1,7 @@
 {
-  "name": "onepager",
+  "name": "wponepager",
   "version": "1.1.4",
-  "description": "OnePager: One Stop OnePage Theme Solution wordpress and joomla",
+  "description": "WPOnePager: One Stop OnePage Theme Solution for WordPress",
   "author": "",
   "main": "main.js",
   "license": "MIT",
