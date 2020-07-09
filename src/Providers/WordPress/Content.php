@@ -76,6 +76,20 @@ class Content implements ContentInterface {
 			 substr( $template, 0, 9 ) == 'onepager-'
 		  ) ? true : false;
 	}
+	/**
+	 * check 
+	 * is onepager default page template
+	 */
+	public function isOnepagerDefaultPageTemplate( $pageId = null ) {
+		if ( ! $pageId ) {
+			$pageId = $this->getCurrentPageId();
+		}
+
+		$template = get_post_meta( $pageId, '_wp_page_template', true );
+
+		// template name is onepage.php or onepager-*.php
+		return ($template == 'onepager-default.php' ) ? true : false;
+	}
 
 	public function isOnepagerByMeta() {
 		$onepager = get_post_meta( $this->getCurrentPageId(), '_onepager_updated', true );
