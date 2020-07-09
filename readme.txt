@@ -133,6 +133,10 @@ Absolutely not. You can create and manage your landing pages without any coding 
 == Changelog ==
 
 
+= 2.4.1 =
+- New: Plugin POT File.
+- Fix: Load header and footer style for onepager default page template. 
+
 = 2.4 =
 - New: Popup modal to insert new blocks to page.
 - New: Page and Section Save Option. 
