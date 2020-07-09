@@ -2,8 +2,10 @@
 (function ($) {
 	$(function ($) {
 		var pageId = onepager.pageId;
-		var $onepagerEnableBtn = $( '<button type="button" id="enable-onepager" class="op-btn op-btn-with-logo">'+ __("Enable Onepager", "tx-onepager") +'</button>' );
-		var $onepagerDisableBtn = $( '<button type="button" id="disable-onepager" class="op-btn op-btn-with-logo">'+ __("Disable Onepager", "tx-onepager") +'</button>' );
+		var enableOnepagerString = wp.i18n.__("Enable Onepager", "tx-onepager");
+		var disableOnepagerString = wp.i18n.__("Disable Onepager", "tx-onepager");
+		var $onepagerEnableBtn = $( '<button type="button" id="enable-onepager" class="op-btn op-btn-with-logo">'+ enableOnepagerString +'</button>' );
+		var $onepagerDisableBtn = $( '<button type="button" id="disable-onepager" class="op-btn op-btn-with-logo">'+ disableOnepagerString +'</button>' );
 		var $loading = $( '<div class="onepager-loading" style="display:none"><div uk-spinner></div></div>' );
 
 		// var $editorTabs = $(".wp-editor-tabs");
@@ -198,8 +200,8 @@
 
 			// FIXME: $.data ?
 			var confirmationMsg =
-				__("Are you sure you want to insert this layout?", 'tx-onepager') +
-				__("This layout will replace your current layout!", "tx-onepager");
+				wp.i18n.__("Are you sure you want to insert this layout?", 'tx-onepager') +
+				wp.i18n.__("This layout will replace your current layout!", "tx-onepager");
 
 			var layoutId = $( this ).attr( "data-layout-id" );
 			var proceed = confirm( confirmationMsg );
@@ -293,7 +295,7 @@
 	 * @param name
 	 */
 	function exportOnepagerSections(pageId, name) {
-		var userTemplate = prompt(__("Enter template name", "tx-onepager"), __("mytemplate", "tx-onepager"));
+		var userTemplate = prompt(wp.i18n.__("Enter template name", "tx-onepager"), wp.i18n.__("mytemplate", "tx-onepager"));
 		var payload = {
 			action: 'onepager_get_sections',
 			pageId: pageId
@@ -321,7 +323,7 @@
 						}
 					);
 				} else {
-					alert( __("oops!! onepager could not export this page", "tx-onepager") );
+					alert( wp.i18n.__("oops!! onepager could not export this page", "tx-onepager") );
 				}
 			}
 		);
@@ -357,8 +359,8 @@
 			function (res) {
 				if (res && res.success && res.sections.length !== 0) {
 					var confirmationMsg =
-					__("Are you sure you want to insert this layout?", "tx-onepager") +
-					__("This layout will replace your current layout!", "tx-onepager");
+					wp.i18n.__("Are you sure you want to insert this layout?", "tx-onepager") +
+					wp.i18n.__("This layout will replace your current layout!", "tx-onepager");
 
 					var proceed = confirm( confirmationMsg );
 
@@ -388,7 +390,7 @@
 					$( ".onepager-loading" ).css( "display", "none" );
 				} else {
 					$( ".onepager-loading" ).css( "display", "none" )
-					alert( __("failed to insert layout ", "tx-onepager") );
+					alert( wp.i18n.__("failed to insert layout ", "tx-onepager") );
 				}
 			}
 		);
