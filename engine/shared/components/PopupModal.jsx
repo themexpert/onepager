@@ -58,7 +58,7 @@ let PopupModal = React.createClass({
                     </div>
                     <div className="tab">
                         <ul className="tx-nav tx-nav-tabs">
-                            <li onClick={this.handleTab} id="tab-block" className={'tab-block' === this.state.active ? 'tab-block active' : null} > {i18n.tab.blocks} </li>
+                            <li onClick={this.handleTab} id="tab-block" className={'tab-block' === this.state.active ? 'tab-block active' : null} >{i18n.tab.blocks}</li>
                             {/* <li onClick={this.handleTab} id="tab-page" className={'tab-page' === this.state.active ? 'tab-page active' : null} >Pages</li> */}
                             <li onClick={this.handleTab} id="tab-my-template" className={'tab-my-template' === this.state.active ? 'tab-my-template active' : null}>{i18n.tab.my_templates}</li>
                         </ul>
