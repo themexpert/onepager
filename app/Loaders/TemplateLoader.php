@@ -11,7 +11,7 @@ class TemplateLoader {
 
 		add_action( 'wp_loaded', [ $this, 'loadOnepagerPageTemplates' ] );
 		add_action( 'wp_loaded', [ $this, 'loadOnepagerPageDefaultTemplates' ] );
-		add_action( 'wp_loaded', [ $this, 'loadmytesttemplate' ] );
+		// add_action( 'wp_loaded', [ $this, 'loadmytesttemplate' ] );
 		// 9999999999 is a very big number to make sure that builder.php loads whatever happens
 		add_filter( 'template_include', [ $this, 'loadBuildModeTemplate' ], 9999999999 );
 	}

@@ -69,7 +69,7 @@
 						$pageTemplate.val() == 'onepage.php' ||
 						$pageTemplate.val() == 'onepager-default.php' ||
 						$pageTemplateAlternative.val() == 'onepage.php' ||
-						$pageTemplateAlternative.val() == 'my-test.php' ||
+						// $pageTemplateAlternative.val() == 'my-test.php' ||
 						$pageTemplateAlternative.val() == 'onepager-default.php'
 					){
 						$onepagerEnableBtn.hide();
@@ -288,7 +288,7 @@
 	function isOnepageTemplate(template) {
 		// if template is null return false
 		// return template && ("onepage.php" === template || template.indexOf("onepager-") === 0);
-		return template && ("onepage.php" === template || 'my-test.php' === template || template.indexOf( "onepager-" ) === 0 || template.indexOf( "onepager/" ) === 0);
+		return template && ("onepage.php" === template || template.indexOf( "onepager-" ) === 0 || template.indexOf( "onepager/" ) === 0);
 	}
 
 	/**

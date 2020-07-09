@@ -73,7 +73,6 @@ class Content implements ContentInterface {
 		// template name is onepage.php or onepager-*.php
 		return (
 			 $template == 'onepage.php' ||
-			 $template == 'my-test.php' ||
 			 substr( $template, 0, 9 ) == 'onepager-'
 		  ) ? true : false;
 	}
@@ -94,22 +93,6 @@ class Content implements ContentInterface {
 		$isOnepage = $this->isOnepagerByTemplate( $pageId ) || $this->isOnepagerByMeta();
 
 		return $isOnepage;
-	}
-	public function isOnepageDefault( $pageId = null ) {
-
-		if ( ! $pageId ) {
-			$pageId = $this->getCurrentPageId();
-		}
-
-		$template = get_post_meta( $pageId, '_wp_page_template', true );
-
-		// template name is onepage.php or onepager-*.php
-		return ( $template == 'my-test.php' ) ? true : false;
-
-		// if(is_search()) return false;
-		// $isOnepage = $this->isOnepagerByTemplate( $pageId ) || $this->isOnepagerByMeta();
-
-		// return $isOnepage;
 	}
 
 	public function getCurrentPageId() {
