@@ -76,7 +76,7 @@
     "install": "^0.12.2",
     "npm": "^6.10.0",
     "object-assign": "^2.0.0",
-    "react": "^0.13.2",
+    "react": "^0.14.9",
     "react-bootstrap": "^0.21.2",
     "react-dom": "^0.14.0",
     "react-router": "^0.13.3",
