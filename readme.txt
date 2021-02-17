@@ -3,9 +3,9 @@ Contributors: themexpert, nadimtuhin, themesgrove, parvezvai, shamsbd71, anam_th
 Donate link: https://themesgrove.com/wp-onepager
 Tags: landing page, page builder, coming soon page, onepage, launch page, under construction page, onepage builder, sales page, business landing page, lead generation page, consulting landing page, service landing page, book launch page, webinar page, case study page, portfolio page, responsive page, coming soon page, app landing page, startup landing page, information product page, event landing page, seminar landing page, maintenance mode, coming soon, under construction,launch, maintenance, construction, offline, unavailable
 Stable tag: %version%
-Requires at least: 4.8
-Tested up to: 5.3
-Requires PHP: 5.6
+Requires at least: 5.0
+Tested up to: 5.6.1
+Requires PHP: 7.0
 License: GNU General Public License v2.0 or later
 
 Beginner Friendly Landing Page, Sales page, Onepage, Coming Soon Page Builder. You can create Under Construction Page, Service page, App landing page and many more with WPOnepager for WordPress.
@@ -132,6 +132,8 @@ Absolutely not. You can create and manage your landing pages without any coding 
 
 == Changelog ==
 
+= 2.4.2 =
+- Fix: array_key_exists deprecation error for block collection page. 
 
 = 2.4.1 =
 - New: Plugin POT File.
