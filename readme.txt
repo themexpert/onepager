@@ -5,7 +5,7 @@ Tags: landing page, page builder, coming soon page, onepage, launch page, under 
 Stable tag: %version%
 Requires at least: 5.0
 Tested up to: 5.6.1
-Requires PHP: 7.0
+Requires PHP: 5.6
 License: GNU General Public License v2.0 or later
 
 Beginner Friendly Landing Page, Sales page, Onepage, Coming Soon Page Builder. You can create Under Construction Page, Service page, App landing page and many more with WPOnepager for WordPress.
